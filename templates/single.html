@@ -1,0 +1,51 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","anchor":"main","className":"abr-main abr-single","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<main id="main" class="wp-block-group abr-main abr-single">
+<!-- wp:group {"align":"full","className":"abr-page-head abr-article-head is-dark","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull abr-page-head abr-article-head is-dark">
+<!-- wp:html -->
+[abr_breadcrumbs]
+<!-- /wp:html -->
+<!-- wp:post-terms {"term":"category","className":"abr-kicker-terms"} /-->
+<!-- wp:post-title {"level":1,"className":"abr-page-title"} /-->
+<!-- wp:post-excerpt {"className":"abr-standfirst"} /-->
+<!-- wp:html -->
+<div class="abr-rule" aria-hidden="true"><span></span></div>
+<!-- /wp:html -->
+<!-- wp:group {"className":"abr-byline","layout":{"type":"flex","flexWrap":"wrap"}} -->
+<div class="wp-block-group abr-byline"><!-- wp:post-date {"format":"F j, Y"} /-->
+<!-- wp:html -->
+[abr_reading_time]
+<!-- /wp:html -->
+<!-- wp:html -->
+[abr_last_updated]
+<!-- /wp:html --></div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+<!-- wp:post-featured-image {"aspectRatio":"16/9","align":"wide","className":"abr-single-image"} /-->
+<!-- wp:post-content {"className":"abr-prose","layout":{"type":"constrained"}} /-->
+<!-- wp:group {"align":"wide","className":"abr-single-foot","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide abr-single-foot">
+<!-- wp:post-terms {"term":"category","prefix":"Topics: ","className":"abr-single-topics"} /-->
+<!-- wp:post-terms {"term":"post_tag","prefix":"Tagged: ","className":"abr-single-tags"} /-->
+<!-- wp:html -->
+[abr_citation]
+<!-- /wp:html -->
+<!-- wp:html -->
+[abr_related_articles]
+<!-- /wp:html -->
+<!-- wp:html -->
+[abr_further_reading]
+<!-- /wp:html -->
+<!-- wp:group {"className":"abr-post-nav","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap"}} -->
+<div class="wp-block-group abr-post-nav"><!-- wp:post-navigation-link {"type":"previous","showTitle":true,"label":"Previous: "} /-->
+<!-- wp:post-navigation-link {"showTitle":true,"label":"Next: "} /--></div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

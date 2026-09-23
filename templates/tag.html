@@ -1,0 +1,55 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","anchor":"main","className":"abr-main abr-listing abr-tag-archive","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<main id="main" class="wp-block-group abr-main abr-listing abr-tag-archive">
+<!-- wp:group {"align":"wide","className":"abr-page-head","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide abr-page-head">
+<!-- wp:html -->
+[abr_breadcrumbs]
+<!-- /wp:html -->
+<!-- wp:html -->
+[abr_term_label]
+<!-- /wp:html -->
+<!-- wp:query-title {"type":"archive","showPrefix":false,"className":"abr-page-title"} /-->
+<!-- wp:term-description {"className":"abr-standfirst"} /-->
+<!-- wp:html -->
+[abr_term_count]
+<!-- /wp:html -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"className":"abr-tag-body","layout":{"type":"constrained"}} -->
+<div class="wp-block-group abr-tag-body">
+<!-- wp:query {"queryId":31,"query":{"perPage":20,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"className":"abr-tag-list"} -->
+<div class="wp-block-query abr-tag-list"><!-- wp:post-template -->
+<!-- wp:group {"className":"abr-tag-item","layout":{"type":"default"}} -->
+<div class="wp-block-group abr-tag-item"><!-- wp:post-terms {"term":"category","className":"abr-tag-item__topics"} /-->
+<!-- wp:post-title {"level":2,"isLink":true,"className":"abr-tag-item__title"} /-->
+<!-- wp:post-excerpt {"excerptLength":22,"className":"abr-tag-item__excerpt","showMoreOnNewLine":false} /-->
+<!-- wp:post-date {"format":"F j, Y","className":"abr-tag-item__date"} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+<!-- wp:query-pagination {"paginationArrow":"arrow","className":"abr-pagination","layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous {"label":"Newer"} /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next {"label":"Older"} /-->
+<!-- /wp:query-pagination -->
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>Nothing is tagged with this word yet.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query -->
+<!-- wp:html -->
+[abr_tag_list]
+<!-- /wp:html -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"align":"wide","className":"abr-page-foot","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide abr-page-foot"><!-- wp:html -->
+[abr_hub_links]
+<!-- /wp:html --></div>
+<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

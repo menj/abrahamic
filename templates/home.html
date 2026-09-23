@@ -1,0 +1,46 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","anchor":"main","className":"abr-main abr-listing","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<main id="main" class="wp-block-group abr-main abr-listing">
+<!-- wp:group {"align":"wide","className":"abr-page-head","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide abr-page-head">
+<!-- wp:html -->
+[abr_breadcrumbs]
+<!-- /wp:html -->
+<!-- wp:html -->
+[abr_page_heading]
+<!-- /wp:html -->
+<!-- wp:html -->
+[abr_topic_chips]
+<!-- /wp:html -->
+</div>
+<!-- /wp:group -->
+<!-- wp:query {"queryId":21,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"align":"wide","className":"abr-articles abr-listing__grid"} -->
+<div class="wp-block-query alignwide abr-articles abr-listing__grid"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:group {"className":"abr-article abr-lift","layout":{"type":"default"}} -->
+<div class="wp-block-group abr-article abr-lift"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9"} /-->
+<!-- wp:group {"className":"abr-article__body","layout":{"type":"default"}} -->
+<div class="wp-block-group abr-article__body"><!-- wp:post-terms {"term":"category"} /-->
+<!-- wp:post-title {"level":2,"isLink":true} /-->
+<!-- wp:post-excerpt {"excerptLength":24} /-->
+<!-- wp:group {"className":"abr-article__meta","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group abr-article__meta"><!-- wp:post-date {"format":"F j, Y"} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+<!-- wp:query-pagination {"paginationArrow":"arrow","className":"abr-pagination","layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous {"label":"Newer articles"} /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next {"label":"Older articles"} /-->
+<!-- /wp:query-pagination -->
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>No articles were found.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

@@ -1,0 +1,109 @@
+/* Abrahamic Religions: settings screen */
+
+.abr-settings {
+	--abr-a-navy: #172033;
+	--abr-a-gold: #B89555;
+	--abr-a-line: #e4e1da;
+	max-width: 860px;
+}
+.abr-settings__head { margin: 24px 0 20px; }
+.abr-settings__head h1 { font-family: Georgia, "Times New Roman", serif; font-size: 28px; font-weight: 600; color: var(--abr-a-navy); padding: 0; }
+.abr-settings__head p { color: #646970; margin: 6px 0 0; }
+
+.abr-tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--abr-a-line); overflow-x: auto; scrollbar-width: thin; }
+.abr-tab {
+	appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
+	padding: 12px 16px; font-size: 14px; font-weight: 500; color: #50575e; cursor: pointer;
+	display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; flex-shrink: 0;
+}
+.abr-tab svg { flex-shrink: 0; opacity: .75; }
+.abr-tab[aria-selected="true"] svg { opacity: 1; color: var(--abr-a-gold); }
+.abr-tab:hover { color: var(--abr-a-navy); }
+.abr-tab[aria-selected="true"] { color: var(--abr-a-navy); border-bottom-color: var(--abr-a-gold); }
+.abr-tab:focus-visible { outline: 2px solid var(--abr-a-gold); outline-offset: -2px; box-shadow: none; }
+
+.abr-card { background: #fff; border: 1px solid var(--abr-a-line); border-top: 0; padding: 8px 32px 24px; }
+.abr-panel h2 { font-size: 16px; margin: 24px 0 16px; color: var(--abr-a-navy); }
+.abr-panel h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #646970; margin: 28px 0 12px; }
+
+.abr-field { padding: 14px 0; border-bottom: 1px solid #f0eee9; }
+.abr-field:last-child { border-bottom: 0; }
+.abr-field > label { display: block; font-weight: 600; margin-bottom: 6px; }
+.abr-field textarea { width: 100%; max-width: 520px; }
+.abr-help { color: #646970; margin: 6px 0 0; font-size: 12px; }
+
+.abr-field > label.abr-switch,
+.abr-switch { display: inline-flex; align-items: center; gap: 12px; cursor: pointer; margin: 0; font-weight: 500; position: relative; }
+.abr-switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.abr-switch__track { display: inline-block; width: 38px; height: 22px; border-radius: 11px; background: #c3c4c7; position: relative; transition: background .2s; flex-shrink: 0; }
+.abr-switch__track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .2s; }
+.abr-switch input:checked + .abr-switch__track { background: var(--abr-a-navy); }
+.abr-switch input:checked + .abr-switch__track::after { transform: translateX(16px); }
+.abr-switch input:focus-visible + .abr-switch__track { outline: 2px solid var(--abr-a-gold); outline-offset: 2px; }
+
+.abr-schemes { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.abr-scheme { position: relative; border: 1px solid var(--abr-a-line); border-radius: 4px; padding: 12px; cursor: pointer; display: block; }
+.abr-scheme input { position: absolute; opacity: 0; }
+.abr-scheme:has(input:checked) { border-color: var(--abr-a-navy); box-shadow: inset 0 0 0 1px var(--abr-a-navy); }
+.abr-scheme:has(input:focus-visible) { outline: 2px solid var(--abr-a-gold); outline-offset: 2px; }
+.abr-scheme__swatches { display: flex; height: 36px; border-radius: 3px; overflow: hidden; }
+.abr-scheme__swatches i { flex: 1; }
+.abr-scheme__name { display: block; margin-top: 10px; font-weight: 500; }
+
+@media (max-width: 600px) { .abr-card { padding: 4px 16px 16px; } .abr-tab { padding: 10px 12px; } }
+.abr-scheme__any { background: repeating-conic-gradient(#dcdcde 0 25%, #fff 0 50%) 0 0 / 12px 12px; }
+
+/* Social tab */
+.abr-social-tools { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 16px 0 8px; }
+.abr-social-filter { min-width: 240px; flex: 0 1 320px; }
+.abr-social-count { color: #646970; font-size: 12px; }
+.abr-social-group { border: 0; margin: 24px 0 0; padding: 0; min-width: 0; }
+.abr-social-group[hidden] { display: none; }
+.abr-social-group legend { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #646970; padding: 0; margin-bottom: 10px; }
+.abr-social-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 8px 20px; }
+.abr-social-field { display: grid; grid-template-columns: 170px minmax(0, 1fr); align-items: center; gap: 12px; padding: 6px 0; border-bottom: 1px solid #f0eee9; }
+.abr-social-field[hidden] { display: none; }
+.abr-social-field label { display: flex; align-items: center; gap: 10px; font-weight: 500; margin: 0; color: var(--abr-a-navy); }
+.abr-social-field__icon { width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; background: #f3f1ec; color: #50575e; transition: background .2s, color .2s; }
+.abr-social-field__icon svg { width: 15px; height: 15px; }
+.abr-social-field.is-filled .abr-social-field__icon { background: var(--abr-a-navy); color: #fff; }
+.abr-social-field input { width: 100%; }
+@media (max-width: 782px) {
+	.abr-social-grid { grid-template-columns: 1fr; }
+	.abr-social-field { grid-template-columns: 1fr; gap: 6px; padding: 10px 0; }
+	.abr-social-filter { flex: 1 1 100%; min-width: 0; }
+}
+
+/* Theme Options: form footer, tools */
+.abr-options-form[hidden], .abr-panel[hidden] { display: none; }
+.abr-options-submit { position: sticky; bottom: 0; margin: 16px -32px -24px; padding: 14px 32px; background: rgba(255,255,255,.96); border-top: 1px solid var(--abr-a-line); }
+.abr-panel--tools { padding-bottom: 32px; }
+.abr-panel--tools h2:first-child { margin-top: 24px; }
+.abr-tools-form { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.abr-tools-form input[type="file"] { max-width: 100%; }
+.abr-sysinfo { max-width: 560px; margin-top: 8px; }
+.abr-sysinfo th { width: 40%; font-weight: 500; }
+@media (max-width: 782px) {
+	.abr-options-submit { margin: 16px -16px -16px; padding: 12px 16px; }
+	.abr-tab { padding: 10px 12px; }
+	.abr-tab span { font-size: 13px; }
+}
+
+/* Starter content */
+.abr-seed-summary { margin: 8px 0 12px; }
+.abr-seed-details { margin-top: 16px; }
+.abr-seed-details summary { cursor: pointer; font-weight: 600; color: var(--abr-a-navy); padding: 6px 0; }
+.abr-seed-table { margin-top: 8px; }
+.abr-seed-table td { vertical-align: middle; }
+.abr-seed-actions a + a { margin-left: 10px; }
+.abr-seed-actions form { margin: 0; }
+.abr-seed-row.is-deleted td:nth-child(3), .abr-seed-row.is-trash td:nth-child(3) { color: #b32d2e; }
+.abr-seed-row.is-kept td:nth-child(3) { color: #646970; }
+
+/* Navigation and Search tabs */
+.abr-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; line-height: 1.6; width: 100%; max-width: 100%; }
+.abr-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; }
+.abr-columns .abr-field { border-bottom: 0; }
+.abr-media { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.abr-panel .notice.inline { margin: 16px 0 0; }
+@media (max-width: 960px) { .abr-columns { grid-template-columns: 1fr; } }

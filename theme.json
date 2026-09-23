@@ -1,0 +1,461 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "820px",
+      "wideSize": "1320px"
+    },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        {
+          "slug": "navy",
+          "name": "Navy",
+          "color": "#172033"
+        },
+        {
+          "slug": "ivory",
+          "name": "Ivory",
+          "color": "#F8F5EF"
+        },
+        {
+          "slug": "gold",
+          "name": "Gold",
+          "color": "#B89555"
+        },
+        {
+          "slug": "beige",
+          "name": "Beige",
+          "color": "#E9E2D5"
+        },
+        {
+          "slug": "charcoal",
+          "name": "Charcoal",
+          "color": "#242424"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "typography": {
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "slug": "sabon",
+          "name": "Sabon Next LT",
+          "fontFamily": "\"Sabon Next LT\", \"EB Garamond Transliteration\", \"Noto Serif Hebrew\", \"Noto Sans Syriac\", \"Noto Sans Imperial Aramaic\", Sabon, \"Minion Pro\", \"Adobe Garamond Pro\", Garamond, Georgia, \"Times New Roman\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "Sabon Next LT",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0000-02FF, U+1E00-1EFF, U+2000-214F, U+2190-22FF, U+25CA, U+FB00-FB06",
+              "src": [
+                "file:./assets/fonts/sabon-next-lt-regular.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Sabon Next LT",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0374-0375, U+0384-0386, U+0388-038A, U+038C, U+038E-03A1, U+03A3-03CE, U+03F0-03F1, U+0400-045F, U+0490-0493, U+0496-0497, U+049A-049B, U+04B0-04B3, U+04B6-04B7, U+051A-051D, U+058F, U+060B, U+09F2-09F3, U+0AF1, U+0BF9, U+0E3F, U+17DB, U+E089, U+E100-E109, U+E11E-E127, U+E132-E14F, U+E192-E193, U+E196, U+E19F-E1B6, U+E1DA, U+E1DF-E1E0, U+E1E3, U+E200-E207, U+E20B-E20D, U+E214, U+E232-E233, U+E23B-E23E, U+E248, U+E276-E280, U+E283, U+E288-E28F, U+E2B0-E2B2, U+E2F8-E2FE, U+E300-E30A, U+E30C, U+E310, U+E319-E31B, U+E32B-E33B, U+E91F, U+EC01, U+ED08-ED17, U+F464, U+F6D1, U+F6D4, U+F8FF, U+FDFC",
+              "src": [
+                "file:./assets/fonts/sabon-next-lt-regular-ext.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Sabon Next LT",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0000-02FF, U+1E00-1EFF, U+2000-214F, U+2190-22FF, U+25CA, U+FB00-FB06",
+              "src": [
+                "file:./assets/fonts/sabon-next-lt-italic.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Sabon Next LT",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0374-0375, U+0384-0386, U+0388-038A, U+038C, U+038E-03A1, U+03A3-03CE, U+03F0-03F1, U+0400-045F, U+0490-0493, U+0496-0497, U+049A-049B, U+04B0-04B3, U+04B6-04B7, U+051A-051D, U+058F, U+060B, U+09F2-09F3, U+0AF1, U+0BF9, U+0E3F, U+17DB, U+E089, U+E100-E109, U+E11E-E127, U+E132-E14F, U+E192-E193, U+E196, U+E19F-E1B6, U+E1DA, U+E1DF-E1E0, U+E1E3, U+E200-E207, U+E20B-E20D, U+E214, U+E232-E233, U+E23B-E23E, U+E248, U+E276-E280, U+E283, U+E288-E28F, U+E2B0-E2B2, U+E2F8-E2FE, U+E300-E30A, U+E30C, U+E310, U+E319-E31B, U+E32B-E33B, U+E91F, U+EC01, U+ED08-ED17, U+F464, U+F6D1, U+F6D4, U+F8FF, U+FDFC",
+              "src": [
+                "file:./assets/fonts/sabon-next-lt-italic-ext.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Sabon Next LT",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0000-02FF, U+1E00-1EFF, U+2000-214F, U+2190-22FF, U+25CA, U+FB00-FB06",
+              "src": [
+                "file:./assets/fonts/sabon-next-lt-bold.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Sabon Next LT",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0374-0375, U+0384-0386, U+0388-038A, U+038C, U+038E-03A1, U+03A3-03CE, U+03F0-03F1, U+0400-045F, U+0490-0493, U+0496-0497, U+049A-049B, U+04B0-04B3, U+04B6-04B7, U+051A-051D, U+058F, U+060B, U+09F2-09F3, U+0AF1, U+0BF9, U+0E3F, U+17DB, U+E089, U+E100-E109, U+E11E-E127, U+E132-E14F, U+E192-E193, U+E196, U+E19F-E1B6, U+E1DA, U+E1DF-E1E0, U+E1E3, U+E200-E207, U+E20B-E20D, U+E214, U+E232-E233, U+E23B-E23E, U+E248, U+E276-E280, U+E283, U+E288-E28F, U+E2B0-E2B2, U+E2F8-E2FE, U+E300-E30A, U+E30C, U+E310, U+E319-E31B, U+E32B-E33B, U+E91F, U+EC01, U+ED08-ED17, U+F464, U+F6D1, U+F6D4, U+F8FF, U+FDFC",
+              "src": [
+                "file:./assets/fonts/sabon-next-lt-bold-ext.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Sabon Next LT",
+              "fontStyle": "italic",
+              "fontWeight": "700",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0000-02FF, U+1E00-1EFF, U+2000-214F, U+2190-22FF, U+25CA, U+FB00-FB06",
+              "src": [
+                "file:./assets/fonts/sabon-next-lt-bold-italic.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Sabon Next LT",
+              "fontStyle": "italic",
+              "fontWeight": "700",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0374-0375, U+0384-0386, U+0388-038A, U+038C, U+038E-03A1, U+03A3-03CE, U+03F0-03F1, U+0400-045F, U+0490-0493, U+0496-0497, U+049A-049B, U+04B0-04B3, U+04B6-04B7, U+051A-051D, U+058F, U+060B, U+09F2-09F3, U+0AF1, U+0BF9, U+0E3F, U+17DB, U+E089, U+E100-E109, U+E11E-E127, U+E132-E14F, U+E192-E193, U+E196, U+E19F-E1B6, U+E1DA, U+E1DF-E1E0, U+E1E3, U+E200-E207, U+E20B-E20D, U+E214, U+E232-E233, U+E23B-E23E, U+E248, U+E276-E280, U+E283, U+E288-E28F, U+E2B0-E2B2, U+E2F8-E2FE, U+E300-E30A, U+E30C, U+E310, U+E319-E31B, U+E32B-E33B, U+E91F, U+EC01, U+ED08-ED17, U+F464, U+F6D1, U+F6D4, U+F8FF, U+FDFC",
+              "src": [
+                "file:./assets/fonts/sabon-next-lt-bold-italic-ext.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "transliteration",
+          "name": "EB Garamond (transliteration and Greek fallback)",
+          "fontFamily": "\"EB Garamond Transliteration\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "EB Garamond Transliteration",
+              "fontStyle": "normal",
+              "fontWeight": "400 800",
+              "fontDisplay": "swap",
+              "sizeAdjust": "107%",
+              "unicodeRange": "U+02BE-02BF, U+0323, U+032E, U+0331, U+1E0C-1E0F, U+1E24-1E25, U+1E2A-1E2B, U+1E6C-1E6F, U+1E92-1E96, U+1F00-1FFF",
+              "src": [
+                "file:./assets/fonts/eb-garamond-supplement.woff2"
+              ]
+            },
+            {
+              "fontFamily": "EB Garamond Transliteration",
+              "fontStyle": "italic",
+              "fontWeight": "400 800",
+              "fontDisplay": "swap",
+              "sizeAdjust": "107%",
+              "unicodeRange": "U+02BE-02BF, U+0323, U+032E, U+0331, U+1E0C-1E0F, U+1E24-1E25, U+1E2A-1E2B, U+1E6C-1E6F, U+1E92-1E96, U+1F00-1FFF",
+              "src": [
+                "file:./assets/fonts/eb-garamond-supplement-italic.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "greek",
+          "name": "EB Garamond (Greek)",
+          "fontFamily": "\"EB Garamond Greek\", \"Sabon Next LT\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "EB Garamond Greek",
+              "fontStyle": "normal",
+              "fontWeight": "400 800",
+              "fontDisplay": "swap",
+              "sizeAdjust": "107%",
+              "unicodeRange": "U+0300-036F, U+0370-03FF, U+1F00-1FFF",
+              "src": [
+                "file:./assets/fonts/eb-garamond-supplement.woff2"
+              ]
+            },
+            {
+              "fontFamily": "EB Garamond Greek",
+              "fontStyle": "italic",
+              "fontWeight": "400 800",
+              "fontDisplay": "swap",
+              "sizeAdjust": "107%",
+              "unicodeRange": "U+0300-036F, U+0370-03FF, U+1F00-1FFF",
+              "src": [
+                "file:./assets/fonts/eb-garamond-supplement-italic.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "typewriter",
+          "name": "Special Elite (typewriter notes)",
+          "fontFamily": "\"Special Elite\", \"Courier New\", Courier, monospace",
+          "fontFace": [
+            {
+              "fontFamily": "Special Elite",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/special-elite.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "arabic-display",
+          "name": "Arslan Wessam (Arabic calligraphy)",
+          "fontFamily": "\"Arslan Wessam\", \"Noto Naskh Arabic\", \"Amiri\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "Arslan Wessam",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0020, U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F",
+              "src": [
+                "file:./assets/fonts/arslan-wessam.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "hebrew",
+          "name": "Noto Serif Hebrew (Hebrew and square-script Aramaic)",
+          "fontFamily": "\"Noto Serif Hebrew\", \"Noto Sans Imperial Aramaic\", \"Noto Sans Syriac\", \"SBL Hebrew\", \"Ezra SIL\", \"Sabon Next LT\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "Noto Serif Hebrew",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0020, U+0590-05FF, U+FB1D-FB4F, U+200C-200F, U+25CC",
+              "src": [
+                "file:./assets/fonts/noto-serif-hebrew.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "syriac",
+          "name": "Noto Sans Syriac (Syriac Aramaic)",
+          "fontFamily": "\"Noto Sans Syriac\", \"Estrangelo Edessa\", \"Sabon Next LT\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "Noto Sans Syriac",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0020, U+0300-036F, U+0640, U+064B-0655, U+0670, U+0700-074F, U+0860-086F, U+200C-200F, U+25CC",
+              "src": [
+                "file:./assets/fonts/noto-sans-syriac.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "imperial-aramaic",
+          "name": "Noto Sans Imperial Aramaic",
+          "fontFamily": "\"Noto Sans Imperial Aramaic\", \"Noto Serif Hebrew\", \"Sabon Next LT\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "Noto Sans Imperial Aramaic",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0020, U+10840-1085F",
+              "src": [
+                "file:./assets/fonts/noto-sans-imperial-aramaic.woff2"
+              ]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "small",
+          "name": "Small",
+          "size": "0.95rem"
+        },
+        {
+          "slug": "medium",
+          "name": "Medium",
+          "size": "1.1875rem",
+          "fluid": {
+            "min": "1.125rem",
+            "max": "1.1875rem"
+          }
+        },
+        {
+          "slug": "large",
+          "name": "Large",
+          "size": "1.4rem",
+          "fluid": {
+            "min": "1.25rem",
+            "max": "1.4rem"
+          }
+        },
+        {
+          "slug": "x-large",
+          "name": "Extra Large",
+          "size": "2.8rem",
+          "fluid": {
+            "min": "2rem",
+            "max": "2.8rem"
+          }
+        },
+        {
+          "slug": "xx-large",
+          "name": "Display",
+          "size": "4.6rem",
+          "fluid": {
+            "min": "2.9rem",
+            "max": "4.6rem"
+          }
+        }
+      ]
+    },
+    "spacing": {
+      "units": [
+        "px",
+        "rem",
+        "%",
+        "vw"
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|ivory",
+      "text": "var:preset|color|charcoal"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|sabon",
+      "fontSize": "var:preset|font-size|medium",
+      "lineHeight": "1.65",
+      "fontWeight": "400"
+    },
+    "spacing": {
+      "blockGap": "1.25rem",
+      "padding": {
+        "left": "clamp(20px, 4vw, 40px)",
+        "right": "clamp(20px, 4vw, 40px)"
+      }
+    },
+    "elements": {
+      "heading": {
+        "color": {
+          "text": "var:preset|color|navy"
+        },
+        "typography": {
+          "fontFamily": "var:preset|font-family|sabon",
+          "fontWeight": "400",
+          "lineHeight": "1.12"
+        }
+      },
+      "h1": {
+        "typography": {
+          "fontSize": "var:preset|font-size|xx-large",
+          "lineHeight": "1.04",
+          "letterSpacing": "-0.015em"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontSize": "var:preset|font-size|x-large"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var:preset|color|navy"
+        },
+        ":hover": {
+          "color": {
+            "text": "var:preset|color|gold"
+          }
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var:preset|color|navy",
+          "text": "var:preset|color|white"
+        },
+        "border": {
+          "radius": "4px"
+        },
+        "typography": {
+          "fontFamily": "var:preset|font-family|sabon",
+          "fontSize": "1rem",
+          "fontWeight": "700",
+          "letterSpacing": "0.03em"
+        },
+        "spacing": {
+          "padding": {
+            "top": "13px",
+            "bottom": "13px",
+            "left": "32px",
+            "right": "32px"
+          }
+        },
+        ":hover": {
+          "color": {
+            "background": "#1f2a44",
+            "text": "var:preset|color|white"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "core/navigation": {
+        "typography": {
+          "fontSize": "1rem",
+          "fontWeight": "400"
+        }
+      },
+      "core/details": {
+        "border": {
+          "bottom": {
+            "color": "var:preset|color|beige",
+            "width": "1px"
+          }
+        }
+      },
+      "core/quote": {
+        "typography": {
+          "fontWeight": "400"
+        }
+      },
+      "core/pullquote": {
+        "typography": {
+          "fontWeight": "400"
+        }
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ],
+  "customTemplates": [
+    {
+      "name": "page-landing",
+      "title": "Landing (full width, no title)",
+      "postTypes": [
+        "page"
+      ]
+    }
+  ]
+}
