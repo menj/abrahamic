@@ -3,7 +3,7 @@ Contributors: menj
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.48.0
+Stable tag: 2.52.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +43,7 @@ Appearance > Theme Options lets you:
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.48.0.zip, and activate it. The starter pages and articles are created automatically.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.52.0.zip, and activate it. The starter pages and articles are created automatically.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
@@ -135,6 +135,24 @@ Yes. The hero section and the place cards hold patterned placeholders. Replace e
 They are copied across automatically when you activate Abrahamic. Changes you made to templates in the Site Editor under the old theme are not carried over. See docs/upgrading.md for details.
 
 == Upgrade Notice ==
+
+= 2.52.0 =
+A new Journal article: Apostasy in the Abrahamic traditions.
+
+= 2.51.1 =
+The population article gains a section on where the world's Christians will live by 2050.
+
+= 2.51.0 =
+All paragraph and list text now uses 1.5 line spacing and full justification.
+
+= 2.50.0 =
+A new Journal article: Paul and Peter, two missions in the early church.
+
+= 2.49.1 =
+Sacred texts and History and timeline move into the Reference menu, matching where they actually sit on the site.
+
+= 2.49.0 =
+A new Journal article on Pew Research's population projections for the Abrahamic religions.
 
 = 2.48.0 =
 A new Journal article: Haman in the Qur'an.
@@ -332,6 +350,24 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.52.0 - 2026-09-25 =
+* New in the Journal: "Apostasy in the Abrahamic traditions," comparing how Judaism, Christianity, Islam and Mandaeism have treated those who leave, with Malaysia as a modern case.
+
+= 2.51.1 - 2026-09-23 =
+* "The population of the Abrahamic religions" gains a section, "Where Christians will live": the projected shift of the world's Christians toward sub-Saharan Africa, Europe's decline in absolute numbers, Nigeria's rise, and the effect of religious switching in the West.
+
+= 2.51.0 - 2026-09-23 =
+* All paragraph and list text across the site is now justified, with 1.5 line spacing throughout, replacing the mix of spacing values (1.55 to 1.8) used in different sections before. Headings and single-line interface text are unaffected.
+
+= 2.50.0 - 2026-09-23 =
+* New in the Journal: "Paul and Peter: two missions in the early church," on the Antioch confrontation in Galatians 2, the Corinthian factions of 1 Corinthians 1:12, Acts' more harmonious retelling, and 2 Peter's later reconciliation of the two apostles.
+
+= 2.49.1 - 2026-09-23 =
+* The header menu's "Sacred texts" and "Timeline" are now inside the Reference dropdown, alongside Figures, Places, Comparative studies, Glossary, FAQ and Research. Both pages are children of Reference in the site's own structure and already appeared that way in the footer menu and in breadcrumbs; only the header menu treated them differently. The top-level menu is now Religions, Reference, Journal.
+
+= 2.49.0 - 2026-09-23 =
+* New in the Journal: "The population of the Abrahamic religions," on Pew Research Center's demographic projections to 2050 and 2060: current numbers, fertility and age, the projected near-parity of Christians and Muslims by 2050, and a historical note on when the two may last have been so close.
 
 = 2.48.0 - 2026-09-20 =
 * New in the Journal: "Haman in the Qur'an", on the Orientalist objection that Haman is borrowed from the Book of Esther, the historicity of Esther itself, and the case that Haman is an Egyptian priestly title rather than a personal name.

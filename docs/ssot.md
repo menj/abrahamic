@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.48.0** |
+| Current version | **2.52.0** |
 | Release date | 2026-09-20 |
 | Status | Stable |
 

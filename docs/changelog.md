@@ -2,6 +2,42 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.52.0] - 2026-09-25
+
+### Added
+- Journal: `post:apostasy-in-the-abrahamic-traditions` (Religion, History; 16 notes). Sources verified live: Sanhedrin 44a and CCAR responsa (Judaism); Codex Theodosianus 16.7.1 and 16.7.4, Aquinas ST II-II q. 11 a. 3, and Dignitatis Humanae 2 (Christianity); Qur'an 2:217, 2:256, 4:137, the classical jurists' ruling and al-Alwani's 2011 IIIT study (Islam); Drower 1937, p. 59 (Mandaeism); Federal Constitution Articles 11, 153 and 160 and Lina Joy [2007] 3 AMR 693 (Malaysia). The uploaded Springer study (Ab Rashid and Mohamad, 2019) is cited only for its constitutional background, pp. 1-2; its subject, a named private individual, is not discussed. Three photographs (Vilna Talmud, opening of Vatican II, Palace of Justice Putrajaya), credited on the Copyright and DMCA page. Cross-linked with the Amman Message article. Seed version 48.
+
+## [2.51.1] - 2026-09-23
+
+### Added
+- `post:the-population-of-the-abrahamic-religions`: new section "Where Christians will live" (notes 10 to 12), drawn from the Pew report's chapter 2 "Christians" page: regional distribution in 2010 and 2050, Europe's projected fall from 553 to 454 million, Nigeria's projected third-largest Christian population at 39 per cent of its people, and the effect of religious switching in North America (66 per cent Christian with switching, 75 per cent without). Former notes 10 and 11 renumbered 13 and 14. Seed version 47.
+
+### Corrected
+- The 2.49.0 entry listed this Pew page among the article's sources, but none of its distinctive material had been used; it is now.
+
+## [2.51.0] - 2026-09-23
+
+### Changed
+- Line spacing and justification are now sitewide defaults rather than scoped to article prose. `body { line-height: 1.5; }` replaces the body base; a new `p, li { text-align: justify; text-align-last: left; hyphens: auto; }` rule (added just after the body rule in `theme.css`) covers every paragraph and list item on the site, superseding the narrower `.abr-prose p:not(.abr-further)` rule from 2.46.0, which is removed.
+- Roughly a dozen component-level line-height overrides on flowing copy (`.abr-hero p`, `.abr-intro p`, `.abr-heritage__copy p`, `.abr-about p`, `.abr-prose`, `.abr-prose li`, `.abr-standfirst`, `.abr-notes`, `.abr-sub`, `.abr-cite__text`, `.abr-tag-item__excerpt`, `.abr-result__snippet`, figure/place/era captions, the typewriter note style, and pull quotes), previously set anywhere from 1.55 to 1.8, are removed so this copy now inherits the 1.5 base uniformly. Headings, the logo, icon-sized elements and icon-only buttons keep their own tighter line-heights, since those are not flowing text and a uniform 1.5 would visibly break display type rather than improve readability.
+
+## [2.50.0] - 2026-09-23
+
+### Added
+- Journal: `post:paul-and-peter-two-missions` (History, Scripture; 10 notes), drawing on Michael Goulder's St. Paul versus St. Peter: A Tale of Two Missions (1995) and the USCCB's own introduction to 2 Peter, both project sources. Covers the Antioch confrontation (Galatians 2:11-14), the Corinthian Paul/Cephas factions (1 Corinthians 1:12), Acts' more harmonious retelling of the Jerusalem council against Paul's own franker account, and 2 Peter's closing reconciliation of the two apostles, read alongside the USCCB's own statement that 2 Peter is widely regarded by scholars as pseudonymous and among the latest-written books in the New Testament. Three new photographs (Antakya on the site of ancient Antioch, a Chester Beatty papyrus of Paul's letters, the ruins of ancient Corinth), credited on the Copyright and DMCA page. Cross-linked from Understanding the Bible and the Qur'an in historical context. Seed version 46.
+- Fixed a duplicate-photo slip caught before release, the same pattern as 2.48.0 and 2.49.0: the article's first draft reused its featured image inline; the photo was removed from that slot and two new, more specific photographs (the Corinth ruins, tied to the article's new 1 Corinthians 1:12 point) were added instead.
+
+## [2.49.1] - 2026-09-23
+
+### Fixed
+- Header menu default (`inc/options.php`): "Sacred texts" and "Timeline" were listed as top-level items, siblings of "Reference," even though both are children of the Reference page (`/reference/sacred-texts/`, `/reference/timeline/`) alongside Figures, Places, Comparative studies, Glossary, FAQ and Research. The footer menu and every breadcrumb trail already reflected the real hierarchy; only the header menu did not. Both are now nested under Reference in the header too, so the top level reads Religions, Reference, Journal. The previous default is registered in `abr_legacy_menu_defaults()`, so a site still on it migrates automatically the next time options are read; a customised header menu is left alone.
+
+## [2.49.0] - 2026-09-23
+
+### Added
+- Journal: `post:the-population-of-the-abrahamic-religions` (Religion, History; 11 notes), drawing on three project sources: Pew Research Center's "The Future of World Religions: Population Growth Projections, 2010-2050" (2 April 2015), its companion piece "Why Muslims Are the World's Fastest-Growing Religious Group" (2017 update of a 2015 original), and the Pew page on projected changes in the global Christian population. Covers present-day numbers, the fertility and age gap driving future change, the projected 2050 near-parity of Christians (2.9 billion) and Muslims (2.8 billion), the 2060 projection of Muslims overtaking Christians, the Jewish population's projected growth in absolute terms, and a historical footnote on the Coleman/Bulliet minority view that Muslims may briefly have outnumbered Christians between 1000 and 1600 CE. States plainly, in the source's own terms, that these are projections bounded by an explicit time frame and stated assumptions, not predictions. Notes that Mandaeism falls below the scale at which this kind of demographic projection is possible. Three new photographs (Lagos, the Istiqlal Mosque in Jakarta, a 2020 world population density map), credited on the Copyright and DMCA page. Seed version 45.
+- Fixed a duplicate-photo slip caught before release, the same pattern as 2.48.0: the article's featured image was reused inline; replaced with the population density map before packaging.
+
 ## [2.48.0] - 2026-09-20
 
 ### Added

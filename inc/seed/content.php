@@ -1687,6 +1687,24 @@ ABR_SEED,
 <li>Columns of the Hypostyle Hall, Karnak: David Broad, <a href="https://creativecommons.org/licenses/by/3.0" rel="license">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Amun-Re_Hypostyle_Hall_at_Karnak,_Luxor,_Egypt_-_panoramio.jpg">Wikimedia Commons</a>.</li>
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li>Ruins at Persepolis: Paul, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="license">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Ruins_of_Persepolis_6.jpeg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Lagos, Nigeria, skyline: Clara Sanchiz, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="license">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Lagos_skyline.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Istiqlal Mosque and the Jakarta skyline: JS Barry, <a href="https://creativecommons.org/licenses/by/3.0" rel="license">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Istiqal_Mosque_view_from_Menara_BTN_-_panoramio.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>World population density map, 2020: Petnog, <a href="https://creativecommons.org/licenses/by/4.0" rel="license">CC BY 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:World_Population_Density_Map_2020.png">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Antakya (ancient Antioch), Turkey: Maarten Sepp, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Antakya_-_2011-04-10.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Chester Beatty papyrus of Paul’s letters: public domain, via <a href="https://commons.wikimedia.org/wiki/File:Dublin,_Chester_Beatty_Ms_BP_II_fol._15%2690_Bifolio_from_Paul%27s_Letter_to_the_Romans,_the_end_of_Paul%27s_Letter_to_the_Philippians_and_the_beginning_of_Paul%27s_Letter_to_the_Colossians.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Ruins of ancient Corinth, with the Temple of Apollo and Acrocorinth: Nicholas Hartmann, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:2007_Greece_Acrocorinth_%26_Apollo_Temple.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A page of the Vilna Talmud: public domain, via <a href="https://commons.wikimedia.org/wiki/File:VilniusShasPage.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Opening of the Second Vatican Council, St Peter’s Square: Peter Geymayer, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Konzilseroeffnung_1.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Palace of Justice, Putrajaya: Wolfiewhite, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="license">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Angled_view_of_the_front_of_Palace_of_Justice,_Putrajaya.jpg">Wikimedia Commons</a>.</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
 ABR_SEED,
@@ -2228,7 +2246,7 @@ ABR_SEED,
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
-<p class="abr-further">Further reading: <a href="/journal/the-king-and-the-pharaoh/">The king and the Pharaoh</a>, <a href="/journal/john-the-baptist-in-four-traditions/">John the Baptist in four traditions</a> and <a href="/journal/what-archaeology-tells-us-about-the-ancient-near-east/">What archaeology tells us about the ancient Near East</a>, <a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a> and <a href="/journal/mary-across-the-traditions/">Mary across the traditions</a>.</p>
+<p class="abr-further">Further reading: <a href="/journal/the-king-and-the-pharaoh/">The king and the Pharaoh</a>, <a href="/journal/john-the-baptist-in-four-traditions/">John the Baptist in four traditions</a> and <a href="/journal/what-archaeology-tells-us-about-the-ancient-near-east/">What archaeology tells us about the ancient Near East</a>, <a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a> and <a href="/journal/mary-across-the-traditions/">Mary across the traditions</a>, <a href="/journal/paul-and-peter-two-missions/">Paul and Peter: two missions in the early church</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3471,7 +3489,7 @@ ABR_SEED,
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
-<p class="abr-further">Further reading: <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a> and <a href="/journal/the-sabians-of-the-quran/">The Sabians of the Qur’an</a>.</p>
+<p class="abr-further">Further reading: <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a> and <a href="/journal/the-sabians-of-the-quran/">The Sabians of the Qur’an</a>, <a href="/journal/apostasy-in-the-abrahamic-traditions/">Apostasy in the Abrahamic traditions</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3669,6 +3687,314 @@ ABR_SEED,
 <li id="note-14">Personal communication from Jürgen Osing, Ägyptologisches Seminar, Freie Universität Berlin, July 2009, on the door-jamb inscription of ḳmn-ḥ in the Kunsthistorisches Museum, Vienna. <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li id="note-15">A. Silverstein, "Hāmān’s Transition from Jāhiliyya to Islam," Jerusalem Studies in Arabic and Islam 34 (2008, published 2009): 285-308. <a href="#ref-15" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:the-population-of-the-abrahamic-religions', 'photo' => array( 'name' => 'lagos-skyline', 'alt' => 'Lagos, Nigeria, one of the fast-growing cities of sub-Saharan Africa' ), 'type' => 'post', 'slug' => 'the-population-of-the-abrahamic-religions', 'title' => 'The population of the Abrahamic religions',
+			'excerpt' => 'Pew Research projects Islam and Christianity nearing parity by 2050, and Islam becoming the largest religion by 2060 or later.', 'description' => 'Pew\'s demographic projections for Judaism, Christianity and Islam to 2050 and 2060. Read what drives the numbers.', 'categories' => array( 'religion', 'history' ), 'days_ago' => 0, 'since' => 45, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>How many people belong to each Abrahamic tradition, and how is that changing? The most detailed answer comes from the Pew Research Center, which in 2015 published the first large-scale demographic projections of the world’s religions, built from more than 2,500 censuses, surveys and population registers rather than estimation alone.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="population-density-map" alt="A world population density map, 2020" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-present-picture"} -->
+<h2 class="wp-block-heading" id="the-present-picture">The present picture</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>As of Pew’s baseline year, Christians were the largest religious group in the world, with Muslims second.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Jews were, and remain, by far the smallest group for which Pew produced a separate projection, numbering a little under 14 million worldwide, some 0.2 per cent of the global population.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Mandaeism, with a global community numbered in the tens of thousands, falls beneath the threshold at which census and survey data allow a demographer to project it separately at all; it appears in no study of this kind, Pew’s included.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-drives-the-difference"} -->
+<h2 class="wp-block-heading" id="what-drives-the-difference">What drives the difference</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Pew traces future change mainly to fertility and age, not conversion. Globally, Muslim women have the highest fertility of any major religious group, an average of 3.1 children, against 2.7 for Christians and 2.3 for Jews, all above the replacement level of 2.1.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Muslims also have the youngest median age of any group Pew measured, seven years below the median for non-Muslims, which means a larger share of Muslims are approaching the years in which people have children.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Both patterns concentrate in sub-Saharan Africa and parts of Asia, where Muslim and Christian populations are both growing quickly, while the regions where the religiously unaffiliated are concentrated, Europe, North America, China and Japan, have low fertility and ageing populations.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-projection-to-2050-and-2060"} -->
+<h2 class="wp-block-heading" id="the-projection-to-2050-and-2060">The projection to 2050 and 2060</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>On these trends, Pew’s central projection has Christians and Muslims reaching near parity by 2050, at 2.9 billion (31 per cent of the world’s population) and 2.8 billion (30 per cent) respectively, the first time in history the two would stand so close.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> A later Pew analysis, extending the same model to 2060, projects that Muslims would overtake Christians as the world’s largest religious group in the second half of the century, growing 70 per cent between 2015 and 2060 against 32 per cent for the world’s population as a whole.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> The Jewish population is projected to keep growing in absolute terms, to about 16.1 million by 2050, while continuing to decline slightly as a share of the world’s much faster-growing population.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"where-christians-will-live"} -->
+<h2 class="wp-block-heading" id="where-christians-will-live">Where Christians will live</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The same projections show Christianity shifting its centre of gravity. In 2010 the world’s Christians were spread almost evenly across Europe (26 per cent), Latin America and the Caribbean (25 per cent) and sub-Saharan Africa (24 per cent), while fewer than 1 per cent lived in the Middle East and North Africa, the region where the faith began. By 2050 Pew projects that 38 per cent of the world’s Christians will live in sub-Saharan Africa and only about 16 per cent in Europe, the one region where the number of Christians is expected to fall in absolute terms, from 553 million to 454 million.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup> Nigeria is projected to hold the world’s third-largest Christian population by mid-century, although Christians would then make up only 39 per cent of its people.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Conversion plays a modest part worldwide and a larger one in the West. Pew projects net losses to Christianity through religious switching in North America, Europe and Latin America, most of it toward no religious affiliation: without switching, Christians would make up about 75 per cent of North America’s population in 2050, against 66 per cent once switching is counted. In sub-Saharan Africa, where the number of Christians is expected to more than double, their share of the population is still projected to slip from 63 to 59 per cent, because the region’s Muslim population is growing faster still.<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="jakarta-istiqlal" alt="The Istiqlal Mosque in Jakarta, Indonesia, seen across the skyline of the country with the world’s largest Muslim population" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-historical-footnote"} -->
+<h2 class="wp-block-heading" id="a-historical-footnote">A historical footnote</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Pew’s researchers also asked historians when Christians and Muslims were last so close in number. Most hold that Christians have always outnumbered Muslims worldwide since Islam’s rise in the seventh century, given Christianity’s six-century head start. A minority view, associated with the Oxford demographer David Coleman and the Columbia historian Richard Bulliet, holds that Muslims may briefly have outnumbered Christians sometime between 1000 and 1600 CE, as Muslim populations expanded while plague, above all the Black Death, cut deeply into Europe’s Christian population. Pew is careful to note that estimates for this period carry wide uncertainty.<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-a-projection-is-not"} -->
+<h2 class="wp-block-heading" id="what-a-projection-is-not">What a projection is not</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>None of this is a prophecy. Pew’s own report says plainly that the projections describe what would follow if current fertility, mortality, migration and conversion patterns continue, and that events ranging from conflict to economic change can move demographic trends in ways no model can foresee; this is why the projections cover a bounded forty- to forty-five-year window rather than reaching further into the century.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> Read that way, the figures describe a trajectory worth understanding on its own terms, not a settled outcome. See <a href="/religions/islam/">Islam</a> and <a href="/religions/christianity/">Christianity</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Conrad Hackett et al., "The Future of World Religions: Population Growth Projections, 2010-2050" (Washington, DC: Pew Research Center, 2 April 2015). <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Hackett et al., "The Future of World Religions," Overview. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Ibid., ch. 2, "Jews." <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Ibid., ch. 1, "Fertility." <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Michael Lipka and Conrad Hackett, "Why Muslims Are the World’s Fastest-Growing Religious Group," Pew Research Center, 6 April 2017 (an update of an article first published 23 April 2015). <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Hackett et al., "The Future of World Religions," Overview. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Ibid., Overview and ch. 2, "Christians" and "Muslims." <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Lipka and Hackett, "Why Muslims Are the World’s Fastest-Growing Religious Group." <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Hackett et al., "The Future of World Religions," ch. 2, "Jews." <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Hackett et al., "The Future of World Religions," ch. 2, "Christians," "Regional Change." <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-11">Ibid., "Change in Countries With Largest Christian Populations." <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-12">Ibid., "Regional Change" and "Demographic Characteristics of Christians That Will Shape Their Future." <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-13">Ibid., Overview, note 2, citing Todd M. Johnson, Houssain Kettani, David Coleman and Richard W. Bulliet. <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-14">Ibid., Overview, "Why Do Some Religious Groups Grow Faster Than Others?" <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:paul-and-peter-two-missions', 'photo' => array( 'name' => 'antioch', 'alt' => 'The modern city of Antakya, Turkey, on the site of ancient Antioch, where Paul confronted Peter' ), 'type' => 'post', 'slug' => 'paul-and-peter-two-missions', 'title' => 'Paul and Peter: two missions in the early church',
+			'excerpt' => 'Paul\'s own letters describe a real conflict with Peter at Antioch. A later letter, in Peter\'s name, makes peace.', 'description' => 'Paul rebuked Peter to his face at Antioch. See how a later New Testament letter quietly made peace between them.', 'categories' => array( 'history', 'scripture' ), 'days_ago' => 0, 'since' => 46, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>The New Testament is often read as the record of a single, unified church. Its own earliest documents, Paul’s own letters, tell a rougher story: a real and public dispute between Paul and Peter over what a Gentile had to do to belong to the church of a Jewish messiah.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<!-- wp:heading {"anchor":"the-confrontation-at-antioch"} -->
+<h2 class="wp-block-heading" id="the-confrontation-at-antioch">The confrontation at Antioch</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Paul’s own account, in his letter to the Galatians, is the earliest first-hand record of any dispute in the church’s history. At Antioch, where Paul had preached for years, Jewish and Gentile Christians had been eating together without regard to Jewish dietary law. When representatives from the Jerusalem church, associated with James, the brother of Jesus, arrived, Peter stopped eating with the Gentile believers. Paul says he "opposed him to his face, because he stood condemned," accusing Peter of hypocrisy: eating as a Gentile when it suited him, then compelling Gentiles to live as Jews once the Jerusalem party appeared.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Even Barnabas, Paul’s own missionary partner, sided with Peter.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The split was not confined to Antioch: in Corinth, a church Paul had founded, some believers were still identifying themselves by faction years later, “I belong to Paul,” others, “I belong to Cephas,” Peter’s Aramaic name.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The New Testament scholar Michael Goulder, in a study of the earliest decades of the church, reads the incident as a genuine defeat for Paul at the time: "the die had been cast by now, and the Peter party, the Petrines, had won the round."<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Paul’s own Gentile mission would eventually prevail as a matter of practice, since Christians today keep neither kosher law nor circumcision, but that outcome was not obvious in the moment, and Paul’s letter to the Galatians was written partly to fight a battle he had already lost once.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="corinth" alt="The ruins of ancient Corinth, whose church Paul founded and where believers later divided into rival factions" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"two-accounts-one-earlier-and-franker"} -->
+<h2 class="wp-block-heading" id="two-accounts-one-earlier-and-franker">Two accounts, one earlier and franker</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Acts of the Apostles gives a second account of the underlying dispute, at what is usually called the Jerusalem council, and its tone is markedly more harmonious than Paul’s own letter. Goulder describes Acts’ version as inflated, turning what was probably a private meeting into something resembling a full council, though the letter Acts records afterward, asking Gentile converts to abstain from food sacrificed to idols, from blood and from sexual immorality, likely reflects the terms actually agreed.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Paul’s letters, written by a participant close to the events, and Acts, written a generation or more later by an author working to present a unified church, do not read as independent confirmations of each other so much as two different angles on the same underlying conflict, one considerably more willing than the other to let the conflict show.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="chester-beatty-romans" alt="A leaf of the Chester Beatty papyrus of Paul’s letters, copied around the early third century" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-later-letter-makes-peace"} -->
+<h2 class="wp-block-heading" id="a-later-letter-makes-peace">A later letter makes peace</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>A different kind of evidence for the same underlying tension comes from the New Testament’s own account of itself. The Second Letter of Peter closes by describing the letters of "our beloved brother Paul" as containing "some things hard to understand," which the "ignorant and unstable twist to their own destruction, as they do the other scriptures."<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> The line does two things worth noticing. It places Paul’s letters, by implication, alongside "the other scriptures", and it puts Peter’s own authority behind Paul’s, addressing exactly the kind of dispute over Paul’s meaning that Goulder traces back to Antioch.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The United States Conference of Catholic Bishops’ own introduction to the letter states plainly that "among modern scholars there is wide agreement that 2 Peter is a pseudonymous work," written by someone other than the apostle "according to a literary convention popular at the time," and that many scholars regard it as the latest-written document in the New Testament, from the early or middle second century.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> Among the reasons given: the letter refers to the apostles as a prior generation, already dead; it responds to a settled collection of Paul’s letters, well known enough that disputes had already arisen over how to read them; and its account of false teachers borrows extensively from the Letter of Jude, in a direction scholars agree runs from Jude to 2 Peter and not the reverse.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> Even the early church was divided on the letter’s authenticity: Origen, in the early third century, is the earliest writer to mention it at all, and reports that others rejected it outright, a doubt that persisted in some churches into the fifth century.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-the-pattern-shows"} -->
+<h2 class="wp-block-heading" id="what-the-pattern-shows">What the pattern shows</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Read together, the evidence describes a real progression rather than a single settled position. Paul’s own letters preserve an open, personal conflict with Peter over the terms of Gentile membership in the church. Acts, writing later, softens the same conflict into a council reaching friendly agreement. A letter written in Peter’s name, later still, goes a step further and places apostolic authority explicitly behind Paul, folding his letters into scripture and warning against misreading them. The dispute did not vanish because it was resolved on the day it happened; it receded because later generations of the church wrote it into a settled peace.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Galatians 2:11-14. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Galatians 2:13. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">1 Corinthians 1:12. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Michael D. Goulder, St. Paul versus St. Peter: A Tale of Two Missions (Louisville: Westminster/John Knox Press, 1995), p. 3. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Ibid., pp. 2-3. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Ibid., p. 26; Acts 15:1-29. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">2 Peter 3:15-16. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">"The Second Letter of Peter," Introduction, New American Bible, Revised Edition (United States Conference of Catholic Bishops, USCCB.org). <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Ibid. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Ibid. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:apostasy-in-the-abrahamic-traditions', 'photo' => array( 'name' => 'vilna-talmud', 'alt' => 'A page of the Babylonian Talmud in the Vilna edition' ), 'type' => 'post', 'slug' => 'apostasy-in-the-abrahamic-traditions', 'title' => 'Apostasy in the Abrahamic traditions',
+			'excerpt' => 'Rabbinic law, Christian empire, classical Islamic jurisprudence and modern reconsideration: how each tradition has treated those who leave.', 'description' => 'How Judaism, Christianity, Islam and Mandaeism have treated those who leave the faith. Read the comparison.', 'categories' => array( 'religion', 'history' ), 'days_ago' => 0, 'since' => 48, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Every one of the Abrahamic traditions has had to decide what becomes of a member who leaves. The answers differ sharply, and each has changed over time: from the rabbinic insistence that a Jew remains a Jew, through the Christian empire’s civil penalties and the medieval Church’s death sentence for heresy, to the classical Islamic jurists’ capital ruling and the modern Muslim scholarship that has reopened it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"judaism-once-an-israelite"} -->
+<h2 class="wp-block-heading" id="judaism-once-an-israelite">Judaism: once an Israelite</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Hebrew Bible prescribes death for one who entices others to serve other gods.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Rabbinic law, however, settled on a principle drawn from the story of Achan: an Israelite who has sinned remains an Israelite.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> In practice the principle meant that a Jew who adopted another religion kept the family obligations and rights of a Jew: his marriage stood, a divorce still required his writ, and he could still inherit.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> The standard modern reference work on Judaism states the consequence plainly: in Jewish religious law it is technically impossible for a Jew to change religion.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Later authorities distinguished the provocative apostate from the one who left for convenience, and some medieval jurists took a harder line on the descendants of converts, but the governing principle has held.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"christianity-from-civil-penalty-to-religious-freedom"} -->
+<h2 class="wp-block-heading" id="christianity-from-civil-penalty-to-religious-freedom">Christianity: from civil penalty to religious freedom</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The first Christians suffered for their faith and could not punish anyone for leaving it. Once the Roman Empire became Christian, apostasy turned into a civil offence. A law of 381 CE, preserved in the code compiled under Theodosius II, stripped Christians who had become pagans of the right to make a will; a law of 391 CE barred those who had "betrayed the holy faith" from giving testimony and from inheriting.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> In the thirteenth century Thomas Aquinas argued that heretics, who corrupt the faith, deserve not only excommunication but death at the hands of the secular authority, a judgement that shaped the practice of the Inquisition.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The Catholic Church reversed that position in 1965. The Second Vatican Council declared that every person has a right to religious freedom and must be immune from coercion by any human power in matters of belief.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> The change is recent: the right that Western Christianity now defends as its own was, for most of its history, one it denied.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="vatican-council" alt="Bishops gathering in St Peter’s Square at the opening of the Second Vatican Council, 1962" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"islam-scripture-law-and-reconsideration"} -->
+<h2 class="wp-block-heading" id="islam-scripture-law-and-reconsideration">Islam: scripture, law and reconsideration</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an condemns apostasy in strong terms and warns that the deeds of one who dies an unbeliever are lost in this world and the next.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> It describes people who believed, disbelieved, believed again and disbelieved once more, which presumes that they were living among the believers throughout.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup> It prescribes no worldly punishment for apostasy anywhere in its text, and it states the principle that there is no compulsion in religion, <em>lā ikrāha fī al-dīn</em> (<span lang="ar" dir="rtl">لا إكراه في الدين</span>, no compulsion in religion).<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The classical jurists of all four Sunni schools nonetheless held that an adult male apostate who refused to repent after being invited to do so should be put to death, drawing on reports from the Prophet’s sayings and the wars against the tribes that broke away after his death.<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup> That ruling has been challenged from within the tradition itself. Taha Jabir al-Alwani, a graduate of al-Azhar and a member of the Islamic Fiqh Academy of the Organisation of Islamic Cooperation, argued in a detailed study that neither the Qur’an nor the Sunnah mandates death for a change of belief alone, that the Prophet never put anyone to death for apostasy, and that the early penalties concerned apostasy joined to rebellion or treason against the community.<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup> On this reading, leaving Islam is a grave sin answered in the next world, and the state’s concern begins only where the act becomes a crime against public order.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"mandaeism-a-closed-community"} -->
+<h2 class="wp-block-heading" id="mandaeism-a-closed-community">Mandaeism: a closed community</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Mandaeism does not seek converts, and belonging is a matter of birth and observance within the community. Marriage is arranged within Mandaean families, and a bride must come of a suitable Mandaean family with no taint of alien blood.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> For so small a community the practical question has been loss through marriage outside it and through emigration, not the punishment of those who leave.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-modern-case-malaysia"} -->
+<h2 class="wp-block-heading" id="a-modern-case-malaysia">A modern case: Malaysia</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Malaysia shows how these questions persist in a modern constitutional state. Its Federal Constitution defines a Malay as a person who professes Islam, habitually speaks Malay and conforms to Malay custom, so that a Malay who leaves Islam also leaves the constitutional category, and the special position it carries.<sup class="abr-fn"><a href="#note-15" id="ref-15">15</a></sup> In 2007 the Federal Court, in a two to one decision, dismissed the appeal of Lina Joy, who sought to have "Islam" removed from her identity card, holding that a person who wishes to leave a religion must do so according to that religion’s own law, which for Muslims places the question before the Syariah courts.<sup class="abr-fn"><a href="#note-16" id="ref-16">16</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="putrajaya-justice" alt="The Palace of Justice in Putrajaya, seat of Malaysia’s Federal Court" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-the-comparison-shows"} -->
+<h2 class="wp-block-heading" id="what-the-comparison-shows">What the comparison shows</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Judaism answered apostasy by refusing to let a Jew stop being one. Christianity and Islam, once each held political power, both attached severe penalties to leaving; Christianity abandoned them in the twentieth century under the pressure of the modern state, while in Islam the argument against the classical ruling has been made from the Qur’an itself, which never prescribed it. See <a href="/religions/islam/">Islam</a>, <a href="/religions/christianity/">Christianity</a> and <a href="/religions/judaism/">Judaism</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/the-sabians-of-the-quran/">The Sabians of the Qur’an</a> and <a href="/journal/the-amman-message-and-a-common-word/">The Amman Message and A Common Word</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Deuteronomy 13:6-10. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Babylonian Talmud, Sanhedrin 44a, on Joshua 7:11. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Central Conference of American Rabbis, responsum "Apostate," citing Sanhedrin 44a and Avodah Zarah 26b. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Encyclopaedia Judaica, s.v. "Apostasy," vol. 3, p. 211, as quoted in "When Is a Jew Not a Jew?", Israel My Glory. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Central Conference of American Rabbis, op. cit., on the <em>mumar l’hachis</em> and <em>mumar l’teavon</em>; Responsa of Maharshdam, Even HaEzer 10, as discussed in Shmuel Kadosh, "Once a Jew, Always a Jew? Part 3," Kol Torah, 9 August 2018. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Codex Theodosianus 16.7.1 (381 CE) and 16.7.4 (391 CE), in the translation reproduced by Scroll Publishing; cf. "Apostasy," Encyclopedia of Religion, Encyclopedia.com. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Thomas Aquinas, Summa Theologiae II-II, q. 11, a. 3, trans. Fathers of the English Dominican Province (1920). <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Second Vatican Council, Dignitatis Humanae (7 December 1965), §2. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Qur'an 2:217. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Qur'an 4:137; cf. 3:86-90. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-11">Qur'an 2:256. <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-12">Taha Jabir al-Alwani, Apostasy in Islam: A Historical and Scriptural Analysis, trans. Nancy Roberts (London: International Institute of Islamic Thought, 2011), chapter "Muslim Jurists’ Views on the Penalty for Apostasy." <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-13">Ibid., chapters "Apostasy during the Prophet’s Life" and "Response to Apostasy in the Verbal Sunnah"; cf. the review by the American Journal of Islam and Society (2013). <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-14">E. S. Drower, The Mandaeans of Iraq and Iran (Oxford: Clarendon Press, 1937), p. 59. <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-15">Federal Constitution of Malaysia, Article 160; Articles 11 and 153; cf. Radzuwan Ab Rashid and Azweed Mohamad, New Media Narratives and Cultural Influence in Malaysia (Singapore: Springer, 2019), pp. 1-2. <a href="#ref-15" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-16">Lina Joy v Majlis Agama Islam Wilayah Persekutuan & Ors [2007] 3 AMR 693 (Federal Court, 30 May 2007). <a href="#ref-16" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --></ol>
 <!-- /wp:list -->
 ABR_SEED,

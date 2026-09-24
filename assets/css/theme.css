@@ -81,7 +81,7 @@
 .abr-lightbox__figure { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 100%; max-height: 100%; margin: 0; }
 .abr-lightbox__img { display: block; width: auto; height: auto; max-width: min(100%, 1600px); max-height: calc(100dvh - 160px); object-fit: contain; border-radius: 4px; transition: opacity var(--abr-ease); }
 .abr-lightbox.is-loading .abr-lightbox__img { opacity: 0.35; }
-.abr-lightbox__caption { max-width: 60ch; font-family: var(--abr-font); font-size: 0.95rem; line-height: 1.55; text-align: center; opacity: 0.85; }
+.abr-lightbox__caption { max-width: 60ch; font-family: var(--abr-font); font-size: 0.95rem; text-align: center; opacity: 0.85; }
 .abr-lightbox__close {
 	position: absolute; top: max(12px, env(safe-area-inset-top, 0px)); right: 12px; width: 44px; height: 44px; padding: 0;
 	border: 1px solid color-mix(in srgb, var(--abr-on-dark) 35%, transparent); border-radius: 50%; background: transparent; color: var(--abr-on-dark); cursor: pointer;
@@ -104,6 +104,13 @@ body {
 	font-synthesis: none; font-kerning: normal; font-variant-ligatures: common-ligatures;
 	text-rendering: optimizeLegibility; hanging-punctuation: first;
 }
+body { line-height: 1.5; }
+/* All flowing copy: justified with an even measure, the ragged word-spacing this can
+   introduce softened by hyphenation, and the last line of each paragraph or item kept
+   left-aligned rather than stretched to the full width. */
+p, li {
+	text-align: justify; text-align-last: left; -webkit-hyphens: auto; hyphens: auto;
+}
 :where(strong, b) { font-weight: 700; }
 :where(p, li, dd, summary) { text-wrap: pretty; }
 :where(h1, h2, h3) { text-wrap: balance; }
@@ -123,7 +130,7 @@ body {
 /* Typewriter note: archival notes and document transcriptions (Special Elite). */
 .is-style-abr-typewriter {
 	font-family: var(--wp--preset--font-family--typewriter) !important;
-	font-size: 0.95em; line-height: 1.75; letter-spacing: 0;
+	font-size: 0.95em; letter-spacing: 0;
 	color: var(--abr-charcoal);
 	background: color-mix(in srgb, var(--abr-beige) 55%, var(--abr-white));
 	border-left: 3px solid var(--abr-gold);
@@ -173,7 +180,7 @@ body {
 	color: var(--abr-gold-ink); margin-bottom: 12px !important;
 }
 .abr-title { font-size: clamp(2rem, 4vw, 3.2rem) !important; font-weight: 400 !important; line-height: 1.2 !important; margin-block: 0 16px !important; }
-.abr-sub { font-size: 1.16rem; color: var(--abr-muted); max-width: 680px; line-height: 1.7; }
+.abr-sub { font-size: 1.16rem; color: var(--abr-muted); max-width: 680px; }
 .is-dark .abr-sub { color: color-mix(in srgb, var(--abr-on-dark) 72%, transparent); }
 .abr-section-head { text-align: center; margin-bottom: 48px !important; }
 .abr-section-head .abr-sub { margin-inline: auto !important; }
@@ -326,7 +333,7 @@ body {
 .abr-hero > * { position: relative; width: 100%; }
 .abr-hero h1 { margin-block: 0 20px; font-size: clamp(2.6rem, 5.2vw, 4.6rem) !important; }
 .abr-hero h1 mark { background: none; color: var(--abr-gold); }
-.abr-hero p { color: var(--abr-muted); max-width: 540px; font-size: 1.16rem; line-height: 1.8; margin-block: 0 12px; }
+.abr-hero p { color: var(--abr-muted); max-width: 540px; font-size: 1.16rem; margin-block: 0 12px; }
 .abr-hero p.is-lead { color: var(--abr-charcoal); font-size: 1.2rem; }
 .abr-hero .wp-block-buttons { margin-top: 32px; gap: 16px; }
 .abr-hero__visual { aspect-ratio: 4 / 3; box-shadow: 0 20px 60px color-mix(in srgb, var(--abr-navy) 9%, transparent); overflow: hidden; }
@@ -336,7 +343,7 @@ body {
 /* ---------- Intro ---------- */
 
 .abr-intro { border-block: 1px solid var(--abr-soft); }
-.abr-intro p { font-size: 1.16rem; line-height: 1.8; }
+.abr-intro p { font-size: 1.16rem; }
 .abr-note {
 	margin-top: 16px; font-size: 1.05rem !important; font-style: italic; color: var(--abr-muted);
 	padding: 16px 20px; background: var(--abr-soft); border-left: 3px solid var(--abr-gold); border-radius: 2px;
@@ -390,7 +397,7 @@ body {
 	padding: 16px 20px; border-left: 3px solid var(--abr-gold); background: color-mix(in srgb, var(--abr-white) 3%, transparent);
 }
 .abr-lineage__note .abr-icon { color: var(--abr-gold); margin-right: 6px; }
-.abr-heritage .abr-heritage__copy p { color: color-mix(in srgb, var(--abr-on-dark) 72%, transparent); font-size: 1.1rem; line-height: 1.8; }
+.abr-heritage .abr-heritage__copy p { color: color-mix(in srgb, var(--abr-on-dark) 72%, transparent); font-size: 1.1rem; }
 .abr-heritage .abr-heritage__copy p + p { color: color-mix(in srgb, var(--abr-on-dark) 55%, transparent); font-size: 1.05rem; }
 
 /* ---------- Comparison ---------- */
@@ -427,7 +434,7 @@ body {
 .abr-figure:hover { border-bottom-color: var(--abr-gold); }
 .abr-figure h3 { font-size: 1.21rem; font-weight: 700; margin: 0; }
 .abr-figure .abr-kicker { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--abr-gold-ink); margin: 4px 0 8px; }
-.abr-figure p:last-child { font-size: 0.97rem; color: var(--abr-muted); line-height: 1.6; margin: 0; }
+.abr-figure p:last-child { font-size: 0.97rem; color: var(--abr-muted); margin: 0; }
 
 /* ---------- Places ---------- */
 
@@ -440,7 +447,7 @@ body {
 .abr-place__body > * { margin: 0; }
 .abr-place .abr-kicker { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--abr-gold-ink); margin-bottom: 4px; }
 .abr-place h3 { font-size: 1.16rem; font-weight: 700; }
-.abr-place p:last-child { font-size: 0.97rem; color: var(--abr-muted); line-height: 1.6; margin-top: 4px; }
+.abr-place p:last-child { font-size: 0.97rem; color: var(--abr-muted); margin-top: 4px; }
 
 /* ---------- Timeline ---------- */
 
@@ -458,7 +465,7 @@ body {
 .abr-era > * { margin: 0; }
 .abr-era .abr-kicker { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--abr-gold-ink); }
 .abr-era h3 { font-size: 1.16rem; font-weight: 700; margin: 6px 0 4px; }
-.abr-era p:last-child { font-size: 0.94rem; color: var(--abr-muted); line-height: 1.6; }
+.abr-era p:last-child { font-size: 0.94rem; color: var(--abr-muted); }
 .abr-timeline__controls { justify-content: flex-end; gap: 8px; }
 .abr-timeline__controls button {
 	width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--abr-beige); background: transparent;
@@ -531,7 +538,7 @@ body {
 
 /* ---------- About ---------- */
 
-.abr-about p { font-size: 1.1rem; line-height: 1.8; }
+.abr-about p { font-size: 1.1rem; }
 .abr-about .abr-panel-art { min-height: 220px; }
 .abr-about .abr-panel-art .abr-icon { font-size: 3.6rem; opacity: 0.35; }
 
@@ -693,7 +700,7 @@ body {
 .abr-breadcrumbs [aria-current] { color: var(--abr-navy); }
 
 .abr-page-title { font-size: clamp(2.3rem, 5vw, 3.8rem) !important; line-height: 1.06 !important; margin-block: 0 18px !important; text-wrap: balance; }
-.abr-standfirst { font-size: 1.3rem; line-height: 1.55; color: var(--abr-muted); margin-block: 0 20px !important; }
+.abr-standfirst { font-size: 1.3rem; color: var(--abr-muted); margin-block: 0 20px !important; }
 .abr-kicker-terms { font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; margin-block: 0 14px !important; }
 .abr-kicker-terms a { color: var(--abr-gold-ink); text-decoration: none; }
 .abr-byline { gap: 6px 18px; font-size: 1rem; color: var(--abr-muted); padding-bottom: 20px; border-bottom: 1px solid var(--abr-hair); }
@@ -703,20 +710,14 @@ body {
 
 /* Reading comfort: a measure of roughly 70 characters, generous leading, and
    room to breathe above and below each section. */
-.abr-prose { padding-top: 40px; font-size: 1.22rem; line-height: 1.78; }
+.abr-prose { padding-top: 40px; font-size: 1.22rem; }
 .abr-prose > * + * { margin-block-start: 1.35em; }
-/* Justified body copy: even edges on both sides, with hyphenation so the
-   ragged word-spacing this can introduce stays modest, and the last line of
-   each paragraph kept left-aligned rather than stretched to the full measure. */
-.abr-prose p:not(.abr-further) {
-	text-align: justify; text-align-last: left; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 6 3 3;
-}
 /* One measure for every element in the column, so their edges line up.
    A fixed length, since ch units scale with each element's own font size. */
 .abr-prose > *:not(.abr-table):not(.abr-photo):not(.wp-block-image) { max-width: var(--abr-measure); }
 .abr-prose h2 { font-size: clamp(1.75rem, 3vw, 2.2rem); margin-block: 2.4em 0.6em !important; scroll-margin-top: calc(var(--abr-header-h) + 20px); }
 .abr-prose h3 { font-size: 1.45rem; font-weight: 700; margin-block: 1.9em 0.5em !important; }
-.abr-prose li { line-height: 1.75; }
+
 
 /* Tables, photographs and notes may use more of the page than the text column. */
 .abr-prose .abr-table,
@@ -755,7 +756,7 @@ body {
 .abr-tag-item__title { font-size: 1.4rem !important; line-height: 1.3; margin: 0 0 6px !important; }
 .abr-tag-item__title a { color: var(--abr-navy); text-decoration: none; }
 .abr-tag-item__title a:hover { color: var(--abr-gold-ink); text-decoration: underline; text-underline-offset: 4px; }
-.abr-tag-item__excerpt { color: var(--abr-muted); margin: 0 0 6px !important; line-height: 1.7; }
+.abr-tag-item__excerpt { color: var(--abr-muted); margin: 0 0 6px !important; }
 .abr-tag-item__date { font-size: 0.82rem !important; color: color-mix(in srgb, var(--abr-navy) 45%, transparent); margin: 0 !important; }
 .abr-tag-cloud { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--abr-hair); }
 .abr-tag-cloud h2 { font-size: 0.8rem !important; letter-spacing: 0.16em; text-transform: uppercase; color: var(--abr-muted); margin: 0 0 14px !important; }
@@ -807,7 +808,7 @@ body {
 .abr-prose blockquote, .abr-prose .wp-block-quote {
 	border-left: 3px solid var(--abr-gold); margin-block: 2.2em !important;
 	padding: 0.2em 0 0.2em 1.4em; font-family: var(--abr-font-display, inherit);
-	font-size: 1.28em; font-style: italic; line-height: 1.55; color: var(--abr-navy);
+	font-size: 1.28em; font-style: italic; color: var(--abr-navy);
 }
 .abr-prose blockquote p { margin: 0 !important; max-width: none; }
 .abr-prose blockquote cite { display: block; margin-top: 0.7em; font-size: 0.72em; font-style: normal; color: var(--abr-muted); }
@@ -823,7 +824,7 @@ body {
 }
 .abr-cite__copy:hover, .abr-cite__copy:focus-visible { border-color: var(--abr-gold); color: var(--abr-gold-ink); }
 .abr-cite__copy.is-done { border-color: var(--abr-gold); background: var(--abr-gold-soft); }
-.abr-cite__text { margin: 0 !important; padding: 14px 16px; background: var(--abr-soft); border-radius: 4px; font-size: 0.97rem; line-height: 1.6; color: var(--abr-muted); max-width: none !important; }
+.abr-cite__text { margin: 0 !important; padding: 14px 16px; background: var(--abr-soft); border-radius: 4px; font-size: 0.97rem; color: var(--abr-muted); max-width: none !important; }
 
 /* References in two columns where there is room, as a journal sets them. */
 @media (min-width: 900px) {
@@ -840,7 +841,7 @@ body {
 .abr-result__title { font-size: 1.45rem !important; margin: 0 0 8px !important; line-height: 1.3; }
 .abr-result__title a { color: var(--abr-navy); text-decoration: none; }
 .abr-result__title a:hover { color: var(--abr-gold-ink); text-decoration: underline; text-underline-offset: 4px; }
-.abr-result__snippet { margin: 0 0 8px !important; color: var(--abr-muted); line-height: 1.7; }
+.abr-result__snippet { margin: 0 0 8px !important; color: var(--abr-muted); }
 .abr-result__snippet mark { background: var(--abr-gold-soft); color: inherit; padding: 0 2px; border-radius: 2px; }
 .abr-result__path { margin: 0 !important; font-size: 0.82rem !important; color: color-mix(in srgb, var(--abr-navy) 45%, transparent); }
 .abr-search-empty { padding: 8px 0 32px; }
@@ -866,7 +867,7 @@ body {
 .abr-fn a { text-decoration: none !important; padding: 0 0.15em; color: var(--abr-gold-ink) !important; }
 .abr-fn a:hover, .abr-fn a:focus-visible { text-decoration: underline !important; }
 .abr-notes-title { font-size: 1.15rem !important; letter-spacing: 0.1em; text-transform: uppercase; color: var(--abr-muted); margin-block: 2.4em 0.6em !important; }
-.abr-notes { font-size: 0.97rem; line-height: 1.7; color: var(--abr-muted); padding-left: 1.3em; }
+.abr-notes { font-size: 0.97rem; color: var(--abr-muted); padding-left: 1.3em; }
 .abr-notes li { margin-top: 0.35em; scroll-margin-top: calc(var(--abr-header-h) + 20px); }
 .abr-notes li:target { background: var(--abr-gold-soft); border-radius: 3px; }
 .abr-fn-back { text-decoration: none !important; margin-left: 0.3em; }

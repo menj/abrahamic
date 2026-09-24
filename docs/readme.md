@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.48.0 |
+| Version | 2.52.0 |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
@@ -18,7 +18,7 @@ Identity, naming rules, tokens, breakpoints, the settings schema and the decisio
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.48.0.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.52.0.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -26,7 +26,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.48.0.zip --activate
+wp theme install abrahamic-2.52.0.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -245,6 +245,30 @@ Add section-specific rules inside the matching tier block, so all width rules st
 All front page sections are patterns in the "Abrahamic" category and can be edited under Appearance > Editor > Templates > Front Page. Section anchors (`#religions`, `#timeline` and so on) are set on each section's Group block and are used by the header menu; keep them when editing.
 
 Class names on blocks (`abr-*`) carry the design. Removing a class in the editor's Advanced panel removes its styling.
+
+## Testing performed for 2.52.0
+
+- Seed version 48 created the article with its featured image; 16 notes render and link both ways; two inline photographs; zero cross-article photo duplicates across 24 articles (72 images). No PHP notices.
+
+## Testing performed for 2.51.1
+
+- Seed version 47 refreshed the population article; all 14 notes render in order and link both ways, and the new section appears. No PHP notices.
+
+## Testing performed for 2.51.0
+
+- Confirmed in a live browser: body line-height computes to 1.5 times its font size; article, card, FAQ and footnote paragraphs all compute to `text-align: justify`; headings keep their own line-heights unaffected. No horizontal overflow at 1000 or 390 pixels; `/`, an article, the FAQ and the Glossary all return 200 with no PHP notices.
+
+## Testing performed for 2.50.0
+
+- Seed version 46 created the article with its featured image; all 10 notes render in order and link both ways. Full cross-article photo audit across all 23 Journal articles: zero duplicates, 69 distinct images. Confirmed the three new credits on the Copyright and DMCA page and the cross-link from the Bible-and-Qur'an article. No PHP notices.
+
+## Testing performed for 2.49.1
+
+- Reset to default options: the header's top-level menu now reads Religions, Reference, Journal, and the Reference dropdown lists all eight of its children (Sacred texts, History and timeline, Figures, Places, Comparative studies, Glossary, FAQ, Research) in order. Confirmed against the footer menu and breadcrumb trails, which already matched this structure. No PHP notices; `/`, `/reference/`, `/reference/sacred-texts/` and `/reference/timeline/` all return 200.
+
+## Testing performed for 2.49.0
+
+- Seed version 45 created the article with its featured image; all 11 notes render in order and link both ways. Full cross-article photo audit across all 22 Journal articles: zero duplicates, 66 distinct images. Confirmed the three new credits on the Copyright and DMCA page. No PHP notices.
 
 ## Testing performed for 2.48.0
 

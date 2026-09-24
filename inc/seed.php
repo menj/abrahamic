@@ -77,7 +77,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 /**
  * Raise when inc/seed/content.php gains items (set their 'since' to the new value).
  */
-define( 'ABR_SEED_VERSION', 44 );
+define( 'ABR_SEED_VERSION', 48 );
 
 /**
  * Recommended permalink settings (docs/ssot.md, section 12).

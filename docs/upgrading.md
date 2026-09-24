@@ -10,6 +10,42 @@ Replace the theme files. A template change only; nothing to reseed.
 
 ---
 
+## Upgrading from 2.51.1 to 2.52.0
+
+Replace the theme files and load any admin page. Seed version 48 adds the article and refreshes the Amman Message article and the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.51.0 to 2.51.1
+
+Replace the theme files and load any admin page. Seed version 47 refreshes the population article.
+
+---
+
+## Upgrading from 2.50.0 to 2.51.0
+
+Replace the theme files. Styles only; nothing to reseed.
+
+---
+
+## Upgrading from 2.49.1 to 2.50.0
+
+Replace the theme files and load any admin page. Seed version 46 adds the new article with its photographs and refreshes Understanding the Bible and the Qur'an in historical context and the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.49.0 to 2.49.1
+
+Replace the theme files and load any admin page. The header menu updates automatically if it is still the theme's own default; a customised menu is untouched.
+
+---
+
+## Upgrading from 2.48.0 to 2.49.0
+
+Replace the theme files and load any admin page. Seed version 45 adds the new article with its photographs and refreshes the Copyright and DMCA page.
+
+---
+
 ## Upgrading from 2.47.1 to 2.48.0
 
 Replace the theme files and load any admin page. Seed version 44 adds the new article with its photographs and refreshes The king and the Pharaoh and the Copyright and DMCA page.
@@ -476,7 +512,7 @@ Replace the theme files. No settings, templates or identifiers changed.
 
 Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new folder.
 
-1. Upload `abrahamic-2.48.0.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
+1. Upload `abrahamic-2.52.0.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
 2. Activate **Abrahamic**. Saved settings are copied from `ar_options` to `abr_options` automatically.
 3. Check Appearance > Abrahamic and confirm the colour scheme, newsletter and social values.
 4. Site Editor changes are stored against the theme slug and do not carry over. If the front page, header or footer was edited under 1.x:
