@@ -111,6 +111,10 @@ body { line-height: 1.5; }
 p, li {
 	text-align: justify; text-align-last: left; -webkit-hyphens: auto; hyphens: auto;
 }
+/* Headings, and the post cards that list items render as, keep their own
+   alignment; a justified two-line heading opens wide gaps between words.
+   Paragraphs inside the cards stay justified through the rule above. */
+h1, h2, h3, h4, h5, h6, .wp-block-post-template > li { text-align: start; text-align-last: auto; -webkit-hyphens: manual; hyphens: manual; }
 :where(strong, b) { font-weight: 700; }
 :where(p, li, dd, summary) { text-wrap: pretty; }
 :where(h1, h2, h3) { text-wrap: balance; }
@@ -191,6 +195,18 @@ p, li {
 .abr-grid--2 { grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .abr-grid--3 { grid-template-columns: repeat(3, 1fr); }
 .abr-grid--4 { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+/* Sacred places: four to a row on wide screens, with a shorter last row centred,
+   so the section holds any number of places evenly. */
+.abr-places .abr-grid.abr-grid--places { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 24px; }
+.abr-places .abr-grid.abr-grid--places > * { flex: 0 1 calc((100% - 72px) / 4); min-width: 0; }
+@media (max-width: 1023px) {
+	.abr-places .abr-grid.abr-grid--places { gap: 20px; }
+	.abr-places .abr-grid.abr-grid--places > * { flex-basis: calc((100% - 20px) / 2); }
+}
+@media (max-width: 560px) {
+	.abr-places .abr-grid.abr-grid--places { gap: 16px; }
+	.abr-places .abr-grid.abr-grid--places > * { flex-basis: 100%; }
+}
 
 .abr-lift { transition: transform var(--abr-ease), box-shadow var(--abr-ease), border-color var(--abr-ease); }
 @media (hover: hover) {
@@ -230,6 +246,11 @@ p, li {
 	transition: box-shadow var(--abr-ease);
 }
 .admin-bar .abr-header { top: var(--wp-admin--admin-bar--height, 32px); }
+/* The header part's own wrapper is exactly as tall as the header, which leaves
+   .abr-header nothing to stick within; the wrapper itself carries the stickiness. */
+.wp-site-blocks > header.wp-block-template-part:has(.abr-header) { position: sticky; top: 0; z-index: 1000; }
+.admin-bar .wp-site-blocks > header.wp-block-template-part:has(.abr-header) { top: var(--wp-admin--admin-bar--height, 32px); }
+.wp-site-blocks > header.wp-block-template-part > .abr-header { position: relative; top: 0; }
 .abr-header.is-scrolled { box-shadow: 0 4px 24px color-mix(in srgb, var(--abr-navy) 6%, transparent); }
 .abr-header__inner { min-height: var(--abr-header-h); gap: 24px; }
 .abr-logo { display: flex; align-items: center; gap: 12px; line-height: 1.1; text-decoration: none; }
@@ -672,10 +693,10 @@ p, li {
    which would trap the overlay menu inside the 72px bar. */
 .abr-header:has(.is-menu-open) { -webkit-backdrop-filter: none; backdrop-filter: none; }
 
-/* Shared heritage: the three symbols as a quiet watermark, coloured by the scheme. */
+/* Shared heritage: the four symbols (Judaism, Mandaeism, Christianity, Islam) as a quiet watermark, coloured by the scheme. */
 .abr-heritage { position: relative; overflow: hidden; }
 .abr-heritage::after {
-	content: ""; position: absolute; right: -4%; bottom: -6%; width: min(46%, 520px); aspect-ratio: 606 / 280;
+	content: ""; position: absolute; right: 2%; bottom: -3%; width: min(52%, 600px); aspect-ratio: 791 / 280;
 	background-color: var(--abr-gold); opacity: 0.09; pointer-events: none;
 	-webkit-mask-image: url("../images/symbols.png"); mask-image: url("../images/symbols.png");
 	-webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
@@ -828,7 +849,8 @@ p, li {
 
 /* References in two columns where there is room, as a journal sets them. */
 @media (min-width: 900px) {
-	.abr-notes { columns: 2; column-gap: 48px; }
+	/* Two columns only when there are enough notes to fill them. */
+	.abr-notes:has(> li:nth-child(4)) { columns: 2; column-gap: 48px; }
 	.abr-notes li { break-inside: avoid; }
 }
 
@@ -1118,3 +1140,167 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 	.abr-footer .abr-social a { width: 44px; height: 44px; }
 	.abr-social .abr-icon { width: 19px; height: 19px; }
 }
+
+/* ---------- Diagrams ([abr_diagram], inc/diagrams.php) ---------- */
+.abr-diagram { margin: 2.2em 0; padding: 24px; background: var(--abr-white); border: 1px solid var(--abr-hair); border-radius: 8px; max-width: none !important; }
+.abr-diagram svg { display: block; width: 100%; height: auto; font-family: var(--abr-font); }
+.abr-diagram figcaption { margin-top: 12px; font-size: 0.95rem; color: var(--abr-muted); text-align: center; }
+.abr-dg-node rect { fill: var(--abr-ivory); stroke: color-mix(in srgb, var(--abr-navy) 22%, transparent); stroke-width: 1.2; }
+.abr-dg-node.is-key rect { fill: var(--abr-navy); stroke: var(--abr-gold); stroke-width: 2; }
+.abr-dg-label { font-size: 17px; font-weight: 700; fill: var(--abr-navy); text-anchor: middle; }
+.abr-dg-sub { font-size: 13px; font-style: italic; fill: var(--abr-muted); text-anchor: middle; }
+.abr-dg-node.is-key .abr-dg-label { fill: var(--abr-ivory); }
+.abr-dg-node.is-key .abr-dg-sub { fill: var(--abr-gold); }
+.abr-dg-line { fill: none; stroke: var(--abr-gold); stroke-width: 2; }
+.abr-dg-line.is-gap { stroke-dasharray: 5 6; }
+.abr-dg-key text { font-size: 15px; fill: var(--abr-muted); }
+.abr-dg-set { fill-opacity: 0.12; stroke-width: 2; }
+.abr-dg-set.is-judaism { fill: var(--abr-navy); stroke: var(--abr-navy); }
+.abr-dg-set.is-christianity { fill: var(--abr-gold); stroke: var(--abr-gold); }
+.abr-dg-set.is-islam { fill: #2f6f5e; stroke: #2f6f5e; }
+.abr-dg-venn-head { font-size: 22px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--abr-navy); text-anchor: middle; }
+.abr-dg-venn-text { font-size: 16px; fill: var(--abr-navy); text-anchor: middle; }
+.abr-dg-venn-text.is-shared { font-weight: 700; }
+@media (max-width: 600px) { .abr-diagram { padding: 10px; } }
+.abr-dg-set.is-mandaeism { fill: #6a4c93; stroke: #6a4c93; }
+.abr-dg-venn-head.is-mandaeism { font-size: 19px; }
+.abr-dg-node.is-mandaean rect { fill: color-mix(in srgb, #6a4c93 12%, var(--abr-ivory)); stroke: #6a4c93; stroke-width: 1.6; }
+.abr-dg-line.is-mandaean { stroke: #6a4c93; }
+:root[data-abr-mode="dark"] .abr-dg-set.is-mandaeism { fill: #a58ad0; stroke: #a58ad0; }
+:root[data-abr-mode="dark"] .abr-dg-node.is-mandaean rect { stroke: #a58ad0; }
+:root[data-abr-mode="dark"] .abr-dg-line.is-mandaean { stroke: #a58ad0; }
+.abr-dg-line.is-honour { stroke-dasharray: 1.5 5; stroke-linecap: round; stroke-width: 2.4; }
+.abr-dg-honour { font-size: 14px; font-style: italic; fill: #6a4c93; text-anchor: middle; }
+:root[data-abr-mode="dark"] .abr-dg-honour { fill: #a58ad0; }
+
+/* Qur'anic passages set as Arabic with the translation beneath each verse. */
+@font-face {
+	font-family: "Amiri Quran"; font-style: normal; font-weight: 400; font-display: swap;
+	src: url("../fonts/amiri-quran-arabic.woff2") format("woff2");
+	unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
+}
+.abr-verse { margin: 2em 0; padding: 22px 26px; border-left: 3px solid var(--abr-gold); background: var(--abr-white); border-radius: 0 8px 8px 0; }
+.abr-verse .abr-verse__ar { margin: 0 0 4px; font-family: "Amiri Quran", "Noto Naskh Arabic", "Amiri", serif; font-size: 1.55em; line-height: 1.9; text-align: right; text-align-last: right; direction: rtl; color: var(--abr-navy); }
+.abr-verse .abr-verse__en { margin: 0 0 16px; font-style: italic; color: var(--abr-muted); text-align: left; }
+.abr-verse cite { display: block; margin-top: 4px; font-style: normal; font-size: 0.9rem; letter-spacing: 0.06em; color: var(--abr-gold); }
+
+
+/* A short menu label with its full name as a tooltip ("KB" for Knowledge Base). */
+.abr-nav-abbr { text-decoration: none; border: 0; cursor: pointer; }
+
+/* Footer secondary navigation bar: labels in capitals. */
+.abr-footer-links a { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; }
+
+/* ---------- Home page section bar ([abr_home_subnav]) and back-to-top links ---------- */
+.wp-site-blocks > .abr-subnav, .wp-site-blocks > .abr-subnav + * { margin-block-start: 0; }
+:root { --abr-subnav-top: var(--abr-header-h); --abr-subnav-h: 46px; }
+.admin-bar { --abr-subnav-admin: var(--wp-admin--admin-bar--height, 32px); }
+:root:has(.abr-subnav) { scroll-padding-top: calc(var(--abr-header-h) + var(--abr-subnav-h) + 20px); }
+.abr-subnav {
+	position: sticky; top: calc(var(--abr-subnav-top) + var(--abr-subnav-admin, 0px)); z-index: 990;
+	background: color-mix(in srgb, var(--abr-ivory) 94%, transparent);
+	-webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+	border-bottom: 1px solid var(--abr-hair);
+	transition: box-shadow var(--abr-ease);
+}
+.abr-subnav.is-stuck { box-shadow: 0 6px 20px color-mix(in srgb, var(--abr-navy) 7%, transparent); }
+.abr-subnav__list {
+	display: flex; align-items: stretch; justify-content: center; gap: 4px;
+	margin: 0 auto; padding: 0 max(20px, calc((100% - var(--wp--style--global--wide-size, 1320px)) / 2));
+	min-height: var(--abr-subnav-h); list-style: none;
+	overflow-x: auto; scrollbar-width: none; white-space: nowrap; scroll-snap-type: x proximity;
+}
+.abr-subnav__list::-webkit-scrollbar { display: none; }
+.abr-subnav__list li { margin: 0; flex: none; display: flex; scroll-snap-align: center; text-align: start; }
+.abr-subnav a {
+	position: relative; display: inline-flex; align-items: center; padding: 0 14px;
+	font-size: 0.86rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+	color: var(--abr-muted); transition: color var(--abr-ease);
+}
+.abr-subnav a::after {
+	content: ""; position: absolute; left: 14px; right: 14px; bottom: 0; height: 2px;
+	background: var(--abr-gold); transform: scaleX(0); transform-origin: center; transition: transform var(--abr-ease);
+}
+.abr-subnav a:hover, .abr-subnav a:focus-visible, .abr-subnav a[aria-current] { color: var(--abr-navy); }
+.abr-subnav a:hover::after, .abr-subnav a:focus-visible::after, .abr-subnav a[aria-current]::after { transform: scaleX(1); }
+.abr-subnav a:focus-visible { outline: 2px solid var(--abr-gold); outline-offset: -4px; border-radius: 4px; }
+@media (max-width: 1023px) {
+	.abr-subnav__list { justify-content: flex-start; padding: 0 12px; }
+	.abr-subnav a { padding: 0 11px; font-size: 0.8rem; }
+	.abr-subnav a::after { left: 11px; right: 11px; }
+}
+
+.abr-backtop { margin: 2.6em 0 0 !important; text-align: right !important; text-align-last: right !important; }
+.abr-backtop a {
+	display: inline-flex; align-items: center; gap: 6px;
+	font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+	color: var(--abr-muted); opacity: 0.8; transition: color var(--abr-ease), opacity var(--abr-ease);
+}
+.abr-backtop a span { transition: transform var(--abr-ease); }
+.abr-backtop a:hover, .abr-backtop a:focus-visible { color: var(--abr-gold); opacity: 1; }
+.abr-backtop a:hover span { transform: translateY(-2px); }
+.is-dark .abr-backtop a { color: color-mix(in srgb, var(--abr-on-dark, #f8f5ef) 70%, transparent); }
+@media (prefers-reduced-motion: reduce) { .abr-subnav, .abr-subnav a, .abr-subnav a::after, .abr-backtop a span { transition: none; } }
+
+/* ---------- Home page chapter banners ([abr_parallax], assets/js/parallax.js) ---------- */
+.abr-parallax {
+	position: relative; overflow: hidden; isolation: isolate;
+	display: flex; align-items: center; justify-content: center;
+	min-height: clamp(240px, 38vw, 480px); margin: 0 !important;
+	background: var(--abr-navy); color: #f8f5ef; text-align: center;
+	contain: paint;
+}
+/* The photograph is taller than its frame so that it has room to drift. */
+.abr-parallax__img {
+	position: absolute; left: 0; top: -18%; z-index: -2;
+	width: 100%; height: 136%; max-width: none; object-fit: cover;
+	transform: translate3d(0, 0, 0);
+}
+.abr-parallax::after {
+	content: ""; position: absolute; inset: 0; z-index: -1;
+	background: linear-gradient(180deg, rgba(15, 19, 27, 0.35) 0%, rgba(15, 19, 27, 0.55) 100%);
+}
+.abr-has-parallax .abr-parallax__img { will-change: transform; }
+.abr-parallax__text { padding: 40px 24px; max-width: 760px; }
+.abr-parallax__title {
+	margin: 0 !important; text-align: center !important; text-align-last: center !important;
+	font-size: clamp(1.9rem, 4.2vw, 3.2rem); line-height: 1.15; letter-spacing: 0.01em;
+	text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+.abr-parallax__numeral {
+	display: block; margin-bottom: 10px;
+	font-size: 0.8rem; letter-spacing: 0.34em; text-transform: uppercase; color: #cfa869;
+}
+.abr-parallax__line {
+	margin: 14px auto 0 !important; max-width: 36ch; text-align: center !important; text-align-last: center !important;
+	font-size: clamp(1rem, 1.6vw, 1.2rem); font-style: italic; color: rgba(248, 245, 239, 0.88);
+}
+.abr-parallax__line::before {
+	content: ""; display: block; width: 56px; height: 2px; margin: 0 auto 14px; background: #cfa869; opacity: 0.8;
+}
+.wp-site-blocks .abr-parallax + .abr-section, main .abr-parallax + * { margin-block-start: 0; }
+@media (max-width: 600px) {
+	.abr-parallax { min-height: 220px; }
+	.abr-parallax__img { top: -10%; height: 120%; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.abr-parallax__img { top: 0; height: 100%; transform: none !important; }
+}
+.abr-dg-bar { fill: color-mix(in srgb, var(--abr-navy) 22%, transparent); }
+.abr-dg-bar.is-abrahamic { fill: var(--abr-gold); }
+.abr-dg-bar-label { font-size: 19px; fill: var(--abr-navy); text-anchor: end; }
+.abr-dg-bar-value { font-size: 18px; font-weight: 700; fill: var(--abr-navy); }
+
+/* ---------- Section heads: one alignment for every home page section ----------
+   Headings are start-aligned site-wide, but the introduction under them was a
+   centred 680px block with justified text, so it sat to the right of its heading
+   with a gap beside it. Every section head now aligns label, heading and
+   introduction to the same left edge, and the introduction is set ragged-right. */
+.abr-section-head, .abr-section-head.is-left { text-align: start; }
+.abr-section-head .abr-sub,
+.abr-section-head.is-left .abr-sub {
+	margin-inline: 0 !important;
+	text-align: start; text-align-last: auto;
+	-webkit-hyphens: manual; hyphens: manual;
+}
+.abr-section-head > .wp-block-buttons { justify-content: flex-start; }

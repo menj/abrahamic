@@ -2,6 +2,369 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.73.2] - 2026-09-27
+
+### Changed
+- Title case for the home page chapter names, at the site owner's request: the `title` attribute of all seven `[abr_parallax]` banners in `templates/front-page.html`, the thirteen chapter labels (`.abr-label`, I The Question to XIII Behind the Journey) in the section patterns, and the hero label (Religion, History, Culture). Minor words stay lower case (the, and). The banners' italic lines and the section headings keep sentence case, as elsewhere on the site.
+
+## [2.73.1] - 2026-09-26
+
+### Fixed
+- Home page section heads (reported with four screenshots: III The people, IV The land, V The word, VI Four paths). `.abr-section-head` was centred and its `.abr-sub` introduction a 680-pixel block with `margin-inline: auto`, while headings are start-aligned site-wide (2.54.1); the introduction therefore floated right of its heading with a gap on the left, and inherited the body's justified text, which opened wide gaps between words. All section heads, `.is-left` or not, now align label, heading and introduction to one start edge; the introduction is ragged-right with hyphenation off; any button row in a head starts at the same edge. Measured on every home page section at 1440 and 390 pixels: label, heading and introduction share the same left position in all ten sections that have a head.
+
+## [2.73.0] - 2026-09-26
+
+### Added
+- The "Reddit" search technique described by David Quaid (transcript supplied by the site owner), applied sparingly as asked: people and AI assistants add "Reddit" to searches to find plain discussion, and a page can rank for such searches when the phrase is in its title and address. Two pieces only, on the two subjects where the site owner's keyword exports show "Reddit" searches ("islamic dilemma reddit", 40 a month; "judaism vs christianity reddit" and its variants, about 60, a figure the speaker notes such tools undercount):
+  - `post:islamic-dilemma-reddit`, "The Islamic Dilemma: answers for Reddit readers" (Scripture, Theology; 9 notes): short answers to the questions searched for (what it is, is it true, Surah 5:46, 5:47, 10:94, has the Qur'an been changed, with the Birmingham manuscript's radiocarbon date from the University of Birmingham, 22 July 2015; has the Bible been changed), linking to the full article, the reference page and The Muslim Apologist.
+  - `post:judaism-vs-christianity-reddit`, "Judaism vs Christianity: answers for Reddit readers" (Religion, History; 5 notes): same religion?, the main difference, the Bible each reads, Christians and Jewish law, how each sees the other.
+- Honesty rule: Reddit itself cannot be reached from the build environment (its site and API refused the connection), so neither piece claims to summarise what Reddit users say. The titles address the reader ("answers for Reddit readers"), and each opens by saying who the page is for; the questions come from real search data. Pexels photographs, credited. Seed version 83.
+
+## [2.72.1] - 2026-09-26
+
+### Changed
+- `post:the-islamic-dilemma` (further reading) and `page:islamic-dilemma` (further reading list) link to "The Islamic Dilemma, refuted" at The Muslim Apologist (https://themuslimapologist.online/articles/the-islamic-dilemma/), with the site owner's explicit permission. This is a considered exception to the anonymity rule for this one outbound link; nothing else on the site names or links the owner. Seed version 81.
+
+## [2.72.0] - 2026-09-26
+
+### Added
+- From the site owner's keyword exports for "Islamic Dilemma" (US all-keywords and broad-match, 2 August 2026) and islamicdilemma.com's organic positions in the US, UK and Canada (31 July 2026). The competitor ranks first to third for "islamic dilemma" (1,600 to 1,900 US searches a month), "the islamic dilemma", "islam dilemma", "what is the islamic dilemma", "islamic dilemma verses", "the islamic dilemma explained" and "quranic dilemma", with its home page and a PDF tract. "Surah 5:46" alone draws 320 searches a month. Two pieces divide the searches so they do not compete: a reference page for the definitional searches, and a Journal article for the argument and its answer.
+  - `page:islamic-dilemma`, "What is the Islamic Dilemma?", child of Comparative studies (/reference/comparisons/islamic-dilemma/): the argument in two horns, the verses it relies on with their text (3:3-4, 5:46, 5:47, 5:68, 10:94; a heading "The verses" anchored as `the-islamic-dilemma-verses`), the Muslim reply in three points, and further reading. 4 notes.
+  - `post:the-islamic-dilemma`, "The Islamic Dilemma: the argument and the answer" (Scripture, Theology; 17 notes). It sets out the argument at its strongest (islamicdilemma.com, Hold Fast Apologetics, Ad Lucem, Apologia Daily), then tests its premises: *muṣaddiq* and *muhaymin* in 5:48, with Ibn ʿAbbās (Bukhārī, Virtues of the Qur'an, ch. 1) and al-Ṭabarī via Ibn Kathīr; the one Injīl given to Jesus against the four Gospels (Luke 1:1-4); the Qur'an's own references to alteration (2:79, 3:78, 5:13); 5:47 with 7:157; the exegesis of 10:94 (Blyth's note at Quranenc, citing al-Ṭabarī, Ibn ʿAṭiyyah, Ibn Kathīr and others); and the later additions in the seventh-century Bible (Mark 16:9-20, per Logos; John 7:53-8:11, NIV note). It closes on Qur'an 5:48 as the verse that answers the dilemma. No work by the site owner is cited, per the anonymity rule.
+  - FAQ: "What is the Islamic Dilemma?", linking both (26 questions in the FAQPage structured data).
+  - Photographs: an open Qur'an on a stand (featured), an open Bible, a page of the Qur'an (Pexels), and a page of the 1879-1883 facsimile of Codex Alexandrinus (CC0, Commons); credited on the Copyright and DMCA page. Seed version 80.
+
+### Fixed
+- Twenty opening quotation marks in the articles added in 2.71.0 and 2.72.0 were written as closing marks (’) where they should have been opening marks (‘). All corrected.
+
+## [2.71.0] - 2026-09-26
+
+### Added
+Seven Journal articles on subjects with search demand in the site owner's keyword export and no existing coverage (38 articles now). Every source was checked live; Qur'an wording from Quran.com (Saheeh International); each article that cites a verse sets it in the verse block and closes by connecting its narrative to it. 22 new photographs (18 Pexels, 4 Commons), all credited on the Copyright and DMCA page; the photograph audit finds no repeats across the Journal.
+- `post:what-language-did-abraham-speak` (History, Scripture; 9 notes). Genesis 11:31, 12:4-5; the Amarna letters in Akkadian (Biblical Archaeology Society; *Britannica*); the Aramean kin (Genesis 22, 25, 31:47; Deuteronomy 26:5; *Jewish Encyclopedia*); Isaiah 19:18; Jubilees 12:25-27; Ibn Ḥazm on Syriac, Hebrew and Arabic; Bukhārī 3364 (Ishmael learnt Arabic from Jurhum). Verse: Qur'an 14:4, with 12:2.
+- `post:the-parting-of-the-ways` (History, Religion; 9 notes). Acts 2, 11, 15; Galatians 2; Eusebius on Pella (HE 3.5.3); Marcus on the *birkat ha-minim*; Justin Martyr on Bar Kokhba (1 Apology 31.6); Nicaea; the 2025 roundtable on "the ways that never parted". Verse: Qur'an 2:213.
+- `post:where-was-abraham-from` (History, Archaeology; 8 notes). Genesis and Acts 7; Rawlinson and Woolley at Tell el-Muqayyar; Pseudo-Eupolemus via Eusebius (Preparation for the Gospel 9.17); the northern theory; Urfa and Balıklıgöl (Madain Project; Turkish Museums, which calls the tradition unproven). Verse: Qur'an 21:68-69.
+- `post:the-symbols-of-the-four-traditions` (Culture, History; 6 notes). The Star of David (*Britannica*); the Mandaean drabsha (Drower 1937, pp. 108-109, with Drower's own plate of its consecration); the cross (*Britannica*; Christianity Today on Clement's list); the crescent (*Britannica*; IslamOnline on the plain flags of the first Muslims). No verse cited.
+- `post:religious-law-in-the-abrahamic-traditions` (Religion, Theology; 7 notes). Makkot 23b and Maimonides on the 613 commandments; Acts 15; canon law (*Britannica*: Gratian, the codes of 1917 and 1983); al-Shāfiʿī's four sources; Mandaean purity (Drower pp. 47-48, 174). Verse: Qur'an 5:48.
+- `post:food-and-faith` (Culture, Religion; 7 notes). Leviticus 11, Exodus 23:19, Deuteronomy 14:21; Mark 7:18-19, Acts 10 and 15; Qur'an 2:173, 6:146, 7:157; Mandaean food rules (Drower pp. 47-48). Verse: Qur'an 5:5.
+- `post:war-and-peace-in-the-abrahamic-traditions` (Religion, History; 10 notes), written at the site owner's request despite its framing. The *Encyclopedia of Wars* index (121 of 1,763) with Andrew Holt's correction of the popular "123" figure; Martel's *Encyclopedia of War* (about 6%); Cavanaugh; Deuteronomy 20, Isaiah 2:4, Mishnah Sanhedrin 4:5; Matthew 5 and 26; Qur'an 22:39, 2:190, 8:61, 2:256; Abū Bakr's ten commands (*Muwaṭṭaʾ* 21.10); Mandaean teaching that all bloodshed is sin (Drower p. 48). Verse: Qur'an 5:32, joined to the Mishnah's parallel.
+- Cross-links added from "Who was Abraham?", "Paul and Peter", "Apostasy", "The Abrahamic family tree" and "The Amman Message". Seed version 78.
+
+## [2.70.0] - 2026-09-26
+
+### Added
+- Keyword coverage, from the site owner's keyword export (US, 26 September 2026; 10,003 keywords, 171,040 monthly searches). Keywords were grouped by term and checked against every page, article and front-page section. Before this release the largest gaps were world religion statistics (largest, biggest, percentage, breakdown, chart), "Abrahamism", the pairwise comparisons (Judaism and Christianity, Judaism and Islam), "is Islam an Abrahamic religion", "which came first", the major religions of the world, and religions of the Middle East. Keywords about sects were excluded, per the site owner's standing instruction.
+  - `page:faq`: twelve new answers, each an H2 and so included in the FAQPage structured data (now 25 questions): What are the three Abrahamic religions?; What is Abrahamism?; Is Islam an Abrahamic religion? (Qur'an 3:67, 16:123, 2:127); Which Abrahamic religion came first? (with Islam's own answer, 3:19); Which is the largest Abrahamic religion?; What percentage of the world follows an Abrahamic religion?; What are the major religions of the world?; Where did the Abrahamic religions originate?; What do Judaism, Christianity and Islam have in common?; What are the main differences between them?; What is the difference between Judaism and Christianity?; How are Judaism and Islam similar?; Are Jews Muslims? (5:44). Qur'an wording checked on Quran.com; population figures from Pew Research Center, 9 and 10 June 2025.
+  - `post:the-population-of-the-abrahamic-religions`: new section "The latest count: 2020" (Christians 2.3 billion, 28.8%; Muslims 2.0 billion, 25.6%, up 347 million, the fastest-growing group; Jews 14.8 million, 0.2%; together 54.6%; sub-Saharan Africa now home to 30.7% of Christians), with notes renumbered (18 in all) and a new chart.
+  - `[abr_diagram name="world-religions"]`: a bar chart of the seven Pew groups in 2020 with the Abrahamic groups in gold, drawn in SVG with a text description for screen readers.
+  - `page:comparisons`: new section "The traditions in pairs" (Judaism and Christianity, Judaism and Islam, Christianity and Islam, Mandaeism and the other three).
+  - `page:glossary`: "Abrahamism"; the Abrahamic religions entry now lists the four in the site's order.
+- Phrases searched for but missing from the site now appear where they belong: "Abrahamic faiths" and "the three great monotheistic religions" in the FAQ's first answer and the front-page introduction, and "the Abrahamic God" in the FAQ answer on whether the traditions worship the same God. FAQ description revised. Seed version 76.
+
+### Coverage
+- Measured after the changes: every content word of keywords carrying 89% of the search volume now appears on the site. The remainder is misspellings of "Abrahamic", searches in Spanish, German and Portuguese, year-stamped queries ("2024", "2021") for figures no newer than Pew's 2020 count, and "African religions", which concerns the traditional religions of Africa rather than the Abrahamic ones.
+
+## [2.69.0] - 2026-09-26
+
+### Added
+- Home page chapter banners, `[abr_parallax image numeral title line]`, placed in `templates/front-page.html` before the seven main sections (II The root, III The people, IV The land, V The word, VI Four paths, VII Through the ages, VIII Meeting and parting), each with one line of text. Seven new Pexels photographs in `assets/images/banners/`, each as a 1920 by 1080 AVIF and a 960 by 720 AVIF for phones (`srcset`), 530 KB for all fourteen, lazy-loaded with empty alt text since they are decorative; credited on the Copyright and DMCA page. Option `home_parallax` (on by default) on the Navigation tab, now headed "Home page journey" with the section bar.
+- `assets/js/parallax.js`, home page only, deferred. The photograph is 136% of its frame's height and moves by transform only (`translate3d`), at 0.24 of the scroll speed (0.14 below 768 pixels). An IntersectionObserver keeps only banners on or near the screen active; scroll and resize listeners are passive; one requestAnimationFrame per frame at most. No movement under `prefers-reduced-motion` (checked live, including a change while the page is open) or with data saving on; the CSS then shows the photograph still, at its natural size.
+- Banner styles in `theme.css`: navy fallback, darkening gradient for legible text, gold chapter numeral and rule, centred title and italic line, `contain: paint` and `isolation` so the effect cannot affect the layout around it.
+
+### Tested
+- 1440 pixels: the photograph moves as the page scrolls (for example from -21.5 to 74.5 pixels over 400 pixels of scrolling); 60 scrolled frames averaged 16.6 ms, the display's own frame rate. Reduced motion: no transform applied. 390 pixels: the 960-pixel file is used, no horizontal overflow. Banners appear on the home page only. No PHP notices.
+
+## [2.68.1] - 2026-09-26
+
+### Changed
+- Journal, topic, tag and date listings show `ABR_LISTING_PER_PAGE` (12) articles a page through `abr_listing_page_size()` on `pre_get_posts`. The listings inherit WordPress's "Blog pages show at most" setting, 10 by default, which in a three-column grid left one card alone on each page's last row with two empty slots beside it (reported with a screenshot). Twelve fills three columns and the two-column tablet layout exactly; only the final page of a listing can end short. Search keeps its own twelve.
+
+## [2.68.0] - 2026-09-26
+
+### Added
+- Home page section bar: `[abr_home_subnav]` placed in `templates/front-page.html` directly after the header part, so it appears on the home page only. Options on the Navigation tab: `home_subnav` (on by default) and `home_subnav_items` (Label | #anchor lines; `abr_sanitize_link()` now keeps `#fragment` targets). Default links in reading order: Shared Heritage, Figures, Geography, Sacred Scriptures, The Traditions, Timeline, Comparative View (#heritage, #figures, #places, #texts, #religions, #timeline, #comparison). Sticky beneath the header, translucent ivory with blur, gold underline on hover and on the current section. Scrolls sideways without a scrollbar on narrow screens, the current link kept centred. Smooth scrolling uses the existing `scroll-behavior: smooth` on `html` (off under reduced motion); `scroll-padding-top` grows by the bar's height when the bar is present, so section headings land clear of both bars.
+- `assets/js/subnav.js`, loaded on the home page only, deferred: an IntersectionObserver sets `aria-current` on the link of the section crossing a line a third of the way down the screen, and a sentinel adds a shadow once the bar is stuck.
+- `[abr_back_to_top]`: a small right-aligned "Back to top ↑" link (`href="#top"`, which browsers treat as the top of the page) at the end of the seven sections; muted, gold on hover, lighter on dark sections.
+
+### Fixed
+- The header never stayed fixed. `.abr-header` was sticky inside the header template part's own wrapper, which is exactly as tall as the header, so it had no room to stick and scrolled away at every width. The wrapper (`.wp-site-blocks > header.wp-block-template-part`) now carries `position: sticky` (offset for the admin bar), and "Keep the header fixed" off makes it static and sets the section bar's offset to zero. The phone menu still opens as a full-screen panel.
+
+### Tested
+- 1440 and 390 pixels: bar directly under the header at load and stuck under it while scrolling; clicking Geography scrolls smoothly to the Places section and marks Geography current; Back to top returns to the top; the bar appears on the home page only; no horizontal overflow. No PHP notices.
+
+## [2.67.0] - 2026-09-26
+
+### Changed
+- Front page arranged as a story, at the site owner's request. `templates/front-page.html` now runs: hero; I The question (intro); II The root (shared heritage); III The people (figures); IV The land (places); V The word (sacred texts); VI Four paths (the religions); VII Through the ages (timeline); VIII Meeting and parting (comparison); IX The journey continues (Journal); X Paths to explore (topics); XI For the road (reference); XII Questions along the way (FAQ); XIII Behind the journey (about); newsletter. The arc: the question, then the shared root and its people, where they lived, the scriptures that record them, the four traditions that grew from them, their history to the present, and how they meet and differ, before the reader goes on through the Journal and the reference tools.
+- Each section's small label (`.abr-label`) is now its chapter number and name. Section backgrounds follow the new order, alternating white and ivory, with the shared heritage, reference and newsletter sections dark.
+
+### Tested
+- Full front page rendered at 1440 pixels: 13 chapters in order, backgrounds alternate, no adjacent sections share a background. No PHP notices.
+
+## [2.66.0] - 2026-09-26
+
+### Fixed
+- Missing featured images on the five newest Journal articles on the live site (Ḥirāʾ and Qubāʾ, the Hajj, Hagia Sophia, the five great sees, Nicaea). Checked against the live server: the articles existed, their photograph files were present, and none had a featured image. Cause: the starter-content check had run while a theme upload was still unpacking, so the photograph files were missing at that moment. The check recorded the failures, then marked its version complete, and so it never tried again. `abr_run_seeder()` now records the version only when every featured image succeeds; otherwise it sets `abr_seed_retry` for five minutes and runs again afterwards, on the front end or in the admin, until the images are all in place. It also stops at once when the content file is missing, before the retirement step, which would otherwise treat every seeded post as withdrawn. Reproduced locally: with one photograph file hidden, the version stayed behind and the retry was set; once the file returned, the next run gave all five articles their images. Seed version 73 makes the live site run the check again.
+- Shared-heritage watermark (`assets/images/symbols.png`): it showed only the cross, crescent and Star of David, in that order. The new artwork (791 by 280) carries four symbols in the site's order: the Star of David, the Mandaean darfash (from the theme's existing `darfash.svg`, lines thickened to match the other silhouettes), the cross and the crescent. The watermark is repositioned so that all four stay in view.
+- Tradition order (Judaism, Mandaeism, Christianity, Islam) corrected in the hero lead, the shared-heritage introduction, the John the Baptist article and the apostasy article's description.
+
+## [2.65.0] - 2026-09-26
+
+### Changed
+- `page:places` rewritten (from about 450 words to 1,330, notes 1 to 23), after the site owner found the Madinah section two sentences long with no photograph. Bethlehem (23 words), Nazareth (19) and Madinah (32) had no photographs at all. Each of the ten sections now has a fuller account, a photograph of its own and footnotes: Jerusalem; Hebron (Genesis 23; UNESCO 1565); Bethlehem (UNESCO 1433; Qur'an 19:22-26); Nazareth (Luke 1; Qur'an 3:45-47, 19:16-21; the Basilica of the Annunciation, 1969); Mount Sinai (Exodus 19-20; Qur'an 95:2, 20:11-14; UNESCO 954); the Jordan River (Joshua 3, Matthew 3; UNESCO 1446 for Bethany beyond the Jordan; Segelberg on *yardna*); Makkah (Qur'an 3:96, 2:127, 2:144); Madinah (Qur'an 33:13, 9:40; *Britannica*); and two new sections, Vatican City (UNESCO 286) and Ahvaz and the Karun (Drower 1937, pp. 1-2; *Encyclopaedia Iranica* on the Mandaean community in Iran). Qur'an wording checked against Quran.com.
+- Photographs: to avoid repeating the front-page cards, eight new photographs, six from Pexels (Bethlehem, Nazareth, Sinai, Makkah, Madinah, Vatican) and two from Commons (the Jordan baptism site, Ahvaz at night), all credited on the Copyright and DMCA page. Jerusalem and Hebron keep their existing photographs, which differ from the front page.
+- Front-page Vatican City and Ahvaz cards now link to their new Places sections.
+- Notes lists use two columns only when they hold four or more notes (`:has()`), so a short list no longer sits in a narrow half-width column.
+
+## [2.64.0] - 2026-09-26
+
+### Added
+- `inc/maintenance.php`, from the site owner's server logs for September 2026. The PHP error log held 40 fatal errors: 26 on 16 September from a WordPress core update in progress (the Requests library half-replaced), and the rest on 20 to 26 September from theme uploads caught mid-unpack (`inc/seed/content.php` missing; `abr_icon()` and `abr_logo_mark()` undefined because patterns loaded before the files that define them). Visitors met WordPress's generic error screen or a blank page each time. Now:
+  - `abr_maintenance_document()` builds one self-contained notice ("Back shortly": the site is temporarily offline for maintenance while it is being updated), with inline styles, light and dark by the visitor's system setting, the AR mark in text, and no dependency on any theme file, font or WordPress function. It is served with HTTP 503, `Retry-After: 300` and `no-store`, so search engines treat the outage as temporary and keep the pages indexed. It names no person.
+  - Three WordPress drop-ins written to `wp-content` on the first admin page load after each theme update and on theme activation: `maintenance.php` (core, plugin and theme updates), `php-error.php` (any fatal error, replacing "There has been a critical error on this website"), and `db-error.php` (database unreachable). They sit outside the theme, so they keep working while the theme is replaced or after it is deleted. A marker line identifies the theme's own drop-ins; a drop-in the theme did not write is never overwritten. The result is stored in `abr_dropins`.
+  - `functions.php` now lists every file it loads and checks them all before loading any (`abr_maintenance_guard()`): if one is missing, visitors get the notice, while the admin screens, login and WP-CLI carry on so the update can finish. `abr_seed_data()` seeds nothing instead of failing when `inc/seed/content.php` is briefly absent.
+
+### Tested
+- Local site: drop-ins written (3 of 3). A missing `inc/diagrams.php` gave the notice with 503 and Retry-After 300, and the site returned to 200 once the file was back. A forced fatal error gave the notice, and the generic critical-error text was absent. A `.maintenance` file (an update in progress) gave the notice. Checked in light and dark.
+
+## [2.63.4] - 2026-09-26
+
+### Changed
+- Footer secondary navigation: "About this site" and "Contact us" become "About AR" and "Contact AR", at the site owner's request (shown in capitals). New `nav_utility` default; `abr_migrate_footer_ar_labels()` renames those two exact lines once in a stored list (flag `abr_footer_ar_labels`). The pages keep their titles, About this site and Contact us. Tested on a stored list.
+
+## [2.63.3] - 2026-09-26
+
+### Changed
+- Footer secondary navigation bar (`.abr-footer-links`): labels in capitals, at the site owner's request, with 0.08em letter-spacing at 0.8rem so the six fit on one line on desktop. Done in CSS, so the stored labels keep their ordinary case for screen readers and settings. Checked at 1440 and 390 pixels.
+
+## [2.63.2] - 2026-09-26
+
+### Added
+- Menu lines accept an optional third part, the full name of a shortened label: `KB | https://knowislam.wiki/ | Knowledge Base`. `abr_parse_menu()` reads it as `hint`, `abr_sanitize_menu()` keeps it on saving, and `abr_menu_block()` renders the label as `<abbr class="abr-nav-abbr" title="…">` (the tooltip on hover) followed by the full name in screen-reader text, so assistive technology announces "Knowledge Base". The link's own title reads "Knowledge Base (opens knowislam.wiki)" for external links. Documented in the Main menu help text.
+
+### Changed
+- Main menu: "Knowledge base" becomes "KB" with the tooltip "Knowledge Base", at the site owner's request. New default; the 2.62.0 one-time addition uses the new form; `abr_migrate_nav_kb_label()` rewrites the exact stored line once (flag `abr_nav_kb_label`). Tested on a stored menu: rewritten once, preserved by the sanitiser, tooltip "Knowledge Base" confirmed in the browser.
+
+## [2.63.1] - 2026-09-26
+
+### Changed
+- Main menu: the label "Editorial policy" becomes "Editorial", at the site owner's request. New default in `inc/options.php`; the 2.62.0 one-time addition now uses the short label; `abr_migrate_nav_editorial_label()` renames the exact line `Editorial policy | @editorial-policy` once in a stored menu (flag `abr_nav_editorial_label`), leaving any other label alone. The page title stays "Editorial policy". Tested on a stored menu: renamed once, rest of the menu unchanged.
+
+## [2.63.0] - 2026-09-26
+
+### Changed
+- Site pages, all created by the starter content on activation and refreshed on existing sites where unedited (seed version 70):
+  - `page:about`, now titled "About this site" (460 words): new sections on how the content is made (sources, verified citations, licensed photographs, no depictions of prophets) and on independence (no affiliation, no advertising, reader-funded). No person is named, per the anonymity rule. Fixed an error: "the first three are the largest" counted Mandaeism, second in the list, among the largest traditions.
+  - `page:editorial-policy` (340 words): new sections on sources and citations and on images; editorial responsibility now states that no religious body, sponsor or advertiser has a say.
+  - `page:terms`, now titled "Terms of use" (369 words, was 128): quoting rules, material belonging to others (translations, licensed photographs), acceptable use, liability, and where to send copyright notices.
+  - `page:privacy-policy` (375 words): now matches what the theme does. It states that nothing is collected to read the site; that the reading mode is kept in the reader's own browser storage and never sent; and that fonts and photographs come from the site's own server. The comments paragraph is removed, since the site takes no comments.
+  - `page:contact`, now titled "Contact us": what to include when reporting an error, and where copyright notices go.
+- Titles now match the footer links (About this site, Terms of use, Contact us); descriptions updated to match, all within 130 characters.
+
+## [2.62.0] - 2026-09-26
+
+### Changed
+- Main menu: Editorial policy (`@editorial-policy`) and Knowledge base (https://knowislam.wiki/, marked external) added as the fourth and fifth top-level links, filling `ABR_PRIMARY_NAV_MAX` (5). Both left the footer row in 2.61.1. New default in `inc/options.php`; `abr_migrate_nav_editorial_kb()` appends them once to a stored main menu when it has room and does not already link them (flag `abr_nav_editorial_kb_added`), so the live site gets them without losing its own menu.
+
+### Tested
+- One-time update checked on a stored three-item menu (both links appended, run once). Header checked at 1440, 1280 and 1024 pixels: no wrapping or overflow. No PHP notices.
+
+## [2.61.1] - 2026-09-26
+
+### Changed
+- The secondary navigation bar belongs in the footer; 2.61.0 misplaced it above the header. `[abr_topbar]`, its place in `parts/header.html` and its styles are removed. The footer's bottom row (`[abr_secondary_nav]`) now renders `nav_utility`, the six site pages (About this site, Terms of use, Privacy policy, DMCA, Contact us, Sitemap), in the existing footer link style. The Navigation tab has a single "Footer links" field for it. The earlier `nav_secondary` list (which also carried Editorial policy, Donate and Knowledge base) is kept in stored options but no longer shown.
+
+### Tested
+- Footer row renders the six links on every page; no top bar in the header; no overflow at 390 pixels. No PHP notices.
+
+## [2.61.0] - 2026-09-26
+
+### Added
+- Top bar: new `nav_utility` option (Navigation tab, "Top bar links"), rendered by `[abr_topbar]` at the top of `parts/header.html`. Default: About this site, Terms of use, Privacy policy, DMCA, Contact us, Sitemap. Right-aligned in small capitals on wide screens; scrolls sideways without a scrollbar below 1024 pixels. The footer's bottom row keeps its own list (`nav_secondary`, now labelled "Footer bottom-row links"; its old help text wrongly described a bar above the header).
+- `inc/anonymity.php`, at the site owner's standing instruction that no person be publicly associated with the site. Tested on the local site: `/wp-json/wp/v2/users` answers 404 to anyone who cannot list users (it exposed the account name and a Gravatar hash of the account's email address, checked against the live site); author archives and `?author=` redirect 301 to the Journal; author links point home; the author name in feeds and on the page is the site name; oEmbed responses name the site; the users sitemap answers 404.
+- `.htaccess` in the theme root denies `readme.txt` and every `.md` file; `docs/.htaccess` denies the folder. Both were readable at their theme URLs.
+
+### Changed
+- `inc/seo.php`: Article schema always names the site's Organization as author. The Person branch, which named the WordPress user whenever the profile had a biography, is removed.
+- Theme header (`style.css`) Author and Author URI, `readme.txt` Contributors and copyright lines, and all documentation now name Abrahamic Religions and https://abrahamic-religions.com; earlier references to the owner and the owner's personal pages are replaced throughout, the changelog included.
+- `header_donate_url` defaults to `@donate` and `donation_url` to empty, replacing a default personal payment page. Stored values are untouched; the help text now warns that a personal payment page shows the account holder's name to donors.
+
+## [2.60.0] - 2026-09-26
+
+### Added
+- Journal: `post:hira-and-quba` (History, Scripture; 10 notes), the second gap from the holy-sites inventory. Sources verified live on Sunnah.com: Bukhārī 3 and 4953 (the first revelation in the cave), Bukhārī 1193 and Muslim 1399g (the Saturday visits to Qubāʾ), Ibn Mājah 1412 with Tirmidhī 324 (the reward of an ʿumrah), Muslim 1398a and Nasāʾī 698 with commentary (which mosque 9:108 means, and how scholars reconcile the two readings); for the building, the Madain Project, Macca and Aryanti (IOP, 2017) and Mohammad al-Asad on El-Wakil's mosques (the 1986 rebuilding, 13,730 square metres). Two verse blocks, Qur'an 96:1-5 and 9:108 (Arabic from Quran.com, Saheeh International), and a closing section that joins them: the command to recite given in solitude, and the house founded on piety for those who love to purify themselves, which is the same purification the Prophet's promise for Qubāʾ requires.
+- Photographs from Commons and, for the first time, Flickr: Jabal al-Nūr (`jabal-al-nour-peak`, Richard Mortel), the cave entrance (saudipics), the mosque at night (Diego Delso) and by day (Adhi Rachdian, CC BY 2.0, found on Flickr through the Openverse catalogue). All credited on the Copyright and DMCA page. Seed version 69.
+
+### Fixed
+- The new Jabal al-Nūr photograph was first saved under the existing name `jabal-al-nour`, overwriting the photograph used in "The path of Abraham in the Qur'an". The original was restored from the 2.59.0 package and the new one renamed `jabal-al-nour-peak`; the photograph audit confirms no duplicates and no missing files across 31 articles.
+
+## [2.59.0] - 2026-09-26
+
+### Added
+- Journal: `post:the-stations-of-the-hajj` (Religion, Scripture; 9 notes), the first of the gaps identified in the holy-sites inventory. Sources verified live: the GASTAT 2026 release (1,707,301 pilgrims; 1,546,655 from abroad by air, road and sea), *Britannica* "Hajj" (the fifth pillar, the rites, Jabal al-Raḥmah, the stoning as rejection of the Devil, the sacrifice for Abraham, the farewell ṭawāf), *Saudipedia* (the day-by-day order from Tarwiyah to the Days of Tashrīq), Ṣaḥīḥ al-Bukhārī 3364 (Hagar between Ṣafā and Marwah as the origin of the saʿy) and Sunan Abī Dāwūd 1949 with Tirmidhī 2975 (the Hajj is ʿArafah), both on Sunnah.com, and Qur'an 2:158, 2:198 and 37:107. Qur'an 22:26-27 is set as the verse block (Arabic from Quran.com, Saheeh International), and the article is built around it: the 2026 arrivals by air, road and sea are read against the verse's promise that pilgrims would come from every distant pass, and the closing section ties each rite back to Abraham's family and the call. Arabic terms given with transliteration and translation on first use (iḥrām, ṭawāf, saʿy, wuqūf, al-Mashʿar al-Ḥarām, ramy). Photographs: the ʿArafāt boundary (featured), the tents of Minā, the night at Muzdalifah, and an Ottoman İznik tile of the camp at ʿArafāt in the Topkapı Palace; all credited on the Copyright and DMCA page. Linked from "Who was Abraham?" and "The path of Abraham in the Qur'an". Seed version 67.
+
+## [2.58.0] - 2026-09-26
+
+### Added
+- Journal: `post:hagia-sophia` (History, Culture; 14 notes). Sources verified live: the American Society of Civil Engineers landmark page (the three churches of 360, 415 and 537, the architects, the dome's collapse in 558 and rebuilding in 562), Procopius *Buildings* 1.1.46 (the dome hanging from heaven on a golden chain), *Britannica* on Leo IX (Humbert's bull, 16 July 1054) with *Christian History Magazine* on why 1054 no longer counts as the start of the schism, Niketas Choniates via the Internet Medieval Sourcebook and the Orthodox Church in America (the sack of 1204, the altar broken up among the soldiers, the Latin patriarch until 1261), *Vatican News* (1453, 1934, the Council of State ruling and prayers from 24 July 2020, Patriarch Bartholomew's protest), *TheCollector* (minarets, covered mosaics, buttresses, the sultan's personal ownership that protected the mosaics), the Turkish Ministry of Culture's museum page (the Fossati restoration of 1847-49, Kazasker Mustafa İzzet Efendi's eight roundels, UNESCO 1985), *Skylife* and TheHagiaSophia.com (the verse of Light in the dome), and Smarthistory (1934). The verse, Qur'an 24:35, is set in Arabic from Quran.com's Uthmani text with Mustafa Khattab's translation, and the closing section connects the article's narrative to it, per the standing instruction: the dome Procopius thought hung from heaven now names the source of its light; 24:36 and 72:18 (Saheeh International) on houses raised for God's name and the places of prostration belonging to God. Photographs: the exterior across the Sultanahmet fountain (featured), the Haghe-Fossati lithograph of 1852 and the dome from below, all credited on the Copyright and DMCA page. Linked from the Nicaea and five-sees articles. Seed version 66.
+
+## [2.57.3] - 2026-09-26
+
+### Changed
+- `post:the-council-of-nicaea`: two paragraphs added after the Qur'an 19:88-91 passage, at the site owner's instruction that an article citing a verse must connect its narrative to it. They set the verses' imagery (the earth about to split apart, the mountains about to crumble at the claim that God has offspring) beside the city's history, drawing only on facts already sourced in the article: the earthquake of 368 that destroyed the church of the council, the earthquake of 740 that brought down the Church of the Holy Fathers and sank it into the lake, and the conversion of Nicaea's Hagia Sophia into a mosque under Orhan, which serves as one today. The second paragraph keeps the historian's limit explicit: the Qur'an names no city, and the earthquakes are not presented as a verdict; the correspondence is left to the reader. Seed version 65.
+
+## [2.57.2] - 2026-09-26
+
+### Added
+- `post:the-council-of-nicaea`: new section "Earthquake, conquest and the lake" (notes 17 to 20), before the Qur'anic answer. The earthquake of 740 that brought down the Church of the Holy Fathers and sank it into the lake (*Türkiye Today*, 29 January 2026; UNESCO Tentative List entry 5900); the eleventh-century earthquake that damaged Hagia Sophia and the destruction of the Koimesis church in 1065; the Seljuk capture of 1081 and the name İznik; the Byzantine recovery of 1097; the Empire of Nicaea, 1204 to 1261; the Ottoman capture of 1331, the Orhan Mosque, the early Ottoman buildings and the İznik tiles; damage in the War of Independence (all UNESCO); and the lake's retreat from 2020 that left the basilica on dry land by 2025 (*Greek Reporter*, 25 November 2025, quoting Şahin). Notes renumbered in reading order (22 in all). Seed version 64.
+
+## [2.57.1] - 2026-09-26
+
+### Changed
+- The four church cities added to the front-page places in 2.57.0 (Alexandria, Antioch, Nicaea, Constantinople) are removed; the site owner had asked for them as a Journal piece, and 2.57.0 misread the request. The front page returns to eight places in two rows of four.
+
+### Added
+- Journal: `post:the-five-great-sees` (History, Religion; 9 notes): how the pentarchy formed (Nicaea canons 6-7 via Tanner; Constantinople I canon 3 and Chalcedon canon 28 via OrthoChristian; Justinian's Novel 131 and the Council in Trullo via *Britannica*), the two principles behind the order (civic weight against apostolic foundation, *Britannica*), a paragraph on each see (Rome; Constantinople and Hagia Sophia's history from 537 to 2020, *Vatican News*; Alexandria and Mark, Eusebius *Church History* 2.16.1; Arius and Athanasius, *Catholic Encyclopedia*; Antioch, Acts 11:26 and Galatians 2:11-14; Jerusalem and canon 7), and the seventh-century change. Notes that Nicaea was the place of the ranking and never one of the five. Photographs: Hagia Sophia in Istanbul (featured), Alexandria and Antioch, all three now used only here. Linked from the Nicaea article. Seed version 63.
+
+## [2.57.0] - 2026-09-26
+
+### Added
+- Journal: `post:the-council-of-nicaea` (History, Archaeology, Theology; 18 notes). The Türkiye Today report supplied by the site owner, corroborated and expanded from HeritageDaily, Fox News Digital and Greek Reporter (the 2026 finds, the 2014 aerial discovery, the Italian partners), Eusebius's *Life of Constantine* 3.6 and 3.10 (the choice of Nicaea; the palace-hall session, set against Şahin's reading of Eusebius), the 1911 *Catholic Encyclopedia* (Arius, the Alexandrian synod, church and palace), Tanner's *Decrees of the Ecumenical Councils* via Papal Encyclicals Online (opening date, bishop counts, the creed with *homoousios*, the anathemas, canons 6 and 7, the synodal letter, Easter), OrthoChristian (Constantinople I canon 3, Chalcedon canon 28) and *Britannica* (Justinian's Novel 131, the Council in Trullo, the seventh-century change). The Qur'an passage 19:88-91 is set as supplied, Arabic with Mustafa Khattab's translation (verified against Quran.com), followed by 4:171 and 112:1-4. The article states that Nicaea was the city where the ranking of the five sees began and never one of them, since the fifth see of the pentarchy is Jerusalem. Photographs: the shore of Lake İznik (featured), the Lefke Gate, and Hagia Sophia in İznik. Linked from "Jesus across the traditions". Seed version 62.
+- Front-page places: Alexandria, Antioch, Nicaea and Constantinople, making twelve places in three rows of four and, with Rome and Jerusalem already there, all five pentarchy sees plus Nicaea. Four new photographs; all seven new photographs credited on the Copyright and DMCA page.
+- `assets/fonts/amiri-quran-arabic.woff2` (Amiri Quran, Arabic subset, SIL OFL 1.1) and a `.abr-verse` block style: Arabic verse lines right-aligned in Amiri Quran, each followed by its translation. The test browser's fallback Arabic font dropped the small high rounded zero in *daʿaw* (19:91), leaving a gap; the bundled face renders the Uthmani marks correctly.
+
+### Tested
+- Article: 18 notes linked both ways; four verse lines; no overflow at 390 pixels. Front page: twelve cards, no broken images. Journal photographs: no duplicates across 27 articles. No PHP notices.
+
+## [2.56.3] - 2026-09-26
+
+### Changed
+- Front-page Hebron card: `place-hebron` (the green-draped cenotaph inside the shrine) was also in use on the Places page and as the featured image of "Interfaith dialogue in the modern era", and looked out of place on the front page. The card now uses a new photograph, `place-hebron-exterior.avif` (the Herodian enclosure and its two minarets, CC BY-SA 4.0, Djampa), credited on the Copyright and DMCA page. `place-hebron` stays in the theme and in its other two uses. Seed version 61.
+
+## [2.56.2] - 2026-09-26
+
+### Changed
+- `patterns/places.php`: Vatican City card added before Ahvaz (seat of the Pope, centre of the Catholic Church, St Peter's Basilica over the traditional tomb of Peter), linking to the Christianity page, so the eight places fill two rows of four. Photograph `place-vatican.avif`, a public-domain view of St Peter's Square from the dome; a close view of the facade was passed over because its statue of Christ at the centre would breach the site's rule against depicting prophets. Credited on the Copyright and DMCA page. Seed version 60.
+
+### Tested
+- Eight cards at 1440 (two rows of four), 900 (four rows of two) and 390 pixels (one column); no broken images, no overflow. No PHP notices.
+
+## [2.56.1] - 2026-09-26
+
+### Changed
+- `patterns/places.php`: Madinah card added after Makkah (the Hijra of 622, the first Muslim community, the Prophet's Mosque and his grave), linking to the Madinah section of the Places page. New bundled photograph `place-madinah.avif` (CC0), credited on the Copyright and DMCA page.
+- Places layout: `.abr-places .abr-grid.abr-grid--places` is now a centred, wrapping flex row (`display: flex !important`, overriding the global `.abr-grid` grid rule): four cards to a row on wide screens, two on tablets, one on phones, with a shorter last row centred at every width. Seed version 59.
+
+### Tested
+- Seven cards at 1440, 900 and 390 pixels: last row centred at 1440 and 900, single column at 390, no horizontal overflow. No PHP notices.
+
+## [2.56.0] - 2026-09-26
+
+### Changed
+- `patterns/places.php`: the front-page sacred places left the Mandaeans out; the four cards covered Jerusalem, Makkah, Hebron and Mount Sinai only. Two cards added: the Jordan River (linking to its section on the Places page; John the Baptist, Christians and Mandaeans, and the usual derivation of *yardna* from its name, as the Mandaeism and Places pages already state) and Ahvaz and the Karun (linking to the Mandaeism page; a principal Mandaean community that still baptises in the river). The grid shows three columns on wide screens (`.abr-places .abr-grid--4`), two on tablets and one on phones as before. The introduction now reads "Cities, rivers and sites ... across the four Abrahamic traditions". New bundled photograph `place-karun.avif` (800 by 450), credited on the Copyright and DMCA page; seed version 58.
+
+### Tested
+- Six cards render with no broken images at 1440 pixels; no horizontal overflow at 390. No PHP notices.
+
+## [2.55.3] - 2026-09-26
+
+### Fixed
+- Blank front page on the live site after the 2.55.2 update (reported with a screenshot). Diagnosed against the live server: the front page's `<main>` held the fifteen pattern placeholders of `templates/front-page.html` and nothing else, while the pattern files were present and every other page rendered. WordPress caches each theme's pattern list for 30 minutes in the site transient `wp_theme_files_patterns-<hash>`, keyed to the theme version; a request that arrives while an update is still unpacking can see the new `style.css` before the `patterns/` folder and cache an empty list under the new version. Reproduced on the test site (WordPress 7.1.2, matching live) by writing an empty list into that transient: the front page rendered 0 words, exactly as live. New `abr_pattern_cache_guard()` in `functions.php` (init, priority 0) compares the cached list with the files in `patterns/` and calls `WP_Theme::delete_pattern_cache()` when the cache holds fewer; the cache is also cleared on `upgrader_process_complete` for theme updates and on `after_switch_theme`. With the guard, the same poisoned cache recovered on the first request (1,882 words).
+
+## [2.55.2] - 2026-09-26
+
+### Changed
+- Family tree: a dotted violet line (`.is-honour`) now joins the Mandaean node to John the Baptist, routed round the right of the tree and beneath it so that it crosses no other line or box, labelled "honoured by the Mandaeans as their great teacher" and added to the key. The Mandaean box subtitle is now "line of Seth and Shem"; the SVG description, the article paragraph and the caption say what the dotted line means. View box 1040 by 810. Seed version 57.
+
+## [2.55.1] - 2026-09-26
+
+### Changed
+- Mandaeism added to both diagrams in `inc/diagrams.php`, at the site owner's request.
+  - Family tree: a Mandaean node on a dashed line from Shem ("line of Seth, honour John"), outside Abraham's line, in a violet accent (`.is-mandaean`), with the SVG description updated.
+  - Shared beliefs: a fourth set, an ellipse (centre 715, 375; radii 260, 90), placed by a region-by-region geometry search so that it meets only what Mandaeism shares and no other overlap: all four (one God, scripture, a judgement after death, Drower 1937 pp. 73, 95), Mandaeism with Christianity and Islam (John the Baptist), and Mandaeism with Christianity (baptism); Mandaeism alone (repeated baptism in running water, the Ginza Rabba). Abraham and the prophets now sit in the region Judaism, Christianity and Islam share without Mandaeism. Every label was checked to fall in its intended region and inside the drawing. View box widened to 1000.
+- Article text rewritten for four traditions; note 7 adds Drower for the Mandaean side; caption updated. Seed version 55.
+
+## [2.55.0] - 2026-09-26
+
+### Added
+- Material drawn from the site owner's cPanel backup of the 2016-2023 site (21 August 2023). Only the site database was read; mail, keys and configuration in the archive were left unopened. The old posts and pages (Abraham, Kedar, Millat Ibrahim, Jerusalem, the three religion posts) had already been superseded by fuller Journal articles and reference pages, so no text was carried over. Two things were still useful:
+  - **Search demand.** The old Rank Math Search Console table shows what visitors searched for. After "who was Abraham", which the Journal already answers, the leading queries asked for a list, a family tree and a Venn diagram of the Abrahamic religions. New article `post:abrahamic-family-tree` (History, Religion; 10 notes) answers both diagram queries: Genesis 11, 16, 21, 25 and 35, Matthew 1:1, Luke 1:5, the Qur'an (2:127, 133, 136; 19:54; 3:45; 4:157-159, 171; 5:73; 19:19-21; 33:40; 112), Guillaume's translation of Ibn Ishaq (pp. 3-4, Muhammad's descent from Ismail through Adnan and Nabit), and Hines (p. 73) and Drower (pp. 265-266) for the Mandaean line. Three photographs (Abraham's cenotaph in the Ibrahimi Mosque, the approach to the Cave of the Patriarchs, the old Zamzam enclosure), credited on the Copyright and DMCA page. Linked from "Who was Abraham?". Seed version 54.
+  - **Old addresses.** The old Rank Math redirects table and the old `/%postname%/` post addresses added 13 entries to `inc/seed/legacy-paths.php`: `/millat/`, `/the-abrahamic-faiths/`, `/abrahamic-faiths/`, `/why-are-these-religions-abrahamic/`, `/why-abrahamic/`, `/the-religion-of-judaism/`, `/the-religion-of-christianity/`, `/the-religion-of-islam/`, `/judaism/`, `/christianity/`, `/islam/`, `/thank-you-for-your-generosity/`, `/information/`.
+- `inc/diagrams.php`: `[abr_diagram name="family-tree"]` and `[abr_diagram name="shared-beliefs"]`, SVG with title and description for screen readers, styled by the new "Diagrams" block in `theme.css` from scheme tokens so they follow light and dark mode. Drawn in PHP so content filtering cannot strip them.
+
+### Tested
+- Article renders with both diagrams and all 10 notes; no horizontal overflow at 390 pixels; diagrams checked in light and dark. All 13 old addresses answer 301 to the right page. No PHP notices.
+
+## [2.54.2] - 2026-09-26
+
+### Fixed
+- Broken featured image on "Who was Abraham?" on the live site. Checked against the live server: `wp-content/uploads/2026/09/ur-ziggurat.webp` answers 200 with a length of zero, so the attachment exists but its file is empty; no smaller sizes were ever generated from it. Every other featured image on the Journal and the front page (74 files) was checked and has content. The 2.54.1 repair tested only whether the attachment record existed, so it would have left this one alone. New `abr_seed_attachment_ok()` requires the file to be on disk with content; `abr_seed_photo_attachment()` no longer reuses a mapped attachment that fails it. In the featured-image step, a broken thumbnail that is the theme's own photograph is deleted and replaced with a fresh upload; a broken image an editor chose is left in place and listed on the Tools tab. Seed version 53.
+- `assets/images/.htaccess` adds `AddType image/avif .avif`. The live Apache server sends the theme's AVIF photographs with no Content-Type header; browsers display them by sniffing, but the header is now correct. AVIF files in the media library are outside the theme folder; see the upgrade notes.
+
+### Tested
+- Emptied the local "Who was Abraham?" featured-image file: the check deleted the broken attachment, uploaded the ziggurat again (58 KB) and set it as the featured image. No PHP notices.
+
+## [2.54.1] - 2026-09-26
+
+### Fixed
+- Missing featured images on the live site (reported for the population, Paul and Peter, and apostasy articles). The featured-image step in `abr_run_seeder()` skipped any article carrying `_abr_seed_photo`, even when its photograph had since been deleted from the media library (WordPress then also drops `_thumbnail_id`), so the article stayed without an image permanently. The step now skips only when the article has a working thumbnail, or when the photograph it was given (recorded in the new `_abr_seed_photo_id`, or found through `abr_seed_photos` for older posts) still exists in the library, which is the case where an editor removed the image on purpose. Otherwise it uploads the photograph again. Upload failures are now caught with their reason (missing file, upload error, attachment error), stored in the seed log as `photo_errors`, and listed on the Tools tab. Seed version 52 makes every site run the check once.
+- Headings, including Query Loop card titles, inherited `text-align: justify` from the 2.51.0 `li` rule, since post cards render as list items; a two-line title such as "The population of the Abrahamic religions" spread across the card. `h1` to `h6` and `.wp-block-post-template > li` now keep start alignment and no hyphenation; paragraphs inside cards stay justified.
+
+### Tested
+- Deleted the photographs of two articles from the media library and removed a third article's featured image without deleting its photograph: the check restored the first two and left the third alone. Hid a bundled photograph file: the check recorded "the file vilna-talmud.avif is missing from the theme", and restored the image on the next run once the file was back. Journal page: all ten cards show images; card titles compute to start alignment.
+
+## [2.54.0] - 2026-09-26
+
+### Added
+- Journal: `post:the-sabians-in-classical-muslim-scholarship` (History, Religion; 20 notes), built from the Project's Hines thesis (AUC, 2023), cited by page, with Drower 1937, pp. 265-269, for the Mandaean legend of Abraham and al-Biruni's report of it. Covers Ibn al-Nadim's two pictures of the Harranians and the al-Ma'mun story (with Hines's own doubt about it), Sa'id al-Andalusi's Sabian origin of the sciences, al-Shahrastani's Sabian and hanif framework and his reading of Abraham's arguments against idols and stars (Qur'an 6:74-79 and parallels), and Hines's case for the classical authors. States that the thesis calls its own claims bold, draws on esoteric writers, and stands against the prevailing academic view. Three photographs (Harran, al-Sufi's fixed stars, a 984 CE astrolabe), credited on the Copyright and DMCA page. Cross-linked with The Sabians of the Qur'an. Seed version 51.
+
+## [2.53.2] - 2026-09-25
+
+### Changed
+- The wp-config.php override for the private login address is now `define( 'ABR_HIDE_LOGIN', false );`, replacing `ABR_DISABLE_LOGIN_ADDRESS` from 2.53.0. `abr_login_hide_on()` returns false when the constant is defined and false; undefined or true leaves the decision to the Login tab. Help text on the Login tab, the readme FAQ and the upgrade notes updated.
+
+### Tested
+- With the private address on in Theme Options: no constant, `wp-login.php` answers 404; `ABR_HIDE_LOGIN` false, 200; `ABR_HIDE_LOGIN` true, 404.
+
+## [2.53.1] - 2026-09-25
+
+### Changed
+- Login screen redesigned after a sample supplied by the site owner. New `login_layout` option (Theme Options > Login > Layout): `centred` (default) and `split` (the 2.53.0 photograph layout, which falls back to centred when no photograph is chosen). The centred layout sets a card on a dark page built from the scheme's navy, with the chosen photograph behind it at about ten per cent strength; a large AR mark (76 pixels) above the wordmark; the Line of text option under the logo, placed ahead of any WordPress message through `login_message`; a four-pixel gold rule across the top of the card; ivory fields; and a full-width gold Log In button with the Remember Me row above it. Links below the card are underlined. Error and notice boxes follow the card's colours, with a red or gold left edge.
+- `assets/css/login.css` rewritten around shared tokens (`--abr-page`, `--abr-card`, `--abr-ink`, `--abr-field`) with light and dark values, then per-layout blocks.
+
+### Tested
+- Centred layout at 1440 and 390 pixels, in light and dark, and with a failed login showing the error box. No horizontal overflow; no PHP notices.
+
+## [2.53.0] - 2026-09-25
+
+### Added
+- `inc/login.php` and `assets/css/login.css`: the login screen in the theme's design (Theme Options > Login). Scheme colours and Sabon, the AR mark with the header's logo text (or a chosen logo, or `wp-content/login-logo.png` following Login Logo 0.10.3 by Mark Jaquith), a bundled photograph with a line of text beside the form (a band above it on phones), and the visitor's light or dark choice through `mode.js`. The logo links to the site; the browser title drops the WordPress suffix.
+- Private login address, ported from WPS Hide Login 1.9.18 (WPServeur, NicolasKulka, wpformation), single sites only, off by default. With it on, the login screen answers at the chosen word, `wp-login.php` and `wp-register.php` answer as missing pages, and logged-out requests for `wp-admin` go to the fallback address. Every generated login, logout and lost-password address, and redirects to `wp-login.php`, follow the new address; password-protected posts and personal-data confirmations keep working. The request is read at theme load, which still precedes init and request parsing, so the plugin's interception holds. The three settings are read from the stored option directly at that stage, before translations load. Its settings (`whl_page`, `whl_redirect_admin`) seed the defaults. `ABR_DISABLE_LOGIN_ADDRESS` in wp-config.php switches it off for recovery. Login and fallback addresses must differ from each other and from the search address; reserved WordPress words are refused.
+- `inc/unlist.php`: unlisted posts and pages, ported from Unlist Posts & Pages 1.2.1 (Nikhil Chavan), keeping its `unlist_posts` option. A Listing box in the editor sidebar; excluded from front-end queries through `pre_get_posts` (single-post queries, exact-ID lists and filter-suppressed queries such as the seeder excepted; the theme's related-articles and site-map lists opt back in with `abr_hide_unlisted`), `get_pages()` lists, previous and next links, `wp_list_pages`, the XML sitemap; `noindex, nofollow` on the item itself; an "Unlisted" post state and view in the post lists.
+- Search addresses in `inc/search.php`, ported from Pretty Search Permalinks 1.3 (Angel Costa): `/?s=term` redirects to `get_search_link()`, with the base word from the Search tab (seeded from `wpseosearch_base`). Rewrite rules rebuild once whenever the base differs from the one they were built with.
+- New option types `slug` and `login_photo`; `abr_reserved_slugs()`.
+- While any of the four plugins is active, the theme leaves that feature to it and shows a notice on the Plugins and Theme Options screens.
+
+### Fixed
+- `assets/images/photos/large/jerusalem-panorama.avif` was a zero-byte file, left by the AVIF batch conversion in 2.45.0 timing out mid-write; the photograph viewer showed nothing for it. Rebuilt from the 2.44.1 WebP. Every AVIF in the package now opens.
+- Theme Options tabs wrap instead of scrolling, so Search and Tools no longer sit off-screen.
+
+### Tested
+- Login screen at 1280 and 390 pixels, light and dark. Private address on: `/wp-login.php` 404, `/wp-admin/` redirects to `/404/`, the new address serves the form, a trailing-slash-less request redirects, a real login through it reaches the dashboard, and the logout and lost-password links point at it. Unlisting the Cairo Genizah article removed it from the Journal, front page, category archive, feed items, sitemap, search and related articles while its own page stayed at 200 with `noindex`. `/?s=abraham` redirects to `/search/abraham/`. No PHP notices.
+
+## [2.52.2] - 2026-09-25
+
+### Changed
+- Anti-AI house-style audit of every page, article and front-page pattern, run by script against the banned vocabulary, banned phrases and contrastive constructions, then judged by hand. Rewrote about 30 contrastive sentences across 12 items, most in the newer Journal articles (Haman, population, Paul and Peter, apostasy, Cairo Genizah, al-Ghazali, preservation, Amman Message, Jesus, Mary), as direct statements. Two headings renamed: "Haman as a title, not a name" is now "Haman as an Egyptian title" (`#haman-as-an-egyptian-title`), and "What a projection is not" is now "The limits of a projection" (`#the-limits-of-a-projection`); neither old anchor had inbound links. Replaced "meticulous", "valuable", "align", "rich" (as puffery), "straightforwardly" and a metaphorical "journey". Removed one surviving meta-reference in the Haman article ("the argument set out above"). Seed version 50.
+- Left in place after review: "Testament" and "Night Journey" (proper names), the "not... but" inside the quotation of Qur'an 4:157, and the triads that the sweep flagged in titles of works, creedal titles and lists of prophets, all of which are content.
+- Replaced the five em dashes remaining in `docs/changelog.md` and `docs/ssot.md`.
+
+## [2.52.1] - 2026-09-25
+
+### Changed
+- Self-reference sweep, run as a crawl of all 53 rendered pages: rewrote "treated here" (About, Mandaeism, Jesus), "elsewhere on this site" (FAQ intro, Mary, Preservation and transmission), "discussed on the Timeline" and "the preservation and transmission article" (Cairo Genizah), "Which religions we treat" and "we leave them aside" (About; anchor now `#the-four-traditions`, no inbound links), "Every article in the Journal" (Topics), "See the article" (Sacred texts), and the About and FAQ first-person sentences. `[abr_citation]` heading "Cite this page" is now "Citation". Seed version 49.
+- Left as they are: the institutional "we" of the Contact, Privacy policy, Terms and DMCA pages, which is the standard form for legal notices, and the Editorial policy, which stays unchanged by standing instruction.
+
 ## [2.52.0] - 2026-09-25
 
 ### Added
@@ -41,7 +404,7 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 ## [2.48.0] - 2026-09-20
 
 ### Added
-- Journal: `post:haman-in-the-quran` (Scripture, History; 15 notes), drawing on the project's Islamic Awareness source on Haman. Covers the Orientalist objection (Nöldeke, the Encyclopaedia of Islam), the weak historicity of the Book of Esther itself (Levenson, Fox, Berlin), the minority scholarly proposal that Haman is an Arabized Egyptian title tied to Amun-priesthoods, the candidate Bakenkhons (Kitchen's Ramesside Inscriptions), and a correction the source itself made after review by an Egyptologist (Jürgen Osing) on a since-withdrawn inscriptional identification — kept in for the same reason the site's other corrections are kept in. States plainly that the title theory is a minority position against Silverstein's literary-dependence case. Two new photographs (the Luxor Temple obelisk and pylon; the Hypostyle Hall at Karnak), credited on the Copyright and DMCA page, plus a Persepolis photograph for the Esther context. Cross-linked from The king and the Pharaoh. Seed version 44.
+- Journal: `post:haman-in-the-quran` (Scripture, History; 15 notes), drawing on the project's Islamic Awareness source on Haman. Covers the Orientalist objection (Nöldeke, the Encyclopaedia of Islam), the weak historicity of the Book of Esther itself (Levenson, Fox, Berlin), the minority scholarly proposal that Haman is an Arabized Egyptian title tied to Amun-priesthoods, the candidate Bakenkhons (Kitchen's Ramesside Inscriptions), and a correction the source itself made after review by an Egyptologist (Jürgen Osing) on a since-withdrawn inscriptional identification: kept in for the same reason the site's other corrections are kept in. States plainly that the title theory is a minority position against Silverstein's literary-dependence case. Two new photographs (the Luxor Temple obelisk and pylon; the Hypostyle Hall at Karnak), credited on the Copyright and DMCA page, plus a Persepolis photograph for the Esther context. Cross-linked from The king and the Pharaoh. Seed version 44.
 - Fixed a duplicate-photo slip caught before release: the article's first draft used the same photograph as both its featured image and an inline photograph; the inline one was swapped for a distinct Karnak Hypostyle Hall photograph before packaging.
 
 ## [2.47.1] - 2026-09-20
@@ -73,7 +436,7 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 ### Changed
 - All 74 bundled photographs (67 in `assets/images/photos/`, 7 in `assets/images/photos/large/`) converted from WebP to AVIF, encoded at quality 50 after visual comparison against 40, 50, 55 and 65: 50 gave a genuine size reduction with no visible loss on the most demanding test case, a dense manuscript scan, while 65 came out larger than the original WebP for this image set. Total size fell from 11,328 KB to 7,477 KB, about 34%.
 - `[abr_photo]` (`inc/shortcodes.php`) and `abr_seed_photo_attachment()` (`inc/seed.php`) now read and write `.avif` and set `image/avif` as the attachment mime type; every `.webp` reference in both files, and in the SSOT's format description, is gone. All 67 WebP files are removed from the package.
-- Featured-image attachments are re-created as AVIF on the next seeder run for any post that does not already carry one; a post with an existing WebP thumbnail keeps it until its `_abr_seed_photo` meta is cleared, consistent with the seeder's usual won't-overwrite-an-editor's-choice rule.
+- Featured-image attachments are re-created as AVIF on the next seeder run for any post that does not already carry one; a post with an existing WebP thumbnail keeps it until its `_abr_seed_photo` meta is cleared, consistent with the seeder's usual will not-overwrite-an-editor's-choice rule.
 
 ### Verified
 - Tested on a PHP 8.3 / GD environment with no AVIF encode or decode support (a realistic stand-in for older hosting): `wp_upload_bits()` and `wp_insert_attachment()` succeed without incident, since WordPress 6.5+ recognises `image/avif` as an allowed upload type independently of the image editor; `wp_generate_attachment_metadata()` returns an empty `sizes` array rather than erroring, so the media library serves the original 1200×675 file in place of a missing thumbnail crop, with no broken image and no fatal error. PHP's `getimagesize()` reads AVIF dimensions correctly even without GD's AVIF support, so the `[abr_photo]` shortcode's width/height attributes are unaffected either way.
@@ -110,7 +473,7 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 - Donate page: "helps the site improve" reworded to "helps keep the material accurate", closing out the self-reference sweep. Seed version 37.
 
 ### Reviewed, no change needed
-- An editorial audit for tone checked the site against two standards at once: the appearance of neutrality (the "Independent, academic, even-handed" claim on About and the Editorial policy) and the site's actual editorial aim (advancing Islam through emphasis and selection, never through a misstatement about another tradition — see the September decision on this in this file's earlier entries).
+- An editorial audit for tone checked the site against two standards at once: the appearance of neutrality (the "Independent, academic, even-handed" claim on About and the Editorial policy) and the site's actual editorial aim (advancing Islam through emphasis and selection, never through a misstatement about another tradition: see the September decision on this in this file's earlier entries).
   - Searched for advocacy-toned or absolutist language ("proves", "clearly", "definitively", "beyond doubt", "true religion" unhedged): none found. Every claim about what a tradition holds is attributed to it ("on this reading", "Muslim tradition holds", "Muslims understand").
   - Read the Editorial policy in full: it already states a real method (describe each tradition in its own terms, evidence before conclusion, conclusions marked as the site's own, correction process) rather than empty branding.
   - Read "Understanding the Bible and the Qur'an in historical context" in full: the Documentary Hypothesis, New Testament dating and Qur'an manuscript dating are each presented with the same hedged, sourced, even-handed treatment; the added weight the aim calls for sits in which facts are foregrounded (the Birmingham leaves) rather than in how any tradition's material is described.
@@ -125,7 +488,7 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 ## [2.42.1] - 2026-09-20
 
 ### Changed
-- Removed editorial self-reference to the site's own choice to count Mandaeism as a fourth tradition. Five sentences reworded on the Religions index (twice: intro paragraph and Glossary), Comparative studies ("the category itself" and its own Glossary-style aside), the Mandaeism page's FAQ answer, and the front-page intro and FAQ patterns. Each now states the fact plainly — "Judaism, Christianity, Islam and the far smaller Mandaeism" — rather than describing it as something the site does. Seed version 35.
+- Removed editorial self-reference to the site's own choice to count Mandaeism as a fourth tradition. Five sentences reworded on the Religions index (twice: intro paragraph and Glossary), Comparative studies ("the category itself" and its own Glossary-style aside), the Mandaeism page's FAQ answer, and the front-page intro and FAQ patterns. Each now states the fact plainly ("Judaism, Christianity, Islam and the far smaller Mandaeism") rather than describing it as something the site does. Seed version 35.
 
 ## [2.42.0] - 2026-09-20
 
@@ -150,7 +513,7 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
   - `patterns/comparison.php`: the compare tabs and their columns.
   - `inc/seed/content.php`: the Comparative studies table (header and all eleven rows); the Sacred texts page now orders its sections Hebrew Bible, rabbinic literature, Aramaic, the Mandaean scriptures, the Christian Bible, the Qur'an and Hadith; roughly a dozen excerpts, descriptions and introductory sentences that listed all four traditions in a phrase.
   - Two stale three-tradition strings caught in the sweep and corrected to name Mandaeism too: the home page's excerpt, and the Religions index page's description.
-- Left unchanged: sections such as Jerusalem, Hebron, medieval philosophy and interfaith dialogue that name only three traditions on purpose, since Mandaeism has no part in those histories; and discursive paragraphs (in "God", "Revelation and scripture" and similar sections of Comparative studies) that already treat all four but do not present them as a plain sequence — reordering mid-sentence there risked the sentences themselves, for no reader-facing benefit.
+- Left unchanged: sections such as Jerusalem, Hebron, medieval philosophy and interfaith dialogue that name only three traditions on purpose, since Mandaeism has no part in those histories; and discursive paragraphs (in "God", "Revelation and scripture" and similar sections of Comparative studies) that already treat all four but do not present them as a plain sequence: reordering mid-sentence there risked the sentences themselves, for no reader-facing benefit.
 
 ## [2.40.0] - 2026-09-20
 
@@ -481,7 +844,7 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 ## [2.12.1] - 2026-09-17
 
 ### Changed
-- `header_donate_url` and `donation_url` default to https://www.paypal.com/paypalme/menj; both remain editable on the Header tab.
+- `header_donate_url` and `donation_url` default to the owner's payment page; both remain editable on the Header tab.
 - `[abr_donation]` falls back to the header link when the donation link is empty and the header link points to another site.
 - The header Donate button carries a title naming the host when it leaves the site.
 
@@ -748,7 +1111,7 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 - Pattern namespace and category changed from `abrahamic-religions` to `abrahamic`.
 - Settings screen renamed to Appearance > Abrahamic; admin page slug is now `abrahamic-settings`.
 - Stylesheets moved to `assets/css/`, scripts to `assets/js/`.
-- Author metadata set to MENJ, https://menj.blog.
+- Author metadata set to Abrahamic Religions, https://abrahamic-religions.com.
 - Side gutters are now fluid, `clamp(20px, 4vw, 40px)`.
 - Hero heading scales with the viewport (`clamp(2.6rem, 5.2vw, 4.6rem)`) so the two-column hero holds on landscape tablets.
 - Card and button lift effects apply only on devices with hover.

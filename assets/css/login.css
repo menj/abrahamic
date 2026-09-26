@@ -1,0 +1,281 @@
+/*
+ * Abrahamic: the login screen.
+ *
+ * Loaded on wp-login.php (and the private login address) when Theme Options >
+ * Login > "Use the theme design" is on. Two layouts:
+ *   .abr-login--centred  a card centred on a dark page, the logo and a line of
+ *                        text above it (the default);
+ *   .abr-login--split    a photograph panel beside the form.
+ * Colours come from the active scheme, printed by inc/login.php as the
+ * --wp--preset--color-- variables, so the screen follows the Colours tab and
+ * the visitor's light or dark choice.
+ */
+
+@font-face { font-family: "Sabon Next LT"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/sabon-next-lt-regular.woff2") format("woff2"); }
+@font-face { font-family: "Sabon Next LT"; font-style: italic; font-weight: 400; font-display: swap; src: url("../fonts/sabon-next-lt-italic.woff2") format("woff2"); }
+@font-face { font-family: "Sabon Next LT"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/sabon-next-lt-bold.woff2") format("woff2"); }
+
+/* ---------- Tokens ---------- */
+:root {
+	--abr-navy: var(--wp--preset--color--navy, #172033);
+	--abr-ivory: var(--wp--preset--color--ivory, #f8f5ef);
+	--abr-gold: var(--wp--preset--color--gold, #b8955a);
+	--abr-beige: var(--wp--preset--color--beige, #e9dfcf);
+	--abr-white: var(--wp--preset--color--white, #ffffff);
+	--abr-font: "Sabon Next LT", Sabon, "Adobe Garamond Pro", Garamond, Georgia, serif;
+	--abr-muted: color-mix(in srgb, var(--abr-navy) 62%, transparent);
+	--abr-hair: color-mix(in srgb, var(--abr-navy) 10%, transparent);
+	--abr-shadow: 0 14px 44px color-mix(in srgb, var(--abr-navy) 9%, transparent);
+	--abr-ease: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--abr-error: #b3261e;
+
+	/* The centred layout always sits on a dark page, built from the scheme's navy. */
+	--abr-page: var(--abr-navy);
+	--abr-card: color-mix(in srgb, var(--abr-navy) 86%, #ffffff);
+	--abr-card-edge: color-mix(in srgb, var(--abr-ivory) 12%, transparent);
+	--abr-ink: var(--abr-ivory);
+	--abr-ink-muted: color-mix(in srgb, var(--abr-ivory) 66%, transparent);
+	--abr-field: var(--abr-ivory);
+	--abr-field-ink: var(--abr-navy);
+}
+:root[data-abr-mode="dark"] {
+	--wp--preset--color--ivory: #0f131b;
+	--wp--preset--color--white: #171d29;
+	--wp--preset--color--navy: #ece7dd;
+	--wp--preset--color--beige: #2b3341;
+	--wp--preset--color--gold: #cfa869;
+	--abr-muted: color-mix(in srgb, var(--abr-navy) 66%, transparent);
+	--abr-hair: color-mix(in srgb, var(--abr-navy) 14%, transparent);
+	--abr-shadow: 0 14px 44px rgba(0, 0, 0, 0.55);
+	--abr-error: #f2b8b5;
+	--abr-page: #0b0f16;
+	--abr-card: #151b27;
+	--abr-card-edge: rgba(236, 231, 221, 0.1);
+	--abr-ink: #ece7dd;
+	--abr-ink-muted: rgba(236, 231, 221, 0.62);
+	--abr-field: #0f131b;
+	--abr-field-ink: #ece7dd;
+	color-scheme: dark;
+}
+
+/* ---------- Shared ---------- */
+body.login.abr-login {
+	min-height: 100vh; margin: 0;
+	font-family: var(--abr-font); font-size: 17px; line-height: 1.5;
+}
+body.abr-login #login { width: min(420px, calc(100vw - 40px)); margin: 0 auto; padding: 56px 0 40px; }
+
+/* Logo */
+body.abr-login h1.wp-login-logo { margin: 0 0 14px; }
+body.abr-login h1.wp-login-logo a {
+	display: flex; align-items: center; justify-content: center; gap: 14px;
+	width: auto; height: auto; margin: 0; padding: 0;
+	background: none; text-indent: 0; overflow: visible; text-decoration: none;
+	font-size: 1rem; line-height: 1.2;
+}
+body.abr-login h1 a:focus { box-shadow: none; outline: 2px solid var(--abr-gold); outline-offset: 8px; border-radius: 6px; }
+body.abr-login .abr-logo__mark { width: 56px; height: 56px; border-radius: 10px; flex: none; }
+.abr-login__wordmark { display: flex; flex-direction: column; text-align: left; }
+.abr-login__main { font-size: 1.55rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.abr-login__sub { margin-top: 2px; font-size: 0.74rem; letter-spacing: 0.34em; text-transform: uppercase; }
+.abr-login__logo-img { display: block; max-width: 300px; max-height: 150px; width: auto; height: auto; margin: 0 auto; }
+
+/* Form */
+body.abr-login form {
+	margin: 0; padding: 34px 34px 32px; overflow: visible; display: flow-root;
+	border-radius: 10px; box-shadow: var(--abr-shadow);
+}
+body.abr-login form p.submit { margin: 0; }
+body.abr-login label { font-size: 1rem; }
+body.abr-login form .input,
+body.abr-login input[type="text"],
+body.abr-login input[type="password"],
+body.abr-login input[type="email"] {
+	margin: 8px 0 20px; padding: 11px 14px; min-height: 50px;
+	border-radius: 8px; box-shadow: none;
+	font-family: var(--abr-font); font-size: 1.08rem;
+	transition: border-color var(--abr-ease), box-shadow var(--abr-ease);
+}
+body.abr-login form .input:focus,
+body.abr-login input:focus {
+	border-color: var(--abr-gold);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--abr-gold) 30%, transparent);
+	outline: none;
+}
+body.abr-login .wp-pwd .button.wp-hide-pw { height: 50px; top: 8px; right: 4px; background: none; }
+body.abr-login .wp-pwd .button.wp-hide-pw:focus { border-color: var(--abr-gold); box-shadow: 0 0 0 2px var(--abr-gold); }
+body.abr-login .forgetmenot { float: none; display: flex; align-items: center; gap: 6px; margin: 0 0 20px; }
+body.abr-login .forgetmenot label { margin: 0; }
+body.abr-login input[type="checkbox"] { width: 18px; height: 18px; margin: 0 6px 0 0; border-radius: 4px; }
+
+/* The button runs the full width of the card. */
+body.abr-login .submit .button-primary,
+body.abr-login #wp-submit,
+body.abr-login .button-primary.button-large {
+	float: none; display: block; width: 100%; min-height: 50px; padding: 0 22px;
+	background: var(--abr-gold); color: #10151d;
+	border: 1px solid var(--abr-gold); border-radius: 8px; box-shadow: none; text-shadow: none;
+	font-family: var(--abr-font); font-size: 1.08rem; font-weight: 700; letter-spacing: 0.04em;
+	transition: background var(--abr-ease), border-color var(--abr-ease), transform var(--abr-ease);
+}
+body.abr-login .submit .button-primary:hover,
+body.abr-login #wp-submit:hover,
+body.abr-login .button-primary:focus {
+	background: color-mix(in srgb, var(--abr-gold) 86%, #ffffff); border-color: color-mix(in srgb, var(--abr-gold) 86%, #ffffff);
+	color: #10151d; box-shadow: none; outline: none;
+}
+body.abr-login .button-primary:focus-visible { outline: 2px solid var(--abr-ivory); outline-offset: 3px; }
+body.abr-login .button-primary:active { transform: translateY(1px); }
+
+/* Messages */
+body.abr-login .message,
+body.abr-login .notice,
+body.abr-login #login_error {
+	margin: 0 0 22px; padding: 12px 16px;
+	border-left: 3px solid var(--abr-gold); border-radius: 8px; box-shadow: none; font-size: 1rem;
+}
+body.abr-login #login_error { border-left-color: var(--abr-error); }
+
+/* Links below the card */
+body.abr-login #nav,
+body.abr-login #backtoblog { margin: 22px 0 0; padding: 0; font-size: 0.98rem; text-align: center; }
+body.abr-login #backtoblog { margin-top: 8px; }
+body.abr-login #nav a,
+body.abr-login #backtoblog a,
+body.abr-login .privacy-policy-page-link a {
+	text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px;
+	transition: color var(--abr-ease);
+}
+body.abr-login #nav a:hover,
+body.abr-login #backtoblog a:hover,
+body.abr-login .privacy-policy-page-link a:hover { color: var(--abr-gold); }
+body.abr-login .privacy-policy-page-link { margin: 26px 0 0; text-align: center; }
+body.abr-login .language-switcher { padding: 0 0 32px; }
+body.abr-login .language-switcher select,
+body.abr-login .language-switcher .button { border-radius: 8px; font-family: var(--abr-font); }
+
+/* ---------- Centred layout ---------- */
+body.login.abr-login--centred {
+	display: flex; align-items: center; justify-content: center;
+	background: var(--abr-page); color: var(--abr-ink);
+}
+body.abr-login--centred.abr-login--photo {
+	background:
+		linear-gradient(color-mix(in srgb, var(--abr-page) 88%, transparent), color-mix(in srgb, var(--abr-page) 94%, transparent)),
+		var(--abr-login-photo) center / cover no-repeat fixed,
+		var(--abr-page);
+}
+body.abr-login--centred h1.wp-login-logo a { color: var(--abr-ink); flex-direction: column; gap: 12px; }
+body.abr-login--centred .abr-login__wordmark { align-items: center; text-align: center; }
+body.abr-login--centred .abr-login__sub { color: var(--abr-gold); }
+body.abr-login--centred .abr-mark__bg { fill: var(--abr-ivory); }
+body.abr-login--centred .abr-mark__letters { fill: var(--abr-navy); }
+body.abr-login--centred .abr-mark__rule { fill: var(--abr-gold); }
+:root[data-abr-mode="dark"] body.abr-login--centred .abr-mark__bg { fill: #ece7dd; }
+:root[data-abr-mode="dark"] body.abr-login--centred .abr-mark__letters { fill: #0f131b; }
+.abr-login__tagline {
+	margin: 0 0 28px; text-align: center;
+	font-size: 1.12rem; font-style: italic; color: var(--abr-ink-muted);
+}
+body.abr-login--centred form {
+	background: var(--abr-card); color: var(--abr-ink);
+	border: 1px solid var(--abr-card-edge); border-top: 4px solid var(--abr-gold);
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+body.abr-login--centred label { color: var(--abr-ink); }
+body.abr-login--centred form .input,
+body.abr-login--centred input[type="text"],
+body.abr-login--centred input[type="password"],
+body.abr-login--centred input[type="email"] {
+	background: var(--abr-field); color: var(--abr-field-ink); border: 1px solid transparent;
+}
+body.abr-login--centred .wp-pwd .button.wp-hide-pw { color: color-mix(in srgb, var(--abr-field-ink) 55%, transparent); }
+body.abr-login--centred input[type="checkbox"] { background: var(--abr-field); border-color: transparent; }
+body.abr-login--centred .forgetmenot .dashicons,
+body.abr-login--centred .forgetmenot a,
+body.abr-login--centred .forgetmenot button { color: var(--abr-ink-muted); }
+body.abr-login--centred .message,
+body.abr-login--centred .notice,
+body.abr-login--centred #login_error {
+	background: var(--abr-card); color: var(--abr-ink); border: 1px solid var(--abr-card-edge); border-left: 3px solid var(--abr-gold);
+}
+body.abr-login--centred #login_error { border-left-color: var(--abr-error); }
+body.abr-login--centred #login_error a,
+body.abr-login--centred .message a { color: var(--abr-gold); }
+body.abr-login--centred #nav a,
+body.abr-login--centred #backtoblog a,
+body.abr-login--centred .privacy-policy-page-link a { color: var(--abr-ink-muted); }
+body.abr-login--centred #nav a:hover,
+body.abr-login--centred #backtoblog a:hover,
+body.abr-login--centred .privacy-policy-page-link a:hover { color: var(--abr-gold); }
+body.abr-login--centred .language-switcher label .dashicons { color: var(--abr-ink-muted); }
+
+/* ---------- Photograph layout ---------- */
+body.login.abr-login--split {
+	display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center;
+	background: var(--abr-ivory); color: var(--abr-navy);
+}
+.abr-login__aside {
+	position: relative; align-self: stretch; min-height: 100vh;
+	background: var(--abr-login-photo) center / cover no-repeat, #172033;
+}
+.abr-login__aside::after {
+	content: ""; position: absolute; inset: 0;
+	background: linear-gradient(180deg, rgba(23, 32, 51, 0.15) 0%, rgba(23, 32, 51, 0.82) 100%);
+}
+.abr-login__aside-inner { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 56px 56px 48px; color: #f8f5ef; }
+.abr-login__message { margin: 0 0 20px; max-width: 30ch; font-size: clamp(1.5rem, 2.4vw, 2.1rem); font-style: italic; line-height: 1.3; }
+.abr-login__site { margin: 0; font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: #cfa869; }
+body.abr-login--split h1.wp-login-logo { margin-bottom: 28px; }
+body.abr-login--split h1.wp-login-logo a { color: var(--abr-navy); }
+body.abr-login--split .abr-login__sub { color: var(--abr-muted); }
+body.abr-login--split .abr-mark__bg { fill: var(--abr-navy); }
+body.abr-login--split .abr-mark__letters { fill: var(--abr-ivory); }
+body.abr-login--split .abr-mark__rule { fill: var(--abr-gold); }
+:root[data-abr-mode="dark"] body.abr-login--split .abr-mark__bg { fill: color-mix(in srgb, var(--abr-navy) 14%, transparent); }
+:root[data-abr-mode="dark"] body.abr-login--split .abr-mark__letters { fill: var(--abr-navy); }
+body.abr-login--split form { background: var(--abr-white); border: 1px solid var(--abr-hair); border-top: 4px solid var(--abr-gold); }
+body.abr-login--split label { color: var(--abr-navy); }
+body.abr-login--split form .input,
+body.abr-login--split input[type="text"],
+body.abr-login--split input[type="password"],
+body.abr-login--split input[type="email"] { background: var(--abr-ivory); color: var(--abr-navy); border: 1px solid var(--abr-beige); }
+body.abr-login--split .wp-pwd .button.wp-hide-pw { color: var(--abr-muted); }
+body.abr-login--split input[type="checkbox"] { border-color: var(--abr-beige); background: var(--abr-ivory); }
+body.abr-login--split .message,
+body.abr-login--split .notice,
+body.abr-login--split #login_error { background: var(--abr-white); color: var(--abr-navy); border: 1px solid var(--abr-hair); border-left: 3px solid var(--abr-gold); }
+body.abr-login--split #login_error { border-left-color: var(--abr-error); }
+body.abr-login--split #nav a,
+body.abr-login--split #backtoblog a,
+body.abr-login--split .privacy-policy-page-link a { color: var(--abr-muted); }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 900px) {
+	body.login.abr-login--split { grid-template-columns: 1fr; align-items: start; }
+	.abr-login__aside { min-height: 200px; }
+	.abr-login__aside-inner { padding: 28px 24px 22px; }
+	.abr-login__message { font-size: 1.25rem; margin-bottom: 10px; }
+	body.abr-login--split #login { padding: 32px 0 40px; }
+}
+@media (max-width: 480px) {
+	body.abr-login #login { padding-top: 36px; }
+	body.abr-login form { padding: 26px 22px 24px; }
+	body.abr-login .abr-logo__mark { width: 48px; height: 48px; }
+	.abr-login__main { font-size: 1.3rem; }
+	.abr-login__aside { min-height: 150px; }
+	.abr-login__message { display: none; }
+	body.abr-login--centred.abr-login--photo { background-attachment: scroll; }
+}
+@media (prefers-reduced-motion: reduce) {
+	body.abr-login * { transition: none !important; }
+}
+
+/* The centred layout gives the logo more presence, as a team login usually does. */
+body.abr-login--centred .abr-logo__mark { width: 76px; height: 76px; border-radius: 14px; }
+body.abr-login--centred .abr-login__main { font-size: 1.8rem; }
+body.abr-login--centred .abr-login__logo-img { max-height: 170px; }
+@media (max-width: 480px) {
+	body.abr-login--centred .abr-logo__mark { width: 60px; height: 60px; }
+	body.abr-login--centred .abr-login__main { font-size: 1.45rem; }
+}

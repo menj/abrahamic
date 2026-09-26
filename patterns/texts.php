@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:group {"align":"wide","className":"abr-section-head","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide abr-section-head">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">Scriptures</p>
+<p class="abr-label">V · The Word</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">Sacred texts and scriptures</h2>
@@ -118,5 +118,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
+<!-- wp:shortcode -->
+[abr_back_to_top]
+<!-- /wp:shortcode -->
 </section>
 <!-- /wp:group -->

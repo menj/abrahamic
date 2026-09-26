@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:group {"layout":{"type":"default"}} -->
 <div class="wp-block-group">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">About</p>
+<p class="abr-label">XIII · Behind the Journey</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">An educational guide to Abrahamic traditions</h2>

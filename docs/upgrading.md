@@ -10,6 +10,287 @@ Replace the theme files. A template change only; nothing to reseed.
 
 ---
 
+## Upgrading from 2.73.1 to 2.73.2
+
+Replace the theme files. No settings change.
+
+---
+
+## Upgrading from 2.73.0 to 2.73.1
+
+Replace the theme files. No settings change.
+
+---
+
+## Upgrading from 2.72.1 to 2.73.0
+
+Replace the theme files and load any page. Seed version 83 adds the two pieces.
+
+---
+
+## Upgrading from 2.72.0 to 2.72.1
+
+Replace the theme files and load any page. Seed version 81 adds the link where the two pages are unedited.
+
+---
+
+## Upgrading from 2.71.0 to 2.72.0
+
+Replace the theme files and load any page. Seed version 80 adds the article, the reference page and the FAQ answer, and refreshes the seven articles of 2.71.0 with corrected quotation marks where unedited.
+
+---
+
+## Upgrading from 2.70.0 to 2.71.0
+
+Replace the theme files and load any page. Seed version 78 adds the seven articles with their featured images, and refreshes five articles' further-reading lines and the Copyright and DMCA page where unedited.
+
+---
+
+## Upgrading from 2.69.0 to 2.70.0
+
+Replace the theme files and load any page. Seed version 76 refreshes the FAQ, Comparative studies, the Glossary and the population article where unedited.
+
+---
+
+## Upgrading from 2.68.1 to 2.69.0
+
+Replace the theme files and load any page. The banners appear on the home page at once; switch them off under Theme Options > Navigation > Home page journey. Seed version 74 adds the banner photographs to the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.68.0 to 2.68.1
+
+Replace the theme files. The Journal shows twelve articles a page at once; the Reading setting no longer affects it.
+
+---
+
+## Upgrading from 2.67.0 to 2.68.0
+
+Replace the theme files. The section bar appears on the home page at once; edit or switch it off under Theme Options > Navigation > Home page section bar.
+
+---
+
+## Upgrading from 2.66.0 to 2.67.0
+
+Replace the theme files. The front page takes its new order at once.
+
+---
+
+## Upgrading from 2.65.0 to 2.66.0
+
+Replace the theme files and load any page. Seed version 73 runs the starter-content check again, which adds the missing featured images. If an image cannot be added, the check retries every five minutes, and the reason appears under Theme Options > Tools.
+
+---
+
+## Upgrading from 2.64.0 to 2.65.0
+
+Replace the theme files and load any page. Seed version 71 refreshes the Places page and the Copyright and DMCA page where unedited.
+
+---
+
+## Upgrading from 2.63.4 to 2.64.0
+
+Replace the theme files, then open any admin page once: that writes the three maintenance drop-ins to wp-content. Theme Options shows nothing new. If the server does not let WordPress write to wp-content, the drop-ins are skipped and the rest of the theme works as before.
+
+---
+
+## Upgrading from 2.63.3 to 2.63.4
+
+Replace the theme files. The two footer labels change on the first page load.
+
+---
+
+## Upgrading from 2.63.2 to 2.63.3
+
+Replace the theme files. No settings change.
+
+---
+
+## Upgrading from 2.63.1 to 2.63.2
+
+Replace the theme files and load any page. The Knowledge base link in the main menu becomes KB once, with Knowledge Base shown on hover.
+
+---
+
+## Upgrading from 2.63.0 to 2.63.1
+
+Replace the theme files and load any page. The main-menu label changes to Editorial once; the page itself keeps its title.
+
+---
+
+## Upgrading from 2.62.0 to 2.63.0
+
+Replace the theme files and load any page. Seed version 70 refreshes the five site pages where you have not edited them. Then set a contact address under Theme Options > Footer: until one is set, the Contact us page shows visitors no address. Use an address in the site's own name, never a personal one.
+
+---
+
+## Upgrading from 2.61.1 to 2.62.0
+
+Replace the theme files and load any page. Editorial policy and Knowledge base are added once to the end of your main menu if it has room for them; edit them under Theme Options > Navigation.
+
+---
+
+## Upgrading from 2.61.0 to 2.61.1
+
+Replace the theme files. The six site pages now appear in the footer's bottom row; edit them under Theme Options > Navigation > Footer links.
+
+---
+
+## Upgrading from 2.60.0 to 2.61.0
+
+Replace the theme files. The top bar appears at once. Then check two settings the theme does not change on its own:
+
+1. Appearance > Theme Options > Header: if the Donate link points to a personal payment page, replace it with a payment account opened in the site's name, or with @donate.
+2. Users > Profile: set the display name to something that does not identify you, and leave the Biographical Info empty.
+
+---
+
+## Upgrading from 2.59.0 to 2.60.0
+
+Replace the theme files and load any page. Seed version 69 adds the article and refreshes the Hajj article and the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.58.0 to 2.59.0
+
+Replace the theme files and load any page. Seed version 67 adds the article and refreshes two Abraham articles and the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.57.3 to 2.58.0
+
+Replace the theme files and load any page. Seed version 66 adds the article and refreshes the Nicaea and five-sees articles and the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.57.2 to 2.57.3
+
+Replace the theme files and load any page. Seed version 65 refreshes the Nicaea article.
+
+---
+
+## Upgrading from 2.57.1 to 2.57.2
+
+Replace the theme files and load any page. Seed version 64 refreshes the Nicaea article.
+
+---
+
+## Upgrading from 2.57.0 to 2.57.1
+
+Replace the theme files and load any page. Seed version 63 adds the article and refreshes the Nicaea article.
+
+---
+
+## Upgrading from 2.56.3 to 2.57.0
+
+Replace the theme files and load any page. Seed version 62 adds the Nicaea article and refreshes "Jesus across the traditions" and the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.56.2 to 2.56.3
+
+Replace the theme files and load any page. Seed version 61 refreshes the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.56.1 to 2.56.2
+
+Replace the theme files and load any page. Seed version 60 refreshes the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.56.0 to 2.56.1
+
+Replace the theme files and load any page. Seed version 59 refreshes the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.55.3 to 2.56.0
+
+Replace the theme files and load any page. Seed version 58 refreshes the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.55.2 to 2.55.3
+
+Replace the theme files. The first page load clears any stale pattern cache, so a blank front page recovers at once.
+
+---
+
+## Upgrading from 2.55.1 to 2.55.2
+
+Replace the theme files and load any page. Seed version 57 refreshes the family-tree article's caption.
+
+---
+
+## Upgrading from 2.55.0 to 2.55.1
+
+Replace the theme files and load any page. Seed version 55 refreshes the family-tree article.
+
+---
+
+## Upgrading from 2.54.2 to 2.55.0
+
+Replace the theme files and load any page. Seed version 54 adds the article and refreshes "Who was Abraham?" and the Copyright and DMCA page. The new redirects take effect at once.
+
+---
+
+## Upgrading from 2.54.1 to 2.54.2
+
+Replace the theme files and load any page. Seed version 53 runs the starter-content check once, which replaces the theme's featured photographs whose files are empty or missing on the server.
+
+Optional, for Apache servers: to serve AVIF images in the media library with the proper type as well, add these lines to the `.htaccess` file in the WordPress folder, above the `# BEGIN WordPress` block:
+
+```
+<IfModule mod_mime.c>
+	AddType image/avif .avif
+</IfModule>
+```
+
+---
+
+## Upgrading from 2.54.0 to 2.54.1
+
+Replace the theme files and load any page. Seed version 52 runs the starter-content check once, which puts back any featured photograph missing from the media library. If an image still does not appear, Theme Options > Tools lists the reason.
+
+---
+
+## Upgrading from 2.53.2 to 2.54.0
+
+Replace the theme files and load any admin page. Seed version 51 adds the article and refreshes The Sabians of the Qur'an and the Copyright and DMCA page.
+
+---
+
+## Upgrading from 2.53.1 to 2.53.2
+
+Replace the theme files. If wp-config.php contains `define( 'ABR_DISABLE_LOGIN_ADDRESS', true );`, replace it with `define( 'ABR_HIDE_LOGIN', false );`.
+
+---
+
+## Upgrading from 2.53.0 to 2.53.1
+
+Replace the theme files. The login screen switches to the centred layout; choose "Photograph beside the form" on the Login tab to keep the 2.53.0 look.
+
+---
+
+## Upgrading from 2.52.2 to 2.53.0
+
+Replace the theme files, then deactivate Login Logo, WPS Hide Login, Unlist Posts & Pages and Pretty Search Permalinks if they are installed. The theme takes each feature over with the plugin's own setting: the WPS Hide Login address, the unlisted items, and the search word. A logo placed as `wp-content/login-logo.png` keeps working. If the private login address is lost, add `define( 'ABR_HIDE_LOGIN', false );` to wp-config.php, log in at wp-login.php, and remove the line.
+
+---
+
+## Upgrading from 2.52.1 to 2.52.2
+
+Replace the theme files and load any admin page. Seed version 50 refreshes the revised pages and articles.
+
+---
+
+## Upgrading from 2.52.0 to 2.52.1
+
+Replace the theme files and load any admin page. Seed version 49 refreshes the reworded pages and articles.
+
+---
+
 ## Upgrading from 2.51.1 to 2.52.0
 
 Replace the theme files and load any admin page. Seed version 48 adds the article and refreshes the Amman Message article and the Copyright and DMCA page.
@@ -379,7 +660,7 @@ Replace the theme files. No data changes. The shared heritage section gains a fa
 
 ## Upgrading from 2.12.0 to 2.12.1
 
-Replace the theme files. On the next page load the header Donate button, if still set to `@donate`, switches once to https://www.paypal.com/paypalme/menj. An empty Donation link now falls back to that address. To send the header button to the Donate page, set its link to `@donate` again; it will stay.
+Replace the theme files. On the next page load the header Donate button, if still set to `@donate`, switches once to the owner's payment page. An empty Donation link now falls back to that address. To send the header button to the Donate page, set its link to `@donate` again; it will stay.
 
 ---
 
@@ -512,7 +793,7 @@ Replace the theme files. No settings, templates or identifiers changed.
 
 Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new folder.
 
-1. Upload `abrahamic-2.52.0.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
+1. Upload `abrahamic-2.73.2.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
 2. Activate **Abrahamic**. Saved settings are copied from `ar_options` to `abr_options` automatically.
 3. Check Appearance > Abrahamic and confirm the colour scheme, newsletter and social values.
 4. Site Editor changes are stored against the theme slug and do not carry over. If the front page, header or footer was edited under 1.x:

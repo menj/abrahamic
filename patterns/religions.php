@@ -9,12 +9,12 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<!-- wp:group {"tagName":"section","anchor":"religions","className":"abr-section abr-religions","layout":{"type":"constrained"}} -->
-<section id="religions" class="wp-block-group abr-section abr-religions">
+<!-- wp:group {"tagName":"section","anchor":"religions","className":"abr-section abr-religions is-white","layout":{"type":"constrained"}} -->
+<section id="religions" class="wp-block-group abr-section abr-religions is-white is-white">
 <!-- wp:group {"align":"wide","className":"abr-section-head","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide abr-section-head">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">The traditions</p>
+<p class="abr-label">VI · Four Paths</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">The Abrahamic religions</h2>
@@ -164,5 +164,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:group -->
 </div>
 <!-- /wp:group -->
+<!-- wp:shortcode -->
+[abr_back_to_top]
+<!-- /wp:shortcode -->
 </section>
 <!-- /wp:group -->

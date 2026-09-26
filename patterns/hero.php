@@ -16,13 +16,13 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:group {"className":"abr-hero__copy","layout":{"type":"default"}} -->
 <div class="wp-block-group abr-hero__copy">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">Religion, history, culture</p>
+<p class="abr-label">Religion, History, Culture</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"level":1} -->
 <h1 class="wp-block-heading">Understanding the <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color">Abrahamic</mark> religions</h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"className":"is-lead"} -->
-<p class="is-lead">Explore the histories, traditions, sacred texts, ideas, and cultural worlds of Judaism, Christianity, Islam, and Mandaeism.</p>
+<p class="is-lead">Explore the histories, traditions, sacred texts, ideas, and cultural worlds of Judaism, Mandaeism, Christianity and Islam.</p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph -->
 <p>An independent educational resource for discovering the shared heritage and distinct traditions of the world’s major Abrahamic faiths.</p>

@@ -279,7 +279,7 @@ add_shortcode(
 			. '<div class="abr-cite__head"><h2 id="abr-cite-title">%1$s</h2>'
 			. '<button type="button" class="abr-cite__copy" data-abr-copy data-copied="%3$s">%2$s</button></div>'
 			. '<p class="abr-cite__text" data-abr-copy-text>%4$s</p></aside>',
-			esc_html__( 'Cite this page', 'abrahamic' ),
+			esc_html__( 'Citation', 'abrahamic' ),
 			esc_html__( 'Copy', 'abrahamic' ),
 			esc_attr__( 'Copied', 'abrahamic' ),
 			esc_html( $text )

@@ -330,14 +330,8 @@ function abr_schema_graph() {
 	if ( is_singular( 'post' ) ) {
 		$post   = get_queried_object();
 		$image  = abr_seo_image();
+		// The site itself is the author of every article: no person is named.
 		$author = array( '@id' => $org_id );
-		if ( '' !== trim( get_the_author_meta( 'description', $post->post_author ) ) ) {
-			$author = array(
-				'@type' => 'Person',
-				'name'  => get_the_author_meta( 'display_name', $post->post_author ),
-				'url'   => get_author_posts_url( $post->post_author ),
-			);
-		}
 		$webpage['primaryImageOfPage'] = abr_schema_image( $image );
 		$graph[]                       = array_filter(
 			array(

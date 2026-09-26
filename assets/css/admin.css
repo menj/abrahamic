@@ -10,7 +10,7 @@
 .abr-settings__head h1 { font-family: Georgia, "Times New Roman", serif; font-size: 28px; font-weight: 600; color: var(--abr-a-navy); padding: 0; }
 .abr-settings__head p { color: #646970; margin: 6px 0 0; }
 
-.abr-tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--abr-a-line); overflow-x: auto; scrollbar-width: thin; }
+.abr-tabs { display: flex; flex-wrap: wrap; gap: 2px; border-bottom: 1px solid var(--abr-a-line); }
 .abr-tab {
 	appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
 	padding: 12px 16px; font-size: 14px; font-weight: 500; color: #50575e; cursor: pointer;

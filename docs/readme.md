@@ -4,11 +4,11 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.52.0 |
+| Version | 2.73.2 |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
-| Author | [MENJ](https://menj.blog) |
+| Author | Abrahamic Religions |
 | Licence | GNU GPL v2 or later |
 
 Identity, naming rules, tokens, breakpoints, the settings schema and the decision record are maintained in [`ssot.md`](ssot.md). Release history is in [`changelog.md`](changelog.md); upgrade steps, roadmap and the release checklist are in [`upgrading.md`](upgrading.md).
@@ -18,7 +18,7 @@ Identity, naming rules, tokens, breakpoints, the settings schema and the decisio
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.52.0.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.73.2.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -26,7 +26,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.52.0.zip --activate
+wp theme install abrahamic-2.73.2.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -186,7 +186,7 @@ To add starter content, append an item to `inc/seed/content.php` with a new key 
 
 Journal articles live at `/journal/{slug}/` and topics at `/journal/topics/{slug}/`. Pages sit in three hubs: `/religions/` (Judaism, Christianity, Islam), `/reference/` (Sacred Texts, History and Timeline, Figures, Places, Comparative Studies, Glossary, FAQ, Research) and `/about/` (Editorial Policy, Contact), with the Site Map, Privacy Policy and Terms at the top level. Every inner page shows breadcrumbs. Addresses from 2.3.0 redirect permanently. `ssot.md`, section 13, holds the rules and the conformance tables for Google's SEO Starter Guide and supported structured data. The main menu also links to the external knowledge base at knowislam.wiki, marked with an outward arrow. Addresses from 2.4.0 to 2.9.x (`/articles/…`, `/knowledge-base/…`) redirect permanently to their new homes.
 
-Menus are written on the Navigation tab, one `Label | target` per line. The main menu holds five top-level content links, each with up to ten dropdown links (lines starting with a dash). The secondary menu holds up to eight site links (About, Contact, Donate, policies, the external knowledge base, the site map) and appears only as the footer's bottom row. A red Donate button sits beside Explore in the header and opens https://www.paypal.com/paypalme/menj; the Donate page offers the same link as a Donate now button. Both links are set under Theme Options > Header, where `@donate` sends the header button to the Donate page instead. A target can be a page token such as `@guides` or `@faq`, so menus keep working when a page moves.
+Menus are written on the Navigation tab, one `Label | target` per line. The main menu holds five top-level content links, each with up to ten dropdown links (lines starting with a dash). The secondary menu holds up to eight site links (About, Contact, Donate, policies, the external knowledge base, the site map) and appears only as the footer's bottom row. A red Donate button sits beside Explore in the header and opens the owner's payment page; the Donate page offers the same link as a Donate now button. Both links are set under Theme Options > Header, where `@donate` sends the header button to the Donate page instead. A target can be a page token such as `@guides` or `@faq`, so menus keep working when a page moves.
 
 ### Search
 
@@ -245,6 +245,150 @@ Add section-specific rules inside the matching tier block, so all width rules st
 All front page sections are patterns in the "Abrahamic" category and can be edited under Appearance > Editor > Templates > Front Page. Section anchors (`#religions`, `#timeline` and so on) are set on each section's Group block and are used by the header menu; keep them when editing.
 
 Class names on blocks (`abr-*`) carry the design. Removing a class in the editor's Advanced panel removes its styling.
+
+## Testing performed for 2.72.0
+
+- Article and reference page render with notes linked both ways; FAQ entry present; no PHP notices.
+
+## Testing performed for 2.71.0
+
+- Seven new articles: featured images attached, notes linked both ways, verse blocks rendered, no overflow at 390 pixels; no repeated photographs across 38 articles. No PHP notices.
+
+## Testing performed for 2.70.0
+
+- FAQ renders 25 questions, all 25 in the FAQPage structured data; chart renders; updated pages answer 200. No PHP notices.
+
+## Testing performed for 2.69.0
+
+- Parallax banners: movement, frame cost, reduced motion and phone layout checked. No PHP notices.
+
+## Testing performed for 2.68.0
+
+- Section bar, active-section marking, smooth scrolling, Back to top links and the fixed header checked at 1440 and 390 pixels. No PHP notices.
+
+## Testing performed for 2.67.0
+
+- Front page rendered in its new order with chapter labels and alternating backgrounds. No PHP notices.
+
+## Testing performed for 2.66.0
+
+- Featured-image retry reproduced and confirmed; all Journal cards have images; heritage watermark shows four symbols. No PHP notices.
+
+## Testing performed for 2.65.0
+
+- Places page: 10 sections, 10 distinct photographs, 23 notes linked both ways, no overflow at 390 pixels. No PHP notices.
+
+## Testing performed for 2.64.0
+
+- Maintenance notice tested for a missing theme file, a fatal error and an update in progress; 503 and Retry-After confirmed. No PHP notices.
+
+## Testing performed for 2.63.0
+
+- All seven site pages render with content and their new titles after reseeding. No PHP notices.
+
+## Testing performed for 2.62.0
+
+- Main menu with five links checked at three widths; one-time menu update tested. No PHP notices.
+
+## Testing performed for 2.61.1
+
+- Footer navigation bar checked on desktop and phone; header has no top bar. No PHP notices.
+
+## Testing performed for 2.61.0
+
+- Top bar checked at 1440 and 390 pixels. Anonymity checks: REST user list 404, ?author=1 301 to the Journal, users sitemap 404, Article schema author is the Organization, feed creator and oEmbed author are the site name. No PHP notices.
+
+## Testing performed for 2.60.0
+
+- Ḥirāʾ and Qubāʾ article: 10 notes linked both ways, six verse lines, three inline photographs, no overflow at 390 pixels; photograph audit clean across 31 articles. No PHP notices.
+
+## Testing performed for 2.59.0
+
+- Hajj article: 9 notes linked both ways, two verse lines, three inline photographs, no overflow at 390 pixels; no duplicate Journal photographs across 30 articles. No PHP notices.
+
+## Testing performed for 2.58.0
+
+- Hagia Sophia article: 14 notes linked both ways, verse block rendered, no overflow at 390 pixels; no duplicate Journal photographs across 29 articles. No PHP notices.
+
+## Testing performed for 2.57.3
+
+- Nicaea article re-rendered with the new paragraphs; 22 notes intact. No PHP notices.
+
+## Testing performed for 2.57.2
+
+- Nicaea article re-rendered: 22 notes linked both ways, new section present. No PHP notices.
+
+## Testing performed for 2.57.1
+
+- New article renders with 9 notes and two photographs; the front page shows eight places; no duplicate Journal photographs across 28 articles. No PHP notices.
+
+## Testing performed for 2.57.0
+
+- Nicaea article, Qur'an passage and twelve front-page places checked; no duplicate Journal photographs; no PHP notices.
+
+## Testing performed for 2.56.3
+
+- Front-page places rendered with the new Hebron photograph; the Places page still shows the original. No PHP notices.
+
+## Testing performed for 2.56.2
+
+- Front-page places checked with eight cards at three widths. No PHP notices.
+
+## Testing performed for 2.56.1
+
+- Front-page places checked at three widths with seven cards. No PHP notices.
+
+## Testing performed for 2.56.0
+
+- Front-page places section checked with six cards at desktop and phone widths. No PHP notices.
+
+## Testing performed for 2.55.3
+
+- Test site updated to WordPress 7.1.2 to match live. An empty pattern cache blanked the front page without the guard and recovered on the first request with it. No PHP notices.
+
+## Testing performed for 2.55.2
+
+- Family tree rendered; the browser confirms every line, box and label stays inside the drawing. No PHP notices.
+
+## Testing performed for 2.55.1
+
+- Both diagrams checked in light and dark; every label of the four-set diagram verified by geometry to sit in its region, and by the browser to stay inside the drawing. No PHP notices.
+
+## Testing performed for 2.55.0
+
+- New article and both diagrams checked in light, dark and at phone width; 13 old addresses redirect. No PHP notices.
+
+## Testing performed for 2.54.2
+
+- An emptied featured-image file was replaced on the next check; all live Journal and front-page images checked for content. No PHP notices.
+
+## Testing performed for 2.54.1
+
+- Featured-image repair tested against a deleted photograph, a deliberately removed image and a missing file; card titles checked on the Journal page. No PHP notices.
+
+## Testing performed for 2.54.0
+
+- Seed version 51 created the article with its featured image; 20 notes link both ways; two inline photographs; no duplicate photographs across 25 articles; the Sabians article links to it. No PHP notices.
+
+## Testing performed for 2.53.2
+
+- `ABR_HIDE_LOGIN` checked undefined, false and true against the private login address. No PHP notices.
+
+## Testing performed for 2.53.1
+
+- Centred login layout checked at 1440 and 390 pixels, light and dark, and with an error message. No overflow, no PHP notices.
+
+## Testing performed for 2.53.0
+
+- See the Tested section of the 2.53.0 changelog entry: login screen in four views, the private address end to end with a real login, unlisting across every listing, and the search redirect. No PHP notices.
+
+## Testing performed for 2.52.2
+
+- Re-ran the style audit after the rewrite: no remaining banned vocabulary or contrastive constructions outside proper names and quotations. Full reseed (version 50); the seven most heavily edited articles return 200 with all footnotes linked both ways. No PHP notices.
+
+## Testing performed for 2.52.1
+
+- Crawled all 53 rendered pages for self-referential phrasing after a full reseed (version 49): none remain outside the legal pages and Editorial policy. No PHP notices.
 
 ## Testing performed for 2.52.0
 
@@ -542,7 +686,7 @@ Class names on blocks (`abr-*`) carry the design. Removing a class in the editor
 
 ## Testing performed for 2.12.1
 
-- With no stored options, the header button and the Donate page button both open https://www.paypal.com/paypalme/menj; the header button's title reads "Opens www.paypal.com".
+- With no stored options, the header button and the Donate page button both open the owner's payment page; the header button's title reads "Opens www.paypal.com".
 - A stored `@donate` with the migration flag absent became the PayPal address on the next page load; after that, saving `@donate` on the Header tab kept it and the button opened `/donate/`.
 - A custom donation link replaced the Donate page button; an empty one fell back to the PayPal header link.
 - No PHP notices.

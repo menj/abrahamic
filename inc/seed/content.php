@@ -405,7 +405,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>All four traditions read scripture through commentary. Jewish readers turn to the Talmud and the medieval commentators; Christian readers to the church fathers and later theologians; Muslim readers to <em>tafsīr</em> (<span lang="ar" dir="rtl">تفسير</span>, exegesis); Mandaean priests to the ritual commentaries their order transmits. Modern historical scholarship adds its own questions about authorship, dating and context. See the article <a href="/journal/understanding-the-bible-and-the-quran-in-historical-context/">Understanding the Bible and the Qur'an in Historical Context</a>.</p>
+<p>All four traditions read scripture through commentary. Jewish readers turn to the Talmud and the medieval commentators; Christian readers to the church fathers and later theologians; Muslim readers to <em>tafsīr</em> (<span lang="ar" dir="rtl">تفسير</span>, exegesis); Mandaean priests to the ritual commentaries their order transmits. Modern historical scholarship adds its own questions about authorship, dating and context. See <a href="/journal/understanding-the-bible-and-the-quran-in-historical-context/">Understanding the Bible and the Qur'an in Historical Context</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
@@ -590,10 +590,10 @@ ABR_SEED,
 		),
 		array(
 			'key' => 'page:places', 'type' => 'page', 'slug' => 'places', 'title' => 'Places', 'parent' => 'page:knowledge-base',
-			'excerpt' => 'Sacred sites and historical landscapes of the Abrahamic traditions.', 'description' => 'Jerusalem, Hebron, Sinai, the Jordan, Makkah and more across four traditions. Discover the sacred places.', 'menu_order' => 7, 'special' => '', 'since' => 1,
+			'excerpt' => 'Sacred sites and historical landscapes of the Abrahamic traditions.', 'description' => 'Jerusalem, Hebron, Bethlehem, Sinai, the Jordan, Makkah, Madinah, Rome and Ahvaz across four traditions. Discover them.', 'menu_order' => 7, 'special' => '', 'since' => 1,
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>Certain places carry meaning for more than one tradition, and several have been contested for centuries: Jerusalem, Makkah, Hebron and Mount Sinai chief among them.</p>
+<p>Certain places carry meaning for more than one tradition, and several have been contested for centuries. The sites below are those the four traditions hold most sacred, from the Temple Mount in Jerusalem to the rivers where the Mandaeans baptise.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"jerusalem"} -->
@@ -601,7 +601,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Sacred to all three traditions. For Jews it is the city of the Temple, whose Western Wall remains a place of prayer. For Christians it is where Jesus was crucified and, they believe, rose from the dead; the Church of the Holy Sepulchre marks the site. For Muslims it holds al-Masjid al-Aqṣā (<span lang="ar" dir="rtl">المسجد الأقصى</span>, the Farthest Mosque) and the Dome of the Rock, associated with the Prophet's Night Journey. Read more in <a href="/journal/jerusalem-in-three-traditions/">Jerusalem in Three Traditions</a>.</p>
+<p>Sacred to Judaism, Christianity and Islam. For Jews it is the city of the Temple, whose Western Wall remains a place of prayer. For Christians it is where Jesus was crucified and, they believe, rose from the dead; the Church of the Holy Sepulchre marks the site. For Muslims it holds al-Masjid al-Aqṣā (<span lang="ar" dir="rtl">المسجد الأقصى</span>, the Farthest Mosque) and the Dome of the Rock, associated with the Prophet’s Night Journey, and it was the first direction of Muslim prayer before the qiblah turned to Makkah.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> See <a href="/journal/jerusalem-in-three-traditions/">Jerusalem in three traditions</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -613,11 +613,11 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The Cave of the Patriarchs, known to Muslims as the Ibrahimi Mosque, is by tradition the burial place of <a href="/journal/who-was-abraham/">Abraham</a>, Sarah, Isaac, Rebekah, Jacob and Leah. Jews, Christians and Muslims have all venerated the site.</p>
+<p>Genesis tells how Abraham bought the cave of Machpelah at Hebron to bury Sarah, and it became the family tomb of the patriarchs.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The cave lies within massive walls built in the first century to protect the tombs of Abraham and his family, and the site became a place of pilgrimage for Jews, Christians and Muslims alike; Muslims know it as al-Ḥaram al-Ibrāhīmī, the Sanctuary of Abraham. The old town around it was rebuilt in local limestone under the Mamluks between 1250 and 1517, and UNESCO inscribed it as a World Heritage site in 2017.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> The city’s Arabic name, al-Khalīl, is Abraham’s own title in Islam: the Friend of God.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[abr_photo name="place-hebron" alt="The shrine over the Cave of the Patriarchs in Hebron" ratio="16 / 9"]</p>
+<p>[abr_photo name="place-hebron" alt="The cenotaph of Abraham inside the Sanctuary of Abraham at Hebron" ratio="16 / 9"]</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"bethlehem"} -->
@@ -625,7 +625,11 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The traditional birthplace of Jesus, marked by the Church of the Nativity, and in the <a href="/reference/sacred-texts/tanakh/">Hebrew Bible</a> the home of <a href="/reference/figures/#david">David</a>'s family.</p>
+<p>Ten kilometres south of Jerusalem, Bethlehem is the town of David’s family in the Hebrew Bible and, in the Gospels, the birthplace of Jesus.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Christian tradition has placed the birth in a cave there since at least the second century. The first Church of the Nativity was completed over it in 339; the church that replaced it after a fire in the sixth century still keeps floor mosaics from the first, and Latin, Greek Orthodox, Franciscan and Armenian convents stand around it.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> The Qur’an tells the birth without naming the town: Mary withdrew to a remote place and gave birth beneath a palm tree.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="places-bethlehem" alt="The stone walls and bell tower of the Church of the Nativity in Bethlehem" ratio="16 / 9"]</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"nazareth"} -->
@@ -633,7 +637,11 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The town in Galilee where Jesus grew up. The Basilica of the Annunciation recalls the angel's message to Mary.</p>
+<p>Nazareth in Galilee is the town where Jesus grew up and where, in Luke’s Gospel, the angel Gabriel announced his birth to Mary.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> The Qur’an tells the same annunciation: the angels gave Mary good tidings of a word from God, whose name would be the Messiah, Jesus son of Mary.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> The present Basilica of the Annunciation, designed by Giovanni Muzio and consecrated in 1969, stands on two levels: the upper church follows the outline of the Crusader cathedral, and the lower one enshrines the grotto venerated since Byzantine times. On its completion it was the largest Christian sanctuary in the Middle East.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="places-nazareth" alt="The striped stone walls of the Basilica of the Annunciation in Nazareth" ratio="16 / 9"]</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"mount-sinai"} -->
@@ -641,11 +649,11 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The mountain where, according to the Hebrew Bible, <a href="/reference/figures/#moses">Moses</a> received the law. Tradition identifies it with Jebel Musa in the southern Sinai Peninsula, beside the Monastery of Saint Catherine, although scholars have proposed other locations.</p>
+<p>The mountain where, according to the Hebrew Bible, <a href="/reference/figures/#moses">Moses</a> received the law.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup> The Qur’an swears by Mount Sinai and tells how God called Moses in the sacred valley of Ṭuwā.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup> Tradition identifies the mountain with Jebel Musa in the south of the Sinai Peninsula, though scholars have proposed other locations. At its foot stands the Greek Orthodox Monastery of Saint Catherine, founded in the sixth century and the oldest Christian monastery still used for its original purpose; the whole area, UNESCO notes, is sacred to Judaism, Christianity and Islam.<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[abr_photo name="place-sinai" alt="The granite peaks of Mount Sinai in the south of the Sinai Peninsula" ratio="16 / 9"]</p>
+<p>[abr_photo name="places-sinai" alt="The Monastery of Saint Catherine beneath the mountains of southern Sinai" ratio="16 / 9"]</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"the-jordan-river"} -->
@@ -653,11 +661,11 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>In the Hebrew Bible the Israelites cross the Jordan to enter the land promised to Abraham. In the Gospels John baptises in its waters, and Jesus among those who come to him. In Islamic history the Jordan valley holds the shrines of several Companions of the Prophet, among them Abū ʿUbaydah ibn al-Jarrāḥ. Mandaeans call the running water of their baptisms <em>yardna</em>, a word most scholars take from the Jordan, although E. S. Drower doubted the connection.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<p>In the Hebrew Bible the Israelites cross the Jordan to enter the land promised to Abraham; in the Gospels John baptises in its waters, and Jesus comes to him to be baptised.<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup> The site venerated as the place of that baptism, Bethany beyond the Jordan (al-Maghṭas), lies on the east bank north of the Dead Sea; its remains include pools, churches, a monastery and hermits’ caves, and it became a World Heritage site in 2015.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> In Islamic history the Jordan valley holds the shrines of several Companions of the Prophet, among them Abū ʿUbaydah ibn al-Jarrāḥ. Mandaeans call the running water of their baptisms <em>yardna</em>, a word most scholars take from the Jordan, although E. S. Drower doubted the connection.<sup class="abr-fn"><a href="#note-15" id="ref-15">15</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[abr_photo name="jordan-river" alt="The Jordan River at Qasr al-Yahud, the traditional site of the baptisms performed by John" ratio="16 / 9"]</p>
+<p>[abr_photo name="places-jordan" alt="The Church of Saint John the Baptist at the baptism site on the east bank of the Jordan" ratio="16 / 9"]</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"makkah"} -->
@@ -665,11 +673,11 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Written Mecca in most English sources, Makkah is the birthplace of Muhammad and the holiest city in <a href="/religions/islam/">Islam</a>. At its centre stands the Kaaba, which Muslims believe Abraham and <a href="/reference/figures/#ishmael">Ishmael</a> built, and toward which Muslims pray. Makkah is the destination of the ḥajj.</p>
+<p>Written Mecca in most English sources, Makkah is the birthplace of Muhammad and the holiest city in <a href="/religions/islam/">Islam</a>. The Qur’an calls its sanctuary the first House of worship established for mankind, at Bakkah, and recounts how Abraham and <a href="/reference/figures/#ishmael">Ishmael</a> raised its foundations.<sup class="abr-fn"><a href="#note-16" id="ref-16">16</a></sup> At its centre stands the Kaaba, toward which Muslims everywhere turn in prayer,<sup class="abr-fn"><a href="#note-17" id="ref-17">17</a></sup> and the Great Mosque around it receives the pilgrims of the Hajj, who go out from the city to Minā, ʿArafāt and Muzdalifah. See <a href="/journal/the-stations-of-the-hajj/">The stations of the Hajj</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[abr_photo name="place-mecca" alt="Pilgrims around the Station of Abraham at the Great Mosque in Makkah" ratio="16 / 9"]</p>
+<p>[abr_photo name="places-makkah" alt="The Great Mosque of Makkah and the Kaaba seen from above at sunset" ratio="16 / 9"]</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"madinah"} -->
@@ -677,7 +685,35 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Written Medina in most English sources, Madinah is the city to which Muhammad migrated in 622 and where he is buried. The Prophet's Mosque makes Madinah the second holiest city in Islam.</p>
+<p>Written Medina in most English sources, Madinah was the oasis town of Yathrib, the name by which the Qur’an still knows it.<sup class="abr-fn"><a href="#note-18" id="ref-18">18</a></sup> In 622 the Prophet left Makkah for Yathrib, sheltering on the way in a cave with his companion Abū Bakr,<sup class="abr-fn"><a href="#note-19" id="ref-19">19</a></sup> and the city became the home of the first Muslim community and the capital of the Islamic state until 661. The Prophet is buried in his mosque there, which makes Madinah the second holiest city in Islam; many pilgrims visit it together with the Hajj.<sup class="abr-fn"><a href="#note-20" id="ref-20">20</a></sup> Its full name, al-Madīnah al-Munawwarah (<span lang="ar" dir="rtl">ٱلْمَدِينَة ٱلْمُنَوَّرَة</span>, the Radiant City), honours him. On its southern edge stands Qubāʾ, the first mosque of Islam; see <a href="/journal/hira-and-quba/">Ḥirāʾ and Qubāʾ</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="places-madinah" alt="The great shade umbrellas in the courtyards of the Prophet’s Mosque in Madinah" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"vatican-city"} -->
+<h2 class="wp-block-heading" id="vatican-city">Vatican City</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The smallest state in the world, forty-four hectares within Rome defined by the Lateran Treaty of 1929, Vatican City is the seat of the Pope and the holiest city of Catholic Christianity. Its centre is St Peter’s Basilica, raised over the tomb of the apostle Peter, whom Catholics count the first bishop of Rome. Constantine founded the first basilica there in the fourth century; beneath the present church, rebuilt from 1506 by Bramante, Michelangelo, Maderno and Bernini, lie remains of that basilica and the first-century necropolis where Peter’s tomb is located. The whole state has been a World Heritage site since 1984.<sup class="abr-fn"><a href="#note-21" id="ref-21">21</a></sup> See <a href="/journal/the-five-great-sees/">The five great sees of the early church</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="places-vatican" alt="The dome of St Peter’s Basilica rising above the Tiber in Rome" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"ahvaz-and-the-karun"} -->
+<h2 class="wp-block-heading" id="ahvaz-and-the-karun">Ahvaz and the Karun</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Mandaeism has no single holy city: its sacred places are its rivers, where every baptism must be performed in running water. Its communities have lived for centuries in the marshes and river towns of southern Iraq, and across the border in the Iranian province of Khuzestan, where E. S. Drower recorded settlements at Muhammerah and at Ahvaz on the banks of the Karun.<sup class="abr-fn"><a href="#note-22" id="ref-22">22</a></sup> Ahvaz is still the centre of the Mandaean community in Iran: its <em>mandi</em>, the community house, stands in the Mandaean quarter of the city, and its Sunday baptisms take place in the open along the Karun.<sup class="abr-fn"><a href="#note-23" id="ref-23">23</a></sup> See <a href="/religions/mandaeism/">Mandaeism</a> and <a href="/journal/masbuta-baptism-in-running-water/">Maṣbūtā: baptism in running water</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="places-ahvaz" alt="The White Bridge over the Karun River at Ahvaz by night" ratio="16 / 9"]</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
@@ -686,7 +722,51 @@ ABR_SEED,
 
 <!-- wp:list {"ordered":true,"className":"abr-notes"} -->
 <ol class="wp-block-list abr-notes"><!-- wp:list-item -->
-<li id="note-1">Eric Segelberg, Maṣbūtā: Studies in the Ritual of the Mandaean Baptism (Uppsala: Almqvist &amp; Wiksells, 1958), p. 38 and n. 2. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-1">Qur’an 17:1; 2:144. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Genesis 23:1-20; 49:29-32. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">UNESCO World Heritage Centre, “Hebron/Al-Khalil Old Town,” World Heritage List no. 1565. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">1 Samuel 16:1-13; Matthew 2:1; Luke 2:4-7. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">UNESCO World Heritage Centre, “Birthplace of Jesus: Church of the Nativity and the Pilgrimage Route, Bethlehem,” World Heritage List no. 1433. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Qur’an 19:22-26. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Luke 1:26-38; 2:39-40. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Qur’an 3:45-47; 19:16-21. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">“Christian Holy Sites: The Basilica of the Annunciation,” Jewish Virtual Library, after the Israeli Ministry of Foreign Affairs. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Exodus 19:16-20:17. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-11">Qur’an 95:2; 20:11-14. <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-12">UNESCO World Heritage Centre, “Saint Catherine Area,” World Heritage List no. 954. <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-13">Joshua 3:14-17; Matthew 3:13-17. <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-14">UNESCO World Heritage Centre, “Baptism Site “Bethany Beyond the Jordan” (Al-Maghtas),” World Heritage List no. 1446. <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-15">Eric Segelberg, <em>Maṣbūtā: Studies in the Ritual of the Mandaean Baptism</em> (Uppsala: Almqvist &amp; Wiksells, 1958), p. 38 and n. 2. <a href="#ref-15" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-16">Qur’an 3:96; 2:127. <a href="#ref-16" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-17">Qur’an 2:144. <a href="#ref-17" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-18">Qur’an 33:13. <a href="#ref-18" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-19">Qur’an 9:40. <a href="#ref-19" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-20">“Medina,” <em>Encyclopaedia Britannica</em>. <a href="#ref-20" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-21">UNESCO World Heritage Centre, “Vatican City,” World Heritage List no. 286. <a href="#ref-21" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-22">E. S. Drower, <em>The Mandaeans of Iraq and Iran</em> (Oxford: Clarendon Press, 1937), pp. 1-2. <a href="#ref-22" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-23">“Mandaeans (4): Community in Iran,” <em>Encyclopaedia Iranica</em>. <a href="#ref-23" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --></ol>
 <!-- /wp:list -->
 ABR_SEED,
@@ -705,7 +785,9 @@ ABR_SEED,
 
 <!-- wp:list -->
 <ul class="wp-block-list"><!-- wp:list-item -->
-<li><strong>Abrahamic religions</strong>: traditions that trace a spiritual or historical link to Abraham: <a href="/religions/judaism/">Judaism</a>, <a href="/religions/christianity/">Christianity</a>, Islam and the far smaller Mandaeism. The phrase itself dates from the middle of the twentieth century.</li>
+<li><strong>Abrahamic religions</strong>: traditions that trace a spiritual or historical link to Abraham: <a href="/religions/judaism/">Judaism</a>, Mandaeism, <a href="/religions/christianity/">Christianity</a> and Islam, of which Mandaeism is by far the smallest. The phrase itself dates from the middle of the twentieth century.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><strong>Abrahamism</strong>: an informal name, used mostly online and in some languages other than English, for the <a href="/reference/faq/#what-is-abrahamism">Abrahamic religions</a> taken together, or for the belief they share that God made himself known to Abraham.</li>
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li><strong>Apocrypha</strong>: books found in the Greek Old Testament but outside the <a href="/reference/sacred-texts/tanakh/">Hebrew Bible</a>; Catholic and Orthodox churches call most of them deuterocanonical.</li>
 <!-- /wp:list-item --><!-- wp:list-item -->
@@ -865,7 +947,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>All four traditions affirm one God, creator of the world. Mandaeism calls God the Great Life and teaches a dualism of light and darkness that the others do not share. <a href="/religions/judaism/">Judaism</a> expresses this in the Shema. <a href="/religions/christianity/">Christianity</a> affirms one God in three persons. Islam's doctrine of <em>tawḥīd</em> (<span lang="ar" dir="rtl">توحيد</span>, oneness) stresses God's absolute unity and rejects any partner to God. Jewish and Muslim theologians have long recognised how closely their understandings of divine unity align, and medieval thinkers in both traditions developed their arguments in conversation with each other. See <a href="/journal/how-the-abrahamic-religions-understand-monotheism/">How the Abrahamic Religions Understand Monotheism</a>.</p>
+<p>All four traditions affirm one God, creator of the world. Mandaeism calls God the Great Life and teaches a dualism of light and darkness that the others do not share. <a href="/religions/judaism/">Judaism</a> expresses this in the Shema. <a href="/religions/christianity/">Christianity</a> affirms one God in three persons. Islam's doctrine of <em>tawḥīd</em> (<span lang="ar" dir="rtl">توحيد</span>, oneness) stresses God's absolute unity and rejects any partner to God. Jewish and Muslim theologians have long recognised how closely their understandings of divine unity agree, and medieval thinkers in both traditions developed their arguments in conversation with each other. See <a href="/journal/how-the-abrahamic-religions-understand-monotheism/">How the Abrahamic Religions Understand Monotheism</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"revelation-and-scripture"} -->
@@ -909,7 +991,7 @@ ABR_SEED,
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>Mandaeism describes the judgement as a journey. After death the soul passes through the <em>maṭarātā</em> (watch-houses), where it is purified, and reaches the scales of Abathur, where its deeds are weighed against the soul of Shitil, the purest of human souls. A soul found worthy crosses by a ship of light to the World of Light.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<p>Mandaeism describes the judgement as an ascent. After death the soul passes through the <em>maṭarātā</em> (watch-houses), where it is purified, and reaches the scales of Abathur, where its deeds are weighed against the soul of Shitil, the purest of human souls. A soul found worthy crosses by a ship of light to the World of Light.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -918,6 +1000,46 @@ ABR_SEED,
 
 <!-- wp:paragraph {"className":"abr-further"} -->
 <p class="abr-further">For the periods behind these differences, see the <a href="/reference/timeline/">History and timeline</a>; for short answers to common questions, see the <a href="/reference/faq/">FAQ</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-traditions-in-pairs"} -->
+<h2 class="wp-block-heading" id="the-traditions-in-pairs">The traditions in pairs</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Readers often ask how two of the traditions compare with each other. The short answers follow; the sections above give the detail.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"anchor":"judaism-and-christianity"} -->
+<h3 class="wp-block-heading" id="judaism-and-christianity">Judaism and Christianity</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Christianity began as a movement within Judaism, and the Hebrew Bible is its Old Testament. The two part on Jesus: Christians hold him to be the Messiah and the Son of God, and read the covenant as opened to all nations through him, while Judaism awaits a Messiah still to come, regards no human being as divine, and lives by the commandments of the Torah as the rabbis interpreted them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"anchor":"judaism-and-islam"} -->
+<h3 class="wp-block-heading" id="judaism-and-islam">Judaism and Islam</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Judaism and Islam are close in structure. Both hold that God is strictly one, with no incarnation; both are religions of law, with a code for daily life covering prayer, diet and circumcision; both forbid images in worship; and both trace their people to Abraham, through Isaac and through Ishmael. They differ on the last prophet and the final scripture: Judaism recognises neither Jesus nor Muhammad, and Islam holds that the Qur’an confirms and completes the revelation given to Moses.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"anchor":"christianity-and-islam"} -->
+<h3 class="wp-block-heading" id="christianity-and-islam">Christianity and Islam</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Christianity and Islam are the two largest religions in the world, together more than half of humanity. Both honour Jesus as the Messiah, born of the virgin Mary, and both expect his return. They part on who he is: Christianity worships him as God the Son, crucified and risen, while the Qur’an honours him as a prophet and the word of God given to Mary, denies that he is divine, and denies that he was crucified. Islam also holds that Muhammad is the final prophet, which Christianity does not accept.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"anchor":"mandaeism-and-the-other-three"} -->
+<h3 class="wp-block-heading" id="mandaeism-and-the-other-three">Mandaeism and the other three</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Mandaeism shares with the others belief in one God, revealed scripture and a judgement of the soul, and it honours John the Baptist, as Christianity and Islam do. It rejects Abraham, Moses, Jesus and Muhammad as prophets, and practises baptism repeatedly, always in running water.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
@@ -935,6 +1057,95 @@ ABR_SEED,
 <li id="note-4">Ismaʿil Raji al Faruqi, in Wing-tsit Chan, Ismaʿil Raji al Faruqi, Joseph M. Kitagawa and P. T. Raju, comps., The Great Asian Religions: An Anthology (New York: Macmillan, 1969), pp. 323, 326. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li id="note-5">E. S. Drower, The Mandaeans of Iraq and Iran (Oxford: Clarendon Press, 1937), pp. 197-199. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'page:islamic-dilemma', 'type' => 'page', 'slug' => 'islamic-dilemma', 'title' => 'What is the Islamic Dilemma?', 'parent' => 'page:comparisons',
+			'excerpt' => 'The Islamic Dilemma argument explained: what it claims, the verses it relies on, and the Muslim reply.', 'description' => 'What is the Islamic Dilemma? The argument, the Qur’an verses it cites and the Muslim reply, explained. Read the guide.', 'menu_order' => 20, 'special' => '', 'since' => 79,
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>The Islamic Dilemma is an argument made by Christian apologists, above all David Wood, that Islam defeats itself in what it says about the Bible. This page explains the argument, lists the verses it relies on, and summarises the Muslim reply. The Journal article <a href="/journal/the-islamic-dilemma/">The Islamic Dilemma: the argument and the answer</a> examines it in full.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="dilemma-quran-light" alt="A page of the Qur’an in warm light" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-argument"} -->
+<h2 class="wp-block-heading" id="the-argument">The argument</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The argument runs in two horns. The Qur’an affirms the Torah and the Gospel. If the Gospel is the word of God, Islam is false, because the Qur’an contradicts the Gospel on the divinity of Jesus and on his crucifixion. If the Gospel is not the word of God, Islam is still false, because the Qur’an affirmed it. Either way, the argument concludes, Islam cannot stand.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-islamic-dilemma-verses"} -->
+<h2 class="wp-block-heading" id="the-islamic-dilemma-verses">The verses</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The argument relies on the following verses, given here in the Saheeh International translation:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Qur’an 3:3-4</strong>: He has sent down upon you, [O Muḥammad], the Book in truth, confirming what was before it. And He revealed the Torah and the Gospel before, as guidance for the people.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><strong>Qur’an 5:46</strong>: And We sent, following in their footsteps, Jesus, the son of Mary, confirming that which came before him in the Torah; and We gave him the Gospel, in which was guidance and light and confirming that which preceded it of the Torah as guidance and instruction for the righteous.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><strong>Qur’an 5:47</strong>: And let the People of the Gospel judge by what Allāh has revealed therein.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><strong>Qur’an 5:68</strong>: Say, “O People of the Scripture, you are [standing] on nothing until you uphold [the law of] the Torah, the Gospel, and what has been revealed to you from your Lord.”</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><strong>Qur’an 10:94</strong>: So if you are in doubt, [O Muḥammad], about that which We have revealed to you, then ask those who have been reading the Scripture before you.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Surah 5:46 is the verse most often searched for in connection with the argument, because it says that the Gospel given to Jesus contained guidance and light.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-muslim-reply"} -->
+<h2 class="wp-block-heading" id="the-muslim-reply">The Muslim reply</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Muslim scholars answer that the dilemma rests on three premises the Qur’an does not accept. First, the Qur’an confirms earlier scripture as its <em>muhaymin</em> (<span lang="ar" dir="rtl">مُهَيْمِن</span>, guardian and criterion): in the words of the classical exegete al-Ṭabarī, whatever in the earlier books agrees with the Qur’an is true, and whatever disagrees with it is false.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Second, the Gospel of the Qur’an is the revelation given to Jesus, which is not the same thing as the four Gospels written about him. Third, the Qur’an itself speaks of people who wrote scripture with their own hands and distorted words from their places, so it never vouched for every text its hearers possessed.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> On this reading the Qur’an can confirm the Torah and the Gospel as revelations and still judge the texts that carry them, and the dilemma loses both its horns.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"further-reading"} -->
+<h2 class="wp-block-heading" id="further-reading">Further reading</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><a href="/journal/the-islamic-dilemma/">The Islamic Dilemma: the argument and the answer</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><a href="/reference/sacred-texts/quran/">The Qur’an</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><a href="/reference/sacred-texts/bible/">The Bible</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li><a href="https://themuslimapologist.online/articles/the-islamic-dilemma/">The Islamic Dilemma, refuted</a> (The Muslim Apologist)</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">“What is the ‘Islamic Dilemma’?,” The Islamic Dilemma (islamicdilemma.com). <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Qur’an 3:3-4; 5:46-47; 5:68; 10:94, trans. Saheeh International, Quran.com. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Qur’an 5:48; Ibn Kathīr, <em>Tafsīr</em>, on 5:48, quoting al-Ṭabarī. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Qur’an 2:79; 3:78; 5:13. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --></ol>
 <!-- /wp:list -->
 ABR_SEED,
@@ -1010,11 +1221,11 @@ ABR_SEED,
 ABR_SEED,
 		),
 		array(
-			'key' => 'page:about', 'type' => 'page', 'slug' => 'about', 'title' => 'About', 'parent' => '',
-			'excerpt' => 'Abrahamic Religions is an independent educational platform on Judaism, Mandaeism, Christianity and Islam.', 'description' => 'Why Abrahamic Religions exists, how it treats each tradition, and who writes it. Read about our purpose.', 'menu_order' => 12, 'special' => '', 'since' => 1,
+			'key' => 'page:about', 'type' => 'page', 'slug' => 'about', 'title' => 'About this site', 'parent' => '',
+			'excerpt' => 'Abrahamic Religions is an independent educational platform on Judaism, Mandaeism, Christianity and Islam.', 'description' => 'Why Abrahamic Religions exists, how it treats each tradition and how its articles are sourced. Read about our purpose.', 'menu_order' => 12, 'special' => '', 'since' => 1,
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>Abrahamic Religions is an independent educational platform on the histories, scriptures, beliefs and practices of Judaism, Mandaeism, Christianity and Islam.</p>
+<p>Abrahamic Religions is an independent educational resource on the histories, scriptures, beliefs and practices of Judaism, Mandaeism, Christianity and Islam.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"our-purpose"} -->
@@ -1022,19 +1233,35 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Abrahamic Religions exists to introduce the Abrahamic religions and their history, and to give the reader what is needed to decide which among them is true. That question is the reason it was made. We therefore set out what each tradition teaches, where its claims come from, and how they stand when examined, and we leave the conclusion to the reader.</p>
+<p>Abrahamic Religions exists to introduce the Abrahamic religions and their history, and to give the reader what is needed to decide which among them is true. That question is the reason it was made. Each tradition is therefore set out as it teaches itself, with the sources of its claims and how those claims stand when examined, and the conclusion is left to the reader.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>We write for students, teachers, researchers and curious readers who want clear, well-sourced information. Where a question turns on the wording of a text, we go to the languages in which it was written.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"anchor":"which-religions-we-treat"} -->
-<h2 class="wp-block-heading" id="which-religions-we-treat">Which religions we treat</h2>
+<!-- wp:heading {"anchor":"the-four-traditions"} -->
+<h2 class="wp-block-heading" id="the-four-traditions">The four traditions</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Judaism, Mandaeism, Christianity and Islam are the four traditions treated here. The first three are the largest and share Abraham as their father in faith. Mandaeism is the smallest and the oldest surviving Gnostic religion, and it shares the prophetic line from Adam to Shem, the Aramaic world of late antiquity and, since the seventh century, recognition as the Sabians named in the Qur'an. Other communities are sometimes described as Abrahamic, and we leave them aside: their claim on Abraham runs through one of the traditions above.</p>
+<p>The four traditions are Judaism, Mandaeism, Christianity and Islam. Judaism, Christianity and Islam are the largest, and all three look to Abraham as their father in faith. Mandaeism is the smallest and the oldest surviving Gnostic religion; it shares the prophetic line from Adam to Shem, the Aramaic world of late antiquity and, since the seventh century, recognition as the Sabians named in the Qur’an. Other communities are sometimes described as Abrahamic; their claim on Abraham runs through one of these four.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"how-the-content-is-made"} -->
+<h2 class="wp-block-heading" id="how-the-content-is-made">How the content is made</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Every article rests on sources that a reader can check. Scripture is quoted from published translations and, where the wording matters, from the original Hebrew, Greek, Aramaic or Arabic. Scholarly claims are footnoted to the work and page they come from, and each citation is checked against its source before publication. Photographs are either in the public domain or used under open licences, and every one is credited on the <a href="/dmca/">Copyright and DMCA</a> page. In keeping with the sensibilities of the traditions described, the site shows places, buildings and manuscripts, and never depicts the prophets.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"independence"} -->
+<h2 class="wp-block-heading" id="independence">Independence</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Abrahamic Religions is not affiliated with any religious body, university, government or political organisation, and no article is commissioned or paid for by one. The site carries no advertising and sells nothing; its costs are met by readers who choose to support it through the Donate page.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"our-approach"} -->
@@ -1054,8 +1281,9 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Questions, corrections and suggestions are welcome through our <a href="/about/contact/">Contact</a> page.</p>
+<p>Questions, corrections and suggestions are welcome through the <a href="/about/contact/">Contact us</a> page.</p>
 <!-- /wp:paragraph -->
+
 ABR_SEED,
 		),
 		array(
@@ -1074,12 +1302,16 @@ ABR_SEED,
 <p>Each tradition is first described in its own terms, using the language its adherents use. Where traditions disagree, we set out each position together with the reasons given for it. Where an article reaches a conclusion of its own, the evidence comes first and the conclusion is marked as ours. Historical findings are presented as findings, with their limits stated.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"anchor":"accuracy"} -->
-<h2 class="wp-block-heading" id="accuracy">Accuracy</h2>
+<!-- wp:heading {"anchor":"sources-and-citations"} -->
+<h2 class="wp-block-heading" id="sources-and-citations">Sources and citations</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Articles draw on scripture, established scholarship and the teaching of the traditions themselves. Claims about dates, numbers and events are checked before publication. Where scholars disagree, we say so.</p>
+<p>Articles draw on scripture, on the classical sources of each tradition and on established scholarship. Every factual claim that a reader might want to check carries a footnote giving the work and, for printed books, the page. Citations are checked against the source itself before publication and are never written from memory. Where scholars disagree, we say so and name the positions.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Scripture is quoted from published translations, which are named in the footnotes; the Qur’an is quoted in Arabic with an English translation beside it. Hadith are cited by collection and number as given by Sunnah.com.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"language-and-conventions"} -->
@@ -1090,18 +1322,26 @@ ABR_SEED,
 <ul class="wp-block-list"><!-- wp:list-item -->
 <li>Dates use BCE and CE.</li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li>Arabic and Hebrew terms appear in transliteration with a translation on first use.</li>
+<li>Arabic, Hebrew and Aramaic terms appear in transliteration with a translation on first use.</li>
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li>Names follow common English usage, with the form used in other traditions noted where helpful.</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
+
+<!-- wp:heading {"anchor":"images"} -->
+<h2 class="wp-block-heading" id="images">Images</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Photographs show places, buildings, manuscripts and objects. None depicts a prophet. Every photograph is either in the public domain or used under an open licence that permits its use here, and each is credited with its author, licence and source on the Copyright and DMCA page.</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"corrections"} -->
 <h2 class="wp-block-heading" id="corrections">Corrections</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>We correct factual errors as soon as we confirm them and note significant corrections at the end of the article. To report an error, use the <a href="/about/contact/">Contact</a> page.</p>
+<p>We correct factual errors as soon as we confirm them and note significant corrections at the end of the article. To report an error, use the <a href="/about/contact/">Contact us</a> page, giving the page address and the passage concerned.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"editorial-responsibility"} -->
@@ -1109,12 +1349,13 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Editorial decisions rest with the editors of Abrahamic Religions. Suggestions from readers are welcome and are weighed on their merits.</p>
+<p>Editorial decisions rest with the editors of Abrahamic Religions. No religious body, sponsor or advertiser has a say in what is published. Suggestions from readers are welcome and are weighed on their merits.</p>
 <!-- /wp:paragraph -->
+
 ABR_SEED,
 		),
 		array(
-			'key' => 'page:contact', 'type' => 'page', 'slug' => 'contact', 'title' => 'Contact', 'parent' => 'page:about',
+			'key' => 'page:contact', 'type' => 'page', 'slug' => 'contact', 'title' => 'Contact us', 'parent' => 'page:about',
 			'excerpt' => 'How to reach the editors of Abrahamic Religions with questions, corrections and suggestions.', 'description' => 'Send questions, corrections and suggestions to the Abrahamic Religions editors. Find out how to reach us.', 'menu_order' => 14, 'special' => '', 'since' => 1,
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
@@ -1130,95 +1371,15 @@ ABR_SEED,
 <!-- /wp:shortcode -->
 
 <!-- wp:paragraph -->
-<p>When reporting an error, please include the page address and the passage concerned. We read every message, although we cannot answer questions seeking personal religious rulings or advice.</p>
+<p>We read every message. We cannot answer requests for personal religious rulings or advice, which are best taken to a scholar or minister of your own tradition.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"anchor":"newsletter"} -->
-<h2 class="wp-block-heading" id="newsletter">Newsletter</h2>
+<!-- wp:heading {"anchor":"reporting-an-error"} -->
+<h2 class="wp-block-heading" id="reporting-an-error">Reporting an error</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>To receive new articles and explainers, use the sign-up form at the foot of the <a href="/#newsletter">home page</a>.</p>
-<!-- /wp:paragraph -->
-ABR_SEED,
-		),
-		array(
-			'key' => 'page:privacy-policy', 'type' => 'page', 'slug' => 'privacy-policy', 'title' => 'Privacy policy', 'parent' => '',
-			'excerpt' => 'How Abrahamic Religions handles information about visitors.', 'description' => 'What Abrahamic Religions collects, which cookies it sets and how to request your data. Read our privacy policy.', 'menu_order' => 15, 'special' => 'privacy', 'since' => 1,
-			'content' => <<<'ABR_SEED'
-<!-- wp:paragraph -->
-<p>Abrahamic Religions collects a limited amount of information about visitors, explained below. Last revised in 2026.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"anchor":"information-we-collect"} -->
-<h2 class="wp-block-heading" id="information-we-collect">Information we collect</h2>
-<!-- /wp:heading -->
-
-<!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
-<li><strong>Server logs.</strong> Like most websites, our host records technical data such as IP addresses, browser type, referring pages and the time of each request, for security and maintenance. This data is not linked to anything that identifies you personally.</li>
-<!-- /wp:list-item --><!-- wp:list-item -->
-<li><strong>Cookies.</strong> WordPress may set cookies for visitors who sign in or leave a comment. The site sets no advertising cookies and carries no advertising network.</li>
-<!-- /wp:list-item --><!-- wp:list-item -->
-<li><strong>Analytics.</strong> Where analytics are enabled, visits are measured in aggregate with Google Analytics, which sets its own cookies under its own terms. Your browser settings can block them.</li>
-<!-- /wp:list-item --><!-- wp:list-item -->
-<li><strong>Comments.</strong> If comments are open and you leave one, we store your name, email address and comment.</li>
-<!-- /wp:list-item --><!-- wp:list-item -->
-<li><strong>Messages.</strong> If you write to us, we keep your message and address so that we can reply.</li>
-<!-- /wp:list-item --><!-- wp:list-item -->
-<li><strong>Newsletter.</strong> If you subscribe, your email address is handled by our mailing service under its own privacy terms.</li>
-<!-- /wp:list-item --><!-- wp:list-item -->
-<li><strong>Donations.</strong> Payments are handled by the payment provider named on the <a href="/donate/">Donate</a> page. We receive confirmation of a gift and never see your card or account details.</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
-
-<!-- wp:heading {"anchor":"embedded-content"} -->
-<h2 class="wp-block-heading" id="embedded-content">Embedded content</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>Pages may include content from other websites, such as videos. Those sites may collect data about you as if you had visited them directly.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"anchor":"your-rights"} -->
-<h2 class="wp-block-heading" id="your-rights">Your rights</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>You may ask us to export or erase personal data we hold about you. Use the <a href="/about/contact/">Contact</a> page to make a request, and we will respond within a reasonable period.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"anchor":"changes"} -->
-<h2 class="wp-block-heading" id="changes">Changes</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>Any change to how visitor information is handled will be reflected in a later effective date above.</p>
-<!-- /wp:paragraph -->
-ABR_SEED,
-		),
-		array(
-			'key' => 'page:terms', 'type' => 'page', 'slug' => 'terms', 'title' => 'Terms & conditions', 'parent' => '',
-			'excerpt' => 'The terms and conditions that apply to the use of the Abrahamic Religions website.', 'description' => 'The terms and conditions for using Abrahamic Religions: accuracy, copyright and external links. Read them here.', 'menu_order' => 16, 'special' => '', 'since' => 1,
-			'content' => <<<'ABR_SEED'
-<!-- wp:paragraph -->
-<p>Use of Abrahamic Religions is subject to the following terms and conditions.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"anchor":"educational-purpose"} -->
-<h2 class="wp-block-heading" id="educational-purpose">Educational purpose</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>The content is provided for general education. It does not constitute religious, legal or professional advice.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"anchor":"accuracy"} -->
-<h2 class="wp-block-heading" id="accuracy">Accuracy</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>We work to keep the content accurate and up to date, but we make no warranty that it is complete or free of error. See our <a href="/about/editorial-policy/">Editorial policy</a>.</p>
+<p>Please include the address of the page, the passage concerned and, where you can, the source that shows the correction. Confirmed errors are corrected promptly, as our <a href="/about/editorial-policy/">Editorial policy</a> describes.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"copyright"} -->
@@ -1226,15 +1387,81 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Unless stated otherwise, the text belongs to Abrahamic Religions. You may quote short passages with attribution and a link to the source page. Reproducing whole articles requires permission.</p>
+<p>If you believe material on the site infringes your copyright, please follow the procedure on the <a href="/dmca/">Copyright and DMCA</a> page, which sets out what a notice must contain.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"anchor":"external-links"} -->
-<h2 class="wp-block-heading" id="external-links">External links</h2>
+<!-- wp:heading {"anchor":"newsletter"} -->
+<h2 class="wp-block-heading" id="newsletter">Newsletter</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Links to other websites are provided for convenience. We are not responsible for their content.</p>
+<p>To receive new articles and explainers, use the sign-up form at the foot of the home page.</p>
+<!-- /wp:paragraph -->
+
+ABR_SEED,
+		),
+		array(
+			'key' => 'page:privacy-policy', 'type' => 'page', 'slug' => 'privacy-policy', 'title' => 'Privacy policy', 'parent' => '',
+			'excerpt' => 'How Abrahamic Religions handles information about visitors.', 'description' => 'What Abrahamic Religions collects, which cookies it sets and how to request your data. Read our privacy policy.', 'menu_order' => 15, 'special' => 'privacy', 'since' => 1,
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Abrahamic Religions collects as little information about its readers as it can. This policy explains what is collected, why, and what choices you have. Last revised in September 2026.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-we-do-not-collect"} -->
+<h2 class="wp-block-heading" id="what-we-do-not-collect">What we do not collect</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Readers need no account, and the site asks them for no personal details. It carries no advertising and no advertising trackers, and it does not sell or share information about its readers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"information-we-collect"} -->
+<h2 class="wp-block-heading" id="information-we-collect">Information we collect</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Server logs.</strong> Like most websites, our host records technical data such as IP addresses, browser type, referring pages and the time of each request, for security and maintenance. These records are kept for a limited period and are not used to identify readers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Analytics.</strong> Where analytics are enabled, visits are measured in aggregate with Google Analytics, which sets its own cookies under its own terms. You can block them in your browser settings.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Messages.</strong> If you write to us, we keep your message and your address so that we can reply, and for no other purpose.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Newsletter.</strong> If you subscribe, your email address is handled by our mailing service under its own privacy terms, and you can unsubscribe at any time from any newsletter you receive.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Donations.</strong> Gifts are handled by the payment provider named on the Donate page, under its own privacy terms. We receive confirmation of a gift and never see your card or account details.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"stored-on-your-device"} -->
+<h2 class="wp-block-heading" id="stored-on-your-device">Stored on your device</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Your choice of light or dark reading mode is remembered in your own browser’ storage, so that the site opens in the mode you chose. It is never sent to us, and clearing your browser data removes it. WordPress sets cookies only for people who sign in to manage the site.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"fonts-and-images"} -->
+<h2 class="wp-block-heading" id="fonts-and-images">Fonts and images</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The typefaces and photographs used on the site are served from our own server, so reading an article does not send your address to a font service or image host.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"your-rights"} -->
+<h2 class="wp-block-heading" id="your-rights">Your rights</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You may ask us what personal data we hold about you, and ask us to correct or erase it. Use the <a href="/about/contact/">Contact us</a> page to make a request, and we will respond within a reasonable period.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"changes"} -->
@@ -1242,8 +1469,91 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>We may revise these terms and conditions at any time. Continued use of the site means acceptance of the current version.</p>
+<p>Any change to how reader information is handled will appear here with a new revision date.</p>
 <!-- /wp:paragraph -->
+
+ABR_SEED,
+		),
+		array(
+			'key' => 'page:terms', 'type' => 'page', 'slug' => 'terms', 'title' => 'Terms of use', 'parent' => '',
+			'excerpt' => 'The terms of use that apply to the Abrahamic Religions website.', 'description' => 'The terms of use for Abrahamic Religions: accuracy, copyright, quoting and acceptable use. Read them here.', 'menu_order' => 16, 'special' => '', 'since' => 1,
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>By using Abrahamic Religions you agree to these terms of use.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"educational-purpose"} -->
+<h2 class="wp-block-heading" id="educational-purpose">Educational purpose</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The content is provided for general education. It is not religious, legal or professional advice, and it should not be relied on as a substitute for such advice.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"accuracy"} -->
+<h2 class="wp-block-heading" id="accuracy">Accuracy</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We work to keep the content accurate and up to date, as described in our <a href="/about/editorial-policy/">Editorial policy</a>, but we make no warranty that it is complete or free of error. Where you find an error, we would be grateful to hear of it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"our-content"} -->
+<h2 class="wp-block-heading" id="our-content">Our content</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Unless stated otherwise, the text, diagrams and design of the site belong to Abrahamic Religions. You may quote short passages for teaching, study, criticism or review, provided you name Abrahamic Religions as the source and link to the page quoted. Reproducing whole articles, or substantial parts of them, requires written permission.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"material-from-others"} -->
+<h2 class="wp-block-heading" id="material-from-others">Material from others</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Scripture translations belong to their publishers and are quoted in short passages with attribution. Photographs belong to their authors and are used under the licences listed on the <a href="/dmca/">Copyright and DMCA</a> page; if you reuse one, you must follow its own licence and credit its author. Nothing in these terms grants rights in material that belongs to others.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"acceptable-use"} -->
+<h2 class="wp-block-heading" id="acceptable-use">Acceptable use</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You may read, share and link to the site freely. You may not copy its content in bulk for republication, present its articles as your own, interfere with the working of the site, or use the contact address to send unsolicited advertising.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"links-to-other-sites"} -->
+<h2 class="wp-block-heading" id="links-to-other-sites">Links to other sites</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Links to other websites are provided for further reading. We do not control those sites and are not responsible for their content or their privacy practices.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"liability"} -->
+<h2 class="wp-block-heading" id="liability">Liability</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The site is provided as it is. To the extent the law allows, Abrahamic Religions is not liable for any loss arising from the use of the site or from reliance on its content.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"changes"} -->
+<h2 class="wp-block-heading" id="changes">Changes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We may revise these terms at any time. The version published here is the one in force, and continued use of the site means acceptance of it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"questions"} -->
+<h2 class="wp-block-heading" id="questions">Questions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Questions about these terms can be sent through the <a href="/about/contact/">Contact us</a> page. Copyright notices should follow the procedure on the <a href="/dmca/">Copyright and DMCA</a> page.</p>
+<!-- /wp:paragraph -->
+
 ABR_SEED,
 		),
 		array(
@@ -1358,10 +1668,10 @@ ABR_SEED,
 		),
 		array(
 			'key' => 'page:faq', 'type' => 'page', 'slug' => 'faq', 'title' => 'Frequently asked questions', 'parent' => 'page:knowledge-base',
-			'excerpt' => 'Short answers to common questions about Judaism, Mandaeism, Christianity, Islam and their shared heritage.', 'description' => 'Short answers to common questions about Judaism, Mandaeism, Christianity and Islam. Find your answer.', 'menu_order' => 22, 'special' => '', 'since' => 2,
+			'excerpt' => 'Short answers to common questions about Judaism, Mandaeism, Christianity, Islam and their shared heritage.', 'description' => 'Short answers about the Abrahamic religions: Judaism, Mandaeism, Christianity and Islam. Find your answer here.', 'menu_order' => 22, 'special' => '', 'since' => 2,
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>Short answers to the questions readers ask most often. Each answer links to a fuller treatment elsewhere on the site.</p>
+<p>Short answers to the questions most often asked about the Abrahamic traditions, each with a link to a fuller account.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"what-are-the-abrahamic-religions"} -->
@@ -1369,7 +1679,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The term refers to religious traditions that trace a spiritual or historical connection to Abraham: <a href="/religions/judaism/">Judaism</a>, <a href="/religions/christianity/">Christianity</a>, Islam and the far smaller Mandaeism. See <a href="/religions/">Religions</a>.</p>
+<p>The Abrahamic religions, also called the Abrahamic faiths, are the religious traditions that trace a spiritual or historical connection to Abraham: <a href="/religions/judaism/">Judaism</a>, Mandaeism, <a href="/religions/christianity/">Christianity</a> and Islam. Judaism, Christianity and Islam, the three great monotheistic religions, are by far the largest; Mandaeism is the smallest. See <a href="/religions/">Religions</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"why-are-they-called-abrahamic"} -->
@@ -1388,6 +1698,38 @@ ABR_SEED,
 <p>The phrase is modern. Until the middle of the twentieth century, Abraham was invoked in argument between the communities, each claiming to be the rightful heir of the promise made to him; the sense in which he stands for shared ground belongs to the decades after the Second World War, and spread further after 2001. The grouping is a convenience of recent scholarship and dialogue, and its boundaries are disputed. <a href="/reference/comparisons/">Comparative studies</a> sets this out.</p>
 <!-- /wp:paragraph -->
 
+<!-- wp:heading {"anchor":"what-are-the-three-abrahamic-religions"} -->
+<h2 class="wp-block-heading" id="what-are-the-three-abrahamic-religions">What are the three Abrahamic religions?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The three Abrahamic religions usually named are Judaism, Christianity and Islam, the three monotheistic faiths that look to Abraham as their forefather. Abrahamic Religions also treats Mandaeism, a small tradition of Iraq and Iran that shares the prophets before Abraham, as a fourth type of Abrahamic religion, for the reasons given below. All four are set out on the <a href="/religions/">Religions</a> page.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-is-abrahamism"} -->
+<h2 class="wp-block-heading" id="what-is-abrahamism">What is Abrahamism?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Abrahamism is an informal name, found mostly online and in some languages other than English, for the Abrahamic religions taken together, or for the belief they share: that the one God made himself known to Abraham and his descendants. Scholars prefer to speak of the Abrahamic religions or the Abrahamic traditions, and no community calls itself Abrahamist.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"is-islam-an-abrahamic-religion"} -->
+<h2 class="wp-block-heading" id="is-islam-an-abrahamic-religion">Is Islam an Abrahamic religion?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Yes, and in the most direct sense. The Qur’an calls Abraham neither a Jew nor a Christian but a <em>ḥanīf</em> (<span lang="ar" dir="rtl">حَنِيف</span>, one inclining to the truth) and a <em>muslim</em> (<span lang="ar" dir="rtl">مُسْلِم</span>, one who submits to God), and commands the Prophet to follow the religion of Abraham (Qur’an 3:67; 16:123). It records Abraham and Ishmael raising the foundations of the Kaaba in Makkah (2:127), and Muslims ask blessings on Abraham in every daily prayer. Islam understands itself as the religion of Abraham restored. See <a href="/journal/millat-ibrahim/">The path of Abraham in the Qur’an</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"which-abrahamic-religion-came-first"} -->
+<h2 class="wp-block-heading" id="which-abrahamic-religion-came-first">Which Abrahamic religion came first?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>As a continuous tradition, Judaism is the oldest: the religion of ancient Israel took shape in the first millennium BCE, and rabbinic Judaism after the destruction of the Second Temple in 70 CE. Christianity arose in the first century CE and Islam in the seventh; the origins of Mandaeism are debated, with most scholars placing them in the first centuries CE. Islam answers the question differently. It holds that the religion God has always asked of humanity is <em>islām</em> (<span lang="ar" dir="rtl">إِسْلَام</span>, submission to God), taught by every prophet from Adam and followed by Abraham, so that the first religion and the last are the same (Qur’an 3:19; 3:67). See the <a href="/reference/timeline/">Timeline</a>.</p>
+<!-- /wp:paragraph -->
+
 <!-- wp:heading {"anchor":"is-mandaeism-an-abrahamic-religion"} -->
 <h2 class="wp-block-heading" id="is-mandaeism-an-abrahamic-religion">Is Mandaeism an Abrahamic religion?</h2>
 <!-- /wp:heading -->
@@ -1401,7 +1743,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>All four affirm one God. Mandaeans call God Hayyi Rabbi, the Great Life, and set the World of Light against a World of Darkness, a dualism the other three do not share. Beyond that each describes God differently, and believers and theologians disagree about how far their understandings coincide. See <a href="/journal/how-the-abrahamic-religions-understand-monotheism/">How the Abrahamic Religions Understand Monotheism</a>.</p>
+<p>All four affirm one God. Jews, Christians and Muslims each understand themselves to worship the God of Abraham, sometimes called the Abrahamic God, and Arabic-speaking Jews and Christians, like Muslims, call God Allah. Mandaeans call God Hayyi Rabbi, the Great Life, and set the World of Light against a World of Darkness, a dualism the other three do not share. Beyond that each describes God differently, and believers and theologians disagree about how far their understandings coincide. See <a href="/journal/how-the-abrahamic-religions-understand-monotheism/">How the Abrahamic Religions Understand Monotheism</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"what-does-the-word-allah-mean"} -->
@@ -1452,12 +1794,92 @@ ABR_SEED,
 <p>The Qur'an names the Torah and the Gospel as revelations from God, counts Moses, <a href="/reference/figures/#david">David</a>, John and Jesus among the prophets, and promises reward to the Jews, the Christians and the Sabians who believe in God and the Last Day and do good. Muslims honour Mary, and a Muslim cannot deny any of the earlier prophets and remain a Muslim. <a href="/religions/islam/">Islam</a> understands the Qur'an as the final revelation, confirming what came before it and restoring the monotheism of Abraham. Under Muslim rule these communities kept their worship as protected peoples, which is how the small Mandaean community survived to the present.</p>
 <!-- /wp:paragraph -->
 
+<!-- wp:heading {"anchor":"which-is-the-largest-abrahamic-religion"} -->
+<h2 class="wp-block-heading" id="which-is-the-largest-abrahamic-religion">Which is the largest Abrahamic religion?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Christianity, the biggest religion in the world, with about 2.3 billion followers in 2020, or 28.8% of the world’s population, according to the Pew Research Center’s 2025 study of more than 2,700 censuses and surveys. Islam is second, with about 2.0 billion, or 25.6%, and it was the fastest-growing religion of the decade: the number of Muslims rose by 347 million between 2010 and 2020, more than all other religions combined. Judaism counted 14.8 million people, about 0.2%. See <a href="/journal/the-population-of-the-abrahamic-religions/">The population of the Abrahamic religions</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-percentage-of-the-world-is-abrahamic"} -->
+<h2 class="wp-block-heading" id="what-percentage-of-the-world-is-abrahamic">What percentage of the world follows an Abrahamic religion?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>More than half. On the Pew Research Center’s 2020 figures, Christians (28.8%), Muslims (25.6%) and Jews (0.2%) together make up about 54.6% of humanity, some 4.3 billion people. Mandaeans are too few to change the total. See <a href="/journal/the-population-of-the-abrahamic-religions/">The population of the Abrahamic religions</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-are-the-major-religions-of-the-world"} -->
+<h2 class="wp-block-heading" id="what-are-the-major-religions-of-the-world">What are the major religions of the world?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Pew Research Center groups the world’s population into seven categories. In 2020 they were Christians (28.8%), Muslims (25.6%), the religiously unaffiliated (24.2%), Hindus (14.9%), Buddhists (4.1%), followers of other religions (2.2%) and Jews (0.2%). Scholars often sort the religions into families: the Abrahamic religions of the Middle East; the religions of India, among them Hinduism, Buddhism, Jainism and Sikhism; and the traditions of East Asia, among them Confucianism, Taoism and Shinto. The Abrahamic family is the largest of the three.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"which-religions-began-in-the-middle-east"} -->
+<h2 class="wp-block-heading" id="which-religions-began-in-the-middle-east">Where did the Abrahamic religions originate?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>All four Abrahamic religions originated in the Middle East: Judaism started in the land of Israel, Christianity in Roman Judaea and Galilee, Islam in Makkah and Madinah in Arabia, and Mandaeism in the river country of Mesopotamia. Zoroastrianism, the ancient religion of Iran, also belongs to the region. See <a href="/reference/places/">Places</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-do-judaism-christianity-and-islam-have-in-common"} -->
+<h2 class="wp-block-heading" id="what-do-judaism-christianity-and-islam-have-in-common">What do Judaism, Christianity and Islam have in common?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>All three worship one God, look to Abraham as their forefather, honour Moses and the prophets, hold that God has spoken through revealed scripture, and expect a final judgement. All three teach prayer, charity and fasting, and a moral law drawn from revelation. Each pair also shares something the third does not: Judaism and Christianity the Hebrew Bible, Christianity and Islam the honour given to Jesus as Messiah, and Judaism and Islam an undivided God and a religious law for daily life. <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree</a> shows this in a diagram.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-are-the-main-differences-between-judaism-christianity-and-islam"} -->
+<h2 class="wp-block-heading" id="what-are-the-main-differences-between-judaism-christianity-and-islam">What are the main differences between Judaism, Christianity and Islam?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>They differ above all on God and on Jesus. Judaism and Islam hold that God is one without division; Christianity confesses one God in three persons. Judaism does not accept Jesus as the Messiah; Christianity worships him as the Son of God; Islam honours him as the Messiah and a prophet, born of a virgin, and denies that he is divine. They also differ on the last word of revelation: the Torah with its rabbinic interpretation, the New Testament, or the Qur’an. <a href="/reference/comparisons/">Comparative studies</a> compares them point by point.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-is-the-difference-between-judaism-and-christianity"} -->
+<h2 class="wp-block-heading" id="what-is-the-difference-between-judaism-and-christianity">What is the difference between Judaism and Christianity?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Christianity began as a movement within Judaism and keeps the Hebrew Bible as its Old Testament, but the two part on Jesus. Christians believe him to be the Messiah and the Son of God, whose death and resurrection opened the covenant to all nations; Jews await a Messiah still to come and do not regard any human being as divine. Judaism lives by the commandments of the Torah as the rabbis interpreted them, while most Christian churches hold that the ritual law was fulfilled in Christ.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"how-are-judaism-and-islam-similar"} -->
+<h2 class="wp-block-heading" id="how-are-judaism-and-islam-similar">How are Judaism and Islam similar?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>More closely than either is to Christianity in some respects. Both hold that God is strictly one, with no incarnation and no division; both are religions of law, with a detailed code for daily life (<em>halakhah</em> in Judaism, <em>sharīʿah</em> in Islam) covering prayer, diet and circumcision; and both forbid images in worship. Their scriptures are written in two sister Semitic languages, Hebrew and Arabic, and both trace their people to Abraham, through Isaac and Ishmael.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"are-jews-muslims"} -->
+<h2 class="wp-block-heading" id="are-jews-muslims">Are Jews Muslims?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>No. Judaism and Islam are distinct religions with their own scriptures, law and communities. The Arabic word <em>muslim</em>, however, means one who submits to God, and the Qur’an uses it in that sense of earlier believers, including Abraham and the prophets of Israel who judged by the Torah (Qur’an 3:67; 5:44).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-is-the-islamic-dilemma"} -->
+<h2 class="wp-block-heading" id="what-is-the-islamic-dilemma">What is the Islamic Dilemma?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>An argument made by Christian apologists, popularised by David Wood: that the Qur’an affirms the Torah and the Gospel, so that Islam is false whether those scriptures are reliable or corrupted. Muslim scholars answer that the Qur’an confirms earlier revelation as its guardian and criterion (Qur’an 5:48), and itself speaks of alteration in the texts of its time. See <a href="/reference/comparisons/islamic-dilemma/">What is the Islamic Dilemma?</a> and <a href="/journal/the-islamic-dilemma/">The Islamic Dilemma: the argument and the answer</a>.</p>
+<!-- /wp:paragraph -->
+
 <!-- wp:heading {"anchor":"how-can-i-suggest-a-correction"} -->
 <h2 class="wp-block-heading" id="how-can-i-suggest-a-correction">How can I suggest a correction?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Use the <a href="/about/contact/">Contact</a> page. Our <a href="/about/editorial-policy/">Editorial policy</a> explains how we handle corrections.</p>
+<p>Use the <a href="/about/contact/">Contact</a> page. The <a href="/about/editorial-policy/">Editorial policy</a> explains how corrections are handled.</p>
 <!-- /wp:paragraph -->
 ABR_SEED,
 		),
@@ -1466,7 +1888,7 @@ ABR_SEED,
 			'excerpt' => 'Browse articles on Abrahamic Religions by topic, from history and scripture to philosophy and interfaith studies.', 'description' => 'History, scripture, theology, culture, philosophy and more. Browse the Abrahamic Religions journal by topic.', 'menu_order' => 23, 'special' => '', 'since' => 2,
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>Every article in the Journal belongs to one or more topics. Choose a topic to see its articles.</p>
+<p>Articles are grouped by subject, from archaeology and history to scripture and theology. Choose a topic to see its articles.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:shortcode -->
@@ -1705,6 +2127,148 @@ ABR_SEED,
 <li>Opening of the Second Vatican Council, St Peter’s Square: Peter Geymayer, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Konzilseroeffnung_1.jpg">Wikimedia Commons</a>.</li>
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li>The Palace of Justice, Putrajaya: Wolfiewhite, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="license">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Angled_view_of_the_front_of_Palace_of_Justice,_Putrajaya.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The old town and castle of Harran: Hamdigumus, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="license">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Harran_Kalesi_2015.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Ophiuchus, from a manuscript of al-Ṣūfī’s treatise on the fixed stars: public domain, via <a href="https://commons.wikimedia.org/wiki/File:Ophiuchus_-_miniature_from_the_%22Kit%C4%81b_%E1%B9%A3uwar_al-kaw%C4%81kib_al-%E1%B9%AF%C4%81bita%22.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Planispheric astrolabe, Iran, 984 CE, Museum of Islamic Art, Doha: Ciphers, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:MIA_-_Planispheric_Astrolabe,_Iran,_984_AD.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The cenotaph of Abraham, Ibrahimi Mosque, Hebron: Fallaner, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Holy_Land_2022_(1)_P187_Hebron_Cave_of_the_Patriarchs_Ibrahimi_Mosque_Abraham_Cenotaph.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The approach to the Cave of the Patriarchs, Hebron: Daniel Ventura, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Visit_a_Cave_of_the_Patriarchs_in_Hebron_Palestine_21.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The old enclosure of the well of Zamzam, Makkah: Mardetanha, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Zamzamwill.JPG">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Karun River and the White Bridge, Ahvaz: Alireza Javaheri, <a href="https://creativecommons.org/licenses/by/3.0" rel="license">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Ahvaz_-_Karoon_%5E_White_Bridge_-_panoramio.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The green dome of the Prophet’s Mosque, Madinah: TheHadiRahim, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="license">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Wide_shot_of_the_Green_Dome_at_The_Prophet%27s_Mosque_(Al_Masjid-e-Nabawi).jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>St Peter’s Square from the dome of St Peter’s Basilica, Vatican City: Evadb, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Vatican_Saint_Peter%27s_Square.JPG">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Herodian walls of the Cave of the Patriarchs, Hebron: Djampa, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Hebron_Cave_of_the_Patriarchs.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The shore of Lake İznik: Archaeology Tur, Şahin Uysal, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Sahildeniznik.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Lefke Gate, İznik: Dosseman, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Iznik_Wall_at_Lefke_Gate_1255.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Hagia Sophia, İznik (side view): Dosseman, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Iznik_Hagia_Sophia_Mosque_8061.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Hagia Sophia, İznik (courtyard): Dosseman, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Iznik_Hagia_Sophia_Mosque_8350.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Hagia Sophia, Istanbul: Arild Vågen, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Hagia_Sophia_Mars_2013.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Citadel of Qaitbay, Alexandria: لا روسا, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Citadel_of_Qaitbay_014.JPG">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Church of St Peter, Antakya: Dosseman, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Antakya_Church_of_St._Peter_exterior_%C4%B1n_2004_01.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Hagia Sophia across the Sultanahmet fountain: Alvesgaspar, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Hagia_Sophia_Istanbul_July_2022-1.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The dome of Hagia Sophia: Ronan Reinart, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Hagia_Sophia_Interior_Panorama.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Hagia Sophia in 1852, lithograph by Louis Haghe after Gaspare Fossati: public domain, via <a href="https://commons.wikimedia.org/wiki/File:Hagia_Sophia_1852.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Pilgrims on the plain of ʿArafāt: Fadi El Binni of Al Jazeera English, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="license">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Pilgrims_must_spend_the_time_within_a_defined_area_on_the_plain_of_Arafat._-_Flickr_-_Al_Jazeera_English.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The tents of Minā: Arisdp, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Mina%27s_tents.JPG">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The night at Muzdalifah: Arisdp, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Mabit_in_Muzdalifah.JPG">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>İznik tile of the camp at ʿArafāt, Topkapı Palace: Myrabella, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Campement_mont_Arafat_ceramique_Iznik_Topkapi.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Jabal al-Nūr, Makkah: Richard Mortel, <a href="https://creativecommons.org/licenses/by/2.0" rel="license">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Jabal_al-Nur,_Mecca,_Saudi_Arabia_(2).jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The entrance to the cave of Ḥirāʾ: saudipics, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Hira_Cave.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Quba Mosque at night: Diego Delso, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Mezquita_de_Quba,_Medina,_Arabia_Saudita,_2025-05-22,_DD_16-18_HDR.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Quba Mosque in daylight: Adhi Rachdian, <a href="https://creativecommons.org/licenses/by/2.0" rel="license">CC BY 2.0</a>, via <a href="https://www.flickr.com/photos/27590559@N02/8478555875">Flickr</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Church of the Nativity, Bethlehem: Ala J Graczyk, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/6862610/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Basilica of the Annunciation, Nazareth: sunBeam, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/14756834/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Monastery of Saint Catherine, Sinai: Sokil, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/37305715/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Church of Saint John the Baptist at the baptism site, Jordan: Bob McCaffrey, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="license">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Jesus_baptism_site_-_River_Jordan_015.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Great Mosque of Makkah from above: Rushdi Fatani, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/38546878/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The umbrellas of the Prophet’s Mosque, Madinah: Rushdi Fatani, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/35241867/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>St Peter’s Basilica above the Tiber, Rome: Alejandro Aznar, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/20421988/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The White Bridge over the Karun, Ahvaz: Danial Chitnis, <a href="https://creativecommons.org/licenses/by/2.0" rel="license">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Ahvaz_White_Bridge_(454291412).jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Desert dunes at sunrise (home page banner): Stephen Leonardi, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/28638937/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A camel caravan at sunset (home page banner): mohamed aouni, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/33566027/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The caves of Qumran (home page banner): BOGDAN SIUDY, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/7161376/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An Arabic manuscript (home page banner): burcubyzt_85, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/36306963/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Lanterns in a Middle Eastern hall (home page banner): bassel zaki, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/39374938/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The columns of Jerash (home page banner): Francesco Ungaro, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/15997316/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A starlit desert sky (home page banner): Mo Eid, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/17877136/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An Amarna letter in Akkadian cuneiform, British Museum: Osama Shukir Muhammed Amin FRCP(Glasg), <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Amarna_letter._Letter_from_the_Kassite_king_Burna-Buriash_II_(in_Babylonia,_Mesopotamia)_to_the_Egyptian_Pharaoh_Amenhotep_III._From_Tell_El-Amarna,_Egypt._Circa_1350_BCE._British_Museum.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Stones inscribed with Hebrew words: Dimitry Fadeev, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/jewish-writings-on-stones-5342255/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An old manuscript in Arabic script: Adam Noor, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/old-book-with-handwriting-18491910/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Arch of Titus, Rome: Josh Withers, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/close-up-of-the-carved-detaild-on-the-arch-of-titus-in-rome-italy-26975956/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The synagogue at Capernaum: Regan Dsouza, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/ancient-ruins-of-capernaum-synagogue-39298578/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Pella, Jordan: Freedom's Falcon, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Pella_Jordan_004.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Balıklıgöl, Şanlıurfa: Ayşegül  Aytören, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/historic-middle-eastern-pool-with-stone-architecture-36122794/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The ziggurat of Ur: khezez  | خزاز, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/two-men-posing-against-the-ziggurat-of-ur-iraq-23432417/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The beehive houses of Harran: Konevi, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/traditional-beehive-houses-in-harran-turkey-34937457/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A Star of David in a synagogue window: Jonathan Fuentes, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/historic-synagogue-in-boston-with-stained-glass-35183130/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The consecration of the drabsha (Drower, 1937, plate 12): Unknown photographer, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Mandaeans_of_Iraq_12a_-_Drabsha_consecration.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Church domes with crosses: Ruslan Rozanov, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/church-towers-with-domes-12385438/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A mosque dome with a crescent: Mesut  Yalçın, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/cultural-dome-and-crescent-moon-in-aktau-30077472/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A Torah scroll and pointer: cottonbro studio, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/person-holding-black-and-white-tube-5986499/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Law books: Pixabay, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/icra-iflas-piled-book-159832/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An illuminated Arabic page: mohamed abdelghaffar, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/close-up-of-ancient-arabic-manuscript-text-29342503/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A halal butcher, Mingora: Amjad ali, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/traditional-meat-market-stall-in-pakistan-38230882/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Challah bread: cottonbro studio, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/person-holding-a-jewish-bread-6054114/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Bread, grapes and wine: KoolShooters, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/red-grapes-fruits-on-white-ceramic-plate-9750890/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Let Us Beat Swords into Plowshares, United Nations: Rodsan18, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Image-UN_Swords_into_Plowshares_Statue.JPG">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Doves over a fortress wall: Tahir Xəlfəquliyev, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/white-doves-on-ancient-stone-fortress-wall-36323016/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A dove with an olive branch: Artem Podrez, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/paper-cutouts-on-a-gray-surface-7048014/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An open Qur’an on a stand: MATAQ Darul Ulum, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/koran-on-wooden-table-10346836/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An open Bible on an altar: Wendy van Zyl, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/tilt-shift-photography-of-opened-bible-7076710/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A page of the Qur’an in warm light: Jahra Tasfia Reza, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/open-quran-with-arabic-calligraphy-in-warm-light-36188877/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A page of Codex Alexandrinus: Edward Maunde Thompson, facsimile of the Codex Alexandrinus (1879 to 1883), <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license">CC0</a>, via <a href="https://commons.wikimedia.org/wiki/File:CodexAlexandrinus_0858.jpg">Wikimedia Commons</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Readers studying a book together: cottonbro studio, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/people-in-a-library-6344233/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The rooftops of the Old City of Jerusalem: Anat Landa, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/scenic-view-of-jerusalem-s-historic-old-city-38445997/">Pexels</a>.</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
 ABR_SEED,
@@ -1922,7 +2486,7 @@ ABR_SEED,
 <!-- /wp:shortcode -->
 
 <!-- wp:paragraph -->
-<p>Mandaeism is the religion of the Mandaeans, a community of southern Iraq and south-western Iran whose rituals turn on flowing water and whose greatest teacher is John the Baptist, known to them as Yahya Yuhana and to the Qur'an as <em>Yaḥyā ibn Zakariyyā</em> (<span lang="ar" dir="rtl">يحيى بن زكريا</span>, John son of Zechariah). Perhaps sixty to seventy thousand Mandaeans remain, most of them now in diaspora. It is the smallest of the four traditions treated here, and the oldest surviving Gnostic religion in the world.</p>
+<p>Mandaeism is the religion of the Mandaeans, a community of southern Iraq and south-western Iran whose rituals turn on flowing water and whose greatest teacher is John the Baptist, known to them as Yahya Yuhana and to the Qur'an as <em>Yaḥyā ibn Zakariyyā</em> (<span lang="ar" dir="rtl">يحيى بن زكريا</span>, John son of Zechariah). Perhaps sixty to seventy thousand Mandaeans remain, most of them now in diaspora. It is the smallest of the four Abrahamic traditions, and the oldest surviving Gnostic religion in the world.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -2111,7 +2675,7 @@ ABR_SEED,
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
-<p class="abr-further">Further reading: <a href="/journal/who-was-kedar/">Kedar, the Arabs and the prophets</a> and <a href="/journal/the-king-and-the-pharaoh/">The king and the Pharaoh</a>, <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>.</p>
+<p class="abr-further">Further reading: <a href="/journal/who-was-kedar/">Kedar, the Arabs and the prophets</a> and <a href="/journal/the-king-and-the-pharaoh/">The king and the Pharaoh</a>, <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>, <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree and what the traditions share</a>, <a href="/journal/the-stations-of-the-hajj/">The stations of the Hajj</a>, <a href="/journal/what-language-did-abraham-speak/">What language did Abraham speak?</a>, <a href="/journal/where-was-abraham-from/">Where was Abraham from?</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
@@ -2409,7 +2973,7 @@ ABR_SEED,
 			'excerpt' => 'Inscriptions, excavations and the limits of the evidence for the world of the Bible and early Islam.', 'description' => 'Inscriptions, excavations and the limits of the evidence for the biblical world. See what archaeology shows.', 'categories' => array( 'archaeology', 'history' ), 'days_ago' => 35, 'since' => 1, 'parent' => '',
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>Archaeology gives historians material evidence to set beside written sources. For the world of the Abrahamic scriptures, that evidence is rich in places and silent in others.</p>
+<p>Archaeology gives historians material evidence to set beside written sources. For the world of the Abrahamic scriptures, that evidence is plentiful in places and silent in others.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"inscriptions-that-name-israel"} -->
@@ -2603,7 +3167,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Three passages carry the command directly. The first instructs the Prophet to follow the path of Abraham, "the true in faith", adding that he joined no partners with God.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The second answers those who invite others to become Jews or Christians by pointing instead to that same path.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The third repeats the instruction and describes Abraham as sound in faith and not among those who associate others with God.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
+<p>Three passages carry the command directly. The first instructs the Prophet to follow the path of Abraham, "the true in faith", adding that he joined no partners with God.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The second answers those who invite others to become Jews or Christians by pointing to that same path.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The third repeats the instruction and describes Abraham as sound in faith and not among those who associate others with God.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -2631,7 +3195,7 @@ ABR_SEED,
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
-<p class="abr-further">Further reading: <a href="/journal/how-the-abrahamic-religions-understand-monotheism/">How the Abrahamic religions understand monotheism</a> and <a href="/journal/who-was-kedar/">Kedar, the Arabs and the prophets</a>.</p>
+<p class="abr-further">Further reading: <a href="/journal/how-the-abrahamic-religions-understand-monotheism/">How the Abrahamic religions understand monotheism</a> and <a href="/journal/who-was-kedar/">Kedar, the Arabs and the prophets</a>, <a href="/journal/the-stations-of-the-hajj/">The stations of the Hajj</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -2751,7 +3315,7 @@ ABR_SEED,
 			'excerpt' => 'The prophet of the Jordan in the Gospels, in Jewish memory, in the Qur\'an and in Mandaean tradition.', 'description' => 'John the Baptist in the Gospels, Josephus, the Qur\'an and Mandaean tradition. Read how four faiths remember him.', 'categories' => array( 'religion', 'scripture' ), 'days_ago' => 4, 'since' => 26, 'parent' => '',
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>John the Baptist is the one figure whom Christianity, Islam and Mandaeism all honour as a prophet of God, and whom Jewish memory preserves through the historian Josephus. Each tradition tells his story from a different vantage. For Christians he prepares the way for Jesus; for Muslims he is Yaḥyā (<span lang="ar" dir="rtl">يحيى</span>, John), a prophet given wisdom as a child; for Mandaeans he is Yahya Yuhana, the greatest and the last of the prophets, and the teacher whose baptism they still perform.</p>
+<p>John the Baptist is the one figure whom Mandaeism, Christianity and Islam all honour as a prophet of God, and whom Jewish memory preserves through the historian Josephus. Each tradition tells his story from a different vantage. For Christians he prepares the way for Jesus; for Muslims he is Yaḥyā (<span lang="ar" dir="rtl">يحيى</span>, John), a prophet given wisdom as a child; for Mandaeans he is Yahya Yuhana, the greatest and the last of the prophets, and the teacher whose baptism they still perform.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -2995,7 +3559,7 @@ ABR_SEED,
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
-<p class="abr-further">Further reading: <a href="/journal/john-the-baptist-in-four-traditions/">John the Baptist in four traditions</a> and <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a>, <a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a> and <a href="/journal/the-amman-message-and-a-common-word/">The Amman Message and A Common Word</a>.</p>
+<p class="abr-further">Further reading: <a href="/journal/john-the-baptist-in-four-traditions/">John the Baptist in four traditions</a> and <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a>, <a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a> and <a href="/journal/the-amman-message-and-a-common-word/">The Amman Message and A Common Word</a>, <a href="/journal/the-sabians-in-classical-muslim-scholarship/">The Sabians in classical Muslim scholarship</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3141,7 +3705,7 @@ ABR_SEED,
 			'excerpt' => 'Lord and Saviour, prophet and Messiah, or a pupil of John who departed from his teaching: how three traditions see Jesus.', 'description' => 'How Christianity, Judaism, Islam and Mandaeism each understand Jesus. Read the comparison across four traditions.', 'categories' => array( 'religion', 'theology' ), 'days_ago' => 0, 'since' => 38, 'parent' => '',
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>Jesus is honoured across three of the four traditions treated here, though each gives him a different place. For Christians he is Lord and Saviour; for Muslims he is ʿĪsā (<span lang="ar" dir="rtl">عيسى</span>), a prophet and the Messiah, born of a virgin but not divine; Jewish tradition does not accept him as the Messiah it awaits. Mandaean texts remember him as a pupil of John who altered what John had taught.</p>
+<p>Jesus is honoured across three of the four Abrahamic traditions, though each gives him a different place. For Christians he is Lord and Saviour; for Muslims he is ʿĪsā (<span lang="ar" dir="rtl">عيسى</span>), a prophet and the Messiah, born of a virgin but not divine; Jewish tradition does not accept him as the Messiah it awaits. Mandaean texts remember him as a pupil of John who altered what John had taught.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"in-the-gospels"} -->
@@ -3165,7 +3729,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The Qur'an devotes a chapter to his mother and tells of his birth to Maryam, a virgin, by the command of God, without a father.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> It calls him <em>al-Masīḥ</em> (<span lang="ar" dir="rtl">المسيح</span>, the Messiah) and <em>Kalimat Allāh</em> (<span lang="ar" dir="rtl">كلمة الله</span>, a word from God), a prophet who spoke from the cradle and worked miracles by God's permission.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> It denies that God has a son, denies the crucifixion, and states that he was raised to God rather than killed: "they did not kill him, nor did they crucify him, but it was made to appear so to them."<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Classical exegetes disagree on the exact mechanism of the substitution and on whether Jesus died a natural death after being raised, but they agree that his execution as reported by the Gospels did not take place as described.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></p>
+<p>The Qur'an devotes a chapter to his mother and tells of his birth to Maryam, a virgin, by the command of God, without a father.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> It calls him <em>al-Masīḥ</em> (<span lang="ar" dir="rtl">المسيح</span>, the Messiah) and <em>Kalimat Allāh</em> (<span lang="ar" dir="rtl">كلمة الله</span>, a word from God), a prophet who spoke from the cradle and worked miracles by God's permission.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> It denies that God has a son, denies the crucifixion, and states that God raised him to Himself: "they did not kill him, nor did they crucify him, but it was made to appear so to them."<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Classical exegetes disagree on the exact mechanism of the substitution and on whether Jesus died a natural death after being raised, but they agree that his execution as reported by the Gospels did not take place as described.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"in-mandaean-tradition"} -->
@@ -3185,7 +3749,7 @@ ABR_SEED,
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
-<p class="abr-further">Further reading: <a href="/journal/john-the-baptist-in-four-traditions/">John the Baptist in four traditions</a>, <a href="/journal/mary-across-the-traditions/">Mary across the traditions</a> and <a href="/journal/who-was-abraham/">Who was Abraham?</a>.</p>
+<p class="abr-further">Further reading: <a href="/journal/john-the-baptist-in-four-traditions/">John the Baptist in four traditions</a>, <a href="/journal/mary-across-the-traditions/">Mary across the traditions</a> and <a href="/journal/who-was-abraham/">Who was Abraham?</a>, <a href="/journal/the-council-of-nicaea/">Nicaea, 325: the council, the creed and the church beneath the lake</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3254,7 +3818,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The two oldest Qur'an manuscripts used elsewhere on this site both preserve part of her chapter: the Birmingham leaves carry its closing verses, and the Sana'a palimpsest's lower text includes an early version of its opening.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> See <a href="/journal/understanding-the-bible-and-the-quran-in-historical-context/">Understanding the Bible and the Qur'an in historical context</a>.</p>
+<p>Two of the oldest known Qur'an manuscripts both preserve part of her chapter: the Birmingham leaves carry its closing verses, and the Sana'a palimpsest's lower text includes an early version of its opening.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> See <a href="/journal/understanding-the-bible-and-the-quran-in-historical-context/">Understanding the Bible and the Qur'an in historical context</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"common-ground-and-disagreement"} -->
@@ -3262,7 +3826,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Both scriptures agree that Mary conceived as a virgin, by divine action rather than a human father, and both hold her in the highest honour given to a woman in their respective traditions. They part over what that birth implies: for the New Testament it is a sign of the incarnation of God the Son, for the Qur'an a miracle comparable to the creation of Adam and no more, safeguarding the strict oneness of God. See <a href="/reference/figures/#mary">Mary</a> among the figures and <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>.</p>
+<p>Both scriptures agree that Mary conceived as a virgin, by divine action, without a human father, and both hold her in the highest honour given to a woman in their respective traditions. They part over what that birth implies: for the New Testament it is a sign of the incarnation of God the Son, for the Qur'an a miracle comparable to the creation of Adam and no more, safeguarding the strict oneness of God. See <a href="/reference/figures/#mary">Mary</a> among the figures and <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
@@ -3317,7 +3881,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The Dead Sea Scrolls, found near Qumran from 1947 onwards, include copies of nearly every book of the Hebrew Bible from the third century BCE to the first century CE. Compared with the medieval Masoretic Text codified centuries later, they show substantial agreement in most books alongside real variation in others, evidence of a text that stabilised gradually rather than all at once.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<p>The Dead Sea Scrolls, found near Qumran from 1947 onwards, include copies of nearly every book of the Hebrew Bible from the third century BCE to the first century CE. Compared with the medieval Masoretic Text codified centuries later, they show substantial agreement in most books alongside real variation in others, evidence of a text that stabilised gradually, over centuries.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"the-new-testament"} -->
@@ -3333,7 +3897,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Islamic tradition holds that the Qur'an was both memorised and written down during Muhammad's lifetime, and that the caliph ʿUthmān, within about twenty years of his death, had a single standard written text prepared and copies sent to the garrison cities, with other versions destroyed.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Two manuscripts discussed elsewhere on this site bear on the claim. The Birmingham leaves, radiocarbon-dated to within the range of Muhammad's own lifetime, match the standard text closely.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> The Sana'a palimpsest is more complicated: its later, upper layer also matches the standard text, but an earlier, erased lower layer, recovered by ultraviolet imaging, differs from it in wording and in the order of its chapters, and its script predates the reforms that later fixed the reading of the Arabic consonants.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Specialists read the lower text as a variant version in circulation before ʿUthmān's standardisation rather than as evidence against the tradition's account of a subsequent, deliberate unification of the text.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<p>Islamic tradition holds that the Qur'an was both memorised and written down during Muhammad's lifetime, and that the caliph ʿUthmān, within about twenty years of his death, had a single standard written text prepared and copies sent to the garrison cities, with other versions destroyed.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Two early manuscripts bear on the claim. The Birmingham leaves, radiocarbon-dated to within the range of Muhammad's own lifetime, match the standard text closely.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> The Sana'a palimpsest is more complicated: its later, upper layer also matches the standard text, but an earlier, erased lower layer, recovered by ultraviolet imaging, differs from it in wording and in the order of its chapters, and its script predates the reforms that later fixed the reading of the Arabic consonants.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Specialists read the lower text as a variant version in circulation before ʿUthmān's standardisation consistent with the tradition's account of a later, deliberate unification of the text.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"oral-transmission"} -->
@@ -3341,7 +3905,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Alongside the manuscripts, Islamic scholarship places heavy weight on the chain of memorisation: reciters (<em>ḥuffāẓ</em>) who learned the whole text by heart from a teacher who had done the same, a chain (<em>isnād</em>) tradition also central to the transmission of hadith. A text is called <em>mutawātir</em>, or continuously attested, when so many independent chains converge on the same reading that collusion in error is considered practically impossible.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Judaism developed a comparable safeguard for its own scripture in the Masoretes' meticulous counting of letters and words to guard against a copyist's slip.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup></p>
+<p>Alongside the manuscripts, Islamic scholarship places heavy weight on the chain of memorisation: reciters (<em>ḥuffāẓ</em>) who learned the whole text by heart from a teacher who had done the same, a chain (<em>isnād</em>) tradition also central to the transmission of hadith. A text is called <em>mutawātir</em>, or continuously attested, when so many independent chains converge on the same reading that collusion in error is considered practically impossible.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Judaism developed a comparable safeguard for its own scripture in the Masoretes' exact counting of letters and words to guard against a copyist's slip.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"what-the-comparison-shows"} -->
@@ -3349,7 +3913,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Each tradition met the problem of transmission with the tools available to it: Judaism through Masoretic precision, Christianity through the sheer number of surviving copies subjected to critical comparison, and Islam through a written text stabilised early and reinforced by memorisation. None of the three claims an autograph, the author's own original copy, has survived; each instead offers a documented case for how confidently its later text can be traced back toward its origin. See <a href="/journal/understanding-the-bible-and-the-quran-in-historical-context/">Understanding the Bible and the Qur'an in historical context</a>.</p>
+<p>Each tradition met the problem of transmission with the tools available to it: Judaism through Masoretic precision, Christianity through the sheer number of surviving copies subjected to critical comparison, and Islam through a written text stabilised early and reinforced by memorisation. None of the three claims an autograph, the author's own original copy, has survived; each offers a documented case for how confidently its later text can be traced back toward its origin. See <a href="/journal/understanding-the-bible-and-the-quran-in-historical-context/">Understanding the Bible and the Qur'an in historical context</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
@@ -3402,7 +3966,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Abū Ḥāmid al-Ghazālī (d. 1111), a jurist and theologian trained in the Ashʿarī school, wrote The Incoherence of the Philosophers to show that the Aristotelian metaphysics of Ibn Sīnā (Avicenna) and al-Fārābī could not deliver the certainty its practitioners claimed.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> He first set out their positions fairly, in a companion work, before attacking them on twenty points, three of which he judged to amount to unbelief: the philosophers' denial of bodily resurrection, their claim that God knows only universals and not particulars, and their doctrine of the world's eternity.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> His argument rested on occasionalism, the view that no created cause necessarily produces its effect; fire does not burn cotton by its own nature, but only because God customarily wills it so, and God could will otherwise.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
+<p>Abū Ḥāmid al-Ghazālī (d. 1111), a jurist and theologian trained in the Ashʿarī school, wrote The Incoherence of the Philosophers to show that the Aristotelian metaphysics of Ibn Sīnā (Avicenna) and al-Fārābī could not deliver the certainty its practitioners claimed.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> He first set out their positions fairly, in a companion work, before attacking them on twenty points, three of which he judged to amount to unbelief: the philosophers' denial of bodily resurrection, their claim that God knows only universals and not particulars, and their doctrine of the world's eternity.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> His argument rested on occasionalism, the view that no created cause necessarily produces its effect; fire burns cotton only because God customarily wills it so, and God could will otherwise.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"ibn-rushds-reply"} -->
@@ -3410,7 +3974,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Ibn Rushd (Averroes, d. 1198), a judge and physician of Córdoba and the most influential commentator on Aristotle in either the Islamic or the Latin world, replied decades later with The Incoherence of the Incoherence, defending the philosophers point by point and arguing that al-Ghazālī had misunderstood or misrepresented their positions.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> In a separate work, The Decisive Treatise, he argued that philosophy and revealed law could not truly conflict, since both were paths to the same truth, and that apparent conflicts called for allegorical interpretation of scripture rather than the abandonment of demonstrative reasoning.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<p>Ibn Rushd (Averroes, d. 1198), a judge and physician of Córdoba and the most influential commentator on Aristotle in either the Islamic or the Latin world, replied decades later with The Incoherence of the Incoherence, defending the philosophers point by point and arguing that al-Ghazālī had misunderstood or misrepresented their positions.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> In a separate work, The Decisive Treatise, he argued that philosophy and revealed law could not truly conflict, since both were paths to the same truth, and that apparent conflicts called for allegorical interpretation of scripture, with demonstrative reasoning left intact.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"who-prevailed-where"} -->
@@ -3418,7 +3982,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>In the Islamic world al-Ghazālī's side of the argument proved the more lasting: Ashʿarī theology and Sufi devotion remained dominant, and the school of philosophy Ibn Rushd defended found few successors after him among Muslim scholars.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> His influence travelled instead to Latin Europe, where his commentaries on Aristotle, translated into Latin, earned him the title "the Commentator" and shaped scholastic philosophy for centuries, Thomas Aquinas among those who engaged closely with his work.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> See <a href="/journal/faith-and-reason-in-medieval-thought/">Faith and reason in medieval Jewish, Christian and Muslim thought</a>.</p>
+<p>In the Islamic world al-Ghazālī's side of the argument proved the more lasting: Ashʿarī theology and Sufi devotion remained dominant, and the school of philosophy Ibn Rushd defended found few successors after him among Muslim scholars.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> His influence travelled to Latin Europe, where his commentaries on Aristotle, translated into Latin, earned him the title "the Commentator" and shaped scholastic philosophy for centuries, Thomas Aquinas among those who engaged closely with his work.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> See <a href="/journal/faith-and-reason-in-medieval-thought/">Faith and reason in medieval Jewish, Christian and Muslim thought</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
@@ -3469,7 +4033,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>In November 2004, King Abdullah II of Jordan issued a statement seeking to define what Islam is and is not. In July 2005 an international gathering of two hundred Muslim scholars from fifty countries, meeting in Amman, ratified three points: a definition of a Muslim recognising the validity of the recognised schools of Islamic law and theology, a prohibition on declaring any adherent of those schools an apostate, and conditions restricting who may issue a binding legal opinion.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Over the following year the three points were adopted by the Organisation of the Islamic Conference and by the International Islamic Fiqh Academy of Jeddah, and more than five hundred scholars worldwide, including the Shaykh al-Azhar, endorsed the document.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> It is a statement of internal Muslim consensus rather than an interfaith one, but its scale is itself a form of authority: agreement of this breadth across the Muslim world’s major schools is without precedent in modern Islamic history.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
+<p>In November 2004, King Abdullah II of Jordan issued a statement seeking to define what Islam is and is not. In July 2005 an international gathering of two hundred Muslim scholars from fifty countries, meeting in Amman, ratified three points: a definition of a Muslim recognising the validity of the recognised schools of Islamic law and theology, a prohibition on declaring any adherent of those schools an apostate, and conditions restricting who may issue a binding legal opinion.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Over the following year the three points were adopted by the Organisation of the Islamic Conference and by the International Islamic Fiqh Academy of Jeddah, and more than five hundred scholars worldwide, including the Shaykh al-Azhar, endorsed the document.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> It is a statement of internal Muslim consensus, and its scale is itself a form of authority: agreement of this breadth across the Muslim world’s major schools is without precedent in modern Islamic history.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"a-common-word"} -->
@@ -3485,11 +4049,11 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Neither document erases real theological disagreement; A Common Word deliberately narrows its claim to two shared commandments rather than a wider doctrinal agreement, and the Amman Message addresses Muslims about Muslims. Their significance lies in scale and in source: statements of this kind, signed by ruling religious authorities across the Muslim world's major branches, carry a weight that individual commentary cannot. See <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a>.</p>
+<p>Both documents leave real theological disagreement in place: A Common Word deliberately narrows its claim to two shared commandments, and the Amman Message addresses Muslims about Muslims. Their significance lies in scale and in source: statements of this kind, signed by ruling religious authorities across the Muslim world's major branches, carry a weight that individual commentary cannot. See <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
-<p class="abr-further">Further reading: <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a> and <a href="/journal/the-sabians-of-the-quran/">The Sabians of the Qur’an</a>, <a href="/journal/apostasy-in-the-abrahamic-traditions/">Apostasy in the Abrahamic traditions</a>.</p>
+<p class="abr-further">Further reading: <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a> and <a href="/journal/the-sabians-of-the-quran/">The Sabians of the Qur’an</a>, <a href="/journal/apostasy-in-the-abrahamic-traditions/">Apostasy in the Abrahamic traditions</a>, <a href="/journal/war-and-peace-in-the-abrahamic-traditions/">War and peace in the Abrahamic traditions</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3522,7 +4086,7 @@ ABR_SEED,
 			'excerpt' => 'A synagogue storeroom in Cairo yielded 400,000 medieval fragments and reshaped the study of Jewish history.', 'description' => 'The Cairo Genizah: Solomon Schechter\'s 1896 discovery and what its 400,000 fragments reveal. Read the story.', 'categories' => array( 'archaeology' ), 'days_ago' => 0, 'since' => 38, 'parent' => '',
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>The Cairo Genizah is not a single discovery so much as a discipline's refounding: a single storeroom that transformed how scholars study medieval Jewish life, and, along the way, produced one more piece of physical evidence for how a scripture is preserved.</p>
+<p>The Cairo Genizah refounded a discipline. A single storeroom transformed how scholars study medieval Jewish life, and along the way produced one more piece of physical evidence for how a scripture is preserved.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3534,7 +4098,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>A <em>genizah</em> (<span lang="he" dir="rtl">גניזה</span>, hiding place) is a storeroom where worn or damaged texts bearing the name of God are set aside rather than destroyed, since Jewish law forbids their disposal. The Ben Ezra Synagogue in Fustat, Old Cairo, kept one for close to a thousand years, from the sixth century CE into the nineteenth.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<p>A <em>genizah</em> (<span lang="he" dir="rtl">גניזה</span>, hiding place) is a storeroom where worn or damaged texts bearing the name of God are set aside, since Jewish law forbids their destruction. The Ben Ezra Synagogue in Fustat, Old Cairo, kept one for close to a thousand years, from the sixth century CE into the nineteenth.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"the-discovery"} -->
@@ -3550,7 +4114,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Most of the material is mundane: letters, contracts, court records and shopping lists, written in Hebrew script across Hebrew, Judaeo-Arabic and Aramaic. It is precisely this ordinariness that makes the collection valuable, since it documents everyday medieval Jewish, and often Muslim and Christian, life in a way literary sources never do.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Among the fragments are also biblical manuscripts and a Hebrew text of Ben Sira (Ecclesiasticus), previously known only in Greek translation, whose identification by Schechter first alerted him to the Genizah's significance.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<p>Most of the material is mundane: letters, contracts, court records and shopping lists, written in Hebrew script across Hebrew, Judaeo-Arabic and Aramaic. Its worth lies in that ordinariness: it documents everyday medieval Jewish, and often Muslim and Christian, life in a way literary sources never do.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Among the fragments are also biblical manuscripts and a Hebrew text of Ben Sira (Ecclesiasticus), previously known only in Greek translation, whose identification by Schechter first alerted him to the Genizah's significance.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"why-it-matters-here"} -->
@@ -3558,7 +4122,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The Genizah's biblical fragments sit alongside the Dead Sea Scrolls and the Aleppo and Leningrad Codices as part of the manuscript evidence for how the Hebrew Bible reached its present form, discussed further on the preservation and transmission article. Its far larger documentary record also preserves direct evidence of Jewish life under early Muslim rule in Egypt, the everyday counterpart to the more formal recognitions discussed on the Timeline. See <a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a> and <a href="/reference/sacred-texts/tanakh/">The Tanakh</a>.</p>
+<p>The Genizah's biblical fragments sit alongside the Dead Sea Scrolls and the Aleppo and Leningrad Codices as part of the manuscript evidence for how the Hebrew Bible reached its present form. Its far larger documentary record also preserves direct evidence of Jewish life under early Muslim rule in Egypt, the everyday counterpart to the formal protected status Jews held under Muslim rulers. See <a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a> and <a href="/reference/sacred-texts/tanakh/">The Tanakh</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
@@ -3613,15 +4177,15 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The objection assumes the Book of Esther gives a historically dependable account of a real official named Haman. That assumption is not shared by the scholars who study Esther closely. Jon Levenson, of Harvard Divinity School, writes that "the historical problems with Esther are so massive as to persuade anyone... to doubt the veracity of the narrative."<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Michael Fox, a specialist in Hebrew and Egyptian literature at the University of Wisconsin, catalogues the book’s implausibilities and concludes it gives "the impression of a writer recalling a vaguely remembered past."<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Adele Berlin, an editor of the Jewish Study Bible, notes that a succession of twentieth-century commentators, writing between 1908 and 1997, each independently concluded the book is not historical.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> No source outside the Bible attests to a Haman, a Mordecai or a Jewish queen at the Persian court, and the wife of the historical Xerxes is known by a different name, Amestris.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> Whatever the Qur’an’s Haman is, he cannot straightforwardly be measured against a firmly established biblical figure, because Esther’s own Haman is not one.</p>
+<p>The objection assumes the Book of Esther gives a historically dependable account of a real official named Haman. That assumption is not shared by the scholars who study Esther closely. Jon Levenson, of Harvard Divinity School, writes that "the historical problems with Esther are so massive as to persuade anyone... to doubt the veracity of the narrative."<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Michael Fox, a specialist in Hebrew and Egyptian literature at the University of Wisconsin, catalogues the book’s implausibilities and concludes it gives "the impression of a writer recalling a vaguely remembered past."<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Adele Berlin, an editor of the Jewish Study Bible, notes that a succession of twentieth-century commentators, writing between 1908 and 1997, each independently concluded the book is not historical.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> No source outside the Bible attests to a Haman, a Mordecai or a Jewish queen at the Persian court, and the wife of the historical Xerxes is known by a different name, Amestris.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> Whatever the Qur’an’s Haman is, he cannot be measured against a firmly established biblical figure, because Esther’s own Haman is not one.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"anchor":"haman-as-a-title-not-a-name"} -->
-<h2 class="wp-block-heading" id="haman-as-a-title-not-a-name">Haman as a title, not a name</h2>
+<!-- wp:heading {"anchor":"haman-as-an-egyptian-title"} -->
+<h2 class="wp-block-heading" id="haman-as-an-egyptian-title">Haman as an Egyptian title</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>A different line of scholarship, running from Sher Mohammad Syed in 1980 through Abdurrahman Badawi and Muhammad Asad, has proposed that Haman in the Qur’an is not a personal name at all but an Arabized form of an Egyptian title.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> The Qur’an’s own usage offers a precedent: it calls Joseph’s ruler "the king" but calls Moses’ ruler "Pharaoh," a title derived from the Egyptian per-aa, "the great house," which came to denote the king himself only in the New Kingdom.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup> The proposal is that Haman works the same way, echoing imn or amana, the Egyptian god Amun, whose name formed part of several priestly and administrative titles, from the ordinary wab-priest up to the ḥm-nṯr-tpy, the High Priest of Amun, and, in at least one inscription, an architect’s title as well.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup> On this reading, the Qur’an’s Haman held the office of High Priest of Amun, a position that combined religious authority with charge of major construction, rather than being a specific individual’s given name.</p>
+<p>A different line of scholarship, running from Sher Mohammad Syed in 1980 through Abdurrahman Badawi and Muhammad Asad, has proposed that Haman in the Qur’an is an Arabized form of an Egyptian title.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> The Qur’an’s own usage offers a precedent: it calls Joseph’s ruler "the king" but calls Moses’ ruler "Pharaoh," a title derived from the Egyptian per-aa, "the great house," which came to denote the king himself only in the New Kingdom.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup> The proposal is that Haman works the same way, echoing imn or amana, the Egyptian god Amun, whose name formed part of several priestly and administrative titles, from the ordinary wab-priest up to the ḥm-nṯr-tpy, the High Priest of Amun, and, in at least one inscription, an architect’s title as well.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup> On this reading, the Qur’an’s Haman held the office of High Priest of Amun, a position that combined religious authority with charge of major construction.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"a-candidate-bakenkhons"} -->
@@ -3637,7 +4201,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Not every proposed link has held up. An earlier attempt connected Haman to an inscription reading ḥmn-ḥ on a door jamb naming an overseer of stonemasons; on review by the Egyptologist Jürgen Osing of the Freie Universität Berlin, the final ḥ proved to be part of the name rather than a separate word, and the office, that of a local overseer, sat too low in rank to fit the Qur’an’s Haman.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> The identification was withdrawn once the correction was made, which is worth stating plainly: a proposal built on inscriptional evidence has to give way when the inscription is read more carefully.</p>
+<p>Not every proposed link has held up. An earlier attempt connected Haman to an inscription reading ḥmn-ḥ on a door jamb naming an overseer of stonemasons; on review by the Egyptologist Jürgen Osing of the Freie Universität Berlin, the final ḥ proved to belong to the name itself, and the office, that of a local overseer, sat too low in rank to fit the Qur’an’s Haman.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> The identification was withdrawn once the correction was made, which is worth stating plainly: a proposal built on inscriptional evidence has to give way when the inscription is read more carefully.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"where-the-question-stands"} -->
@@ -3645,7 +4209,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The title theory is a minority position. Most specialists in Qur’anic studies, including Adam Silverstein in the most detailed modern treatment of the question, continue to hold that the Qur’an’s Haman descends literarily from the Book of Esther, by way of later commentary and legend rather than the Qur’anic text read alone.<sup class="abr-fn"><a href="#note-15" id="ref-15">15</a></sup> What the argument set out above establishes is narrower: the case against the Qur’an cannot rest on treating Esther’s Haman as settled history, since mainstream biblical scholarship does not treat him that way, and an Egyptian derivation of the name remains a live, evidenced alternative, tied to a specific office and a specific candidate, rather than a claim asserted without support. See <a href="/journal/the-king-and-the-pharaoh/">The king and the Pharaoh</a>.</p>
+<p>The title theory is a minority position. Most specialists in Qur’anic studies, including Adam Silverstein in the most detailed modern treatment of the question, continue to hold that the Qur’an’s Haman descends literarily from the Book of Esther, by way of later commentary and legend.<sup class="abr-fn"><a href="#note-15" id="ref-15">15</a></sup> The narrower conclusion holds: the case against the Qur’an cannot rest on treating Esther’s Haman as settled history, since mainstream biblical scholarship does not treat him that way, and an Egyptian derivation of the name remains a live, evidenced alternative, tied to a specific office and a specific candidate. See <a href="/journal/the-king-and-the-pharaoh/">The king and the Pharaoh</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3696,7 +4260,7 @@ ABR_SEED,
 			'excerpt' => 'Pew Research projects Islam and Christianity nearing parity by 2050, and Islam becoming the largest religion by 2060 or later.', 'description' => 'Pew\'s demographic projections for Judaism, Christianity and Islam to 2050 and 2060. Read what drives the numbers.', 'categories' => array( 'religion', 'history' ), 'days_ago' => 0, 'since' => 45, 'parent' => '',
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
-<p>How many people belong to each Abrahamic tradition, and how is that changing? The most detailed answer comes from the Pew Research Center, which in 2015 published the first large-scale demographic projections of the world’s religions, built from more than 2,500 censuses, surveys and population registers rather than estimation alone.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<p>How many people belong to each Abrahamic tradition, and how is that changing? The most detailed answer comes from the Pew Research Center, which in 2015 published the first large-scale demographic projections of the world’s religions, built from more than 2,500 censuses, surveys and population registers.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3711,12 +4275,28 @@ ABR_SEED,
 <p>As of Pew’s baseline year, Christians were the largest religious group in the world, with Muslims second.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Jews were, and remain, by far the smallest group for which Pew produced a separate projection, numbering a little under 14 million worldwide, some 0.2 per cent of the global population.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Mandaeism, with a global community numbered in the tens of thousands, falls beneath the threshold at which census and survey data allow a demographer to project it separately at all; it appears in no study of this kind, Pew’s included.</p>
 <!-- /wp:paragraph -->
 
+<!-- wp:heading {"anchor":"the-latest-count-2020"} -->
+<h2 class="wp-block-heading" id="the-latest-count-2020">The latest count: 2020</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In June 2025 Pew published its first full count since that baseline, drawn from more than 2,700 censuses and surveys and covering the decade from 2010 to 2020.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Christians remained the largest religious group in the world, with about 2.3 billion people, or 28.8% of the world’s population, although their share fell by 1.8 percentage points. Muslims were the fastest-growing group of the decade: their number rose by 347 million, more than all other religions combined, to about 2.0 billion, or 25.6% of humanity.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> The number of Jews rose by nearly one million to 14.8 million, still about 0.2%. Together the three Abrahamic groups made up about 54.6% of the world’s population in 2020, more than half of humanity.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:shortcode -->
+[abr_diagram name="world-religions" caption="The world’s religious groups in 2020, as a share of the world population. Source: Pew Research Center, 2025."]
+<!-- /wp:shortcode -->
+
+<!-- wp:paragraph -->
+<p>The count also confirmed the shift in where Christians live. By 2020 sub-Saharan Africa was home to 30.7% of the world’s Christians, against 22.3% in Europe, the result of higher birth rates in Africa and of widespread disaffiliation in Western Europe.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></p>
+<!-- /wp:paragraph -->
+
 <!-- wp:heading {"anchor":"what-drives-the-difference"} -->
 <h2 class="wp-block-heading" id="what-drives-the-difference">What drives the difference</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Pew traces future change mainly to fertility and age, not conversion. Globally, Muslim women have the highest fertility of any major religious group, an average of 3.1 children, against 2.7 for Christians and 2.3 for Jews, all above the replacement level of 2.1.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Muslims also have the youngest median age of any group Pew measured, seven years below the median for non-Muslims, which means a larger share of Muslims are approaching the years in which people have children.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Both patterns concentrate in sub-Saharan Africa and parts of Asia, where Muslim and Christian populations are both growing quickly, while the regions where the religiously unaffiliated are concentrated, Europe, North America, China and Japan, have low fertility and ageing populations.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<p>Pew traces future change mainly to fertility and age, with conversion a smaller factor. Globally, Muslim women have the highest fertility of any major religious group, an average of 3.1 children, against 2.7 for Christians and 2.3 for Jews, all above the replacement level of 2.1.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> Muslims also have the youngest median age of any group Pew measured, seven years below the median for non-Muslims, which means a larger share of Muslims are approaching the years in which people have children.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> Both patterns concentrate in sub-Saharan Africa and parts of Asia, where Muslim and Christian populations are both growing quickly, while the regions where the religiously unaffiliated are concentrated, Europe, North America, China and Japan, have low fertility and ageing populations.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"the-projection-to-2050-and-2060"} -->
@@ -3724,7 +4304,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>On these trends, Pew’s central projection has Christians and Muslims reaching near parity by 2050, at 2.9 billion (31 per cent of the world’s population) and 2.8 billion (30 per cent) respectively, the first time in history the two would stand so close.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> A later Pew analysis, extending the same model to 2060, projects that Muslims would overtake Christians as the world’s largest religious group in the second half of the century, growing 70 per cent between 2015 and 2060 against 32 per cent for the world’s population as a whole.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> The Jewish population is projected to keep growing in absolute terms, to about 16.1 million by 2050, while continuing to decline slightly as a share of the world’s much faster-growing population.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup></p>
+<p>On these trends, Pew’s central projection has Christians and Muslims reaching near parity by 2050, at 2.9 billion (31 per cent of the world’s population) and 2.8 billion (30 per cent) respectively, the first time in history the two would stand so close.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup> A later Pew analysis, extending the same model to 2060, projects that Muslims would overtake Christians as the world’s largest religious group in the second half of the century, growing 70 per cent between 2015 and 2060 against 32 per cent for the world’s population as a whole.<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup> The Jewish population is projected to keep growing in absolute terms, to about 16.1 million by 2050, while continuing to decline slightly as a share of the world’s much faster-growing population.<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"where-christians-will-live"} -->
@@ -3732,11 +4312,11 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The same projections show Christianity shifting its centre of gravity. In 2010 the world’s Christians were spread almost evenly across Europe (26 per cent), Latin America and the Caribbean (25 per cent) and sub-Saharan Africa (24 per cent), while fewer than 1 per cent lived in the Middle East and North Africa, the region where the faith began. By 2050 Pew projects that 38 per cent of the world’s Christians will live in sub-Saharan Africa and only about 16 per cent in Europe, the one region where the number of Christians is expected to fall in absolute terms, from 553 million to 454 million.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup> Nigeria is projected to hold the world’s third-largest Christian population by mid-century, although Christians would then make up only 39 per cent of its people.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup></p>
+<p>The same projections show Christianity shifting its centre of gravity. In 2010 the world’s Christians were spread almost evenly across Europe (26 per cent), Latin America and the Caribbean (25 per cent) and sub-Saharan Africa (24 per cent), while fewer than 1 per cent lived in the Middle East and North Africa, the region where the faith began. By 2050 Pew projects that 38 per cent of the world’s Christians will live in sub-Saharan Africa and only about 16 per cent in Europe, the one region where the number of Christians is expected to fall in absolute terms, from 553 million to 454 million.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> Nigeria is projected to hold the world’s third-largest Christian population by mid-century, although Christians would then make up only 39 per cent of its people.<sup class="abr-fn"><a href="#note-15" id="ref-15">15</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>Conversion plays a modest part worldwide and a larger one in the West. Pew projects net losses to Christianity through religious switching in North America, Europe and Latin America, most of it toward no religious affiliation: without switching, Christians would make up about 75 per cent of North America’s population in 2050, against 66 per cent once switching is counted. In sub-Saharan Africa, where the number of Christians is expected to more than double, their share of the population is still projected to slip from 63 to 59 per cent, because the region’s Muslim population is growing faster still.<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup></p>
+<p>Conversion plays a modest part worldwide and a larger one in the West. Pew projects net losses to Christianity through religious switching in North America, Europe and Latin America, most of it toward no religious affiliation: without switching, Christians would make up about 75 per cent of North America’s population in 2050, against 66 per cent once switching is counted. In sub-Saharan Africa, where the number of Christians is expected to more than double, their share of the population is still projected to slip from 63 to 59 per cent, because the region’s Muslim population is growing faster still.<sup class="abr-fn"><a href="#note-16" id="ref-16">16</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3748,15 +4328,15 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Pew’s researchers also asked historians when Christians and Muslims were last so close in number. Most hold that Christians have always outnumbered Muslims worldwide since Islam’s rise in the seventh century, given Christianity’s six-century head start. A minority view, associated with the Oxford demographer David Coleman and the Columbia historian Richard Bulliet, holds that Muslims may briefly have outnumbered Christians sometime between 1000 and 1600 CE, as Muslim populations expanded while plague, above all the Black Death, cut deeply into Europe’s Christian population. Pew is careful to note that estimates for this period carry wide uncertainty.<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup></p>
+<p>Pew’s researchers also asked historians when Christians and Muslims were last so close in number. Most hold that Christians have always outnumbered Muslims worldwide since Islam’s rise in the seventh century, given Christianity’s six-century head start. A minority view, associated with the Oxford demographer David Coleman and the Columbia historian Richard Bulliet, holds that Muslims may briefly have outnumbered Christians sometime between 1000 and 1600 CE, as Muslim populations expanded while plague, above all the Black Death, cut deeply into Europe’s Christian population. Pew is careful to note that estimates for this period carry wide uncertainty.<sup class="abr-fn"><a href="#note-17" id="ref-17">17</a></sup></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"anchor":"what-a-projection-is-not"} -->
-<h2 class="wp-block-heading" id="what-a-projection-is-not">What a projection is not</h2>
+<!-- wp:heading {"anchor":"the-limits-of-a-projection"} -->
+<h2 class="wp-block-heading" id="the-limits-of-a-projection">The limits of a projection</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>None of this is a prophecy. Pew’s own report says plainly that the projections describe what would follow if current fertility, mortality, migration and conversion patterns continue, and that events ranging from conflict to economic change can move demographic trends in ways no model can foresee; this is why the projections cover a bounded forty- to forty-five-year window rather than reaching further into the century.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> Read that way, the figures describe a trajectory worth understanding on its own terms, not a settled outcome. See <a href="/religions/islam/">Islam</a> and <a href="/religions/christianity/">Christianity</a>.</p>
+<p>The projections are conditional. Pew’s own report says plainly that the projections describe what would follow if current fertility, mortality, migration and conversion patterns continue, and that events ranging from conflict to economic change can move demographic trends in ways no model can foresee; this is why the projections stop at a bounded window of forty to forty-five years.<sup class="abr-fn"><a href="#note-18" id="ref-18">18</a></sup> Read that way, the figures describe a trajectory, open to revision as its assumptions change. See <a href="/religions/islam/">Islam</a> and <a href="/religions/christianity/">Christianity</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
@@ -3771,27 +4351,35 @@ ABR_SEED,
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li id="note-3">Ibid., ch. 2, "Jews." <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-4">Ibid., ch. 1, "Fertility." <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-4">Pew Research Center, “How the Global Religious Landscape Changed From 2010 to 2020,” 9 June 2025. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-5">Michael Lipka and Conrad Hackett, "Why Muslims Are the World’s Fastest-Growing Religious Group," Pew Research Center, 6 April 2017 (an update of an article first published 23 April 2015). <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-5">Pew Research Center, “Islam was the world’s fastest-growing religion from 2010 to 2020,” short read, 10 June 2025; Pew Research Center, “How the Global Religious Landscape Changed From 2010 to 2020,” 9 June 2025. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-6">Hackett et al., "The Future of World Religions," Overview. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-6">Pew Research Center, “How the Global Religious Landscape Changed From 2010 to 2020,” 9 June 2025; the combined share is the sum of Pew’s figures for Christians, Muslims and Jews. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-7">Ibid., Overview and ch. 2, "Christians" and "Muslims." <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-7">Pew Research Center, “How the Global Religious Landscape Changed From 2010 to 2020,” 9 June 2025. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-8">Lipka and Hackett, "Why Muslims Are the World’s Fastest-Growing Religious Group." <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-8">Ibid., ch. 1, "Fertility." <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-9">Hackett et al., "The Future of World Religions," ch. 2, "Jews." <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-9">Michael Lipka and Conrad Hackett, "Why Muslims Are the World’s Fastest-Growing Religious Group," Pew Research Center, 6 April 2017 (an update of an article first published 23 April 2015). <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-10">Hackett et al., "The Future of World Religions," ch. 2, "Christians," "Regional Change." <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-10">Hackett et al., "The Future of World Religions," Overview. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-11">Ibid., "Change in Countries With Largest Christian Populations." <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-11">Ibid., Overview and ch. 2, "Christians" and "Muslims." <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-12">Ibid., "Regional Change" and "Demographic Characteristics of Christians That Will Shape Their Future." <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-12">Lipka and Hackett, "Why Muslims Are the World’s Fastest-Growing Religious Group." <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-13">Ibid., Overview, note 2, citing Todd M. Johnson, Houssain Kettani, David Coleman and Richard W. Bulliet. <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-13">Hackett et al., "The Future of World Religions," ch. 2, "Jews." <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
-<li id="note-14">Ibid., Overview, "Why Do Some Religious Groups Grow Faster Than Others?" <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<li id="note-14">Hackett et al., "The Future of World Religions," ch. 2, "Christians," "Regional Change." <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-15">Ibid., "Change in Countries With Largest Christian Populations." <a href="#ref-15" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-16">Ibid., "Regional Change" and "Demographic Characteristics of Christians That Will Shape Their Future." <a href="#ref-16" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-17">Ibid., Overview, note 2, citing Todd M. Johnson, Houssain Kettani, David Coleman and Richard W. Bulliet. <a href="#ref-17" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-18">Ibid., Overview, "Why Do Some Religious Groups Grow Faster Than Others?" <a href="#ref-18" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --></ol>
 <!-- /wp:list -->
 ABR_SEED,
@@ -3826,7 +4414,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The Acts of the Apostles gives a second account of the underlying dispute, at what is usually called the Jerusalem council, and its tone is markedly more harmonious than Paul’s own letter. Goulder describes Acts’ version as inflated, turning what was probably a private meeting into something resembling a full council, though the letter Acts records afterward, asking Gentile converts to abstain from food sacrificed to idols, from blood and from sexual immorality, likely reflects the terms actually agreed.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Paul’s letters, written by a participant close to the events, and Acts, written a generation or more later by an author working to present a unified church, do not read as independent confirmations of each other so much as two different angles on the same underlying conflict, one considerably more willing than the other to let the conflict show.</p>
+<p>The Acts of the Apostles gives a second account of the underlying dispute, at what is usually called the Jerusalem council, and its tone is markedly more harmonious than Paul’s own letter. Goulder describes Acts’ version as inflated, turning what was probably a private meeting into something resembling a full council, though the letter Acts records afterward, asking Gentile converts to abstain from food sacrificed to idols, from blood and from sexual immorality, likely reflects the terms actually agreed.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Paul’s letters, written by a participant close to the events, and Acts, written a generation or more later by an author working to present a unified church, read as two angles on the same conflict, one considerably more willing than the other to let it show.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3850,7 +4438,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Read together, the evidence describes a real progression rather than a single settled position. Paul’s own letters preserve an open, personal conflict with Peter over the terms of Gentile membership in the church. Acts, writing later, softens the same conflict into a council reaching friendly agreement. A letter written in Peter’s name, later still, goes a step further and places apostolic authority explicitly behind Paul, folding his letters into scripture and warning against misreading them. The dispute did not vanish because it was resolved on the day it happened; it receded because later generations of the church wrote it into a settled peace.</p>
+<p>Read together, the evidence describes a progression. Paul’s own letters preserve an open, personal conflict with Peter over the terms of Gentile membership in the church. Acts, writing later, softens the same conflict into a council reaching friendly agreement. A letter written in Peter’s name, later still, goes a step further and places apostolic authority explicitly behind Paul, folding his letters into scripture and warning against misreading them. The dispute receded because later generations of the church wrote it into a settled peace.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
@@ -3884,7 +4472,7 @@ ABR_SEED,
 		),
 		array(
 			'key' => 'post:apostasy-in-the-abrahamic-traditions', 'photo' => array( 'name' => 'vilna-talmud', 'alt' => 'A page of the Babylonian Talmud in the Vilna edition' ), 'type' => 'post', 'slug' => 'apostasy-in-the-abrahamic-traditions', 'title' => 'Apostasy in the Abrahamic traditions',
-			'excerpt' => 'Rabbinic law, Christian empire, classical Islamic jurisprudence and modern reconsideration: how each tradition has treated those who leave.', 'description' => 'How Judaism, Christianity, Islam and Mandaeism have treated those who leave the faith. Read the comparison.', 'categories' => array( 'religion', 'history' ), 'days_ago' => 0, 'since' => 48, 'parent' => '',
+			'excerpt' => 'Rabbinic law, Christian empire, classical Islamic jurisprudence and modern reconsideration: how each tradition has treated those who leave.', 'description' => 'How Judaism, Mandaeism, Christianity and Islam have treated those who leave the faith. Read the comparison.', 'categories' => array( 'religion', 'history' ), 'days_ago' => 0, 'since' => 48, 'parent' => '',
 			'content' => <<<'ABR_SEED'
 <!-- wp:paragraph -->
 <p>Every one of the Abrahamic traditions has had to decide what becomes of a member who leaves. The answers differ sharply, and each has changed over time: from the rabbinic insistence that a Jew remains a Jew, through the Christian empire’s civil penalties and the medieval Church’s death sentence for heresy, to the classical Islamic jurists’ capital ruling and the modern Muslim scholarship that has reopened it.</p>
@@ -3903,7 +4491,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>The first Christians suffered for their faith and could not punish anyone for leaving it. Once the Roman Empire became Christian, apostasy turned into a civil offence. A law of 381 CE, preserved in the code compiled under Theodosius II, stripped Christians who had become pagans of the right to make a will; a law of 391 CE barred those who had "betrayed the holy faith" from giving testimony and from inheriting.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> In the thirteenth century Thomas Aquinas argued that heretics, who corrupt the faith, deserve not only excommunication but death at the hands of the secular authority, a judgement that shaped the practice of the Inquisition.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></p>
+<p>The first Christians suffered for their faith and could not punish anyone for leaving it. Once the Roman Empire became Christian, apostasy turned into a civil offence. A law of 381 CE, preserved in the code compiled under Theodosius II, stripped Christians who had become pagans of the right to make a will; a law of 391 CE barred those who had "betrayed the holy faith" from giving testimony and from inheriting.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> In the thirteenth century Thomas Aquinas argued that heretics, who corrupt the faith, deserve excommunication and also death at the hands of the secular authority, a judgement that shaped the practice of the Inquisition.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -3931,7 +4519,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Mandaeism does not seek converts, and belonging is a matter of birth and observance within the community. Marriage is arranged within Mandaean families, and a bride must come of a suitable Mandaean family with no taint of alien blood.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> For so small a community the practical question has been loss through marriage outside it and through emigration, not the punishment of those who leave.</p>
+<p>Mandaeism does not seek converts, and belonging is a matter of birth and observance within the community. Marriage is arranged within Mandaean families, and a bride must come of a suitable Mandaean family with no taint of alien blood.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> For so small a community the practical question has been loss through marriage outside it and through emigration.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"a-modern-case-malaysia"} -->
@@ -3955,7 +4543,7 @@ ABR_SEED,
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"abr-further"} -->
-<p class="abr-further">Further reading: <a href="/journal/the-sabians-of-the-quran/">The Sabians of the Qur’an</a> and <a href="/journal/the-amman-message-and-a-common-word/">The Amman Message and A Common Word</a>.</p>
+<p class="abr-further">Further reading: <a href="/journal/the-sabians-of-the-quran/">The Sabians of the Qur’an</a> and <a href="/journal/the-amman-message-and-a-common-word/">The Amman Message and A Common Word</a>, <a href="/journal/religious-law-in-the-abrahamic-traditions/">Religious law in the Abrahamic traditions</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
@@ -3995,6 +4583,1883 @@ ABR_SEED,
 <li id="note-15">Federal Constitution of Malaysia, Article 160; Articles 11 and 153; cf. Radzuwan Ab Rashid and Azweed Mohamad, New Media Narratives and Cultural Influence in Malaysia (Singapore: Springer, 2019), pp. 1-2. <a href="#ref-15" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li id="note-16">Lina Joy v Majlis Agama Islam Wilayah Persekutuan & Ors [2007] 3 AMR 693 (Federal Court, 30 May 2007). <a href="#ref-16" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:the-sabians-in-classical-muslim-scholarship', 'photo' => array( 'name' => 'astrolabe-984', 'alt' => 'A planispheric astrolabe made in Iran in 984 CE' ), 'type' => 'post', 'slug' => 'the-sabians-in-classical-muslim-scholarship', 'title' => 'The Sabians in classical Muslim scholarship',
+			'excerpt' => 'Three classical Muslim scholars on the Sabians, and why al-Shahrastani read Abraham\'s argument with the stars as a case against them.', 'description' => 'How Ibn al-Nadim, Sa\'id al-Andalusi and al-Shahrastani understood the Qur\'an\'s Sabians. Read the classical case.', 'categories' => array( 'history', 'religion' ), 'days_ago' => 0, 'since' => 51, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>The Qur’an names the Sabians, <em>al-Ṣābiʾūn</em> (<span lang="ar" dir="rtl">الصابئون</span>, the Sabians), three times, beside the Jews, the Christians and, once, the Magians.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Who they were has been argued over since the first commentators. Western scholarship has mostly concluded that the communities later known by the name, the star-venerating Harranians of northern Mesopotamia and the Mandaeans of southern Iraq, have little claim to it; Arabic scholarship, classical and modern, has tended to accept them.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> A 2023 thesis from the American University in Cairo by Maurice Hines takes the classical Muslim authors at their word and reads them as evidence in their own right.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"ibn-al-nadim-and-the-harranians"} -->
+<h2 class="wp-block-heading" id="ibn-al-nadim-and-the-harranians">Ibn al-Nadīm and the Harranians</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Ibn al-Nadīm, a Baghdad bookseller and copyist, completed his catalogue of the books in circulation in 377/987, at the height of the Abbasid translation movement.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> His account of the Harranians gives two pictures. In one they pray three times a day after ablution, fast, abstain from pork and keep purity rules close to those of Islam; in the other, their monthly rites to the planets resemble the mystery cults of the Greek world.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He also preserves the best-known story about them. The caliph al-Maʾmūn, passing through Harran on campaign against Byzantium, asked what kind of protected people they were and gave them until his return to change their religion. A learned man among them advised them to call themselves Sabians, a name the Qur’an already recognised.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> The story survives in Ibn al-Nadīm alone, and Hines doubts it happened as told; Harranian scholars were nonetheless calling themselves Sabians by the late ninth century.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Jurists from Harran itself later ruled that Muslims could not marry Harranian women, since the Harranians were not People of the Book. Muslim readers of the time, Hines concludes, did not take the Harranians for the Sabians of the Qur’an.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="harran-castle" alt="The old town and castle of Harran, in south-eastern Turkey" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"said-al-andalusi-and-the-first-religion"} -->
+<h2 class="wp-block-heading" id="said-al-andalusi-and-the-first-religion">Ṣāʿid al-Andalusī and the first religion</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In the eleventh century the Toledo judge Ṣāʿid al-Andalusī wrote a history of the sciences that traces them to Sabian origins, treating Sabianism as the religion of the ancient nations before its decline.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> He described the pre-Islamic Arabs as monotheists who used idols to seek nearness to the one God. Hines explains the claim by that framework: if the first religion of every nation was monotheistic, its later idols were a corruption of it.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"al-shahrastani-abraham-against-the-stars"} -->
+<h2 class="wp-block-heading" id="al-shahrastani-abraham-against-the-stars">Al-Shahrastānī: Abraham against the stars</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The fullest framework comes from al-Shahrastānī, writing in Khurasan in the twelfth century. He sets the Sabians against the <em>ḥunafāʾ</em> (<span lang="ar" dir="rtl">الحنفاء</span>, the pure monotheists). The Sabians approached the transcendent God through intermediaries: spiritual beings, the planets that house them, and the idols made to stand in for the planets when they could not be seen. The <em>ḥunafāʾ</em> held that a human prophet could stand above the angels and the stars.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Al-Shahrastānī then reads the Qur’an’s account of Abraham as a sustained argument against both forms of that worship. Abraham first refuted idol worship in words, then by demonstration, breaking the idols and leaving the largest standing. He then turned to the worshippers of the heavenly bodies, and his proof against them was that each star, the moon and the sun set and faded.<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup> Read this way, Abraham’s contemplation of the heavens in the sixth chapter of the Qur’an is a disputation with star worshippers, conducted on their own ground.<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="sufi-fixed-stars" alt="The constellation Ophiuchus in a manuscript of al-Ṣūfī{Q}s tenth-century treatise on the fixed stars" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-mandaean-answer"} -->
+<h2 class="wp-block-heading" id="a-mandaean-answer">A Mandaean answer</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Mandaeans, the one community still called Sabians in Iraq, tell the same history from the other side. Their legend makes Abraham a Mandaean priest, Bahram, who developed a sore and was circumcised. Since the Mandaean priesthood admits no maimed body, he left the community for the desert, and his later strength came from Yurba, a power of darkness.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> Al-Bīrūnī reported a version of the story about the Harranians, taken from a Christian author who wrote against them.<sup class="abr-fn"><a href="#note-15" id="ref-15">15</a></sup> E. S. Drower, who recorded the Mandaean legend, judged it a story invented to explain circumcision.<sup class="abr-fn"><a href="#note-16" id="ref-16">16</a></sup> The Mandaean legend and al-Shahrastānī’s reading of the Qur’an agree on one point: Abraham broke with a star-venerating priesthood, and those who followed him and those who stayed became two communities, the <em>ḥunafāʾ</em> and the Sabians.<sup class="abr-fn"><a href="#note-17" id="ref-17">17</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-case-for-the-classical-authors"} -->
+<h2 class="wp-block-heading" id="the-case-for-the-classical-authors">The case for the classical authors</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Hines’s central claim is that the classical scholars understood the Sabians better than their modern critics allow. Had the Harranians chosen a Qur’anic name at random, he asks, why did they settle on Sabians, when Jews, Christians and Magians were equally available? The choice suggests that the name already carried recognisable marks, above all a devotion to the stars and to the angels thought to govern them.<sup class="abr-fn"><a href="#note-18" id="ref-18">18</a></sup> He reads the classical sources as describing an ancient theosophical religion that later prophets answered in turn, and ties this to the Qur’an’s statement that mankind was once a single community to which God then sent prophets.<sup class="abr-fn"><a href="#note-19" id="ref-19">19</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The thesis describes its own claims as bold, and it draws on modern esoteric writers alongside academic sources. The prevailing academic view, represented by Chwolsohn, de Blois and van Bladel, still separates the historical Harranians and Mandaeans from the Sabians the Qur’an names.<sup class="abr-fn"><a href="#note-20" id="ref-20">20</a></sup> The classical texts Hines gathers keep their value either way: they show Muslim scholars working from the Qur’an’s own account of Abraham to understand a religion they could still observe.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/the-sabians-of-the-quran/">The Sabians of the Qur’an</a>, <a href="/journal/who-was-abraham/">Who was Abraham?</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Qur'an 2:62; 5:69; 22:17. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Maurice Hines, <em>Interpretatio Islamica and the Unraveling of the Ancient Sabian Mysteries</em> (MA thesis, American University in Cairo, 2023), p. 8. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Ibid., pp. 5, 21-22. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Ibid., pp. 26-27. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Ibid., pp. 48-50, citing Ibn al-Nadīm, <em>al-Fihrist</em>, pp. 442-448. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Ibid., pp. 50-51, citing <em>al-Fihrist</em>, pp. 445-446. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Ibid., p. 50, n. 69. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Ibid., pp. 51-52. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Ibid., p. 53. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Ibid., p. 56. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-11">Ibid., pp. 63-64, citing al-Shahrastānī, <em>al-Milal wa al-Niḥal</em>, vol. 2, pp. 291, 352-353. <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-12">Ibid., p. 64; Qur'an 6:74; 19:42; 21:63-65; 37:95-96. <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-13">Qur'an 6:75-79; Hines, op. cit., p. 77. <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-14">E. S. Drower, <em>The Mandaeans of Iraq and Iran</em> (Oxford: Clarendon Press, 1937), pp. 265-266, 268. <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-15">Ibid., pp. 268-269. <a href="#ref-15" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-16">Ibid., p. 269. <a href="#ref-16" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-17">Hines, op. cit., p. 76. <a href="#ref-17" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-18">Ibid., p. 89. <a href="#ref-18" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-19">Ibid., pp. 68-69; Qur'an 2:213. <a href="#ref-19" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-20">Ibid., pp. 5, 17-18. <a href="#ref-20" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:abrahamic-family-tree', 'photo' => array( 'name' => 'abraham-cenotaph', 'alt' => 'The cenotaph of Abraham in the Ibrahimi Mosque at the Cave of the Patriarchs, Hebron' ), 'type' => 'post', 'slug' => 'abrahamic-family-tree', 'title' => 'The Abrahamic family tree and what the traditions share',
+			'excerpt' => 'Who descends from whom, and what the traditions hold in common: the family of Abraham and the beliefs Judaism, Christianity and Islam share, in two diagrams.', 'description' => 'A family tree of Abraham\'s descendants and a diagram of what Judaism, Christianity and Islam share. See both diagrams.', 'categories' => array( 'history', 'religion' ), 'days_ago' => 0, 'since' => 54, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Two questions come up again and again about the Abrahamic religions, Judaism, Mandaeism, Christianity and Islam: how their founding figures are related, and what the traditions hold in common. The family tree below answers the first from the genealogies each tradition keeps; the diagram after it answers the second.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-family-of-abraham"} -->
+<h2 class="wp-block-heading" id="the-family-of-abraham">The family of Abraham</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Genesis traces Abraham back through Shem to Noah, and gives him two sons: Ishmael, born to Hagar, and Isaac, born to Sarah in old age.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> It names twelve sons of Ishmael, the first two being Nebaioth and Kedar, and twelve sons of Isaac’s son Jacob, the fathers of the tribes of Israel.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> From the tribe of Levi came Moses and Aaron and the priesthood; from the tribe of Judah came David. The Gospel of Matthew opens by calling Jesus the son of David and the son of Abraham, and Luke places John the Baptist in a priestly family descended from Aaron.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an keeps both sons in view. It names Ismāʿīl and Isḥāq together among the prophets, pairs Ismāʿīl with his father in raising the foundations of the Kaaba, and records Jacob’s sons pledging to worship the God of Ibrāhīm, Ismāʿīl and Isḥāq.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> The earliest biography of Muhammad traces his descent to Ismāʿīl through ʿAdnān, ancestor of the northern Arabs, by way of Ismāʿīl’s eldest son Nābit, the biblical Nebaioth.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> On this reckoning the two sons of Abraham head the two lines that carried prophecy: through Isaac to Moses, David, John and Jesus, and through Ishmael to Muhammad.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:shortcode -->
+[abr_diagram name="family-tree" caption="The family of Abraham, simplified. Dashed lines stand for many generations; the dotted line marks the Mandaeans’ honour for John the Baptist."]
+<!-- /wp:shortcode -->
+
+<!-- wp:paragraph -->
+<p>The tree also places the Mandaeans, on a line of their own beside Shem. They trace their descent from Seth through Enoch to Shem and do not count Abraham among their prophets; the dotted line joins them to John the Baptist, whom they honour as their great teacher.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> See <a href="/journal/who-was-kedar/">Kedar, the Arabs and the prophets</a> for the line of Ishmael in more detail.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="patriarchs-exterior" alt="The stepped approach to the Cave of the Patriarchs in Hebron, where tradition places the tombs of Abraham, Isaac and Jacob" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-the-traditions-share"} -->
+<h2 class="wp-block-heading" id="what-the-traditions-share">What the traditions share</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The four traditions agree on more than they differ. All four worship one God, hold that God has spoken through revealed scripture, and expect a judgement after death.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Judaism, Christianity and Islam also look to Abraham as their forefather and honour Moses and the prophets. Beyond that common ground, pairs of traditions share what the others do not. Judaism and Christianity share the Hebrew Bible as scripture. Christianity and Islam share Jesus as the Messiah, born of a virgin, who will return.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> Judaism and Islam share a God whose oneness admits no division, and a religious law that governs daily life, diet and circumcision.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> Mandaeism joins Christianity and Islam in honouring John the Baptist, and shares baptism with Christianity, though its own baptism is repeated throughout life and always in running water.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:shortcode -->
+[abr_diagram name="shared-beliefs" caption="Shared beliefs of Judaism, Mandaeism, Christianity and Islam, simplified."]
+<!-- /wp:shortcode -->
+
+<!-- wp:paragraph -->
+<p>Islam holds a region of its own with Judaism and another with Christianity, and joins Christianity and Mandaeism in the honour given to John the Baptist. The distinctive claims sit at the edges: for Judaism, Israel as the covenant people and the Talmud; for Mandaeism, repeated baptism in running water and the Ginza Rabba; for Christianity, the Trinity and the crucifixion as atonement; for Islam, Muhammad as the final prophet and the Qur’an.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="zamzam-well" alt="Pilgrims at the old enclosure of the well of Zamzam in Makkah, which Muslim tradition links to Hagar and the infant Ismāʿīl" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>See <a href="/reference/comparisons/">Comparative studies</a> for a fuller comparison.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/who-was-abraham/">Who was Abraham?</a>, <a href="/journal/millat-ibrahim/">The path of Abraham in the Qur’an</a>, <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>, <a href="/journal/the-symbols-of-the-four-traditions/">The symbols of the four traditions</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Genesis 11:10-26; 16:15; 21:2-3. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Genesis 25:13-16; 35:22-26. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Matthew 1:1; Luke 1:5. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Qur'an 2:127, 133, 136; 19:54. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Ibn Isḥāq, <em>The Life of Muhammad</em>, trans. A. Guillaume (London: Oxford University Press, 1955), pp. 3-4. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Maurice Hines, <em>Interpretatio Islamica and the Unraveling of the Ancient Sabian Mysteries</em> (MA thesis, American University in Cairo, 2023), p. 73; E. S. Drower, <em>The Mandaeans of Iraq and Iran</em> (Oxford: Clarendon Press, 1937), pp. 265-266. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Deuteronomy 6:4; Mark 12:29; Qur'an 112:1-4; for Mandaeism, Drower, op. cit., pp. 73, 95. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Qur'an 3:45; 4:157-159; 19:19-21. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Qur'an 4:171; 5:73; Deuteronomy 6:4. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Qur'an 33:40. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:the-council-of-nicaea', 'photo' => array( 'name' => 'iznik-lake-basilica', 'alt' => 'The shore of Lake İznik at ancient Nicaea, where the submerged basilica lies' ), 'type' => 'post', 'slug' => 'the-council-of-nicaea', 'title' => 'Nicaea, 325: the council, the creed and the church beneath the lake',
+			'excerpt' => 'Archaeologists at Iznik have found the earlier church beneath the lakeside basilica. What the Council of Nicaea decided there, how it ranked the great sees, and how the Qur\'an answered its creed.', 'description' => 'A lost church beneath Lake Iznik, the Council of Nicaea of 325, its creed, and the Qur\'an\'s answer. Read the full account.', 'categories' => array( 'history', 'archaeology', 'theology' ), 'days_ago' => 0, 'since' => 62, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>In July 2026 archaeologists at İznik, the ancient city of Nicaea in north-western Türkiye, reported the remains of an earlier church beneath the basilica on the shore of Lake İznik. The excavation director identifies it as the church in which the bishops of the First Council of Nicaea met in 325, the gathering that fixed the central Christian doctrine about Jesus.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Several outlets have since reported the find, from the region and abroad.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-church-beneath-the-lake"} -->
+<h2 class="wp-block-heading" id="the-church-beneath-the-lake">The church beneath the lake</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The basilica itself came to light in 2014, when an aerial photograph showed the outline of a church under the shallow water near the shore.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Excavation began in 2015 under Professor Mustafa Şahin of Bursa Uludağ University, with permission from the Ministry of Culture and Tourism. In the 2026 season the team opened a trench east of the basilica’s prothesis, the room where the sacred vessels were kept, and found its floor paving running on beyond the later walls, together with wall sections and a column base. Şahin identifies these as the Church of Saint Neophytos, destroyed in the earthquake of 368, and the basilica above it as the Church of the Holy Fathers, built after 380 in memory of the bishops of the council. Coins of the emperors Valens and Valentinian from graves before its sanctuary date the later church to about 380.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Researchers from the University of Calabria and the Magna Graecia University of Catanzaro joined the work this season.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The same trench produced a gold ring decorated with a palm tree and a sword, of a type known from the Umayyad and Abbasid periods. Şahin connects it with the Umayyad siege of Nicaea in 729, which failed after six months, though the Umayyad commander is recorded as having entered the Church of the Holy Fathers.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="iznik-walls" alt="The Lefke Gate in the Roman and Byzantine walls of İznik, ancient Nicaea" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-church-or-a-palace-hall"} -->
+<h2 class="wp-block-heading" id="a-church-or-a-palace-hall">A church or a palace hall?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Şahin rests his identification partly on Eusebius of Caesarea, a bishop present at the council, who described the meeting place as a small house of worship.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> The same Eusebius, in his account of the council’s formal session, places the assembled bishops in the central hall of the imperial palace, where Constantine entered to address them.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> The older Catholic reference literature reconciles the two by holding that the council sat both in the principal church and in the palace hall.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> The new evidence confirms that a smaller and earlier church stood beneath the Church of the Holy Fathers; whether every session of 325 met inside it is a question the written sources leave open. Şahin himself now describes the location of the Church of the Holy Fathers as settled.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"why-the-council-met"} -->
+<h2 class="wp-block-heading" id="why-the-council-met">Why the council met</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The dispute began in Alexandria. Arius, a presbyter of that city, taught that the Son of God had a beginning and was created by the Father. His bishop, Alexander, condemned him at a synod of more than a hundred bishops from Egypt and Libya in about 320, but Arius kept his church and his following.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup> Constantine, sole emperor from 324, called a general council to settle the question, chose Nicaea in Bithynia, and put the imperial post at the bishops’ disposal so that they could travel to it.<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup> The council opened on 19 June 325. Eusebius counted more than 250 bishops; the figure of 318, which became traditional, comes from Hilary of Poitiers.<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-was-decided"} -->
+<h2 class="wp-block-heading" id="what-was-decided">What was decided</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The council issued a creed. It confessed one God the Father and one Lord Jesus Christ, the Son of God, and added the words that decided the dispute: that the Son is from the substance of the Father, and “begotten not made, consubstantial with the Father.” The Greek word for consubstantial, <em>homoousios</em>, meaning of one substance, entered Christian doctrine at Nicaea. The creed closed with anathemas against anyone who said that there was once a time when the Son did not exist, that he came from nothing, or that he was of another substance than the Father.<sup class="abr-fn"><a href="#note-13" id="ref-13-2">13</a></sup> The council’s letter to the church of Alexandria reports that Arius and two Egyptian bishops who refused to sign shared his condemnation.<sup class="abr-fn"><a href="#note-13" id="ref-13-3">13</a></sup> Beyond the creed, the council settled that Easter should be kept on the same day throughout the church, and issued twenty canons on church order.<sup class="abr-fn"><a href="#note-13" id="ref-13-4">13</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="nicaea-hagia-sophia" alt="The church of Hagia Sophia in İznik, where the Second Council of Nicaea met in 787" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"nicaea-and-the-five-sees"} -->
+<h2 class="wp-block-heading" id="nicaea-and-the-five-sees">Nicaea and the five sees</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Two of those canons began the ranking of the great churches. The sixth confirmed the long-standing authority of the bishop of Alexandria over Egypt, Libya and Pentapolis, likening it to that of the bishop of Rome, and preserved the privileges of Antioch; the seventh gave special honour to the bishop of Aelia, the Roman name for Jerusalem.<sup class="abr-fn"><a href="#note-13" id="ref-13-5">13</a></sup> Constantinople, founded as the new imperial capital in 330, was placed second after Rome by the Council of Constantinople in 381 and again at Chalcedon in 451.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> The emperor Justinian gave the arrangement its classic form in his legislation in the sixth century, and the Council in Trullo in 692 ranked the five patriarchal sees as Rome, Constantinople, Alexandria, Antioch and Jerusalem, the order later called the pentarchy. Nicaea itself was never one of the five: it is the city where their ranking began.<sup class="abr-fn"><a href="#note-15" id="ref-15">15</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The pentarchy did not last long in practice. In the seventh century, within a century of Justinian, Alexandria, Antioch and Jerusalem came under Muslim rule, and the patriarch of Constantinople was left as the only effective head of Eastern Christianity.<sup class="abr-fn"><a href="#note-15" id="ref-15-2">15</a></sup> In 2025 Pope Leo XIV came to İznik for the 1,700th anniversary of the council.<sup class="abr-fn"><a href="#note-16" id="ref-16">16</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"earthquake-conquest-and-the-lake"} -->
+<h2 class="wp-block-heading" id="earthquake-conquest-and-the-lake">Earthquake, conquest and the lake</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The earthquake of 368 that destroyed the Church of Saint Neophytos was not the last to strike Nicaea. Another, in 740, brought down the Church of the Holy Fathers, and its ruins sank into the lake, where they lay forgotten for more than a thousand years.<sup class="abr-fn"><a href="#note-17" id="ref-17">17</a></sup> An earthquake in the eleventh century damaged the Hagia Sophia in which the Second Council of Nicaea had met in 787, and the church of the Dormition, the Koimesis, was destroyed in 1065.<sup class="abr-fn"><a href="#note-18" id="ref-18">18</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Conquest followed. The Seljuks took Nicaea in 1081, made it their capital and gave it the name İznik; the Byzantines recovered it in 1097. After the crusaders seized Constantinople in 1204, Nicaea became the heart of the Byzantine successor state, the Empire of Nicaea, with a palace for the patriarch, until Constantinople was retaken in 1261. In 1331 the Ottomans took the city and made it for a short time their capital. They converted its Hagia Sophia into the Orhan Mosque and built there some of the earliest Ottoman mosques, madrasas and soup kitchens, and in the sixteenth and seventeenth centuries İznik tiles decorated mosques and palaces throughout the empire. The city suffered again during the Turkish War of Independence, when the Koimesis church was badly damaged.<sup class="abr-fn"><a href="#note-19" id="ref-19">19</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The lake has since given back what the earthquake took. When the basilica was found in 2014 it lay about fifty metres offshore under two metres of water; the lake began to retreat in 2020, and by 2025 the whole building stood on dry land.<sup class="abr-fn"><a href="#note-20" id="ref-20">20</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-quranic-answer"} -->
+<h2 class="wp-block-heading" id="the-quranic-answer">The Qur’anic answer</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Three centuries after Nicaea declared the Son of one substance with the Father, the Qur’an addressed the claim at its root. In the chapter named for Mary it rejects the idea that God has <em>walad</em> (<span lang="ar" dir="rtl">وَلَد</span>, offspring) in terms of cosmic gravity:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">وَقَالُوا۟ ٱتَّخَذَ ٱلرَّحْمَـٰنُ وَلَدًا ٨٨</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">They say, “The Most Compassionate has offspring.”</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">لَّقَدْ جِئْتُمْ شَيْـًٔا إِدًّا ٨٩</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">You have certainly made an outrageous claim,</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">تَكَادُ ٱلسَّمَـٰوَٰتُ يَتَفَطَّرْنَ مِنْهُ وَتَنشَقُّ ٱلْأَرْضُ وَتَخِرُّ ٱلْجِبَالُ هَدًّا ٩٠</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">by which the heavens are about to burst, the earth to split apart, and the mountains to crumble to pieces</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">أَن دَعَوْا۟ لِلرَّحْمَـٰنِ وَلَدًا ٩١</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">in protest of attributing children to the Most Compassionate.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 19:88-91<sup class="abr-fn"><a href="#note-21" id="ref-21">21</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The history of Nicaea gives that language an earthly echo. The verses speak of the earth about to split apart and the mountains about to crumble at the claim; the ground beneath the city where the claim was first written into a creed split again and again. The earthquake of 368 destroyed the church in which the council is believed to have met, and the earthquake of 740 brought down the church raised over it in the bishops’ memory and sent its ruins beneath the lake. The Hagia Sophia in which the second council of Nicaea met in 787 became, under Orhan, a mosque, and serves as one today.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an names no city, and a historian cannot read the earthquakes of Bithynia as a verdict. A reader who sets the verses beside the history of Nicaea will still notice the correspondence: the doctrine the verses reject was defined in a city whose earth split, whose church fell and sank, and whose great church now serves the worship of the one God.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Elsewhere the Qur’an calls Jesus the Messiah, a messenger of God and His word conveyed to Mary, and tells Christians not to say “three”; its short chapter on God’s oneness states that He neither begets nor was begotten.<sup class="abr-fn"><a href="#note-22" id="ref-22">22</a></sup> The council at Nicaea and the Qur’an thus answer the same question about Jesus, and answer it in opposite ways: the one by declaring him of the same substance as God, the other by declaring that God has no offspring at all. See <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a> and <a href="/religions/christianity/">Christianity</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>, <a href="/journal/paul-and-peter-two-missions/">Paul and Peter: two missions in the early church</a>, <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree and what the traditions share</a>, <a href="/journal/the-five-great-sees/">The five great sees of the early church</a>, <a href="/journal/hagia-sophia/">Hagia Sophia: cathedral, mosque, museum and mosque again</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">“Lost Church of First Council of Nicaea emerges beneath Iznik Basilica,” <em>Türkiye Today</em>, 10 July 2026. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">“Archaeologists find possible remains of Church that hosted the First Council of Nicaea,” <em>HeritageDaily</em>, 10 July 2026; “Archaeologists unearth secret church tied to Council of Nicaea,” Fox News Digital, 10 August 2026. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">“Early Christian Church That May Have Hosted First Council of Nicaea Found in Turkey,” <em>Greek Reporter</em>, 11 August 2026. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4"><em>Türkiye Today</em>, op. cit., reporting Mustafa Şahin to Anadolu Agency. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5"><em>HeritageDaily</em>, op. cit. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6"><em>Türkiye Today</em>, op. cit. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Ibid., quoting Şahin. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Eusebius of Caesarea, <em>Life of Constantine</em> 3.10, trans. E. C. Richardson, Nicene and Post-Nicene Fathers, second series, vol. 1 (New York, 1890). <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">“First Council of Nicaea,” <em>The Catholic Encyclopedia</em>, vol. 11 (New York: Robert Appleton Company, 1911). <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Fox News Digital, op. cit., quoting Şahin to Anadolu Agency. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-11"><em>The Catholic Encyclopedia</em>, op. cit. <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-12">Eusebius, op. cit., 3.6. <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-13">Norman P. Tanner, ed., <em>Decrees of the Ecumenical Councils</em>, vol. 1 (London: Sheed &amp; Ward, 1990), First Council of Nicaea: introduction, profession of faith, canons 6-7 and the synodal letter to the Egyptians, as reproduced by Papal Encyclicals Online. <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-14">“The Pentarchy and the Moscow Patriarchate,” OrthoChristian.com, on canon 3 of Constantinople I and canon 28 of Chalcedon. <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-15">“Pentarchy,” <em>Encyclopaedia Britannica</em>. <a href="#ref-15" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-16"><em>Türkiye Today</em>, op. cit. <a href="#ref-16" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-17">“Pope Leo XIV’s visit rekindles debate: Did First Council of Nicaea meet at Sunken Basilica?,” <em>Türkiye Today</em>, 29 January 2026; UNESCO World Heritage Centre, “İznik,” Tentative List entry 5900 (submitted 2014). <a href="#ref-17" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-18">UNESCO, op. cit. <a href="#ref-18" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-19">Ibid. <a href="#ref-19" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-20">“Ancient Roman Basilica Emerges From Lake in Turkey After 700 Years Underwater,” <em>Greek Reporter</em>, 25 November 2025, quoting Mustafa Şahin. <a href="#ref-20" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-21">Qur'an 19:88-91, trans. Mustafa Khattab, <em>The Clear Quran</em>. <a href="#ref-21" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-22">Qur'an 4:171; 112:1-4. <a href="#ref-22" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:the-five-great-sees', 'photo' => array( 'name' => 'place-istanbul', 'alt' => 'Hagia Sophia in Istanbul, once the cathedral of the patriarch of Constantinople' ), 'type' => 'post', 'slug' => 'the-five-great-sees', 'title' => 'The five great sees of the early church',
+			'excerpt' => 'How Rome, Constantinople, Alexandria, Antioch and Jerusalem came to head the church of the Roman empire, and what became of the arrangement after the seventh century.', 'description' => 'Rome, Constantinople, Alexandria, Antioch and Jerusalem: how five sees came to lead the church. Read the history.', 'categories' => array( 'history', 'religion' ), 'days_ago' => 0, 'since' => 63, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>By the sixth century five cities stood at the head of the Christian church in the Roman empire: Rome, Constantinople, Alexandria, Antioch and Jerusalem. Later historians call the arrangement the pentarchy, the rule of five. It grew over three centuries, from the councils of the church and the laws of the emperors, and it ended in practice within a century of taking its final shape.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"how-the-ranking-began"} -->
+<h2 class="wp-block-heading" id="how-the-ranking-began">How the ranking began</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The first step came at the Council of Nicaea in 325. Its sixth canon confirmed the ancient authority of the bishop of Alexandria over Egypt, Libya and Pentapolis, on the ground that the bishop of Rome held a similar authority, and preserved the privileges of the church of Antioch; its seventh granted special honour to the bishop of Aelia, the Roman name for Jerusalem.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Nicaea itself was never one of the great sees. It is the place where their ranking was first written down; see <a href="/journal/the-council-of-nicaea/">Nicaea, 325</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Constantinople, the new imperial capital, entered the order later. The Council of Constantinople in 381 placed its bishop second in honour after the bishop of Rome, and the Council of Chalcedon in 451 confirmed and extended that position.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The emperor Justinian gave the five sees their classic form in his legislation, above all in his Novel 131, and the Council in Trullo in 692 ranked them as Rome, Constantinople, Alexandria, Antioch and Jerusalem.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The order rested on more than one principle, and the principles did not always agree. The great sees owed much of their standing to the political and economic weight of their cities; Constantinople ranked second because it was the capital. The bishops of Rome held instead that only churches founded by apostles could claim primacy, a view that set them against the rise of Constantinople.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-five-sees"} -->
+<h2 class="wp-block-heading" id="the-five-sees">The five sees</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Rome</strong>, the old capital, claimed the first place as the church of the apostles Peter and Paul, and its bishops argued for that primacy on apostolic grounds.<sup class="abr-fn"><a href="#note-4" id="ref-4-2">4</a></sup> St Peter’s Basilica in Vatican City stands over the traditional site of Peter’s tomb.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Constantinople</strong>, the “New Rome” on the Bosporus, was the seat of the emperor and so of the second patriarch. Its great church, Hagia Sophia, was completed under Justinian in 537 and served as the patriarch’s cathedral until the Ottoman conquest of 1453, when it became a mosque. It was a museum from 1934 and has been a mosque again since 2020.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="place-alexandria" alt="The Citadel of Qaitbay in Alexandria, built on the site of the ancient lighthouse" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Alexandria</strong> traced its church to Mark, who, as Eusebius reports the tradition, was the first sent to Egypt and first established churches in the city.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> In the early fourth century it was the city of Arius, whose teaching about the Son led to the Council of Nicaea, and of the young deacon Athanasius, who became its chief opponent.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Antioch</strong> was where the followers of Jesus were first called Christians,<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> and where Paul confronted Peter over the table fellowship of Jewish and Gentile believers; see <a href="/journal/paul-and-peter-two-missions/">Paul and Peter: two missions in the early church</a>.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="place-antioch" alt="The rock-cut Church of St Peter on the edge of Antakya, ancient Antioch" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Jerusalem</strong>, the city of the crucifixion and of the first church, held the fifth place. At Nicaea it was still a suffragan of Caesarea, and its bishop was granted honour “saving the dignity proper to the metropolitan”; only later did it take its place among the five.<sup class="abr-fn"><a href="#note-1" id="ref-1-2">1</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"after-the-seventh-century"} -->
+<h2 class="wp-block-heading" id="after-the-seventh-century">After the seventh century</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The arrangement assumed a single Christian empire, and that empire did not last in the East. In the seventh century Alexandria, Antioch and Jerusalem came under Muslim rule, and the pentarchy lost its practical force: the patriarch of Constantinople remained the only effective head of Eastern Christianity, and new churches in Bulgaria, Serbia and Russia in time acquired their own patriarchs.<sup class="abr-fn"><a href="#note-3" id="ref-3-2">3</a></sup> The three eastern sees did not disappear. Their patriarchs lived on under Muslim government, and all three still have patriarchs today, alongside the pope in Rome and the ecumenical patriarch in Istanbul.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/the-council-of-nicaea/">Nicaea, 325: the council, the creed and the church beneath the lake</a>, <a href="/journal/paul-and-peter-two-missions/">Paul and Peter: two missions in the early church</a>, <a href="/religions/christianity/">Christianity</a>, <a href="/journal/hagia-sophia/">Hagia Sophia: cathedral, mosque, museum and mosque again</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Norman P. Tanner, ed., <em>Decrees of the Ecumenical Councils</em>, vol. 1 (London: Sheed &amp; Ward, 1990), First Council of Nicaea, canons 6-7, as reproduced by Papal Encyclicals Online. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">“The Pentarchy and the Moscow Patriarchate,” OrthoChristian.com, on canon 3 of Constantinople I and canon 28 of Chalcedon. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">“Pentarchy,” <em>Encyclopaedia Britannica</em>. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Ibid. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Nathan Morley, “Turkey: Hagia Sophia Basilica to become mosque,” <em>Vatican News</em>, 10 July 2020. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Eusebius, <em>Church History</em> 2.16.1, trans. A. C. McGiffert, Nicene and Post-Nicene Fathers, second series, vol. 1 (New York, 1890). <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">“First Council of Nicaea,” <em>The Catholic Encyclopedia</em>, vol. 11 (New York: Robert Appleton Company, 1911). <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Acts 11:26. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Galatians 2:11-14. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:hagia-sophia', 'photo' => array( 'name' => 'hagia-sophia-exterior', 'alt' => 'Hagia Sophia in Istanbul seen across the fountain of Sultanahmet Square' ), 'type' => 'post', 'slug' => 'hagia-sophia', 'title' => 'Hagia Sophia: cathedral, mosque, museum and mosque again',
+			'excerpt' => 'Cathedral for nine centuries, the first mosque of the Ottoman state, a museum, and a mosque again: the history of Hagia Sophia and the verse of Light inscribed in its dome.', 'description' => 'Hagia Sophia from Justinian\'s cathedral to Ottoman mosque, museum and mosque again, and the verse in its dome. Read on.', 'categories' => array( 'history', 'culture' ), 'days_ago' => 0, 'since' => 66, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Few buildings have served so many faiths and governments. For more than nine centuries Hagia Sophia, the church of Holy Wisdom in Constantinople, was the cathedral of the Eastern Roman empire; for nearly five it was the foremost mosque of the Ottoman state; for eighty-six years it was a museum; and since 2020 it has been a mosque again.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"three-churches-on-one-site"} -->
+<h2 class="wp-block-heading" id="three-churches-on-one-site">Three churches on one site</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The present building is the third on its site. The first, dedicated in 360 by the emperor Constantius, was destroyed in riots in 404; the second, dedicated by Theodosius II in 415, burned in the Nika revolt of 532, which laid waste much of the city. Justinian ordered the church rebuilt at once, and the new building, designed by Anthemius of Tralles and Isidore of Miletus, was inaugurated on 27 December 537. Its dome, more than thirty-one metres across, collapsed in 558 after a series of earthquakes and was rebuilt in 562 to a greater height; the structure that stands today is essentially the one raised between 532 and 537.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Procopius, the historian of Justinian’s reign, left the description that later writers repeated for centuries. The dome, he wrote, seemed to hang from heaven on a golden chain, with no solid masonry beneath it.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-cathedral-of-the-east"} -->
+<h2 class="wp-block-heading" id="the-cathedral-of-the-east">The cathedral of the East</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>As the cathedral of the patriarch of Constantinople, Hagia Sophia witnessed the great quarrels of Eastern Christianity. On 16 July 1054 the papal legate Cardinal Humbert laid a bull excommunicating the patriarch Michael Cerularius on its altar, in full view of the congregation; the patriarch replied by excommunicating the legates.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Later tradition made that scene the start of the schism between the Latin and Greek churches, a view that historians of the period no longer hold: the break was gradual, and no single event caused it.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The decisive wound came from fellow Christians. In April 1204 the Fourth Crusade, diverted from its march on Egypt, stormed Constantinople and sacked it. The Byzantine historian Niketas Choniates, an eyewitness, recorded that the altar of the Great Church was broken into pieces and divided among the soldiers.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> A Latin, Thomas Morosini, was installed as patriarch, and Hagia Sophia served the Latin church until the Byzantines retook the city in 1261.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="hagia-sophia-1852" alt="Hagia Sophia with its four minarets, in a lithograph of 1852 by Louis Haghe after Gaspare Fossati" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-imperial-mosque"} -->
+<h2 class="wp-block-heading" id="the-imperial-mosque">The imperial mosque</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>After the Ottoman conquest of Constantinople in 1453, Mehmed II converted Hagia Sophia into a mosque.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Minarets rose around it, its figural mosaics were covered, and buttresses were added to strengthen its walls. The building became the personal property of the sultan, so that no change could be made to it without his consent; that protection is one reason its mosaics survived beneath their plaster.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Between 1847 and 1849 Sultan Abdülmecid had the building restored by the Swiss-Italian architects Gaspare and Giuseppe Fossati, whose teams reinforced the dome, cleaned the mosaics and renewed the mihrab and the minbar. During that restoration the calligrapher Kazasker Mustafa İzzet Efendi wrote the eight great roundels, seven and a half metres across, that still hang in the prayer hall, bearing in gold the names of God, the Prophet Muhammad, the four rightly guided caliphs and the Prophet’s grandsons Hasan and Husayn.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> In the crown of the dome he inscribed a verse from the chapter of Light.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="hagia-sophia-interior" alt="The dome of Hagia Sophia seen from below, with the verse of Light inscribed at its crown" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"museum-and-mosque-again"} -->
+<h2 class="wp-block-heading" id="museum-and-mosque-again">Museum and mosque again</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In 1934 the government of the new Turkish Republic under Mustafa Kemal Atatürk made Hagia Sophia a museum.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup> It became part of the UNESCO World Heritage site of the Historic Areas of İstanbul in 1985.<sup class="abr-fn"><a href="#note-9" id="ref-9-2">9</a></sup> In July 2020 Türkiye’s Council of State annulled the decree of 1934, and a presidential decree returned the building to use as a mosque, with prayers from 24 July.<sup class="abr-fn"><a href="#note-7" id="ref-7-2">7</a></sup> Ecumenical Patriarch Bartholomew protested that Hagia Sophia “belongs not only to those who own it at the moment, but to all humanity.”<sup class="abr-fn"><a href="#note-7" id="ref-7-3">7</a></sup> It remains open to visitors outside the times of prayer.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-verse-in-the-dome"} -->
+<h2 class="wp-block-heading" id="the-verse-in-the-dome">The verse in the dome</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The verse inscribed at the summit of the dome is the verse of Light:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">ٱللَّهُ نُورُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِ ۚ مَثَلُ نُورِهِۦ كَمِشْكَوٰةٍ فِيهَا مِصْبَاحٌ ۖ ٱلْمِصْبَاحُ فِى زُجَاجَةٍ ۖ ٱلزُّجَاجَةُ كَأَنَّهَا كَوْكَبٌ دُرِّىٌّ يُوقَدُ مِن شَجَرَةٍ مُّبَـٰرَكَةٍ زَيْتُونَةٍ لَّا شَرْقِيَّةٍ وَلَا غَرْبِيَّةٍ يَكَادُ زَيْتُهَا يُضِىٓءُ وَلَوْ لَمْ تَمْسَسْهُ نَارٌ ۚ نُّورٌ عَلَىٰ نُورٍ ۗ يَهْدِى ٱللَّهُ لِنُورِهِۦ مَن يَشَآءُ ۚ وَيَضْرِبُ ٱللَّهُ ٱلْأَمْثَـٰلَ لِلنَّاسِ ۗ وَٱللَّهُ بِكُلِّ شَىْءٍ عَلِيمٌ ٣٥</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Allah is the Light of the heavens and the earth. His light is like a niche in which there is a lamp, the lamp is in a crystal, the crystal is like a shining star, lit from ˹the oil of˺ a blessed olive tree, ˹located˺ neither to the east nor the west, whose oil would almost glow, even without being touched by fire. Light upon light! Allah guides whoever He wills to His light. And Allah sets forth parables for humanity. For Allah has ˹perfect˺ knowledge of all things.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 24:35<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Procopius believed that the dome hung from heaven; the builders ringed its base with windows so that light seemed to hold it up. Since the nineteenth century the dome itself has named the source of that light. The verse that follows it in the Qur’an speaks of houses which God has ordered to be raised and in which His name is mentioned, glorified there morning and evening,<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup> and another verse declares that the <em>masājid</em> (<span lang="ar" dir="rtl">ٱلْمَسَـٰجِد</span>, the places of prostration) belong to God, so that none is to be invoked beside Him.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup> A building raised to glorify Holy Wisdom under a creed that made Christ one of three has for most of its later history been such a house: the name of the one God is proclaimed beneath a dome that bears His verse of Light.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The history also shows how much the building owes to its Muslim custodians. The crusaders who shared its altar among themselves as plunder were Christians; the sultans who received it in 1453 kept its structure standing, restored it, and preserved the mosaics of its former faith as their own property.<sup class="abr-fn"><a href="#note-5" id="ref-5-2">5</a></sup><sup class="abr-fn"><a href="#note-8" id="ref-8-2">8</a></sup> See <a href="/journal/the-five-great-sees/">The five great sees of the early church</a> and <a href="/journal/the-council-of-nicaea/">Nicaea, 325</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/the-five-great-sees/">The five great sees of the early church</a>, <a href="/journal/the-council-of-nicaea/">Nicaea, 325: the council, the creed and the church beneath the lake</a>, <a href="/religions/islam/">Islam</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">“Hagia Sophia,” Historic Civil Engineering Landmarks, American Society of Civil Engineers. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Procopius, <em>Buildings</em> 1.1.46, in the translation reproduced by the Department of Art History and Archaeology, Columbia University. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">“Saint Leo IX,” <em>Encyclopaedia Britannica</em>. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">“1054 The East-West Schism,” <em>Christian History Magazine</em>, Christian History Institute. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Niketas Choniates, <em>The Sack of Constantinople (1204)</em>, Internet Medieval Sourcebook, Fordham University. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">“The Fourth Crusade,” <em>The Orthodox Faith</em>, vol. 3, Orthodox Church in America. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Nathan Morley, “Turkey: Hagia Sophia Basilica to become mosque,” <em>Vatican News</em>, 10 July 2020. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">“Hagia Sophia Throughout History: One Dome, Three Religions,” <em>TheCollector</em>, 26 July 2022. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">“Hagia Sophia / Ayasofya,” Museums of Türkiye (muze.gen.tr), Ministry of Culture and Tourism. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">“Hagia Sophia, Mosque of Sultans,” <em>Skylife</em>, August 2013; “Hagia Sophia Istanbul Interior,” TheHagiaSophia.com, 12 June 2025, identifying the verse as Qur’an 24:35. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-11">“Hagia Sophia, Istanbul,” Smarthistory. <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-12">Qur'an 24:35, trans. Mustafa Khattab, <em>The Clear Quran</em>; Arabic text from Quran.com. <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-13">Qur'an 24:36, trans. Saheeh International. <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-14">Qur'an 72:18, trans. Saheeh International. <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:the-stations-of-the-hajj', 'photo' => array( 'name' => 'hajj-arafat', 'alt' => 'Pilgrims filling the plain of ʿArafāt beside the sign that marks its boundary' ), 'type' => 'post', 'slug' => 'the-stations-of-the-hajj', 'title' => 'The stations of the Hajj: Minā, ʿArafāt and Muzdalifah',
+			'excerpt' => 'From Makkah to Minā, ʿArafāt and Muzdalifah and back: the stations of the Hajj, day by day, and the call to Abraham that every one of them answers.', 'description' => 'Mina, Arafat and Muzdalifah: the stations of the Hajj and the Abrahamic story behind each rite. Walk through them here.', 'categories' => array( 'religion', 'scripture' ), 'days_ago' => 0, 'since' => 67, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Each year the Hajj carries its pilgrims out of Makkah to three stations in the valleys to the east: Minā, ʿArafāt and Muzdalifah. In 2026 the Saudi General Authority for Statistics counted 1,707,301 pilgrims, of whom 1,546,655 came from abroad: 1,485,729 by air, 54,429 by road and 6,497 by sea.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The Hajj is the fifth pillar of Islam, a duty on every adult Muslim able to make it once in a lifetime, and its rites fall in the first half of Dhū al-Ḥijjah, the last month of the Islamic year.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"abrahams-call"} -->
+<h2 class="wp-block-heading" id="abrahams-call">Abraham’s call</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an traces the pilgrimage to Abraham. God showed him the site of the House, forbade him to set any partner beside Him, and commanded him to call the people to it:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">وَإِذْ بَوَّأْنَا لِإِبْرَٰهِيمَ مَكَانَ ٱلْبَيْتِ أَن لَّا تُشْرِكْ بِى شَيْـًٔا وَطَهِّرْ بَيْتِىَ لِلطَّآئِفِينَ وَٱلْقَآئِمِينَ وَٱلرُّكَّعِ ٱلسُّجُودِ ٢٦</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">And [mention, O Muḥammad], when We designated for Abraham the site of the House, [saying], “Do not associate anything with Me and purify My House for those who perform ṭawāf and those who stand [in prayer] and those who bow and prostrate.</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">وَأَذِّن فِى ٱلنَّاسِ بِٱلْحَجِّ يَأْتُوكَ رِجَالًا وَعَلَىٰ كُلِّ ضَامِرٍ يَأْتِينَ مِن كُلِّ فَجٍّ عَمِيقٍ ٢٧</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">And proclaim to the people the ḥajj [pilgrimage]; they will come to you on foot and on every lean camel; they will come from every distant pass.”</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 22:26-27<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Every station of the Hajj answers that command. The figures of 2026 read like a commentary on its last line: the pilgrims came by air and by road and by sea, from every distant pass of the modern world, to the valley where Abraham was told to call them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"makkah-the-house-and-the-two-hills"} -->
+<h2 class="wp-block-heading" id="makkah-the-house-and-the-two-hills">Makkah: the House and the two hills</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The pilgrim enters Makkah in <em>iḥrām</em> (<span lang="ar" dir="rtl">إِحْرَام</span>, the consecrated state and its two plain white garments), walks seven times around the Kaaba in the <em>ṭawāf</em> (<span lang="ar" dir="rtl">طَوَاف</span>, circling), prays toward the Station of Abraham, and walks seven times between the hills of Ṣafā and Marwah.<sup class="abr-fn"><a href="#note-2" id="ref-2-2">2</a></sup> That walk, the <em>saʿy</em> (<span lang="ar" dir="rtl">سَعْي</span>, striving), keeps the memory of Hagar. Left with the infant Ishmael in a valley without water, she climbed Ṣafā to look for help, crossed the valley to Marwah, and did so seven times; the Prophet said that this was the origin of the pilgrims’ walking between the two hills.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> The Qur’an names Ṣafā and Marwah among the symbols of God.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"mina-the-eighth-day"} -->
+<h2 class="wp-block-heading" id="mina-the-eighth-day">Minā: the eighth day</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>On the eighth of Dhū al-Ḥijjah, the Day of Tarwiyah, the pilgrims leave Makkah for Minā and spend the day and night there.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Minā is a valley of tents, laid out in rows that fill it from side to side, and it is where the pilgrims will return for the last days of the Hajj.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="hajj-mina" alt="The tent city of Minā lit at night during the Hajj" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"arafat-the-ninth-day"} -->
+<h2 class="wp-block-heading" id="arafat-the-ninth-day">ʿArafāt: the ninth day</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>On the ninth the pilgrims move to the plain of ʿArafāt and the low hill within it, Jabal al-Raḥmah, the Mount of Mercy.<sup class="abr-fn"><a href="#note-2" id="ref-2-3">2</a></sup> The standing there, the <em>wuqūf</em> (<span lang="ar" dir="rtl">وُقُوف</span>, standing), from the day into the sunset, is the central pillar of the Hajj.<sup class="abr-fn"><a href="#note-6" id="ref-6-2">6</a></sup> When a group from Najd asked the Prophet at ʿArafāt how the Hajj was done, he had a man proclaim the answer aloud: the Hajj is on the day of ʿArafah.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> A pilgrim who misses it has missed the Hajj, and signs at the edge of the plain mark where ʿArafāt ends.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"muzdalifah-the-night"} -->
+<h2 class="wp-block-heading" id="muzdalifah-the-night">Muzdalifah: the night</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>At sunset the pilgrims leave ʿArafāt for Muzdalifah, the open ground between ʿArafāt and Minā. There they pray the sunset and night prayers together and sleep in the open until dawn.<sup class="abr-fn"><a href="#note-6" id="ref-6-3">6</a></sup> The Qur’an names this station: when you depart from ʿArafāt, remember God at <em>al-Mashʿar al-Ḥarām</em> (<span lang="ar" dir="rtl">ٱلْمَشْعَر ٱلْحَرَام</span>, the Sacred Monument).<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> At Muzdalifah many gather the small pebbles they will need in Minā.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="hajj-muzdalifah" alt="Pilgrims sleeping in the open at Muzdalifah on the night after ʿArafāt" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"mina-again-the-days-of-sacrifice"} -->
+<h2 class="wp-block-heading" id="mina-again-the-days-of-sacrifice">Minā again: the days of sacrifice</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The tenth is the Day of Sacrifice. The pilgrims throw seven pebbles at the largest of three pillars, Jamrat al-ʿAqabah, in the <em>ramy</em> (<span lang="ar" dir="rtl">رَمْي</span>, casting), a rite that stands for the rejection of the Devil; they sacrifice an animal in commemoration of Abraham’s sacrifice; men shave their heads and women cut a lock of hair; and they return to Makkah for the circling of the House.<sup class="abr-fn"><a href="#note-2" id="ref-2-4">2</a></sup> The Qur’an closes the story of that sacrifice with God ransoming Abraham’s son with a great sacrifice.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> On the three days that follow, the Days of Tashrīq, the pilgrims stay in Minā and stone all three pillars each day.<sup class="abr-fn"><a href="#note-6" id="ref-6-4">6</a></sup> A last circling of the Kaaba, the farewell <em>ṭawāf</em>, ends the Hajj.<sup class="abr-fn"><a href="#note-2" id="ref-2-5">2</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="hajj-arafat-tile" alt="An Ottoman İznik tile panel depicting the pilgrims’ camp at ʿArafāt, in the Topkapı Palace, Istanbul" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-promise-kept"} -->
+<h2 class="wp-block-heading" id="the-promise-kept">The promise kept</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Read in order, the stations retrace a single family’s trial and a single command. Hagar’s search for water becomes the walk between the two hills, and Abraham’s readiness to give up his son becomes the sacrifice at Minā, where the casting of the stones repeats his rejection of the Devil. Above them stands the call of Qur’an 22:27, spoken to Abraham at the empty site of the House. The pilgrims who stood on ʿArafāt in 2026 had come on foot and by road, by sea and by air, from every distant pass, as the verse promised they would. See <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree</a> for the family behind the rites, and <a href="/journal/who-was-abraham/">Who was Abraham?</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/who-was-abraham/">Who was Abraham?</a>, <a href="/journal/millat-ibrahim/">The path of Abraham in the Qur’an</a>, <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree and what the traditions share</a>, <a href="/journal/hira-and-quba/">Ḥirāʾ and Qubāʾ</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">General Authority for Statistics (GASTAT), “Total number of pilgrims for Hajj 2026 reaches (1,707,301),” news release, 2026. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">“Hajj,” <em>Encyclopaedia Britannica</em>. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Qur'an 22:26-27, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Ṣaḥīḥ al-Bukhārī 3364, narrated by Ibn ʿAbbās. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Qur'an 2:158. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">“Hajj,” <em>Saudipedia</em>. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Sunan Abī Dāwūd 1949, narrated by ʿAbd al-Raḥmān ibn Yaʿmar al-Dīlī, graded ṣaḥīḥ by al-Albānī; cf. Jāmiʿ al-Tirmidhī 2975. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Qur'an 2:198, trans. Saheeh International. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Qur'an 37:107. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:hira-and-quba', 'photo' => array( 'name' => 'jabal-al-nour-peak', 'alt' => 'Jabal al-Nūr, the Mountain of Light, above Makkah, where the cave of Ḥirāʾ lies' ), 'type' => 'post', 'slug' => 'hira-and-quba', 'title' => 'Ḥirāʾ and Qubāʾ: where the revelation and the first mosque began',
+			'excerpt' => 'Where the revelation began and where the first mosque was built: the cave of Ḥirāʾ above Makkah and the mosque of Qubāʾ at Madinah, read through the verses tied to each.', 'description' => 'The cave of Hira where the Qur\'an began and Quba, the first mosque of Islam, with the verses tied to each. Read the story.', 'categories' => array( 'history', 'scripture' ), 'days_ago' => 0, 'since' => 68, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Two places mark the beginnings of Islam. On a mountain above Makkah is the cave of Ḥirāʾ, where the revelation of the Qur’an began; in Qubāʾ, on the southern edge of Madinah, stands the mosque that the Prophet founded when he reached the city at the Hijra in 622. The first is where the message was received, and the second is where the community first gathered to pray.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-cave-on-the-mountain-of-light"} -->
+<h2 class="wp-block-heading" id="the-cave-on-the-mountain-of-light">The cave on the Mountain of Light</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The cave lies near the summit of Jabal al-Nūr (<span lang="ar" dir="rtl">جَبَل ٱلنُّور</span>, the Mountain of Light), a steep peak on the edge of Makkah. ʿĀʾishah described how the revelation came. Before it, the Prophet loved seclusion; he would go to the cave of Ḥirāʾ with provisions and worship there for many days before returning to Khadījah for more. There the angel came to him and told him to read. He answered that he could not read; three times the angel pressed him and repeated the command, and then recited the first verses of the chapter called the Clot.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ ١</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Recite in the name of your Lord who created,</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">خَلَقَ ٱلْإِنسَـٰنَ مِنْ عَلَقٍ ٢</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Created man from a clinging substance.</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">ٱقْرَأْ وَرَبُّكَ ٱلْأَكْرَمُ ٣</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Recite, and your Lord is the most Generous,</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">ٱلَّذِى عَلَّمَ بِٱلْقَلَمِ ٤</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Who taught by the pen,</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">عَلَّمَ ٱلْإِنسَـٰنَ مَا لَمْ يَعْلَمْ ٥</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Taught man that which he knew not.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 96:1-5<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The first word of the revelation was a command to recite, and its first verses speak of the pen and of teaching man what he did not know. The religion that began in the cave began as a spoken and written word, given to a man who could not read. Pilgrims still climb the mountain to the cave, where the rocks around the entrance are painted with Qur’anic calligraphy.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="hira-cave" alt="Pilgrims at the entrance to the cave of Ḥirāʾ, its rocks painted with Qur’anic calligraphy" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-first-mosque"} -->
+<h2 class="wp-block-heading" id="the-first-mosque">The first mosque</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Thirteen years later the Prophet left Makkah for Madinah. At Qubāʾ, then a village of palm groves outside the city, he laid the foundations of a mosque on the first day of his arrival; it is counted as the first mosque built in Islam.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> He kept returning to it for the rest of his life: he went to Qubāʾ every Saturday, sometimes walking and sometimes riding, and prayed there.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> He promised that whoever purifies himself at home and then prays in the mosque of Qubāʾ has the reward of an ʿumrah, the lesser pilgrimage.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an speaks of a mosque founded on piety from the first day:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">لَا تَقُمْ فِيهِ أَبَدًا ۚ لَّمَسْجِدٌ أُسِّسَ عَلَى ٱلتَّقْوَىٰ مِنْ أَوَّلِ يَوْمٍ أَحَقُّ أَن تَقُومَ فِيهِ ۚ فِيهِ رِجَالٌ يُحِبُّونَ أَن يَتَطَهَّرُوا۟ ۚ وَٱللَّهُ يُحِبُّ ٱلْمُطَّهِّرِينَ ١٠٨</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Do not stand [for prayer] within it, ever. A mosque founded on righteousness from the first day is more worthy for you to stand in. Within it are men who love to purify themselves; and Allah loves those who purify themselves.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 9:108<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The exegetes commonly identify that mosque with Qubāʾ, whose founding the verse seems to describe. A hadith in Muslim’s collection records the Prophet applying the words to his own mosque in Madinah;<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> scholars reconcile the two by holding that both mosques, founded by the Prophet himself, were built on piety from their first day.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="quba-mosque" alt="The Quba Mosque at night, with its white domes and four minarets" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-mosque-today"} -->
+<h2 class="wp-block-heading" id="the-mosque-today">The mosque today</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The mosque has been enlarged and rebuilt many times. The present building, designed by the Egyptian architect Abdel-Wahed El-Wakil and completed in 1986, replaced its predecessor entirely; it keeps the ribbed white domes and plain exterior of traditional Madinan building.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> Its complex covers some 13,730 square metres, the largest of the mosques El-Wakil designed in Saudi Arabia.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="quba-courtyard" alt="The Quba Mosque in daylight, with visitors at its gates" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"from-the-cave-to-the-mosque"} -->
+<h2 class="wp-block-heading" id="from-the-cave-to-the-mosque">From the cave to the mosque</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The two verses frame the two places. In the cave the command was to recite in the name of the Lord who created: a word given to one man in solitude. At Qubāʾ the verse speaks of a house for the many, founded on piety from its first day and filled with men who love to purify themselves. The Prophet’s own practice joined them, for the promise of an ʿumrah’s reward rests on the same purification the verse praises: the believer washes at home, walks to Qubāʾ, and prays in the first mosque of a religion that began with the word <em>iqraʾ</em> (<span lang="ar" dir="rtl">ٱقْرَأْ</span>, recite).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/the-stations-of-the-hajj/">The stations of the Hajj</a>, <a href="/religions/islam/">Islam</a>, <a href="/reference/places/#madinah">Madinah</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Ṣaḥīḥ al-Bukhārī 3, narrated by ʿĀʾishah; cf. Ṣaḥīḥ al-Bukhārī 4953. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Qur'an 96:1-5, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">A. A. Macca and T. Aryanti, “The Domes: El Wakil’s Traditionalist Architecture of Quba Mosque,” IOP Publishing, 2017, as catalogued by Asfaar; cf. the Encyclopedia of Translated Prophetic Hadiths (Sunnah.global), explanation to the hadith of Ibn ʿUmar on Qubāʾ. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Ṣaḥīḥ al-Bukhārī 1193, narrated by Ibn ʿUmar; cf. Ṣaḥīḥ Muslim 1399g. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Sunan Ibn Mājah 1412; Jāmiʿ al-Tirmidhī 324, graded ḥasan. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Qur'an 9:108, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Ṣaḥīḥ Muslim 1398a, narrated by Abū Saʿīd al-Khudrī. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Sunan al-Nasāʾī 698, with the commentary of Ḥāfiẓ Muḥammad Amīn. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">“Quba Mosque,” Madain Project. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Mohammad al-Asad, “The Mosques of Abdel Wahed El-Wakil,” as reproduced by Asfaar. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:what-language-did-abraham-speak', 'photo' => array( 'name' => 'lang-amarna', 'alt' => 'An Amarna letter written in Akkadian cuneiform on a clay tablet' ), 'type' => 'post', 'slug' => 'what-language-did-abraham-speak', 'title' => 'What language did Abraham speak?',
+			'excerpt' => 'Akkadian, Aramaic, Hebrew or Arabic? The world of Abraham, the Jewish and Muslim traditions about his language, and the Qur’anic principle that joins them.', 'description' => 'What language did Abraham speak? The evidence from his world and from Jewish and Muslim tradition. Read the answer.', 'categories' => array( 'history', 'scripture' ), 'days_ago' => 0, 'since' => 77, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>No inscription records Abraham’s voice, and no scripture names his language. The question can still be answered in two ways: from the world in which Genesis places him, and from the traditions of the peoples who descend from him. The two answers meet more closely than one might expect.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-world-of-abraham"} -->
+<h2 class="wp-block-heading" id="the-world-of-abraham">The world of Abraham</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Genesis brings Abraham’s family out of Ur of the Chaldeans to Harran, in the north of Mesopotamia, and from Harran to Canaan.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> In the second millennium BCE the written language of that whole region was Akkadian, set down in cuneiform on clay. It served as the language of diplomacy so completely that, in the fourteenth century BCE, the kings of Babylon and the rulers of the cities of Canaan alike wrote to the pharaohs of Egypt in Akkadian, as the tablets found at Tell el-Amarna show.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The everyday speech of a family of herdsmen, however, would have been one of the West Semitic dialects of Syria and upper Mesopotamia, the ancestors of Aramaic and Hebrew.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-wandering-aramean"} -->
+<h2 class="wp-block-heading" id="a-wandering-aramean">A wandering Aramean</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Bible itself ties the family to the Arameans. Abraham’s brother Nahor stayed in the north, and his descendants, among them Rebekah’s father Bethuel and her brother Laban, are called Arameans. Israel’s own confession of faith begins, ‘A wandering Aramean was my father.’ When Jacob and Laban set up a heap of stones as a witness between them, Laban names it in Aramaic and Jacob in Hebrew: the two branches of one family already spoke two related tongues.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Hebrew is what the prophet Isaiah calls ‘the language of Canaan’, the speech the family adopted in its new land.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="lang-hebrew" alt="Stones inscribed with Hebrew words" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-the-traditions-say"} -->
+<h2 class="wp-block-heading" id="what-the-traditions-say">What the traditions say</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Jewish tradition gave Abraham the holy tongue. The Book of Jubilees, from the second century BCE, tells how an angel opened Abraham’s mouth and taught him Hebrew, the language of creation, which had fallen silent among men since Babel.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Muslim scholars reasoned from the same kinship of languages. The Andalusian jurist Ibn Ḥazm (d. 1064) observed that Arabic, Hebrew and Syriac differ only as the speech of one people changes over time and place, and concluded that they were once a single language: Syriac was the language of Abraham, Hebrew the language of Isaac and his sons, and Arabic the language of Ishmael and his sons, Ishmael being the first to speak it.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> The hadith of the Prophet preserved by al-Bukhārī tells how the tribe of Jurhum settled beside Hagar and her son at Makkah, and how the boy grew up and learnt Arabic from them.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Syriac is a form of Aramaic, so the Muslim tradition and the historical evidence arrive at the same family of languages.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="lang-arabic" alt="An old manuscript in Arabic script" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"in-the-language-of-his-people"} -->
+<h2 class="wp-block-heading" id="in-the-language-of-his-people">In the language of his people</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an states the principle behind all of this:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">وَمَآ أَرْسَلْنَا مِن رَّسُولٍ إِلَّا بِلِسَانِ قَوْمِهِۦ لِيُبَيِّنَ لَهُمْ ۖ فَيُضِلُّ ٱللَّهُ مَن يَشَآءُ وَيَهْدِى مَن يَشَآءُ ۚ وَهُوَ ٱلْعَزِيزُ ٱلْحَكِيمُ ٤</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">And We did not send any messenger except [speaking] in the language of his people to state clearly for them, and Allāh sends astray [thereby] whom He wills and guides whom He wills. And He is the Exalted in Might, the Wise.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 14:4<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Abraham, on this principle, preached to the people of Mesopotamia in the language of Mesopotamia, whether an early Aramaic or the Akkadian of its cities. His sons carried two sister tongues into two lands. The revelation to Moses came to the line of Isaac in Hebrew; the last revelation came to the line of Ishmael, in the language Ishmael learnt at Makkah, as ‘an Arabic Qur’an’ so that its hearers might understand.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> The question of Abraham’s language turns out to be the history of prophecy itself: one message, spoken in each case in the tongue of the people to whom it was sent.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/who-was-abraham/">Who was Abraham?</a>, <a href="/journal/millat-ibrahim/">The path of Abraham in the Qur’an</a>, <a href="/journal/where-was-abraham-from/">Where was Abraham from?</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Genesis 11:31; 12:4-5. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Alice Mandell, as summarised in “Missives to the Egyptian Court: The Canaanite Amarna Letters and the scribes who wrote them,” <em>Bible History Daily</em>, Biblical Archaeology Society; “Amarna Letters,” <em>Encyclopaedia Britannica</em>. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Genesis 22:20-23; 25:20; 31:47; Deuteronomy 26:5; Richard Gottheil et al., “Aramaic Language among the Jews,” <em>Jewish Encyclopedia</em> (1906). <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Isaiah 19:18. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Jubilees 12:25-27. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Ibn Ḥazm, <em>al-Iḥkām fī uṣūl al-aḥkām</em>, on the relation of the three languages, as translated at Languagehat, “Ibn Hazm on Arabic, Hebrew and Syriac”; the Arabic text is on Wikisource. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Ṣaḥīḥ al-Bukhārī 3364, narrated by Ibn ʿAbbās. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Qur'an 14:4, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Qur’an 12:2. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:the-parting-of-the-ways', 'photo' => array( 'name' => 'parting-titus', 'alt' => 'The Arch of Titus in Rome' ), 'type' => 'post', 'slug' => 'the-parting-of-the-ways', 'title' => 'The parting of the ways: how Christianity separated from Judaism',
+			'excerpt' => 'Jesus and his disciples were Jews. How did their movement become a separate religion? From Acts and Paul to the two wars with Rome and the council of Nicaea.', 'description' => 'How Christianity separated from Judaism: Acts, Paul, the two revolts against Rome and Nicaea. Read the history.', 'categories' => array( 'history', 'religion' ), 'days_ago' => 0, 'since' => 77, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Jesus was a Jew, and so were all his first disciples. They prayed in the Temple, kept the Sabbath and read the Jewish scriptures. Within three centuries their followers formed a separate religion, most of whose members were Gentiles and whose leaders set its calendar apart from the Jewish one. Scholars call the process the parting of the ways, and they agree that it was gradual: estimates of when it was complete run from the middle of the first century to the middle of the fourth, and the break came at different times in different places.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-movement-within-judaism"} -->
+<h2 class="wp-block-heading" id="a-movement-within-judaism">A movement within Judaism</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Book of Acts shows the first believers meeting daily in the Temple, and records that the disciples were first called Christians at Antioch.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The first great question was whether Gentile converts had to become Jews. A council of the apostles at Jerusalem decided that they need not be circumcised or keep the whole law, asking only that they avoid food offered to idols, blood, what is strangled and sexual immorality.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Paul went further, teaching that a person is made righteous through faith in Christ and not by the works of the law, and he opposed Peter to his face at Antioch over whether Jewish and Gentile believers might eat together.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> See <a href="/journal/paul-and-peter-two-missions/">Paul and Peter</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="parting-capernaum" alt="The ruins of the ancient synagogue at Capernaum on the Sea of Galilee" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"two-wars-with-rome"} -->
+<h2 class="wp-block-heading" id="two-wars-with-rome">Two wars with Rome</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The destruction of the Temple by Rome in 70 CE changed both communities. The Christians of Jerusalem, warned by a revelation according to Eusebius, had left the city before the siege for Pella, across the Jordan.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Judaism rebuilt itself around the rabbis, the study of the law and the synagogue. Whether the rabbis then added to the daily prayer a curse on heretics aimed at Jewish Christians, the <em>birkat ha-minim</em>, is much debated; the theory that it expelled Christians from the synagogue in the late first century, once widely held, is now contested.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The second revolt, led by Simon bar Kokhba from 132 to 135, drew a sharper line. Justin Martyr, writing some twenty years later, complained that Bar Kokhba had ordered Christians alone to be punished unless they denied Jesus.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Jewish Christians could not follow a rival messiah, and after the war Jerusalem was rebuilt as a pagan colony from which Jews were barred.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"two-religions"} -->
+<h2 class="wp-block-heading" id="two-religions">Two religions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>By the fourth century the separation was a matter of law and calendar. At Nicaea in 325 the bishops fixed the date of Easter so that it no longer depended on the Jewish reckoning of Passover. See <a href="/journal/the-council-of-nicaea/">Nicaea, 325</a>. Some historians still doubt that the ways ever fully parted, pointing to Jews and Christians who continued to share practices for centuries.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="parting-pella" alt="The colonnaded ruins of Pella in the Jordan valley, where the Christians of Jerusalem took refuge" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"one-religion-divided"} -->
+<h2 class="wp-block-heading" id="one-religion-divided">One religion, divided</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an describes the same pattern in general terms:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">كَانَ ٱلنَّاسُ أُمَّةً وَٰحِدَةً فَبَعَثَ ٱللَّهُ ٱلنَّبِيِّـۧنَ مُبَشِّرِينَ وَمُنذِرِينَ وَأَنزَلَ مَعَهُمُ ٱلْكِتَـٰبَ بِٱلْحَقِّ لِيَحْكُمَ بَيْنَ ٱلنَّاسِ فِيمَا ٱخْتَلَفُوا۟ فِيهِ ۚ وَمَا ٱخْتَلَفَ فِيهِ إِلَّا ٱلَّذِينَ أُوتُوهُ مِنۢ بَعْدِ مَا جَآءَتْهُمُ ٱلْبَيِّنَـٰتُ بَغْيًۢا بَيْنَهُمْ ۖ فَهَدَى ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ لِمَا ٱخْتَلَفُوا۟ فِيهِ مِنَ ٱلْحَقِّ بِإِذْنِهِۦ ۗ وَٱللَّهُ يَهْدِى مَن يَشَآءُ إِلَىٰ صِرَٰطٍ مُّسْتَقِيمٍ ٢١٣</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Mankind was [of] one religion [before their deviation]; then Allāh sent the prophets as bringers of good tidings and warners and sent down with them the Scripture in truth to judge between the people concerning that in which they differed. And none differed over it [i.e., the Scripture] except those who were given it - after the clear proofs came to them - out of jealous animosity among themselves. And Allāh guided those who believed to the truth concerning that over which they had differed, by His permission. And Allāh guides whom He wills to a straight path.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 2:213<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The history of the parting follows the verse closely. The first believers were one community with the Jews of their day, sharing one scripture and one Temple. The division came after the scripture had been given, over how it was to be read: over the law, over the Messiah, over who belonged to the covenant. In the Qur’an’s account the prophets brought one religion, and the divisions among those who received their scriptures are the work of their followers. The Qur’an presents itself as the judge between those who differed.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/paul-and-peter-two-missions/">Paul and Peter: two missions in the early church</a>, <a href="/journal/the-council-of-nicaea/">Nicaea, 325</a>, <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Anne Amos, “The Parting of the Ways,” Jewish-Christian Relations (jcrelations.net); Mariusz Rosik, <em>Church and Synagogue (30-313 AD): Parting of the Ways</em> (Berlin: Peter Lang, 2019). <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Acts 2:46; 11:26. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Acts 15:1-29. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Galatians 2:11-16. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Eusebius, <em>Ecclesiastical History</em> 3.5.3. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Joel Marcus, “Birkat ha-Minim Revisited,” <em>New Testament Studies</em> 55 (2009), discussing the thesis of J. Louis Martyn. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Justin Martyr, <em>First Apology</em> 31.6. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">“The Ways that Never Parted: A Roundtable,” <em>Studies in Late Antiquity</em> 9 (2025), pp. 373-429. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Qur'an 2:213, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:where-was-abraham-from', 'photo' => array( 'name' => 'ur-balikligol', 'alt' => 'The Pool of Abraham, Balıklıgöl, at Şanlıurfa' ), 'type' => 'post', 'slug' => 'where-was-abraham-from', 'title' => 'Where was Abraham from? Ur, Harran and Urfa',
+			'excerpt' => 'Genesis names Ur of the Chaldeans. Archaeologists point to southern Iraq, others to the north, and Urfa claims him by tradition. The evidence, and the fire of the Qur’an.', 'description' => 'Where was Abraham from? Ur in southern Iraq, Harran, or Urfa in Türkiye: the evidence and the traditions. Read more.', 'categories' => array( 'history', 'archaeology' ), 'days_ago' => 0, 'since' => 77, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Genesis names Abraham’s birthplace as Ur of the Chaldeans, <em>Ur Kasdim</em>, and says that his father Terah took the family from there to Harran, where Terah died, and that Abraham went on from Harran to Canaan at seventy-five.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Stephen, in the Book of Acts, adds that God first appeared to Abraham ‘in Mesopotamia, before he lived in Harran’.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Where Ur lay has been argued over for more than two thousand years, and three places now claim him.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"ur-in-the-south"} -->
+<h2 class="wp-block-heading" id="ur-in-the-south">Ur in the south</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In 1862 Henry Rawlinson identified Ur with Tell el-Muqayyar, a mound near Nasiriyah in southern Iraq, and Leonard Woolley’s excavations there in the 1920s uncovered the Sumerian city and its great ziggurat. Most scholars accept the identification.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> An ancient witness points the same way: the Greek-writing historian known as Pseudo-Eupolemus, quoted by Eusebius, placed Abraham’s birth in the Babylonian city of Camarina, ‘which some call Uria’.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> One difficulty remains. The Chaldeans settled in southern Mesopotamia only in the early first millennium BCE, long after any date proposed for Abraham, so the phrase ‘of the Chaldeans’ reflects the time when Genesis was written down.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="ur-ziggurat-pexels" alt="Visitors before the stairway of the ziggurat of Ur in southern Iraq" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"harran-and-the-north"} -->
+<h2 class="wp-block-heading" id="harran-and-the-north">Harran and the north</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Harran lies far to the north, on the Balikh river in what is now south-eastern Türkiye, and the Bible’s account of Abraham’s kin keeps returning to that region: Nahor’s family stayed there, and Isaac and Jacob both took wives from it. For this reason some scholars, the Assyriologist Cyrus Gordon among them, have placed Ur in the north, near Harran.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Harran itself later became the city of the Sabians; see <a href="/journal/the-sabians-in-classical-muslim-scholarship/">The Sabians in classical Muslim scholarship</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="ur-harran-houses" alt="The beehive houses of Harran in south-eastern Türkiye" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"urfa-and-the-pool-of-abraham"} -->
+<h2 class="wp-block-heading" id="urfa-and-the-pool-of-abraham">Urfa and the Pool of Abraham</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>About forty kilometres north of Harran stands Şanlıurfa, ancient Edessa, which Jewish, Christian and Muslim tradition have long honoured as Abraham’s birthplace. Pilgrims visit the cave where he is said to have been born, and the pool of Balıklıgöl beside the mosque of Khalil al-Rahman, built by the Ayyubids in 1211.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Local tradition holds that King Nimrod had Abraham cast into a fire from the citadel above, and that God turned the fire into water and the burning logs into the carp that still fill the pool. Türkiye’s museum authority notes plainly that the association is a tradition that history has not proven.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-fire-that-did-not-burn"} -->
+<h2 class="wp-block-heading" id="the-fire-that-did-not-burn">The fire that did not burn</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The tradition at Urfa is an echo of the Qur’an, which tells how Abraham broke the idols of his people and how they answered him:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">قَالُوا۟ حَرِّقُوهُ وَٱنصُرُوٓا۟ ءَالِهَتَكُمْ إِن كُنتُمْ فَـٰعِلِينَ ٦٨</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">They said, "Burn him and support your gods - if you are to act."</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">قُلْنَا يَـٰنَارُ كُونِى بَرْدًا وَسَلَـٰمًا عَلَىٰٓ إِبْرَٰهِيمَ ٦٩</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">We [i.e., Allāh] said, "O fire, be coolness and safety upon Abraham."</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 21:68-69<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an names neither the city nor the king. What it records is the command to the fire, and the tradition of Urfa has given that command a place: a pool of cool water where the fire had been. Whether Abraham came from Ur in the south or from the country around Harran, the story that matters to the Qur’an happened among his own people, in the land of idols he left behind, and the fire meant to destroy him became coolness and safety.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/who-was-abraham/">Who was Abraham?</a>, <a href="/journal/what-language-did-abraham-speak/">What language did Abraham speak?</a>, <a href="/journal/what-archaeology-tells-us-about-the-ancient-near-east/">What archaeology tells us about the ancient Near East</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Genesis 11:28-32; 12:4-5. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Acts 7:2-4. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Ferrell Jenkins, “Traditions about Abraham at Şanlıurfa, Turkey, Part 1,” 31 July 2016. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Eusebius, <em>Preparation for the Gospel</em> 9.17, quoting Alexander Polyhistor. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Jenkins, op. cit.; Genesis 24:10; 28:2. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">“Pool of the Sacred Fish (Sanliurfa),” Madain Project. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">“Şanlıurfa and the Legend of Balıklıgöl,” Turkish Museums, 26 December 2023. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Qur'an 21:68-69, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:the-symbols-of-the-four-traditions', 'photo' => array( 'name' => 'symbols-star', 'alt' => 'A Star of David in a synagogue window' ), 'type' => 'post', 'slug' => 'the-symbols-of-the-four-traditions', 'title' => 'The symbols of the four traditions',
+			'excerpt' => 'The Star of David, the Mandaean banner, the cross and the crescent: where each came from, how old each is, and why Islam, strictly, has no sacred symbol.', 'description' => 'The Star of David, the Mandaean banner, the cross and the crescent: the history behind each symbol. Read more here.', 'categories' => array( 'culture', 'history' ), 'days_ago' => 0, 'since' => 77, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Each of the four traditions is recognised today by a symbol: the six-pointed star, the Mandaean banner, the cross and the crescent. Only some of these are as old as they look, and one tradition, strictly, has no sacred symbol at all.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-star-of-david"} -->
+<h2 class="wp-block-heading" id="the-star-of-david">The Star of David</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The six-pointed star, the Magen David or Shield of David, has no authority in the Bible or the Talmud. It was used for centuries as a decoration and a charm by many peoples, Jews among them, and Jewish mystics of the Middle Ages ascribed powers to it. The Jewish community of Prague was the first to adopt it as an official emblem; from the seventeenth century many communities used it on their seals, and in the nineteenth century Jews adopted it almost everywhere as a simple sign of Judaism, in imitation of the Christian cross. The yellow star forced on Jews in Nazi-occupied Europe gave it a further meaning of martyrdom.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The older Jewish emblem is the seven-branched lampstand of the Temple, the menorah, which appears on the Arch of Titus in Rome and is the emblem of the State of Israel today.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-mandaean-banner"} -->
+<h2 class="wp-block-heading" id="the-mandaean-banner">The Mandaean banner</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Mandaean <em>drabsha</em>, the banner, is a pole with a cross-piece from which hangs a long strip of unbleached white silk, crowned with a myrtle wreath. It stands beside the river at baptisms. E. S. Drower, who watched it consecrated, recorded that the cross-piece had led some observers to see in Mandaeism a form of Christianity, and rejected the idea: the banner, she wrote, is purely a symbol of light, and it is the silk, never the wooden staff, that has ritual meaning.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="symbols-drabsha" alt="Mandaean priests consecrating the drabsha, the white silk banner, in the 1930s" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-cross"} -->
+<h2 class="wp-block-heading" id="the-cross">The cross</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The cross stands for the crucifixion, yet for three centuries Christians hardly showed it. Clement of Alexandria, around 200, recommended a dove, a fish, a ship, a lyre and an anchor as fit images for a Christian’s seal ring; the fish was prized because its Greek name, <em>ichthys</em>, spelled the initials of ‘Jesus Christ, Son of God, Saviour’.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Before Constantine, Christians were reluctant to display the cross because it exposed them to ridicule and danger. Constantine abolished crucifixion as a punishment and promoted the cross and the chi-rho monogram, and from about 350 they became the common emblems of Christian art.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="symbols-cross" alt="Church domes crowned with crosses against the evening sky" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-crescent"} -->
+<h2 class="wp-block-heading" id="the-crescent">The crescent</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The crescent is the youngest of the four as a religious emblem. The moon in its first quarter was a sign of the goddess Astarte in the ancient Near East and later of the city of Byzantium. The Ottoman Turks carried it on the standards of their infantry under Sultan Orhan in the fourteenth century, and it became so closely tied to the Ottoman state, its flags and the tops of its minarets that it came to stand for the Muslim world as a whole. It appears on the flags of Türkiye, Pakistan, Malaysia and other Muslim countries, and in the Red Crescent.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> The first Muslims had no such emblem: the armies of the Prophet’s time carried plain flags of a single colour for identification.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="symbols-crescent" alt="A golden mosque dome crowned with a crescent" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-religion-without-an-emblem"} -->
+<h2 class="wp-block-heading" id="a-religion-without-an-emblem">A religion without an emblem</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Islam’s lack of a sacred symbol follows from its idea of worship. Muslims pray toward a place, the Kaaba, and decorate their mosques with the written word, above all the name of God, and with geometry and plants, avoiding images of living beings in worship. The crescent is a useful sign on a map or a minaret, and many Muslims value it as such, but no Muslim prays to it, and the faith would be complete without it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree and what the traditions share</a>, <a href="/journal/masbuta-baptism-in-running-water/">Maṣbūtā: baptism in running water</a>, <a href="/journal/hagia-sophia/">Hagia Sophia</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">“Star of David,” <em>Encyclopaedia Britannica</em>. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">E. S. Drower, <em>The Mandaeans of Iraq and Iran</em> (Oxford: Clarendon Press, 1937), pp. 108-109. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">“When did the cross supplant the ichthus (fish) as a symbol of the Christian faith?,” <em>Christian History</em>, Christianity Today, 26 February 2009. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">“Cross,” <em>Encyclopaedia Britannica</em>. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">“Crescent,” <em>Encyclopaedia Britannica</em>. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">“Is the crescent moon the symbol of Islam?,” Fiqh, IslamOnline. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:religious-law-in-the-abrahamic-traditions', 'photo' => array( 'name' => 'law-torah', 'alt' => 'A Torah scroll read with a pointer' ), 'type' => 'post', 'slug' => 'religious-law-in-the-abrahamic-traditions', 'title' => 'Religious law in the Abrahamic traditions: halakhah, canon law and the sharīʿah',
+			'excerpt' => 'Jewish halakhah, Christian canon law, the Islamic sharīʿah and the Mandaean rules of purity: what each is, where it comes from, and what the Qur’an says of their differences.', 'description' => 'Halakhah, canon law and the sharia: how the Abrahamic traditions understand religious law. Compare them here.', 'categories' => array( 'religion', 'theology' ), 'days_ago' => 0, 'since' => 77, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Three of the four traditions are religions of law as much as of belief: they hold that God has given commands for the whole of life, from prayer and food to marriage, trade and justice, and they have built great bodies of scholarship to apply them. Christianity took a different path, and the contrast explains much about all four.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"halakhah"} -->
+<h2 class="wp-block-heading" id="halakhah">Halakhah</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Jewish law is called <em>halakhah</em> (Hebrew, ‘the way to walk’). The rabbis counted 613 commandments in the Torah, 248 positive and 365 negative; the count is first recorded in the Talmud in the name of Rabbi Simlai in the third century.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The Torah was interpreted through the oral tradition written down in the Mishnah around 200 CE and discussed at length in the Talmud, and codified in the Middle Ages, most famously by Maimonides in his Mishneh Torah, whose list of the 613 commandments is the one most often used.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Many commandments depend on the Temple and cannot be kept since its destruction.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"canon-law"} -->
+<h2 class="wp-block-heading" id="canon-law">Canon law</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The first Christians were released from most of the ritual law of Moses: the apostles at Jerusalem required of Gentile converts only that they avoid food offered to idols, blood, what is strangled and sexual immorality.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> What grew in its place was canon law, the law the church made for its own government, worship and discipline. It began with the canons of councils such as Nicaea, and was gathered by the monk Gratian around 1140 into a collection that became the core of the medieval <em>Corpus juris canonici</em>. The Catholic Church issued a Code of Canon Law in 1917 and a revised code in 1983, and the Orthodox and other churches keep their own collections.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Canon law governs the church; it does not claim, as the Torah and the Qur’an do, to lay down God’s law for every part of a believer’s life.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="law-books" alt="Bound volumes of law on a library shelf" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"sharia"} -->
+<h2 class="wp-block-heading" id="sharia">The sharīʿah</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Islamic law, the <em>sharīʿah</em> (<span lang="ar" dir="rtl">شَرِيعَة</span>, the path to the watering place), is the law God has revealed; <em>fiqh</em> (<span lang="ar" dir="rtl">فِقْه</span>, understanding) is the scholars’ effort to derive it. Its classical sources are four: the Qur’an, the <em>sunnah</em> or practice of the Prophet, the consensus of the scholars, and reasoning by analogy, the scheme set out by al-Shāfiʿī in the ninth century.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> Like halakhah, it covers worship and daily life together: prayer, fasting, alms, food, marriage, inheritance and commerce. Four Sunni schools of law, the Ḥanafī, Mālikī, Shāfiʿī and Ḥanbalī, grew from the same sources and recognise one another.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="law-manuscript" alt="An illuminated page of Arabic script" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"mandaean-rules-of-purity"} -->
+<h2 class="wp-block-heading" id="mandaean-rules-of-purity">Mandaean rules of purity</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Mandaeism has no body of case law comparable to the others, but it binds its people with detailed rules of purity: what may be eaten, how animals are slaughtered, how often and in what water a believer must be baptised, and how priests must live apart from pollution.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"a-law-and-a-method"} -->
+<h2 class="wp-block-heading" id="a-law-and-a-method">A law and a method</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an speaks directly to the relation between these laws:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">وَأَنزَلْنَآ إِلَيْكَ ٱلْكِتَـٰبَ بِٱلْحَقِّ مُصَدِّقًا لِّمَا بَيْنَ يَدَيْهِ مِنَ ٱلْكِتَـٰبِ وَمُهَيْمِنًا عَلَيْهِ ۖ فَٱحْكُم بَيْنَهُم بِمَآ أَنزَلَ ٱللَّهُ ۖ وَلَا تَتَّبِعْ أَهْوَآءَهُمْ عَمَّا جَآءَكَ مِنَ ٱلْحَقِّ ۚ لِكُلٍّ جَعَلْنَا مِنكُمْ شِرْعَةً وَمِنْهَاجًا ۚ وَلَوْ شَآءَ ٱللَّهُ لَجَعَلَكُمْ أُمَّةً وَٰحِدَةً وَلَـٰكِن لِّيَبْلُوَكُمْ فِى مَآ ءَاتَىٰكُمْ ۖ فَٱسْتَبِقُوا۟ ٱلْخَيْرَٰتِ ۚ إِلَى ٱللَّهِ مَرْجِعُكُمْ جَمِيعًا فَيُنَبِّئُكُم بِمَا كُنتُمْ فِيهِ تَخْتَلِفُونَ ٤٨</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">And We have revealed to you, [O Muḥammad], the Book [i.e., the Qur’ān] in truth, confirming that which preceded it of the Scripture and as a criterion over it. So judge between them by what Allāh has revealed and do not follow their inclinations away from what has come to you of the truth. To each of you We prescribed a law and a method. Had Allāh willed, He would have made you one nation [united in religion], but [He intended] to test you in what He has given you; so race to [all that is] good. To Allāh is your return all together, and He will [then] inform you concerning that over which you used to differ.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 5:48<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The verse accounts for both the likeness and the difference. Each community received ‘a law and a method’: the Torah for the Jews, with its commandments; and for the Muslims the sharīʿah, confirming what came before and judging over it. The laws differ in their details because God willed that they should, and the verse turns the difference into a test: ‘so race to all that is good.’ The history of the three legal traditions, each labouring for centuries to live by what it believed God had commanded, is a record of that race.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/food-and-faith/">Food and faith</a>, <a href="/journal/apostasy-in-the-abrahamic-traditions/">Apostasy in the Abrahamic traditions</a>, <a href="/journal/the-parting-of-the-ways/">The parting of the ways</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Babylonian Talmud, Makkot 23b. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Maimonides, <em>Sefer ha-Mitzvot</em>, and the enumeration of the commandments that opens the <em>Mishneh Torah</em>. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Acts 15:28-29; cf. Matthew 5:17; Galatians 2:16. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">“Canon law,” <em>Encyclopaedia Britannica</em>, summary; “Code of Canon Law,” <em>Encyclopaedia Britannica</em>. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">al-Shāfiʿī, <em>al-Risālah</em>, on the sources of law. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Drower, <em>The Mandaeans of Iraq and Iran</em>, pp. 47-48, 174. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Qur'an 5:48, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:food-and-faith', 'photo' => array( 'name' => 'food-market', 'alt' => 'A butcher preparing halal meat in a market' ), 'type' => 'post', 'slug' => 'food-and-faith', 'title' => 'Food and faith: kosher, halal and the Christian table',
+			'excerpt' => 'Why Jews and Muslims do not eat pork, why most Christians do, and what Mandaeans may not eat: the food laws of the four traditions, and the verse that opens the Muslim table.', 'description' => 'Kosher, halal, the Christian table and Mandaean rules: food laws in the four traditions compared. Read the guide.', 'categories' => array( 'culture', 'religion' ), 'days_ago' => 0, 'since' => 77, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Few things mark a religious community as plainly as what it eats. Three of the four Abrahamic traditions keep detailed food laws; the fourth set most of them aside in its first generation. The rules differ in their details, but they rest on a shared conviction that eating is an act before God.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"kashrut"} -->
+<h2 class="wp-block-heading" id="kashrut">Kashrut: the Jewish table</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Torah permits land animals that both chew the cud and have split hooves, which excludes the pig, the camel and the hare; fish with fins and scales; and birds not listed among the forbidden. Blood may not be eaten, and three times the Torah forbids boiling a kid in its mother’s milk, from which the rabbis derived the complete separation of meat and dairy.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Food prepared according to these laws is <em>kosher</em>, fit.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="food-challah" alt="Hands breaking challah bread at a Sabbath table" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-christian-table"} -->
+<h2 class="wp-block-heading" id="the-christian-table">The Christian table</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Gospel of Mark reports Jesus saying that nothing entering a person from outside can defile him, and adds that in saying this he declared all foods clean. In Acts, Peter sees a sheet let down from heaven full of animals and hears a voice telling him not to call unclean what God has made clean.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The council of Jerusalem kept only a short list for Gentile believers, to abstain from food offered to idols, from blood and from what is strangled, and in time most churches dropped even these.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Christianity kept its food customs in the calendar instead, in the fasts of Lent and the Orthodox abstention from meat and dairy on fast days.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="food-table" alt="Bread, grapes and wine on a table" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"halal"} -->
+<h2 class="wp-block-heading" id="halal">Ḥalāl: the Muslim table</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an forbids carrion, blood, the flesh of swine and what has been dedicated to other than God, and permits whatever a believer is forced to eat to survive.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> Wine and other intoxicants are forbidden. An animal is slaughtered with the name of God pronounced over it, by a swift cut that drains the blood. Food that meets these conditions is <em>ḥalāl</em> (<span lang="ar" dir="rtl">حَلَال</span>, permitted). The list of forbidden meats is shorter than the Torah’s, and the Qur’an presents some of the Jewish prohibitions as a burden placed on the Israelites for their conduct, lifted from those who follow the Prophet.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-mandaean-table"} -->
+<h2 class="wp-block-heading" id="the-mandaean-table">The Mandaean table</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Mandaeans may eat only meat that has been ritually slaughtered, and may not touch blood. Like their Jewish and Muslim neighbours they avoid the pig, the camel, the horse, the dog and the hare, but unlike them they consider it a crime to kill an ox or a buffalo, created, a Mandaean high priest told Drower, for ploughing and for milk. Scaleless fish are forbidden, and all food is washed in the river with the name of the Life pronounced over it. In practice little meat is eaten, and several Mandaeans told Drower that even lawful slaughter is a sin.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-food-of-those-given-the-scripture"} -->
+<h2 class="wp-block-heading" id="the-food-of-those-given-the-scripture">The food of those given the scripture</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an sets the rule for how Muslims are to regard the food of their neighbours:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">ٱلْيَوْمَ أُحِلَّ لَكُمُ ٱلطَّيِّبَـٰتُ ۖ وَطَعَامُ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَـٰبَ حِلٌّ لَّكُمْ وَطَعَامُكُمْ حِلٌّ لَّهُمْ ۖ وَٱلْمُحْصَنَـٰتُ مِنَ ٱلْمُؤْمِنَـٰتِ وَٱلْمُحْصَنَـٰتُ مِنَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَـٰبَ مِن قَبْلِكُمْ إِذَآ ءَاتَيْتُمُوهُنَّ أُجُورَهُنَّ مُحْصِنِينَ غَيْرَ مُسَـٰفِحِينَ وَلَا مُتَّخِذِىٓ أَخْدَانٍ ۗ وَمَن يَكْفُرْ بِٱلْإِيمَـٰنِ فَقَدْ حَبِطَ عَمَلُهُۥ وَهُوَ فِى ٱلْـَٔاخِرَةِ مِنَ ٱلْخَـٰسِرِينَ ٥</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">This day [all] good foods have been made lawful, and the food of those who were given the Scripture is lawful for you and your food is lawful for them. And [lawful in marriage are] chaste women from among the believers and chaste women from among those who were given the Scripture before you, when you have given them their due compensation, desiring chastity, not unlawful sexual intercourse or taking [secret] lovers. And whoever denies the faith - his work has become worthless, and he, in the Hereafter, will be among the losers.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 5:5<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The verse makes the Muslim table open where the other laws close it. It declares the food of Jews and Christians lawful to Muslims, and Muslim food lawful to them, so that the rules of <em>ḥalāl</em> give Muslims and the People of the Book a shared table. The same verse permits marriage with their chaste women. In the Qur’an’s view the food laws of the Abrahamic family are branches of one law, and the verse treats the families that keep them as neighbours who may eat together.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/religious-law-in-the-abrahamic-traditions/">Religious law in the Abrahamic traditions</a>, <a href="/journal/prayer-across-the-abrahamic-traditions/">Prayer across the Abrahamic traditions</a>, <a href="/religions/mandaeism/">Mandaeism</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Leviticus 11:1-23; 17:10-14; Exodus 23:19; 34:26; Deuteronomy 14:21. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Mark 7:18-19; Acts 10:9-16. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Acts 15:29. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Qur’an 2:173; cf. 5:3; 6:145. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Qur’an 6:146; 7:157. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Drower, <em>The Mandaeans of Iraq and Iran</em>, pp. 47-48. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Qur'an 5:5, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:war-and-peace-in-the-abrahamic-traditions', 'photo' => array( 'name' => 'peace-ploughshares', 'alt' => 'The Swords into Plowshares statue at the United Nations' ), 'type' => 'post', 'slug' => 'war-and-peace-in-the-abrahamic-traditions', 'title' => 'Are the Abrahamic religions violent? War and peace in scripture and history',
+			'excerpt' => 'Has religion caused most wars? What the historical record shows, what the scriptures of each tradition command about war and peace, and the verse that weighs one life against all mankind.', 'description' => 'Are the Abrahamic religions violent? The historical record and what each scripture teaches on war and peace. Read on.', 'categories' => array( 'religion', 'history' ), 'days_ago' => 0, 'since' => 77, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>It is often said that the Abrahamic religions are especially violent, even that religion has caused most of the wars in history. The claim deserves a serious answer, which means looking both at the historical record and at what the scriptures of each tradition actually command.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-the-record-shows"} -->
+<h2 class="wp-block-heading" id="what-the-record-shows">What the record shows</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The figure most often quoted in reply comes from the <em>Encyclopedia of Wars</em> of Charles Phillips and Alan Axelrod, which catalogues 1,763 wars across recorded history. Its index lists 121 of them under religious wars, about seven per cent.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The historian Andrew Holt has shown that the popular round figure of 123 comes from later commentators, and that the encyclopedia’s own index is a rough guide, since other wars in it had religious elements. A second reference work, the <em>Encyclopedia of War</em> edited by Gordon Martel, counts about six per cent of its wars as religious.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The theologian William Cavanaugh has argued further that the line between ‘religious’ and ‘secular’ violence is itself a modern Western invention, since wars called religious always had political and economic causes, and wars called secular have been fought for beliefs held with religious intensity.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> The deadliest wars of the twentieth century were fought for nation, race and class.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="peace-doves" alt="White doves over the walls of an old fortress" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-hebrew-bible-and-judaism"} -->
+<h2 class="wp-block-heading" id="the-hebrew-bible-and-judaism">The Hebrew Bible and Judaism</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Hebrew Bible contains wars of conquest, and also some of the oldest laws of restraint in war: an army must offer peace to a city before attacking it, and must not cut down its fruit trees. Its prophets gave the world its most famous vision of peace, when nations ‘shall beat their swords into ploughshares’.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> The Mishnah teaches that whoever destroys a single life is regarded as though he had destroyed a whole world, and whoever saves a single life as though he had saved a whole world.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"christianity"} -->
+<h2 class="wp-block-heading" id="christianity">Christianity</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Jesus blessed the peacemakers, told his followers to love their enemies, and told Peter to put away his sword, ‘for all who take the sword will perish by the sword’.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup> Some early Christian writers, Tertullian among them, held that a Christian could not serve as a soldier. Once the empire became Christian, Augustine developed the theory of the just war, and the church later preached the Crusades; the same tradition also produced the peace movements and the modern laws of war.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"islam"} -->
+<h2 class="wp-block-heading" id="islam">Islam</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an permitted fighting only after the Muslims of Makkah had suffered years of persecution, ‘because they were wronged’, and it binds the permission with limits: fight those who fight you, and do not transgress; if the enemy inclines to peace, incline to it too; there shall be no compulsion in religion.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> The first caliph, Abū Bakr, sending his armies into Syria, gave them ten commands: not to kill women, children or the old and infirm, not to cut down fruit trees, not to destroy inhabited places, not to slaughter sheep or camels except for food, and to leave in peace those who had devoted themselves to worship in their cells.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> Islamic law built on these commands a detailed law of war centuries before the Geneva Conventions.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="peace-dove-olive" alt="A dove with an olive branch" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"mandaeism"} -->
+<h2 class="wp-block-heading" id="mandaeism">Mandaeism</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Mandaeism teaches that all killing and all shedding of blood is sinful, so that even lawful slaughter for food is an act for which Mandaeans feel the need to apologise.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> Drower was told by several pious Mandaeans that a deeply religious man gives up meat and fish altogether.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"as-if-he-had-saved-mankind"} -->
+<h2 class="wp-block-heading" id="as-if-he-had-saved-mankind">As if he had saved mankind</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an sets the principle in words addressed first to the Children of Israel:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">مِنْ أَجْلِ ذَٰلِكَ كَتَبْنَا عَلَىٰ بَنِىٓ إِسْرَٰٓءِيلَ أَنَّهُۥ مَن قَتَلَ نَفْسًۢا بِغَيْرِ نَفْسٍ أَوْ فَسَادٍ فِى ٱلْأَرْضِ فَكَأَنَّمَا قَتَلَ ٱلنَّاسَ جَمِيعًا وَمَنْ أَحْيَاهَا فَكَأَنَّمَآ أَحْيَا ٱلنَّاسَ جَمِيعًا ۚ وَلَقَدْ جَآءَتْهُمْ رُسُلُنَا بِٱلْبَيِّنَـٰتِ ثُمَّ إِنَّ كَثِيرًا مِّنْهُم بَعْدَ ذَٰلِكَ فِى ٱلْأَرْضِ لَمُسْرِفُونَ ٣٢</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">Because of that, We decreed upon the Children of Israel that whoever kills a soul unless for a soul or for corruption [done] in the land - it is as if he had slain mankind entirely. And whoever saves one - it is as if he had saved mankind entirely. And Our messengers had certainly come to them with clear proofs. Then indeed many of them, [even] after that, throughout the land, were transgressors.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 5:32<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The verse restates for all humanity the teaching the Mishnah preserved: one life weighs as much as the whole of mankind. That shared principle is the best answer to the charge with which this article began. The Abrahamic scriptures do permit war, under conditions, as nearly every political order has; what they add is the insistence that every life belongs to God, that war must be limited and just, and that peace is to be accepted whenever it is offered. Wars fought in the name of these religions were fought against their own teaching whenever they broke those limits.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/the-amman-message-and-a-common-word/">The Amman Message and A Common Word</a>, <a href="/journal/interfaith-dialogue-in-the-modern-era/">Interfaith dialogue in the modern era</a>, <a href="/journal/apostasy-in-the-abrahamic-traditions/">Apostasy in the Abrahamic traditions</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">Andrew Holt, “Counting ‘Religious Wars’ in the Encyclopedia of Wars,” 26 December 2018, citing Charles Phillips and Alan Axelrod, <em>Encyclopedia of Wars</em> (New York: Facts on File, 2005), vol. 3, pp. 1484-1485. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Gordon Martel (ed.), <em>The Encyclopedia of War</em> (Oxford: Wiley-Blackwell, 2012). <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">William T. Cavanaugh, <em>The Myth of Religious Violence: Secular Ideology and the Roots of Modern Conflict</em> (New York: Oxford University Press, 2009). <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Deuteronomy 20:10, 19; Isaiah 2:4. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Mishnah, Sanhedrin 4:5. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Matthew 5:9, 44; 26:52. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">Qur’an 22:39; 2:190; 8:61; 2:256. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8"><em>Muwaṭṭaʾ</em> of Mālik, Book 21 (Jihād), Hadith 10. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Drower, <em>The Mandaeans of Iraq and Iran</em>, p. 48. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Qur'an 5:32, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:the-islamic-dilemma', 'photo' => array( 'name' => 'dilemma-quran-stand', 'alt' => 'An open Qur’an on a wooden stand' ), 'type' => 'post', 'slug' => 'the-islamic-dilemma', 'title' => 'The Islamic Dilemma: the argument and the answer',
+			'excerpt' => 'If the Gospel is the word of God, Islam is false; if it is not, Islam is still false. The Islamic Dilemma at its strongest, and the Qur’anic verse that answers it.', 'description' => 'The Islamic Dilemma explained and answered: the verses, the premises and the Qur’an’s own reply. Read the analysis.', 'categories' => array( 'scripture', 'theology' ), 'days_ago' => 0, 'since' => 79, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>The ‘Islamic Dilemma’ is an argument made by Christian apologists against Islam, popularised above all by the American apologist David Wood.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Its shape is simple. The Qur’an, it says, affirms the Torah and the Gospel. If the Gospel is the word of God, Islam is false because it contradicts the Gospel; if the Gospel is not the word of God, Islam is false because the Qur’an affirmed it. As the argument’s own website puts it, “By affirming scriptures that contradict its core teachings, Islam self-destructs.”<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> This article sets out the argument at its strongest, and then examines the premises on which it rests.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-argument-at-its-strongest"} -->
+<h2 class="wp-block-heading" id="the-argument-at-its-strongest">The argument at its strongest</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The dilemma draws on a group of verses. The Qur’an says that God sent down the Book ‘confirming what was before it’, as He had sent down the Torah and the Gospel as guidance for the people.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> It says that God gave Jesus the Gospel, ‘in which was guidance and light’, and tells the people of the Gospel to judge by what God has revealed in it.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> It tells the People of the Scripture that they stand on nothing until they uphold the Torah and the Gospel.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> And it tells the Prophet that if he is in doubt about what has been revealed to him, he should ask those who have been reading the scripture before him.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>From these verses proponents build three premises: that the Qur’an treats the Torah and Gospel of the seventh century as authoritative; that the Bible of the seventh century is, by the manuscript evidence, essentially the Bible of today; and that this Bible contradicts the Qur’an on the divinity of Christ and on the crucifixion.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Each of the three can be tested.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="dilemma-bible-altar" alt="An open Bible on a wooden altar" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-confirming-means"} -->
+<h2 class="wp-block-heading" id="what-confirming-means">What {Q}confirming{Q} means</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The word the verses use for the Qur’an’s relation to earlier scripture is <em>muṣaddiq</em> (<span lang="ar" dir="rtl">مُصَدِّق</span>, confirming, declaring true). The same passage that the dilemma quotes goes on to give the Qur’an a second title: it is sent down ‘confirming that which preceded it of the Scripture and as a criterion over it’, <em>muhayminan ʿalayhi</em> (<span lang="ar" dir="rtl">مُهَيْمِنًا عَلَيْهِ</span>, a guardian over it).<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> Ibn ʿAbbās, the Prophet’s cousin, explained the word as trustee: the Qur’an is trustee over every scripture before it.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup> The early exegete al-Ṭabarī drew the consequence: whatever in the earlier books agrees with the Qur’an is true, and whatever disagrees with it is false.<sup class="abr-fn"><a href="#note-10" id="ref-10">10</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The confirmation the dilemma relies on is therefore a confirmation under judgement. The Qur’an affirms that God revealed the Torah and the Gospel, affirms the truths that remain in the scriptures of Jews and Christians, and claims the right to say which parts those are. The first premise, that the Qur’an endorses the seventh-century text as it stood, reads only half of the verse on which it depends.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"which-gospel"} -->
+<h2 class="wp-block-heading" id="which-gospel">Which Gospel?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Qur’an speaks of one Gospel, the <em>Injīl</em> (<span lang="ar" dir="rtl">إِنجِيل</span>), which God ‘gave’ to Jesus. The New Testament contains four Gospels, each bearing the name of a later writer, and one of them opens by explaining that its author compiled his account from what had been handed down by eyewitnesses.<sup class="abr-fn"><a href="#note-11" id="ref-11">11</a></sup> The dilemma assumes that the Injīl of the Qur’an is simply the four Gospels of the Christian canon. That identification is the Christian reading of the Qur’an, and the Qur’an does not make it. On the Muslim reading, the Injīl is the revelation given to Jesus, which the four Gospels preserve in part, together with much that was written about him by others.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-quran-already-speaks-of-alteration"} -->
+<h2 class="wp-block-heading" id="the-quran-already-speaks-of-alteration">The Qur’an already speaks of alteration</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The dilemma presents the Muslim charge of corruption as a later excuse that the Qur’an itself does not support. The Qur’an says otherwise, in the same period it was revealed. It condemns those who write scripture with their own hands and then say it is from God; it describes a party among the People of the Book who twist the scripture with their tongues so that it may be taken for scripture; and it says that some of them distort words from their proper places and have forgotten a portion of what they were reminded of.<sup class="abr-fn"><a href="#note-12" id="ref-12">12</a></sup> The Qur’an that confirms is the same Qur’an that corrects, and it does both in the seventh century. There is no contradiction for the Muslim to escape: the Qur’an never claimed that every text in the hands of its hearers was intact.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Read this way, the verses the dilemma cites fall into place. The people of the Gospel are told to judge by what God has revealed in it: by the truths that remain there, such as the oneness of God and the coming of a prophet described in their own scriptures.<sup class="abr-fn"><a href="#note-13" id="ref-13">13</a></sup> And the verse about asking those who read the scripture concerned, for many classical exegetes, the Prophet’s own description in their books; others held that the Prophet neither doubted nor asked, and that the verse addresses his hearers through him.<sup class="abr-fn"><a href="#note-14" id="ref-14">14</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="dilemma-alexandrinus" alt="A page of Codex Alexandrinus, a fifth-century Greek Bible, from the facsimile of 1879 to 1883" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-bible-of-the-seventh-century"} -->
+<h2 class="wp-block-heading" id="the-bible-of-the-seventh-century">The Bible of the seventh century</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The second premise, that the Bible of the seventh century is essentially the Bible of today, turns against the argument once it is examined. The Bible of the seventh century already contained passages that Christian scholars now recognise as later additions. The last twelve verses of Mark are absent from the two oldest complete Greek Bibles, Codex Vaticanus and Codex Sinaiticus; Eusebius and Jerome both knew that most Greek copies of their day lacked them, and most New Testament scholars regard them as a second-century addition.<sup class="abr-fn"><a href="#note-15" id="ref-15">15</a></sup> Many modern Bibles print a note that the earliest manuscripts lack the story of the woman taken in adultery.<sup class="abr-fn"><a href="#note-16" id="ref-16">16</a></sup> A Bible that had grown by the seventh century is exactly the kind of text over which the Qur’an claims the right of a guardian.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"the-verse-that-answers-the-dilemma"} -->
+<h2 class="wp-block-heading" id="the-verse-that-answers-the-dilemma">The verse that answers the dilemma</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The whole question is settled by the verse that follows the passage the dilemma quotes most often:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"abr-verse"} -->
+<blockquote class="wp-block-quote abr-verse"><!-- wp:paragraph -->
+<p class="abr-verse__ar" lang="ar" dir="rtl">وَأَنزَلْنَآ إِلَيْكَ ٱلْكِتَـٰبَ بِٱلْحَقِّ مُصَدِّقًا لِّمَا بَيْنَ يَدَيْهِ مِنَ ٱلْكِتَـٰبِ وَمُهَيْمِنًا عَلَيْهِ ۖ فَٱحْكُم بَيْنَهُم بِمَآ أَنزَلَ ٱللَّهُ ۖ وَلَا تَتَّبِعْ أَهْوَآءَهُمْ عَمَّا جَآءَكَ مِنَ ٱلْحَقِّ ۚ لِكُلٍّ جَعَلْنَا مِنكُمْ شِرْعَةً وَمِنْهَاجًا ۚ وَلَوْ شَآءَ ٱللَّهُ لَجَعَلَكُمْ أُمَّةً وَٰحِدَةً وَلَـٰكِن لِّيَبْلُوَكُمْ فِى مَآ ءَاتَىٰكُمْ ۖ فَٱسْتَبِقُوا۟ ٱلْخَيْرَٰتِ ۚ إِلَى ٱللَّهِ مَرْجِعُكُمْ جَمِيعًا فَيُنَبِّئُكُم بِمَا كُنتُمْ فِيهِ تَخْتَلِفُونَ ٤٨</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p class="abr-verse__en">And We have revealed to you, [O Muḥammad], the Book [i.e., the Qur’ān] in truth, confirming that which preceded it of the Scripture and as a criterion over it. So judge between them by what Allāh has revealed and do not follow their inclinations away from what has come to you of the truth. To each of you We prescribed a law and a method. Had Allāh willed, He would have made you one nation [united in religion], but [He intended] to test you in what He has given you; so race to [all that is] good. To Allāh is your return all together, and He will [then] inform you concerning that over which you used to differ.</p>
+<!-- /wp:paragraph -->
+<cite>Qur’an 5:48<sup class="abr-fn"><a href="#note-17" id="ref-17">17</a></sup></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>The dilemma quotes the Qur’an as a witness to the Bible and stops before the verse that explains what kind of witness it is. The Qur’an confirms and guards at once: it declares true what God revealed to Moses and to Jesus, and it stands over the texts that later carried that revelation as the criterion that separates what remains of it from what was added. A dilemma needs two horns, and each of these rests on a premise the Qur’an rejects. The Muslim can hold without contradiction that God gave Jesus the Gospel, that the Christian scriptures preserve some of it, and that the Qur’an is the judge of which parts those are.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/reference/comparisons/islamic-dilemma/">What is the Islamic Dilemma?</a>, <a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a>, <a href="/journal/understanding-the-bible-and-the-quran-in-historical-context/">Understanding the Bible and the Qur’an in historical context</a>, <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>, <a href="https://themuslimapologist.online/articles/the-islamic-dilemma/">The Islamic Dilemma, refuted</a> (The Muslim Apologist).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">“The Islamic Dilemma,” Hold Fast Apologetics, 2 March 2026; “The Islamic Dilemma: A Scholarly Breakdown by Rudolph P. Boshoff,” Ad Lucem Ministries, 2 October 2025. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">“What is the ‘Islamic Dilemma’?,” The Islamic Dilemma (islamicdilemma.com). <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Qur’an 3:3-4. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Qur’an 5:46-47. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Qur’an 5:68. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Qur’an 10:94. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">“The Islamic Dilemma: The Quran, the Bible, and a Two-Horned Trap,” Apologia Daily, 28 June 2026. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">Qur’an 5:48. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">Ṣaḥīḥ al-Bukhārī, Book of the Virtues of the Qur’an, chapter 1, the comment of Ibn ʿAbbās on <em>al-muhaymin</em>. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-10">Ibn Kathīr, <em>Tafsīr al-Qur’ān al-ʿAẓīm</em>, on Qur’an 5:48, quoting Ibn Jarīr al-Ṭabarī and the reports from Ibn ʿAbbās. <a href="#ref-10" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-11">Luke 1:1-4. <a href="#ref-11" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-12">Qur’an 2:79; 3:78; 5:13. <a href="#ref-12" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-13">Qur’an 7:157; cf. Mark 12:29. <a href="#ref-13" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-14">Waleed Blyth, note to Qur’an 10:94, <em>The Qur’an: English translation</em>, Quranenc.com, citing al-Ṭabarī, Ibn ʿAṭiyyah and Ibn Kathīr, and al-Wāḥidī, al-Baghawī and Ibn ʿĀshūr. <a href="#ref-14" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-15">“‘The Earliest Manuscripts Do Not Have …’: How to Preach Mark 16 and John 8,” Logos. <a href="#ref-15" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-16">New International Version, note at John 7:53-8:11. <a href="#ref-16" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-17">Qur'an 5:48, trans. Saheeh International; Arabic text from Quran.com. <a href="#ref-17" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:islamic-dilemma-reddit', 'photo' => array( 'name' => 'reddit-study-group', 'alt' => 'A group of readers studying a large book together' ), 'type' => 'post', 'slug' => 'islamic-dilemma-reddit', 'title' => 'The Islamic Dilemma: answers for Reddit readers',
+			'excerpt' => 'Short, sourced answers to the questions people search for about the Islamic Dilemma: Surah 5:46, 5:47, 10:94, and whether the Qur’an or the Bible has been changed.', 'description' => 'The Islamic Dilemma, answered for Reddit readers: short, sourced answers on 5:46, 5:47, 10:94 and more. Read them.', 'categories' => array( 'scripture', 'theology' ), 'days_ago' => 0, 'since' => 82, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>Readers who search for the Islamic Dilemma often add the word Reddit to their search, looking for a plain, direct answer. This page is for them. It answers, briefly and with sources, the questions people actually type into search engines about the argument; the full treatment is in <a href="/journal/the-islamic-dilemma/">The Islamic Dilemma: the argument and the answer</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-is-the-islamic-dilemma"} -->
+<h2 class="wp-block-heading" id="what-is-the-islamic-dilemma">What is the Islamic Dilemma?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>An argument popularised by the Christian apologist David Wood. The Qur’an affirms the Torah and the Gospel; if the Gospel is God’s word, Islam is false for contradicting it, and if it is not, Islam is false for affirming it.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> See <a href="/reference/comparisons/islamic-dilemma/">What is the Islamic Dilemma?</a> for the verses it cites.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"is-the-islamic-dilemma-true"} -->
+<h2 class="wp-block-heading" id="is-the-islamic-dilemma-true">Is the Islamic Dilemma true?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Only if the Qur’an vouches for every text in the hands of Jews and Christians. It does not. The same passage the argument quotes calls the Qur’an a guardian and criterion over earlier scripture, and the Qur’an elsewhere speaks of people who wrote scripture with their own hands and distorted words from their places.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Confirming a revelation and judging the texts that carry it are two parts of one claim, so the dilemma’s two horns do not close.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-does-surah-5-46-say"} -->
+<h2 class="wp-block-heading" id="what-does-surah-5-46-say">What does Surah 5:46 say?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>That God sent Jesus confirming the Torah before him, and gave him the Gospel, ’in which was guidance and light’.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> The verse speaks of the Gospel God gave to Jesus. The four Gospels of the New Testament were written about him by others, one of whose authors says he compiled it from earlier accounts.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"why-does-the-quran-tell-christians-to-judge-by-the-gospel"} -->
+<h2 class="wp-block-heading" id="why-does-the-quran-tell-christians-to-judge-by-the-gospel">Why does the Qur’an tell Christians to judge by the Gospel?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Surah 5:47 tells the people of the Gospel to judge by ’what God has revealed therein’: by the truths of revelation that remain in their scripture, among them the oneness of God and the prophet the Qur’an says they find described in it.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> The next verse makes the Qur’an the criterion of what those truths are.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"did-muhammad-doubt-the-quran"} -->
+<h2 class="wp-block-heading" id="did-muhammad-doubt-the-quran">Did Muhammad doubt the Qur’an? (Surah 10:94)</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The verse is conditional: if you are in doubt, ask those who read the scripture before you. Many classical exegetes took it to concern the Prophet’s description in the earlier books; others held that he neither doubted nor asked, and that the verse addresses his hearers through him.<sup class="abr-fn"><a href="#note-6" id="ref-6">6</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"has-the-quran-been-changed"} -->
+<h2 class="wp-block-heading" id="has-the-quran-been-changed">Has the Qur’an been changed?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The manuscript evidence places the Qur’an’s written text very close to the Prophet’s lifetime. Two leaves held by the University of Birmingham, containing parts of chapters 18 to 20, were radiocarbon dated in 2015 to between 568 and 645 CE with 95.4 per cent probability.<sup class="abr-fn"><a href="#note-7" id="ref-7">7</a></sup> Muslim scholarship has always recorded the recognised variant readings of the text, the <em>qirāʾāt</em> (<span lang="ar" dir="rtl">قِرَاءَات</span>, readings), openly. See <a href="/journal/the-preservation-and-transmission-of-scripture/">The preservation and transmission of scripture</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"has-the-bible-been-changed"} -->
+<h2 class="wp-block-heading" id="has-the-bible-been-changed">Has the Bible been changed?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Christian scholars themselves identify later additions. The last twelve verses of Mark are missing from the oldest complete Greek Bibles, and most New Testament scholars regard them as a second-century addition.<sup class="abr-fn"><a href="#note-8" id="ref-8">8</a></sup> Many modern Bibles note that the earliest manuscripts lack the story of the woman taken in adultery.<sup class="abr-fn"><a href="#note-9" id="ref-9">9</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"where-can-i-read-a-full-rebuttal"} -->
+<h2 class="wp-block-heading" id="where-can-i-read-a-full-rebuttal">Where can I read a full rebuttal?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Start with <a href="/journal/the-islamic-dilemma/">The Islamic Dilemma: the argument and the answer</a>, and see also <a href="https://themuslimapologist.online/articles/the-islamic-dilemma/">The Islamic Dilemma, refuted</a> at The Muslim Apologist.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/journal/the-islamic-dilemma/">The Islamic Dilemma: the argument and the answer</a>, <a href="/reference/comparisons/islamic-dilemma/">What is the Islamic Dilemma?</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">“What is the ‘Islamic Dilemma’?,” The Islamic Dilemma (islamicdilemma.com). <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Qur’an 5:48; 2:79; 5:13. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Qur’an 5:46, trans. Saheeh International. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Luke 1:1-4. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Qur’an 5:47; 7:157; cf. Mark 12:29. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-6">Waleed Blyth, note to Qur’an 10:94, Quranenc.com, citing al-Ṭabarī, Ibn ʿAṭiyyah, Ibn Kathīr, al-Wāḥidī, al-Baghawī and Ibn ʿĀshūr. <a href="#ref-6" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-7">“Birmingham Qur’an manuscript dated among the oldest in the world,” University of Birmingham, 22 July 2015. <a href="#ref-7" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-8">“‘The Earliest Manuscripts Do Not Have …’: How to Preach Mark 16 and John 8,” Logos. <a href="#ref-8" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-9">New International Version, note at John 7:53-8:11. <a href="#ref-9" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+ABR_SEED,
+		),
+		array(
+			'key' => 'post:judaism-vs-christianity-reddit', 'photo' => array( 'name' => 'reddit-jerusalem-rooftops', 'alt' => 'The rooftops of the Old City of Jerusalem' ), 'type' => 'post', 'slug' => 'judaism-vs-christianity-reddit', 'title' => 'Judaism vs Christianity: answers for Reddit readers',
+			'excerpt' => 'Are Judaism and Christianity the same religion? What divides them, which Bible each reads, and whether Christians keep the law: short, sourced answers.', 'description' => 'Judaism vs Christianity, answered for Reddit readers: the main differences, the Bible and the law. Read the answers.', 'categories' => array( 'religion', 'history' ), 'days_ago' => 0, 'since' => 82, 'parent' => '',
+			'content' => <<<'ABR_SEED'
+<!-- wp:paragraph -->
+<p>People comparing Judaism and Christianity often add Reddit to their search in the hope of a plain, straight answer. This page gives short, sourced answers to the questions they ask most. For the longer comparison, see <a href="/reference/comparisons/#judaism-and-christianity">Comparative studies</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"are-judaism-and-christianity-the-same"} -->
+<h2 class="wp-block-heading" id="are-judaism-and-christianity-the-same">Are Judaism and Christianity the same religion?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>No. They share a scripture and a history, and Christianity began as a movement within Judaism, but they separated over the first four centuries and became two religions with different beliefs about God, the Messiah and the law. See <a href="/journal/the-parting-of-the-ways/">The parting of the ways</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"what-is-the-main-difference"} -->
+<h2 class="wp-block-heading" id="what-is-the-main-difference">What is the main difference between Judaism and Christianity?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Jesus. Christians believe that he is the Messiah and the Son of God, one person of the Trinity, who died and rose again.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Jews do not accept him as the Messiah; they await a Messiah still to come, a human king of David’s line who will restore Israel and bring peace, and they hold that God is one and indivisible.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"do-jews-and-christians-read-the-same-bible"} -->
+<h2 class="wp-block-heading" id="do-jews-and-christians-read-the-same-bible">Do Jews and Christians read the same Bible?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In part. The Jewish scripture, the Tanakh, is the Christian Old Testament, though the books are arranged differently, and Catholic and Orthodox Bibles include further books not in the Hebrew canon. Christians add the New Testament, which Judaism does not accept as scripture. See <a href="/reference/sacred-texts/tanakh/">The Tanakh</a> and <a href="/reference/sacred-texts/bible/">The Bible</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"do-christians-keep-jewish-law"} -->
+<h2 class="wp-block-heading" id="do-christians-keep-jewish-law">Do Christians keep the Jewish law?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Most do not. The apostles at Jerusalem freed Gentile converts from circumcision and most of the law of Moses, requiring only that they avoid food offered to idols, blood, what is strangled and sexual immorality.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Judaism lives by the 613 commandments of the Torah as the rabbis interpreted them.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup> See <a href="/journal/religious-law-in-the-abrahamic-traditions/">Religious law in the Abrahamic traditions</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"how-do-they-see-each-other"} -->
+<h2 class="wp-block-heading" id="how-do-they-see-each-other">How does each see the other?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Christianity holds that God’s covenant with Israel was fulfilled and opened to all nations in Christ, though churches differ on what that means for the Jewish people today. Judaism regards Christianity as a separate religion that grew from Jewish roots. The Qur’an, for its part, honours the prophets of Israel and Jesus as Messiah, and calls on both communities to return to the pure monotheism of Abraham.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"abr-further"} -->
+<p class="abr-further">Further reading: <a href="/reference/comparisons/">Comparative studies</a>, <a href="/journal/the-parting-of-the-ways/">The parting of the ways</a>, <a href="/journal/jesus-across-the-traditions/">Jesus across the traditions</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"notes","className":"abr-notes-title"} -->
+<h2 class="wp-block-heading abr-notes-title" id="notes">Notes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true,"className":"abr-notes"} -->
+<ol class="wp-block-list abr-notes"><!-- wp:list-item -->
+<li id="note-1">The Nicene Creed (381); 1 Corinthians 15:3-4. <a href="#ref-1" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-2">Deuteronomy 6:4; Maimonides, <em>Mishneh Torah</em>, Laws of Kings 11-12. <a href="#ref-2" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-3">Acts 15:28-29. <a href="#ref-3" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-4">Babylonian Talmud, Makkot 23b. <a href="#ref-4" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li id="note-5">Qur’an 3:45; 3:64-67. <a href="#ref-5" class="abr-fn-back" aria-label="Back to the text">&#8617;</a></li>
 <!-- /wp:list-item --></ol>
 <!-- /wp:list -->
 ABR_SEED,

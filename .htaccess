@@ -1,0 +1,11 @@
+# Abrahamic: the readme and the documentation are for the site's editors and
+# are not served to visitors, search engines or crawlers.
+<FilesMatch "^(readme\.txt|.*\.md)$">
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Deny from all
+	</IfModule>
+</FilesMatch>

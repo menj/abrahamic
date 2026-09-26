@@ -1,9 +1,9 @@
 === Abrahamic ===
-Contributors: menj
+Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.52.0
+Stable tag: 2.73.2
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +43,7 @@ Appearance > Theme Options lets you:
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.52.0.zip, and activate it. The starter pages and articles are created automatically.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.73.2.zip, and activate it. The starter pages and articles are created automatically.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
@@ -78,13 +78,21 @@ No. The theme remembers everything it has created, so deleted items stay deleted
 
 Yes. A switch in the header changes between light and dark colours, and each visitor's choice is remembered on their own device. Under Appearance > Theme Options > Header you can hide the switch, and set which colours a first-time visitor sees: light, dark, or the setting their device prefers.
 
+= Can I change the login screen? =
+
+Yes. Appearance > Theme Options > Login sets the logo, the photograph and the line beside the form, and can move the login screen to a private address. If that address is ever lost, add define( 'ABR_HIDE_LOGIN', false ); to wp-config.php, log in at wp-login.php, and remove the line again.
+
+= How do I hide a post without deleting it? =
+
+Tick "Unlist this item" in the Listing box of the editor sidebar. The post stays at its own address and disappears from lists, search, feeds, the sitemap and search engines. Unlisted items are gathered under an Unlisted view above the post list.
+
 = How do I change the logo? =
 
 Open Appearance > Theme Options > Header and choose the AR mark with the name, the mark alone, or the name alone. The mark takes the colours of the chosen colour scheme. To use a different browser icon, set a Site Icon under Settings > General.
 
 = How do I set up donations? =
 
-Both Donate buttons open https://www.paypal.com/paypalme/menj. To change them, open Appearance > Theme Options > Header: Donate button link sets the header button (use @donate to open the Donate page first), and Donation link sets the Donate now button on the Donate page. You can also change the button label, colour and link there, or hide the header button.
+Both Donate buttons open the owner's payment page. To change them, open Appearance > Theme Options > Header: Donate button link sets the header button (use @donate to open the Donate page first), and Donation link sets the Donate now button on the Donate page. You can also change the button label, colour and link there, or hide the header button.
 
 = Should I use tags or topics? =
 
@@ -135,6 +143,141 @@ Yes. The hero section and the place cards hold patterned placeholders. Replace e
 They are copied across automatically when you activate Abrahamic. Changes you made to templates in the Site Editor under the old theme are not carried over. See docs/upgrading.md for details.
 
 == Upgrade Notice ==
+
+= 2.73.2 =
+Chapter banner titles and chapter labels in title case.
+
+= 2.73.1 =
+Section introductions on the home page now line up under their headings.
+
+= 2.73.0 =
+Two question-and-answer pieces in the Journal for readers who search with the word Reddit.
+
+= 2.72.1 =
+The Islamic Dilemma pages link to the rebuttal at The Muslim Apologist.
+
+= 2.72.0 =
+A Journal article and a reference page on the Islamic Dilemma.
+
+= 2.71.0 =
+Seven new Journal articles drawn from the site's search keyword research.
+
+= 2.70.0 =
+Twelve new FAQ answers, the 2020 world religion figures with a chart, and a comparison of the traditions in pairs, built from the site's search keyword research.
+
+= 2.69.0 =
+Parallax chapter banners between the main sections of the home page.
+
+= 2.68.1 =
+Journal pages show twelve articles, so their rows fill completely.
+
+= 2.68.0 =
+A section bar under the header on the home page, Back to top links, and a header that now stays fixed as intended.
+
+= 2.67.0 =
+The front page is rearranged as a journey in thirteen chapters.
+
+= 2.66.0 =
+Restores the missing featured images on the newest Journal articles, and the shared-heritage symbols now include the Mandaean darfash.
+
+= 2.65.0 =
+The Places page is rewritten: ten fuller sections, each with its own photograph and sources.
+
+= 2.64.0 =
+Visitors now see a calm "Back shortly" notice instead of an error during updates, fatal errors and database outages.
+
+= 2.63.4 =
+Footer links: About AR and Contact AR.
+
+= 2.63.3 =
+The footer's secondary navigation labels are set in capitals.
+
+= 2.63.2 =
+The Knowledge base menu label becomes KB, with Knowledge Base shown on hover.
+
+= 2.63.1 =
+The main-menu label Editorial policy is shortened to Editorial.
+
+= 2.63.0 =
+Fuller About, Editorial policy, Terms of use, Privacy policy and Contact us pages.
+
+= 2.62.0 =
+Editorial policy and Knowledge base join the main menu.
+
+= 2.61.1 =
+The site-pages bar moves from above the header to the footer.
+
+= 2.61.0 =
+A top bar of site pages, and the site now names no person anywhere a visitor, search engine or AI tool can read.
+
+= 2.60.0 =
+A new Journal article on the cave of Hira and the Quba Mosque.
+
+= 2.59.0 =
+A new Journal article on the stations of the Hajj.
+
+= 2.58.0 =
+A new Journal article on the history of Hagia Sophia.
+
+= 2.57.3 =
+The Nicaea article now ties the city's history to the Qur'anic verses it cites.
+
+= 2.57.2 =
+The Nicaea article now covers the city's destruction and later history.
+
+= 2.57.1 =
+The patriarchal cities move from the front page to their own Journal article.
+
+= 2.57.0 =
+A new Journal article on the Council of Nicaea, and four patriarchal cities on the front page.
+
+= 2.56.3 =
+A new photograph for Hebron on the front page.
+
+= 2.56.2 =
+Vatican City joins the front page's sacred places, completing two rows of four.
+
+= 2.56.1 =
+Madinah joins the front page's sacred places.
+
+= 2.56.0 =
+The front page's sacred places now include the Mandaeans.
+
+= 2.55.3 =
+Fixes a blank front page after a theme update.
+
+= 2.55.2 =
+The family tree now links the Mandaeans to John the Baptist.
+
+= 2.55.1 =
+Mandaeism now appears in both diagrams.
+
+= 2.55.0 =
+A new Journal article with an Abrahamic family tree and a diagram of shared beliefs, and redirects for every address of the 2016-2023 site.
+
+= 2.54.2 =
+Repairs featured images whose file on the server is empty or missing.
+
+= 2.54.1 =
+Restores missing featured images on Journal articles, and stops headings from stretching across the line.
+
+= 2.54.0 =
+A new Journal article: The Sabians in classical Muslim scholarship.
+
+= 2.53.2 =
+The wp-config.php switch for the private login address is now define( 'ABR_HIDE_LOGIN', false );.
+
+= 2.53.1 =
+A fully redesigned login screen: a centred card on a dark page, now the default layout.
+
+= 2.53.0 =
+A themed login screen, an optional private login address, unlisted posts and readable search addresses are now built in. Deactivate Login Logo, WPS Hide Login, Unlist Posts & Pages and Pretty Search Permalinks after upgrading; their settings carry over.
+
+= 2.52.2 =
+A house-style pass over the English prose of every page and article.
+
+= 2.52.1 =
+Removes the remaining self-referencing phrases from the content.
 
 = 2.52.0 =
 A new Journal article: Apostasy in the Abrahamic traditions.
@@ -320,7 +463,7 @@ The guidance line on the home page image placeholder is now shown only to signed
 Adds a faint watermark of the three religious symbols to the shared heritage section on the home page.
 
 = 2.12.1 =
-The Donate button now opens the PayPal page https://www.paypal.com/paypalme/menj. Change it under Theme Options > Header.
+The Donate button now opens the PayPal page the owner's payment page. Change it under Theme Options > Header.
 
 = 2.12.0 =
 Adds a red Donate button and a Donate page. Site links now appear in the footer only. Add your payment link under Theme Options > Header.
@@ -350,6 +493,161 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.73.2 - 2026-09-27 =
+* The home page chapter titles use title case: on the seven banners (The Root, The People, The Land, The Word, Four Paths, Through the Ages, Meeting and Parting) and in the thirteen chapter labels above the section headings.
+
+= 2.73.1 - 2026-09-26 =
+* Fixed: on the home page, the short introduction under each section heading sat to the right with a gap beside it, in justified text. Every section now lines up its label, heading and introduction on one left edge, with the introduction set ragged-right.
+
+= 2.73.0 - 2026-09-26 =
+* Two new Journal pieces for readers who add "Reddit" to their searches: "The Islamic Dilemma: answers for Reddit readers" and "Judaism vs Christianity: answers for Reddit readers".
+
+= 2.72.1 - 2026-09-26 =
+* The Islamic Dilemma article and reference page now link to "The Islamic Dilemma, refuted" at The Muslim Apologist.
+
+= 2.72.0 - 2026-09-26 =
+* New Journal article, "The Islamic Dilemma: the argument and the answer", and a new reference page, "What is the Islamic Dilemma?", under Comparative studies, with a matching FAQ answer.
+* Fixed: opening quotation marks in several recent articles appeared as closing marks.
+
+= 2.71.0 - 2026-09-26 =
+* Seven new Journal articles: What language did Abraham speak?; The parting of the ways; Where was Abraham from?; The symbols of the four traditions; Religious law in the Abrahamic traditions; Food and faith; Are the Abrahamic religions violent?
+
+= 2.70.0 - 2026-09-26 =
+* Content expanded to answer what readers search for: twelve new FAQ answers, the Pew Research Center's 2020 world religion figures with a chart, a comparison of the traditions in pairs, and a glossary entry for Abrahamism.
+
+= 2.69.0 - 2026-09-26 =
+* New parallax chapter banners on the home page: a photograph before each of the seven main sections, drifting more slowly than the page, with the chapter number, name and one line of text.
+
+= 2.68.1 - 2026-09-26 =
+* Journal and topic listings show twelve articles a page, so the card grid no longer leaves a single card alone on its last row.
+
+= 2.68.0 - 2026-09-26 =
+* New section bar under the header on the home page only, with smooth-scrolling links to its seven main sections and the current section highlighted.
+* A quiet Back to top link closes each of those sections.
+* Fixed: the header scrolled away instead of staying fixed at the top.
+
+= 2.67.0 - 2026-09-26 =
+* The front page now reads as a journey: its sections are rearranged into thirteen numbered chapters, from the opening question through the root, the people, the land and the word to the four paths, their history and where they meet.
+
+= 2.66.0 - 2026-09-26 =
+* Fixed: featured images missing from the newest Journal articles; the starter-content check now keeps retrying until every image is in place.
+* The shared-heritage watermark shows all four symbols, in the site's order: the Star of David, the Mandaean darfash, the cross and the crescent.
+* The four traditions are listed in the site's order on the front page and in two articles.
+
+= 2.65.0 - 2026-09-26 =
+* The Places page is rewritten and expanded to ten places, each with a photograph and footnoted sources, adding Vatican City and Ahvaz and the Karun.
+
+= 2.64.0 - 2026-09-26 =
+* New maintenance notice: during WordPress updates, after a fatal PHP error, when the database is unreachable, or while the theme is being replaced, visitors see a branded "Back shortly" page with a 503 status instead of an error message.
+
+= 2.63.4 - 2026-09-26 =
+* Footer links renamed About AR and Contact AR.
+
+= 2.63.3 - 2026-09-26 =
+* The footer's secondary navigation labels are shown in capitals.
+
+= 2.63.2 - 2026-09-26 =
+* The main-menu label "Knowledge base" becomes "KB", with "Knowledge Base" as its tooltip. Menu lines accept an optional third part for such a tooltip.
+
+= 2.63.1 - 2026-09-26 =
+* The main-menu label "Editorial policy" is shortened to "Editorial"; the page keeps its full title.
+
+= 2.63.0 - 2026-09-26 =
+* The About, Editorial policy, Terms, Privacy and Contact pages are rewritten and expanded, and their titles now match the footer links.
+
+= 2.62.0 - 2026-09-26 =
+* Editorial policy and Knowledge base are added to the main menu, after Journal.
+
+= 2.61.1 - 2026-09-26 =
+* The secondary navigation bar (About this site, Terms of use, Privacy policy, DMCA, Contact us, Sitemap) now sits in the footer's bottom row, as requested; the bar above the header is removed.
+
+= 2.61.0 - 2026-09-26 =
+* New top bar above the header with About this site, Terms of use, Privacy policy, DMCA, Contact us and Sitemap, set on the Navigation tab.
+* Owner anonymity: the user list is removed from the REST API, author archives and ?author= addresses redirect to the Journal, feeds, embeds and schema name the site as author, and the users sitemap is switched off.
+* The theme's own files name the site as author, and the readme and documentation are no longer served to visitors.
+* The Donate links no longer default to a personal payment page.
+
+= 2.60.0 - 2026-09-26 =
+* New in the Journal: "Ḥirāʾ and Qubāʾ: where the revelation and the first mosque began", built around Qur'an 96:1-5 and 9:108.
+
+= 2.59.0 - 2026-09-26 =
+* New in the Journal: "The stations of the Hajj: Minā, ʿArafāt and Muzdalifah", day by day, with the call to Abraham in Qur'an 22:26-27 that the rites answer.
+
+= 2.58.0 - 2026-09-26 =
+* New in the Journal: "Hagia Sophia: cathedral, mosque, museum and mosque again", from Justinian's church to the mosque of today, closing on the verse of Light (Qur'an 24:35) inscribed in its dome.
+
+= 2.57.3 - 2026-09-26 =
+* The Nicaea article now connects the city's earthquakes, the sinking of its church and the conversion of its Hagia Sophia to the imagery of Qur'an 19:88-91.
+
+= 2.57.2 - 2026-09-26 =
+* The Nicaea article gains a section on the city's earthquakes, conquests and the sinking and re-emergence of the lakeside basilica.
+
+= 2.57.1 - 2026-09-26 =
+* New in the Journal: "The five great sees of the early church", on Rome, Constantinople, Alexandria, Antioch and Jerusalem.
+* Alexandria, Antioch, Nicaea and Constantinople are removed from the front page's sacred places, which return to eight.
+
+= 2.57.0 - 2026-09-26 =
+* New in the Journal: "Nicaea, 325: the council, the creed and the church beneath the lake", on the 2026 excavation at İznik, the council and its creed, the ranking of the great sees, and the Qur'an's answer in Surah Maryam 19:88-91.
+* The front page's sacred places now number twelve, adding Alexandria, Antioch, Nicaea and Constantinople.
+* Qur'anic passages are set in the bundled Amiri Quran typeface.
+
+= 2.56.3 - 2026-09-26 =
+* The front page's Hebron card now shows the outside of the Cave of the Patriarchs, its ancient walls and minarets. The earlier photograph of the shrine inside stays on the Places page.
+
+= 2.56.2 - 2026-09-26 =
+* Vatican City added to the front page's sacred places, giving two full rows of four.
+
+= 2.56.1 - 2026-09-26 =
+* Madinah added to the front page's sacred places, after Makkah. The seven places sit four to a row, with the shorter last row centred.
+
+= 2.56.0 - 2026-09-26 =
+* The front page's "Sacred places" section now has six places in two rows of three, adding the Jordan River and Ahvaz on the Karun, so the Mandaeans are represented beside the other three traditions.
+
+= 2.55.3 - 2026-09-26 =
+* Fixed: after a theme update, the front page could render with nothing between the header and the footer for up to half an hour. The theme now detects and clears the cause on the next page load, and after every update.
+
+= 2.55.2 - 2026-09-26 =
+* The family tree now joins the Mandaeans to John the Baptist with a dotted line, labelled and added to the key.
+
+= 2.55.1 - 2026-09-26 =
+* Mandaeism added to both diagrams: the family tree shows the Mandaean line beside Shem, and the diagram of shared beliefs now covers all four traditions.
+
+= 2.55.0 - 2026-09-26 =
+* New in the Journal: "The Abrahamic family tree and what the traditions share", with a family tree from Adam to Muhammad and Jesus and a diagram of the beliefs Judaism, Christianity and Islam share.
+* New [abr_diagram] shortcode for the two diagrams, drawn in SVG in the site's colours, in light and dark.
+* Every address of the 2016-2023 site now redirects to the page that carries its material.
+
+= 2.54.2 - 2026-09-26 =
+* Fixed: a featured image whose file on the server was empty or missing showed as a broken image. The starter-content check now finds it and replaces the theme's photograph with a fresh copy. A broken image an editor chose is listed under Theme Options > Tools instead.
+* The bundled photographs are now served with the correct AVIF type on Apache servers that did not send one.
+
+= 2.54.1 - 2026-09-26 =
+* Fixed: a Journal article whose featured photograph had been removed from the media library stayed without one for good. The starter-content check now puts the photograph back, while an image an editor removed or replaced on purpose is left alone. Any photograph that cannot be added is listed under Theme Options > Tools.
+* Fixed: headings, including the titles on Journal cards, were justified with the body text and spread across the line; they now keep their own alignment.
+
+= 2.54.0 - 2026-09-26 =
+* New in the Journal: "The Sabians in classical Muslim scholarship", on how Ibn al-Nadim, Sa'id al-Andalusi and al-Shahrastani understood the Qur'an's Sabians, with the Mandaean account of Abraham beside them.
+
+= 2.53.2 - 2026-09-25 =
+* The private login address is now switched off from wp-config.php with define( 'ABR_HIDE_LOGIN', false );. Left undefined, or defined as true, the Login tab decides.
+
+= 2.53.1 - 2026-09-25 =
+* The login screen has a new default layout: a card centred on a dark page, with a large logo and a line of text above it, a gold rule across the top of the card, and a full-width Log In button. The photograph layout from 2.53.0 remains available on the Login tab.
+
+= 2.53.0 - 2026-09-25 =
+* New Login tab in Theme Options: the login screen now uses the site's colours, type, AR mark and a photograph beside the form, in light and dark, with an optional private login address.
+* Posts and pages can be unlisted from the editor sidebar: reachable at their own address, absent from lists, search, feeds, the sitemap and search engines.
+* Search results can open at /search/term/ (Search tab).
+* Built in from Login Logo, WPS Hide Login, Unlist Posts & Pages and Pretty Search Permalinks. While any of those plugins is active, the theme leaves that feature to it.
+* Fixed: the full-size Jerusalem photograph used by the photograph viewer was an empty file after the AVIF conversion in 2.45.0.
+* Theme Options tabs now wrap onto a second line on narrow screens, so every tab stays visible.
+
+= 2.52.2 - 2026-09-25 =
+* House-style pass over all English prose: about 30 contrastive constructions ("not X but Y", "rather than", "so much as") rewritten as direct statements, two headings reworded, and a handful of flagged words replaced.
+
+= 2.52.1 - 2026-09-25 =
+* Removed the remaining self-referencing phrases ("treated here", "elsewhere on this site", "discussed on the Timeline", "we treat", "see the article") from the About, FAQ, Topics, Sacred texts and Mandaeism pages and five Journal articles. The citation box heading now reads "Citation".
 
 = 2.52.0 - 2026-09-25 =
 * New in the Journal: "Apostasy in the Abrahamic traditions," comparing how Judaism, Christianity, Islam and Mandaeism have treated those who leave, with Malaysia as a modern case.
@@ -595,7 +893,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 * The shared heritage section on the home page now carries a faint watermark of the cross, crescent and star, tinted to match the colour scheme.
 
 = 2.12.1 - 2026-09-17 =
-* The Donate button and the Donate page button now open https://www.paypal.com/paypalme/menj. Both links can be changed under Theme Options > Header.
+* The Donate button and the Donate page button now open the owner's payment page. Both links can be changed under Theme Options > Header.
 
 = 2.12.0 - 2026-09-17 =
 * New red Donate button beside Explore, on every screen size, and a new Donate page.
@@ -692,7 +990,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 
 == Copyright ==
 
-Abrahamic WordPress Theme, Copyright 2026 MENJ.
+Abrahamic WordPress Theme, Copyright 2026 Abrahamic Religions.
 Abrahamic is distributed under the terms of the GNU General Public License.
 
 This program is free software: you can redistribute it and/or modify
@@ -710,8 +1008,26 @@ Twenty Twenty-Five is distributed under the terms of the GNU GPL.
 
 This theme bundles the following resources:
 
+Code adapted from four WordPress plugins, all under the GNU GPL:
+
+Login Logo 0.10.3 (inc/login.php, the login-logo.png convention)
+Copyright 2011-2024 Mark Jaquith
+License: GPLv2 or later
+
+WPS Hide Login 1.9.18 (inc/login.php, the private login address)
+Copyright WPServeur, NicolasKulka, wpformation
+License: GPLv2 or later
+
+Unlist Posts & Pages 1.2.1 (inc/unlist.php)
+Copyright Nikhil Chavan
+License: GPLv2 or later
+
+Pretty Search Permalinks 1.3 (inc/search.php, search addresses)
+Copyright Angel Costa
+License: GPLv2 or later
+
 Interface icons (inc/icons.php)
-Copyright 2026 MENJ
+Copyright 2026 Abrahamic Religions
 License: GPLv2 or later
 
 Minimalist Social & Platform Icons Pack 2.8 (assets/icons/social/, 43 icons)

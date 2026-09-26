@@ -24,6 +24,7 @@ function abr_options_tabs() {
 		'colours'    => array( __( 'Colours', 'abrahamic' ), '<circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2"/><circle cx="12" cy="7.5" r="1.2"/><circle cx="15.5" cy="10" r="1.2"/><path d="M12 21a3 3 0 0 1 0-6h1.5a2.5 2.5 0 0 0 0-5"/>' ),
 		'newsletter' => array( __( 'Newsletter', 'abrahamic' ), '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>' ),
 		'social'     => array( __( 'Social', 'abrahamic' ), '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/>' ),
+		'login'      => array( __( 'Login', 'abrahamic' ), '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>' ),
 		'search'     => array( __( 'Search', 'abrahamic' ), '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>' ),
 		'tools'      => array( __( 'Tools', 'abrahamic' ), '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.8-.4-.4-2.8z"/>' ),
 	);
@@ -273,7 +274,7 @@ function abr_render_options_page() {
 			<p>
 				<?php
 				/* translators: 1: theme name, 2: version. */
-				echo esc_html( sprintf( __( '%1$s %2$s. Page content is edited in Appearance > Editor; these options cover the header, footer, colours, newsletter and social profiles.', 'abrahamic' ), $theme->get( 'Name' ), ABR_VERSION ) );
+				echo esc_html( sprintf( __( '%1$s %2$s. Page content is edited in Appearance > Editor; these options cover the header, footer, colours, login screen and search addresses, among others.', 'abrahamic' ), $theme->get( 'Name' ), ABR_VERSION ) );
 				?>
 			</p>
 		</header>
@@ -323,7 +324,7 @@ function abr_render_options_page() {
 				<?php
 				abr_field( 'header_donate', __( 'Show the Donate button', 'abrahamic' ), 'checkbox', __( 'Sits beside the call-to-action button and stays visible on phones.', 'abrahamic' ) );
 				abr_field( 'header_donate_label', __( 'Donate button label', 'abrahamic' ), 'text' );
-				abr_field( 'header_donate_url', __( 'Donate button link', 'abrahamic' ), 'text', __( 'Where the header button goes. Defaults to the PayPal page https://www.paypal.com/paypalme/menj. Use @donate to open the Donate page first.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
+				abr_field( 'header_donate_url', __( 'Donate button link', 'abrahamic' ), 'text', __( 'Where the header button goes: @donate opens the Donate page, or paste a payment link. A personal payment page (PayPal.me and the like) shows the account holder\'s name to every donor; use an account opened in the site\'s name to keep the owner anonymous.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
 				abr_field( 'donate_colour', __( 'Donate button colour', 'abrahamic' ), 'color', __( 'Keep enough contrast with white text; the default red is #b3261e.', 'abrahamic' ) );
 				abr_field( 'donation_url', __( 'Donation link', 'abrahamic' ), 'url', __( 'The payment page shown as a Donate now button on the Donate page. Defaults to the PayPal page. If empty, the page uses the header button link when it points to a payment site, otherwise it points visitors to the Contact page.', 'abrahamic' ) );
 				abr_field( 'donation_button', __( 'Donate page button label', 'abrahamic' ), 'text' );
@@ -369,17 +370,29 @@ function abr_render_options_page() {
 					__( 'Main menu links', 'abrahamic' ),
 					'menu',
 					/* translators: 1: top-level limit, 2: dropdown limit. */
-					sprintf( __( 'At most %1$d top-level links, each with up to %2$d dropdown links; extra lines are removed on saving. The logo links to the home page. Below 1024 pixels the menu opens as a panel with the dropdowns expanded.', 'abrahamic' ), ABR_PRIMARY_NAV_MAX, ABR_NAV_CHILDREN_MAX )
+					sprintf( __( 'At most %1$d top-level links, each with up to %2$d dropdown links; extra lines are removed on saving. The logo links to the home page. Below 1024 pixels the menu opens as a panel with the dropdowns expanded. For a short label with a tooltip, add the full name as a third part: KB | https://knowislam.wiki/ | Knowledge Base.', 'abrahamic' ), ABR_PRIMARY_NAV_MAX, ABR_NAV_CHILDREN_MAX )
 				);
 				?>
-				<h2><?php esc_html_e( 'Secondary menu', 'abrahamic' ); ?></h2>
+				<h2><?php esc_html_e( 'Home page journey', 'abrahamic' ); ?></h2>
 				<?php
+				abr_field( 'home_parallax', __( 'Show the chapter banners', 'abrahamic' ), 'checkbox', __( 'A photographic banner before each main section of the home page, moving more slowly than the page as it scrolls. Visitors who ask their device for reduced motion see the banners still.', 'abrahamic' ) );
+				abr_field( 'home_subnav', __( 'Show the section bar', 'abrahamic' ), 'checkbox', __( 'A slim bar under the header on the home page only, jumping smoothly to its main sections.', 'abrahamic' ) );
 				abr_field(
-					'nav_secondary',
-					__( 'Secondary menu links', 'abrahamic' ),
+					'home_subnav_items',
+					__( 'Section bar links', 'abrahamic' ),
 					'menu',
 					/* translators: %d: link limit. */
-					sprintf( __( 'Quick links in the slim bar above the header, shown from 1024 pixels up. At most %d links, no dropdowns. Leave empty to hide the bar.', 'abrahamic' ), ABR_SECONDARY_NAV_MAX )
+					sprintf( __( 'One per line: Label | #section. The sections are #heritage, #figures, #places, #texts, #religions, #timeline and #comparison. At most %d links.', 'abrahamic' ), ABR_SECONDARY_NAV_MAX )
+				);
+				?>
+				<h2><?php esc_html_e( 'Footer links', 'abrahamic' ); ?></h2>
+				<?php
+				abr_field(
+					'nav_utility',
+					__( 'Footer links', 'abrahamic' ),
+					'menu',
+					/* translators: %d: link limit. */
+					sprintf( __( 'The secondary navigation bar along the bottom of the footer: pages about the site itself. At most %d links, no dropdowns. Leave empty to hide it.', 'abrahamic' ), ABR_SECONDARY_NAV_MAX )
 				);
 				?>
 				<h2><?php esc_html_e( 'Further reading', 'abrahamic' ); ?></h2>
@@ -493,6 +506,48 @@ function abr_render_options_page() {
 					echo esc_html( sprintf( __( 'Add %s in Google Search Console and Bing Webmaster Tools. It is also listed in robots.txt.', 'abrahamic' ), home_url( '/wp-sitemap.xml' ) ) );
 					?>
 				</p>
+
+				<h2><?php esc_html_e( 'Search addresses', 'abrahamic' ); ?></h2>
+				<?php if ( function_exists( 'wpseosearch_base' ) ) : ?>
+					<div class="notice notice-info inline"><p><?php esc_html_e( 'Pretty Search Permalinks is active and handles search addresses. Deactivate it to use the settings below.', 'abrahamic' ); ?></p></div>
+				<?php endif; ?>
+				<?php
+				abr_field( 'search_pretty', __( 'Give search results a readable address', 'abrahamic' ), 'checkbox', __( 'A search for Abraham opens at /search/abraham/ in place of /?s=abraham. Needs pretty permalinks under Settings > Permalinks.', 'abrahamic' ) );
+				abr_field( 'search_base', __( 'Search address word', 'abrahamic' ), 'text', __( 'Lower-case letters, numbers and hyphens. The default is search.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
+				?>
+			</section>
+
+			<section class="abr-panel" role="tabpanel" id="abr-panel-login" aria-labelledby="abr-tab-login" hidden>
+				<h2><?php esc_html_e( 'Login screen', 'abrahamic' ); ?></h2>
+				<?php
+				abr_field( 'login_design', __( 'Use the theme design on the login screen', 'abrahamic' ), 'checkbox', __( 'Colours, type and the light or dark choice follow the rest of the site.', 'abrahamic' ) );
+				abr_field( 'login_logo', __( 'Login logo', 'abrahamic' ), 'image', __( 'Leave empty to use the AR mark with the logo text from the Header tab. A file named login-logo.png in wp-content is used when this is empty.', 'abrahamic' ) );
+				abr_field( 'login_layout', __( 'Layout', 'abrahamic' ), 'select', __( 'The centred card suits a private team login; the photograph layout suits a public site. The photograph layout needs a photograph below.', 'abrahamic' ), array( 'choices' => abr_login_layouts() ) );
+				abr_field( 'login_photo', __( 'Photograph', 'abrahamic' ), 'select', __( 'In the centred layout it sits behind the page, darkened; in the photograph layout it fills the panel beside the form, and a band above it on phones.', 'abrahamic' ), array( 'choices' => abr_login_photos() ) );
+				abr_field( 'login_message', __( 'Line of text', 'abrahamic' ), 'text', __( 'Shown under the logo in the centred layout and over the photograph in the photograph layout. Leave empty to leave it out.', 'abrahamic' ) );
+				?>
+				<p class="abr-help"><a href="<?php echo esc_url( wp_login_url() ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Preview the login screen in a new tab (log out there, or use a private window, to see it as visitors do)', 'abrahamic' ); ?></a></p>
+
+				<h2><?php esc_html_e( 'Private login address', 'abrahamic' ); ?></h2>
+				<?php if ( abr_login_hide_plugin_active() ) : ?>
+					<div class="notice notice-info inline"><p><?php esc_html_e( 'WPS Hide Login is active and handles the login address. Deactivate it to use the settings below; its address carries over.', 'abrahamic' ); ?></p></div>
+				<?php elseif ( is_multisite() ) : ?>
+					<div class="notice notice-warning inline"><p><?php esc_html_e( 'The private login address is available on single sites only.', 'abrahamic' ); ?></p></div>
+				<?php endif; ?>
+				<?php
+				abr_field( 'login_hide', __( 'Move the login screen to a private address', 'abrahamic' ), 'checkbox', __( 'wp-login.php and wp-admin then answer logged-out visitors with a missing page. Bookmark the new address before saving.', 'abrahamic' ) );
+				abr_field( 'login_slug', __( 'Login address', 'abrahamic' ), 'text', sprintf( /* translators: %s: example address. */ __( 'The login screen opens at %s followed by this word.', 'abrahamic' ), home_url( '/' ) ), array( 'spellcheck' => 'false' ) );
+				abr_field( 'login_redirect_slug', __( 'Where wp-admin sends logged-out visitors', 'abrahamic' ), 'text', __( 'An address on this site, usually a page that does not exist so the visitor sees the not-found page. The default is 404.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
+				?>
+				<?php if ( abr_login_hide_on() ) : ?>
+					<p class="abr-help abr-help--key">
+						<?php
+						/* translators: %s: login address. */
+						echo wp_kses_post( sprintf( __( 'Current login address: <strong>%s</strong>', 'abrahamic' ), esc_html( abr_login_new_url() ) ) );
+						?>
+					</p>
+				<?php endif; ?>
+				<p class="abr-help"><?php esc_html_e( 'If the address is ever lost, add define( \'ABR_HIDE_LOGIN\', false ); to wp-config.php, log in at wp-login.php, and remove the line again.', 'abrahamic' ); ?></p>
 			</section>
 
 			<div class="abr-options-submit">
@@ -614,6 +669,13 @@ function abr_render_seed_section() {
 			echo ' ';
 			/* translators: %s: date and time. */
 			echo esc_html( sprintf( __( 'Last checked %s.', 'abrahamic' ), wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), (int) $log['time'] ) ) );
+		}
+		if ( is_array( $log ) && ! empty( $log['photo_errors'] ) ) {
+			echo '</p><div class="notice notice-warning inline"><p>' . esc_html__( 'Some featured images could not be added. The next check tries again:', 'abrahamic' ) . '</p><ul>';
+			foreach ( (array) $log['photo_errors'] as $error ) {
+				echo '<li>' . esc_html( $error ) . '</li>';
+			}
+			echo '</ul></div><p>';
 		}
 		?>
 	</p>

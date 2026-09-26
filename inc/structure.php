@@ -197,13 +197,14 @@ function abr_parse_menu( $text ) {
 	foreach ( preg_split( '/\r\n|\r|\n/', (string) $text ) as $line ) {
 		$child = (bool) preg_match( '/^\s*-\s*/', $line );
 		$line  = preg_replace( '/^\s*-\s*/', '', $line );
-		$parts = array_map( 'trim', explode( '|', $line, 2 ) );
+		$parts = array_map( 'trim', explode( '|', $line, 3 ) );
 		if ( '' === $parts[0] || empty( $parts[1] ) ) {
 			continue;
 		}
 		$item = array(
 			'label'    => $parts[0],
 			'target'   => $parts[1],
+			'hint'     => isset( $parts[2] ) ? $parts[2] : '',
 			'children' => array(),
 		);
 		if ( $child && $items ) {
@@ -226,8 +227,14 @@ function abr_menu_block( $item ) {
 	if ( ! $link['url'] ) {
 		return null;
 	}
+	$hint  = isset( $item['hint'] ) ? trim( $item['hint'] ) : '';
+	// A short label with a tooltip ("KB | url | Knowledge Base"): the full name shows on
+	// hover and focus, and screen readers hear it through the abbreviation.
+	$label = '' !== $hint
+		? '<abbr class="abr-nav-abbr" title="' . esc_attr( $hint ) . '">' . esc_html( $item['label'] ) . '</abbr><span class="screen-reader-text"> ' . esc_html( $hint ) . '</span>'
+		: $item['label'];
 	$attrs = array(
-		'label'          => $item['label'],
+		'label'          => $label,
 		'url'            => $link['url'],
 		'kind'           => $link['kind'],
 		'isTopLevelLink' => true,
@@ -240,6 +247,10 @@ function abr_menu_block( $item ) {
 		$attrs['className'] = 'abr-external';
 		/* translators: %s: site host. */
 		$attrs['title'] = sprintf( __( 'Opens %s', 'abrahamic' ), wp_parse_url( $link['url'], PHP_URL_HOST ) );
+	}
+	if ( '' !== $hint ) {
+		/* translators: 1: full name of the link, 2: site host. */
+		$attrs['title'] = isset( $attrs['title'] ) ? sprintf( __( '%1$s (opens %2$s)', 'abrahamic' ), $hint, wp_parse_url( $link['url'], PHP_URL_HOST ) ) : $hint;
 	}
 	$children = array_values( array_filter( array_map( 'abr_menu_block', $item['children'] ) ) );
 	$name     = $children ? 'core/navigation-submenu' : 'core/navigation-link';
@@ -293,12 +304,13 @@ function abr_external_nav_label( $html, $block ) {
 add_filter( 'render_block_core/navigation-link', 'abr_external_nav_label', 10, 2 );
 
 /**
- * [abr_secondary_nav]: the secondary (site) menu from Theme Options, shown in the footer's bottom row.
+ * [abr_secondary_nav]: the secondary navigation bar in the footer's bottom row: the
+ * pages about the site itself, from the Footer links on the Navigation tab.
  */
 add_shortcode(
 	'abr_secondary_nav',
 	function () {
-		$items  = array_slice( abr_parse_menu( abr_get_option( 'nav_secondary' ) ), 0, ABR_SECONDARY_NAV_MAX );
+		$items  = array_slice( abr_parse_menu( abr_get_option( 'nav_utility' ) ), 0, ABR_SECONDARY_NAV_MAX );
 		$output = '';
 		foreach ( $items as $item ) {
 			$link = abr_resolve_link( $item['target'] );
@@ -315,6 +327,77 @@ add_shortcode(
 			return '';
 		}
 		return '<nav class="abr-footer-links" aria-label="' . esc_attr__( 'Site information', 'abrahamic' ) . '"><ul>' . $output . '</ul></nav>';
+	}
+);
+
+/**
+ * [abr_home_subnav]: the section bar under the header on the home page. Each
+ * link jumps smoothly to a section; assets/js/subnav.js marks the section in view.
+ */
+add_shortcode(
+	'abr_home_subnav',
+	function () {
+		if ( ! abr_get_option( 'home_subnav' ) ) {
+			return '';
+		}
+		$items  = array_slice( abr_parse_menu( abr_get_option( 'home_subnav_items' ) ), 0, ABR_SECONDARY_NAV_MAX );
+		$output = '';
+		foreach ( $items as $item ) {
+			$target = trim( $item['target'] );
+			if ( '#' !== substr( $target, 0, 1 ) || strlen( $target ) < 2 ) {
+				continue;
+			}
+			$output .= sprintf( '<li><a href="%1$s">%2$s</a></li>', esc_attr( $target ), esc_html( $item['label'] ) );
+		}
+		if ( ! $output ) {
+			return '';
+		}
+		return '<nav class="abr-subnav" aria-label="' . esc_attr__( 'Sections of this page', 'abrahamic' ) . '"><ul class="abr-subnav__list">' . $output . '</ul></nav>';
+	}
+);
+
+/**
+ * [abr_parallax]: a chapter banner between home page sections. A photograph
+ * moves more slowly than the page (assets/js/parallax.js) behind the chapter
+ * number, name and one line of text. The photograph is decorative (empty alt)
+ * and lazy-loaded, with a smaller file for narrow screens.
+ *
+ * Attributes: image (file stem in assets/images/banners), numeral, title, line.
+ */
+add_shortcode(
+	'abr_parallax',
+	function ( $atts ) {
+		if ( ! abr_get_option( 'home_parallax' ) ) {
+			return '';
+		}
+		$atts = shortcode_atts( array( 'image' => '', 'numeral' => '', 'title' => '', 'line' => '' ), $atts, 'abr_parallax' );
+		$stem = sanitize_file_name( $atts['image'] );
+		if ( '' === $stem || ! file_exists( ABR_DIR . '/assets/images/banners/' . $stem . '.avif' ) ) {
+			return '';
+		}
+		$base  = ABR_URI . '/assets/images/banners/' . $stem;
+		$img   = sprintf(
+			'<img class="abr-parallax__img" src="%1$s.avif" srcset="%1$s-small.avif 960w, %1$s.avif 1920w" sizes="100vw" width="1920" height="1080" alt="" loading="lazy" decoding="async">',
+			esc_url( $base )
+		);
+		$text  = '';
+		if ( $atts['title'] ) {
+			$text .= '<p class="abr-parallax__title">' . ( $atts['numeral'] ? '<span class="abr-parallax__numeral">' . esc_html( $atts['numeral'] ) . '</span>' : '' ) . esc_html( $atts['title'] ) . '</p>';
+		}
+		if ( $atts['line'] ) {
+			$text .= '<p class="abr-parallax__line">' . esc_html( $atts['line'] ) . '</p>';
+		}
+		return '<div class="abr-parallax" role="presentation">' . $img . '<div class="abr-parallax__text">' . $text . '</div></div>';
+	}
+);
+
+/**
+ * [abr_back_to_top]: a quiet link at the end of a home page section.
+ */
+add_shortcode(
+	'abr_back_to_top',
+	function () {
+		return '<p class="abr-backtop"><a href="#top">' . esc_html__( 'Back to top', 'abrahamic' ) . ' <span aria-hidden="true">&#8593;</span></a></p>';
 	}
 );
 
@@ -628,6 +711,7 @@ add_shortcode(
 				'posts_per_page'      => 3,
 				'ignore_sticky_posts' => true,
 				'no_found_rows'       => true,
+				'abr_hide_unlisted'   => true,
 			)
 		);
 		if ( ! $related ) {
@@ -785,7 +869,7 @@ add_shortcode(
 		$topics = '';
 		foreach ( abr_topics() as $term ) {
 			$items = '';
-			foreach ( get_posts( array( 'category' => $term->term_id, 'posts_per_page' => 50, 'no_found_rows' => true ) ) as $post ) {
+			foreach ( get_posts( array( 'category' => $term->term_id, 'posts_per_page' => 50, 'no_found_rows' => true, 'abr_hide_unlisted' => true ) ) as $post ) {
 				$items .= sprintf( '<li><a href="%s">%s</a></li>', esc_url( get_permalink( $post ) ), esc_html( get_the_title( $post ) ) );
 			}
 			$topics .= sprintf( '<li><a href="%1$s">%2$s</a><ul>%3$s</ul></li>', esc_url( get_term_link( $term ) ), esc_html( $term->name ), $items );
@@ -876,3 +960,20 @@ add_shortcode(
 			: '';
 	}
 );
+
+/**
+ * Journal listings show twelve articles a page. The card grid has three
+ * columns on wide screens and two on tablets, so twelve always fills its last
+ * row; WordPress's default of ten left one card alone on the final row.
+ *
+ * @param WP_Query $query Query.
+ */
+function abr_listing_page_size( $query ) {
+	if ( is_admin() || ! $query->is_main_query() || $query->is_search() ) {
+		return;
+	}
+	if ( $query->is_home() || $query->is_category() || $query->is_tag() || $query->is_date() ) {
+		$query->set( 'posts_per_page', ABR_LISTING_PER_PAGE );
+	}
+}
+add_action( 'pre_get_posts', 'abr_listing_page_size' );

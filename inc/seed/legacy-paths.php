@@ -19,6 +19,20 @@ return array(
 	'/thank-you/'                   => 'page:thank-you',
 	'/sitemap/'                     => 'page:site-map',
 	'/contact-abrahamic-religions/' => 'page:contact',
+	// Rank Math redirects on the 2016-2023 site, and that site's post addresses.
+	'/millat/'                            => 'post:millat-ibrahim',
+	'/the-abrahamic-faiths/'              => 'page:guides',
+	'/abrahamic-faiths/'                  => 'page:guides',
+	'/why-are-these-religions-abrahamic/' => 'page:guides',
+	'/why-abrahamic/'                     => 'page:guides',
+	'/the-religion-of-judaism/'           => 'page:judaism',
+	'/the-religion-of-christianity/'      => 'page:christianity',
+	'/the-religion-of-islam/'             => 'page:islam',
+	'/judaism/'                           => 'page:judaism',
+	'/christianity/'                      => 'page:christianity',
+	'/islam/'                             => 'page:islam',
+	'/thank-you-for-your-generosity/'     => 'page:thank-you',
+	'/information/'                       => 'page:home',
 	// Renamed by the theme.
 	'/site-map/'                    => 'page:site-map',
 );

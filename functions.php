@@ -7,20 +7,41 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ABR_VERSION', '2.52.0' );
+define( 'ABR_VERSION', '2.73.2' );
 define( 'ABR_DIR', get_stylesheet_directory() );
 define( 'ABR_URI', get_stylesheet_directory_uri() );
 
-require_once ABR_DIR . '/inc/icons.php';
-require_once ABR_DIR . '/inc/social.php';
-require_once ABR_DIR . '/inc/options.php';
-require_once ABR_DIR . '/inc/theme-options.php';
-require_once ABR_DIR . '/inc/shortcodes.php';
-require_once ABR_DIR . '/inc/structure.php';
-require_once ABR_DIR . '/inc/seed.php';
-require_once ABR_DIR . '/inc/seo.php';
-require_once ABR_DIR . '/inc/redirects.php';
-require_once ABR_DIR . '/inc/search.php';
+// Every file the theme loads. If one is missing (an update caught half-unpacked),
+// visitors see the maintenance notice instead of a fatal error: inc/maintenance.php.
+$abr_files = array(
+	ABR_DIR . '/inc/icons.php',
+	ABR_DIR . '/inc/social.php',
+	ABR_DIR . '/inc/options.php',
+	ABR_DIR . '/inc/theme-options.php',
+	ABR_DIR . '/inc/shortcodes.php',
+	ABR_DIR . '/inc/structure.php',
+	ABR_DIR . '/inc/seed.php',
+	ABR_DIR . '/inc/seo.php',
+	ABR_DIR . '/inc/redirects.php',
+	ABR_DIR . '/inc/search.php',
+	ABR_DIR . '/inc/unlist.php',
+	ABR_DIR . '/inc/login.php',
+	ABR_DIR . '/inc/diagrams.php',
+	ABR_DIR . '/inc/anonymity.php',
+	ABR_DIR . '/inc/seed/content.php',
+);
+if ( is_readable( ABR_DIR . '/inc/maintenance.php' ) ) {
+	require_once ABR_DIR . '/inc/maintenance.php';
+	if ( ! abr_maintenance_guard( $abr_files ) ) {
+		return;
+	}
+}
+foreach ( $abr_files as $abr_file ) {
+	if ( '.php' === substr( $abr_file, -4 ) && false === strpos( $abr_file, '/inc/seed/' ) ) {
+		require_once $abr_file;
+	}
+}
+unset( $abr_files, $abr_file );
 
 /**
  * Theme supports and pattern category.
@@ -45,6 +66,12 @@ function abr_enqueue_assets() {
 	wp_enqueue_script( 'abr-theme', ABR_URI . '/assets/js/theme.js', array(), ABR_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
 	// Colour mode runs in the head, before the first paint, so the page never flashes.
 	wp_enqueue_script( 'abr-mode', ABR_URI . '/assets/js/mode.js', array(), ABR_VERSION, array( 'in_footer' => false ) );
+	if ( is_front_page() && abr_get_option( 'home_parallax' ) ) {
+		wp_enqueue_script( 'abr-parallax', ABR_URI . '/assets/js/parallax.js', array(), ABR_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	}
+	if ( is_front_page() && abr_get_option( 'home_subnav' ) ) {
+		wp_enqueue_script( 'abr-subnav', ABR_URI . '/assets/js/subnav.js', array(), ABR_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	}
 	wp_localize_script(
 		'abr-theme',
 		'abrTheme',
@@ -219,3 +246,46 @@ function abr_render_theme_shortcodes( $content ) {
 add_filter( 'render_block_core/shortcode', 'abr_render_theme_shortcodes' );
 add_filter( 'render_block_core/html', 'abr_render_theme_shortcodes' );
 add_filter( 'render_block_core/paragraph', 'abr_render_theme_shortcodes' );
+
+/**
+ * Guard against an empty cached pattern list.
+ *
+ * WordPress caches the list of a theme's patterns for 30 minutes, keyed to the
+ * theme version. If a request arrives while a theme update is still being
+ * unpacked, the new style.css can already be in place while the patterns
+ * folder is not, and WordPress caches an empty list under the new version: the
+ * front page, built from patterns, then renders with nothing between the
+ * header and the footer. This clears the cache whenever it holds no patterns
+ * although the folder has them, and after every theme update.
+ */
+function abr_pattern_cache_guard() {
+	$theme = wp_get_theme( get_stylesheet() );
+	if ( ! method_exists( $theme, 'delete_pattern_cache' ) || ! $theme->exists() ) {
+		return;
+	}
+	$files = glob( get_stylesheet_directory() . '/patterns/*.php' );
+	if ( ! $files ) {
+		return;
+	}
+	$cached = $theme->get_block_patterns();
+	if ( empty( $cached ) || count( $cached ) < count( $files ) ) {
+		$theme->delete_pattern_cache();
+	}
+}
+add_action( 'init', 'abr_pattern_cache_guard', 0 );
+
+/**
+ * Clear the pattern cache once a theme update finishes unpacking.
+ *
+ * @param WP_Upgrader $upgrader Upgrader.
+ * @param array       $extra    Details of the update.
+ */
+function abr_pattern_cache_after_update( $upgrader, $extra ) {
+	if ( isset( $extra['type'] ) && 'theme' === $extra['type'] ) {
+		wp_get_theme( get_stylesheet() )->delete_pattern_cache();
+	}
+}
+add_action( 'upgrader_process_complete', 'abr_pattern_cache_after_update', 10, 2 );
+add_action( 'after_switch_theme', function () {
+	wp_get_theme( get_stylesheet() )->delete_pattern_cache();
+} );

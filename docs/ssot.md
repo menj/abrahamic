@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.52.0** |
+| Current version | **2.73.2** |
 | Release date | 2026-09-20 |
 | Status | Stable |
 
@@ -20,7 +20,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 | Parent theme | Twenty Twenty-Five (`Template: twentytwentyfive`) |
 | Theme type | Child theme. The parent must stay installed. The child supplies `front-page` and `page-landing` templates and the `header` and `footer` parts, which the parent's templates also pick up by slug; all other templates come from the parent. Child `theme.json` merges over the parent's |
 | Site | https://abrahamic-religions.com/ |
-| Author | MENJ, https://menj.blog |
+| Author | Abrahamic Religions, https://abrahamic-religions.com |
 | Licence | GNU GPL v2 or later (`License` and `License URI` in `style.css` and `readme.txt`) |
 | Minimum WordPress | 6.7 |
 | Tested up to | 7.1 |
@@ -80,6 +80,10 @@ abrahamic/
 ├── assets/
 │   ├── css/theme.css      Front end and editor
 │   ├── css/admin.css      Settings screen
+│   ├── css/login.css      Login screen
+│   ├── js/subnav.js       Home page section bar: marks the section in view
+│   ├── js/parallax.js     Home page chapter banners: parallax drift
+│   ├── images/banners/    Chapter banner photographs (desktop and phone AVIF)
 │   ├── js/theme.js        Front end
 │   ├── js/admin.js        Settings screen
 │   ├── js/analytics.js    Google Analytics bootstrap
@@ -105,7 +109,13 @@ abrahamic/
 │   ├── seed/content.php   Starter pages, articles and categories as block markup (section 12)
 │   ├── seed/legacy-v1.php Version 1 fingerprints and addresses (section 12)
 │   ├── seo.php            Search output, description box, analytics (section 13)
-│   └── redirects.php      301s from earlier addresses, link updater (section 13)
+│   ├── redirects.php      301s from earlier addresses, link updater (section 13)
+│   ├── search.php         Search index, relevance, readable search addresses
+│   ├── unlist.php         Unlisted posts and pages (port of Unlist Posts & Pages)
+│   ├── login.php          Themed login screen, private login address (ports of Login Logo and WPS Hide Login)
+│   ├── diagrams.php       [abr_diagram]: the family tree and shared-beliefs diagrams
+│   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
+│   └── maintenance.php    Back-shortly notice (503): wp-content drop-ins for updates, fatal errors, database failures; missing-file guard
 ├── parts/                 header.html, footer.html
 ├── patterns/              Fifteen home page sections (section 9)
 ├── templates/             front-page.html, page-landing.html, page.html, single.html, home.html, archive.html, search.html, 404.html
@@ -213,7 +223,13 @@ Footnote numbers follow document order, and "Ibid." is used only where the prece
 
 Scripture references and citations go in footnotes. In the content source a marker is `[^n]`; the generator turns it into `<sup class="abr-fn">` linking to `#note-n`, and a final `## Notes` heading with a list becomes an ordered list with `id="note-n"` and a back-link to the marker. Verse numbers never appear in the running text.
 
+### Anonymity
+
+No person is named as author, owner or creator anywhere a visitor, search engine or AI tool can read: pages, feeds, embeds, the REST API, sitemaps, schema, or the theme's own public files. Every article's author and publisher is the site itself. See `inc/anonymity.php`.
+
 ### Photographs
+
+**Sources and licences.** Photographs come from Wikimedia Commons, from Flickr (searched through the Openverse catalogue) and from Pexels. The site is non-commercial, as confirmed by the site owner on 26 September 2026, so the permitted licences are public domain, CC0, CC BY, CC BY-SA, CC BY-NC and CC BY-NC-SA, together with the Pexels licence. No-derivatives (ND) licences are excluded because every photograph is cropped to its frame, and so is anything marked all rights reserved. Every photograph is credited on the Copyright and DMCA page with its author, licence and a link to its source page. NC photographs are licensed for this non-commercial site only: if the theme or the site were ever used commercially, those photographs would need to be replaced.
 
 `[abr_photo name="" alt="" ratio="" icon="" caption="" note=""]` prints a bundled photograph from `assets/images/photos/{name}.avif` with its own width and height, lazy loading and async decoding; where the file is absent it falls back to the decorative panel, so a pattern never breaks. Images are cropped to their frame at build time (hero 1200 × 1000, place cards 800 × 450, article images 1200 × 675), saved as AVIF at quality 50, and dimmed slightly in dark mode. Place cards and the hero share one ratio between photographs and panels, so a card without a photograph lines up with its neighbours.
 
@@ -335,9 +351,9 @@ Stored as one array in `abr_options`. `abr_option_types()` is the schema; `abr_o
 | `header_cta_url` | link | `@guides` | Header; full, root-relative or anchor address, or a token (section 13) |
 | `header_donate` | bool | 1 | Header; red Donate button after the call-to-action, visible at every width |
 | `header_donate_label` | text | Donate | Header |
-| `header_donate_url` | link | `https://www.paypal.com/paypalme/menj` | Header; `@donate` opens the Donate page instead. A stored `@donate` from 2.12.0 is moved to the PayPal address once (`abr_migrate_donate_link()`, flag `abr_donate_link_migrated`); a later deliberate `@donate` is kept. External targets carry a title naming the host |
+| `header_donate_url` | link | `the owner's payment page` | Header; `@donate` opens the Donate page instead. A stored `@donate` from 2.12.0 is moved to the PayPal address once (`abr_migrate_donate_link()`, flag `abr_donate_link_migrated`); a later deliberate `@donate` is kept. External targets carry a title naming the host |
 | `donate_colour` | hex | `#b3261e` | Header; printed as `--abr-donate` with the scheme variables |
-| `donation_url` | url | `https://www.paypal.com/paypalme/menj` | Header; the Donate now button on the Donate page (`[abr_donation]`). When empty, the page uses the header link if it points to another site, otherwise it points to the Contact page |
+| `donation_url` | url | `the owner's payment page` | Header; the Donate now button on the Donate page (`[abr_donation]`). When empty, the page uses the header link if it points to another site, otherwise it points to the Contact page |
 | `donation_button` | text | Donate now | Header |
 | `footer_title` | text | Abrahamic Religions | Footer |
 | `footer_tagline` | text | Exploring faith, history, culture, and shared heritage. | Footer |
@@ -457,14 +473,14 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 10b. **Featured images.** An item with a `'photo'` entry receives that bundled photograph as its featured image while it has none. The file is copied into the media library once and reused; `_abr_seed_photo` marks the article, so the seeder never sets an image on it again.
 10c. **Category descriptions.** A term with a `previous` description is brought up to date when its stored description still matches `previous`; any other wording is the editor's and stays.
 10c-a. **No self-reference.** Site content never calls itself "this site", and never frames Mandaeism's inclusion as something the site does ("treated here as a fourth", "treats it as one"); it names Abrahamic Religions directly where a self-reference is unavoidable, and otherwise states Mandaeism's place among the four traditions as fact.
-10c-b. **Tradition order.** Wherever the four traditions appear as a sequence — menus, front-page cards, compare tabs, tables, section order, list phrases — the order is Judaism, Mandaeism, Christianity, Islam, per the site owner. Exception: passages naming only three (Jerusalem, Hebron, medieval philosophy, interfaith dialogue) keep Judaism, Christianity, Islam, since Mandaeism has no part in those histories.
+10c-b. **Tradition order.** Wherever the four traditions appear as a sequence (menus, front-page cards, compare tabs, tables, section order, list phrases) the order is Judaism, Mandaeism, Christianity, Islam, per the site owner. Exception: passages naming only three (Jerusalem, Hebron, medieval philosophy, interfaith dialogue) keep Judaism, Christianity, Islam, since Mandaeism has no part in those histories.
 10d. **Internal links.** The first mention in body text of a tradition, a scripture, a figure, a place or a subject with its own article links to it; never in headings, notes or the opening paragraph, never to the page itself, at most two new links per paragraph. Every Journal article ends with a "Further reading" line (`.abr-further`) to two or three related articles. New content follows the same rule.
 11. **Switching off:** `add_filter( 'abr_seed_enabled', '__return_false' );` in a must-use plugin stops every run.
 12. **Content standard:** neutral educational register; each tradition described in its own terms; no contractions, em dashes, contrastive negation or banned vocabulary; Arabic terms with transliteration, script and translation on first use, and Hebrew, Aramaic and Syriac terms with their script and translation where they are introduced; lower-case pronouns for Jesus; no book titles in body text; no citations that cannot be verified; figures and dates checked before seeding; each search description 130 characters or fewer, ending with a call to action.
 
 | Stored | Type | Purpose |
 |---|---|---|
-| `ABR_SEED_VERSION` | constant | Current seed version (42) |
+| `ABR_SEED_VERSION` | constant | Current seed version (83) |
 | `abr_seed_photos` | option | Bundled photograph name to media library attachment ID |
 | `_abr_seed_photo` | post meta | The photograph the seeder set as this article's featured image |
 | `abr_seeded_slugs` | option, not autoloaded | Tombstone list: key => timestamp |
@@ -749,7 +765,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 | 2026-09-18 | 2.14.0 | Dark bands and the footer keep dark surfaces in both modes | Inverting them would have put bright panels in the middle of a dark page and dark text on the dark footer |
 | 2026-09-17 | 2.13.1 | Editor guidance printed through a capability-checked shortcode | Instructions to the site's editors have no place in the public page, and a shortcode survives customising in the Site Editor |
 | 2026-09-17 | 2.13.0 | Symbols artwork used as a faint watermark, through a CSS mask | Supplied by the owner as GPL; a mask keeps it scheme-aware, and low opacity keeps flat clip art from competing with Sabon |
-| 2026-09-17 | 2.12.1 | Donate links default to https://www.paypal.com/paypalme/menj | Requested; both links stay editable on the Header tab |
+| 2026-09-17 | 2.12.1 | Donate links default to the owner's payment page | Requested; both links stay editable on the Header tab |
 | 2026-09-17 | 2.12.1 | Earlier Donate link migrated once, not on every read | A read-time mapping would overwrite a deliberate choice of `@donate` |
 | 2026-09-17 | 2.12.0 | Secondary menu shown in the footer only | Requested; the header keeps to content and actions |
 | 2026-09-17 | 2.12.0 | Red Donate button beside Explore, linked to a Donate page | Requested; the page routes readers to the Contact page until a payment link exists, so the button never leads nowhere |

@@ -14,13 +14,13 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:group {"align":"wide","className":"abr-section-head is-left","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide abr-section-head is-left">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">Shared heritage</p>
+<p class="abr-label">II · The Root</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">One heritage, different traditions</h2>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"className":"abr-sub"} -->
-<p class="abr-sub">Judaism, Christianity, Islam, and Mandaeism share figures, narratives, and places, and read them in different ways.</p>
+<p class="abr-sub">Judaism, Mandaeism, Christianity and Islam share figures, narratives and places, and read them in different ways.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -61,5 +61,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:group -->
 </div>
 <!-- /wp:group -->
+<!-- wp:shortcode -->
+[abr_back_to_top]
+<!-- /wp:shortcode -->
 </section>
 <!-- /wp:group -->

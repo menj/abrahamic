@@ -15,6 +15,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'ABR_PRIMARY_NAV_MAX', 5 );
 define( 'ABR_NAV_CHILDREN_MAX', 10 );
 define( 'ABR_SECONDARY_NAV_MAX', 8 );
+define( 'ABR_LISTING_PER_PAGE', 12 );
 define( 'ABR_FURTHER_MAX', 6 );
 
 /**
@@ -82,6 +83,10 @@ function abr_option_types() {
 		'contact_email'    => 'email',
 		// Navigation.
 		'nav_header'         => 'menu_primary',
+		'home_subnav'        => 'bool',
+		'home_parallax'      => 'bool',
+		'home_subnav_items'  => 'menu_secondary',
+		'nav_utility'        => 'menu_secondary',
 		'nav_secondary'      => 'menu_secondary',
 		'further_title'      => 'text',
 		'further_links'      => 'menu_further',
@@ -111,12 +116,33 @@ function abr_option_types() {
 		'newsletter_url'   => 'url',
 		'newsletter_name'  => 'key',
 		'newsletter_text'  => 'textarea',
+		// Login.
+		'login_design'        => 'bool',
+		'login_logo'          => 'url',
+		'login_layout'        => 'login_layout',
+		'login_photo'         => 'login_photo',
+		'login_message'       => 'text',
+		'login_hide'          => 'bool',
+		'login_slug'          => 'slug',
+		'login_redirect_slug' => 'slug',
+		// Search addresses.
+		'search_pretty'       => 'bool',
+		'search_base'         => 'slug',
 	);
 	// Social.
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
 		$types[ abr_social_key( $slug ) ] = 'url';
 	}
 	return $types;
+}
+
+/**
+ * Words that cannot serve as a login or search address.
+ *
+ * @return string[]
+ */
+function abr_reserved_slugs() {
+	return array( 'wp-admin', 'wp-login', 'wp-login-php', 'wp-content', 'wp-includes', 'wp-json', 'admin', 'feed', 'page', 'comments', 'author', 'category', 'tag', 'embed', 'trackback', 'attachment', 'sitemap', 'wp-sitemap' );
 }
 
 /**
@@ -139,9 +165,9 @@ function abr_option_defaults() {
 		'header_cta_url'   => '@guides',
 		'header_donate'       => 1,
 		'header_donate_label' => __( 'Donate', 'abrahamic' ),
-		'header_donate_url'   => 'https://www.paypal.com/paypalme/menj',
+		'header_donate_url'   => '@donate',
 		'donate_colour'       => '#b3261e',
-		'donation_url'        => 'https://www.paypal.com/paypalme/menj',
+		'donation_url'        => '',
 		'donation_button'     => __( 'Donate now', 'abrahamic' ),
 		'footer_title'     => __( 'Abrahamic Religions', 'abrahamic' ),
 		'footer_tagline'   => __( 'Exploring faith, history, culture, and shared heritage.', 'abrahamic' ),
@@ -150,9 +176,13 @@ function abr_option_defaults() {
 		'footer_copyright' => __( '© {year} Abrahamic Religions. All rights reserved.', 'abrahamic' ),
 		'footer_note'      => __( 'An independent educational resource.', 'abrahamic' ),
 		'contact_email'    => '',
-		'nav_header'         => "Religions | @religions\n- Judaism | @judaism\n- Mandaeism | @mandaeism\n- Christianity | @christianity\n- Islam | @islam\nReference | @reference\n- Sacred texts | @sacred-texts\n- History and timeline | @timeline\n- Figures | @figures\n- Places | @places\n- Comparative studies | @comparisons\n- Glossary | @glossary\n- Frequently asked questions | @faq\n- Research | @research\nJournal | @journal",
+		'nav_header'         => "Religions | @religions\n- Judaism | @judaism\n- Mandaeism | @mandaeism\n- Christianity | @christianity\n- Islam | @islam\nReference | @reference\n- Sacred texts | @sacred-texts\n- History and timeline | @timeline\n- Figures | @figures\n- Places | @places\n- Comparative studies | @comparisons\n- Glossary | @glossary\n- Frequently asked questions | @faq\n- Research | @research\nJournal | @journal\nEditorial | @editorial-policy\nKB | https://knowislam.wiki/ | Knowledge Base",
 		'further_title'      => __( 'Further reading', 'abrahamic' ),
 		'further_links'      => '',
+		'home_subnav'        => 1,
+		'home_parallax'      => 1,
+		'home_subnav_items'  => "Shared Heritage | #heritage\nFigures | #figures\nGeography | #places\nSacred Scriptures | #texts\nThe Traditions | #religions\nTimeline | #timeline\nComparative View | #comparison",
+		'nav_utility'        => "About AR | @about\nTerms of use | @terms\nPrivacy policy | @privacy-policy\nDMCA | @dmca\nContact AR | @contact\nSitemap | @site-map",
 		'nav_secondary'      => "About AR | @about\nEditorial policy | @editorial-policy\nContact AR | @contact\nDonate | @donate\nKnowledge base | https://knowislam.wiki/\nPrivacy policy | @privacy-policy\nTerms & conditions | @terms\nSitemap | @site-map",
 		'nav_footer_1_title' => __( 'Explore', 'abrahamic' ),
 		'nav_footer_1'       => "Religions | @religions\nJudaism | @judaism\nMandaeism | @mandaeism\nChristianity | @christianity\nIslam | @islam",
@@ -177,6 +207,17 @@ function abr_option_defaults() {
 		'newsletter_url'   => '',
 		'newsletter_name'  => 'email',
 		'newsletter_text'  => __( 'Receive new articles, historical explainers, and curated resources from Abrahamic Religions.', 'abrahamic' ),
+		'login_design'        => 1,
+		'login_logo'          => '',
+		'login_layout'        => 'centred',
+		'login_photo'         => 'jerusalem-panorama',
+		'login_message'       => __( 'An independent educational resource on the Abrahamic traditions.', 'abrahamic' ),
+		// A site moving from WPS Hide Login or Pretty Search Permalinks keeps its addresses.
+		'login_hide'          => get_option( 'whl_page' ) ? 1 : 0,
+		'login_slug'          => get_option( 'whl_page' ) ? sanitize_title( get_option( 'whl_page' ) ) : 'login',
+		'login_redirect_slug' => get_option( 'whl_redirect_admin' ) ? sanitize_title( get_option( 'whl_redirect_admin' ) ) : '404',
+		'search_pretty'       => 1,
+		'search_base'         => get_option( 'wpseosearch_base' ) ? sanitize_title( get_option( 'wpseosearch_base' ) ) : 'search',
 	);
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
 		$defaults[ abr_social_key( $slug ) ] = '';
@@ -303,6 +344,16 @@ function abr_sanitize_options( $input ) {
 				$val         = null === $raw ? '' : sanitize_key( $raw );
 				$out[ $key ] = '' === $val ? $d[ $key ] : $val;
 				break;
+			case 'slug':
+				$val         = null === $raw ? '' : sanitize_title( $raw );
+				$out[ $key ] = ( '' === $val || in_array( $val, abr_reserved_slugs(), true ) ) ? $d[ $key ] : $val;
+				break;
+			case 'login_layout':
+				$out[ $key ] = ( null !== $raw && function_exists( 'abr_login_layouts' ) && array_key_exists( $raw, abr_login_layouts() ) ) ? $raw : $d[ $key ];
+				break;
+			case 'login_photo':
+				$out[ $key ] = ( null !== $raw && function_exists( 'abr_login_photos' ) && array_key_exists( $raw, abr_login_photos() ) ) ? $raw : $d[ $key ];
+				break;
 			case 'hex':
 				$hex         = null === $raw ? '' : sanitize_hex_color( $raw );
 				$out[ $key ] = $hex ? $hex : $d[ $key ];
@@ -320,6 +371,11 @@ function abr_sanitize_options( $input ) {
 				$out[ $key ] = ( null !== $raw && array_key_exists( $raw, abr_schemes() ) ) ? $raw : $d[ $key ];
 				break;
 		}
+	}
+	// The login address, its fallback and the search address must differ.
+	if ( $out['login_slug'] === $out['login_redirect_slug'] || $out['login_slug'] === $out['search_base'] ) {
+		$out['login_hide'] = 0;
+		add_settings_error( 'abr_options', 'abr_login_slug', __( 'The login address must differ from the fallback address and the search address. The private login address has been switched off until that is fixed.', 'abrahamic' ) );
 	}
 	return $out;
 }
@@ -376,6 +432,9 @@ function abr_sanitize_link( $value ) {
 	if ( '@' === $value[0] ) {
 		return '@' . preg_replace( '/[^a-z0-9:_-]/', '', strtolower( substr( $value, 1 ) ) );
 	}
+	if ( '#' === $value[0] ) {
+		return '#' . preg_replace( '/[^A-Za-z0-9_-]/', '', substr( $value, 1 ) );
+	}
 	return esc_url_raw( $value );
 }
 
@@ -393,9 +452,10 @@ function abr_sanitize_menu( $value, $max_top = 0, $max_children = -1, $key = '' 
 	foreach ( preg_split( '/\r\n|\r|\n/', (string) $value ) as $line ) {
 		$child = (bool) preg_match( '/^\s*-/', $line );
 		$line  = preg_replace( '/^\s*-\s*/', '', $line );
-		$parts = array_map( 'trim', explode( '|', $line, 2 ) );
+		$parts = array_map( 'trim', explode( '|', $line, 3 ) );
 		$label = sanitize_text_field( $parts[0] );
 		$link  = isset( $parts[1] ) ? abr_sanitize_link( $parts[1] ) : '';
+		$hint  = isset( $parts[2] ) ? sanitize_text_field( $parts[2] ) : '';
 		if ( '' === $label || '' === $link ) {
 			continue;
 		}
@@ -419,7 +479,7 @@ function abr_sanitize_menu( $value, $max_top = 0, $max_children = -1, $key = '' 
 				continue;
 			}
 		}
-		$lines[] = ( $child ? '- ' : '' ) . $label . ' | ' . $link;
+		$lines[] = ( $child ? '- ' : '' ) . $label . ' | ' . $link . ( '' !== $hint ? ' | ' . $hint : '' );
 	}
 	if ( $dropped && $key && function_exists( 'add_settings_error' ) ) {
 		$message = 0 === $max_children
@@ -480,7 +540,7 @@ function abr_scheme_css() {
 	$css .= '}';
 
 	if ( ! $opts['sticky_header'] ) {
-		$css .= '.abr-header{position:relative}';
+		$css .= '.abr-header{position:relative}.wp-site-blocks>header.wp-block-template-part{position:static!important}:root{--abr-subnav-top:0px}';
 	}
 	return $css;
 }
@@ -538,6 +598,103 @@ function abr_migrate_donate_link() {
 	update_option( 'abr_donate_link_migrated', 1 );
 }
 add_action( 'init', 'abr_migrate_donate_link', 5 );
+
+/**
+ * One-time addition of Editorial policy and Knowledge base to a stored main menu
+ * (2.62.0), at the end, when the menu has room and does not already link them.
+ */
+function abr_migrate_nav_editorial_kb() {
+	if ( get_option( 'abr_nav_editorial_kb_added' ) ) {
+		return;
+	}
+	$stored = get_option( 'abr_options' );
+	if ( is_array( $stored ) && ! empty( $stored['nav_header'] ) ) {
+		$menu = (string) $stored['nav_header'];
+		$top  = 0;
+		foreach ( preg_split( '/\R/', $menu ) as $line ) {
+			if ( '' !== trim( $line ) && '-' !== substr( ltrim( $line ), 0, 1 ) ) {
+				$top++;
+			}
+		}
+		$add = array();
+		if ( false === strpos( $menu, '@editorial-policy' ) ) {
+			$add[] = 'Editorial | @editorial-policy';
+		}
+		if ( false === strpos( $menu, 'knowislam.wiki' ) && false === strpos( $menu, '@knowledge-base' ) ) {
+			$add[] = 'KB | https://knowislam.wiki/ | Knowledge Base';
+		}
+		if ( $add && $top + count( $add ) <= ABR_PRIMARY_NAV_MAX ) {
+			$stored['nav_header'] = rtrim( $menu ) . "\n" . implode( "\n", $add );
+			update_option( 'abr_options', $stored );
+		}
+	}
+	update_option( 'abr_nav_editorial_kb_added', 1 );
+}
+add_action( 'init', 'abr_migrate_nav_editorial_kb', 5 );
+
+/**
+ * One-time shortening of the main-menu label "Editorial policy" to "Editorial"
+ * (2.63.1). Only that exact line is changed; any other label is left alone.
+ */
+function abr_migrate_nav_editorial_label() {
+	if ( get_option( 'abr_nav_editorial_label' ) ) {
+		return;
+	}
+	$stored = get_option( 'abr_options' );
+	if ( is_array( $stored ) && ! empty( $stored['nav_header'] ) ) {
+		$menu = preg_replace( '/^Editorial policy(\s*\|\s*@editorial-policy\s*)$/m', 'Editorial$1', (string) $stored['nav_header'] );
+		if ( $menu !== $stored['nav_header'] ) {
+			$stored['nav_header'] = $menu;
+			update_option( 'abr_options', $stored );
+		}
+	}
+	update_option( 'abr_nav_editorial_label', 1 );
+}
+add_action( 'init', 'abr_migrate_nav_editorial_label', 6 );
+
+/**
+ * One-time shortening of the main-menu label "Knowledge base" to "KB", with
+ * "Knowledge Base" as its tooltip (2.63.2). Only that exact line is changed.
+ */
+function abr_migrate_nav_kb_label() {
+	if ( get_option( 'abr_nav_kb_label' ) ) {
+		return;
+	}
+	$stored = get_option( 'abr_options' );
+	if ( is_array( $stored ) && ! empty( $stored['nav_header'] ) ) {
+		$menu = preg_replace( '/^(\s*-?\s*)Knowledge base\s*\|\s*(https:\/\/knowislam\.wiki\/?)\s*$/mi', '$1KB | $2 | Knowledge Base', (string) $stored['nav_header'] );
+		if ( $menu !== $stored['nav_header'] ) {
+			$stored['nav_header'] = $menu;
+			update_option( 'abr_options', $stored );
+		}
+	}
+	update_option( 'abr_nav_kb_label', 1 );
+}
+add_action( 'init', 'abr_migrate_nav_kb_label', 6 );
+
+/**
+ * One-time rename of two footer links to "About AR" and "Contact AR" (2.63.4),
+ * where a stored footer list still carries the 2.61.1 labels.
+ */
+function abr_migrate_footer_ar_labels() {
+	if ( get_option( 'abr_footer_ar_labels' ) ) {
+		return;
+	}
+	$stored = get_option( 'abr_options' );
+	if ( is_array( $stored ) && ! empty( $stored['nav_utility'] ) ) {
+		$menu = preg_replace(
+			array( '/^About this site(\s*\|\s*@about\s*)$/m', '/^Contact us(\s*\|\s*@contact\s*)$/m' ),
+			array( 'About AR$1', 'Contact AR$1' ),
+			(string) $stored['nav_utility']
+		);
+		if ( $menu !== $stored['nav_utility'] ) {
+			$stored['nav_utility'] = $menu;
+			update_option( 'abr_options', $stored );
+		}
+	}
+	update_option( 'abr_footer_ar_labels', 1 );
+}
+add_action( 'init', 'abr_migrate_footer_ar_labels', 6 );
 add_action( 'admin_init', 'abr_migrate_legacy_options', 5 );
 
 /**

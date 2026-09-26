@@ -34,6 +34,21 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Whether an attachment exists and its file is on disk with content. An
+ * attachment whose file is missing or empty shows as a broken image.
+ *
+ * @param int $id Attachment ID.
+ * @return bool
+ */
+function abr_seed_attachment_ok( $id ) {
+	if ( ! $id || 'attachment' !== get_post_type( $id ) ) {
+		return false;
+	}
+	$file = get_attached_file( $id );
+	return $file && is_readable( $file ) && filesize( $file ) > 0;
+}
+
+/**
  * Copies a bundled photograph into the media library once and returns its
  * attachment ID; later calls reuse it while it exists. Returns 0 on failure.
  *
@@ -43,16 +58,18 @@ defined( 'ABSPATH' ) || exit;
  */
 function abr_seed_photo_attachment( $name, $alt ) {
 	$map = (array) get_option( 'abr_seed_photos', array() );
-	if ( ! empty( $map[ $name ] ) && 'attachment' === get_post_type( (int) $map[ $name ] ) ) {
+	if ( ! empty( $map[ $name ] ) && abr_seed_attachment_ok( (int) $map[ $name ] ) ) {
 		return (int) $map[ $name ];
 	}
 	$name = sanitize_file_name( $name );
 	$file = ABR_DIR . '/assets/images/photos/' . $name . '.avif';
 	if ( ! is_readable( $file ) ) {
+		$GLOBALS['abr_seed_photo_error'] = sprintf( 'the file %s.avif is missing from the theme', $name );
 		return 0;
 	}
 	$upload = wp_upload_bits( $name . '.avif', null, file_get_contents( $file ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a bundled file.
 	if ( ! empty( $upload['error'] ) ) {
+		$GLOBALS['abr_seed_photo_error'] = wp_strip_all_tags( (string) $upload['error'] );
 		return 0;
 	}
 	$id = wp_insert_attachment(
@@ -64,6 +81,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 		$upload['file']
 	);
 	if ( ! $id || is_wp_error( $id ) ) {
+		$GLOBALS['abr_seed_photo_error'] = is_wp_error( $id ) ? $id->get_error_message() : 'the attachment could not be created';
 		return 0;
 	}
 	require_once ABSPATH . 'wp-admin/includes/image.php';
@@ -77,7 +95,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 /**
  * Raise when inc/seed/content.php gains items (set their 'since' to the new value).
  */
-define( 'ABR_SEED_VERSION', 48 );
+define( 'ABR_SEED_VERSION', 83 );
 
 /**
  * Recommended permalink settings (docs/ssot.md, section 12).
@@ -108,7 +126,9 @@ define( 'ABR_SEED_TAGLINE', 'Judaism, Mandaeism, Christianity, Islam' );
 function abr_seed_data() {
 	static $data = null;
 	if ( null === $data ) {
-		$data = require ABR_DIR . '/inc/seed/content.php';
+		$file = ABR_DIR . '/inc/seed/content.php';
+		// While an update is unpacking the file can be briefly absent: seed nothing.
+		$data = is_readable( $file ) ? require $file : array( 'terms' => array(), 'items' => array() );
 	}
 	return $data;
 }
@@ -362,6 +382,13 @@ function abr_run_seeder( $only = array() ) {
 	}
 
 	$data   = abr_seed_data();
+	if ( empty( $data['items'] ) ) {
+		// The content file is missing or unreadable (an update still unpacking).
+		// Stop before touching anything: with no items, the retirement step below
+		// would otherwise treat every seeded post as withdrawn. Try again later.
+		set_transient( 'abr_seed_retry', 1, 5 * MINUTE_IN_SECONDS );
+		return $report;
+	}
 	$seeded = abr_seed_tombstones();
 	$wanted = function ( $key ) use ( $only, $seeded ) {
 		return $only ? in_array( $key, $only, true ) : ! isset( $seeded[ $key ] );
@@ -580,19 +607,48 @@ function abr_run_seeder( $only = array() ) {
 		}
 	}
 
-	// Featured images for articles that carry a bundled photograph.
+	// Featured images for articles that carry a bundled photograph. The step
+	// repairs itself: an article whose seeded photograph was deleted from the
+	// media library gets it back, while one whose editor removed the featured
+	// image (the photograph still in the library) or chose another is left alone.
+	$photo_map = (array) get_option( 'abr_seed_photos', array() );
 	foreach ( $data['items'] as $item ) {
 		if ( empty( $item['photo'] ) || empty( $ids[ $item['key'] ] ) ) {
 			continue;
 		}
 		$post_id = (int) $ids[ $item['key'] ];
-		if ( get_post_meta( $post_id, '_abr_seed', true ) !== $item['key'] || get_post_meta( $post_id, '_abr_seed_photo', true ) || has_post_thumbnail( $post_id ) ) {
+		if ( get_post_meta( $post_id, '_abr_seed', true ) !== $item['key'] ) {
 			continue;
 		}
+		$thumb = (int) get_post_thumbnail_id( $post_id );
+		if ( $thumb && abr_seed_attachment_ok( $thumb ) ) {
+			continue;
+		}
+		$given    = (string) get_post_meta( $post_id, '_abr_seed_photo', true );
+		$given_id = (int) get_post_meta( $post_id, '_abr_seed_photo_id', true );
+		if ( $given && ! $given_id && ! empty( $photo_map[ $given ] ) ) {
+			$given_id = (int) $photo_map[ $given ];
+		}
+		if ( ! $thumb && $given && $given_id && abr_seed_attachment_ok( $given_id ) ) {
+			// The editor removed the featured image; the photograph is still in the library.
+			continue;
+		}
+		if ( $thumb && ( $thumb === $given_id || ( ! empty( $photo_map[ $item['photo']['name'] ] ) && (int) $photo_map[ $item['photo']['name'] ] === $thumb ) ) ) {
+			// The theme's own photograph is broken (its file is missing or empty): replace it.
+			wp_delete_attachment( $thumb, true );
+		} elseif ( $thumb ) {
+			// A broken image the editor chose is theirs to replace.
+			$report['photo_errors'][] = get_the_title( $post_id ) . ': the featured image chosen for it has a missing or empty file';
+			continue;
+		}
+		$GLOBALS['abr_seed_photo_error'] = '';
 		$attachment = abr_seed_photo_attachment( $item['photo']['name'], $item['photo']['alt'] );
 		if ( $attachment && set_post_thumbnail( $post_id, $attachment ) ) {
 			update_post_meta( $post_id, '_abr_seed_photo', $item['photo']['name'] );
+			update_post_meta( $post_id, '_abr_seed_photo_id', $attachment );
 			$report['photos'][] = $item['key'];
+		} else {
+			$report['photo_errors'][] = get_the_title( $post_id ) . ': ' . ( $GLOBALS['abr_seed_photo_error'] ? $GLOBALS['abr_seed_photo_error'] : 'the featured image could not be set' );
 		}
 	}
 
@@ -631,7 +687,15 @@ function abr_run_seeder( $only = array() ) {
 	}
 
 	update_option( 'abr_seeded_slugs', $seeded, false );
-	update_option( 'abr_seed_version', ABR_SEED_VERSION, false );
+	if ( empty( $report['photo_errors'] ) ) {
+		update_option( 'abr_seed_version', ABR_SEED_VERSION, false );
+		delete_transient( 'abr_seed_retry' );
+	} else {
+		// A featured photograph could not be added (for example, its file was not
+		// yet unpacked). Leave the version behind so the check runs again, after a
+		// pause, and completes the missing images.
+		set_transient( 'abr_seed_retry', 1, 5 * MINUTE_IN_SECONDS );
+	}
 	update_option(
 		'abr_seed_log',
 		array(
@@ -644,6 +708,7 @@ function abr_run_seeder( $only = array() ) {
 			'replaced'  => count( $report['replaced'] ),
 			'retired'   => count( $report['retired'] ),
 			'photos'    => count( $report['photos'] ),
+			'photo_errors' => isset( $report['photo_errors'] ) ? array_slice( $report['photo_errors'], 0, 10 ) : array(),
 		),
 		false
 	);
@@ -672,7 +737,7 @@ function abr_seed_on_upgrade() {
 	if ( wp_doing_ajax() || ! current_user_can( 'edit_theme_options' ) ) {
 		return;
 	}
-	if ( abr_seed_is_behind() ) {
+	if ( abr_seed_is_behind() && ! get_transient( 'abr_seed_retry' ) ) {
 		abr_run_seeder();
 	}
 }
@@ -715,7 +780,7 @@ function abr_seed_on_request() {
 	if ( wp_doing_ajax() || wp_doing_cron() || is_admin() || ! abr_seed_is_behind() ) {
 		return;
 	}
-	if ( get_transient( 'abr_seed_running' ) ) {
+	if ( get_transient( 'abr_seed_running' ) || get_transient( 'abr_seed_retry' ) ) {
 		return;
 	}
 	set_transient( 'abr_seed_running', 1, 5 * MINUTE_IN_SECONDS );

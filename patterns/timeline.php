@@ -9,12 +9,12 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<!-- wp:group {"tagName":"section","anchor":"timeline","className":"abr-section abr-timeline is-white","layout":{"type":"constrained"}} -->
-<section id="timeline" class="wp-block-group abr-section abr-timeline is-white">
+<!-- wp:group {"tagName":"section","anchor":"timeline","className":"abr-section abr-timeline","layout":{"type":"constrained"}} -->
+<section id="timeline" class="wp-block-group abr-section abr-timeline">
 <!-- wp:group {"align":"wide","className":"abr-section-head","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide abr-section-head">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">History</p>
+<p class="abr-label">VII · Through the Ages</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">From the ancient world to today</h2>
@@ -170,5 +170,8 @@ defined( 'ABSPATH' ) || exit;
 <div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( abr_link( '@timeline', '/reference/timeline/' ) ); ?>">See the full timeline</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
+<!-- wp:shortcode -->
+[abr_back_to_top]
+<!-- /wp:shortcode -->
 </section>
 <!-- /wp:group -->

@@ -450,3 +450,57 @@ function abr_handle_rebuild_search() {
 	exit;
 }
 add_action( 'admin_post_abr_rebuild_search', 'abr_handle_rebuild_search' );
+
+/* -------------------------------------------------------------------------
+ * Search addresses: /search/term/ in place of /?s=term
+ *
+ * Built into the theme from Pretty Search Permalinks 1.3 by Angel Costa (GPL). Its setting,
+ * wpseosearch_base, seeds the theme's default. While the plugin is active,
+ * the theme leaves this to it.
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Whether the theme handles search addresses.
+ *
+ * @return bool
+ */
+function abr_search_pretty_on() {
+	return ! function_exists( 'wpseosearch_base' ) && (bool) abr_get_option( 'search_pretty' );
+}
+
+/**
+ * Set the search base before rewrite rules are used, and rebuild them once
+ * whenever the base changes.
+ */
+function abr_search_base_setup() {
+	if ( ! abr_search_pretty_on() ) {
+		return;
+	}
+	global $wp_rewrite;
+	$base                    = abr_get_option( 'search_base' );
+	$wp_rewrite->search_base = $base;
+	// Rebuild the rules once whenever the base differs from the one they were built with.
+	if ( get_option( 'abr_search_base_built' ) !== $base ) {
+		update_option( 'abr_search_base_built', $base );
+		flush_rewrite_rules( false );
+	}
+}
+add_action( 'init', 'abr_search_base_setup', 20 );
+
+/**
+ * Send /?s=term to /search/term/.
+ */
+function abr_search_pretty_redirect() {
+	global $wp_rewrite;
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- presence check only.
+	if ( ! abr_search_pretty_on() || ! is_search() || is_admin() || ! isset( $_GET['s'] ) || ! $wp_rewrite->using_permalinks() ) {
+		return;
+	}
+	$term = get_query_var( 's' );
+	if ( '' === trim( (string) $term ) ) {
+		return;
+	}
+	wp_safe_redirect( get_search_link( $term ) );
+	exit;
+}
+add_action( 'template_redirect', 'abr_search_pretty_redirect' );

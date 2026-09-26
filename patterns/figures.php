@@ -9,12 +9,12 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<!-- wp:group {"tagName":"section","anchor":"figures","className":"abr-section abr-figures is-white","layout":{"type":"constrained"}} -->
-<section id="figures" class="wp-block-group abr-section abr-figures is-white">
+<!-- wp:group {"tagName":"section","anchor":"figures","className":"abr-section abr-figures","layout":{"type":"constrained"}} -->
+<section id="figures" class="wp-block-group abr-section abr-figures">
 <!-- wp:group {"align":"wide","className":"abr-section-head","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide abr-section-head">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">People</p>
+<p class="abr-label">III · The People</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">People who shaped Abrahamic history</h2>
@@ -236,5 +236,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:group -->
 </div>
 <!-- /wp:group -->
+<!-- wp:shortcode -->
+[abr_back_to_top]
+<!-- /wp:shortcode -->
 </section>
 <!-- /wp:group -->
