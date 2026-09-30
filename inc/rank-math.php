@@ -53,16 +53,40 @@ function abr_seed_focus_keywords( $force = false ) {
 		return 0;
 	}
 	$map     = require $file;
+	// Keywords the theme wrote in 2.77.0 and has since refined.
+	$previous = array(
+		'post:who-was-abraham'                                   => 'who was abraham,abraham',
+		'post:millat-ibrahim'                                    => 'millat ibrahim,religion of abraham',
+		'post:jesus-across-the-traditions'                       => 'jesus in islam,jesus',
+		'post:john-the-baptist-in-four-traditions'               => 'john the baptist,yahya',
+		'post:war-and-peace-in-the-abrahamic-traditions'         => 'are abrahamic religions violent,religious violence',
+		'post:how-the-abrahamic-religions-understand-monotheism' => 'abrahamic monotheism,monotheistic religions',
+		'post:the-council-of-nicaea'                             => 'council of nicaea,nicene creed',
+		'post:the-islamic-dilemma'                               => 'islamic dilemma,surah 5:46',
+		'page:comparisons'                                       => 'similarities between judaism christianity and islam',
+		'post:the-stations-of-the-hajj'                          => 'stations of hajj,hajj',
+	);
 	$written = 0;
 	foreach ( $map as $key => $keyword ) {
 		$id = abr_seed_id( $key );
 		if ( ! $id ) {
 			continue;
 		}
-		if ( '' !== trim( (string) get_post_meta( $id, 'rank_math_focus_keyword', true ) ) ) {
-			continue; // An editor's keyword is never replaced.
+		$current = trim( (string) get_post_meta( $id, 'rank_math_focus_keyword', true ) );
+		$seeded  = (string) get_post_meta( $id, '_abr_focus_seeded', true );
+		// An editor's keyword is never replaced: only an empty field, or one still
+		// holding exactly what the theme wrote earlier, is updated.
+		if ( '' === $seeded && isset( $previous[ $key ] ) && $current === $previous[ $key ] ) {
+			$seeded = $current; // Written by 2.77.0, before the theme recorded its own values.
+		}
+		if ( '' !== $current && $current !== $seeded ) {
+			continue;
+		}
+		if ( $current === $keyword ) {
+			continue;
 		}
 		update_post_meta( $id, 'rank_math_focus_keyword', $keyword );
+		update_post_meta( $id, '_abr_focus_seeded', $keyword );
 		$written++;
 	}
 	update_option( 'abr_focus_keywords_stamp', $stamp, false );

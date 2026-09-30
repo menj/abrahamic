@@ -2,6 +2,13 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.77.2] - 2026-09-30
+
+### Changed
+- From answering-islam.org's organic positions in seven countries (US, UK, Canada, Australia, Netherlands, Malaysia, Singapore; 8,586 keywords, 29 to 30 September 2026), supplied by the site owner. Secondary Rank Math focus keywords added where an existing article already answers a search the competitor ranks for: "abraham in islam" (who-was-abraham), "islam and abraham" (millat-ibrahim), "isa jesus" and "who is jesus in islam" (jesus), "john the baptist in islam" (john-the-baptist; the competitor ranks first for it), "is islam a religion of peace" (war-and-peace; competitor at 3 and 6), "tawhid" and "shirk" (monotheism), "arius" (Nicaea), "what does the quran say about the bible" (Islamic Dilemma), "difference between christianity and islam" (Comparative studies), "mecca and kaaba" (Hajj).
+- Search title for `post:millat-ibrahim`: "Abraham in Islam: the path of Ibrahim" (59 with branding), matching the "abraham in islam" cluster (about 20,000 searches a month across the seven countries).
+- `abr_seed_focus_keywords()` now records the value it writes (`_abr_focus_seeded`) and may refine a keyword only while the field still holds the theme's own value; a keyword typed in Rank Math is never replaced. Values written by 2.77.0 are recognised, so the ten refinements reach the live site. Tested: a theme-written keyword was refined; a keyword typed in Rank Math was left alone.
+
 ## [2.77.1] - 2026-09-27
 
 ### Changed

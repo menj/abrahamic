@@ -35,4 +35,5 @@ return array(
 	'post:the-population-of-the-abrahamic-religions'            => 'Abrahamic religions by population',
 	'post:the-five-great-sees'                                  => 'The five great sees of the church',
 	'post:prayer-across-the-abrahamic-traditions'               => 'Prayer in the Abrahamic traditions',
+	'post:millat-ibrahim'                                       => 'Abraham in Islam: the path of Ibrahim',
 );

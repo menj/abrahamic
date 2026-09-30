@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.77.1
+Stable tag: 2.77.2
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +43,7 @@ Appearance > Theme Options lets you:
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.77.1.zip, and activate it. The starter pages and articles are created automatically.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.77.2.zip, and activate it. The starter pages and articles are created automatically.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
@@ -143,6 +143,9 @@ Yes. The hero section and the place cards hold patterned placeholders. Replace e
 They are copied across automatically when you activate Abrahamic. Changes you made to templates in the Site Editor under the old theme are not carried over. See docs/upgrading.md for details.
 
 == Upgrade Notice ==
+
+= 2.77.2 =
+Focus keywords refined from competitor keyword research.
 
 = 2.77.1 =
 With Rank Math active, the theme's fuller structured data is used in place of Rank Math's default, unless a schema was built in Rank Math for that page.
@@ -517,6 +520,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.77.2 - 2026-09-30 =
+* Focus keywords on ten articles and pages gain high-volume secondary keywords found in competitor research, and the Abraham in Islam article gets a search title that matches how people search.
 
 = 2.77.1 - 2026-09-27 =
 * With Rank Math active, the theme's structured data takes precedence over Rank Math's default schema, since it is the more complete. A schema built in Rank Math's Schema tab for a page is still respected. Everything else stays with Rank Math.

@@ -10,6 +10,12 @@ Replace the theme files. A template change only; nothing to reseed.
 
 ---
 
+## Upgrading from 2.77.1 to 2.77.2
+
+Replace the theme files and open any admin page once to apply the refined focus keywords.
+
+---
+
 ## Upgrading from 2.77.0 to 2.77.1
 
 Replace the theme files and clear any page cache. Check a page or two in Google's Rich Results Test.
@@ -841,7 +847,7 @@ Replace the theme files. No settings, templates or identifiers changed.
 
 Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new folder.
 
-1. Upload `abrahamic-2.77.1.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
+1. Upload `abrahamic-2.77.2.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
 2. Activate **Abrahamic**. Saved settings are copied from `ar_options` to `abr_options` automatically.
 3. Check Appearance > Abrahamic and confirm the colour scheme, newsletter and social values.
 4. Site Editor changes are stored against the theme slug and do not carry over. If the front page, header or footer was edited under 1.x:
