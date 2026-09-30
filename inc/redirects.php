@@ -225,7 +225,9 @@ add_action( 'admin_post_abr_update_links', 'abr_handle_update_links' );
  * Redirect 404s that match an earlier address.
  */
 function abr_legacy_redirect() {
-	if ( ! is_404() ) {
+	// Old media addresses (the 2016 Venn diagram) are not always reported as 404s,
+	// since WordPress can match an attachment by name; they are redirected either way.
+	if ( ! is_404() && 0 !== strpos( abr_request_path(), '/wp-content/uploads/' ) ) {
 		return;
 	}
 	$method = isset( $_SERVER['REQUEST_METHOD'] ) ? sanitize_key( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ) : 'get';

@@ -942,6 +942,14 @@ ABR_SEED,
 <figure class="wp-block-table abr-table"><table><tr><th>Theme</th><th>Judaism</th><th>Mandaeism</th><th>Christianity</th><th>Islam</th></tr><tr><td>Belief in God</td><td>Strict monotheism; one God in covenant with Israel</td><td>One God, the Great Life; light and darkness opposed</td><td>One God understood as Trinity: Father, Son, Holy Spirit</td><td>Tawḥīd, the absolute oneness of God</td></tr><tr><td>Sacred texts</td><td>Torah, Tanakh, Talmud, rabbinic literature</td><td>Ginza Rabba, Qolasta, the Book of John, in Mandaic</td><td>Old and New Testaments; canons vary by church</td><td>Qur'an; ḥadīth as the record of prophetic practice</td></tr><tr><td>Abraham</td><td>Patriarch, father of the Jewish people</td><td>Not accepted as a prophet</td><td>Father of faith and recipient of the promise</td><td>Ibrāhīm, prophet and exemplar of pure monotheism</td></tr><tr><td>Moses</td><td>Prophet and lawgiver who received the Torah</td><td>Not accepted as a prophet</td><td>Prophet and lawgiver of the Old Covenant</td><td>Mūsā, prophet who received the Tawrāt</td></tr><tr><td>Jesus</td><td>Historical figure; not accepted as Messiah</td><td>Held to have altered the teaching of John</td><td>Messiah, Son of God, and Saviour</td><td>ʿĪsā, prophet and Messiah; not divine</td></tr><tr><td>Prophets</td><td>Many prophets; prophecy ceased in antiquity</td><td>Adam to Aram; John the Baptist last</td><td>Old Testament prophets; John the Baptist</td><td>A line of prophets sealed by Muhammad</td></tr><tr><td>Prayer</td><td>Three daily services; synagogue worship</td><td>Three times a day, facing north, after washing</td><td>Personal and liturgical prayer; the Lord's Prayer</td><td>Ṣalāh five times daily, facing Makkah</td></tr><tr><td>Major festivals</td><td>Passover, Yom Kippur, Sukkot, Hanukkah</td><td>Dehwa Rabba; Dehwa Daimana, the birth of John</td><td>Christmas, Easter, Pentecost</td><td>ʿĪd al-Fiṭr, ʿĪd al-Aḍḥā</td></tr><tr><td>Places</td><td>Jerusalem, Hebron, Mount Sinai</td><td>Rivers of southern Iraq and Khuzestan</td><td>Jerusalem, Bethlehem, Nazareth, Rome</td><td>Makkah, Madinah, Jerusalem</td></tr><tr><td>Ethics</td><td>Rooted in Torah and rabbinic tradition</td><td>Purity, truthfulness, charity and strict pacifism</td><td>Love of God and neighbour; the Sermon on the Mount</td><td>Guided by the Qur'an, sunnah and sharia</td></tr><tr><td>Afterlife</td><td>Diverse views; Olam Ha-Ba, the world to come</td><td>The soul's ascent to the World of Light</td><td>Resurrection, judgement, heaven and hell</td><td>Resurrection, judgement, paradise and hellfire</td></tr></table></figure>
 <!-- /wp:table -->
 
+<!-- wp:paragraph -->
+<p>The Venn diagram below shows, in simplified form, which beliefs all four traditions hold, which three of them share, and which belong to Mandaeism alone. See <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree and what the traditions share</a> for the reasoning behind it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:shortcode -->
+[abr_diagram name="shared-beliefs" caption="A Venn diagram of the beliefs shared by Judaism, Mandaeism, Christianity and Islam, simplified. The full discussion is in The Abrahamic family tree and what the traditions share."]
+<!-- /wp:shortcode -->
+
 <!-- wp:heading {"anchor":"god"} -->
 <h2 class="wp-block-heading" id="god">God</h2>
 <!-- /wp:heading -->
@@ -1730,6 +1738,38 @@ ABR_SEED,
 <p>As a continuous tradition, Judaism is the oldest: the religion of ancient Israel took shape in the first millennium BCE, and rabbinic Judaism after the destruction of the Second Temple in 70 CE. Christianity arose in the first century CE and Islam in the seventh; the origins of Mandaeism are debated, with most scholars placing them in the first centuries CE. Islam answers the question differently. It holds that the religion God has always asked of humanity is <em>islām</em> (<span lang="ar" dir="rtl">إِسْلَام</span>, submission to God), taught by every prophet from Adam and followed by Abraham, so that the first religion and the last are the same (Qur’an 3:19; 3:67). See the <a href="/reference/timeline/">Timeline</a>.</p>
 <!-- /wp:paragraph -->
 
+<!-- wp:heading {"anchor":"how-do-the-abrahamic-religions-view-abraham"} -->
+<h2 class="wp-block-heading" id="how-do-the-abrahamic-religions-view-abraham">How do the Abrahamic religions view Abraham?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Judaism, Christianity and Islam all honour Abraham, in Hebrew <em>Avraham</em> (<span lang="he" dir="rtl">אַבְרָהָם</span>) and in Arabic <em>Ibrāhīm</em> (<span lang="ar" dir="rtl">إِبْرَاهِيم</span>), as the man whom God called and with whom He made a covenant. For Jews he is the father of the nation and the first to enter the covenant, whose name God changed to mark him as the father of many nations (Genesis 17:5). Christians look to him as the model of faith and the spiritual father of all who believe (Galatians 3:7). Muslims honour him as a prophet, the leader God made for mankind, and <em>Khalīl Allāh</em> (<span lang="ar" dir="rtl">خَلِيل ٱللَّه</span>, the intimate friend of God), whose religion Muslims are commanded to follow (Qur’an 2:124; 4:125). Mandaeism, alone of the four, does not accept him as a prophet. See <a href="/journal/who-was-abraham/">Who was Abraham?</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"do-the-abrahamic-religions-share-the-same-values"} -->
+<h2 class="wp-block-heading" id="do-the-abrahamic-religions-share-the-same-values">Do the Abrahamic religions share the same values?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In large part. All four teach that human beings are answerable to one God, and they share commands to worship Him, to be just, to care for the poor, the orphan and the stranger, and to speak truthfully. Those shared commitments have long served as common ground for dialogue between the communities; see <a href="/journal/the-amman-message-and-a-common-word/">The Amman Message and A Common Word</a>. They differ on what God has revealed and how He is to be obeyed, and honest dialogue names those differences instead of hiding them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"who-are-the-prophets-of-the-abrahamic-religions"} -->
+<h2 class="wp-block-heading" id="who-are-the-prophets-of-the-abrahamic-religions">Who are the prophets of the Abrahamic religions?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>All four traditions hold that God has spoken to humanity through prophets, and they share many of the same names: Adam, Noah and, for three of them, Abraham, Moses, David and Solomon. Judaism honours the prophets of the Hebrew Bible and holds that prophecy ended with the last of them. Christianity reads those prophets as foretelling Jesus, whom it regards as more than a prophet. Islam honours every prophet from Adam onwards, Jesus among them, and holds that Muhammad is the seal of the prophets (Qur’an 33:40). Mandaeism honours Adam, Seth, Noah, Shem and John the Baptist, and rejects Abraham, Moses, Jesus and Muhammad as prophets. See <a href="/reference/figures/">Figures</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"anchor":"why-are-they-called-western-religions"} -->
+<h2 class="wp-block-heading" id="why-are-they-called-western-religions">Why are the Abrahamic religions sometimes called Western religions?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Because Christianity shaped the history and culture of Europe and the Americas, and Judaism and Islam were long present there, older textbooks grouped the three as the "Western" religions, in contrast with the "Eastern" religions of India and East Asia. The label is misleading. All four Abrahamic religions began in the Middle East, and most of their followers now live outside the West: by 2020 more Christians lived in sub-Saharan Africa than in Europe, and most Muslims live in Asia. See <a href="/journal/the-population-of-the-abrahamic-religions/">The population of the Abrahamic religions</a>.</p>
+<!-- /wp:paragraph -->
+
 <!-- wp:heading {"anchor":"is-mandaeism-an-abrahamic-religion"} -->
 <h2 class="wp-block-heading" id="is-mandaeism-an-abrahamic-religion">Is Mandaeism an Abrahamic religion?</h2>
 <!-- /wp:heading -->
@@ -1831,8 +1871,12 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>All three worship one God, look to Abraham as their forefather, honour Moses and the prophets, hold that God has spoken through revealed scripture, and expect a final judgement. All three teach prayer, charity and fasting, and a moral law drawn from revelation. Each pair also shares something the third does not: Judaism and Christianity the Hebrew Bible, Christianity and Islam the honour given to Jesus as Messiah, and Judaism and Islam an undivided God and a religious law for daily life. <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree</a> shows this in a diagram.</p>
+<p>All three worship one God, look to Abraham as their forefather, honour Moses and the prophets, hold that God has spoken through revealed scripture, and expect a final judgement. All three teach prayer, charity and fasting, and a moral law drawn from revelation. Each pair also shares something the third does not: Judaism and Christianity the Hebrew Bible, Christianity and Islam the honour given to Jesus as Messiah, and Judaism and Islam an undivided God and a religious law for daily life. The Venn diagram below shows the shared ground; <a href="/journal/abrahamic-family-tree/">The Abrahamic family tree</a> explains it.</p>
 <!-- /wp:paragraph -->
+
+<!-- wp:shortcode -->
+[abr_diagram name="shared-beliefs" caption="A Venn diagram of the beliefs shared by Judaism, Mandaeism, Christianity and Islam, simplified. The full discussion is in The Abrahamic family tree and what the traditions share."]
+<!-- /wp:shortcode -->
 
 <!-- wp:heading {"anchor":"what-are-the-main-differences-between-judaism-christianity-and-islam"} -->
 <h2 class="wp-block-heading" id="what-are-the-main-differences-between-judaism-christianity-and-islam">What are the main differences between Judaism, Christianity and Islam?</h2>
@@ -6319,7 +6363,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>That God sent Jesus confirming the Torah before him, and gave him the Gospel, ’in which was guidance and light’.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> The verse speaks of the Gospel God gave to Jesus. The four Gospels of the New Testament were written about him by others, one of whose authors says he compiled it from earlier accounts.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup></p>
+<p>That God sent Jesus confirming the Torah before him, and gave him the Gospel, ‘in which was guidance and light’.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> The verse speaks of the Gospel God gave to Jesus. The four Gospels of the New Testament were written about him by others, one of whose authors says he compiled it from earlier accounts.<sup class="abr-fn"><a href="#note-4" id="ref-4">4</a></sup></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"why-does-the-quran-tell-christians-to-judge-by-the-gospel"} -->
@@ -6327,7 +6371,7 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Surah 5:47 tells the people of the Gospel to judge by ’what God has revealed therein’: by the truths of revelation that remain in their scripture, among them the oneness of God and the prophet the Qur’an says they find described in it.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> The next verse makes the Qur’an the criterion of what those truths are.</p>
+<p>Surah 5:47 tells the people of the Gospel to judge by ‘what God has revealed therein’: by the truths of revelation that remain in their scripture, among them the oneness of God and the prophet the Qur’an says they find described in it.<sup class="abr-fn"><a href="#note-5" id="ref-5">5</a></sup> The next verse makes the Qur’an the criterion of what those truths are.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"anchor":"did-muhammad-doubt-the-quran"} -->

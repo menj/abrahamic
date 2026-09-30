@@ -10,6 +10,54 @@ Replace the theme files. A template change only; nothing to reseed.
 
 ---
 
+## Upgrading from 2.77.0 to 2.77.1
+
+Replace the theme files and clear any page cache. Check a page or two in Google's Rich Results Test.
+
+---
+
+## Upgrading from 2.76.0 to 2.77.0
+
+Replace the theme files, then open any admin page once: that writes the focus keywords to every article and principal page that has none. Recommended in Rank Math > Titles & Meta > Global Meta: set the separator to "|", so that titles you write in Rank Math follow the same branding as the theme's.
+
+---
+
+## Upgrading from 2.75.1 to 2.76.0
+
+Replace the theme files and clear any page cache. Titles and descriptions you have set in Rank Math are kept exactly as they are; pages without them get the theme's defaults. If you set the Home page title in Theme Options earlier, check it is 37 characters or fewer.
+
+---
+
+## Upgrading from 2.75.0 to 2.75.1
+
+Replace the theme files; the titles change at once. With Rank Math active, also clear any page cache so the new titles are served. Optionally, in Settings > General, set the tagline to "Judaism, Mandaeism, Christianity and Islam" so it follows the site's order where WordPress shows it.
+
+---
+
+## Upgrading from 2.74.2 to 2.75.0
+
+Replace the theme files and load any page. Then check a few pages in Google's Rich Results Test and the Search Console enhancement reports.
+
+---
+
+## Upgrading from 2.74.1 to 2.74.2
+
+Replace the theme files and load any page. Seed version 86 refreshes the FAQ where unedited.
+
+---
+
+## Upgrading from 2.74.0 to 2.74.1
+
+Replace the theme files and load any page. Seed version 85 refreshes Comparative studies and the FAQ where unedited.
+
+---
+
+## Upgrading from 2.73.2 to 2.74.0
+
+Replace the theme files and load any page. Seed version 84 refreshes the FAQ where unedited.
+
+---
+
 ## Upgrading from 2.73.1 to 2.73.2
 
 Replace the theme files. No settings change.
@@ -793,7 +841,7 @@ Replace the theme files. No settings, templates or identifiers changed.
 
 Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new folder.
 
-1. Upload `abrahamic-2.73.2.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
+1. Upload `abrahamic-2.77.1.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
 2. Activate **Abrahamic**. Saved settings are copied from `ar_options` to `abr_options` automatically.
 3. Check Appearance > Abrahamic and confirm the colour scheme, newsletter and social values.
 4. Site Editor changes are stored against the theme slug and do not carry over. If the front page, header or footer was edited under 1.x:

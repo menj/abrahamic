@@ -495,6 +495,7 @@ function abr_render_options_page() {
 				?>
 				<h2><?php esc_html_e( 'Webmaster tools', 'abrahamic' ); ?></h2>
 				<?php
+				abr_field( 'home_title', __( 'Home page title', 'abrahamic' ), 'text', __( 'The title of the home page in search results and browser tabs, before "| Abrahamic Religions". Keep it to 37 characters or fewer: every title, branding included, stays under 60 characters and is shortened at a word boundary if it would not.', 'abrahamic' ) );
 				abr_field( 'google_verification', __( 'Google Search Console verification code', 'abrahamic' ), 'text', __( 'Paste the content value, or the whole meta tag, from the HTML tag method.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
 				abr_field( 'bing_verification', __( 'Bing Webmaster Tools verification code', 'abrahamic' ), 'text', __( 'Paste the content value, or the whole msvalidate.01 meta tag.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
 				abr_field( 'ga4_id', __( 'Google Analytics 4 measurement ID', 'abrahamic' ), 'text', __( 'For example G-XXXXXXXXXX. Visits by logged-in editors are not counted. The Privacy Policy page mentions analytics.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );

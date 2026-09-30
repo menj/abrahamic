@@ -19,6 +19,11 @@ return array(
 	'/thank-you/'                   => 'page:thank-you',
 	'/sitemap/'                     => 'page:site-map',
 	'/contact-abrahamic-religions/' => 'page:contact',
+	// The 2016 Venn diagram image, still found by image search: now drawn in the family-tree article.
+	'/wp-content/uploads/2016/09/Abrahamic-Religions-Venn-Diagram.jpg/' => 'post:abrahamic-family-tree',
+	'/wp-content/uploads/2016/09/Abrahamic-Religions-Venn-Diagram-130x150.jpg/' => 'post:abrahamic-family-tree',
+	'/wp-content/uploads/2016/09/Abrahamic-Religions-Venn-Diagram-259x300.jpg/' => 'post:abrahamic-family-tree',
+	'/wp-content/uploads/2016/09/Abrahamic-Religions-Venn-Diagram-52x60.jpg/' => 'post:abrahamic-family-tree',
 	// Rank Math redirects on the 2016-2023 site, and that site's post addresses.
 	'/millat/'                            => 'post:millat-ibrahim',
 	'/the-abrahamic-faiths/'              => 'page:guides',

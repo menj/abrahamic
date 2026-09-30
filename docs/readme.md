@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.73.2 |
+| Version | 2.77.1 |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
@@ -18,7 +18,7 @@ Identity, naming rules, tokens, breakpoints, the settings schema and the decisio
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.73.2.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.77.1.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -26,7 +26,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.73.2.zip --activate
+wp theme install abrahamic-2.77.1.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -245,6 +245,14 @@ Add section-specific rules inside the matching tier block, so all width rules st
 All front page sections are patterns in the "Abrahamic" category and can be edited under Appearance > Editor > Templates > Front Page. Section anchors (`#religions`, `#timeline` and so on) are set on each section's Group block and are used by the header menu; keep them when editing.
 
 Class names on blocks (`abr-*`) carry the design. Removing a class in the editor's Advanced panel removes its styling.
+
+## Testing performed for 2.77.0
+
+- Tested with Rank Math 1.0.279 active: titles, descriptions, social titles, focus keywords, merged structured data, and Rank Math's own settings taking precedence. No PHP notices.
+
+## Testing performed for 2.75.0
+
+- Structured data parsed on an article (3 licensed images, speakable), a question-and-answer article (FAQPage with 8 questions), the Places page (9 licensed images) and the FAQ (30 questions). No PHP notices.
 
 ## Testing performed for 2.72.0
 

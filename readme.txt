@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.73.2
+Stable tag: 2.77.1
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +43,7 @@ Appearance > Theme Options lets you:
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.73.2.zip, and activate it. The starter pages and articles are created automatically.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.77.1.zip, and activate it. The starter pages and articles are created automatically.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
@@ -143,6 +143,30 @@ Yes. The hero section and the place cards hold patterned placeholders. Replace e
 They are copied across automatically when you activate Abrahamic. Changes you made to templates in the Site Editor under the old theme are not carried over. See docs/upgrading.md for details.
 
 == Upgrade Notice ==
+
+= 2.77.1 =
+With Rank Math active, the theme's fuller structured data is used in place of Rank Math's default, unless a schema was built in Rank Math for that page.
+
+= 2.77.0 =
+Works alongside Rank Math: focus keywords for every article, the theme's image licence, speakable and FAQ data added to Rank Math's structured data, and the author's Gravatar removed from it.
+
+= 2.76.0 =
+Titles stay under 60 characters and descriptions under 130 with a call to action. Rank Math settings always win where they are set.
+
+= 2.75.1 =
+Every page title now ends "| Abrahamic Religions", and the home page no longer shows as "Home", with or without an SEO plugin.
+
+= 2.75.0 =
+Image licence structured data for the site's photographs, speakable article sections, and FAQ structured data on the two question-and-answer articles.
+
+= 2.74.2 =
+Two further FAQ answers from the 2024 site.
+
+= 2.74.1 =
+The four-tradition Venn diagram now also appears on Comparative studies and in the FAQ.
+
+= 2.74.0 =
+Two FAQ answers drawn from the 2024 site, and the old Venn diagram address now leads to the family-tree article.
 
 = 2.73.2 =
 Chapter banner titles and chapter labels in title case.
@@ -493,6 +517,34 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.77.1 - 2026-09-27 =
+* With Rank Math active, the theme's structured data takes precedence over Rank Math's default schema, since it is the more complete. A schema built in Rank Math's Schema tab for a page is still respected. Everything else stays with Rank Math.
+
+= 2.77.0 - 2026-09-27 =
+* Rank Math integration: every article and principal page receives a Rank Math focus keyword where none is set, and the theme's structured data is merged into Rank Math's.
+* Anonymity: Rank Math's author Person, which carried a Gravatar derived from the account's email address, is removed; the site is named as author.
+
+= 2.76.0 - 2026-09-27 =
+* Every page title, branding included, is now under 60 characters, and every meta description under 130 characters with a call to action.
+* With Rank Math active, any title or description set in Rank Math is used as it stands; the theme's defaults apply only where Rank Math has nothing set.
+
+= 2.75.1 - 2026-09-27 =
+* Fixed: the home page title read "Home - Abrahamic Religions". It now reads "Judaism, Mandaeism, Christianity and Islam | Abrahamic Religions", editable in Theme Options.
+* Every page title and sharing title now ends "| Abrahamic Religions", whether the theme or an SEO plugin (Rank Math, Yoast, All in One SEO) writes it.
+
+= 2.75.0 - 2026-09-27 =
+* Structured data audited against Google's list of supported features. New: image licence metadata for the site's photographs, a speakable section on every article, and FAQ data on the two question-and-answer articles.
+
+= 2.74.2 - 2026-09-27 =
+* Two further FAQ answers carried over from the 2024 site: how the Abrahamic religions view Abraham, and whether they share the same values.
+
+= 2.74.1 - 2026-09-27 =
+* The Venn diagram of shared beliefs now also appears on the Comparative studies page and under the FAQ answer on what Judaism, Christianity and Islam have in common.
+
+= 2.74.0 - 2026-09-27 =
+* Two new FAQ answers carried over from the 2024 site: who the prophets of the Abrahamic religions are, and why the religions are sometimes called Western.
+* The old Venn diagram image addresses now redirect to the family-tree article, where the diagram is drawn today.
 
 = 2.73.2 - 2026-09-27 =
 * The home page chapter titles use title case: on the seven banners (The Root, The People, The Land, The Word, Four Paths, Through the Ages, Meeting and Parting) and in the thirteen chapter labels above the section headings.

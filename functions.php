@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ABR_VERSION', '2.73.2' );
+define( 'ABR_VERSION', '2.77.1' );
 define( 'ABR_DIR', get_stylesheet_directory() );
 define( 'ABR_URI', get_stylesheet_directory_uri() );
 
@@ -28,6 +28,7 @@ $abr_files = array(
 	ABR_DIR . '/inc/login.php',
 	ABR_DIR . '/inc/diagrams.php',
 	ABR_DIR . '/inc/anonymity.php',
+	ABR_DIR . '/inc/rank-math.php',
 	ABR_DIR . '/inc/seed/content.php',
 );
 if ( is_readable( ABR_DIR . '/inc/maintenance.php' ) ) {

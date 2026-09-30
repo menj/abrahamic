@@ -95,7 +95,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 /**
  * Raise when inc/seed/content.php gains items (set their 'since' to the new value).
  */
-define( 'ABR_SEED_VERSION', 83 );
+define( 'ABR_SEED_VERSION', 87 );
 
 /**
  * Recommended permalink settings (docs/ssot.md, section 12).
@@ -684,6 +684,9 @@ function abr_run_seeder( $only = array() ) {
 
 	if ( function_exists( 'abr_search_rebuild_index' ) ) {
 		abr_search_rebuild_index();
+	}
+	if ( function_exists( 'abr_seed_focus_keywords' ) ) {
+		abr_seed_focus_keywords( true );
 	}
 
 	update_option( 'abr_seeded_slugs', $seeded, false );

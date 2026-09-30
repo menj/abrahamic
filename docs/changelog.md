@@ -2,6 +2,86 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.77.1] - 2026-09-27
+
+### Changed
+- Precedence rule from the site owner: where the theme's schema and metadata support is superior to Rank Math's, the theme's defaults take precedence; everything else is Rank Math's, with the earlier rules unchanged (anything an editor sets in Rank Math wins; theme defaults fill what Rank Math leaves empty).
+- Compared with Rank Math 1.0.279's default output, the theme's structured data is the more complete: licence data for every credited photograph, speakable, FAQPage built from question-and-answer content, BreadcrumbList, AboutPage, ContactPage and CollectionPage types, the Organization as author, and no Person or Gravatar. `abr_rank_math_json_ld()` therefore prints the theme's graph (`abr_schema_graph()`) inside Rank Math's own script tag, in place of Rank Math's, so there is one graph and no duplication. `abr_rank_math_schema_customised()` detects a schema built in Rank Math's Schema tab for the page (`rank_math_schema_*` post meta); there Rank Math's graph is kept and the theme only adds its licence, speakable and FAQ data and removes any Person, as in 2.77.0.
+- Left with Rank Math, where its support is the broader: robots directives, canonical links, the Open Graph and Twitter tags (other than the default titles and descriptions the theme supplies where Rank Math is empty), and the XML sitemaps.
+
+### Tested
+- With Rank Math active: the home page, an article, the FAQ, the Journal and a reference page each carry one graph, the theme's (article: Organization, WebSite, BreadcrumbList, Article, WebPage and 3 licensed images; FAQ: FAQPage). With a schema added in Rank Math on an article, Rank Math's graph (including the added Book schema) is kept, with the theme's licensed images added and no Person. No PHP notices.
+
+## [2.77.0] - 2026-09-27
+
+### Added
+- `inc/rank-math.php`, written against Rank Math SEO 1.0.279 (supplied by the site owner) and tested with it active on the test site. Rank Math keeps the last word wherever an editor has set something; this module only fills gaps and merges data.
+  - Focus keywords: new `inc/seed/focus-keywords.php` gives a Rank Math focus keyword (primary, then secondary, comma-separated as Rank Math stores them) to all 41 articles and six principal pages (home, FAQ, Comparative studies, the Islamic Dilemma page, Places, Timeline), from the site's keyword research; no two items share a primary keyword. `abr_seed_focus_keywords()` writes `rank_math_focus_keyword` only where it is empty, so a keyword typed in Rank Math is never replaced. It runs after every starter-content run and once on the first admin page load after the list changes (`abr_focus_keywords_stamp`), so the live site receives the keywords on update. 47 written on the test site.
+  - Structured data merged into Rank Math's graph (`rank_math/json_ld`, priority 100): licence data for the featured image and every `[abr_photo]` photograph, linked from the WebPage; speakable on BlogPosting/Article; FAQPage on the FAQ-style pages when Rank Math has none; and the site's Organization node if Rank Math's graph lacks it.
+
+### Fixed
+- Anonymity leak found on the live site: Rank Math's schema described each article's author as a Person whose image was a Gravatar URL, a hash derived from the WordPress account's email address, which anyone who guesses the address can confirm. The Person node is now removed from Rank Math's graph and every `author` points to the site's Organization. Checked with Rank Math active: no Person node and no Gravatar anywhere in the page.
+
+### Tested
+- With Rank Math 1.0.279 active: titles (home 58, article 58, FAQ 48, Journal 29 characters) and descriptions (104 to 119) follow the theme defaults where Rank Math is empty, including the Open Graph and Twitter titles; a title and description set in Rank Math on an article are output exactly as Rank Math writes them. Structured data: one graph, 3 licensed images and speakable on an article, FAQPage with 8 questions on a question-and-answer article and 30 on the FAQ, author the Organization, no Person. No PHP notices.
+
+## [2.76.0] - 2026-09-27
+
+### Changed
+- Rank Math precedence, at the site owner's instruction: the site always defers to Rank Math when it is active. `abr_rank_math_has()` checks whether an editor set a Rank Math title or description for the current post, page or topic (`rank_math_title`, `rank_math_description`, and the Facebook and Twitter fields); where one is set, Rank Math's text is used untouched, branding and length included. Only where nothing is set, which is where Rank Math would fall back to its generic templates ("Home - Abrahamic Religions"), do the theme's defaults apply. The theme's own SEO output (schema, descriptions and tags) stays off while Rank Math is active, as before. The Yoast and All in One SEO hooks added in 2.75.1 are removed.
+- Title length: every title, branding included, is under 60 characters (`ABR_TITLE_MAX`, 59). New `inc/seed/seo-titles.php` gives short search titles to the 24 articles whose headlines were too long (for example "Halakhah, canon law and the sharia", "The Council of Nicaea, 325"); the headline on the page is unchanged. A post's own "Search title" (`_abr_seo_title`) takes precedence. Any other title too long is shortened at a word boundary. Search pages read "Search: query", the query shortened to fit. Home page title default changed to "A guide to the four Abrahamic faiths" (58 with branding); the earlier default was 64.
+- Description length: every description, call to action included, is under 130 characters (`ABR_DESCRIPTION_MAX`, 129). `abr_seo_finish_description()` keeps a written description's own call to action, or adds one where the last sentence lacks it ("Read more." on articles and pages, "Browse the articles." on listings, "Explore the guide." on the home page), shortening the text at a word boundary to make room.
+
+### Fixed
+- Branded titles decoded only some HTML entities, so a curly quotation mark counted as seven characters and search titles were cut short; all entities are now decoded before measuring.
+
+### Tested
+- Thirteen views (home, Journal, FAQ, Places, a religion page, articles with short titles, articles with added calls to action, a topic listing, a 404 and two searches): every title under 60 and every description under 130. Rank Math behaviour tested on an article: with no Rank Math fields, the theme's short branded title and description; with a Rank Math title and description set, Rank Math's text unchanged.
+
+## [2.75.1] - 2026-09-27
+
+### Fixed
+- Home page title. The live site showed "Home - Abrahamic Religions". Checked on the live server: Rank Math SEO is active there, and with its default settings it titles a static front page by the page's own name ("Home") and uses " - " as separator; the theme's own title output steps aside whenever an SEO plugin is active (`abr_seo_active()`), so the theme could not correct it.
+- Branding, at the site owner's instruction: every title ends "| Abrahamic Religions". New `abr_branded_title()` strips any existing site-name suffix, whatever the separator (- – — | · : »), and appends " | Abrahamic Religions". Applied to: WordPress's own document title (`document_title_separator` is now "|"; `document_title_parts` gives the home page the home title in place of the site name and tagline, and drops the tagline elsewhere); Rank Math's title, Open Graph and Twitter titles (`rank_math/frontend/title`, `rank_math/opengraph/facebook/og_title`, `rank_math/opengraph/twitter/twitter_title`); Yoast (`wpseo_title`, `wpseo_opengraph_title`) and All in One SEO (`aioseo_title`); and the theme's own Open Graph and Twitter titles. These filters run whether or not an SEO plugin is active.
+- New option `home_title` (SEO tab, "Home page title"), default "Judaism, Mandaeism, Christianity and Islam", in the site's order of the traditions. The tagline stored in Settings > General lists them out of order ("Judaism, Christianity, Islam, Mandaeism") and is no longer used in titles.
+
+### Tested
+- Titles checked for the home page, the Journal, the FAQ, an article, a religion page, a search and a 404: all end "| Abrahamic Religions", and the Open Graph titles match. `abr_branded_title()` converts "Home - Abrahamic Religions", "… - Abrahamic Religions" and "Journal – Abrahamic Religions" correctly and leaves an already branded title unchanged.
+
+## [2.75.0] - 2026-09-27
+
+### Added
+- Audit against Google's "Structured data markup that Google Search supports" (last updated 15 June 2026) and the SEO Starter Guide, both supplied by the site owner. Already in place and confirmed on sample pages: Article (headline, description, dates, author and publisher as the site's Organization, image, section, word count), BreadcrumbList on every inner page with visible breadcrumbs, Organization (name, URL, logo, description, email when set), WebSite, FAQPage on the FAQ, CollectionPage for listings, AboutPage and ContactPage. From the Starter Guide: unique titles and descriptions, one H1 per page, alt text on every content image, canonical links, words in URLs, working parent addresses (/reference/, /reference/sacred-texts/ and the like), an HTML sitemap and the XML sitemap in robots.txt, and a helpful 404 page.
+- Image licence metadata (Google Images can show the creator, licence and where to obtain an image). New `inc/seed/photo-credits.php`, generated from the build's photograph records: creator, licence, licence URL, source page and source for 134 of the 143 bundled photographs. `abr_schema_licensed_image()` builds an ImageObject with `contentUrl`, `license`, `acquireLicensePage`, `creator`, `creditText` and `copyrightNotice`. Every article's featured image becomes a `#primaryimage` node used by the Article and the WebPage, and every photograph placed with `[abr_photo]` on a page or article gets its own node linked from the WebPage. The nine photographs without a recorded licence (the four religion-page heroes, the home page Kaaba, three Jerusalem and Hebron place images, and the prayer image) are left without licence data rather than given a guessed one. The credits file names no person connected with the site.
+- Speakable (`SpeakableSpecification`) on every Article: the title and the first paragraph, for read-aloud assistants.
+- FAQPage on the two question-and-answer articles (`abr_faq_style_keys()`: the FAQ, `post:islamic-dilemma-reddit`, `post:judaism-vs-christianity-reddit`). Footnote markers are now stripped from answer text in all FAQ data.
+- Not applicable to this site, and not added: Carousel, Course list, Dataset, Discussion forum, Education Q&A (flashcards), Employer rating, Event, Job posting, Local business, Math solver, Movie, Product, Q&A page (for user-contributed answers), Recipe, Review snippet, Software app, Subscription and paywalled content, Vacation rental, Video (the site hosts no video). Profile page is not added because it would name a person, which the anonymity rule forbids.
+
+### Fixed
+- Two opening quotation marks in the Islamic Dilemma question-and-answer article were closing marks. Seed version 87.
+
+## [2.74.2] - 2026-09-27
+
+### Added
+- The same 2024 Wayback archive was uploaded again (identical file, 61 files). The remaining usable material from its home page is now carried over, rewritten:
+  - FAQ "How do the Abrahamic religions view Abraham?", with the Hebrew and Arabic forms of his name that the 2024 page gave, Genesis 17:5, Galatians 3:7, Qur'an 2:124 and 4:125 (*Khalīl Allāh*), and Mandaeism's rejection of him as a prophet.
+  - FAQ "Do the Abrahamic religions share the same values?", from the 2024 page's section on shared values and dialogue, linking to the Amman Message article.
+- Nothing further in the archive is usable: its other pages are "page has moved" stubs. FAQ now 30 questions, all in the FAQPage structured data. Seed version 86.
+
+## [2.74.1] - 2026-09-27
+
+### Changed
+- `[abr_diagram name="shared-beliefs"]`, the four-tradition Venn diagram, added to `page:comparisons` (with an introductory paragraph, before the section on God) and to `page:faq` (under "What do Judaism, Christianity and Islam have in common?", whose last sentence now introduces it), at the site owner's request. Both captions name it a Venn diagram, for readers who search for "Abrahamic religions Venn diagram", and point to the family-tree article for the reasoning. Checked at 1280 and 390 pixels. Seed version 85.
+
+## [2.74.0] - 2026-09-27
+
+### Added
+- Review of `Abrahamic_Religions.zip`, a Wayback Machine copy of the site as it stood in June 2024 (61 files). Only the home page holds content (about 880 words); every other page in the copy is a "page has moved" stub, and all those addresses already redirect (checked: /abraham/, /christianity/, /judaism/, /islam/, /jerusalem/, /millat-ibrahim/, /dmca-policy/, /contact-abrahamic-religions/, /about/, /sitemap/, /privacy-policy/). Most of the 2024 text is superseded by fuller, sourced pages, and parts of it are not reused because they conflict with the site's editorial policy: it omits Mandaeism, calls the land of Judaism's origin "the Occupied Palestinian Territories and Israel", and says that Muhammad "revealed the Quran", which misstates Muslim belief (God revealed it; the Prophet received it). Two of its questions were worth keeping and are rewritten:
+  - FAQ "Who are the prophets of the Abrahamic religions?" (search demand: "abrahamic prophets", 260 a month): the shared names, each tradition's view of prophecy, Qur'an 33:40, Mandaeism's prophets; links to Figures.
+  - FAQ "Why are the Abrahamic religions sometimes called Western religions?": the textbook origin of the label and why it misleads, with the 2020 population figures.
+- `inc/seed/legacy-paths.php`: the 2016 Venn diagram image (full size and its 130x150, 259x300 and 52x60 copies), which image search still finds, now redirects to `post:abrahamic-family-tree`, where the four-tradition diagram is drawn. It previously fell through to the home page. `abr_legacy_redirect()` now also acts on addresses under /wp-content/uploads/ that WordPress does not report as a 404 (it can match an old attachment by name, which is what sent the diagram home); all other addresses still need a 404 before any redirect.
+- The archive's embedded lecture (a third-party YouTube video) and its PayPal and Google Ads scripts are not carried over. Seed version 84.
+
 ## [2.73.2] - 2026-09-27
 
 ### Changed

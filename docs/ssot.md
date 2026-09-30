@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.73.2** |
+| Current version | **2.77.1** |
 | Release date | 2026-09-20 |
 | Status | Stable |
 
@@ -115,6 +115,7 @@ abrahamic/
 │   ├── login.php          Themed login screen, private login address (ports of Login Logo and WPS Hide Login)
 │   ├── diagrams.php       [abr_diagram]: the family tree and shared-beliefs diagrams
 │   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
+│   ├── rank-math.php      Rank Math: focus keywords where empty; licence, speakable and FAQ data merged into its schema; no Person or Gravatar
 │   └── maintenance.php    Back-shortly notice (503): wp-content drop-ins for updates, fatal errors, database failures; missing-file guard
 ├── parts/                 header.html, footer.html
 ├── patterns/              Fifteen home page sections (section 9)
@@ -222,6 +223,18 @@ Footnote numbers follow document order, and "Ibid." is used only where the prece
 ### Footnotes
 
 Scripture references and citations go in footnotes. In the content source a marker is `[^n]`; the generator turns it into `<sup class="abr-fn">` linking to `#note-n`, and a final `## Notes` heading with a list becomes an ordered list with `id="note-n"` and a back-link to the marker. Verse numbers never appear in the running text.
+
+### Rank Math
+
+When Rank Math is active it has the last word wherever an editor has set a title, description, focus keyword or schema. Where the theme's support is superior, its defaults take precedence: its structured data replaces Rank Math's default schema (unless a schema was built in Rank Math's Schema tab for that page), and its titles and descriptions fill whatever Rank Math leaves empty. Robots, canonical links, social tags and sitemaps are Rank Math's. New articles need a line in `inc/seed/focus-keywords.php` (and a short title in `inc/seed/seo-titles.php` if the headline plus " | Abrahamic Religions" reaches 60 characters).
+
+### Titles and descriptions
+
+Rank Math, when active, always wins: any title or description set in it is used as it stands. Where Rank Math has nothing set, and whenever it is not active, the theme's defaults apply: titles end "| Abrahamic Religions" (never " - ") and are under 60 characters in all (short search titles in `inc/seed/seo-titles.php`, or a post's `_abr_seo_title`); descriptions are under 130 characters and end with a call to action. The home page title is the `home_title` option, never the page name "Home".
+
+### Structured data
+
+Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ and the question-and-answer articles), and ImageObject with licence data from `inc/seed/photo-credits.php` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. No Person or ProfilePage anywhere.
 
 ### Anonymity
 
@@ -480,7 +493,7 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 
 | Stored | Type | Purpose |
 |---|---|---|
-| `ABR_SEED_VERSION` | constant | Current seed version (83) |
+| `ABR_SEED_VERSION` | constant | Current seed version (87) |
 | `abr_seed_photos` | option | Bundled photograph name to media library attachment ID |
 | `_abr_seed_photo` | post meta | The photograph the seeder set as this article's featured image |
 | `abr_seeded_slugs` | option, not autoloaded | Tombstone list: key => timestamp |

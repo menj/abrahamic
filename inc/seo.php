@@ -48,6 +48,13 @@ function abr_seo_active() {
 	return (bool) apply_filters( 'abr_seo_enabled', abr_get_option( 'seo_enabled' ) && '' === abr_seo_plugin() );
 }
 
+if ( ! defined( 'ABR_TITLE_MAX' ) ) {
+	define( 'ABR_TITLE_MAX', 59 ); // Whole title, branding included: under 60 characters.
+}
+if ( ! defined( 'ABR_DESCRIPTION_MAX' ) ) {
+	define( 'ABR_DESCRIPTION_MAX', 129 ); // Whole description, call to action included: under 130.
+}
+
 /**
  * Plain text trimmed to a length at a word boundary.
  *
@@ -55,7 +62,7 @@ function abr_seo_active() {
  * @param int    $limit Characters.
  * @return string
  */
-function abr_seo_trim( $text, $limit = 130 ) {
+function abr_seo_trim( $text, $limit = ABR_DESCRIPTION_MAX ) {
 	$text = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( strip_shortcodes( (string) $text ) ) ) );
 	if ( mb_strlen( $text ) <= $limit ) {
 		return $text;
@@ -97,8 +104,227 @@ function abr_seo_description() {
 			$text = sprintf( __( 'Articles on %s from the Abrahamic Religions journal.', 'abrahamic' ), $term->name );
 		}
 	}
-	return abr_seo_trim( $text );
+	return abr_seo_finish_description( $text );
 }
+
+/**
+ * A description under 130 characters that ends with a call to action. Written
+ * descriptions already end with one ("Read the answer.", "Compare them here.");
+ * one is added to any description that lacks it, the text being shortened at a
+ * word boundary to make room.
+ *
+ * @param string $text Description.
+ * @return string
+ */
+function abr_seo_finish_description( $text ) {
+	$text = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( strip_shortcodes( (string) $text ) ) ) );
+	if ( '' === $text ) {
+		return '';
+	}
+	$sentences = preg_split( '/(?<=[.!?])\s+/u', $text );
+	$last      = (string) end( $sentences );
+	$has_cta   = (bool) preg_match( '/\b(read|discover|find|learn|explore|see|compare|walk|browse|get|start|meet|follow|trace|study|look|visit|contact|write|ask|check|view|search|choose|make|help|join|subscribe|donate)\b/i', $last );
+	if ( $has_cta ) {
+		return abr_seo_trim( $text );
+	}
+	if ( is_front_page() ) {
+		$cta = __( 'Explore the guide.', 'abrahamic' );
+	} elseif ( is_home() || is_archive() ) {
+		$cta = __( 'Browse the articles.', 'abrahamic' );
+	} else {
+		$cta = __( 'Read more.', 'abrahamic' );
+	}
+	$room = ABR_DESCRIPTION_MAX - mb_strlen( $cta ) - 1;
+	$body = mb_strlen( $text ) <= $room ? $text : preg_replace( '/\s+\S*$/u', '', mb_substr( $text, 0, $room ) );
+	$body = rtrim( $body, " ,;:-–" );
+	if ( ! preg_match( '/[.!?…]$/u', $body ) ) {
+		$body .= '.';
+	}
+	return $body . ' ' . $cta;
+}
+
+/**
+ * Short search title for a post: the editor's "Search title" (_abr_seo_title)
+ * if set, else the starter content's short title (inc/seed/seo-titles.php),
+ * else the post title.
+ *
+ * @param int    $post_id Post ID.
+ * @param string $title   Post title.
+ * @return string
+ */
+function abr_short_title( $post_id, $title ) {
+	$custom = trim( (string) get_post_meta( $post_id, '_abr_seo_title', true ) );
+	if ( '' !== $custom ) {
+		return $custom;
+	}
+	static $map = null;
+	if ( null === $map ) {
+		$file = ABR_DIR . '/inc/seed/seo-titles.php';
+		$map  = is_readable( $file ) ? require $file : array();
+	}
+	$key = (string) get_post_meta( $post_id, '_abr_seed', true );
+	return ( '' !== $key && isset( $map[ $key ] ) ) ? $map[ $key ] : $title;
+}
+
+/**
+ * Title of the home page, without the site name.
+ *
+ * @return string
+ */
+function abr_home_title() {
+	$title = trim( (string) abr_get_option( 'home_title' ) );
+	return '' !== $title ? $title : 'A guide to the four Abrahamic faiths';
+}
+
+/**
+ * A title with the site's branding: "Title | Abrahamic Religions". Any
+ * existing site-name suffix, with whatever separator, is replaced, so the
+ * branding is identical whether the theme or an SEO plugin wrote the title.
+ *
+ * @param string $title Title, with or without a site-name suffix.
+ * @return string
+ */
+function abr_branded_title( $title ) {
+	$site  = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
+	$title = trim( html_entity_decode( wp_strip_all_tags( (string) $title ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );
+	$title = trim( (string) preg_replace( '/\s*[-–—|·:»]\s*' . preg_quote( $site, '/' ) . '\s*$/u', '', $title ) );
+	if ( '' === $title || 0 === strcasecmp( $title, $site ) ) {
+		return $site;
+	}
+	$suffix = ' | ' . $site;
+	$room   = ABR_TITLE_MAX - mb_strlen( $suffix );
+	if ( mb_strlen( $title ) > $room ) {
+		// No short title was written for this page: shorten at a word boundary.
+		$title = rtrim( (string) preg_replace( '/\s+\S*$/u', '', mb_substr( $title, 0, $room + 1 ) ), " ,;:.-–" );
+	}
+	return $title . $suffix;
+}
+
+/**
+ * The document title: "Title | Abrahamic Religions", and on the home page the
+ * home page title (never the page's own name, "Home").
+ *
+ * @param array $parts Title parts.
+ * @return array
+ */
+function abr_document_title_parts( $parts ) {
+	if ( is_front_page() ) {
+		return array(
+			'title' => abr_home_title(),
+			'site'  => get_bloginfo( 'name' ),
+		);
+	}
+	unset( $parts['tagline'] );
+	if ( is_search() ) {
+		// "Search: query", the query shortened to fit the 60-character limit.
+		$room           = ABR_TITLE_MAX - mb_strlen( ' | ' . get_bloginfo( 'name' ) ) - 10;
+		$query          = trim( get_search_query( false ) );
+		$query          = mb_strlen( $query ) > $room ? rtrim( mb_substr( $query, 0, $room - 1 ) ) . '…' : $query;
+		$parts['title'] = sprintf( /* translators: %s: search terms. */ __( 'Search: %s', 'abrahamic' ), $query );
+		return $parts;
+	}
+	if ( isset( $parts['title'] ) ) {
+		$short          = is_singular() ? abr_short_title( get_queried_object_id(), $parts['title'] ) : $parts['title'];
+		$parts['title'] = str_replace( ' | ' . get_bloginfo( 'name' ), '', abr_branded_title( $short ) );
+	}
+	return $parts;
+}
+add_filter( 'document_title_parts', 'abr_document_title_parts', 20 );
+add_filter(
+	'document_title_separator',
+	function () {
+		return '|';
+	},
+	20
+);
+
+/**
+ * Rank Math, when active, always has the last word. Wherever an editor has set
+ * a title or description in Rank Math (on a post, page or topic), Rank Math's
+ * text is used untouched. Where nothing has been set there, Rank Math would fall
+ * back to its own generic templates ("Home - Abrahamic Religions"); in those
+ * cases the theme's defaults are used instead: the short title with
+ * "| Abrahamic Religions", under 60 characters, and the description under 130
+ * characters with a call to action.
+ *
+ * @param string $field Rank Math meta key: rank_math_title, rank_math_description,
+ *                      rank_math_facebook_title, rank_math_facebook_description,
+ *                      rank_math_twitter_title or rank_math_twitter_description.
+ * @return bool Whether an editor set this field for the current view.
+ */
+function abr_rank_math_has( $field ) {
+	$object = get_queried_object();
+	if ( is_front_page() && ! is_home() ) {
+		$object = get_post( (int) get_option( 'page_on_front' ) );
+	} elseif ( is_home() && ! is_front_page() ) {
+		$object = get_post( (int) get_option( 'page_for_posts' ) );
+	}
+	if ( $object instanceof WP_Post ) {
+		return '' !== trim( (string) get_post_meta( $object->ID, $field, true ) );
+	}
+	if ( $object instanceof WP_Term ) {
+		return '' !== trim( (string) get_term_meta( $object->term_id, $field, true ) );
+	}
+	return false;
+}
+
+/**
+ * The theme's default title for the current view, with its branding.
+ *
+ * @return string
+ */
+function abr_default_title() {
+	return abr_branded_title( abr_seo_title() );
+}
+
+/**
+ * Rank Math title filters: Rank Math's own text when an editor set it,
+ * otherwise the theme default.
+ *
+ * @param string $title Title from Rank Math.
+ * @return string
+ */
+function abr_rank_math_title( $title ) {
+	return abr_rank_math_has( 'rank_math_title' ) ? $title : abr_default_title();
+}
+
+/**
+ * Rank Math social title filters.
+ *
+ * @param string $title Title from Rank Math.
+ * @return string
+ */
+function abr_rank_math_social_title( $title ) {
+	$field = 'rank_math/opengraph/twitter/twitter_title' === current_filter() ? 'rank_math_twitter_title' : 'rank_math_facebook_title';
+	return ( abr_rank_math_has( $field ) || abr_rank_math_has( 'rank_math_title' ) ) ? $title : abr_default_title();
+}
+
+/**
+ * Rank Math description filters.
+ *
+ * @param string $description Description from Rank Math.
+ * @return string
+ */
+function abr_rank_math_description( $description ) {
+	$field = 'rank_math_description';
+	if ( 'rank_math/opengraph/facebook/og_description' === current_filter() && abr_rank_math_has( 'rank_math_facebook_description' ) ) {
+		return $description;
+	}
+	if ( 'rank_math/opengraph/twitter/twitter_description' === current_filter() && abr_rank_math_has( 'rank_math_twitter_description' ) ) {
+		return $description;
+	}
+	if ( abr_rank_math_has( $field ) ) {
+		return $description;
+	}
+	$ours = abr_seo_description();
+	return '' !== $ours ? $ours : $description;
+}
+add_filter( 'rank_math/frontend/title', 'abr_rank_math_title', 20 );
+add_filter( 'rank_math/opengraph/facebook/og_title', 'abr_rank_math_social_title', 20 );
+add_filter( 'rank_math/opengraph/twitter/twitter_title', 'abr_rank_math_social_title', 20 );
+add_filter( 'rank_math/frontend/description', 'abr_rank_math_description', 20 );
+add_filter( 'rank_math/opengraph/facebook/og_description', 'abr_rank_math_description', 20 );
+add_filter( 'rank_math/opengraph/twitter/twitter_description', 'abr_rank_math_description', 20 );
 
 /**
  * Title of the current view, without the site name.
@@ -107,14 +333,14 @@ function abr_seo_description() {
  */
 function abr_seo_title() {
 	if ( is_front_page() ) {
-		return trim( get_bloginfo( 'name' ) . ( get_bloginfo( 'description' ) ? ' – ' . get_bloginfo( 'description' ) : '' ) );
+		return abr_home_title();
 	}
 	if ( is_home() ) {
 		$id = (int) get_option( 'page_for_posts' );
 		return $id ? get_the_title( $id ) : get_bloginfo( 'name' );
 	}
 	if ( is_singular() ) {
-		return single_post_title( '', false );
+		return abr_short_title( get_queried_object_id(), single_post_title( '', false ) );
 	}
 	if ( is_archive() ) {
 		return wp_strip_all_tags( get_the_archive_title() );
@@ -234,6 +460,80 @@ function abr_schema_image( $image, $id = '' ) {
 }
 
 /**
+ * Credit and licence of a bundled photograph (inc/seed/photo-credits.php).
+ *
+ * @param string $name Photo file stem.
+ * @return array|null
+ */
+function abr_photo_credit( $name ) {
+	static $credits = null;
+	if ( null === $credits ) {
+		$file    = ABR_DIR . '/inc/seed/photo-credits.php';
+		$credits = is_readable( $file ) ? require $file : array();
+	}
+	return isset( $credits[ $name ] ) ? $credits[ $name ] : null;
+}
+
+/**
+ * ImageObject with Google's image licence properties: contentUrl, licence,
+ * the page where the image can be obtained, the creator and a credit line.
+ *
+ * @param string $url  Image URL as shown on the page.
+ * @param string $name Photo file stem.
+ * @param string $id   Node ID.
+ * @return array|null
+ */
+function abr_schema_licensed_image( $url, $name, $id = '' ) {
+	$credit = abr_photo_credit( $name );
+	if ( ! $credit || '' === $url ) {
+		return null;
+	}
+	$node = array(
+		'@type'      => 'ImageObject',
+		'contentUrl' => $url,
+		'url'        => $url,
+		'license'    => $credit['license'],
+	);
+	if ( $id ) {
+		$node['@id'] = $id;
+	}
+	if ( '' !== $credit['page'] ) {
+		$node['acquireLicensePage'] = $credit['page'];
+	}
+	$who = '' !== $credit['creator'] ? $credit['creator'] : $credit['source'];
+	if ( '' !== $credit['creator'] ) {
+		$node['creator'] = array(
+			'@type' => 'Person',
+			'name'  => $credit['creator'],
+		);
+	}
+	$node['creditText']      = $who . ' / ' . $credit['source'];
+	$node['copyrightNotice'] = $who . ', ' . $credit['licence'];
+	return $node;
+}
+
+/**
+ * Photographs placed in a post's content with [abr_photo name="..."].
+ *
+ * @param WP_Post $post Post.
+ * @return string[] File stems.
+ */
+function abr_content_photo_names( $post ) {
+	preg_match_all( '/\[abr_photo\s+name="([a-z0-9-]+)"/', (string) $post->post_content, $m );
+	return array_values( array_unique( $m[1] ) );
+}
+
+/**
+ * Posts whose content is written as questions and answers (H2 question, then
+ * the answer), which also carry FAQPage structured data.
+ *
+ * @return string[] Seed keys.
+ */
+function abr_faq_style_keys() {
+	return array( 'page:faq', 'post:islamic-dilemma-reddit', 'post:judaism-vs-christianity-reddit' );
+}
+
+/**
  * Structured data graph for the current view.
  *
  * @return array
@@ -332,7 +632,12 @@ function abr_schema_graph() {
 		$image  = abr_seo_image();
 		// The site itself is the author of every article: no person is named.
 		$author = array( '@id' => $org_id );
-		$webpage['primaryImageOfPage'] = abr_schema_image( $image );
+		$thumb_id = get_post_thumbnail_id( $post );
+		$featured = $thumb_id ? abr_schema_licensed_image( (string) wp_get_attachment_url( $thumb_id ), pathinfo( (string) get_attached_file( $thumb_id ), PATHINFO_FILENAME ), $url . '#primaryimage' ) : null;
+		$webpage['primaryImageOfPage'] = $featured ? array( '@id' => $url . '#primaryimage' ) : abr_schema_image( $image );
+		if ( $featured ) {
+			$graph[] = $featured;
+		}
 		$graph[]                       = array_filter(
 			array(
 				'@type'            => 'Article',
@@ -345,7 +650,11 @@ function abr_schema_graph() {
 				'author'           => $author,
 				'publisher'        => array( '@id' => $org_id ),
 				'mainEntityOfPage' => array( '@id' => $page_id ),
-				'image'            => array( $image['url'] ),
+				'image'            => $featured ? array( '@id' => $url . '#primaryimage' ) : array( $image['url'] ),
+				'speakable'        => array(
+					'@type'       => 'SpeakableSpecification',
+					'cssSelector' => array( 'h1', '.abr-prose > p:first-of-type' ),
+				),
 				'articleSection'   => wp_list_pluck( get_the_category( $post->ID ), 'name' ),
 				'wordCount'        => str_word_count( wp_strip_all_tags( $post->post_content ) ),
 				'inLanguage'       => $language,
@@ -353,8 +662,23 @@ function abr_schema_graph() {
 		);
 	}
 
-	$faq_key = abr_seed_id( 'page:faq' );
-	if ( is_singular( 'page' ) && $faq_key && get_queried_object_id() === $faq_key ) {
+	if ( is_singular() ) {
+		$post_obj = get_queried_object();
+		$images   = array();
+		foreach ( abr_content_photo_names( $post_obj ) as $i => $name ) {
+			$node = abr_schema_licensed_image( ABR_URI . '/assets/images/photos/' . rawurlencode( $name ) . '.avif', $name, $url . '#image-' . ( $i + 1 ) );
+			if ( $node ) {
+				$graph[]  = $node;
+				$images[] = array( '@id' => $node['@id'] );
+			}
+		}
+		if ( $images ) {
+			$webpage['image'] = $images;
+		}
+	}
+
+	$faq_ids = array_filter( array_map( 'abr_seed_id', abr_faq_style_keys() ) );
+	if ( is_singular() && in_array( get_queried_object_id(), $faq_ids, true ) ) {
 		$pairs = abr_faq_qa_pairs( get_queried_object() );
 		if ( $pairs ) {
 			$graph[] = array(
@@ -383,7 +707,8 @@ function abr_faq_qa_pairs( $post ) {
 	$pairs = array();
 	foreach ( $m as $match ) {
 		$question = trim( wp_strip_all_tags( $match[1] ) );
-		$answer   = trim( wp_strip_all_tags( $match[2] ) );
+		// Footnote markers are dropped from the answer text.
+		$answer   = trim( wp_strip_all_tags( preg_replace( '#<sup[^>]*>.*?</sup>#s', '', $match[2] ) ) );
 		if ( '' === $question || '' === $answer || 'Notes' === $question ) {
 			continue;
 		}
@@ -420,7 +745,7 @@ function abr_seo_head() {
 	$description = abr_seo_description();
 	$canonical   = abr_seo_canonical();
 	$image       = abr_seo_image();
-	$title       = abr_seo_title();
+	$title       = abr_branded_title( abr_seo_title() );
 
 	if ( '' !== $description ) {
 		printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );

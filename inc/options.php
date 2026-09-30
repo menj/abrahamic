@@ -84,6 +84,7 @@ function abr_option_types() {
 		// Navigation.
 		'nav_header'         => 'menu_primary',
 		'home_subnav'        => 'bool',
+		'home_title'         => 'text',
 		'home_parallax'      => 'bool',
 		'home_subnav_items'  => 'menu_secondary',
 		'nav_utility'        => 'menu_secondary',
@@ -180,6 +181,7 @@ function abr_option_defaults() {
 		'further_title'      => __( 'Further reading', 'abrahamic' ),
 		'further_links'      => '',
 		'home_subnav'        => 1,
+		'home_title'         => 'A guide to the four Abrahamic faiths',
 		'home_parallax'      => 1,
 		'home_subnav_items'  => "Shared Heritage | #heritage\nFigures | #figures\nGeography | #places\nSacred Scriptures | #texts\nThe Traditions | #religions\nTimeline | #timeline\nComparative View | #comparison",
 		'nav_utility'        => "About AR | @about\nTerms of use | @terms\nPrivacy policy | @privacy-policy\nDMCA | @dmca\nContact AR | @contact\nSitemap | @site-map",
