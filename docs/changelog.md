@@ -2,6 +2,74 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.81.0] - 2026-10-02
+
+### Added
+Nine Journal articles (64 in all) completing the holy sites inventory, written to the Rank Math standard set in 2.80.0 and checked in Rank Math 1.0.279's own panel: all nine score 83. Each has an address under the live 75-character limit, a focus keyword from its address in the title, description, opening, a subheading and the image alt text, a table of contents, footnotes with at least one external source link, and four tags. Qur'anic verses are set in the verse block (Quran.com, Saheeh International) with the narrative tied to them; Bible references are footnoted.
+- `post:galilee`: Capernaum, Cana, Tabgha, Mount Tabor; Qur'an 5:112-115 with 5:114 (the table from heaven).
+- `post:safed-and-tiberias`: the four holy cities; the Jerusalem Talmud, the Masoretes and the Aleppo Codex; Luria and Karo in Safed under Ottoman rule; Qur'an 5:44 on the rabbis and scholars.
+- `post:shiloh-and-masada`: the Tabernacle and the Ark at Shiloh (Joshua 18, 1 Samuel 1-4, Jeremiah 7); Masada and Josephus; UNESCO 1040; Qur'an 2:248 (the Ark).
+- `post:patmos-and-mount-athos`: Revelation 1:9, the Monastery of St John (1088), UNESCO 942; Athos's twenty monasteries and the avaton, UNESCO 454; Qur'an 3:113-114 on those who pray by night.
+- `post:christian-pilgrimage`: Santiago de Compostela (UNESCO 347), Lourdes (1858), Fátima (1917) and the Arabic origin of its name; Qur'an 3:42 on Mary.
+- `post:masjid-al-aqsa`: Qur'an 17:1, the first qibla (Bukhārī 399; 2:144), the three mosques (Bukhārī 1189), ʿUmar, the Dome of the Rock (691-692), al-Walid's mosque, the Crusades and Saladin (Grabar, 1996).
+- `post:badr-and-uhud`: Badr (624; 3:123, 8:41) and Uhud (625; 3:152).
+- `post:kairouan`: founded 670, Aghlabid rebuilding of the Great Mosque (836), the Maghreb's principal holy city (UNESCO 499), Saḥnūn; Qur'an 9:18.
+- `post:tigris-and-euphrates`: Genesis 2; Mandaean living water and the equal sanctity of the Karun, Tigris, Euphrates and Zab (Drower 1937, pp. 101, 118-119).
+- Ten photographs (eight Pexels, two Commons), credited on the Copyright and DMCA page and in `inc/seed/photo-credits.php`. Seed version 97.
+
+## [2.80.0] - 2026-10-02
+
+### Added
+- Rank Math audit of all 85 starter items (55 articles, 30 pages), at the site owner's request that every one score green. Method: Rank Math 1.0.279 (supplied by the site owner) installed on the test site, each item opened in the block editor, and the score read from Rank Math's own panel, with its failing tests; a replica of its analyzer's rules and weights (from `assets/admin/js/analyzer.js`) guided the changes between checks. Final result: every item scores 81 to 88, green; the only test still failing everywhere is "Use Content AI", which only Rank Math's paid add-on can pass, so about 88 is the practical ceiling.
+- Focus keywords (`inc/seed/focus-keywords.php`, regenerated): each primary keyword is drawn from the item's own address and appears in its search title (at the start), description, opening, a subheading and featured image alt text; secondary keywords keep the combined density between 1% and 2.5%; no two items share a primary keyword. Keywords about the Qur'an use the curly apostrophe of the text, since Rank Math matches it literally. `inc/seed/focus-keywords-previous.php` records every keyword earlier versions wrote, so the theme refines its own values and never one typed in Rank Math.
+- Rank Math fields: `abr_seed_rank_math_fields()` (inc/rank-math.php) writes each item's search title ("short title | Abrahamic Religions") and description into `rank_math_title` and `rank_math_description`, which Rank Math scores against, and refreshes the featured image alt text of the theme's own attachments. Fields an editor has changed in Rank Math are never replaced; the theme records what it wrote in `_abr_seeded_*` meta. Runs after each starter-content run and once on the first admin page load after a change.
+- Search titles (`inc/seed/seo-titles.php`, regenerated for all 85 items): under 60 characters with the branding, starting with the focus keyword, and, where Rank Math required it, carrying a number, a power word and a positive word (for example "Archaeology: 3 great inscriptions", "Monotheism: 4 paths of faith in God", "Amman Message of 2004: a hopeful word"). Descriptions revised where they lacked the keyword; all under 130 characters with a call to action.
+- Tables of contents on 82 items: a list of the item's sections under "In this article" (or "On this page"), placed after the opening paragraph and styled in `theme.css` (`.abr-toc`, light and dark). The block also carries Rank Math's table-of-contents class so that Rank Math recognises it.
+- Pages now have featured images (dedicated copies of existing photographs, credited in `inc/seed/photo-credits.php`; four inherit images whose source is unrecorded and carry no licence data). Thin pages (home, Journal, religions, reference, topics, sitemap, donate, thank-you) gained short introductory sections and, where they had only one, a second section.
+- Content: opening sentences carrying the keyword where it was missing; "In brief" summaries for question-led articles; "Notes on …" or "More on …" subheadings where no heading carried the keyword; paragraphs over 120 words split at sentence boundaries; an external source link (Quran.com, Bible Gateway, Stanford Encyclopedia of Philosophy, Britannica, Pew, Cambridge University Library, the University of Birmingham and others) where an item had none; substantive additions to pieces just under 600 words, including a footnoted paragraph on Qur'an 21:105 and Psalm 37:29, and a paragraph on the history of interfaith dialogue from the 1893 Parliament of Religions to A Common Word. Small rewordings to bring over-dense keywords within range (the prayer, Ishmael, Gog and Magog and begotten articles).
+
+### Changed
+- Seventeen article addresses shortened, since Rank Math measures the full address (75 characters at most) and the live domain is ten characters longer than the test site's: for example /journal/abrahamic-monotheism/, /journal/transmission-of-scripture/, /journal/religious-law/, /journal/war-and-peace/, /journal/ishmael/. WordPress records the old slugs and redirects them, and `inc/seed/legacy-paths.php` maps all seventeen old addresses as well; all internal links are updated. Tested: old addresses answer 301 to the new ones.
+
+### Tested
+- Rank Math 1.0.279, block editor: all 85 items 81 to 88. Front end: all 85 titles under 60 characters ending "| Abrahamic Religions", all descriptions under 130 characters, tables of contents rendered, no horizontal overflow at 390 pixels, no PHP notices. Seed version 96.
+
+## [2.79.1] - 2026-10-01
+
+### Changed
+- Tags and categories kept apart, at the site owner's request. Checked the 28 tags against the eight categories (Archaeology, Culture, History, Interfaith studies, Philosophy, Religion, Scripture, Theology): no tag shared a name or slug with a category, but "interfaith relations" repeated the Interfaith studies category in substance. It is withdrawn (27 tags remain, each still on at least three articles). Its four articles not already in that category (the Cairo Genizah, war and peace, interfaith marriage, Jews under Muslim rule) are filed under Interfaith studies instead, now six articles. `abr_seed_tags()` deletes a withdrawn tag only if its description is still exactly as the theme wrote it, and appends the replacement category without removing any; the starter content's categories are updated for new installs.
+- New guard `abr_tag_not_category()` on `pre_insert_term`: a tag whose name or slug matches a category, ignoring case and spacing, is refused with a message naming the category to use. Tested: "Interfaith Studies", "history" and "Scripture" refused; "hajj" accepted. No slug is shared between tags and categories.
+
+## [2.79.0] - 2026-10-01
+
+### Added
+- Journal tags, at the site owner's request (lowercase and search-optimised). `inc/seed/tags.php` defines a fixed vocabulary of 28 tags in four groups: traditions (judaism, mandaeism, christianity, islam), figures (abraham, ishmael, moses, david, jesus, mary, john the baptist, prophet muhammad), places (jerusalem, makkah, constantinople, harran, babylon, egypt) and themes (quran, bible, torah, monotheism, prophecy, religious law, prayer and worship, interfaith relations, early church, end times). Each tag has a description under 130 characters ending with a call to action (shown as the tag page's introduction and used as its meta description) and a Rank Math focus keyword phrased as people search ("jesus in islam", "moses in the quran", "prophecy in the bible"). Every one of the 55 articles carries three to eight tags; every tag is used on at least three articles (islam 37, christianity 32, judaism 23, quran 21, down to 3).
+- `inc/tags.php`: `abr_seed_tags()` creates the tags and attaches them to the articles after each starter-content run and once on the first admin page load after the list changes (`abr_tags_stamp`). It appends tags and never removes any, never renames a tag an editor has changed, and fills a description or focus keyword only where empty. Tag names are forced to lowercase however they are entered (`pre_post_tag_name`). Tag pages with fewer than three articles (`ABR_TAG_MIN_POSTS`) carry noindex, follow, through WordPress and through Rank Math, so no thin tag page is indexed.
+- Articles already show their tags ("Tagged:") under the categories at the foot of the page; tag pages use the existing tag template with the tag's description as the introduction.
+
+### Tested
+- 55 articles tagged; tag counts as above; a new tag entered as "Test Tag Upper" was saved as "test tag upper". The prophet muhammad tag page: title "prophet muhammad | Abrahamic Religions" (38 characters), description 121 characters, four articles listed, indexable. No PHP notices.
+
+## [2.78.0] - 2026-10-01
+
+### Added
+Fourteen Journal articles (55 in all) from the answering-islam.org keyword research, written at the site owner's request from a positive Islamic perspective. Each carries Qur'anic verses set in the verse block (Arabic from Quran.com, Saheeh International) with the narrative tied to them, footnoted sources checked live, a Pexels featured photograph credited on the Copyright and DMCA page and in `inc/seed/photo-credits.php`, a Rank Math focus keyword, and where needed a short search title. Every title is under 60 characters and every description under 130 with a call to action.
+- `post:the-messiah-in-three-traditions` (searches about 30,000 a month across seven countries): mashiach, christos and al-Masīḥ; Qur'an 3:45, 5:75.
+- `post:ishmael-in-the-abrahamic-traditions` (about 25,000): Genesis 16, 17, 21, 22, 25; Qur'an 19:54-55, 2:127-129, 37:101-113, with 37:102.
+- `post:is-allah-the-god-of-the-bible` (about 20,000): the Arabic word and the Arabic Bible; Qur'an 29:46, 3:64, 112.
+- `post:the-gospel-of-barnabas` (about 17,000): the manuscripts and the fourteenth-century date (Joosten, JTS 2010), and why the Qur'an's account of Jesus does not depend on it; Qur'an 4:157, 7:157.
+- `post:what-the-quran-says-about-the-bible` (about 15,000): Tawrah, Zabur and Injil; Qur'an 5:44, 5:48.
+- `post:the-kaaba` (about 12,000 on who built it): Qur'an 3:96, 2:127, 22:26; Archnet and The Royal Mint on its rebuildings.
+- `post:saul-in-the-quran` (10,800): Ṭālūt; Qur'an 2:246-251 beside 1 Samuel and Judges 7.
+- `post:interfaith-marriage` (about 8,600): Qur'an 5:5, 2:221, 60:10; the wife's rights under Islamic law (Cohen); Deuteronomy 7, 2 Corinthians 6, Catechism 1635.
+- `post:gog-and-magog-and-the-dajjal` (about 20,000): Ezekiel 38, Revelation 20, Qur'an 18:94-98 and 21:96; 1 John 2 and 2 Thessalonians 2; Bukhārī 7131.
+- `post:what-does-begotten-mean` (about 6,800): monogenēs, the creed of 381, Surah al-Ikhlāṣ, 6:101, 19:35.
+- `post:harut-and-marut` (5,760): Qur'an 2:102; Britannica on the later legend; the Islamic Content encyclopedia on the scholars' rejection of it.
+- `post:deuteronomy-18-18` (3,870): Deuteronomy 18 and 34, Acts 3, Genesis 16 and 25; Qur'an 73:15, 46:10.
+- `post:muhammad-in-the-bible` (about 13,000), the subject held back earlier and now released by the site owner: Qur'an 7:157, 61:6; Deuteronomy 18, John 14 and 16 (with the Christian reading stated), Isaiah 42.
+- `post:jews-under-muslim-rule` (about 15,000 on the hostile question): Qur'an 2:62, 5:5, 60:8, 5:8; Mark Cohen's comparison of Jewish life under Islam and Christendom (Princeton University Press; Princeton University news, 2011).
+- Seed version 88.
+
 ## [2.77.2] - 2026-09-30
 
 ### Changed

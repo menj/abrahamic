@@ -53,6 +53,8 @@ function abr_seed_focus_keywords( $force = false ) {
 		return 0;
 	}
 	$map     = require $file;
+	$hist_file = ABR_DIR . '/inc/seed/focus-keywords-previous.php';
+	$history   = is_readable( $hist_file ) ? require $hist_file : array();
 	// Keywords the theme wrote in 2.77.0 and has since refined.
 	$previous = array(
 		'post:who-was-abraham'                                   => 'who was abraham,abraham',
@@ -79,6 +81,9 @@ function abr_seed_focus_keywords( $force = false ) {
 		if ( '' === $seeded && isset( $previous[ $key ] ) && $current === $previous[ $key ] ) {
 			$seeded = $current; // Written by 2.77.0, before the theme recorded its own values.
 		}
+		if ( '' === $seeded && isset( $history[ $key ] ) && in_array( $current, (array) $history[ $key ], true ) ) {
+			$seeded = $current; // Written by an earlier version of the theme.
+		}
 		if ( '' !== $current && $current !== $seeded ) {
 			continue;
 		}
@@ -97,10 +102,75 @@ add_action(
 	function () {
 		if ( current_user_can( 'edit_theme_options' ) ) {
 			abr_seed_focus_keywords();
+			abr_seed_rank_math_fields();
 		}
 	},
 	20
 );
+
+/**
+ * Write the theme's search title and description into Rank Math's own fields,
+ * and refresh the featured image's alt text, for every starter article and page.
+ * Rank Math scores its content tests against its own fields, so the title and
+ * description it analyses must be the ones the site actually shows. A field is
+ * written only while it is empty or still holds exactly what the theme wrote
+ * before; anything an editor has typed in Rank Math is never replaced.
+ *
+ * @param bool $force Run even if this version has run before.
+ * @return int Number of items updated.
+ */
+function abr_seed_rank_math_fields( $force = false ) {
+	$titles = ABR_DIR . '/inc/seed/seo-titles.php';
+	if ( ! is_readable( $titles ) || ! function_exists( 'abr_seed_data' ) ) {
+		return 0;
+	}
+	$stamp = md5( md5_file( $titles ) . md5_file( ABR_DIR . '/inc/seed/content.php' ) );
+	if ( ! $force && get_option( 'abr_rm_fields_stamp' ) === $stamp ) {
+		return 0;
+	}
+	$map    = require $titles;
+	$photos = (array) get_option( 'abr_seed_photos', array() );
+	$site   = get_bloginfo( 'name' );
+	$done   = 0;
+	foreach ( abr_seed_data()['items'] as $item ) {
+		$key = $item['key'];
+		$id  = abr_seed_id( $key );
+		if ( ! $id || empty( $map[ $key ] ) ) {
+			continue;
+		}
+		$fields = array(
+			'rank_math_title'       => $map[ $key ] . ' | ' . $site,
+			'rank_math_description' => isset( $item['description'] ) ? (string) $item['description'] : '',
+		);
+		foreach ( $fields as $meta => $value ) {
+			if ( '' === $value ) {
+				continue;
+			}
+			$current = (string) get_post_meta( $id, $meta, true );
+			$seeded  = (string) get_post_meta( $id, '_abr_seeded_' . $meta, true );
+			if ( '' !== $current && $current !== $seeded ) {
+				continue; // Written by an editor in Rank Math.
+			}
+			if ( $current !== $value ) {
+				update_post_meta( $id, $meta, $value );
+			}
+			update_post_meta( $id, '_abr_seeded_' . $meta, $value );
+		}
+		// The featured image's alt text, when the image is the theme's own.
+		$thumb = (int) get_post_thumbnail_id( $id );
+		if ( $thumb && ! empty( $item['photo']['alt'] ) && in_array( $thumb, array_map( 'intval', $photos ), true ) ) {
+			$alt    = (string) get_post_meta( $thumb, '_wp_attachment_image_alt', true );
+			$seeded = (string) get_post_meta( $thumb, '_abr_seeded_alt', true );
+			if ( '' === $alt || $alt === $seeded || '' === $seeded ) {
+				update_post_meta( $thumb, '_wp_attachment_image_alt', $item['photo']['alt'] );
+				update_post_meta( $thumb, '_abr_seeded_alt', $item['photo']['alt'] );
+			}
+		}
+		$done++;
+	}
+	update_option( 'abr_rm_fields_stamp', $stamp, false );
+	return $done;
+}
 
 /**
  * Whether an editor has built a schema for the current page in Rank Math's

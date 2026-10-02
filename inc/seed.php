@@ -95,7 +95,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 /**
  * Raise when inc/seed/content.php gains items (set their 'since' to the new value).
  */
-define( 'ABR_SEED_VERSION', 87 );
+define( 'ABR_SEED_VERSION', 97 );
 
 /**
  * Recommended permalink settings (docs/ssot.md, section 12).
@@ -687,6 +687,12 @@ function abr_run_seeder( $only = array() ) {
 	}
 	if ( function_exists( 'abr_seed_focus_keywords' ) ) {
 		abr_seed_focus_keywords( true );
+	}
+	if ( function_exists( 'abr_seed_tags' ) ) {
+		abr_seed_tags( true );
+	}
+	if ( function_exists( 'abr_seed_rank_math_fields' ) ) {
+		abr_seed_rank_math_fields( true );
 	}
 
 	update_option( 'abr_seeded_slugs', $seeded, false );

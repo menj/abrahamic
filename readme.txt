@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.77.2
+Stable tag: 2.81.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +43,7 @@ Appearance > Theme Options lets you:
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.77.2.zip, and activate it. The starter pages and articles are created automatically.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.81.0.zip, and activate it. The starter pages and articles are created automatically.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
@@ -143,6 +143,21 @@ Yes. The hero section and the place cards hold patterned placeholders. Replace e
 They are copied across automatically when you activate Abrahamic. Changes you made to templates in the Site Editor under the old theme are not carried over. See docs/upgrading.md for details.
 
 == Upgrade Notice ==
+
+= 2.81.0 =
+Nine new Journal articles on holy sites, each green in Rank Math.
+
+= 2.80.0 =
+Every article and page scores green in Rank Math. Seventeen article addresses are shortened, with permanent redirects from the old ones.
+
+= 2.79.1 =
+Tags no longer overlap with categories.
+
+= 2.79.0 =
+Journal articles are now tagged with a fixed vocabulary of 28 lowercase tags.
+
+= 2.78.0 =
+Fourteen new Journal articles from competitor keyword research.
 
 = 2.77.2 =
 Focus keywords refined from competitor keyword research.
@@ -520,6 +535,22 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.81.0 - 2026-10-02 =
+* Nine new Journal articles completing the holy sites list: Galilee; Safed and Tiberias; Shiloh and Masada; Patmos and Mount Athos; Christian pilgrimage (Santiago, Lourdes, Fátima); Masjid al-Aqsa; Badr and Uhud; Kairouan; the Tigris and Euphrates.
+
+= 2.80.0 - 2026-10-02 =
+* All 55 articles and 30 pages reach a green Rank Math score (81 to 88), verified in Rank Math's own editor panel: focus keywords drawn from each address, search titles and descriptions written into Rank Math's fields, keyword placement, tables of contents, featured images for pages, source links, shorter paragraphs and balanced keyword density.
+* Seventeen long article addresses shortened to fit Rank Math's 75-character limit on the live domain; the old addresses redirect permanently.
+
+= 2.79.1 - 2026-10-01 =
+* Tags no longer overlap with categories: the "interfaith relations" tag, which repeated the Interfaith studies category, is withdrawn and its articles filed under that category; a tag that repeats a category can no longer be created.
+
+= 2.79.0 - 2026-10-01 =
+* Journal tags: 28 lowercase, search-led tags (traditions, figures, places and themes), each on at least three articles, applied to all 55 articles, with a description and Rank Math focus keyword for every tag page.
+
+= 2.78.0 - 2026-10-01 =
+* Fourteen new Journal articles, written from a positive Islamic perspective on subjects people search for: the Messiah, Ishmael, Allah and the God of the Bible, the Gospel of Barnabas, the Qur'an on earlier scriptures, the Kaaba, Saul in the Qur'an, interfaith marriage, Gog and Magog and the Dajjal, 'begotten', Harut and Marut, Deuteronomy 18:18, Muhammad in the Bible, and Jews under Muslim rule.
 
 = 2.77.2 - 2026-09-30 =
 * Focus keywords on ten articles and pages gain high-volume secondary keywords found in competitor research, and the Abraham in Islam article gets a search title that matches how people search.

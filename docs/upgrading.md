@@ -10,6 +10,36 @@ Replace the theme files. A template change only; nothing to reseed.
 
 ---
 
+## Upgrading from 2.80.0 to 2.81.0
+
+Replace the theme files, load any page, then open any admin page once to write the new articles' Rank Math fields and tags.
+
+---
+
+## Upgrading from 2.79.1 to 2.80.0
+
+Replace the theme files, load any page, then open any admin page once: that writes the focus keywords, search titles, descriptions and alt text into Rank Math. Clear any page cache. Seventeen articles have new, shorter addresses; their old addresses redirect permanently, but submit the XML sitemap again in Search Console so Google picks up the new ones sooner. Anything you have typed into Rank Math yourself is kept.
+
+---
+
+## Upgrading from 2.79.0 to 2.79.1
+
+Replace the theme files and open any admin page once: the overlapping tag is removed and its articles filed under Interfaith studies.
+
+---
+
+## Upgrading from 2.78.0 to 2.79.0
+
+Replace the theme files, then open any admin page once: that creates the tags and tags every article. Tags you have added yourself are kept.
+
+---
+
+## Upgrading from 2.77.2 to 2.78.0
+
+Replace the theme files, load any page, then open any admin page once to write the new focus keywords.
+
+---
+
 ## Upgrading from 2.77.1 to 2.77.2
 
 Replace the theme files and open any admin page once to apply the refined focus keywords.
@@ -847,7 +877,7 @@ Replace the theme files. No settings, templates or identifiers changed.
 
 Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new folder.
 
-1. Upload `abrahamic-2.77.2.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
+1. Upload `abrahamic-2.81.0.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
 2. Activate **Abrahamic**. Saved settings are copied from `ar_options` to `abr_options` automatically.
 3. Check Appearance > Abrahamic and confirm the colour scheme, newsletter and social values.
 4. Site Editor changes are stored against the theme slug and do not carry over. If the front page, header or footer was edited under 1.x:

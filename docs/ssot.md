@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.77.2** |
+| Current version | **2.81.0** |
 | Release date | 2026-09-20 |
 | Status | Stable |
 
@@ -116,6 +116,7 @@ abrahamic/
 │   ├── diagrams.php       [abr_diagram]: the family tree and shared-beliefs diagrams
 │   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
 │   ├── rank-math.php      Rank Math: focus keywords where empty; licence, speakable and FAQ data merged into its schema; no Person or Gravatar
+│   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.php), lowercase enforced, thin tag pages noindexed
 │   └── maintenance.php    Back-shortly notice (503): wp-content drop-ins for updates, fatal errors, database failures; missing-file guard
 ├── parts/                 header.html, footer.html
 ├── patterns/              Fifteen home page sections (section 9)
@@ -224,9 +225,13 @@ Footnote numbers follow document order, and "Ibid." is used only where the prece
 
 Scripture references and citations go in footnotes. In the content source a marker is `[^n]`; the generator turns it into `<sup class="abr-fn">` linking to `#note-n`, and a final `## Notes` heading with a list becomes an ordered list with `id="note-n"` and a back-link to the marker. Verse numbers never appear in the running text.
 
+### Tags
+
+Journal tags come from the fixed vocabulary in `inc/seed/tags.php`: lowercase, search-led, each on at least three articles, and never repeating a category (the theme refuses a tag that matches one). New articles need a line there; a new tag needs a description under 130 characters with a call to action and a focus keyword, and should not be added until three articles can carry it.
+
 ### Rank Math
 
-When Rank Math is active it has the last word wherever an editor has set a title, description, focus keyword or schema. Where the theme's support is superior, its defaults take precedence: its structured data replaces Rank Math's default schema (unless a schema was built in Rank Math's Schema tab for that page), and its titles and descriptions fill whatever Rank Math leaves empty. Robots, canonical links, social tags and sitemaps are Rank Math's. New articles need a line in `inc/seed/focus-keywords.php` (and a short title in `inc/seed/seo-titles.php` if the headline plus " | Abrahamic Religions" reaches 60 characters).
+When Rank Math is active it has the last word wherever an editor has set a title, description, focus keyword or schema. Where the theme's support is superior, its defaults take precedence: its structured data replaces Rank Math's default schema (unless a schema was built in Rank Math's Schema tab for that page), and its titles and descriptions fill whatever Rank Math leaves empty. Robots, canonical links, social tags and sitemaps are Rank Math's. Every item must score green in Rank Math. A new article needs: a focus keyword drawn from its address in `inc/seed/focus-keywords.php`; a search title in `inc/seed/seo-titles.php` that starts with the keyword, stays under 60 characters with the branding, and where possible carries a number and a power word; the keyword in the description, opening, a subheading and the featured image alt text; a table of contents; at least 600 words, paragraphs under 120 words, one external source link, keyword density 1% to 2.5%; and an address of 34 characters or fewer, so the full live address stays under 75. Keywords about the Qur'an use the curly apostrophe.
 
 ### Titles and descriptions
 
@@ -493,7 +498,7 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 
 | Stored | Type | Purpose |
 |---|---|---|
-| `ABR_SEED_VERSION` | constant | Current seed version (87) |
+| `ABR_SEED_VERSION` | constant | Current seed version (97) |
 | `abr_seed_photos` | option | Bundled photograph name to media library attachment ID |
 | `_abr_seed_photo` | post meta | The photograph the seeder set as this article's featured image |
 | `abr_seeded_slugs` | option, not autoloaded | Tombstone list: key => timestamp |
