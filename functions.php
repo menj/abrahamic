@@ -291,3 +291,6 @@ add_action( 'upgrader_process_complete', 'abr_pattern_cache_after_update', 10, 2
 add_action( 'after_switch_theme', function () {
 	wp_get_theme( get_stylesheet() )->delete_pattern_cache();
 } );
+
+/* Cross-site content links between the sister sites. */
+require_once get_stylesheet_directory() . '/inc/network-links.php';
