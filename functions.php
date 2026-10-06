@@ -292,5 +292,5 @@ add_action( 'after_switch_theme', function () {
 	wp_get_theme( get_stylesheet() )->delete_pattern_cache();
 } );
 
-/* Cross-site content links between the sister sites. */
-require_once get_stylesheet_directory() . '/inc/network-links.php';
+/* Contextual in-content links. */
+require_once get_stylesheet_directory() . '/inc/contextual-links.php';
