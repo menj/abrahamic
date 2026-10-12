@@ -3078,6 +3078,56 @@ ABR_SEED,
 <li>An open Qur’an with prayer beads: UMA media, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/quran-with-prayer-beads-on-green-surface-31024871/">Pexels</a>.</li>
 <!-- /wp:list-item --><!-- wp:list-item -->
 <li>A historic synagogue: cottonbro studio, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/the-interior-of-a-synagogue-5986454/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A reader with an open book and a laptop at a desk: Enzo Muñoz, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/photo-of-man-sitting-while-reading-a-book-2663853/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A man reading in the pews of an ornate synagogue: cottonbro studio, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/a-man-wearing-tallit-reading-a-book-5974265/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An olive grove in spring, the tree from which kings and priests were anointed: Hani Salama, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/lush-olive-grove-landscape-with-blue-skies-34803738/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Sand dunes in the Arabian desert, the land tradition gives to Ishmael: Chris Oberman, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/expansive-sand-dunes-under-clear-blue-sky-33353898/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Arabic calligraphy of the word Allah in gold on a dark wall: Zeynep Sude  Emek, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/arabian-writing-meaning-god-is-great-in-sancaklar-mosque-20785888/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A page of an old manuscript in a medieval hand: Magda Ehlers, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/close-up-of-ancient-manuscript-with-latin-text-30019470/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Old leather-bound volumes on library shelves: Mia's Photography, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/vintage-library-books-on-wooden-shelves-37559006/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The Kaaba, draped in its black kiswah, seen from below at dusk: Neo Evenger, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/kaaba-28209449/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A green valley in the hills of Israel, the country of Saul and Talut: Anat Landa, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/scenic-view-of-lush-green-valley-and-distant-hills-38430998/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Two pairs of hands with wedding rings above a bouquet of roses: Juris Freidenfelds, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/photo-of-hands-with-rings-on-a-bouquet-of-yellow-roses-7816258/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An old stone fortress wall below mountains, the kind of barrier Dhul-Qarnayn is said to have raised: Alina  Rossoshanska, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/view-of-a-walkway-downhill-under-a-gate-of-a-castle-17251320/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A stained glass window in a Gothic cathedral: Manon Segur, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/a-window-in-a-church-13378767/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The ruins of ancient Babylon, where the Qur’an places Harut and Marut: khezez  | خزاز, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/ancient-city-in-desert-12050747/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A hand following the text of an open Torah scroll with a pointer: Maor Attias, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/tora-and-hand-over-it-5192346/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An open Bible lying on a dark surface: Luis Quintero, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/open-bible-2294878/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A fountain in an arcaded courtyard in Granada, in Muslim Spain: Zekai Zhu, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/fountain-in-the-graden-of-alhambra-granada-spain-11829139/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The black basalt ruins of the ancient synagogue at Capernaum: Regan Dsouza, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/ancient-ruins-of-capernaum-synagogue-39298578/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Tiberias on the western shore of the Sea of Galilee: John  Morgan, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/aerial-shot-of-a-coastal-city-7247331/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Masada, the fortress plateau above the Dead Sea: Samir Smier, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/ruins-on-hilltop-in-masada-national-park-13598085/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A monastery on the rocky coast of Mount Athos: BAB2056, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/scenic-view-of-monastery-on-mount-athos-greece-40042297/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>A scallop-shell waymark on the Camino de Santiago in Galicia: Győző Mórocz, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/scenic-waymark-on-the-camino-de-santiago-30582533/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The façade and dome of the Al-Aqsa Mosque in Jerusalem: Yasir Gürbüz, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/al-aqsa-mosque-facade-in-jerusalem-11659894/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>Rocky desert mountains near Medina at sunset: Raziuddin Farooqi, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/rocky-mountains-on-the-desert-10961006/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>An ancient stone bridge arching over the Tigris at Diyarbakır: Ozan Sihay, <a href="https://www.pexels.com/license/" rel="license">Pexels licence</a>, via <a href="https://www.pexels.com/photo/bridge-over-river-7624355/">Pexels</a>.</li>
+<!-- /wp:list-item --><!-- wp:list-item -->
+<li>The minaret and wall of the Great Mosque of Kairouan in Tunisia: jorisamonen, <a href="https://pixabay.com/service/license-summary/" rel="license">Pixabay Content Licence</a>, via <a href="https://pixabay.com/photos/mosque-large-tower-kairouan-251183/">Pixabay</a>.</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
 ABR_SEED,
@@ -8212,6 +8262,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-islamic-dilemma-reddit" alt="A reader with an open book and a laptop at a desk" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>An argument popularised by the Christian apologist David Wood. The Qur’an affirms the Torah and the Gospel; if the Gospel is God’s word, Islam is false for contradicting it, and if it is not, Islam is false for affirming it.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> See <a href="/reference/comparisons/islamic-dilemma/">What is the Islamic Dilemma?</a> for the verses it cites.</p>
 <!-- /wp:paragraph -->
 
@@ -8345,6 +8399,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-judaism-vs-christianity-reddit" alt="A man reading in the pews of an ornate synagogue" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>No. They share a scripture and a history, and Christianity began as a movement within Judaism, but they separated over the first four centuries and became two religions with different beliefs about God, the Messiah and the law. See <a href="/journal/the-parting-of-the-ways/">The parting of the ways</a>.</p>
 <!-- /wp:paragraph -->
 
@@ -8440,6 +8498,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-the-messiah-in-three-traditions" alt="An olive grove in spring, the tree from which kings and priests were anointed" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>The Hebrew <em>mashiach</em> means ‘anointed’. In the Hebrew Bible kings and priests were anointed with oil when they took office, and David, sparing Saul’s life, would not raise his hand against ‘the Lord’s anointed’.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The Greek translation of the word is <em>christos</em>; the Gospel of John explains that ‘Messias’ is, being interpreted, the Christ.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Arabic <em>masīḥ</em> belongs to the same Semitic root, <em>m-s-ḥ</em>, to wipe or anoint.</p>
 <!-- /wp:paragraph -->
 
@@ -8523,6 +8585,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"ishmael-in-genesis"} -->
 <h2 class="wp-block-heading" id="ishmael-in-genesis">In Genesis</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-ishmael-in-the-abrahamic-traditions" alt="Sand dunes in the Arabian desert, the land tradition gives to Ishmael" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>Genesis tells how Hagar bore Ishmael to Abraham when Abraham was eighty-six; how God promised to bless Ishmael, make him fruitful and make him a great nation; and how Ishmael, with Isaac, buried their father.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> It names his twelve sons as princes of their tribes, among them Kedar, whose descendants became the Arabs of the north.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> See <a href="/journal/who-was-kedar/">Kedar, the Arabs and the prophets</a>.</p>
@@ -8614,6 +8680,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-is-allah-the-god-of-the-bible" alt="Arabic calligraphy of the word Allah in gold on a dark wall" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p><em>Allāh</em> (<span lang="ar" dir="rtl">ٱللَّه</span>) is the Arabic word for God, formed from the article <em>al-</em> and <em>ilāh</em>, a god, and related to the Hebrew <em>Elohim</em> and the Aramaic <em>Alaha</em>. Arabic-speaking Jews and Christians have always used it: the standard Arabic Bible opens with the words that in the beginning <em>Allāh</em> created the heavens and the earth.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
 <!-- /wp:paragraph -->
 
@@ -8697,6 +8767,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"the-manuscripts"} -->
 <h2 class="wp-block-heading" id="the-manuscripts">The manuscripts</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-the-gospel-of-barnabas" alt="A page of an old manuscript in a medieval hand" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>Two manuscripts are known. The Italian one, held in the Austrian National Library in Vienna, is dated by the watermark of its paper to about 1600; a Spanish manuscript, reported by George Sale in 1734, survives in part in an eighteenth-century copy. The earliest reference to a Gospel of Barnabas that matches this text is in a Morisco manuscript of about 1634.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
@@ -8786,6 +8860,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-what-the-quran-says-about-the-bible" alt="Old leather-bound volumes on library shelves" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>The Qur’an describes the Torah as guidance and light, by which the prophets who submitted to God judged for the Jews, together with the rabbis and scholars entrusted with it.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> It says the same of the Gospel, and calls the Qur’an itself a confirmation of what came before it. No other scripture speaks of earlier revelations with such honour.</p>
 <!-- /wp:paragraph -->
 
@@ -8873,6 +8951,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-the-kaaba" alt="The Kaaba, draped in its black kiswah, seen from below at dusk" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>The Qur’an calls it the first house established for mankind, at Bakkah, and tells how Abraham and Ishmael raised its foundations, praying that God would accept it from them.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> God showed Abraham its site and commanded him to purify it for those who circle it, stand, bow and prostrate.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
 <!-- /wp:paragraph -->
 
@@ -8944,6 +9026,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"the-king-the-people-did-not-expect"} -->
 <h2 class="wp-block-heading" id="the-king-the-people-did-not-expect">The king the people did not expect</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-saul-in-the-quran" alt="A green valley in the hills of Israel, the country of Saul and Talut" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>After Moses, the Qur’an says, the leaders of Israel asked a prophet of theirs for a king to lead them in battle. God appointed Ṭālūt, and the people objected that he had no wealth; their prophet answered that God had chosen him and increased him in knowledge and stature.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The Hebrew Bible tells the same story of Samuel and Saul, and describes Saul as taller than any of the people by a head.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The Qur’anic name may itself echo that height, from the Arabic <em>ṭūl</em>, tallness.</p>
@@ -9021,6 +9107,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"the-islamic-rule"} -->
 <h2 class="wp-block-heading" id="the-islamic-rule">The Islamic rule</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-interfaith-marriage" alt="Two pairs of hands with wedding rings above a bouquet of roses" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>The Qur’an permits a Muslim man to marry a chaste woman from among those given the scripture before, Jewish or Christian, in the same verse that makes their food lawful to Muslims.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> It forbids marriage with idolaters until they believe, and it does not permit Muslim women to marry men outside the faith.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> The reason classical jurists gave is the husband’s place as head of the household: a Muslim husband is bound to honour his wife’s faith, while a non-Muslim husband is under no such obligation toward Islam.</p>
@@ -9110,6 +9200,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-gog-and-magog-and-the-dajjal" alt="An old stone fortress wall below mountains, the kind of barrier Dhul-Qarnayn is said to have raised" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>Ezekiel prophesies against ‘Gog, of the land of Magog’, who will come against Israel in the last days, and the Book of Revelation speaks of Gog and Magog gathered for battle when Satan is released at the end of the thousand years.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The Qur’an tells of Dhū al-Qarnayn, a righteous ruler whom a people asked for protection from Gog and Magog, <em>Yaʾjūj wa-Maʾjūj</em> (<span lang="ar" dir="rtl">يَأْجُوج وَمَأْجُوج</span>), who were spreading corruption in the land. He built a barrier of iron and copper against them, and declared that it would stand until the promise of his Lord came, when God would level it.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
 <!-- /wp:paragraph -->
 
@@ -9187,6 +9281,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"begotten-in-the-bible"} -->
 <h2 class="wp-block-heading" id="begotten-in-the-bible">Begotten in the Bible</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-what-does-begotten-mean" alt="A stained glass window in a Gothic cathedral" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>The Greek word in John 3:16 is <em>monogenēs</em>, which the King James Version rendered ‘only begotten’. Many modern translations render it ‘only Son’.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The Hebrew Bible calls Israel God’s firstborn son and the king God’s son, ‘this day have I begotten thee’, using sonship as a picture of God’s favour.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
@@ -9309,6 +9407,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-harut-and-marut" alt="The ruins of ancient Babylon, where the Qur’an places Harut and Marut" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>The verse clears Solomon of the charge of sorcery, which some in Israel laid against him, and places the blame on the devils who taught magic. The two angels at Babylon taught nothing without first warning: ‘We are a trial, so do not disbelieve.’ Their knowledge could harm no one except by God’s permission. Muslim scholarship counts them as two angels sent to test people at a time when magic was widespread, and holds that the verse tells all that needs to be known about them.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
 <!-- /wp:paragraph -->
 
@@ -9370,6 +9472,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"a-prophet-like-moses"} -->
 <h2 class="wp-block-heading" id="a-prophet-like-moses">A prophet like Moses</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-deuteronomy-18-18" alt="A hand following the text of an open Torah scroll with a pointer" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>Peter, in Acts, applies the promise to Jesus.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Yet Deuteronomy itself closes by saying that there arose not a prophet since in Israel like unto Moses.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Moses was a prophet, a lawgiver and the leader of a nation; he married, had children, died a natural death, and brought a written law. Muslims point out that the Prophet Muhammad matches him in each of these points, while the Gospels present Jesus as unlike Moses in most of them.</p>
@@ -9461,6 +9567,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-muhammad-in-the-bible" alt="An open Bible lying on a dark surface" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>The Qur’an records Jesus announcing good tidings of a messenger to come after him, whose name is Aḥmad.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Aḥmad, ‘most praised’, comes from the same root as Muḥammad, ‘praised’.</p>
 <!-- /wp:paragraph -->
 
@@ -9528,6 +9638,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"what-the-quran-commands"} -->
 <h2 class="wp-block-heading" id="what-the-quran-commands">What the Qur’an commands</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-jews-under-muslim-rule" alt="A fountain in an arcaded courtyard in Granada, in Muslim Spain" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>The Qur’an promises reward to the Jews and Christians who believe in God and the Last Day and do good.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> It permits Muslims to eat the food of the People of the Book and to marry their women.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> And it commands justice and kindness toward all who do not fight Muslims because of their religion:</p>
@@ -9618,6 +9732,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"capernaum"} -->
 <h2 class="wp-block-heading" id="capernaum">Capernaum, his own town</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-galilee" alt="The black basalt ruins of the ancient synagogue at Capernaum" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>Matthew says that Jesus left Nazareth and settled in Capernaum, a fishing town on the north shore of the lake, and Mark places his first teaching in its synagogue.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The white limestone synagogue that visitors see today was built in the fourth or fifth century over the black basalt foundations of an older one. Nearby, a modern church stands over the remains of a house that early Christians venerated as the home of Peter.</p>
@@ -9719,6 +9837,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-safed-and-tiberias" alt="Tiberias on the western shore of the Sea of Galilee" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>Founded by Herod Antipas on the western shore of the Sea of Galilee around 20 CE, Tiberias became the centre of Jewish learning in the land of Israel after the wars with Rome. The Sanhedrin met there, and the scholars of its academies completed the Jerusalem Talmud around the year 400.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
 <!-- /wp:paragraph -->
 
@@ -9802,6 +9924,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"shiloh-and-the-ark"} -->
 <h2 class="wp-block-heading" id="shiloh-and-the-ark">Shiloh and the Ark</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-shiloh-and-masada" alt="Masada, the fortress plateau above the Dead Sea" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>The Book of Joshua says that the whole congregation of Israel assembled at Shiloh and set up the Tent of Meeting there.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> The prophet Samuel grew up at Shiloh in the care of the priest Eli, and from Shiloh the Ark was carried into battle against the Philistines and captured.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup> Jeremiah later pointed to the ruin of Shiloh as a warning to Jerusalem.<sup class="abr-fn"><a href="#note-3" id="ref-3">3</a></sup> Excavations at Khirbet Seilun have uncovered remains from the Bronze and Iron Ages and later churches built on the site.</p>
@@ -9889,6 +10015,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"patmos-and-the-apocalypse"} -->
 <h2 class="wp-block-heading" id="patmos-and-the-apocalypse">Patmos and the Apocalypse</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-patmos-and-mount-athos" alt="A monastery on the rocky coast of Mount Athos" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>The author of Revelation says he was on the island called Patmos ‘for the word of God’ when he received his visions.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Tradition identifies him with John the apostle and shows pilgrims the cave where he is said to have seen them. In 1088 the monk Christodoulos founded the fortified Monastery of St John the Theologian above it, and the town of Chora grew around the monastery. UNESCO lists the monastery, the cave and the old town together.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
@@ -9982,6 +10112,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-christian-pilgrimage" alt="A scallop-shell waymark on the Camino de Santiago in Galicia" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>Tradition holds that the apostle James preached in Spain and that his body was brought to Galicia after his martyrdom in Jerusalem.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> A tomb believed to be his was discovered in the ninth century, and a church, later the cathedral, rose over it. The routes that lead there, the Camino de Santiago, became one of the great pilgrim roads of medieval Christendom and are walked by hundreds of thousands each year.<sup class="abr-fn"><a href="#note-2" id="ref-2">2</a></sup></p>
 <!-- /wp:paragraph -->
 
@@ -10067,6 +10201,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"the-night-journey"} -->
 <h2 class="wp-block-heading" id="the-night-journey">The Night Journey</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-masjid-al-aqsa" alt="The façade and dome of the Al-Aqsa Mosque in Jerusalem" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>The Qur’an names the mosque in the first verse of the chapter of the Night Journey:</p>
@@ -10156,6 +10294,10 @@ ABR_SEED,
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
+<p>[abr_photo name="inline-badr-and-uhud" alt="Rocky desert mountains near Medina at sunset" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p>In Ramadan of the second year after the emigration, March 624, some three hundred Muslims met about a thousand men of Quraysh at the wells of Badr, south-west of Madinah. The Muslims won, and the leaders of Makkah’s opposition, Abu Jahl among them, were killed. The Qur’an calls the day of Badr the Day of Criterion, when the two armies met.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
 <!-- /wp:paragraph -->
 
@@ -10235,6 +10377,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"the-founding-of-kairouan"} -->
 <h2 class="wp-block-heading" id="the-founding-of-kairouan">The founding of the city</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-kairouan" alt="The minaret and wall of the Great Mosque of Kairouan in Tunisia" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>The Arab commander ʿUqbah ibn Nāfiʿ founded Kairouan in 670 as a base for the Muslim advance into North Africa, choosing a site far enough inland to be safe from attack by sea. Under the Aghlabid dynasty in the ninth century the city flourished, and even after the political capital moved to Tunis in the twelfth century, Kairouan remained the Maghreb’s principal holy city.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup></p>
@@ -10320,6 +10466,10 @@ ABR_SEED,
 <!-- wp:heading {"anchor":"rivers-of-eden"} -->
 <h2 class="wp-block-heading" id="rivers-of-eden">Rivers of Eden</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[abr_photo name="inline-tigris-and-euphrates" alt="An ancient stone bridge arching over the Tigris at Diyarbakır" ratio="16 / 9"]</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>Genesis names four rivers flowing out of Eden, two of them the Tigris and the Euphrates.<sup class="abr-fn"><a href="#note-1" id="ref-1">1</a></sup> Abraham’s family came from Ur, near the lower Euphrates, and the great cities of Mesopotamia, from Babylon to Nineveh, stood on their banks. See <a href="/journal/where-was-abraham-from/">Where was Abraham from?</a></p>

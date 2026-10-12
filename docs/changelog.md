@@ -2,6 +2,11 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.82.0] - 2026-10-12
+
+### Added
+- Twenty-five additional photographs, one inline in each of the twenty-five newest Journal articles that had none (`islamic-dilemma-reddit` through `tigris-and-euphrates`): twenty-four from Pexels and one from Pixabay (`inline-kairouan`). Each is cropped to 1200 x 675, saved as AVIF at quality 50 in `assets/images/photos/inline-*.avif`, placed after the first section heading with `[abr_photo]`, and credited on the Copyright and DMCA page and in `inc/seed/photo-credits.php`. Nothing existing was replaced. Seed version 98.
+
 ## [2.81.0] - 2026-10-02
 
 ### Added
