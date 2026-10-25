@@ -2,6 +2,11 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [Unreleased]
+
+### Changed
+- Seed data (`inc/seed/content.php` and the other `inc/seed/*.php` data files: `legacy-v1.php`, `legacy-paths.php`, `focus-keywords.php`, `focus-keywords-previous.php`, `photo-credits.php`, `seo-titles.php`, `tags.php`) now ships as `.json` instead of executable `.php`, so starter content is pure data with nothing to execute. `inc/seed.php` and every module that reads it (`inc/seo.php`, `inc/tags.php`, `inc/rank-math.php`, `inc/redirects.php`, `functions.php`) now decode the JSON (`abr_seed_read_json()`) instead of `require`-ing PHP. No seed content, metadata or behaviour changed; the conversion was verified to round-trip byte-for-byte.
+
 ## [2.82.0] - 2026-10-12
 
 ### Added

@@ -1,0 +1,560 @@
+{
+    "terms": {
+        "judaism": [
+            "judaism",
+            "Articles on Judaism: its scripture, law, history and its relations with Christianity and Islam. Browse the articles.",
+            "judaism"
+        ],
+        "mandaeism": [
+            "mandaeism",
+            "Articles on Mandaeism, the baptismal faith of Iraq and Iran, and its place among the Abrahamic religions. Browse them here.",
+            "mandaeism"
+        ],
+        "christianity": [
+            "christianity",
+            "Articles on Christianity: its origins, councils, scriptures and its relations with Judaism and Islam. Browse the articles.",
+            "christianity"
+        ],
+        "islam": [
+            "islam",
+            "Articles on Islam: the Qur'an, the Prophet, worship and law, and Islam's view of the earlier faiths. Browse the articles.",
+            "islam"
+        ],
+        "abraham": [
+            "abraham",
+            "Articles on Abraham, father of the faithful: his origins, his language, his sons and his legacy. Read them here.",
+            "abraham"
+        ],
+        "ishmael": [
+            "ishmael",
+            "Articles on Ishmael, Abraham's firstborn: in Genesis, in the Qur'an, at Makkah and in prophecy. Read them here.",
+            "ishmael"
+        ],
+        "moses": [
+            "moses",
+            "Articles on Moses in the Bible and the Qur'an: Pharaoh, Haman, the law and the prophet like him. Read them here.",
+            "moses in the quran"
+        ],
+        "david": [
+            "david",
+            "Articles on David, prophet and king: Saul, Goliath, Jerusalem and the line of the Messiah. Read them here.",
+            "prophet david"
+        ],
+        "jesus": [
+            "jesus",
+            "Articles on Jesus in the four traditions: the Messiah, his birth, his mission and his return. Read them here.",
+            "jesus in islam"
+        ],
+        "mary": [
+            "mary",
+            "Articles on Mary, mother of Jesus, honoured in the New Testament and the Qur'an alike. Read them here.",
+            "mary in islam"
+        ],
+        "john-the-baptist": [
+            "john the baptist",
+            "Articles on John the Baptist, prophet of Christianity, Islam and Mandaeism. Read them here.",
+            "john the baptist in islam"
+        ],
+        "prophet-muhammad": [
+            "prophet muhammad",
+            "Articles on the Prophet Muhammad: revelation, the first mosque, and his foretelling in earlier scripture. Read them here.",
+            "prophet muhammad"
+        ],
+        "jerusalem": [
+            "jerusalem",
+            "Articles on Jerusalem, holy city of three faiths, and the history made in and around it. Read them here.",
+            "jerusalem"
+        ],
+        "makkah": [
+            "makkah",
+            "Articles on Makkah: the Kaaba, the Hajj and the beginnings of revelation. Read them here.",
+            "makkah"
+        ],
+        "constantinople": [
+            "constantinople",
+            "Articles on Constantinople and Istanbul: Hagia Sophia, the great sees and the councils. Read them here.",
+            "constantinople"
+        ],
+        "harran": [
+            "harran",
+            "Articles on Harran: Abraham's city, the Sabians and the scholars of the ancient north. Read them here.",
+            "harran"
+        ],
+        "babylon": [
+            "babylon",
+            "Articles on Babylon and Mesopotamia: Ur, Hārūt and Mārūt, and the ancient Near East. Read them here.",
+            "babylon"
+        ],
+        "egypt": [
+            "egypt",
+            "Articles on Egypt in scripture and history: Joseph, Moses, Pharaoh and the Cairo Genizah. Read them here.",
+            "egypt in the bible"
+        ],
+        "quran": [
+            "quran",
+            "Articles on the Qur'an: its message, its verses on earlier scripture, and its preservation. Read them here.",
+            "quran"
+        ],
+        "bible": [
+            "bible",
+            "Articles on the Bible: its books, its history, and how the Qur'an and Muslims read it. Read them here.",
+            "bible"
+        ],
+        "torah": [
+            "torah",
+            "Articles on the Torah: its law, its preservation and its place in the Qur'an. Read them here.",
+            "torah"
+        ],
+        "monotheism": [
+            "monotheism",
+            "Articles on monotheism: the one God of Abraham, tawhid, the Trinity and the creeds. Read them here.",
+            "monotheism"
+        ],
+        "prophecy": [
+            "prophecy",
+            "Articles on prophecy: the Messiah, the prophet like Moses and the foretelling of Muhammad. Read them here.",
+            "prophecy in the bible"
+        ],
+        "religious-law": [
+            "religious law",
+            "Articles on religious law: halakhah, canon law and the sharia, food, marriage and apostasy. Read them here.",
+            "religious law"
+        ],
+        "prayer-and-worship": [
+            "prayer and worship",
+            "Articles on prayer and worship: daily prayer, baptism, the Hajj and the Kaaba. Read them here.",
+            "prayer and worship"
+        ],
+        "early-church": [
+            "early church",
+            "Articles on the early church: Paul and Peter, the parting from Judaism, Nicaea and the creeds. Read them here.",
+            "early church history"
+        ],
+        "end-times": [
+            "end times",
+            "Articles on the end times: the return of Jesus, Gog and Magog, the Antichrist and the Dajjal. Read them here.",
+            "end times"
+        ]
+    },
+    "retired": {
+        "interfaith-relations": "Articles on relations between the faiths: dialogue, war and peace, marriage and shared history. Read them here."
+    },
+    "categories": {
+        "post:the-cairo-genizah": [
+            "interfaith-studies"
+        ],
+        "post:war-and-peace-in-the-abrahamic-traditions": [
+            "interfaith-studies"
+        ],
+        "post:interfaith-marriage": [
+            "interfaith-studies"
+        ],
+        "post:jews-under-muslim-rule": [
+            "interfaith-studies"
+        ]
+    },
+    "posts": {
+        "post:galilee": [
+            "jesus",
+            "christianity",
+            "quran",
+            "bible"
+        ],
+        "post:safed-and-tiberias": [
+            "judaism",
+            "torah",
+            "quran",
+            "bible"
+        ],
+        "post:shiloh-and-masada": [
+            "judaism",
+            "bible",
+            "quran",
+            "moses"
+        ],
+        "post:patmos-and-mount-athos": [
+            "christianity",
+            "bible",
+            "quran",
+            "prayer-and-worship"
+        ],
+        "post:christian-pilgrimage": [
+            "christianity",
+            "mary",
+            "quran",
+            "prayer-and-worship"
+        ],
+        "post:masjid-al-aqsa": [
+            "jerusalem",
+            "prophet-muhammad",
+            "quran",
+            "islam"
+        ],
+        "post:badr-and-uhud": [
+            "prophet-muhammad",
+            "quran",
+            "islam",
+            "makkah"
+        ],
+        "post:kairouan": [
+            "islam",
+            "quran",
+            "religious-law",
+            "prayer-and-worship"
+        ],
+        "post:tigris-and-euphrates": [
+            "mandaeism",
+            "babylon",
+            "bible",
+            "prayer-and-worship"
+        ],
+        "post:who-was-abraham": [
+            "abraham",
+            "harran",
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:how-the-abrahamic-religions-understand-monotheism": [
+            "monotheism",
+            "judaism",
+            "christianity",
+            "islam",
+            "mandaeism"
+        ],
+        "post:understanding-the-bible-and-the-quran-in-historical-context": [
+            "bible",
+            "quran",
+            "torah",
+            "christianity",
+            "islam"
+        ],
+        "post:jerusalem-in-three-traditions": [
+            "jerusalem",
+            "david",
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:prayer-across-the-abrahamic-traditions": [
+            "prayer-and-worship",
+            "judaism",
+            "christianity",
+            "islam",
+            "mandaeism"
+        ],
+        "post:what-archaeology-tells-us-about-the-ancient-near-east": [
+            "egypt",
+            "babylon",
+            "bible",
+            "torah"
+        ],
+        "post:faith-and-reason-in-medieval-thought": [
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:interfaith-dialogue-in-the-modern-era": [
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:millat-ibrahim": [
+            "abraham",
+            "monotheism",
+            "quran",
+            "makkah",
+            "islam"
+        ],
+        "post:who-was-kedar": [
+            "ishmael",
+            "prophecy",
+            "prophet-muhammad",
+            "bible",
+            "islam"
+        ],
+        "post:john-the-baptist-in-four-traditions": [
+            "john-the-baptist",
+            "jesus",
+            "mandaeism",
+            "christianity",
+            "islam"
+        ],
+        "post:masbuta-baptism-in-running-water": [
+            "mandaeism",
+            "prayer-and-worship",
+            "john-the-baptist"
+        ],
+        "post:the-sabians-of-the-quran": [
+            "mandaeism",
+            "harran",
+            "quran"
+        ],
+        "post:the-king-and-the-pharaoh": [
+            "egypt",
+            "moses",
+            "quran",
+            "bible",
+            "torah"
+        ],
+        "post:jesus-across-the-traditions": [
+            "jesus",
+            "mary",
+            "john-the-baptist",
+            "end-times",
+            "christianity",
+            "islam",
+            "judaism"
+        ],
+        "post:mary-across-the-traditions": [
+            "mary",
+            "jesus",
+            "quran",
+            "christianity",
+            "islam"
+        ],
+        "post:the-preservation-and-transmission-of-scripture": [
+            "quran",
+            "bible",
+            "torah"
+        ],
+        "post:al-ghazali-ibn-rushd-and-the-limits-of-reason": [
+            "islam",
+            "christianity",
+            "judaism"
+        ],
+        "post:the-amman-message-and-a-common-word": [
+            "islam",
+            "christianity"
+        ],
+        "post:the-cairo-genizah": [
+            "egypt",
+            "judaism",
+            "islam"
+        ],
+        "post:haman-in-the-quran": [
+            "egypt",
+            "moses",
+            "quran",
+            "bible"
+        ],
+        "post:the-population-of-the-abrahamic-religions": [
+            "judaism",
+            "mandaeism",
+            "christianity",
+            "islam"
+        ],
+        "post:paul-and-peter-two-missions": [
+            "early-church",
+            "jerusalem",
+            "jesus",
+            "christianity"
+        ],
+        "post:apostasy-in-the-abrahamic-traditions": [
+            "religious-law",
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:the-sabians-in-classical-muslim-scholarship": [
+            "harran",
+            "mandaeism",
+            "islam"
+        ],
+        "post:abrahamic-family-tree": [
+            "abraham",
+            "ishmael",
+            "judaism",
+            "mandaeism",
+            "christianity",
+            "islam"
+        ],
+        "post:the-council-of-nicaea": [
+            "early-church",
+            "monotheism",
+            "jesus",
+            "constantinople",
+            "quran",
+            "christianity"
+        ],
+        "post:the-five-great-sees": [
+            "early-church",
+            "constantinople",
+            "jerusalem",
+            "christianity"
+        ],
+        "post:hagia-sophia": [
+            "constantinople",
+            "quran",
+            "christianity",
+            "islam"
+        ],
+        "post:the-stations-of-the-hajj": [
+            "makkah",
+            "prayer-and-worship",
+            "abraham",
+            "ishmael",
+            "islam"
+        ],
+        "post:hira-and-quba": [
+            "makkah",
+            "prophet-muhammad",
+            "quran",
+            "islam"
+        ],
+        "post:what-language-did-abraham-speak": [
+            "abraham",
+            "ishmael",
+            "harran",
+            "bible",
+            "quran"
+        ],
+        "post:the-parting-of-the-ways": [
+            "early-church",
+            "jerusalem",
+            "jesus",
+            "judaism",
+            "christianity"
+        ],
+        "post:where-was-abraham-from": [
+            "abraham",
+            "harran",
+            "babylon",
+            "quran"
+        ],
+        "post:the-symbols-of-the-four-traditions": [
+            "judaism",
+            "mandaeism",
+            "christianity",
+            "islam"
+        ],
+        "post:religious-law-in-the-abrahamic-traditions": [
+            "religious-law",
+            "torah",
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:food-and-faith": [
+            "religious-law",
+            "judaism",
+            "mandaeism",
+            "christianity",
+            "islam"
+        ],
+        "post:war-and-peace-in-the-abrahamic-traditions": [
+            "quran",
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:the-islamic-dilemma": [
+            "bible",
+            "quran",
+            "christianity",
+            "islam"
+        ],
+        "post:islamic-dilemma-reddit": [
+            "bible",
+            "quran",
+            "christianity",
+            "islam"
+        ],
+        "post:judaism-vs-christianity-reddit": [
+            "jesus",
+            "torah",
+            "judaism",
+            "christianity"
+        ],
+        "post:the-messiah-in-three-traditions": [
+            "jesus",
+            "mary",
+            "david",
+            "prophecy",
+            "end-times",
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:ishmael-in-the-abrahamic-traditions": [
+            "ishmael",
+            "abraham",
+            "makkah",
+            "bible",
+            "islam"
+        ],
+        "post:is-allah-the-god-of-the-bible": [
+            "monotheism",
+            "bible",
+            "quran",
+            "christianity",
+            "islam"
+        ],
+        "post:the-gospel-of-barnabas": [
+            "jesus",
+            "bible",
+            "christianity",
+            "islam"
+        ],
+        "post:what-the-quran-says-about-the-bible": [
+            "bible",
+            "torah",
+            "quran",
+            "islam"
+        ],
+        "post:the-kaaba": [
+            "makkah",
+            "abraham",
+            "ishmael",
+            "prayer-and-worship",
+            "islam"
+        ],
+        "post:saul-in-the-quran": [
+            "david",
+            "quran",
+            "bible",
+            "judaism"
+        ],
+        "post:interfaith-marriage": [
+            "religious-law",
+            "judaism",
+            "christianity",
+            "islam"
+        ],
+        "post:gog-and-magog-and-the-dajjal": [
+            "end-times",
+            "jesus",
+            "quran",
+            "bible"
+        ],
+        "post:what-does-begotten-mean": [
+            "jesus",
+            "monotheism",
+            "early-church",
+            "christianity",
+            "islam"
+        ],
+        "post:harut-and-marut": [
+            "babylon",
+            "quran",
+            "judaism"
+        ],
+        "post:deuteronomy-18-18": [
+            "prophecy",
+            "moses",
+            "prophet-muhammad",
+            "ishmael",
+            "bible"
+        ],
+        "post:muhammad-in-the-bible": [
+            "prophet-muhammad",
+            "prophecy",
+            "bible",
+            "quran"
+        ],
+        "post:jews-under-muslim-rule": [
+            "judaism",
+            "islam"
+        ]
+    }
+}

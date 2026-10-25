@@ -2,7 +2,7 @@
 /**
  * Permanent redirects from earlier addresses.
  *
- * Covers the 2.3.0 addresses of seeded pages and articles (inc/seed/legacy-v1.php),
+ * Covers the 2.3.0 addresses of seeded pages and articles (inc/seed/legacy-v1.json),
  * category archives under the former /category/ base, and the sections renamed in
  * the sections the theme has renamed (/articles/ and /insights/ to /journal/,
  * /knowledge-base/ to /reference/). Runs only for requests
@@ -36,7 +36,7 @@ function abr_request_path() {
 function abr_legacy_paths() {
 	static $map = null;
 	if ( null === $map ) {
-		$map = require ABR_DIR . '/inc/seed/legacy-paths.php';
+		$map = abr_seed_read_json( ABR_DIR . '/inc/seed/legacy-paths.json' );
 	}
 	return $map;
 }
