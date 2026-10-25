@@ -116,7 +116,7 @@ abrahamic/
 │   ├── diagrams.php       [abr_diagram]: the family tree and shared-beliefs diagrams
 │   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
 │   ├── rank-math.php      Rank Math: focus keywords where empty; licence, speakable and FAQ data merged into its schema; no Person or Gravatar
-│   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.php), lowercase enforced, thin tag pages noindexed
+│   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.json), lowercase enforced, thin tag pages noindexed
 │   └── maintenance.php    Back-shortly notice (503): wp-content drop-ins for updates, fatal errors, database failures; missing-file guard
 ├── parts/                 header.html, footer.html
 ├── patterns/              Fifteen home page sections (section 9)
@@ -227,19 +227,19 @@ Scripture references and citations go in footnotes. In the content source a mark
 
 ### Tags
 
-Journal tags come from the fixed vocabulary in `inc/seed/tags.php`: lowercase, search-led, each on at least three articles, and never repeating a category (the theme refuses a tag that matches one). New articles need a line there; a new tag needs a description under 130 characters with a call to action and a focus keyword, and should not be added until three articles can carry it.
+Journal tags come from the fixed vocabulary in `inc/seed/tags.json`: lowercase, search-led, each on at least three articles, and never repeating a category (the theme refuses a tag that matches one). New articles need a line there; a new tag needs a description under 130 characters with a call to action and a focus keyword, and should not be added until three articles can carry it.
 
 ### Rank Math
 
-When Rank Math is active it has the last word wherever an editor has set a title, description, focus keyword or schema. Where the theme's support is superior, its defaults take precedence: its structured data replaces Rank Math's default schema (unless a schema was built in Rank Math's Schema tab for that page), and its titles and descriptions fill whatever Rank Math leaves empty. Robots, canonical links, social tags and sitemaps are Rank Math's. Every item must score green in Rank Math. A new article needs: a focus keyword drawn from its address in `inc/seed/focus-keywords.php`; a search title in `inc/seed/seo-titles.php` that starts with the keyword, stays under 60 characters with the branding, and where possible carries a number and a power word; the keyword in the description, opening, a subheading and the featured image alt text; a table of contents; at least 600 words, paragraphs under 120 words, one external source link, keyword density 1% to 2.5%; and an address of 34 characters or fewer, so the full live address stays under 75. Keywords about the Qur'an use the curly apostrophe.
+When Rank Math is active it has the last word wherever an editor has set a title, description, focus keyword or schema. Where the theme's support is superior, its defaults take precedence: its structured data replaces Rank Math's default schema (unless a schema was built in Rank Math's Schema tab for that page), and its titles and descriptions fill whatever Rank Math leaves empty. Robots, canonical links, social tags and sitemaps are Rank Math's. Every item must score green in Rank Math. A new article needs: a focus keyword drawn from its address in `inc/seed/focus-keywords.json`; a search title in `inc/seed/seo-titles.json` that starts with the keyword, stays under 60 characters with the branding, and where possible carries a number and a power word; the keyword in the description, opening, a subheading and the featured image alt text; a table of contents; at least 600 words, paragraphs under 120 words, one external source link, keyword density 1% to 2.5%; and an address of 34 characters or fewer, so the full live address stays under 75. Keywords about the Qur'an use the curly apostrophe.
 
 ### Titles and descriptions
 
-Rank Math, when active, always wins: any title or description set in it is used as it stands. Where Rank Math has nothing set, and whenever it is not active, the theme's defaults apply: titles end "| Abrahamic Religions" (never " - ") and are under 60 characters in all (short search titles in `inc/seed/seo-titles.php`, or a post's `_abr_seo_title`); descriptions are under 130 characters and end with a call to action. The home page title is the `home_title` option, never the page name "Home".
+Rank Math, when active, always wins: any title or description set in it is used as it stands. Where Rank Math has nothing set, and whenever it is not active, the theme's defaults apply: titles end "| Abrahamic Religions" (never " - ") and are under 60 characters in all (short search titles in `inc/seed/seo-titles.json`, or a post's `_abr_seo_title`); descriptions are under 130 characters and end with a call to action. The home page title is the `home_title` option, never the page name "Home".
 
 ### Structured data
 
-Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ and the question-and-answer articles), and ImageObject with licence data from `inc/seed/photo-credits.php` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. No Person or ProfilePage anywhere.
+Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ and the question-and-answer articles), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. No Person or ProfilePage anywhere.
 
 ### Anonymity
 
@@ -470,7 +470,7 @@ Registry, in footer order:
 
 ## 12. Starter content
 
-The theme populates the site itself, following the seeder pattern used in the Murtadd theme. `inc/seed.php` runs the seeder; `inc/seed/content.php` holds the content as ready block markup and is the single source for it; `inc/seed/legacy-v1.php` holds the version 1 fingerprints and addresses.
+The theme populates the site itself, following the seeder pattern used in the Murtadd theme. `inc/seed.php` runs the seeder; `inc/seed/content.json` holds the content as ready block markup and is the single source for it; `inc/seed/legacy-v1.json` holds the version 1 fingerprints and addresses.
 
 ### Rules
 
@@ -549,7 +549,7 @@ Version 10 restored the site's stated purpose on the About page, which now says 
 Version 9 renamed the Site Map page to Sitemap at `/sitemap/`, the address the site used before, keeping the key `page:site-map`.
 
 
-Version 8 brought across the material written for the site between 2016 and 2023, rewritten for 2026 in the house style and merged with the existing text: the three religion pages, the Abraham and Jerusalem articles, the Privacy Policy, and the About page's note on working from the languages. It added four items: the articles on the path of Abraham and on Kedar, the Copyright and DMCA page, and the Thank You page under Donate. Figures were brought up to date (Christianity about 2.4 billion, Catholics about 1.4 billion, Jews close to sixteen million, Muslims close to two billion). `inc/seed/legacy-paths.php` maps earlier addresses to the seed key that carries the material now, for 301 redirects: the nine used between 2016 and 2023, and any the theme itself renames, such as `/site-map/` to `/sitemap/`.
+Version 8 brought across the material written for the site between 2016 and 2023, rewritten for 2026 in the house style and merged with the existing text: the three religion pages, the Abraham and Jerusalem articles, the Privacy Policy, and the About page's note on working from the languages. It added four items: the articles on the path of Abraham and on Kedar, the Copyright and DMCA page, and the Thank You page under Donate. Figures were brought up to date (Christianity about 2.4 billion, Catholics about 1.4 billion, Jews close to sixteen million, Muslims close to two billion). `inc/seed/legacy-paths.json` maps earlier addresses to the seed key that carries the material now, for 301 redirects: the nine used between 2016 and 2023, and any the theme itself renames, such as `/site-map/` to `/sitemap/`.
 
 Version 7 added the Donate page (`page:donate`, `/donate/`), whose Give section is `[abr_donation]`: a button to `donation_url` when set, otherwise a sentence pointing to the Contact page, with a note for editors.
 

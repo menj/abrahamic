@@ -7,7 +7,7 @@
  * theme knows and Rank Math does not, without overriding anything an editor set:
  *
  * - Focus keywords. Each article and principal page receives the focus keyword
- *   from inc/seed/focus-keywords.php, only where its Rank Math focus keyword is
+ *   from inc/seed/focus-keywords.json, only where its Rank Math focus keyword is
  *   empty. A keyword typed in Rank Math is never replaced.
  * - Anonymity. Rank Math describes each article's author as a Person with the
  *   account's Gravatar, a hash of its email address. The Person node is removed
@@ -44,7 +44,7 @@ function abr_rank_math_active() {
  * @return int Number of keywords written.
  */
 function abr_seed_focus_keywords( $force = false ) {
-	$file = ABR_DIR . '/inc/seed/focus-keywords.php';
+	$file = ABR_DIR . '/inc/seed/focus-keywords.json';
 	if ( ! is_readable( $file ) ) {
 		return 0;
 	}
@@ -52,9 +52,9 @@ function abr_seed_focus_keywords( $force = false ) {
 	if ( ! $force && get_option( 'abr_focus_keywords_stamp' ) === $stamp ) {
 		return 0;
 	}
-	$map     = require $file;
-	$hist_file = ABR_DIR . '/inc/seed/focus-keywords-previous.php';
-	$history   = is_readable( $hist_file ) ? require $hist_file : array();
+	$map       = abr_seed_read_json( $file );
+	$hist_file = ABR_DIR . '/inc/seed/focus-keywords-previous.json';
+	$history   = abr_seed_read_json( $hist_file );
 	// Keywords the theme wrote in 2.77.0 and has since refined.
 	$previous = array(
 		'post:who-was-abraham'                                   => 'who was abraham,abraham',
@@ -120,15 +120,15 @@ add_action(
  * @return int Number of items updated.
  */
 function abr_seed_rank_math_fields( $force = false ) {
-	$titles = ABR_DIR . '/inc/seed/seo-titles.php';
+	$titles = ABR_DIR . '/inc/seed/seo-titles.json';
 	if ( ! is_readable( $titles ) || ! function_exists( 'abr_seed_data' ) ) {
 		return 0;
 	}
-	$stamp = md5( md5_file( $titles ) . md5_file( ABR_DIR . '/inc/seed/content.php' ) );
+	$stamp = md5( md5_file( $titles ) . md5_file( ABR_DIR . '/inc/seed/content.json' ) );
 	if ( ! $force && get_option( 'abr_rm_fields_stamp' ) === $stamp ) {
 		return 0;
 	}
-	$map    = require $titles;
+	$map    = abr_seed_read_json( $titles );
 	$photos = (array) get_option( 'abr_seed_photos', array() );
 	$site   = get_bloginfo( 'name' );
 	$done   = 0;

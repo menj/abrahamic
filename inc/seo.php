@@ -145,7 +145,7 @@ function abr_seo_finish_description( $text ) {
 
 /**
  * Short search title for a post: the editor's "Search title" (_abr_seo_title)
- * if set, else the starter content's short title (inc/seed/seo-titles.php),
+ * if set, else the starter content's short title (inc/seed/seo-titles.json),
  * else the post title.
  *
  * @param int    $post_id Post ID.
@@ -159,8 +159,7 @@ function abr_short_title( $post_id, $title ) {
 	}
 	static $map = null;
 	if ( null === $map ) {
-		$file = ABR_DIR . '/inc/seed/seo-titles.php';
-		$map  = is_readable( $file ) ? require $file : array();
+		$map = abr_seed_read_json( ABR_DIR . '/inc/seed/seo-titles.json' );
 	}
 	$key = (string) get_post_meta( $post_id, '_abr_seed', true );
 	return ( '' !== $key && isset( $map[ $key ] ) ) ? $map[ $key ] : $title;
@@ -460,7 +459,7 @@ function abr_schema_image( $image, $id = '' ) {
 }
 
 /**
- * Credit and licence of a bundled photograph (inc/seed/photo-credits.php).
+ * Credit and licence of a bundled photograph (inc/seed/photo-credits.json).
  *
  * @param string $name Photo file stem.
  * @return array|null
@@ -468,8 +467,7 @@ function abr_schema_image( $image, $id = '' ) {
 function abr_photo_credit( $name ) {
 	static $credits = null;
 	if ( null === $credits ) {
-		$file    = ABR_DIR . '/inc/seed/photo-credits.php';
-		$credits = is_readable( $file ) ? require $file : array();
+		$credits = abr_seed_read_json( ABR_DIR . '/inc/seed/photo-credits.json' );
 	}
 	return isset( $credits[ $name ] ) ? $credits[ $name ] : null;
 }

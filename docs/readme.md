@@ -55,8 +55,8 @@ functions.php
  │                          structure shortcodes
  ├─ inc/seed.php            abr_run_seeder(), abr_seed_status(), abr_seed_permalinks(),
  │                          abr_seed_is_unedited(), seed Tools handlers
- ├─ inc/seed/content.php    starter terms, pages and articles (data, seed version 2)
- ├─ inc/seed/legacy-v1.php  version 1 fingerprints and addresses (data)
+ ├─ inc/seed/content.json    starter terms, pages and articles (data, seed version 2)
+ ├─ inc/seed/legacy-v1.json  version 1 fingerprints and addresses (data)
  ├─ inc/seo.php             abr_seo_description(), abr_seo_canonical(), abr_schema_graph(),
  │                          abr_seo_head(), description box, analytics
  └─ inc/redirects.php       abr_redirect_target(), abr_legacy_redirect(), link updater
@@ -180,7 +180,7 @@ The seeder records every item it creates or adopts in `abr_seeded_slugs`. Delete
 
 When the theme ships newer starter content, Tools decides what happens to the starter pages: **Replace** (the default) writes the current version over them, including edited ones, keeping the earlier text in the page's revisions, and moves retired starter pages to the trash; **Keep my edits** refreshes only the pages nobody has changed.
 
-To add starter content, append an item to `inc/seed/content.php` with a new key and `'since' => N`, then raise `ABR_SEED_VERSION` in `inc/seed.php` to `N`. Existing sites receive the new item on their next admin load. To disable seeding, return false from the `abr_seed_enabled` filter in a must-use plugin.
+To add starter content, append an item to `inc/seed/content.json` with a new key and `'since' => N`, then raise `ABR_SEED_VERSION` in `inc/seed.php` to `N`. Existing sites receive the new item on their next admin load. To disable seeding, return false from the `abr_seed_enabled` filter in a must-use plugin.
 
 ### Site structure
 

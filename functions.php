@@ -30,7 +30,7 @@ $abr_files = array(
 	ABR_DIR . '/inc/anonymity.php',
 	ABR_DIR . '/inc/rank-math.php',
 	ABR_DIR . '/inc/tags.php',
-	ABR_DIR . '/inc/seed/content.php',
+	ABR_DIR . '/inc/seed/content.json',
 );
 if ( is_readable( ABR_DIR . '/inc/maintenance.php' ) ) {
 	require_once ABR_DIR . '/inc/maintenance.php';

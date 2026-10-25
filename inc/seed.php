@@ -2,7 +2,7 @@
 /**
  * Starter content seeder.
  *
- * Creates the pages, articles and categories in inc/seed/content.php on theme
+ * Creates the pages, articles and categories in inc/seed/content.json on theme
  * activation, and again whenever ABR_SEED_VERSION rises. Every item it creates
  * or adopts is recorded in the `abr_seeded_slugs` option (the tombstone list),
  * so an item an editor deletes is never recreated; only an explicit Restore in
@@ -25,7 +25,7 @@
  * the current version over the stored one, keeping the previous text in a
  * WordPress revision; `keep` refreshes only items still matching their
  * _abr_seed_hash fingerprint (or the version 1 fingerprint in
- * inc/seed/legacy-v1.php). Items the starter set no longer carries are moved to
+ * inc/seed/legacy-v1.json). Items the starter set no longer carries are moved to
  * the trash, where they can be restored.
  *
  * @package Abrahamic
@@ -93,7 +93,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 }
 
 /**
- * Raise when inc/seed/content.php gains items (set their 'since' to the new value).
+ * Raise when inc/seed/content.json gains items (set their 'since' to the new value).
  */
 define( 'ABR_SEED_VERSION', 98 );
 
@@ -119,6 +119,23 @@ function abr_previous_permalink_structures() {
 define( 'ABR_SEED_TAGLINE', 'Judaism, Mandaeism, Christianity, Islam' );
 
 /**
+ * Decodes a seed data file, stored as JSON for security (no PHP execution of
+ * content-population data). Returns $default when the file is missing,
+ * unreadable, or not valid JSON.
+ *
+ * @param string $file    Absolute path to a .json file.
+ * @param array  $default Value to return when the file cannot be read or parsed.
+ * @return array
+ */
+function abr_seed_read_json( $file, $default = array() ) {
+	if ( ! is_readable( $file ) ) {
+		return $default;
+	}
+	$data = json_decode( (string) file_get_contents( $file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a bundled file.
+	return ( is_array( $data ) && JSON_ERROR_NONE === json_last_error() ) ? $data : $default;
+}
+
+/**
  * Seed data.
  *
  * @return array{terms: array, items: array}
@@ -126,9 +143,8 @@ define( 'ABR_SEED_TAGLINE', 'Judaism, Mandaeism, Christianity, Islam' );
 function abr_seed_data() {
 	static $data = null;
 	if ( null === $data ) {
-		$file = ABR_DIR . '/inc/seed/content.php';
 		// While an update is unpacking the file can be briefly absent: seed nothing.
-		$data = is_readable( $file ) ? require $file : array( 'terms' => array(), 'items' => array() );
+		$data = abr_seed_read_json( ABR_DIR . '/inc/seed/content.json', array( 'terms' => array(), 'items' => array() ) );
 	}
 	return $data;
 }
@@ -141,7 +157,7 @@ function abr_seed_data() {
 function abr_seed_legacy_v1() {
 	static $legacy = null;
 	if ( null === $legacy ) {
-		$legacy = require ABR_DIR . '/inc/seed/legacy-v1.php';
+		$legacy = abr_seed_read_json( ABR_DIR . '/inc/seed/legacy-v1.json' );
 	}
 	return $legacy;
 }

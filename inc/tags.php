@@ -1,6 +1,6 @@
 <?php
 /**
- * Journal tags: a fixed, lowercase vocabulary (inc/seed/tags.php) applied to
+ * Journal tags: a fixed, lowercase vocabulary (inc/seed/tags.json) applied to
  * the starter articles, with descriptions and Rank Math focus keywords for the
  * tag pages. Tag pages covering fewer than three articles are kept out of
  * search results, so no thin tag page is indexed.
@@ -24,7 +24,7 @@ if ( ! defined( 'ABR_TAG_MIN_POSTS' ) ) {
  * @return int Number of articles tagged.
  */
 function abr_seed_tags( $force = false ) {
-	$file = ABR_DIR . '/inc/seed/tags.php';
+	$file = ABR_DIR . '/inc/seed/tags.json';
 	if ( ! is_readable( $file ) ) {
 		return 0;
 	}
@@ -32,7 +32,7 @@ function abr_seed_tags( $force = false ) {
 	if ( ! $force && get_option( 'abr_tags_stamp' ) === $stamp ) {
 		return 0;
 	}
-	$data = require $file;
+	$data = abr_seed_read_json( $file );
 	$ids  = array();
 	foreach ( $data['terms'] as $slug => $def ) {
 		list( $name, $description, $keyword ) = $def;

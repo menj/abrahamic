@@ -702,7 +702,7 @@ Replace the theme files and load any admin page. Seed version 11 rewrites Mecca 
 
 ## Upgrading from 2.16.x to 2.17.0
 
-Replace the theme files and load any admin page. Seed version 10 revises the About page, the Editorial Policy and the article on Kedar where you have not edited them. An edited copy keeps your text; the new wording is in `inc/seed/content.php`.
+Replace the theme files and load any admin page. Seed version 10 revises the About page, the Editorial Policy and the article on Kedar where you have not edited them. An edited copy keeps your text; the new wording is in `inc/seed/content.json`.
 
 ---
 
@@ -714,7 +714,7 @@ Replace the theme files and load any admin page. Seed version 9 renames the Site
 
 ## Upgrading from 2.15.x to 2.16.0
 
-Replace the theme files and load any admin page. Seed version 8 runs once: the Judaism, Christianity and Islam pages, the Abraham and Jerusalem articles, the Privacy Policy and About take their revised text where you have not edited them, and four new items are created (two articles, the Copyright and DMCA page, and the Thank You page under Donate). Anything you have edited keeps your text; compare it with `inc/seed/content.php` if you want the revisions. Addresses from the site's earlier years now redirect to the pages that carry that material.
+Replace the theme files and load any admin page. Seed version 8 runs once: the Judaism, Christianity and Islam pages, the Abraham and Jerusalem articles, the Privacy Policy and About take their revised text where you have not edited them, and four new items are created (two articles, the Copyright and DMCA page, and the Thank You page under Donate). Anything you have edited keeps your text; compare it with `inc/seed/content.json` if you want the revisions. Addresses from the site's earlier years now redirect to the pages that carry that material.
 
 ---
 
@@ -774,7 +774,7 @@ Replace the theme files and load any admin page. Seed version 5 runs once.
 
 ## Upgrading from 2.8.x to 2.9.0
 
-Replace the theme files and load any admin page. Seed version 4 refreshes About, Editorial Policy, Research, Comparative Studies and Sacred Texts where unedited. If you edited About or Editorial Policy, compare them with the new starter text in `inc/seed/content.php`. To show a Further reading list on articles, add links under Theme Options > Navigation.
+Replace the theme files and load any admin page. Seed version 4 refreshes About, Editorial Policy, Research, Comparative Studies and Sacred Texts where unedited. If you edited About or Editorial Policy, compare them with the new starter text in `inc/seed/content.json`. To show a Further reading list on articles, add links under Theme Options > Navigation.
 
 ---
 
