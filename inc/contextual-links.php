@@ -375,93 +375,265 @@ function abr_ctx_link( $content, $caps, $here ) {
 	if ( false === $pieces ) {
 		return $content;
 	}
-	$out = '';
+	// Inline formatting a phrase may run across ("Paul <em>of</em> Tarsus").
+	$inline = array( 'em', 'strong', 'i', 'b', 'span', 'small', 'mark', 'abbr' );
+
+	// A run: text and inline formatting tags in one block, outside any skip
+	// region, matched as one plain string. Any other tag ends the run.
+	$run   = array();
+	$out   = '';
+	$state = array(
+		'map'  => $map,
+		'caps' => $caps,
+	);
 	foreach ( $pieces as $piece ) {
 		if ( '' === $piece ) {
 			continue;
 		}
 		if ( '<' === $piece[0] ) {
+			$tag     = '';
+			$closing = false;
+			$forbid  = false;
+			$opens   = false;
 			if ( preg_match( '#^<(/?)([a-zA-Z][a-zA-Z0-9-]*)#', $piece, $m ) ) {
-				$tag = strtolower( $m[2] );
-				if ( '/' === $m[1] ) {
-					for ( $i = count( $stack ) - 1; $i >= 0; $i-- ) {
-						if ( $stack[ $i ]['tag'] === $tag ) {
-							foreach ( array_splice( $stack, $i ) as $closed ) {
-								$skip -= $closed['skip'] ? 1 : 0;
-							}
-							break;
+				$tag     = strtolower( $m[2] );
+				$closing = '/' === $m[1];
+				$opens   = ! $closing && ! in_array( $tag, $void, true ) && '/' !== substr( $piece, -2, 1 );
+				$forbid  = $opens && ( in_array( $tag, $skip_tags, true ) || preg_match( $skip_class, $piece ) || preg_match( $skip_lang, $piece ) );
+			}
+			$in_run = 0 === $skip && in_array( $tag, $inline, true ) && ( $closing || ( $opens && ! $forbid ) );
+			if ( ! $in_run ) {
+				$out .= abr_ctx_link_run( $run, $stack, $made, $done, $state );
+				$run  = array();
+			}
+			if ( $closing ) {
+				for ( $i = count( $stack ) - 1; $i >= 0; $i-- ) {
+					if ( $stack[ $i ]['tag'] === $tag ) {
+						foreach ( array_splice( $stack, $i ) as $closed ) {
+							$skip -= $closed['skip'] ? 1 : 0;
 						}
+						break;
 					}
-				} elseif ( ! in_array( $tag, $void, true ) && '/' !== substr( $piece, -2, 1 ) ) {
-					$forbid  = in_array( $tag, $skip_tags, true ) || preg_match( $skip_class, $piece ) || preg_match( $skip_lang, $piece );
-					$stack[] = array( 'tag' => $tag, 'skip' => (bool) $forbid, 'linked' => false );
-					$skip   += $forbid ? 1 : 0;
+				}
+			} elseif ( $opens ) {
+				$stack[] = array( 'tag' => $tag, 'skip' => (bool) $forbid, 'linked' => false );
+				$skip   += $forbid ? 1 : 0;
+			}
+			if ( $in_run ) {
+				$run[] = array( 'tag' => $tag, 'close' => $closing, 'html' => $piece );
+			} else {
+				$out .= $piece;
+			}
+			continue;
+		}
+		if ( $skip > 0 ) {
+			$out .= $piece;
+			continue;
+		}
+		$run[] = array( 'tag' => '', 'html' => $piece );
+	}
+	return $out . abr_ctx_link_run( $run, $stack, $made, $done, $state );
+}
+
+/**
+ * Link the phrases in one run of text and inline formatting tags. A phrase may
+ * run across those tags only when every tag inside it opens and closes inside
+ * it, so the added link wraps whole elements and the markup stays valid.
+ *
+ * @param array $run   Items: text ('tag' empty) or inline tags, in order.
+ * @param array $stack Open elements (for the nearest p or li).
+ * @param array $made  Links made, by kind.
+ * @param array $done  Targets already linked.
+ * @param array $state 'map' (compiled map) and 'caps'.
+ * @return string
+ */
+function abr_ctx_link_run( $run, &$stack, &$made, &$done, $state ) {
+	if ( ! $run ) {
+		return '';
+	}
+	$map  = $state['map'];
+	$caps = $state['caps'];
+	$html = '';
+	// The plain text, each text item's offset in it, and each tag's position.
+	$plain = '';
+	foreach ( $run as $n => $item ) {
+		$run[ $n ]['at'] = strlen( $plain );
+		$html           .= $item['html'];
+		if ( '' === $item['tag'] ) {
+			$plain .= $item['html'];
+		}
+	}
+	if ( '' === trim( $plain ) || ( $made['own'] >= $caps['own'] && $made['sister'] >= $caps['sister'] ) ) {
+		return $html;
+	}
+	// The nearest p or li, which takes one added link at most.
+	$block = null;
+	for ( $i = count( $stack ) - 1; $i >= 0; $i-- ) {
+		if ( 'p' === $stack[ $i ]['tag'] || 'li' === $stack[ $i ]['tag'] ) {
+			$block = $i;
+			break;
+		}
+	}
+	$links  = array(); // [ first item, last item, start, end, opening tag ].
+	$after  = -1;      // Last item inside a link made in this run.
+	$pos    = 0;
+	$shadow = 0; // End of the furthest match passed over.
+	$len    = strlen( $plain );
+	while ( $pos < $len ) {
+		if ( ( null !== $block && $stack[ $block ]['linked'] ) || ( $made['own'] >= $caps['own'] && $made['sister'] >= $caps['sister'] ) ) {
+			break;
+		}
+		$hit = abr_ctx_next( $map['patterns'], $plain, $pos );
+		// Invalid UTF-8 makes the /u patterns fail; keep the text as it was.
+		if ( false === $hit ) {
+			return $html;
+		}
+		if ( null === $hit ) {
+			break;
+		}
+		list( $offset, $text ) = $hit;
+		$end = $offset + strlen( $text );
+		// The tags inside the link must balance, or no link can wrap the phrase.
+		$wrap = abr_ctx_wrap( $run, $offset, $end, $after );
+		if ( null === $wrap ) {
+			$pos = $offset + abr_ctx_char_len( $plain, $offset );
+			continue;
+		}
+		$key    = abr_ctx_key( $map, $text );
+		$target = '' === $key ? null : $map['lookup'][ $key ];
+		$kind   = $target && $target['sister'] ? 'sister' : 'own';
+		$url_id = $target ? abr_ctx_url_key( $target['url'] ) : '';
+		// A phrase wholly inside one passed over is part of that name ("Barnabas"
+		// in "Gospel of Barnabas"); one running past its end is not ("Paul of
+		// Tarsus" after "Peter and Paul").
+		if ( $end <= $shadow || ! $target || $made[ $kind ] >= $caps[ $kind ] || isset( $done[ $url_id ] ) ) {
+			// Passed over: resume one character on, so an overlapping phrase can still match.
+			$shadow = max( $shadow, $end );
+			$pos    = $offset + abr_ctx_char_len( $plain, $offset );
+			continue;
+		}
+		$done[ $url_id ] = true;
+		++$made[ $kind ];
+		if ( null !== $block && isset( $stack[ $block ] ) ) {
+			$stack[ $block ]['linked'] = true;
+		}
+		$open    = $target['sister']
+			? '<a class="abr-ctx-link abr-ctx-link--sister" href="' . esc_url( $target['url'] ) . '" rel="noopener">'
+			: '<a class="abr-ctx-link" href="' . esc_url( $target['url'] ) . '">';
+		$links[] = array( $wrap[0], $wrap[1], $offset, $end, $open );
+		$after   = $wrap[1];
+		$pos     = $end;
+	}
+	if ( ! $links ) {
+		return $html;
+	}
+	// Rebuild. A link that starts at a text item opens inside it at the
+	// phrase's first character; one that starts at a tag opens before that
+	// tag. Likewise at the end.
+	$out = '';
+	foreach ( $run as $n => $item ) {
+		foreach ( $links as $link ) {
+			if ( $link[0] === $n && '' !== $item['tag'] ) {
+				$out .= $link[4];
+			}
+		}
+		if ( '' !== $item['tag'] ) {
+			$out .= $item['html'];
+		} else {
+			$cut = array();
+			foreach ( $links as $link ) {
+				if ( $link[0] === $n ) {
+					$cut[] = array( $link[2] - $item['at'], 1, $link[4] );
+				}
+				if ( $link[1] === $n ) {
+					$cut[] = array( $link[3] - $item['at'], 0, '</a>' );
 				}
 			}
-			$out .= $piece;
-			continue;
+			// By position; where one link ends as the next begins, close first.
+			usort(
+				$cut,
+				static function ( $a, $b ) {
+					return $a[0] === $b[0] ? $a[1] <=> $b[1] : $a[0] <=> $b[0];
+				}
+			);
+			$at = 0;
+			foreach ( $cut as $c ) {
+				$out .= substr( $item['html'], $at, $c[0] - $at ) . $c[2];
+				$at   = $c[0];
+			}
+			$out .= substr( $item['html'], $at );
 		}
-		if ( $skip > 0 || '' === trim( $piece ) || ( $made['own'] >= $caps['own'] && $made['sister'] >= $caps['sister'] ) ) {
-			$out .= $piece;
-			continue;
-		}
-		// The nearest p or li, which takes one added link at most.
-		$block = null;
-		for ( $i = count( $stack ) - 1; $i >= 0; $i-- ) {
-			if ( 'p' === $stack[ $i ]['tag'] || 'li' === $stack[ $i ]['tag'] ) {
-				$block = $i;
-				break;
+		foreach ( $links as $link ) {
+			if ( $link[1] === $n && '' !== $item['tag'] ) {
+				$out .= '</a>';
 			}
 		}
-		$linked = '';
-		$at     = 0;
-		$pos    = 0;
-		$shadow = 0; // End of the furthest match passed over.
-		$len    = strlen( $piece );
-		while ( $pos < $len ) {
-			if ( ( null !== $block && $stack[ $block ]['linked'] ) || ( $made['own'] >= $caps['own'] && $made['sister'] >= $caps['sister'] ) ) {
-				break;
-			}
-			$hit = abr_ctx_next( $map['patterns'], $piece, $pos );
-			// Invalid UTF-8 makes the /u patterns fail; keep the text as it was.
-			if ( false === $hit ) {
-				$linked = '';
-				$at     = 0;
-				break;
-			}
-			if ( null === $hit ) {
-				break;
-			}
-			list( $offset, $text ) = $hit;
-			$end    = $offset + strlen( $text );
-			$key    = abr_ctx_key( $map, $text );
-			$target = '' === $key ? null : $map['lookup'][ $key ];
-			$kind   = $target && $target['sister'] ? 'sister' : 'own';
-			$url_id = $target ? abr_ctx_url_key( $target['url'] ) : '';
-			// A phrase wholly inside one passed over is part of that name ("Barnabas"
-			// in "Gospel of Barnabas"); one running past its end is not ("Paul of
-			// Tarsus" after "Peter and Paul").
-			if ( $end <= $shadow || ! $target || $made[ $kind ] >= $caps[ $kind ] || isset( $done[ $url_id ] ) ) {
-				// Passed over: resume one character on, so an overlapping phrase can still match.
-				$shadow = max( $shadow, $end );
-				$pos    = $offset + abr_ctx_char_len( $piece, $offset );
-				continue;
-			}
-			$done[ $url_id ] = true;
-			++$made[ $kind ];
-			if ( null !== $block ) {
-				$stack[ $block ]['linked'] = true;
-			}
-			$linked .= substr( $piece, $at, $offset - $at );
-			if ( $target['sister'] ) {
-				$linked .= '<a class="abr-ctx-link abr-ctx-link--sister" href="' . esc_url( $target['url'] ) . '" rel="noopener">' . $text . '</a>';
-			} else {
-				$linked .= '<a class="abr-ctx-link" href="' . esc_url( $target['url'] ) . '">' . $text . '</a>';
-			}
-			$at  = $offset + strlen( $text );
-			$pos = $at;
-		}
-		$out .= $linked . substr( $piece, $at );
 	}
 	return $out;
+}
+
+/**
+ * Where a link around a span of the plain text can open and close so that the
+ * inline tags inside it balance: [ first item, last item ], or null. The
+ * tightest fit is tried first; tags sitting exactly at either edge
+ * ("<strong>Council</strong> of Nicaea") are taken in when that balances it.
+ *
+ * @param array $run   Run items with their plain-text positions.
+ * @param int   $start Start of the span.
+ * @param int   $end   End of the span.
+ * @param int   $after The link may only start after this item (the last link's end).
+ * @return array|null
+ */
+function abr_ctx_wrap( $run, $start, $end, $after ) {
+	$first = null;
+	$last  = null;
+	foreach ( $run as $n => $item ) {
+		if ( '' !== $item['tag'] ) {
+			continue;
+		}
+		$to = $item['at'] + strlen( $item['html'] );
+		if ( null === $first && $start >= $item['at'] && $start < $to ) {
+			$first = $n;
+		}
+		if ( $end > $item['at'] && $end <= $to ) {
+			$last = $n;
+		}
+	}
+	if ( null === $first || null === $last ) {
+		return null;
+	}
+	// Tags directly before the first text item (when the span starts with it),
+	// and directly after the last one (when the span ends with it).
+	$heads = array( $first );
+	if ( $start === $run[ $first ]['at'] ) {
+		for ( $n = $first - 1; $n > $after && '' !== $run[ $n ]['tag']; $n-- ) {
+			$heads[] = $n;
+		}
+	}
+	$tails = array( $last );
+	if ( $end === $run[ $last ]['at'] + strlen( $run[ $last ]['html'] ) ) {
+		for ( $n = $last + 1; isset( $run[ $n ] ) && '' !== $run[ $n ]['tag']; $n++ ) {
+			$tails[] = $n;
+		}
+	}
+	foreach ( $heads as $a ) {
+		foreach ( $tails as $b ) {
+			$open = array();
+			$ok   = true;
+			for ( $n = $a; $n <= $b && $ok; $n++ ) {
+				if ( '' === $run[ $n ]['tag'] ) {
+					continue;
+				}
+				if ( ! $run[ $n ]['close'] ) {
+					$open[] = $run[ $n ]['tag'];
+				} elseif ( ! $open || array_pop( $open ) !== $run[ $n ]['tag'] ) {
+					$ok = false;
+				}
+			}
+			if ( $ok && ! $open ) {
+				return array( $a, $b );
+			}
+		}
+	}
+	return null;
 }
