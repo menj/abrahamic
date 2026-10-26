@@ -7,6 +7,10 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 ### Changed
 - The Qur'an face is served as `assets/fonts/kfgqpc-hafs-uthmanic-script.woff2` (107 KB) in place of the original TTF (298 KB, removed). The owner chose on 2026-10-26 to serve a WOFF2 conversion of the KFGQPC HAFS Uthmanic Script (107 KB, from 298 KB), accepting that the KFGQPC licence forbids modifying the font. The conversion is lossless for glyphs, cmap and OpenType layout; the digital signature (DSIG) is dropped. Recorded in the SSOT decision record and licence table.
 
+### Fixed
+- Contextual links skip every script language `theme.css` styles: `hbo`, `tmr`, `jpa`, `oar`, `sam`, `aii`, `cld` and `grc` join `ar`, `he`, `arc`, `syc`, `syr` and `el`. Before, a phrase inside `lang="grc"` or `lang="hbo"` text could be linked.
+- A verse line pasted in the Complex's own encoding, with a rounded zero (U+0652) and no sukun, cannot be told from Tanzil text by its characters, and was mapped to sukun. Such a line now takes the class `abr-quran-kfgqpc` (Block, Advanced, Additional CSS class), and `inc/quran-text.php` leaves it alone.
+
 ## [2.84.0] - 2026-10-26
 
 ### Changed

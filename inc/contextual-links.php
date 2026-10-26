@@ -235,7 +235,9 @@ function abr_ctx_link( $content, $caps, $here ) {
 
 	$skip_tags  = array( 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'q', 'figure', 'figcaption', 'cite', 'code', 'pre', 'sup', 'sub', 'nav', 'table', 'button', 'label', 'select', 'textarea', 'summary', 'details', 'script', 'style', 'svg' );
 	$skip_class = '/\bclass=("|\')[^"\']*\b(?:abr-fn|abr-fn-back|abr-notes|abr-notes-title|abr-toc|wp-block-rank-math-toc-block|abr-further|abr-verse|abr-verse__ar|abr-verse__en|abr-table|abr-breadcrumbs)\b/i';
-	$skip_lang  = '/\blang=("|\')(?:ar|he|el|syr|syc|arc)(?:-[a-z0-9-]+)?\1/i';
+	// Every script language theme.css styles: Arabic; Hebrew and square-script
+	// Aramaic; Syriac; Greek.
+	$skip_lang  = '/\blang=("|\')(?:ar|he|hbo|arc|tmr|jpa|oar|sam|syc|syr|aii|cld|el|grc)(?:-[a-z0-9-]+)?\1/i';
 	$void       = array( 'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr' );
 
 	// Open elements: tag, whether it forbids links, and for p and li

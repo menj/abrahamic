@@ -49,7 +49,10 @@ function abr_quran_verse_block( $content ) {
 	return (string) preg_replace_callback(
 		'/(<p\b[^>]*\babr-verse__ar\b[^>]*)(>)(.*?)(<\/p>)/s',
 		static function ( $m ) {
-			if ( false !== strpos( $m[1], 'data-quran-encoding=' ) ) {
+			// A line pasted in the Complex's encoding with a rounded zero but
+			// no sukun cannot be told from Tanzil text by its characters; the
+			// editor marks it with the class abr-quran-kfgqpc.
+			if ( false !== strpos( $m[1], 'data-quran-encoding=' ) || preg_match( '/\bclass="[^"]*\babr-quran-kfgqpc\b/', $m[1] ) ) {
 				return $m[0];
 			}
 			return $m[1] . ' data-quran-encoding="kfgqpc"' . $m[2] . abr_quran_text_for_font( $m[3] ) . $m[4];
