@@ -2,6 +2,16 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.85.1] - 2026-10-26
+
+### Added
+- `[abr_lanah]` shortcode (`inc/shortcodes.php`): لعنة الله, laʿnat Allāh, "the curse of God", set after the name of Paul of Tarsus as calligraphy. The span `.abr-lanah` (`assets/css/theme.css`) draws `assets/images/lanat-allah.svg` (copied from injil.help) as a mask in `--abr-gold-ink`, the palette's accent, which becomes gold in dark mode; the palette has no red. The words "laʿnat Allāh, the curse of God" stay inside, visually hidden, for screen readers, search and a copy and paste, and show as written where the browser cannot draw a mask. In forced-colours mode it is drawn in `CanvasText`. The contextual-link engine skips `.abr-lanah`.
+- Policy: placed by hand and kept rare, only where the text gives the site's own verdict on Paul; never in titles, headings, excerpts, descriptions, menus, alt text, structured data or quotations. Excerpts and descriptions strip shortcodes.
+- Font licence: the calligraphy is drawn from the outlines of Dubidam Arabic (NamelaType), whose metadata names a free personal-use licence. A web licence is the site owner's to hold.
+
+### Not changed
+- No starter content uses the shortcode. The site presents itself as a neutral comparative reference (`ssot.md` content standard), and no article gives the site's own verdict on Paul: "Paul and Peter: two missions", "The parting of the ways" and the Islamic Dilemma page describe him historically. Seed version stays 100.
+
 ## [2.85.0] - 2026-10-26
 
 ### Changed

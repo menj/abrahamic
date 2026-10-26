@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.85.0
+Stable tag: 2.85.1
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -547,6 +547,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.85.1 - 2026-10-26 =
+* New [abr_lanah] shortcode: laʿnat Allāh after the name of Paul of Tarsus, as calligraphy in gold ink, for the owner to place by hand. No starter content uses it, so the seed version is unchanged.
 
 = 2.85.0 - 2026-10-26 =
 * The Islamic Dilemma reference page expanded (Tawrāt and Injīl, muhaymin, taḥrīf, the classical exegetes, revelation and the later texts) with a box linking the six sister pieces across the network; /islamic-dilemma/ now redirects to it. Seed version 100.
