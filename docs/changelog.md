@@ -2,7 +2,12 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
-## [Unreleased]
+## [2.83.0] - 2026-10-26
+
+### Added
+- Contextual links (`inc/contextual-links.php`). On a single article or page, the first mention of a known phrase in the running text links to the inner page that treats it, on this site or on one of the six sister sites (bestofislam.org, injil.help, apostleofdoom.org, compelling-evidence.com, murtadd.org, lailatulqadar.guide). Phrases and targets come from `inc/data/network-links.json`, a shared file identical in all seven themes; this site's entries resolve through `home_url()`, so staging links stay on staging. Links are made at render time on `the_content` (priority 30) and stored content is unchanged. Never in headings, quotations and verses, footnotes, the table of contents, Further reading, tables, existing links or text tagged Arabic, Hebrew, Greek, Syriac or Aramaic; one added link per paragraph or list item; each target once a page, never the page itself, and never a page the text already links by hand. Not on the front page.
+- Theme Options > Contextual links tab: switches for links to this site and to sister sites, a cap for each (defaults 4 and 3), extra phrases (`phrase | /path/` or `phrase | https://…` on a sister domain; other hosts are ignored) read before the shared file, and excluded slugs. Keys `ctx_own`, `ctx_sister`, `ctx_own_max`, `ctx_sister_max`, `ctx_extra`, `ctx_exclude`; new sanitising types `count15` and `count10`.
+- Filters `abr_contextual_links_map` (the phrase list) and `abr_contextual_links_enabled` (per post).
 
 ### Changed
 - Seed data (`inc/seed/content.php` and the other `inc/seed/*.php` data files: `legacy-v1.php`, `legacy-paths.php`, `focus-keywords.php`, `focus-keywords-previous.php`, `photo-credits.php`, `seo-titles.php`, `tags.php`) now ships as `.json` instead of executable `.php`, so starter content is pure data with nothing to execute. `inc/seed.php` and every module that reads it (`inc/seo.php`, `inc/tags.php`, `inc/rank-math.php`, `inc/redirects.php`, `functions.php`) now decode the JSON (`abr_seed_read_json()`) instead of `require`-ing PHP. No seed content, metadata or behaviour changed; the conversion was verified to round-trip byte-for-byte.

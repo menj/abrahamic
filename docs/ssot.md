@@ -4,8 +4,8 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.81.0** |
-| Release date | 2026-09-20 |
+| Current version | **2.83.0** |
+| Release date | 2026-10-26 |
 | Status | Stable |
 
 ---
@@ -117,6 +117,8 @@ abrahamic/
 │   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
 │   ├── rank-math.php      Rank Math: focus keywords where empty; licence, speakable and FAQ data merged into its schema; no Person or Gravatar
 │   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.json), lowercase enforced, thin tag pages noindexed
+│   ├── contextual-links.php  Links in the running text to inner pages here and on the sister sites (section 8)
+│   ├── data/network-links.json  Shared phrase map, identical in all seven themes; edit it in every theme at once
 │   └── maintenance.php    Back-shortly notice (503): wp-content drop-ins for updates, fatal errors, database failures; missing-file guard
 ├── parts/                 header.html, footer.html
 ├── patterns/              Fifteen home page sections (section 9)
@@ -350,6 +352,7 @@ Screen: Appearance > Theme Options (`themes.php?page=abrahamic-theme-options`), 
 | Newsletter | Form address, field name, intro | Settings API |
 | Social | 45 profile URLs | Settings API |
 | Search | Search output switch, front page description, logo, share image, verification codes, Analytics ID | Settings API |
+| Contextual links | Links to this site and to sister sites, a cap for each, extra phrases, excluded slugs | Settings API |
 | Tools | Export, import, reset, starter content, link updater, system information | `admin-post.php` |
 
 Tab selection: `?tab=` in the address first, then `sessionStorage` key `abrOptionsTab`, then General. The script keeps the address and the form referer in step, so saving returns to the same tab. Unticked switches submit through a hidden `0` field.
@@ -398,8 +401,14 @@ Stored as one array in `abr_options`. `abr_option_types()` is the schema; `abr_o
 | `org_logo`, `share_image` | url | empty | Search; chosen from the media library |
 | `google_verification`, `bing_verification` | token | empty | Search |
 | `ga4_id` | ga4 | empty | Search; must match `G-` followed by 4 to 20 letters or digits |
+| `ctx_own` | bool | 1 | Contextual links; links to inner pages of this site |
+| `ctx_own_max` | count15 | 4 | Contextual links; 0 to 15 a page |
+| `ctx_sister` | bool | 1 | Contextual links; links to inner pages of the six sister sites |
+| `ctx_sister_max` | count10 | 3 | Contextual links; 0 to 10 a page |
+| `ctx_extra` | textarea | empty | Contextual links; `phrase \| /path/` or `phrase \| https://…` on a sister domain, read before `inc/data/network-links.json` |
+| `ctx_exclude` | textarea | empty | Contextual links; slugs, one per line, of pages that never get these links |
 
-Sanitising by type: `bool` to 0 or 1; `email` through `sanitize_email`; `link` through `abr_sanitize_link()` (tokens keep `a-z0-9:_-`, anything else through `esc_url_raw`); `menu` line by line through `abr_sanitize_menu()`, dropping lines without a label or a valid target; `menu_primary` and `menu_secondary` also apply the limits in section 13 and report removed lines as a settings warning; `token` through `abr_sanitize_token()`; `ga4` upper-cased and pattern-checked; `logo_style` must be a key of `abr_logo_styles()`; `text` through `sanitize_text_field`; `textarea` through `sanitize_textarea_field`; `url` trimmed, then `esc_url_raw`; `key` through `sanitize_key`; `hex` through `sanitize_hex_color`. A missing text, textarea or url value takes its default; a missing bool counts as off.
+Sanitising by type: `bool` to 0 or 1; `email` through `sanitize_email`; `link` through `abr_sanitize_link()` (tokens keep `a-z0-9:_-`, anything else through `esc_url_raw`); `menu` line by line through `abr_sanitize_menu()`, dropping lines without a label or a valid target; `menu_primary` and `menu_secondary` also apply the limits in section 13 and report removed lines as a settings warning; `token` through `abr_sanitize_token()`; `ga4` upper-cased and pattern-checked; `logo_style` must be a key of `abr_logo_styles()`; `text` through `sanitize_text_field`; `textarea` through `sanitize_textarea_field`; `url` trimmed, then `esc_url_raw`; `key` through `sanitize_key`; `hex` through `sanitize_hex_color`; `count15` and `count10` to a whole number from 0 to 15 or 10. A missing text, textarea or url value takes its default; a missing bool counts as off.
 
 Tools:
 
@@ -690,6 +699,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-10-26 | 2.83.0 | Contextual links in the running text, to inner pages here and on the six sister sites, from one phrase map shared by all seven themes | Readers reach the page that treats a topic at the point it is mentioned; one shared file keeps every site's phrases and targets in step |
 | 2026-09-17 | 1.0.0 | Build as a child of Twenty Twenty-Five | Block theme foundation with the design carried by `theme.json` and patterns |
 | 2026-09-17 | 1.0.0 | Replace Font Awesome with inline SVG | Removes a third-party dependency |
 | 2026-09-17 | 1.0.0 | FAQ uses `core/details` | Native disclosure, no script |

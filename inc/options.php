@@ -129,6 +129,13 @@ function abr_option_types() {
 		// Search addresses.
 		'search_pretty'       => 'bool',
 		'search_base'         => 'slug',
+		// Contextual links.
+		'ctx_own'             => 'bool',
+		'ctx_sister'          => 'bool',
+		'ctx_own_max'         => 'count15',
+		'ctx_sister_max'      => 'count10',
+		'ctx_extra'           => 'textarea',
+		'ctx_exclude'         => 'textarea',
 	);
 	// Social.
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
@@ -220,6 +227,12 @@ function abr_option_defaults() {
 		'login_redirect_slug' => get_option( 'whl_redirect_admin' ) ? sanitize_title( get_option( 'whl_redirect_admin' ) ) : '404',
 		'search_pretty'       => 1,
 		'search_base'         => get_option( 'wpseosearch_base' ) ? sanitize_title( get_option( 'wpseosearch_base' ) ) : 'search',
+		'ctx_own'             => 1,
+		'ctx_sister'          => 1,
+		'ctx_own_max'         => 4,
+		'ctx_sister_max'      => 3,
+		'ctx_extra'           => '',
+		'ctx_exclude'         => '',
 	);
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
 		$defaults[ abr_social_key( $slug ) ] = '';
@@ -368,6 +381,11 @@ function abr_sanitize_options( $input ) {
 				break;
 			case 'logo_style':
 				$out[ $key ] = ( null !== $raw && array_key_exists( $raw, abr_logo_styles() ) ) ? $raw : $d[ $key ];
+				break;
+			case 'count15':
+			case 'count10':
+				$max         = 'count15' === $type ? 15 : 10;
+				$out[ $key ] = null === $raw || '' === trim( (string) $raw ) ? $d[ $key ] : max( 0, min( $max, (int) $raw ) );
 				break;
 			case 'scheme':
 				$out[ $key ] = ( null !== $raw && array_key_exists( $raw, abr_schemes() ) ) ? $raw : $d[ $key ];

@@ -1,7 +1,7 @@
 <?php
 /**
  * Theme Options screen: Appearance > Theme Options.
- * Seven tabs; the first six save through the Settings API, Tools posts to admin-post.php.
+ * Eleven tabs; all but Tools save through the Settings API, Tools posts to admin-post.php.
  *
  * @package Abrahamic
  */
@@ -26,6 +26,7 @@ function abr_options_tabs() {
 		'social'     => array( __( 'Social', 'abrahamic' ), '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/>' ),
 		'login'      => array( __( 'Login', 'abrahamic' ), '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>' ),
 		'search'     => array( __( 'Search', 'abrahamic' ), '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>' ),
+		'links'      => array( __( 'Contextual links', 'abrahamic' ), '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>' ),
 		'tools'      => array( __( 'Tools', 'abrahamic' ), '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.8-.4-.4-2.8z"/>' ),
 	);
 }
@@ -549,6 +550,22 @@ function abr_render_options_page() {
 					</p>
 				<?php endif; ?>
 				<p class="abr-help"><?php esc_html_e( 'If the address is ever lost, add define( \'ABR_HIDE_LOGIN\', false ); to wp-config.php, log in at wp-login.php, and remove the line again.', 'abrahamic' ); ?></p>
+			</section>
+
+			<section class="abr-panel" role="tabpanel" id="abr-panel-links" aria-labelledby="abr-tab-links" hidden>
+				<h2><?php esc_html_e( 'Links in the running text', 'abrahamic' ); ?></h2>
+				<p class="abr-help"><?php esc_html_e( 'On a single article or page, the first mention of a known phrase links to the page that treats it, on this site or on one of the six sister sites. Phrases come from inc/data/network-links.json, a file shared by all seven themes. Links are never made in headings, quotations, verses, footnotes, tables of contents, Further reading, existing links or Arabic, Hebrew, Greek or Aramaic text, and at most one is added per paragraph. Stored content is not changed.', 'abrahamic' ); ?></p>
+				<?php
+				abr_field( 'ctx_own', __( 'Link to pages on this site', 'abrahamic' ), 'checkbox' );
+				abr_field( 'ctx_own_max', __( 'Links to this site on one page, at most', 'abrahamic' ), 'number', __( '0 to 15. A page already linked by hand in the text is not linked again.', 'abrahamic' ), array( 'min' => 0, 'max' => 15, 'step' => 1 ) );
+				abr_field( 'ctx_sister', __( 'Link to pages on the sister sites', 'abrahamic' ), 'checkbox' );
+				abr_field( 'ctx_sister_max', __( 'Links to sister sites on one page, at most', 'abrahamic' ), 'number', __( '0 to 10. They open in the same tab.', 'abrahamic' ), array( 'min' => 0, 'max' => 10, 'step' => 1 ) );
+				?>
+				<h2><?php esc_html_e( 'Phrases and exceptions', 'abrahamic' ); ?></h2>
+				<?php
+				abr_field( 'ctx_extra', __( 'Extra phrases', 'abrahamic' ), 'menu', __( 'One per line: phrase | /path/ for a page on this site, or phrase | https://… for a page on a sister site. Other addresses are ignored. These lines are read before the shared file, so they win.', 'abrahamic' ) );
+				abr_field( 'ctx_exclude', __( 'Pages that never get these links', 'abrahamic' ), 'textarea', __( 'One address slug per line, for example the-islamic-dilemma.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
+				?>
 			</section>
 
 			<div class="abr-options-submit">

@@ -99,8 +99,9 @@ functions.php
 | `admin_enqueue_scripts` | `abr_seo_editor_assets` | Description counter on the editor screens |
 | `wp_enqueue_scripts`, `script_loader_tag` | `abr_seo_analytics`, `abr_seo_analytics_tag` | Google Analytics 4 |
 | `template_redirect` (priority 5) | `abr_legacy_redirect` | 301s from earlier addresses |
+| `the_content` (priority 30) | `abr_ctx_filter` | Contextual links to inner pages here and on the sister sites, after blocks, texturising and shortcodes |
 
-Filters provided: `abr_seed_enabled` (bool) stops the seeder; `abr_seo_enabled` (bool) overrides the search output decision.
+Filters provided: `abr_seed_enabled` (bool) stops the seeder; `abr_seo_enabled` (bool) overrides the search output decision; `abr_contextual_links_map` (array of phrase, url, sister) changes the contextual link phrases; `abr_contextual_links_enabled` (bool, post) switches them off for one entry.
 
 ### Shortcodes
 
@@ -156,7 +157,7 @@ Interface icon names: `star-of-david`, `cross`, `crescent`, `scroll`, `city`, `m
 
 ### Theme Options
 
-Appearance > Theme Options has seven tabs: General, Header, Footer, Colours, Newsletter, Social and Tools. The first six share one form and save through the Settings API; the form is hidden while Tools is open, because Tools has its own forms. A tab opens from `?tab=` in the address (for example `&tab=footer`), else from the last tab used in the session. Saving returns to the same tab.
+Appearance > Theme Options has eleven tabs: General, Header, Footer, Navigation, Colours, Newsletter, Social, Login, Search, Contextual links and Tools. All but Tools share one form and save through the Settings API; the form is hidden while Tools is open, because Tools has its own forms. A tab opens from `?tab=` in the address (for example `&tab=footer`), else from the last tab used in the session. Saving returns to the same tab.
 
 To add an option:
 
