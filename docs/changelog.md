@@ -2,6 +2,15 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.84.2] - 2026-10-26
+
+### Fixed
+- Starter content, seed version 99 (High findings of the content review):
+  - A literal `{Q}` placeholder printed in two articles: the heading and contents entry "What ‘confirming’ means" in The Islamic Dilemma, and the alt text "al-Ṣūfī’s" in the Sabians in classical Muslim texts article.
+  - The sentence "whatever in the earlier books agrees with the Qur’an is true, and whatever disagrees with it is false" was credited to al-Ṭabarī on the Islamic Dilemma page and article. Ibn Kathīr reports it from Ibn Jurayj (Tafsīr, on 5:48, ed. Salāma, vol. 3, p. 128, checked on shamela.ws, book 8473, page 1393); text and notes now say so.
+  - The Gospel of Barnabas: the sentence "Other Muslim scholars have long doubted its authenticity" removed with its note, which cited a Christian scholar through a television programme and presented Jan Joosten as a Muslim; later notes renumbered.
+  - Haman in the Qur’an: the unsourced sentence placing a Bakenkhons obelisk at Luxor Temple and its partner in Paris removed.
+
 ## [2.84.1] - 2026-10-26
 
 ### Changed
