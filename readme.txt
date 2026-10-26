@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.84.0
+Stable tag: 2.84.1
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +43,7 @@ Appearance > Theme Options lets you:
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.84.0.zip, and activate it. The starter pages and articles are created automatically.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.84.1.zip, and activate it. The starter pages and articles are created automatically.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
@@ -143,6 +143,9 @@ Yes. The hero section and the place cards hold patterned placeholders. Replace e
 They are copied across automatically when you activate Abrahamic. Changes you made to templates in the Site Editor under the old theme are not carried over. See docs/upgrading.md for details.
 
 == Upgrade Notice ==
+
+= 2.84.1 =
+The Qur'an typeface is served as a smaller WOFF2 file.
 
 = 2.84.0 =
 Qur'anic verses are set in the King Fahd Complex's Hafs Uthmanic typeface.
@@ -544,6 +547,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.84.1 - 2026-10-26 =
+* The Qur'an typeface is served as a WOFF2 conversion (107 KB, from 298 KB) in place of the original TTF, by the owner's decision, accepting that the font's licence forbids modifying it.
 
 = 2.84.0 - 2026-10-26 =
 * Arabic Qur'anic verses are set in KFGQPC HAFS Uthmanic Script, the King Fahd Complex's Madinah mushaf face, replacing Amiri Quran. Other Arabic keeps its usual typeface.
@@ -1169,9 +1175,9 @@ Arslan Wessam A 1.00, Arabic subset (assets/fonts/arslan-wessam.woff2)
 Copyright Arslan, Dev-Point.com
 The font file states no licence terms. It is included for this site at the owner's request and is not covered by the GNU GPL.
 
-KFGQPC HAFS Uthmanic Script 2.2, for Arabic Qur'anic verses only (assets/fonts/kfgqpc-hafs-uthmanic-script.ttf)
+KFGQPC HAFS Uthmanic Script 2.2, for Arabic Qur'anic verses only (assets/fonts/kfgqpc-hafs-uthmanic-script.woff2)
 Copyright 2010 King Fahd Glorious Quran Printing Complex, http://fonts.qurancomplex.gov.sa/
-License: free to use, copy and distribute; may not be sold or modified. Distributed unmodified under its licence. The full licence text is embedded in the font file. It is not covered by the GNU GPL.
+License: free to use, copy and distribute; may not be sold or modified. Served as a WOFF2 conversion of the original TTF by the owner's decision of 2026-10-26, accepting that the licence forbids modification; the conversion is lossless for glyphs, cmap and OpenType layout and drops the digital signature. The full licence text is embedded in the font file. It is not covered by the GNU GPL.
 
 Sabon Next LT, complete, bundled with the theme (assets/fonts/sabon-next-lt-*.woff2, 8 files)
 Copyright 2002-2015, 2018 Monotype GmbH

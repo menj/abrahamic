@@ -1176,10 +1176,11 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 
 /* Qur'anic passages set as Arabic with the translation beneath each verse.
    The verse face is for Qur'anic Arabic only; other Arabic keeps the :lang(ar) stack.
-   The TTF ships unmodified, as its licence requires (no WOFF2, no subset). */
+   Served as a WOFF2 conversion of the original TTF, by the owner's decision of
+   2026-10-26 (docs/ssot.md, decision record); the licence forbids modifying the font. */
 @font-face {
 	font-family: "KFGQPC HAFS Uthmanic Script"; font-style: normal; font-weight: 400; font-display: swap;
-	src: url("../fonts/kfgqpc-hafs-uthmanic-script.ttf") format("truetype");
+	src: url("../fonts/kfgqpc-hafs-uthmanic-script.woff2") format("woff2");
 }
 .abr-verse { margin: 2em 0; padding: 22px 26px; border-left: 3px solid var(--abr-gold); background: var(--abr-white); border-radius: 0 8px 8px 0; }
 .abr-verse .abr-verse__ar { margin: 0 0 4px; font-family: var(--abr-font-quran); font-size: 1.55em; line-height: 2.1; letter-spacing: 0; text-align: right; text-align-last: right; direction: rtl; color: var(--abr-navy); }
