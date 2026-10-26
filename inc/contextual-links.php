@@ -158,7 +158,7 @@ function abr_ctx_compiled() {
 		if ( empty( $entry['phrase'] ) || empty( $entry['url'] ) ) {
 			continue;
 		}
-		$key = abr_ctx_lower( abr_ctx_plain_apostrophes( $entry['phrase'] ) );
+		$key = abr_ctx_norm( $entry['phrase'] );
 		if ( ! isset( $lookup[ $key ] ) ) {
 			$lookup[ $key ] = array( 'url' => $entry['url'], 'sister' => ! empty( $entry['sister'] ) );
 		}
@@ -172,8 +172,13 @@ function abr_ctx_compiled() {
 	);
 	$alts = array();
 	foreach ( $phrases as $phrase ) {
-		// wptexturize turns ' into &#8217; before this runs; match every form.
-		$alts[ $phrase ] = str_replace( "'", "(?:'|\x{2019}|\x{2018}|\x{02BC}|&\#8217;|&\#8216;|&\#0?39;|&rsquo;|&lsquo;|&apos;)", preg_quote( $phrase, '/' ) );
+		// wptexturize turns ' into &#8217; before this runs, and editors write
+		// non-breaking spaces; match every form of both.
+		$alts[ $phrase ] = str_replace(
+			array( "'", ' ' ),
+			array( "(?:'|\x{2019}|\x{2018}|\x{02BC}|&\#8217;|&\#8216;|&\#0?39;|&rsquo;|&lsquo;|&apos;)", '(?:\s|&nbsp;|&\#160;|\x{00A0})+' ),
+			preg_quote( $phrase, '/' )
+		);
 	}
 	$compiled = array(
 		'lookup'   => $lookup,
@@ -216,7 +221,7 @@ function abr_ctx_patterns( $alts ) {
  * @return string
  */
 function abr_ctx_key( $map, $text ) {
-	$key = abr_ctx_lower( abr_ctx_plain_apostrophes( $text ) );
+	$key = abr_ctx_norm( $text );
 	if ( isset( $map['lookup'][ $key ] ) ) {
 		return $key;
 	}
@@ -229,40 +234,53 @@ function abr_ctx_key( $map, $text ) {
 }
 
 /**
- * Every phrase match in a piece of text, in text order, the longest at any
- * offset, none overlapping: array of [ byte offset, text ]. Null when the
- * text cannot be matched (invalid UTF-8).
+ * The first phrase match at or after a byte offset, the longest where several
+ * start there: [ byte offset, text ]. Null when there is none, false when the
+ * text cannot be matched (invalid UTF-8). The scan is resumed by the caller,
+ * so a match it passes over (a target already linked) never hides a phrase
+ * that overlaps it, and matches from several chunks never shadow each other.
  *
  * @param string[] $patterns Patterns.
  * @param string   $text     Plain text.
- * @return array|null
+ * @param int      $from     Byte offset, on a character boundary.
+ * @return array|null|false
  */
-function abr_ctx_matches( $patterns, $text ) {
-	$found = array();
+function abr_ctx_next( $patterns, $text, $from ) {
+	$best = null;
 	foreach ( $patterns as $pattern ) {
-		$n = preg_match_all( $pattern, $text, $m, PREG_OFFSET_CAPTURE );
+		$n = preg_match( $pattern, $text, $m, PREG_OFFSET_CAPTURE, $from );
 		if ( false === $n ) {
-			return null;
+			return false;
 		}
-		foreach ( $m[0] as $hit ) {
-			$found[] = array( $hit[1], $hit[0] );
-		}
-	}
-	usort(
-		$found,
-		static function ( $a, $b ) {
-			return $a[0] <=> $b[0] ?: strlen( $b[1] ) <=> strlen( $a[1] );
-		}
-	);
-	$out = array();
-	$end = 0;
-	foreach ( $found as $hit ) {
-		if ( $hit[0] >= $end ) {
-			$out[] = $hit;
-			$end   = $hit[0] + strlen( $hit[1] );
+		if ( $n && ( null === $best || $m[0][1] < $best[0] || ( $m[0][1] === $best[0] && strlen( $m[0][0] ) > strlen( $best[1] ) ) ) ) {
+			$best = array( $m[0][1], $m[0][0] );
 		}
 	}
-	return $out;
+	return $best;
+}
+
+/**
+ * Byte length of the UTF-8 character that starts at an offset.
+ *
+ * @param string $text   Text.
+ * @param int    $offset Byte offset.
+ * @return int
+ */
+function abr_ctx_char_len( $text, $offset ) {
+	$byte = ord( $text[ $offset ] );
+	return $byte >= 0xF0 ? 4 : ( $byte >= 0xE0 ? 3 : ( $byte >= 0xC0 ? 2 : 1 ) );
+}
+
+/**
+ * A phrase or matched text as a lookup key: lower case, straight apostrophes,
+ * and every run of spaces (non-breaking ones included) as one space.
+ *
+ * @param string $text Text.
+ * @return string
+ */
+function abr_ctx_norm( $text ) {
+	$text = str_replace( array( '&nbsp;', '&#160;', "\u{00A0}" ), ' ', abr_ctx_plain_apostrophes( $text ) );
+	return abr_ctx_lower( trim( (string) preg_replace( '/\s+/', ' ', $text ) ) );
 }
 
 /**
@@ -352,7 +370,8 @@ function abr_ctx_link( $content, $caps, $here ) {
 	// whether a link has been added inside it.
 	$stack  = array();
 	$skip   = 0;
-	$pieces = preg_split( '/(<[^>]+>)/', $content, -1, PREG_SPLIT_DELIM_CAPTURE );
+	// A comment, or a tag whose quoted attribute values may hold '>'.
+	$pieces = preg_split( '/(<!--.*?-->|<(?:[^>"\']|"[^"]*"|\'[^\']*\')+>)/s', $content, -1, PREG_SPLIT_DELIM_CAPTURE );
 	if ( false === $pieces ) {
 		return $content;
 	}
@@ -394,26 +413,38 @@ function abr_ctx_link( $content, $caps, $here ) {
 				break;
 			}
 		}
-		// Invalid UTF-8 makes the /u patterns fail; keep the text as it was.
-		$hits = abr_ctx_matches( $map['patterns'], $piece );
-		if ( ! $hits ) {
-			$out .= $piece;
-			continue;
-		}
-		$at = 0;
-		foreach ( $hits as $hit ) {
-			list( $offset, $text ) = $hit;
-			if ( null !== $block && $stack[ $block ]['linked'] ) {
+		$linked = '';
+		$at     = 0;
+		$pos    = 0;
+		$shadow = 0; // End of the furthest match passed over.
+		$len    = strlen( $piece );
+		while ( $pos < $len ) {
+			if ( ( null !== $block && $stack[ $block ]['linked'] ) || ( $made['own'] >= $caps['own'] && $made['sister'] >= $caps['sister'] ) ) {
 				break;
 			}
-			$key = abr_ctx_key( $map, $text );
-			if ( '' === $key ) {
-				continue;
+			$hit = abr_ctx_next( $map['patterns'], $piece, $pos );
+			// Invalid UTF-8 makes the /u patterns fail; keep the text as it was.
+			if ( false === $hit ) {
+				$linked = '';
+				$at     = 0;
+				break;
 			}
-			$target = $map['lookup'][ $key ];
-			$kind   = $target['sister'] ? 'sister' : 'own';
-			$url_id = abr_ctx_url_key( $target['url'] );
-			if ( $made[ $kind ] >= $caps[ $kind ] || isset( $done[ $url_id ] ) ) {
+			if ( null === $hit ) {
+				break;
+			}
+			list( $offset, $text ) = $hit;
+			$end    = $offset + strlen( $text );
+			$key    = abr_ctx_key( $map, $text );
+			$target = '' === $key ? null : $map['lookup'][ $key ];
+			$kind   = $target && $target['sister'] ? 'sister' : 'own';
+			$url_id = $target ? abr_ctx_url_key( $target['url'] ) : '';
+			// A phrase wholly inside one passed over is part of that name ("Barnabas"
+			// in "Gospel of Barnabas"); one running past its end is not ("Paul of
+			// Tarsus" after "Peter and Paul").
+			if ( $end <= $shadow || ! $target || $made[ $kind ] >= $caps[ $kind ] || isset( $done[ $url_id ] ) ) {
+				// Passed over: resume one character on, so an overlapping phrase can still match.
+				$shadow = max( $shadow, $end );
+				$pos    = $offset + abr_ctx_char_len( $piece, $offset );
 				continue;
 			}
 			$done[ $url_id ] = true;
@@ -421,15 +452,16 @@ function abr_ctx_link( $content, $caps, $here ) {
 			if ( null !== $block ) {
 				$stack[ $block ]['linked'] = true;
 			}
-			$out .= substr( $piece, $at, $offset - $at );
+			$linked .= substr( $piece, $at, $offset - $at );
 			if ( $target['sister'] ) {
-				$out .= '<a class="abr-ctx-link abr-ctx-link--sister" href="' . esc_url( $target['url'] ) . '" rel="noopener">' . $text . '</a>';
+				$linked .= '<a class="abr-ctx-link abr-ctx-link--sister" href="' . esc_url( $target['url'] ) . '" rel="noopener">' . $text . '</a>';
 			} else {
-				$out .= '<a class="abr-ctx-link" href="' . esc_url( $target['url'] ) . '">' . $text . '</a>';
+				$linked .= '<a class="abr-ctx-link" href="' . esc_url( $target['url'] ) . '">' . $text . '</a>';
 			}
-			$at = $offset + strlen( $text );
+			$at  = $offset + strlen( $text );
+			$pos = $at;
 		}
-		$out .= substr( $piece, $at );
+		$out .= $linked . substr( $piece, $at );
 	}
 	return $out;
 }

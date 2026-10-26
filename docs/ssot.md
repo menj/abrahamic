@@ -407,10 +407,10 @@ Stored as one array in `abr_options`. `abr_option_types()` is the schema; `abr_o
 | `ctx_own_max` | count15 | 4 | Contextual links; 0 to 15 a page |
 | `ctx_sister` | bool | 1 | Contextual links; links to inner pages of the six sister sites |
 | `ctx_sister_max` | count10 | 3 | Contextual links; 0 to 10 a page |
-| `ctx_extra` | textarea | empty | Contextual links; `phrase \| /path/` or `phrase \| https://…` on a sister domain, read before `inc/data/network-links.json` |
-| `ctx_exclude` | textarea | empty | Contextual links; slugs, one per line, of pages that never get these links |
+| `ctx_extra` | lines | empty | Contextual links; `phrase \| /path/` or `phrase \| https://…` on a sister domain, read before `inc/data/network-links.json` |
+| `ctx_exclude` | lines | empty | Contextual links; slugs, one per line, of pages that never get these links |
 
-Sanitising by type: `bool` to 0 or 1; `email` through `sanitize_email`; `link` through `abr_sanitize_link()` (tokens keep `a-z0-9:_-`, anything else through `esc_url_raw`); `menu` line by line through `abr_sanitize_menu()`, dropping lines without a label or a valid target; `menu_primary` and `menu_secondary` also apply the limits in section 13 and report removed lines as a settings warning; `token` through `abr_sanitize_token()`; `ga4` upper-cased and pattern-checked; `logo_style` must be a key of `abr_logo_styles()`; `text` through `sanitize_text_field`; `textarea` through `sanitize_textarea_field`; `url` trimmed, then `esc_url_raw`; `key` through `sanitize_key`; `hex` through `sanitize_hex_color`; `count15` and `count10` to a whole number from 0 to 15 or 10. A missing text, textarea or url value takes its default; a missing bool counts as off.
+Sanitising by type: `bool` to 0 or 1; `email` through `sanitize_email`; `link` through `abr_sanitize_link()` (tokens keep `a-z0-9:_-`, anything else through `esc_url_raw`); `menu` line by line through `abr_sanitize_menu()`, dropping lines without a label or a valid target; `menu_primary` and `menu_secondary` also apply the limits in section 13 and report removed lines as a settings warning; `token` through `abr_sanitize_token()`; `ga4` upper-cased and pattern-checked; `logo_style` must be a key of `abr_logo_styles()`; `text` through `sanitize_text_field`; `textarea` through `sanitize_textarea_field`; `lines` line by line through `abr_sanitize_lines()` (invalid UTF-8 dropped, tags stripped, each line trimmed, percent-encoded octets kept); `url` trimmed, then `esc_url_raw`; `key` through `sanitize_key`; `hex` through `sanitize_hex_color`; `count15` and `count10` to a whole number from 0 to 15 or 10. A missing text, textarea, lines or url value takes its default; a missing bool counts as off.
 
 Tools:
 

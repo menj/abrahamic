@@ -18,6 +18,11 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 - On a server without mbstring, a phrase written in non-ASCII capitals in the text ("IBN ISḤĀQ") matched but was never linked; a missed lookup now tries each phrase's own case-insensitive pattern.
 - The REST user endpoints (`/wp/v2/users`, `/wp/v2/users/me`) were removed for everyone without `list_users`, which broke the block editor's author panel for editors and authors. They are now removed only for visitors who cannot write (`edit_posts`).
 
+- A match passed over (its page already linked, or the page itself) no longer hides a phrase that overlaps it and runs past its end: on the Peter and Paul page, "Peter and Paul of Tarsus" now links Paul of Tarsus. The scan resumes one character on (`abr_ctx_next()`), which also keeps matches from the split patterns from shadowing each other; a phrase wholly inside a passed-over one stays unlinked, so "Barnabas" in "Gospel of Barnabas" is never linked to Paul's companion. Over the 94 seeded pages the links are unchanged.
+- A phrase with a space now matches text where the editor wrote a non-breaking space (`&nbsp;`, `&#160;` or U+00A0), and the lookup treats every run of spaces alike (`abr_ctx_norm()`).
+- A `>` inside a quoted attribute value (`alt="2 > 1"`) no longer ends the tag early, which let a link be written into the attribute; comments are kept whole too.
+- Extra phrases and Excluded pages keep percent-encoded octets on save (`abr_sanitize_lines()`). `sanitize_textarea_field()` dropped them, so `https://injil.help/gospels/%D8%A7/` was saved as `/gospels//` and an encoded slug could not be excluded.
+
 ## [2.84.0] - 2026-10-26
 
 ### Changed

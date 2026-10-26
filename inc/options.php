@@ -134,8 +134,8 @@ function abr_option_types() {
 		'ctx_sister'          => 'bool',
 		'ctx_own_max'         => 'count15',
 		'ctx_sister_max'      => 'count10',
-		'ctx_extra'           => 'textarea',
-		'ctx_exclude'         => 'textarea',
+		'ctx_extra'           => 'lines',
+		'ctx_exclude'         => 'lines',
 	);
 	// Social.
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
@@ -327,6 +327,9 @@ function abr_sanitize_options( $input ) {
 			case 'textarea':
 				$out[ $key ] = null === $raw ? $d[ $key ] : sanitize_textarea_field( $raw );
 				break;
+			case 'lines':
+				$out[ $key ] = null === $raw ? $d[ $key ] : abr_sanitize_lines( $raw );
+				break;
 			case 'url':
 				$out[ $key ] = null === $raw ? $d[ $key ] : esc_url_raw( trim( $raw ) );
 				break;
@@ -456,6 +459,22 @@ function abr_sanitize_link( $value ) {
 		return '#' . preg_replace( '/[^A-Za-z0-9_-]/', '', substr( $value, 1 ) );
 	}
 	return esc_url_raw( $value );
+}
+
+/**
+ * Clean a textarea of lines that hold addresses or slugs. Unlike
+ * sanitize_textarea_field(), it keeps percent-encoded octets (%D8%A7), which
+ * a copied address or a non-Latin slug is made of.
+ *
+ * @param string $value Raw value.
+ * @return string
+ */
+function abr_sanitize_lines( $value ) {
+	$lines = array();
+	foreach ( preg_split( '/\r\n|\r|\n/', wp_check_invalid_utf8( (string) $value, true ) ) as $line ) {
+		$lines[] = trim( wp_strip_all_tags( $line ) );
+	}
+	return implode( "\n", $lines );
 }
 
 /**
