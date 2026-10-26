@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.84.2** |
+| Current version | **2.85.0** |
 | Release date | 2026-10-26 |
 | Status | Stable |
 
@@ -509,7 +509,7 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 
 | Stored | Type | Purpose |
 |---|---|---|
-| `ABR_SEED_VERSION` | constant | Current seed version (99) |
+| `ABR_SEED_VERSION` | constant | Current seed version (100) |
 | `abr_seed_photos` | option | Bundled photograph name to media library attachment ID |
 | `_abr_seed_photo` | post meta | The photograph the seeder set as this article's featured image |
 | `abr_seeded_slugs` | option, not autoloaded | Tombstone list: key => timestamp |

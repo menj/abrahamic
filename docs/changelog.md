@@ -2,6 +2,18 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.85.0] - 2026-10-26
+
+### Changed
+- Starter content, seed version 100: `page:islamic-dilemma` (/reference/comparisons/islamic-dilemma/) expanded from 626 to 1,645 words of body text for the network brief on the Islamic Dilemma. New sections: who popularised the argument (David Wood, James White); Tawrāt and Injīl; *muhaymin* with Ibn Kathīr's three senses from Ibn ʿAbbās and al-Ṭabarī's grammatical point (Tafsīr, ed. Salāma, 3:128, shamela.ws book 8473 page 1393); *taḥrīf al-maʿnā* and *taḥrīf al-lafẓ* (Ibn Ḥazm, Ibn Taymiyya; book titles in the notes only); the exegetes on the people of the Gospel, 5:68 and 10:94 (Ibn Kathīr 4:296, shamela.ws book 8473 page 2095, Qatāda's report marked as without a full chain); revelation and the later texts. Contents list updated; 13 notes, verse numbers kept to the notes. Keyword density 2.31% (38 uses in 1,645 words, inside the 1% to 2.5% Rank Math range). New description and excerpt; search title unchanged.
+- "The Islamic Dilemma across the network" box (an `.abr-further` group) links the sister pieces on injil.help, compelling-evidence.com, bestofislam.org, apostleofdoom.org, murtadd.org and lailatulqadar.guide.
+
+### Added
+- `/islamic-dilemma/` in `inc/seed/legacy-paths.json`, answering with a 301 to the page, since the network brief lists https://abrahamic-religions.com/islamic-dilemma/ as the page's address.
+
+### Not changed
+- `post:the-islamic-dilemma` and `post:islamic-dilemma-reddit` are kept, with no cross-canonical: since they were added they divide the searches by intent (definition, full argument, question-and-answer with FAQPage data), and both already link to the page. A merge plan is recorded in the release notes for the owner to decide.
+
 ## [2.84.2] - 2026-10-26
 
 ### Fixed
