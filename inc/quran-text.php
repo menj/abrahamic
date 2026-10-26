@@ -44,10 +44,15 @@ function abr_quran_verse_block( $content ) {
 	if ( ! preg_match( '/class="[^"]*\babr-verse__ar\b/', $content ) ) {
 		return $content;
 	}
+	// A mapped line is marked, so a second pass over the same markup cannot
+	// map its rounded zeros to sukun.
 	return (string) preg_replace_callback(
-		'/(<p\b[^>]*\babr-verse__ar\b[^>]*>)(.*?)(<\/p>)/s',
+		'/(<p\b[^>]*\babr-verse__ar\b[^>]*)(>)(.*?)(<\/p>)/s',
 		static function ( $m ) {
-			return $m[1] . abr_quran_text_for_font( $m[2] ) . $m[3];
+			if ( false !== strpos( $m[1], 'data-quran-encoding=' ) ) {
+				return $m[0];
+			}
+			return $m[1] . ' data-quran-encoding="kfgqpc"' . $m[2] . abr_quran_text_for_font( $m[3] ) . $m[4];
 		},
 		$content
 	);

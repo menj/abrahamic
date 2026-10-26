@@ -9,7 +9,7 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 - The font ships as the original TTF (`assets/fonts/kfgqpc-hafs-uthmanic-script.ttf`), unmodified as its licence requires: no WOFF2 conversion, no subset. Not preloaded; it downloads only on a page with a verse. Credited in `readme.txt` and the SSOT licence table; its licence text travels inside the font file.
 
 ### Added
-- `inc/quran-text.php`: verse lines in the Tanzil encoding (sukun U+0652, rounded zero U+06DF) are mapped as they render to the Complex's encoding the face expects (sukun U+06E1, rounded zero U+0652). Without it every sukun drew as a rounded zero and the rounded zero as a spacing ornament. Stored text is unchanged; a line already carrying U+06E1 is left alone. Runs on `render_block_core/paragraph` for paragraphs with class `abr-verse__ar` only.
+- `inc/quran-text.php`: verse lines in the Tanzil encoding (sukun U+0652, rounded zero U+06DF) are mapped as they render to the Complex's encoding the face expects (sukun U+06E1, rounded zero U+0652). Without it every sukun drew as a rounded zero and the rounded zero as a spacing ornament. Stored text is unchanged; a line already carrying U+06E1 is left alone. Runs on `render_block_core/paragraph` for paragraphs with class `abr-verse__ar` only. A mapped line carries `data-quran-encoding="kfgqpc"` and is skipped on any second pass, so a verse with a rounded zero and no sukun cannot have its zeros mapped to sukun.
 
 ### Removed
 - `assets/fonts/amiri-quran-arabic.woff2`, no longer used.
