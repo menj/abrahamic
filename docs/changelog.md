@@ -2,6 +2,18 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.84.0] - 2026-10-26
+
+### Changed
+- Arabic Qur'anic verses (`.abr-verse .abr-verse__ar`) are set in KFGQPC HAFS Uthmanic Script 2.2, the King Fahd Glorious Quran Printing Complex's Madinah mushaf face, in place of Amiri Quran: 1.55em, line-height 2.1, through the new token `--abr-font-quran`. Hadith, duʿāʾ, inline Arabic terms and headings keep the `:lang(ar)` Naskh stack. The face draws Arabic-Indic digits as ayah-end circles itself, so verse numbers need no U+06DD or ornament.
+- The font ships as the original TTF (`assets/fonts/kfgqpc-hafs-uthmanic-script.ttf`), unmodified as its licence requires: no WOFF2 conversion, no subset. Not preloaded; it downloads only on a page with a verse. Credited in `readme.txt` and the SSOT licence table; its licence text travels inside the font file.
+
+### Added
+- `inc/quran-text.php`: verse lines in the Tanzil encoding (sukun U+0652, rounded zero U+06DF) are mapped as they render to the Complex's encoding the face expects (sukun U+06E1, rounded zero U+0652). Without it every sukun drew as a rounded zero and the rounded zero as a spacing ornament. Stored text is unchanged; a line already carrying U+06E1 is left alone. Runs on `render_block_core/paragraph` for paragraphs with class `abr-verse__ar` only.
+
+### Removed
+- `assets/fonts/amiri-quran-arabic.woff2`, no longer used.
+
 ## [2.83.0] - 2026-10-26
 
 ### Added

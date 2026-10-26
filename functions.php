@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ABR_VERSION', '2.83.0' );
+define( 'ABR_VERSION', '2.84.0' );
 define( 'ABR_DIR', get_stylesheet_directory() );
 define( 'ABR_URI', get_stylesheet_directory_uri() );
 
@@ -31,6 +31,7 @@ $abr_files = array(
 	ABR_DIR . '/inc/rank-math.php',
 	ABR_DIR . '/inc/tags.php',
 	ABR_DIR . '/inc/contextual-links.php',
+	ABR_DIR . '/inc/quran-text.php',
 	ABR_DIR . '/inc/data/network-links.json',
 	ABR_DIR . '/inc/seed/content.json',
 );
