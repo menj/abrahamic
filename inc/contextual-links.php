@@ -27,6 +27,27 @@ function abr_ctx_lower( $text ) {
 }
 
 /**
+ * Lines of a saved textarea. Split byte-wise (no /u), so a stray invalid byte
+ * cannot make the split fail and lose every line.
+ *
+ * @param string $text Textarea value.
+ * @return string[]
+ */
+function abr_ctx_lines( $text ) {
+	return (array) preg_split( '/\r\n|\r|\n/', (string) $text );
+}
+
+/**
+ * Lower-case host of an address, without "www.".
+ *
+ * @param string $url Address.
+ * @return string
+ */
+function abr_ctx_host( $url ) {
+	return (string) preg_replace( '/^www\./', '', abr_ctx_lower( (string) wp_parse_url( $url, PHP_URL_HOST ) ) );
+}
+
+/**
  * Comparable key for an address: host and path, lower case, no trailing
  * slash, no query or fragment. Relative addresses are on this site.
  *
@@ -74,16 +95,16 @@ function abr_ctx_entries() {
 	$hosts   = array();
 	foreach ( $sites as $key => $base ) {
 		if ( ABR_CTX_SITE !== $key ) {
-			$host = abr_ctx_lower( (string) wp_parse_url( $base, PHP_URL_HOST ) );
+			$host = abr_ctx_host( $base );
 			if ( $host ) {
 				$hosts[ $host ] = true;
 			}
 		}
 	}
-	$own_host = abr_ctx_lower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
+	$own_host = abr_ctx_host( home_url() );
 	$entries  = array();
 
-	foreach ( preg_split( '/\R/u', (string) abr_get_option( 'ctx_extra' ) ) as $line ) {
+	foreach ( abr_ctx_lines( abr_get_option( 'ctx_extra' ) ) as $line ) {
 		$parts = array_map( 'trim', explode( '|', $line, 2 ) );
 		if ( count( $parts ) < 2 || '' === $parts[0] || '' === $parts[1] ) {
 			continue;
@@ -95,7 +116,7 @@ function abr_ctx_entries() {
 		if ( ! preg_match( '#^https?://#i', $parts[1] ) ) {
 			continue;
 		}
-		$host = abr_ctx_lower( (string) wp_parse_url( $parts[1], PHP_URL_HOST ) );
+		$host = abr_ctx_host( $parts[1] );
 		if ( isset( $hosts[ $host ] ) ) {
 			$entries[] = array( 'phrase' => $parts[0], 'url' => $parts[1], 'sister' => true );
 		} elseif ( $host && $host === $own_host ) {
@@ -120,10 +141,12 @@ function abr_ctx_entries() {
 }
 
 /**
- * The compiled map: phrase (lower-cased, straight apostrophe) => target, and
- * one longest-first pattern of every phrase.
+ * The compiled map: phrase (lower-cased, straight apostrophe) => target, each
+ * phrase's own pattern, and the longest-first patterns of every phrase. One
+ * pattern is used while it compiles; a map grown past PCRE's size limit by
+ * extra lines is split into chunks that do.
  *
- * @return array{lookup:array,pattern:string}
+ * @return array{lookup:array,alts:array,patterns:string[]}
  */
 function abr_ctx_compiled() {
 	static $compiled = null;
@@ -149,12 +172,97 @@ function abr_ctx_compiled() {
 	);
 	$alts = array();
 	foreach ( $phrases as $phrase ) {
-		// wptexturize turns ' into &#8217; before this runs; match either.
-		$alts[] = str_replace( "'", "(?:'|\x{2019}|&\#8217;|&\#039;|&rsquo;)", preg_quote( $phrase, '/' ) );
+		// wptexturize turns ' into &#8217; before this runs; match every form.
+		$alts[ $phrase ] = str_replace( "'", "(?:'|\x{2019}|\x{2018}|\x{02BC}|&\#8217;|&\#8216;|&\#0?39;|&rsquo;|&lsquo;|&apos;)", preg_quote( $phrase, '/' ) );
 	}
-	$pattern  = $alts ? '/(?<![\p{L}\p{N}])(?:' . implode( '|', $alts ) . ')(?![\p{L}\p{N}])/iu' : '';
-	$compiled = array( 'lookup' => $lookup, 'pattern' => $pattern );
+	$compiled = array(
+		'lookup'   => $lookup,
+		'alts'     => $alts,
+		'patterns' => abr_ctx_patterns( array_values( $alts ) ),
+	);
 	return $compiled;
+}
+
+/**
+ * Patterns that compile, covering the alternatives in order (longest first).
+ * A chunk that fails to compile is halved; a single phrase that cannot
+ * compile on its own is dropped.
+ *
+ * @param string[] $alts Escaped alternatives.
+ * @return string[]
+ */
+function abr_ctx_patterns( $alts ) {
+	if ( ! $alts ) {
+		return array();
+	}
+	$pattern = '/(?<![\p{L}\p{N}])(?:' . implode( '|', $alts ) . ')(?![\p{L}\p{N}])/iu';
+	if ( false !== @preg_match( $pattern, '' ) ) { // phpcs:ignore WordPress.PHP.NoSilencedErrors -- a failed compile is handled here.
+		return array( $pattern );
+	}
+	if ( 1 === count( $alts ) ) {
+		return array();
+	}
+	$half = (int) ceil( count( $alts ) / 2 );
+	return array_merge( abr_ctx_patterns( array_slice( $alts, 0, $half ) ), abr_ctx_patterns( array_slice( $alts, $half ) ) );
+}
+
+/**
+ * The lookup key a matched piece of text belongs to, or '' if none. Without
+ * mbstring only ASCII letters are lowered, so a match in non-ASCII capitals
+ * is tried against each phrase's own pattern.
+ *
+ * @param array  $map  Compiled map.
+ * @param string $text Matched text.
+ * @return string
+ */
+function abr_ctx_key( $map, $text ) {
+	$key = abr_ctx_lower( abr_ctx_plain_apostrophes( $text ) );
+	if ( isset( $map['lookup'][ $key ] ) ) {
+		return $key;
+	}
+	foreach ( $map['alts'] as $phrase => $alt ) {
+		if ( preg_match( '/^(?:' . $alt . ')$/iu', $text ) ) {
+			return (string) $phrase;
+		}
+	}
+	return '';
+}
+
+/**
+ * Every phrase match in a piece of text, in text order, the longest at any
+ * offset, none overlapping: array of [ byte offset, text ]. Null when the
+ * text cannot be matched (invalid UTF-8).
+ *
+ * @param string[] $patterns Patterns.
+ * @param string   $text     Plain text.
+ * @return array|null
+ */
+function abr_ctx_matches( $patterns, $text ) {
+	$found = array();
+	foreach ( $patterns as $pattern ) {
+		$n = preg_match_all( $pattern, $text, $m, PREG_OFFSET_CAPTURE );
+		if ( false === $n ) {
+			return null;
+		}
+		foreach ( $m[0] as $hit ) {
+			$found[] = array( $hit[1], $hit[0] );
+		}
+	}
+	usort(
+		$found,
+		static function ( $a, $b ) {
+			return $a[0] <=> $b[0] ?: strlen( $b[1] ) <=> strlen( $a[1] );
+		}
+	);
+	$out = array();
+	$end = 0;
+	foreach ( $found as $hit ) {
+		if ( $hit[0] >= $end ) {
+			$out[] = $hit;
+			$end   = $hit[0] + strlen( $hit[1] );
+		}
+	}
+	return $out;
 }
 
 /**
@@ -164,7 +272,7 @@ function abr_ctx_compiled() {
  * @return string
  */
 function abr_ctx_plain_apostrophes( $text ) {
-	return str_replace( array( "\u{2019}", '&#8217;', '&#039;', '&rsquo;' ), "'", $text );
+	return str_replace( array( "\u{2019}", "\u{2018}", "\u{02BC}", '&#8217;', '&#8216;', '&#039;', '&#39;', '&rsquo;', '&lsquo;', '&apos;' ), "'", $text );
 }
 
 /**
@@ -181,7 +289,7 @@ function abr_ctx_applies() {
 	if ( ! $post || (int) $post->ID !== (int) get_queried_object_id() ) {
 		return false;
 	}
-	$excluded = array_filter( array_map( 'sanitize_title', preg_split( '/\R/u', (string) abr_get_option( 'ctx_exclude' ) ) ) );
+	$excluded = array_filter( array_map( 'sanitize_title', abr_ctx_lines( abr_get_option( 'ctx_exclude' ) ) ) );
 	$enabled  = ! in_array( $post->post_name, $excluded, true );
 	return (bool) apply_filters( 'abr_contextual_links_enabled', $enabled, $post );
 }
@@ -220,7 +328,7 @@ function abr_ctx_link( $content, $caps, $here ) {
 		return $content;
 	}
 	$map = abr_ctx_compiled();
-	if ( '' === $map['pattern'] ) {
+	if ( ! $map['patterns'] ) {
 		return $content;
 	}
 
@@ -286,36 +394,42 @@ function abr_ctx_link( $content, $caps, $here ) {
 				break;
 			}
 		}
-		$linked = preg_replace_callback(
-			$map['pattern'],
-			static function ( $m ) use ( $map, $caps, $block, &$stack, &$done, &$made ) {
-				if ( null !== $block && $stack[ $block ]['linked'] ) {
-					return $m[0];
-				}
-				$key = abr_ctx_lower( abr_ctx_plain_apostrophes( $m[0] ) );
-				if ( ! isset( $map['lookup'][ $key ] ) ) {
-					return $m[0];
-				}
-				$target = $map['lookup'][ $key ];
-				$kind   = $target['sister'] ? 'sister' : 'own';
-				$url_id = abr_ctx_url_key( $target['url'] );
-				if ( $made[ $kind ] >= $caps[ $kind ] || isset( $done[ $url_id ] ) ) {
-					return $m[0];
-				}
-				$done[ $url_id ] = true;
-				++$made[ $kind ];
-				if ( null !== $block ) {
-					$stack[ $block ]['linked'] = true;
-				}
-				if ( $target['sister'] ) {
-					return '<a class="abr-ctx-link abr-ctx-link--sister" href="' . esc_url( $target['url'] ) . '" rel="noopener">' . $m[0] . '</a>';
-				}
-				return '<a class="abr-ctx-link" href="' . esc_url( $target['url'] ) . '">' . $m[0] . '</a>';
-			},
-			$piece
-		);
-		// Invalid UTF-8 makes the /u pattern fail; keep the text as it was.
-		$out .= null === $linked ? $piece : $linked;
+		// Invalid UTF-8 makes the /u patterns fail; keep the text as it was.
+		$hits = abr_ctx_matches( $map['patterns'], $piece );
+		if ( ! $hits ) {
+			$out .= $piece;
+			continue;
+		}
+		$at = 0;
+		foreach ( $hits as $hit ) {
+			list( $offset, $text ) = $hit;
+			if ( null !== $block && $stack[ $block ]['linked'] ) {
+				break;
+			}
+			$key = abr_ctx_key( $map, $text );
+			if ( '' === $key ) {
+				continue;
+			}
+			$target = $map['lookup'][ $key ];
+			$kind   = $target['sister'] ? 'sister' : 'own';
+			$url_id = abr_ctx_url_key( $target['url'] );
+			if ( $made[ $kind ] >= $caps[ $kind ] || isset( $done[ $url_id ] ) ) {
+				continue;
+			}
+			$done[ $url_id ] = true;
+			++$made[ $kind ];
+			if ( null !== $block ) {
+				$stack[ $block ]['linked'] = true;
+			}
+			$out .= substr( $piece, $at, $offset - $at );
+			if ( $target['sister'] ) {
+				$out .= '<a class="abr-ctx-link abr-ctx-link--sister" href="' . esc_url( $target['url'] ) . '" rel="noopener">' . $text . '</a>';
+			} else {
+				$out .= '<a class="abr-ctx-link" href="' . esc_url( $target['url'] ) . '">' . $text . '</a>';
+			}
+			$at = $offset + strlen( $text );
+		}
+		$out .= substr( $piece, $at );
 	}
 	return $out;
 }

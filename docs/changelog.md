@@ -10,6 +10,13 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 ### Fixed
 - Contextual links skip every script language `theme.css` styles: `hbo`, `tmr`, `jpa`, `oar`, `sam`, `aii`, `cld` and `grc` join `ar`, `he`, `arc`, `syc`, `syr` and `el`. Before, a phrase inside `lang="grc"` or `lang="hbo"` text could be linked.
 - A verse line pasted in the Complex's own encoding, with a rounded zero (U+0652) and no sukun, cannot be told from Tanzil text by its characters, and was mapped to sukun. Such a line now takes the class `abr-quran-kfgqpc` (Block, Advanced, Additional CSS class), and `inc/quran-text.php` leaves it alone.
+- The block editor showed Tanzil-encoded verse lines in the KFGQPC face without the render-time mapping, so 21 of the 47 seeded verses drew a spacing ◉ ornament and every sukun as a round circle. The face now applies only to lines in its encoding (`[data-quran-encoding="kfgqpc"]`, set by the mapping, or `.abr-quran-kfgqpc`); any other verse line, the editor included, keeps the Naskh stack, which draws the Tanzil marks. The front end is unchanged.
+- Contextual links no longer lose every link, or any text, when the phrase pattern outgrows PCRE's size limit (reachable through many extra phrases): the phrases are split into patterns that compile, and the matches of all of them are merged in text order, the longest at any position.
+- A stray invalid UTF-8 byte in the Extra phrases or Excluded pages fields no longer makes the field unreadable (a fatal error on the excluded list, every extra phrase lost): the lines are split byte-wise.
+- An Extra phrases line whose sister address starts with `www.` (`https://www.bestofislam.org/…`) was dropped; hosts are now compared without `www.`, and the address is kept as typed.
+- Every form of apostrophe matches every other in a phrase: straight, curly in either direction, the modifier letter, and the entities `&#8217;`, `&#8216;`, `&#39;`, `&#039;`, `&rsquo;`, `&lsquo;` and `&apos;`.
+- On a server without mbstring, a phrase written in non-ASCII capitals in the text ("IBN ISḤĀQ") matched but was never linked; a missed lookup now tries each phrase's own case-insensitive pattern.
+- The REST user endpoints (`/wp/v2/users`, `/wp/v2/users/me`) were removed for everyone without `list_users`, which broke the block editor's author panel for editors and authors. They are now removed only for visitors who cannot write (`edit_posts`).
 
 ## [2.84.0] - 2026-10-26
 

@@ -1183,7 +1183,12 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 	src: url("../fonts/kfgqpc-hafs-uthmanic-script.woff2") format("woff2");
 }
 .abr-verse { margin: 2em 0; padding: 22px 26px; border-left: 3px solid var(--abr-gold); background: var(--abr-white); border-radius: 0 8px 8px 0; }
-.abr-verse .abr-verse__ar { margin: 0 0 4px; font-family: var(--abr-font-quran); font-size: 1.55em; line-height: 2.1; letter-spacing: 0; text-align: right; text-align-last: right; direction: rtl; color: var(--abr-navy); }
+/* The KFGQPC face only where the text is in its encoding: lines the converter
+   has mapped (data-quran-encoding) or marked by hand. Unconverted Tanzil text,
+   as in the block editor, keeps the Naskh stack, which draws its marks. */
+.abr-verse .abr-verse__ar { margin: 0 0 4px; font-family: "Noto Naskh Arabic", "Amiri", serif; font-size: 1.55em; line-height: 2.1; letter-spacing: 0; text-align: right; text-align-last: right; direction: rtl; color: var(--abr-navy); }
+.abr-verse .abr-verse__ar[data-quran-encoding="kfgqpc"],
+.abr-verse .abr-verse__ar.abr-quran-kfgqpc { font-family: var(--abr-font-quran); }
 .abr-verse .abr-verse__en { margin: 0 0 16px; font-style: italic; color: var(--abr-muted); text-align: left; }
 .abr-verse cite { display: block; margin-top: 4px; font-style: normal; font-size: 0.9rem; letter-spacing: 0.06em; color: var(--abr-gold); }
 
