@@ -15,13 +15,15 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Remove the user endpoints from the REST API for anyone who cannot list users.
+ * Remove the user endpoints from the REST API for the public. Anyone who can
+ * write keeps them: the block editor reads /wp/v2/users/me and the author
+ * list, and breaks without them.
  *
  * @param array $endpoints Registered routes.
  * @return array
  */
 function abr_anon_rest_endpoints( $endpoints ) {
-	if ( current_user_can( 'list_users' ) ) {
+	if ( current_user_can( 'list_users' ) || current_user_can( 'edit_posts' ) ) {
 		return $endpoints;
 	}
 	foreach ( array_keys( $endpoints ) as $route ) {

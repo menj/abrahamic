@@ -4,6 +4,12 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.84.0 to 2.84.1
+
+Replace the theme files. `assets/fonts/kfgqpc-hafs-uthmanic-script.ttf` gives way to `kfgqpc-hafs-uthmanic-script.woff2`; an upload over the old folder leaves the TTF behind, which nothing reads and which can be deleted. Clear page and CDN caches so visitors fetch the new `theme.css`.
+
+---
+
 ## Upgrading from 2.47.0 to 2.47.1
 
 Replace the theme files. A template change only; nothing to reseed.

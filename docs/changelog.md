@@ -2,7 +2,45 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
-## [Unreleased]
+## [2.84.1] - 2026-10-26
+
+### Changed
+- The Qur'an face is served as `assets/fonts/kfgqpc-hafs-uthmanic-script.woff2` (107 KB) in place of the original TTF (298 KB, removed). The owner chose on 2026-10-26 to serve a WOFF2 conversion of the KFGQPC HAFS Uthmanic Script (107 KB, from 298 KB), accepting that the KFGQPC licence forbids modifying the font. The conversion is lossless for glyphs, cmap and OpenType layout; the digital signature (DSIG) is dropped. Recorded in the SSOT decision record and licence table.
+
+### Fixed
+- Contextual links match a phrase split by inline formatting: "Paul <em>of</em> Tarsus", "<strong>Council</strong> of Nicaea". Text and `em`, `strong`, `i`, `b`, `span`, `small`, `mark` and `abbr` tags within one block are matched as one run (`abr_ctx_link_run()`); a link may wrap such tags only where they balance inside it, taking in tags at its edges when that balances it (`abr_ctx_wrap()`), so the markup stays valid. A link never runs across another link, a skip region, a line break or a block boundary, and an unbalanced span is passed over.
+- Contextual links skip every script language `theme.css` styles: `hbo`, `tmr`, `jpa`, `oar`, `sam`, `aii`, `cld` and `grc` join `ar`, `he`, `arc`, `syc`, `syr` and `el`. Before, a phrase inside `lang="grc"` or `lang="hbo"` text could be linked.
+- A verse line pasted in the Complex's own encoding, with a rounded zero (U+0652) and no sukun, cannot be told from Tanzil text by its characters, and was mapped to sukun. Such a line now takes the class `abr-quran-kfgqpc` (Block, Advanced, Additional CSS class), and `inc/quran-text.php` leaves it alone.
+- The block editor showed Tanzil-encoded verse lines in the KFGQPC face without the render-time mapping, so 21 of the 47 seeded verses drew a spacing ◉ ornament and every sukun as a round circle. The face now applies only to lines in its encoding (`[data-quran-encoding="kfgqpc"]`, set by the mapping, or `.abr-quran-kfgqpc`); any other verse line, the editor included, keeps the Naskh stack, which draws the Tanzil marks. The front end is unchanged.
+- Contextual links no longer lose every link, or any text, when the phrase pattern outgrows PCRE's size limit (reachable through many extra phrases): the phrases are split into patterns that compile, and the matches of all of them are merged in text order, the longest at any position.
+- A stray invalid UTF-8 byte in the Extra phrases or Excluded pages fields no longer makes the field unreadable (a fatal error on the excluded list, every extra phrase lost): the lines are split byte-wise.
+- An Extra phrases line whose sister address starts with `www.` (`https://www.bestofislam.org/…`) was dropped; hosts are now compared without `www.`, and the address is kept as typed.
+- Every form of apostrophe matches every other in a phrase: straight, curly in either direction, the modifier letter, and the entities `&#8217;`, `&#8216;`, `&#39;`, `&#039;`, `&rsquo;`, `&lsquo;` and `&apos;`.
+- On a server without mbstring, a phrase written in non-ASCII capitals in the text ("IBN ISḤĀQ") matched but was never linked; a missed lookup now tries each phrase's own case-insensitive pattern.
+- The REST user endpoints (`/wp/v2/users`, `/wp/v2/users/me`) were removed for everyone without `list_users`, which broke the block editor's author panel for editors and authors. They are now removed only for visitors who cannot write (`edit_posts`).
+- A match passed over (its page already linked, or the page itself) no longer hides a phrase that overlaps it and runs past its end: on the Peter and Paul page, "Peter and Paul of Tarsus" now links Paul of Tarsus. The scan resumes one character on (`abr_ctx_next()`), which also keeps matches from the split patterns from shadowing each other; a phrase wholly inside a passed-over one stays unlinked, so "Barnabas" in "Gospel of Barnabas" is never linked to Paul's companion. Over the 94 seeded pages the links are unchanged.
+- A phrase with a space now matches text where the editor wrote a non-breaking space (`&nbsp;`, `&#160;` or U+00A0), and the lookup treats every run of spaces alike (`abr_ctx_norm()`).
+- A `>` inside a quoted attribute value (`alt="2 > 1"`) no longer ends the tag early, which let a link be written into the attribute; comments are kept whole too.
+- Extra phrases and Excluded pages keep percent-encoded octets on save (`abr_sanitize_lines()`). `sanitize_textarea_field()` dropped them, so `https://injil.help/gospels/%D8%A7/` was saved as `/gospels//` and an encoded slug could not be excluded.
+
+## [2.84.0] - 2026-10-26
+
+### Changed
+- Arabic Qur'anic verses (`.abr-verse .abr-verse__ar`) are set in KFGQPC HAFS Uthmanic Script 2.2, the King Fahd Glorious Quran Printing Complex's Madinah mushaf face, in place of Amiri Quran: 1.55em, line-height 2.1, through the new token `--abr-font-quran`. Hadith, duʿāʾ, inline Arabic terms and headings keep the `:lang(ar)` Naskh stack. The face draws Arabic-Indic digits as ayah-end circles itself, so verse numbers need no U+06DD or ornament.
+- The font ships as the original TTF (`assets/fonts/kfgqpc-hafs-uthmanic-script.ttf`), unmodified as its licence requires: no WOFF2 conversion, no subset. Not preloaded; it downloads only on a page with a verse. Credited in `readme.txt` and the SSOT licence table; its licence text travels inside the font file.
+
+### Added
+- `inc/quran-text.php`: verse lines in the Tanzil encoding (sukun U+0652, rounded zero U+06DF) are mapped as they render to the Complex's encoding the face expects (sukun U+06E1, rounded zero U+0652). Without it every sukun drew as a rounded zero and the rounded zero as a spacing ornament. Stored text is unchanged; a line already carrying U+06E1 is left alone. Runs on `render_block_core/paragraph` for paragraphs with class `abr-verse__ar` only. A mapped line carries `data-quran-encoding="kfgqpc"` and is skipped on any second pass, so a verse with a rounded zero and no sukun cannot have its zeros mapped to sukun.
+
+### Removed
+- `assets/fonts/amiri-quran-arabic.woff2`, no longer used.
+
+## [2.83.0] - 2026-10-26
+
+### Added
+- Contextual links (`inc/contextual-links.php`). On a single article or page, the first mention of a known phrase in the running text links to the inner page that treats it, on this site or on one of the six sister sites (bestofislam.org, injil.help, apostleofdoom.org, compelling-evidence.com, murtadd.org, lailatulqadar.guide). Phrases and targets come from `inc/data/network-links.json`, a shared file identical in all seven themes; this site's entries resolve through `home_url()`, so staging links stay on staging. Links are made at render time on `the_content` (priority 30) and stored content is unchanged. Never in headings, quotations and verses, footnotes, the table of contents, Further reading, tables, existing links or text tagged Arabic, Hebrew, Greek, Syriac or Aramaic; one added link per paragraph or list item; each target once a page, never the page itself, and never a page the text already links by hand. Not on the front page.
+- Theme Options > Contextual links tab: switches for links to this site and to sister sites, a cap for each (defaults 4 and 3), extra phrases (`phrase | /path/` or `phrase | https://…` on a sister domain; other hosts are ignored) read before the shared file, and excluded slugs. Keys `ctx_own`, `ctx_sister`, `ctx_own_max`, `ctx_sister_max`, `ctx_extra`, `ctx_exclude`; new sanitising types `count15` and `count10`.
+- Filters `abr_contextual_links_map` (the phrase list) and `abr_contextual_links_enabled` (per post).
 
 ### Changed
 - Seed data (`inc/seed/content.php` and the other `inc/seed/*.php` data files: `legacy-v1.php`, `legacy-paths.php`, `focus-keywords.php`, `focus-keywords-previous.php`, `photo-credits.php`, `seo-titles.php`, `tags.php`) now ships as `.json` instead of executable `.php`, so starter content is pure data with nothing to execute. `inc/seed.php` and every module that reads it (`inc/seo.php`, `inc/tags.php`, `inc/rank-math.php`, `inc/redirects.php`, `functions.php`) now decode the JSON (`abr_seed_read_json()`) instead of `require`-ing PHP. No seed content, metadata or behaviour changed; the conversion was verified to round-trip byte-for-byte.

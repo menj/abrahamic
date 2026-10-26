@@ -30,6 +30,7 @@
 .abr-field:last-child { border-bottom: 0; }
 .abr-field > label { display: block; font-weight: 600; margin-bottom: 6px; }
 .abr-field textarea { width: 100%; max-width: 520px; }
+.abr-field--number input { width: 6em; }
 .abr-help { color: #646970; margin: 6px 0 0; font-size: 12px; }
 
 .abr-field > label.abr-switch,

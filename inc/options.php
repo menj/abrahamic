@@ -129,6 +129,13 @@ function abr_option_types() {
 		// Search addresses.
 		'search_pretty'       => 'bool',
 		'search_base'         => 'slug',
+		// Contextual links.
+		'ctx_own'             => 'bool',
+		'ctx_sister'          => 'bool',
+		'ctx_own_max'         => 'count15',
+		'ctx_sister_max'      => 'count10',
+		'ctx_extra'           => 'lines',
+		'ctx_exclude'         => 'lines',
 	);
 	// Social.
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
@@ -220,6 +227,12 @@ function abr_option_defaults() {
 		'login_redirect_slug' => get_option( 'whl_redirect_admin' ) ? sanitize_title( get_option( 'whl_redirect_admin' ) ) : '404',
 		'search_pretty'       => 1,
 		'search_base'         => get_option( 'wpseosearch_base' ) ? sanitize_title( get_option( 'wpseosearch_base' ) ) : 'search',
+		'ctx_own'             => 1,
+		'ctx_sister'          => 1,
+		'ctx_own_max'         => 4,
+		'ctx_sister_max'      => 3,
+		'ctx_extra'           => '',
+		'ctx_exclude'         => '',
 	);
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
 		$defaults[ abr_social_key( $slug ) ] = '';
@@ -314,6 +327,9 @@ function abr_sanitize_options( $input ) {
 			case 'textarea':
 				$out[ $key ] = null === $raw ? $d[ $key ] : sanitize_textarea_field( $raw );
 				break;
+			case 'lines':
+				$out[ $key ] = null === $raw ? $d[ $key ] : abr_sanitize_lines( $raw );
+				break;
 			case 'url':
 				$out[ $key ] = null === $raw ? $d[ $key ] : esc_url_raw( trim( $raw ) );
 				break;
@@ -368,6 +384,11 @@ function abr_sanitize_options( $input ) {
 				break;
 			case 'logo_style':
 				$out[ $key ] = ( null !== $raw && array_key_exists( $raw, abr_logo_styles() ) ) ? $raw : $d[ $key ];
+				break;
+			case 'count15':
+			case 'count10':
+				$max         = 'count15' === $type ? 15 : 10;
+				$out[ $key ] = null === $raw || '' === trim( (string) $raw ) ? $d[ $key ] : max( 0, min( $max, (int) $raw ) );
 				break;
 			case 'scheme':
 				$out[ $key ] = ( null !== $raw && array_key_exists( $raw, abr_schemes() ) ) ? $raw : $d[ $key ];
@@ -438,6 +459,22 @@ function abr_sanitize_link( $value ) {
 		return '#' . preg_replace( '/[^A-Za-z0-9_-]/', '', substr( $value, 1 ) );
 	}
 	return esc_url_raw( $value );
+}
+
+/**
+ * Clean a textarea of lines that hold addresses or slugs. Unlike
+ * sanitize_textarea_field(), it keeps percent-encoded octets (%D8%A7), which
+ * a copied address or a non-Latin slug is made of.
+ *
+ * @param string $value Raw value.
+ * @return string
+ */
+function abr_sanitize_lines( $value ) {
+	$lines = array();
+	foreach ( preg_split( '/\r\n|\r|\n/', wp_check_invalid_utf8( (string) $value, true ) ) as $line ) {
+		$lines[] = trim( wp_strip_all_tags( $line ) );
+	}
+	return implode( "\n", $lines );
 }
 
 /**

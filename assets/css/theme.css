@@ -11,6 +11,7 @@
 	--abr-charcoal: var(--wp--preset--color--charcoal);
 	--abr-white: var(--wp--preset--color--white);
 	--abr-font: var(--wp--preset--font-family--sabon);
+	--abr-font-quran: "KFGQPC HAFS Uthmanic Script", "Noto Naskh Arabic", "Amiri", serif;
 
 	--abr-muted: color-mix(in srgb, var(--abr-navy) 62%, transparent);
 	--abr-soft: color-mix(in srgb, var(--abr-navy) 4%, transparent);
@@ -1173,14 +1174,21 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 .abr-dg-honour { font-size: 14px; font-style: italic; fill: #6a4c93; text-anchor: middle; }
 :root[data-abr-mode="dark"] .abr-dg-honour { fill: #a58ad0; }
 
-/* Qur'anic passages set as Arabic with the translation beneath each verse. */
+/* Qur'anic passages set as Arabic with the translation beneath each verse.
+   The verse face is for Qur'anic Arabic only; other Arabic keeps the :lang(ar) stack.
+   Served as a WOFF2 conversion of the original TTF, by the owner's decision of
+   2026-10-26 (docs/ssot.md, decision record); the licence forbids modifying the font. */
 @font-face {
-	font-family: "Amiri Quran"; font-style: normal; font-weight: 400; font-display: swap;
-	src: url("../fonts/amiri-quran-arabic.woff2") format("woff2");
-	unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
+	font-family: "KFGQPC HAFS Uthmanic Script"; font-style: normal; font-weight: 400; font-display: swap;
+	src: url("../fonts/kfgqpc-hafs-uthmanic-script.woff2") format("woff2");
 }
 .abr-verse { margin: 2em 0; padding: 22px 26px; border-left: 3px solid var(--abr-gold); background: var(--abr-white); border-radius: 0 8px 8px 0; }
-.abr-verse .abr-verse__ar { margin: 0 0 4px; font-family: "Amiri Quran", "Noto Naskh Arabic", "Amiri", serif; font-size: 1.55em; line-height: 1.9; text-align: right; text-align-last: right; direction: rtl; color: var(--abr-navy); }
+/* The KFGQPC face only where the text is in its encoding: lines the converter
+   has mapped (data-quran-encoding) or marked by hand. Unconverted Tanzil text,
+   as in the block editor, keeps the Naskh stack, which draws its marks. */
+.abr-verse .abr-verse__ar { margin: 0 0 4px; font-family: "Noto Naskh Arabic", "Amiri", serif; font-size: 1.55em; line-height: 2.1; letter-spacing: 0; text-align: right; text-align-last: right; direction: rtl; color: var(--abr-navy); }
+.abr-verse .abr-verse__ar[data-quran-encoding="kfgqpc"],
+.abr-verse .abr-verse__ar.abr-quran-kfgqpc { font-family: var(--abr-font-quran); }
 .abr-verse .abr-verse__en { margin: 0 0 16px; font-style: italic; color: var(--abr-muted); text-align: left; }
 .abr-verse cite { display: block; margin-top: 4px; font-style: normal; font-size: 0.9rem; letter-spacing: 0.06em; color: var(--abr-gold); }
 
