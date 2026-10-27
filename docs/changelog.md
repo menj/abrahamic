@@ -2,6 +2,14 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.86.2] - 2026-10-27
+
+### Changed
+- Starter content, seed version 103: `post:deuteronomy-18-18` moves from /journal/deuteronomy-18-18/ to /journal/prophet-like-moses/, under the rule of no verse numbers in addresses. The new slug is the article's focus keyword. The post is renamed in place by the structure sync, so its ID, edits and history stay. The seed key, title, text and keywords are unchanged. The two internal links to the article, both in `post:muhammad-in-the-bible`, point at the new address. A scan of all 92 starter slugs found no other verse number, numeric prefix or -2 style suffix.
+
+### Added
+- `inc/seed/legacy-paths.json`: /journal/deuteronomy-18-18/ answers with a 301 to the current address of `post:deuteronomy-18-18`. WordPress also records the old slug in `_wp_old_slug`.
+
 ## [2.86.1] - 2026-10-27
 
 ### Fixed

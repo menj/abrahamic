@@ -4,6 +4,12 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.86.1 to 2.86.2
+
+Replace the theme files and load any admin page once. Seed version 103 renames the Deuteronomy 18 article to /journal/prophet-like-moses/, and the old address redirects to it. The sister-site link list in `inc/data/network-links.json` still names the old address, which redirects.
+
+---
+
 ## Upgrading from 2.86.0 to 2.86.1
 
 Replace the theme files and load any admin page once. Seed version 102 refreshes the Places, Figures and Tanakh pages; with `seed_mode` set to `keep`, an edited page keeps its heading and needs the capital by hand.
