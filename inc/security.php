@@ -132,7 +132,7 @@ function abr_sec_sync_htaccess( $force = false ) {
 		update_option( 'abr_security_htaccess', 'unavailable', false );
 		return;
 	}
-	$want    = abr_sec_on( 'sec_xmlrpc_off' );
+	$want    = abr_sec_on( 'sec_xmlrpc_off' ) && abr_sec_on( 'sec_htaccess' );
 	$current = function_exists( 'extract_from_markers' ) ? extract_from_markers( $file, 'Block xmlrpc.php' ) : array();
 	if ( $want && $current !== abr_sec_htaccess_lines() ) {
 		insert_with_markers( $file, 'Block xmlrpc.php', abr_sec_htaccess_lines() );
@@ -939,8 +939,9 @@ function abr_sec_render_settings() {
 	<p class="abr-help"><?php esc_html_e( 'Spam tools publish from outside the site with a stored password. These switches close the doors they use. Writing in the editor is not affected.', 'abrahamic' ); ?></p>
 	<?php
 	abr_field( 'sec_xmlrpc_off', __( 'Turn off XML-RPC', 'abrahamic' ), 'checkbox', __( 'xmlrpc.php answers 403 and the pingback header goes. The Jetpack plugin and old mobile apps need XML-RPC.', 'abrahamic' ) );
+	abr_field( 'sec_htaccess', __( 'Also block xmlrpc.php at the web server', 'abrahamic' ), 'checkbox', __( 'Writes a "Block xmlrpc.php" section into .htaccess, so the requests are refused before WordPress loads. Takes effect when Turn off XML-RPC is on. Turning this off removes the section on save.', 'abrahamic' ) );
 	$state = get_option( 'abr_security_htaccess', '' );
-	if ( 'written' === $state ) {
+	if ( 'written' === $state && abr_sec_on( 'sec_htaccess' ) ) {
 		echo '<p class="abr-help">' . esc_html__( 'The web server also refuses xmlrpc.php: the theme keeps a "Block xmlrpc.php" section in .htaccess and repairs it if it goes missing.', 'abrahamic' ) . '</p>';
 	} elseif ( 'unavailable' === $state ) {
 		echo '<p class="abr-help abr-help--key">' . esc_html__( 'The theme could not write .htaccess (the server is not Apache, or the file is read-only). WordPress still refuses xmlrpc.php; ask the host to deny it at the server as well.', 'abrahamic' ) . '</p>';
