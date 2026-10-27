@@ -2,6 +2,16 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.87.0] - 2026-10-27
+
+### Added
+- Security tab in Theme Options (`inc/security.php`, `inc/security-detector.php`, `assets/js/security.js`, `assets/css/security.css`), built from the access logs of the October 2026 spam attack: password guessing through xmlrpc.php from 29 September under forged "Jetpack by WordPress.com" user agents, the first correct password on 20 October, then from 22 October a casino post every 18 to 20 minutes through wp.newPost, each request from a different address. More than 500 posts were published under the owner's account.
+- Remote-publishing lockdown, on by default: XML-RPC answers 403 and is counted per day, not logged per request; application passwords are off; REST writes need a logged-in browser session with a valid nonce. A correct password sent through XML-RPC is refused even with XML-RPC switched back on, logged, and raises an admin notice to change it. The emergency switch `define( 'ABR_SECURITY_LOCK', false );` in wp-config.php turns the three locks off.
+- Spam gate, on by default: a post or page going public whose title, address or text reads as gambling spam (multilingual patterns, the brands seen in the attack, probe titles such as "Connection check" and "cl-probe", links to gambling sites) is saved as Pending and logged. Anything published from outside the editor (XML-RPC, REST without a browser session) waits as Pending whatever it says. Starter content is exempt. `tests/security-detector-test.php` checks that every starter item scores clean and every attack sample is caught.
+- Failed logins counted by account name over a rolling day, since attackers change address on every try; an admin notice names any real account with ten or more failures.
+- Clean-up: a scan in batches of 100 lists suspected spam with its reasons; selected posts move to the trash (each scored again first), never deleted. Trashed spam addresses answer 410 Gone (switch, on by default). Empty spam categories are deleted only on request, never a seeded one.
+- Reports: attacks seen per day, accounts being guessed, administrators with last login, sessions and application passwords, posts per day and burst publishing, starter content carrying gambling links, and a security log of the last 200 events. Buttons revoke every application password and end every session.
+
 ## [2.86.2] - 2026-10-27
 
 ### Changed

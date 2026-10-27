@@ -4,6 +4,24 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.86.2 to 2.87.0
+
+Replace the theme files. The Security tab is on by default: XML-RPC, application passwords and REST writes from outside the browser stop at once.
+
+After the October 2026 attack, the owner checklist:
+
+1. Change the password of every administrator to a long random one used nowhere else, then Log Out Everywhere Else (Users > Profile), or press "Log out all sessions" on the Security tab.
+2. Create a new administrator whose name is not the site name, log in as it, and delete the old account, attributing its content to the new one.
+3. Press "Revoke all application passwords".
+4. Check Plugins for anything not installed by you (auto-posting, AI writers, remote management) and remove it. Check Users for unknown accounts.
+5. Run the spam scan, select the results, move them to the trash, then delete the empty spam categories.
+6. Purge any page cache, then resubmit the sitemap in Google Search Console.
+7. Optional, at the server: deny xmlrpc.php in .htaccess as well, so the requests never reach PHP. Jetpack needs XML-RPC; if Jetpack is used, switch "Turn off XML-RPC" off instead (password logins through XML-RPC stay refused).
+
+If a lock breaks a tool you rely on, `define( 'ABR_SECURITY_LOCK', false );` in wp-config.php turns the three locks off without changing the options.
+
+---
+
 ## Upgrading from 2.86.1 to 2.86.2
 
 Replace the theme files and load any admin page once. Seed version 103 renames the Deuteronomy 18 article to /journal/prophet-like-moses/, and the old address redirects to it. The sister-site link list in `inc/data/network-links.json` still names the old address, which redirects.

@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.86.2
+Stable tag: 2.87.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -547,6 +547,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.87.0 - 2026-10-27 =
+* New Security tab: XML-RPC, application passwords and REST writes from outside the browser are locked; gambling spam and anything published from outside the editor is held as Pending; a scan moves spam to the trash and answers 410 Gone on its addresses; attacks and guessed accounts are reported.
 
 = 2.86.2 - 2026-10-27 =
 * The Deuteronomy 18 article moves to /journal/prophet-like-moses/. The old address redirects to it. Seed version 103.
