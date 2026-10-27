@@ -4,8 +4,8 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.85.1** |
-| Release date | 2026-10-26 |
+| Current version | **2.86.0** |
+| Release date | 2026-10-27 |
 | Status | Stable |
 
 ---
@@ -243,7 +243,7 @@ Rank Math, when active, always wins: any title or description set in it is used 
 
 ### Structured data
 
-Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ and the question-and-answer articles), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. No Person or ProfilePage anywhere.
+Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ, the question-and-answer articles, and the questions section of the Islamic Dilemma page, read from its level-three headings through `abr_faq_section_keys()`), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. No Person or ProfilePage anywhere.
 
 ### Anonymity
 
@@ -492,7 +492,7 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 5. **Text sync,** governed by the `seed_mode` option (`abr_seed_modes()`):
    - `replace` (default): title, text and excerpt take the current version whether or not the item was edited. WordPress stores the previous text as a revision.
    - `keep`: the text is refreshed only while it still matches its fingerprint, `_abr_seed_hash`, or for version 1 items the hash in `legacy-v1.php`. Links are compared root-relative.
-6. **Retirement.** A key in the tombstone list that the starter set no longer carries has its post moved to the trash, where it can be restored; option and cleanup keys are exempt. Counted as `retired` in `abr_seed_log`.
+6. **Retirement.** A key in the tombstone list that the starter set no longer carries has its post moved to the trash, where it can be restored, provided its text still matches the seeder's fingerprint (`abr_seed_is_unedited()`); an edited copy is left as it is and counted as `kept`. Nothing is deleted permanently; option and cleanup keys are exempt. Counted as `retired` in `abr_seed_log`. To merge one item into another, remove the retired item from `content.json`, point its address at the owner in `inc/seed/legacy-paths.json` (which answers only once the address is a 404, so after the trash) and raise the seed version.
 6b. **When it runs.** On activation; on an admin screen loaded by a user with `edit_theme_options` while the stored version is behind; and, failing both, on the next ordinary page request (`abr_seed_on_request()` at `wp_loaded`, behind a five-minute transient lock). A site whose owner never opens the right admin screen still receives new starter content. Every admin screen also carries a notice while the content is behind or items are missing (`abr_seed_admin_notice()`), with a button that runs it.
 
 7. **Set-up steps run once:** the permalink step, keyed `option:permalinks:{hash of the three settings}`, applies the settings in section 13 when the site uses plain permalinks, uses `/%postname%/` with no published articles of its own, or still uses a structure the theme applied before (`abr_previous_permalink_structures()`). Keying by the settings means a later change to them runs once more; `option:tagline` sets the tagline when it is empty or WordPress's old default; `cleanup:defaults` moves the untouched sample post and page to the trash; `option:reading` sets Home as the front page and Articles as the posts page, only when the site shows latest posts with no front page chosen. Earlier versions recorded `option:permalinks` and `option:permalinks-2`.
@@ -509,12 +509,12 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 
 | Stored | Type | Purpose |
 |---|---|---|
-| `ABR_SEED_VERSION` | constant | Current seed version (100) |
+| `ABR_SEED_VERSION` | constant | Current seed version (101) |
 | `abr_seed_photos` | option | Bundled photograph name to media library attachment ID |
 | `_abr_seed_photo` | post meta | The photograph the seeder set as this article's featured image |
 | `abr_seeded_slugs` | option, not autoloaded | Tombstone list: key => timestamp |
 | `abr_seed_version` | option | Last seed version run |
-| `abr_seed_log` | option | Time, version, and counts of created, adopted, moved, refreshed, replaced and retired items in the last run |
+| `abr_seed_log` | option | Time, version, and counts of created, adopted, moved, refreshed, replaced, retired and kept (retired but edited) items in the last run |
 | `_abr_seed`, `_abr_seed_version`, `_abr_seed_hash` | post meta | Key, version and text fingerprint on seeder-owned posts |
 | `_abr_description` | post meta | Search description (section 13), editable in the "Search description" box |
 
@@ -701,6 +701,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-10-27 | 2.86.0 | One owner page per subject: the two Islamic Dilemma Journal posts merged into `page:islamic-dilemma`, their addresses redirected to it; retirement trashes only unedited copies | The owner's rule is no duplicate or overlapping pages within a site; the reference page is the one the sister sites link to. An editor's changed copy is theirs to keep or remove |
 | 2026-10-26 | 2.84.1 | Serve the Qur'an face as a WOFF2 conversion (`assets/fonts/kfgqpc-hafs-uthmanic-script.woff2`) in place of the original TTF | The owner chose on 2026-10-26 to serve a WOFF2 conversion of the KFGQPC HAFS Uthmanic Script (107 KB, from 298 KB), accepting that the KFGQPC licence forbids modifying the font. The conversion is lossless for glyphs, cmap and OpenType layout; the digital signature (DSIG) is dropped. |
 | 2026-10-26 | 2.84.0 | Arabic Qur'anic verses set in KFGQPC HAFS Uthmanic Script, the TTF shipped unmodified, with Tanzil-encoded verse lines mapped to the Complex's encoding at render time | Owner's rule for all seven themes: the Madinah mushaf face for the Qur'an only. Its licence forbids modification, so no WOFF2 or subset; the mapping keeps sukun and the rounded zero correct without editing stored scripture |
 | 2026-10-26 | 2.83.0 | Contextual links in the running text, to inner pages here and on the six sister sites, from one phrase map shared by all seven themes | Readers reach the page that treats a topic at the point it is mentioned; one shared file keeps every site's phrases and targets in step |

@@ -43,5 +43,7 @@
     "/thank-you-for-your-generosity/": "page:thank-you",
     "/information/": "page:home",
     "/site-map/": "page:site-map",
-    "/islamic-dilemma/": "page:islamic-dilemma"
+    "/islamic-dilemma/": "page:islamic-dilemma",
+    "/journal/the-islamic-dilemma/": "page:islamic-dilemma",
+    "/journal/islamic-dilemma-reddit/": "page:islamic-dilemma"
 }

@@ -528,7 +528,17 @@ function abr_content_photo_names( $post ) {
  * @return string[] Seed keys.
  */
 function abr_faq_style_keys() {
-	return array( 'page:faq', 'post:islamic-dilemma-reddit', 'post:judaism-vs-christianity-reddit' );
+	return array( 'page:faq', 'page:islamic-dilemma', 'post:judaism-vs-christianity-reddit' );
+}
+
+/**
+ * FAQ-style items whose questions sit under one section as level-three
+ * headings, so the page's own level-two sections are not read as questions.
+ *
+ * @return string[] Seed keys.
+ */
+function abr_faq_section_keys() {
+	return array( 'page:islamic-dilemma' );
 }
 
 /**
@@ -693,13 +703,15 @@ function abr_schema_graph() {
 
 /**
  * Question/answer pairs read from the FAQ page's own headings and the
- * paragraph that follows each one, for FAQPage structured data.
+ * paragraph that follows each one, for FAQPage structured data. Items in
+ * abr_faq_section_keys() are read from their level-three headings.
  *
  * @param WP_Post $post The FAQ page.
  * @return array
  */
 function abr_faq_qa_pairs( $post ) {
-	if ( ! preg_match_all( '#<h2[^>]*>(.*?)</h2>\\s*(?:<!--.*?-->\\s*)*<p[^>]*>(.*?)</p>#s', $post->post_content, $m, PREG_SET_ORDER ) ) {
+	$level = in_array( (int) $post->ID, array_map( 'intval', array_filter( array_map( 'abr_seed_id', abr_faq_section_keys() ) ) ), true ) ? 'h3' : 'h2';
+	if ( ! preg_match_all( '#<' . $level . '[^>]*>(.*?)</' . $level . '>\\s*(?:<!--.*?-->\\s*)*<p[^>]*>(.*?)</p>#s', $post->post_content, $m, PREG_SET_ORDER ) ) {
 		return array();
 	}
 	$pairs = array();

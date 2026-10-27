@@ -26,7 +26,8 @@
  * WordPress revision; `keep` refreshes only items still matching their
  * _abr_seed_hash fingerprint (or the version 1 fingerprint in
  * inc/seed/legacy-v1.json). Items the starter set no longer carries are moved to
- * the trash, where they can be restored.
+ * the trash, where they can be restored, unless an editor has changed their text
+ * (counted as `kept`); nothing is ever deleted permanently.
  *
  * @package Abrahamic
  */
@@ -95,7 +96,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 /**
  * Raise when inc/seed/content.json gains items (set their 'since' to the new value).
  */
-define( 'ABR_SEED_VERSION', 100 );
+define( 'ABR_SEED_VERSION', 101 );
 
 /**
  * Recommended permalink settings (docs/ssot.md, section 12).
@@ -385,6 +386,7 @@ function abr_run_seeder( $only = array() ) {
 		'refreshed' => array(),
 		'replaced'  => array(),
 		'retired'   => array(),
+		'kept'      => array(),
 		'photos'    => array(),
 	);
 
@@ -683,7 +685,8 @@ function abr_run_seeder( $only = array() ) {
 		$seeded[ $reading_key ] = time();
 	}
 
-	// Items the starter set no longer carries go to the trash.
+	// Items the starter set no longer carries go to the trash, unless an editor
+	// has changed their text: an edited copy is the editor's and stays as it is.
 	if ( ! $only ) {
 		$current = array_merge( wp_list_pluck( $data['items'], 'key' ), wp_list_pluck( $data['terms'], 'key' ) );
 		foreach ( array_keys( $seeded ) as $key ) {
@@ -691,10 +694,15 @@ function abr_run_seeder( $only = array() ) {
 				continue;
 			}
 			$post = abr_seed_post_by_key( $key );
-			if ( $post && 'trash' !== $post->post_status ) {
-				wp_trash_post( $post->ID );
-				$report['retired'][] = $key;
+			if ( ! $post || 'trash' === $post->post_status ) {
+				continue;
 			}
+			if ( ! abr_seed_is_unedited( $post, $key ) ) {
+				$report['kept'][] = $key;
+				continue;
+			}
+			wp_trash_post( $post->ID );
+			$report['retired'][] = $key;
 		}
 	}
 
@@ -732,6 +740,7 @@ function abr_run_seeder( $only = array() ) {
 			'refreshed' => count( $report['refreshed'] ),
 			'replaced'  => count( $report['replaced'] ),
 			'retired'   => count( $report['retired'] ),
+			'kept'      => count( $report['kept'] ),
 			'photos'    => count( $report['photos'] ),
 			'photo_errors' => isset( $report['photo_errors'] ) ? array_slice( $report['photo_errors'], 0, 10 ) : array(),
 		),

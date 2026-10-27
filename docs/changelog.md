@@ -2,6 +2,28 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.86.0] - 2026-10-27
+
+### Changed
+- Starter content, seed version 101: `post:the-islamic-dilemma` (1,578 words) and `post:islamic-dilemma-reddit` merged into the owner page `page:islamic-dilemma` (/reference/comparisons/islamic-dilemma/), the page the sister sites link to, under the rule of no duplicate or overlapping pages within a site. This settles the merge plan left open in 2.85.0. Folded in, without repeating what the page already said:
+  - the argument's own one-line form, quoted from islamicdilemma.com, in the opening paragraph (the link to the Journal article is gone);
+  - a new section, "The three premises of the Islamic Dilemma" (`#three-premises`), with its source;
+  - Luke's preface on compiling his account, under Tawrāt and Injīl;
+  - the verse on the Qur'an as guardian over earlier scripture, in Arabic (checked against api.quran.com) and in the Saheeh International translation, under Muhaymin; and Ibn ʿAbbās's "trustee" as al-Bukhārī cites it, without a chain, at the opening of the virtues of the Qur'an (al-Sulṭāniyya ed., 6:181, shamela.ws book 1681 page 7423, checked). It is a Companion's comment on a word, so no hadith grading applies; none by al-Albānī was found;
+  - the Qur'an's own charge of alteration in its own time, under Taḥrīf; the oneness of God among the truths that remain, and Qatāda's report read as "neither doubted nor asked", under the exegetes;
+  - the longer ending of Mark (Vaticanus, Sinaiticus, Eusebius and Jerome) and the Codex Alexandrinus photograph, under Revelation and the later texts;
+  - a new section, "Islamic Dilemma questions answered" (`#questions`), with the seven Reddit questions as level-three headings, renamed where the old heading carried a verse number (`ssot.md`: verse numbers only in notes), and the Birmingham Qur'an dating;
+  - Further reading: the Journal article gives way to the historical-context and Jesus articles that it listed.
+  25 notes in document order; "Ibid." only after the same work, and the al-Ṭabarī note now names Ibn Kathīr, since a new note stands between them. Book titles stay in the notes. Every Qur'an citation checked against api.quran.com (Saheeh International). Body text 2,696 words, "Islamic Dilemma" 55 times: keyword density 2.04%. The network box, search title, description and focus keywords are unchanged; the excerpt mentions the questions.
+- FAQPage data: `page:islamic-dilemma` replaces `post:islamic-dilemma-reddit` in `abr_faq_style_keys()`. New `abr_faq_section_keys()` lists items whose questions are level-three headings, so the page's own sections are not read as questions; `abr_faq_qa_pairs()` reads those items at `h3`. Seven questions.
+- Retirement in `abr_run_seeder()` now trashes only a retired item whose text still matches the seeder's fingerprint (`abr_seed_is_unedited()`). An edited copy is left as it is, counted as `kept` in `abr_seed_log` and shown on the Tools notice. Nothing is deleted permanently.
+
+### Added
+- `inc/seed/legacy-paths.json`: `/journal/the-islamic-dilemma/` and `/journal/islamic-dilemma-reddit/` answer with a 301 to the page once the post has gone to the trash (the redirect runs only on a 404).
+
+### Removed
+- `post:the-islamic-dilemma` and `post:islamic-dilemma-reddit` from `content.json`, and their lines in `focus-keywords.json`, `seo-titles.json`, `tags.json` and the Rank Math keyword map in `inc/rank-math.php` (every tag keeps at least three articles). Their photograph credits stay in `photo-credits.json`, since the files are still bundled. The Theme Options example slug for "Pages that never get these links" is now `islamic-dilemma`.
+
 ## [2.85.1] - 2026-10-26
 
 ### Added

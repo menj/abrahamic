@@ -64,7 +64,6 @@ function abr_seed_focus_keywords( $force = false ) {
 		'post:war-and-peace-in-the-abrahamic-traditions'         => 'are abrahamic religions violent,religious violence',
 		'post:how-the-abrahamic-religions-understand-monotheism' => 'abrahamic monotheism,monotheistic religions',
 		'post:the-council-of-nicaea'                             => 'council of nicaea,nicene creed',
-		'post:the-islamic-dilemma'                               => 'islamic dilemma,surah 5:46',
 		'page:comparisons'                                       => 'similarities between judaism christianity and islam',
 		'post:the-stations-of-the-hajj'                          => 'stations of hajj,hajj',
 	);
