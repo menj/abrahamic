@@ -4,6 +4,12 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.86.0 to 2.86.1
+
+Replace the theme files and load any admin page once. Seed version 102 refreshes the Places, Figures and Tanakh pages; with `seed_mode` set to `keep`, an edited page keeps its heading and needs the capital by hand.
+
+---
+
 ## Upgrading from 2.85.1 to 2.86.0
 
 Replace the theme files and load any admin page once. Seed version 101 refreshes the Islamic Dilemma page and retires the two Journal posts on the subject. A post whose text is unchanged moves to the trash, where Posts > Trash can restore it; its address then redirects to the page. A post an editor has changed is left published and counted as "kept" on the Tools tab: it still duplicates the page, so move it to the trash by hand if it should go, and the redirect takes over. With `seed_mode` set to `keep`, an edited Islamic Dilemma page keeps its text and needs the merge by hand. Clear page caches.

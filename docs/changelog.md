@@ -2,6 +2,11 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.86.1] - 2026-10-27
+
+### Fixed
+- Starter content, seed version 102: three section headings and their table-of-contents entries kept a proper noun in lower case, against the capitalisation rule in `ssot.md`, section 12. "Places: jerusalem" is now "Places: Jerusalem" (`page:places`), "Figures: adam" is "Figures: Adam" (`page:figures`) and "The Tanakh: torah" is "The Tanakh: Torah" (`page:tanakh`). Anchors, text, keywords and descriptions are unchanged. Found in a TF*IDF coverage pass over all 92 starter items, which found no other change to make without new facts.
+
 ## [2.86.0] - 2026-10-27
 
 ### Changed
