@@ -442,3 +442,21 @@ add_shortcode(
 		return '' === $text ? '' : '<p class="abr-footer-note">' . esc_html( $text ) . '</p>';
 	}
 );
+
+/**
+ * [abr_lanah] The curse "laʿnat Allāh" (the curse of God) after the name of
+ * Paul of Tarsus, as calligraphy (assets/images/lanat-allah.svg, drawn as a
+ * mask in the theme's gold ink, so it follows the colour schemes and dark
+ * mode). The words stay inside, visually hidden, for screen readers, search
+ * and a copy and paste, and show as written where the mask cannot draw. It
+ * is never added on its own: it appears only where stored content places the
+ * shortcode, and only where the text gives the site's own verdict on Paul.
+ * Excerpts and descriptions strip shortcodes, so it never reaches them.
+ */
+add_shortcode(
+	'abr_lanah',
+	function () {
+		$words = 'laʿnat Allāh, the curse of God';
+		return '<span class="abr-lanah" lang="ar-Latn" title="' . esc_attr( $words ) . '"><span class="abr-lanah__text">' . esc_html( $words ) . '</span></span>';
+	}
+);

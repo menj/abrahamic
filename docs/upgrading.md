@@ -4,6 +4,18 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.85.1 to 2.86.0
+
+Replace the theme files and load any admin page once. Seed version 101 refreshes the Islamic Dilemma page and retires the two Journal posts on the subject. A post whose text is unchanged moves to the trash, where Posts > Trash can restore it; its address then redirects to the page. A post an editor has changed is left published and counted as "kept" on the Tools tab: it still duplicates the page, so move it to the trash by hand if it should go, and the redirect takes over. With `seed_mode` set to `keep`, an edited Islamic Dilemma page keeps its text and needs the merge by hand. Clear page caches.
+
+---
+
+## Upgrading from 2.84.1 to 2.84.2
+
+Replace the theme files and load any admin page once. Seed version 99 refreshes four articles and one page; with `seed_mode` set to `keep`, an edited item keeps its text and needs the corrections by hand.
+
+---
+
 ## Upgrading from 2.84.0 to 2.84.1
 
 Replace the theme files. `assets/fonts/kfgqpc-hafs-uthmanic-script.ttf` gives way to `kfgqpc-hafs-uthmanic-script.woff2`; an upload over the old folder leaves the TTF behind, which nothing reads and which can be deleted. Clear page and CDN caches so visitors fetch the new `theme.css`.

@@ -239,7 +239,7 @@ function abr_options_notice() {
 			/* translators: %d: number of items created. */
 			$parts[] = sprintf( _n( '%d item added', '%d items added', $count, 'abrahamic' ), $count );
 		}
-		foreach ( array( 'refreshed' => __( '%d updated', 'abrahamic' ), 'replaced' => __( '%d replaced', 'abrahamic' ), 'retired' => __( '%d moved to the trash', 'abrahamic' ), 'photos' => __( '%d featured images added', 'abrahamic' ) ) as $field => $format ) {
+		foreach ( array( 'refreshed' => __( '%d updated', 'abrahamic' ), 'replaced' => __( '%d replaced', 'abrahamic' ), 'retired' => __( '%d moved to the trash', 'abrahamic' ), 'kept' => __( '%d retired but kept, since they were edited', 'abrahamic' ), 'photos' => __( '%d featured images added', 'abrahamic' ) ) as $field => $format ) {
 			if ( is_array( $log ) && ! empty( $log[ $field ] ) ) {
 				$parts[] = sprintf( $format, (int) $log[ $field ] );
 			}
@@ -564,7 +564,7 @@ function abr_render_options_page() {
 				<h2><?php esc_html_e( 'Phrases and exceptions', 'abrahamic' ); ?></h2>
 				<?php
 				abr_field( 'ctx_extra', __( 'Extra phrases', 'abrahamic' ), 'menu', __( 'One per line: phrase | /path/ for a page on this site, or phrase | https://… for a page on a sister site. Other addresses are ignored. These lines are read before the shared file, so they win.', 'abrahamic' ) );
-				abr_field( 'ctx_exclude', __( 'Pages that never get these links', 'abrahamic' ), 'textarea', __( 'One address slug per line, for example the-islamic-dilemma.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
+				abr_field( 'ctx_exclude', __( 'Pages that never get these links', 'abrahamic' ), 'textarea', __( 'One address slug per line, for example islamic-dilemma.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
 				?>
 			</section>
 

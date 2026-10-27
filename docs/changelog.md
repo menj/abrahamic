@@ -2,6 +2,60 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.86.0] - 2026-10-27
+
+### Changed
+- Starter content, seed version 101: `post:the-islamic-dilemma` (1,578 words) and `post:islamic-dilemma-reddit` merged into the owner page `page:islamic-dilemma` (/reference/comparisons/islamic-dilemma/), the page the sister sites link to, under the rule of no duplicate or overlapping pages within a site. This settles the merge plan left open in 2.85.0. Folded in, without repeating what the page already said:
+  - the argument's own one-line form, quoted from islamicdilemma.com, in the opening paragraph (the link to the Journal article is gone);
+  - a new section, "The three premises of the Islamic Dilemma" (`#three-premises`), with its source;
+  - Luke's preface on compiling his account, under Tawrāt and Injīl;
+  - the verse on the Qur'an as guardian over earlier scripture, in Arabic (checked against api.quran.com) and in the Saheeh International translation, under Muhaymin; and Ibn ʿAbbās's "trustee" as al-Bukhārī cites it, without a chain, at the opening of the virtues of the Qur'an (al-Sulṭāniyya ed., 6:181, shamela.ws book 1681 page 7423, checked). It is a Companion's comment on a word, so no hadith grading applies; none by al-Albānī was found;
+  - the Qur'an's own charge of alteration in its own time, under Taḥrīf; the oneness of God among the truths that remain, and Qatāda's report read as "neither doubted nor asked", under the exegetes;
+  - the longer ending of Mark (Vaticanus, Sinaiticus, Eusebius and Jerome) and the Codex Alexandrinus photograph, under Revelation and the later texts;
+  - a new section, "Islamic Dilemma questions answered" (`#questions`), with the seven Reddit questions as level-three headings, renamed where the old heading carried a verse number (`ssot.md`: verse numbers only in notes), and the Birmingham Qur'an dating;
+  - Further reading: the Journal article gives way to the historical-context and Jesus articles that it listed.
+  25 notes in document order; "Ibid." only after the same work, and the al-Ṭabarī note now names Ibn Kathīr, since a new note stands between them. Book titles stay in the notes. Every Qur'an citation checked against api.quran.com (Saheeh International). Body text 2,621 words, "Islamic Dilemma" 54 times: keyword density 2.06%. The network box, search title, description and focus keywords are unchanged; the excerpt mentions the questions.
+- Prose revised to the house style.
+- FAQPage data: `page:islamic-dilemma` replaces `post:islamic-dilemma-reddit` in `abr_faq_style_keys()`. New `abr_faq_section_keys()` lists items whose questions are level-three headings, so the page's own sections are not read as questions; `abr_faq_qa_pairs()` reads those items at `h3`. Seven questions.
+- Retirement in `abr_run_seeder()` now trashes only a retired item whose text still matches the seeder's fingerprint (`abr_seed_is_unedited()`). An edited copy is left as it is, counted as `kept` in `abr_seed_log` and shown on the Tools notice. Nothing is deleted permanently.
+
+### Added
+- `inc/seed/legacy-paths.json`: `/journal/the-islamic-dilemma/` and `/journal/islamic-dilemma-reddit/` answer with a 301 to the page once the post has gone to the trash (the redirect runs only on a 404).
+
+### Removed
+- `post:the-islamic-dilemma` and `post:islamic-dilemma-reddit` from `content.json`, and their lines in `focus-keywords.json`, `seo-titles.json`, `tags.json` and the Rank Math keyword map in `inc/rank-math.php` (every tag keeps at least three articles). Their photograph credits stay in `photo-credits.json`, since the files are still bundled. The Theme Options example slug for "Pages that never get these links" is now `islamic-dilemma`.
+
+## [2.85.1] - 2026-10-26
+
+### Added
+- `[abr_lanah]` shortcode (`inc/shortcodes.php`): لعنة الله, laʿnat Allāh, "the curse of God", set after the name of Paul of Tarsus as calligraphy. The span `.abr-lanah` (`assets/css/theme.css`) draws `assets/images/lanat-allah.svg` (copied from injil.help) as a mask in `--abr-gold-ink`, the palette's accent, which becomes gold in dark mode; the palette has no red. The words "laʿnat Allāh, the curse of God" stay inside, visually hidden, for screen readers, search and a copy and paste, and show as written where the browser cannot draw a mask. In forced-colours mode it is drawn in `CanvasText`. The contextual-link engine skips `.abr-lanah`.
+- Policy: placed by hand and kept rare, only where the text gives the site's own verdict on Paul; never in titles, headings, excerpts, descriptions, menus, alt text, structured data or quotations. Excerpts and descriptions strip shortcodes.
+- Font licence: the calligraphy is drawn from the outlines of Dubidam Arabic (NamelaType), whose metadata names a free personal-use licence. A web licence is the site owner's to hold.
+
+### Not changed
+- No starter content uses the shortcode. The site presents itself as a neutral comparative reference (`ssot.md` content standard), and no article gives the site's own verdict on Paul: "Paul and Peter: two missions", "The parting of the ways" and the Islamic Dilemma page describe him historically. Seed version stays 100.
+
+## [2.85.0] - 2026-10-26
+
+### Changed
+- Starter content, seed version 100: `page:islamic-dilemma` (/reference/comparisons/islamic-dilemma/) expanded from 626 to 1,645 words of body text for the network brief on the Islamic Dilemma. New sections: who popularised the argument (David Wood, James White); Tawrāt and Injīl; *muhaymin* with Ibn Kathīr's three senses from Ibn ʿAbbās and al-Ṭabarī's grammatical point (Tafsīr, ed. Salāma, 3:128, shamela.ws book 8473 page 1393); *taḥrīf al-maʿnā* and *taḥrīf al-lafẓ* (Ibn Ḥazm, Ibn Taymiyya; book titles in the notes only); the exegetes on the people of the Gospel, 5:68 and 10:94 (Ibn Kathīr 4:296, shamela.ws book 8473 page 2095, Qatāda's report marked as without a full chain); revelation and the later texts. Contents list updated; 13 notes, verse numbers kept to the notes. Keyword density 2.31% (38 uses in 1,645 words, inside the 1% to 2.5% Rank Math range). New description and excerpt; search title unchanged.
+- "The Islamic Dilemma across the network" box (an `.abr-further` group) links the sister pieces on injil.help, compelling-evidence.com, bestofislam.org, apostleofdoom.org, murtadd.org and lailatulqadar.guide.
+
+### Added
+- `/islamic-dilemma/` in `inc/seed/legacy-paths.json`, answering with a 301 to the page, since the network brief lists https://abrahamic-religions.com/islamic-dilemma/ as the page's address.
+
+### Not changed
+- `post:the-islamic-dilemma` and `post:islamic-dilemma-reddit` are kept, with no cross-canonical: since they were added they divide the searches by intent (definition, full argument, question-and-answer with FAQPage data), and both already link to the page. A merge plan is recorded in the release notes for the owner to decide.
+
+## [2.84.2] - 2026-10-26
+
+### Fixed
+- Starter content, seed version 99 (High findings of the content review):
+  - A literal `{Q}` placeholder printed in two articles: the heading and contents entry "What ‘confirming’ means" in The Islamic Dilemma, and the alt text "al-Ṣūfī’s" in the Sabians in classical Muslim texts article.
+  - The sentence "whatever in the earlier books agrees with the Qur’an is true, and whatever disagrees with it is false" was credited to al-Ṭabarī on the Islamic Dilemma page and article. Ibn Kathīr reports it from Ibn Jurayj (Tafsīr, on 5:48, ed. Salāma, vol. 3, p. 128, checked on shamela.ws, book 8473, page 1393); text and notes now say so.
+  - The Gospel of Barnabas: the sentence "Other Muslim scholars have long doubted its authenticity" removed with its note, which cited a Christian scholar through a television programme and presented Jan Joosten as a Muslim; later notes renumbered.
+  - Haman in the Qur’an: the unsourced sentence placing a Bakenkhons obelisk at Luxor Temple and its partner in Paris removed.
+
 ## [2.84.1] - 2026-10-26
 
 ### Changed
