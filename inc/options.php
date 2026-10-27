@@ -138,7 +138,6 @@ function abr_option_types() {
 		'ctx_exclude'         => 'lines',
 		// Security.
 		'sec_xmlrpc_off'      => 'bool',
-		'sec_htaccess'        => 'bool',
 		'sec_app_passwords_off' => 'bool',
 		'sec_rest_lock'       => 'bool',
 		'sec_spam_gate'       => 'bool',
@@ -241,7 +240,6 @@ function abr_option_defaults() {
 		'ctx_extra'           => '',
 		'ctx_exclude'         => '',
 		'sec_xmlrpc_off'      => 1,
-		'sec_htaccess'        => 1,
 		'sec_app_passwords_off' => 1,
 		'sec_rest_lock'       => 1,
 		'sec_spam_gate'       => 1,
