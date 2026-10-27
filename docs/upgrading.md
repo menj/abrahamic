@@ -16,7 +16,7 @@ After the October 2026 attack, the owner checklist:
 4. Check Plugins for anything not installed by you (auto-posting, AI writers, remote management) and remove it. Check Users for unknown accounts.
 5. Run the spam scan, select the results, move them to the trash, then delete the empty spam categories.
 6. Purge any page cache, then resubmit the sitemap in Google Search Console.
-7. Optional, at the server: deny xmlrpc.php in .htaccess as well, so the requests never reach PHP. Jetpack needs XML-RPC; if Jetpack is used, switch "Turn off XML-RPC" off instead (password logins through XML-RPC stay refused).
+7. Nothing to do at the server: on Apache the theme writes a "Block xmlrpc.php" section into .htaccess itself, repairs it hourly from the admin, and removes it when XML-RPC is switched back on or the site moves to a theme outside the seven sister themes. Jetpack needs XML-RPC; if Jetpack is ever used, switch "Turn off XML-RPC" off.
 
 If a lock breaks a tool you rely on, `define( 'ABR_SECURITY_LOCK', false );` in wp-config.php turns the three locks off without changing the options.
 
