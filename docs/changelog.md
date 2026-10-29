@@ -2,6 +2,14 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.86.1] - 2026-10-29
+
+### Changed
+- Starter content, seed version 102: `page:islamic-dilemma` names the two parts of the argument "the two claims" (the heading "Taḥrīf and the two claims of the Islamic Dilemma", its table-of-contents entry, four sentences and note 3, "the two-part form"). The anchor `#tahrif` is unchanged. The sister sites use the same term.
+
+### Added
+- `FARUQI.md`: the Faruqian core, al-tawḥīd as al-Fārūqī set it out in *Al Tawhid: Its Implications for Thought and Life*, which every site in the network rests on. `CLAUDE.md` points contributors to it first.
+
 ## [2.86.0] - 2026-10-27
 
 ### Changed
@@ -286,7 +294,7 @@ Fourteen Journal articles (55 in all) from the answering-islam.org keyword resea
 
 ### Added
 - From the site owner's keyword exports for "Islamic Dilemma" (US all-keywords and broad-match, 2 August 2026) and islamicdilemma.com's organic positions in the US, UK and Canada (31 July 2026). The competitor ranks first to third for "islamic dilemma" (1,600 to 1,900 US searches a month), "the islamic dilemma", "islam dilemma", "what is the islamic dilemma", "islamic dilemma verses", "the islamic dilemma explained" and "quranic dilemma", with its home page and a PDF tract. "Surah 5:46" alone draws 320 searches a month. Two pieces divide the searches so they do not compete: a reference page for the definitional searches, and a Journal article for the argument and its answer.
-  - `page:islamic-dilemma`, "What is the Islamic Dilemma?", child of Comparative studies (/reference/comparisons/islamic-dilemma/): the argument in two horns, the verses it relies on with their text (3:3-4, 5:46, 5:47, 5:68, 10:94; a heading "The verses" anchored as `the-islamic-dilemma-verses`), the Muslim reply in three points, and further reading. 4 notes.
+  - `page:islamic-dilemma`, "What is the Islamic Dilemma?", child of Comparative studies (/reference/comparisons/islamic-dilemma/): the argument in its two claims, the verses it relies on with their text (3:3-4, 5:46, 5:47, 5:68, 10:94; a heading "The verses" anchored as `the-islamic-dilemma-verses`), the Muslim reply in three points, and further reading. 4 notes.
   - `post:the-islamic-dilemma`, "The Islamic Dilemma: the argument and the answer" (Scripture, Theology; 17 notes). It sets out the argument at its strongest (islamicdilemma.com, Hold Fast Apologetics, Ad Lucem, Apologia Daily), then tests its premises: *muṣaddiq* and *muhaymin* in 5:48, with Ibn ʿAbbās (Bukhārī, Virtues of the Qur'an, ch. 1) and al-Ṭabarī via Ibn Kathīr; the one Injīl given to Jesus against the four Gospels (Luke 1:1-4); the Qur'an's own references to alteration (2:79, 3:78, 5:13); 5:47 with 7:157; the exegesis of 10:94 (Blyth's note at Quranenc, citing al-Ṭabarī, Ibn ʿAṭiyyah, Ibn Kathīr and others); and the later additions in the seventh-century Bible (Mark 16:9-20, per Logos; John 7:53-8:11, NIV note). It closes on Qur'an 5:48 as the verse that answers the dilemma. No work by the site owner is cited, per the anonymity rule.
   - FAQ: "What is the Islamic Dilemma?", linking both (26 questions in the FAQPage structured data).
   - Photographs: an open Qur'an on a stand (featured), an open Bible, a page of the Qur'an (Pexels), and a page of the 1879-1883 facsimile of Codex Alexandrinus (CC0, Commons); credited on the Copyright and DMCA page. Seed version 80.
