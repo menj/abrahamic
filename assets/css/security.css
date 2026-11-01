@@ -1,0 +1,18 @@
+/* Abrahamic: Security tab. Uses the tokens of admin.css. */
+.abr-sec { margin-top: 0; }
+.abr-sec h2 { font-size: 16px; margin: 28px 0 12px; color: var(--abr-a-navy); }
+.abr-sec h3 { font-size: 13px; margin: 20px 0 8px; color: var(--abr-a-navy); text-transform: uppercase; letter-spacing: .04em; }
+.abr-sec-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0; }
+.abr-sec-bar .abr-tools-form { margin: 0; }
+.abr-sec-status { color: #50575e; font-size: 13px; }
+.abr-sec-scroll { max-height: 420px; overflow: auto; border: 1px solid var(--abr-a-line); border-radius: 6px; }
+.abr-sec-scroll--tall { max-height: 560px; }
+.abr-sec-table { border: 0; }
+.abr-sec-table td, .abr-sec-table th { vertical-align: top; }
+.abr-sec-links { display: flex; gap: 10px; margin-top: 4px; font-size: 12px; }
+.abr-sec-reason { display: inline-block; margin: 0 4px 4px 0; padding: 1px 8px; border-radius: 999px; background: #f6efe2; color: #6b5328; font-size: 11px; line-height: 18px; }
+.abr-sec-list { margin: 8px 0 12px 18px; list-style: disc; }
+.abr-sec-list li { margin: 2px 0; }
+@media (max-width: 782px) {
+	.abr-sec-bar { flex-direction: column; align-items: stretch; }
+}

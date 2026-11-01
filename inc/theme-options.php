@@ -1,7 +1,7 @@
 <?php
 /**
  * Theme Options screen: Appearance > Theme Options.
- * Eleven tabs; all but Tools save through the Settings API, Tools posts to admin-post.php.
+ * Twelve tabs; all but Tools save through the Settings API, Tools posts to admin-post.php.
  *
  * @package Abrahamic
  */
@@ -27,6 +27,7 @@ function abr_options_tabs() {
 		'login'      => array( __( 'Login', 'abrahamic' ), '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>' ),
 		'search'     => array( __( 'Search', 'abrahamic' ), '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>' ),
 		'links'      => array( __( 'Contextual links', 'abrahamic' ), '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>' ),
+		'security'   => array( __( 'Security', 'abrahamic' ), '<path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/>' ),
 		'tools'      => array( __( 'Tools', 'abrahamic' ), '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.8-.4-.4-2.8z"/>' ),
 	);
 }
@@ -568,10 +569,16 @@ function abr_render_options_page() {
 				?>
 			</section>
 
+			<section class="abr-panel" role="tabpanel" id="abr-panel-security" aria-labelledby="abr-tab-security" hidden>
+				<?php abr_sec_render_settings(); ?>
+			</section>
+
 			<div class="abr-options-submit">
 				<?php submit_button( __( 'Save Theme Options', 'abrahamic' ), 'primary', 'submit', false ); ?>
 			</div>
 		</form>
+
+		<?php abr_sec_render_tools(); ?>
 
 		<section class="abr-card abr-panel abr-panel--tools" role="tabpanel" id="abr-panel-tools" aria-labelledby="abr-tab-tools" hidden>
 			<h2><?php esc_html_e( 'Export', 'abrahamic' ); ?></h2>

@@ -45,5 +45,6 @@
     "/site-map/": "page:site-map",
     "/islamic-dilemma/": "page:islamic-dilemma",
     "/journal/the-islamic-dilemma/": "page:islamic-dilemma",
-    "/journal/islamic-dilemma-reddit/": "page:islamic-dilemma"
+    "/journal/islamic-dilemma-reddit/": "page:islamic-dilemma",
+    "/journal/deuteronomy-18-18/": "post:deuteronomy-18-18"
 }

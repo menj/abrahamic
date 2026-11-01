@@ -4,6 +4,36 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.86.1 to 2.88.0
+
+Replace the theme files and load any admin page once. Seed version 104 applies all starter-content changes below (Islamic Dilemma wording, capitalised headings, the Deuteronomy 18 move).
+
+### Security tab
+
+Replace the theme files. The Security tab is on by default: XML-RPC, application passwords and REST writes from outside the browser stop at once.
+
+After the October 2026 attack, the owner checklist:
+
+1. Change the password of every administrator to a long random one used nowhere else, then Log Out Everywhere Else (Users > Profile), or press "Log out all sessions" on the Security tab.
+2. Create a new administrator whose name is not the site name, log in as it, and delete the old account, attributing its content to the new one.
+3. Press "Revoke all application passwords".
+4. Check Plugins for anything not installed by you (auto-posting, AI writers, remote management) and remove it. Check Users for unknown accounts.
+5. Run the spam scan, select the results, move them to the trash, then delete the empty spam categories.
+6. Purge any page cache, then resubmit the sitemap in Google Search Console.
+7. Nothing to do at the server: on Apache the theme writes a "Block xmlrpc.php" section into .htaccess itself, repairs it hourly from the admin, and removes it when XML-RPC is switched back on or the site moves to a theme outside the seven sister themes. Jetpack needs XML-RPC; if Jetpack is ever used, switch "Turn off XML-RPC" off.
+
+If a lock breaks a tool you rely on, `define( 'ABR_SECURITY_LOCK', false );` in wp-config.php turns the three locks off without changing the options.
+
+### Starter content
+
+Replace the theme files and load any admin page once. The seed renames the Deuteronomy 18 article to /journal/prophet-like-moses/, and the old address redirects to it. The sister-site link list in `inc/data/network-links.json` still names the old address, which redirects.
+
+Replace the theme files and load any admin page once. The seed refreshes the Places, Figures and Tanakh pages; with `seed_mode` set to `keep`, an edited page keeps its heading and needs the capital by hand.
+
+
+
+---
+
 ## Upgrading from 2.86.0 to 2.86.1
 
 Replace the theme files and load any admin page once. Seed version 102 refreshes the Islamic Dilemma page with its new wording, keeping the previous text as a revision (under `seed_mode` `keep`, only an unedited copy is refreshed).

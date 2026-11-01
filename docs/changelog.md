@@ -2,6 +2,39 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.88.1] - 2026-11-01
+
+### Fixed
+- Security scan: the "Move selected to Trash" button stays disabled while a scan runs, whatever boxes are ticked, and turns on only when the scan completes. A failed scan clears its partial list.
+- Spam detector: every pattern carries the i and u flags, so upper-case Cyrillic such as "КАЗИНО" is caught where mbstring is missing. `mb_strtolower()` is still used when present. The self-test exits 1 when `inc/seed/content.json` is missing or is not valid JSON.
+- Daily tallies: a past-day row is folded by subtracting the value read and deleting the row only at zero, so an increment that lands in between is kept. The attack report shows 30 days, today included.
+- Failed logins: rows whose last failure is older than 24 hours are ignored by the notice and the report, and a count starts again once its first failure is older than 24 hours.
+- .htaccess: the state reads "written" only when `insert_with_markers()` returned true, otherwise "unavailable".
+- Spam gate: a post is exempt only when it carries `_abr_seed` or is written by the theme's own seeding run (`abr_run_seeder()`). A matching title or slug no longer counts, so a deleted starter slug gives a new post nothing. Private posts are logged as flagged, never moved to Pending. Posts created through WP-CLI are held like XML-RPC ones, since they come from outside the editor.
+- 410 Gone: trashed spam reached as /?p=ID is recorded and answers 410.
+- Theme Options: the security reports are built only when the screen opens on the Security tab; other tabs show a button that loads them.
+
+## [2.88.0] - 2026-11-01
+
+Merges the branch work below with 2.86.1 from main. Seed version 104 (above both sides' 102 and 103) so live sites refresh every changed starter item.
+
+### Added
+- Security tab in Theme Options (`inc/security.php`, `inc/security-detector.php`, `assets/js/security.js`, `assets/css/security.css`), built from the access logs of the October 2026 spam attack: password guessing through xmlrpc.php from 29 September under forged "Jetpack by WordPress.com" user agents, the first correct password on 20 October, then from 22 October a casino post every 18 to 20 minutes through wp.newPost, each request from a different address. More than 500 posts were published under the owner's account.
+- Remote-publishing lockdown, on by default: XML-RPC answers 403 and is counted per day, not logged per request; application passwords are off; REST writes need a logged-in browser session with a valid nonce. A correct password sent through XML-RPC is refused even with XML-RPC switched back on, logged, and raises an admin notice to change it. The emergency switch `define( 'ABR_SECURITY_LOCK', false );` in wp-config.php turns the three locks off.
+- Server-level block, automatic, controlled by the same "Turn off XML-RPC" switch: on Apache the theme writes a "Block xmlrpc.php" section into .htaccess through WordPress's insert_with_markers() (Apache 2.4 and 2.2 rules), checks it at most hourly in the admin and repairs it, removes it when the XML-RPC switch is turned off or the theme is switched away, and reports on the Security tab when the file cannot be written. The marker name is shared by the seven sister themes.
+- Spam gate, on by default: a post or page going public whose title, address or text reads as gambling spam (multilingual patterns, the brands seen in the attack, probe titles such as "Connection check" and "cl-probe", links to gambling sites) is saved as Pending and logged. Anything published from outside the editor (XML-RPC, REST without a browser session) waits as Pending whatever it says. Starter content is exempt. `tests/security-detector-test.php` checks that every starter item scores clean and every attack sample is caught.
+- Failed logins counted by account name over a rolling day, since attackers change address on every try; an admin notice names any real account with ten or more failures.
+- Clean-up: a scan in batches of 100 lists suspected spam with its reasons; selected posts move to the trash (each scored again first), never deleted. Trashed spam addresses answer 410 Gone (switch, on by default). Empty spam categories are deleted only on request, never a seeded one.
+- Reports: attacks seen per day, accounts being guessed, administrators with last login, sessions and application passwords, posts per day and burst publishing, starter content carrying gambling links, and a security log of the last 200 events. Buttons revoke every application password and end every session.
+- `inc/seed/legacy-paths.json`: /journal/deuteronomy-18-18/ answers with a 301 to the current address of `post:deuteronomy-18-18`. WordPress also records the old slug in `_wp_old_slug`.
+
+### Changed
+- Starter content, seed version 104: `post:deuteronomy-18-18` moves from /journal/deuteronomy-18-18/ to /journal/prophet-like-moses/, under the rule of no verse numbers in addresses. The new slug is the article's focus keyword. The post is renamed in place by the structure sync, so its ID, edits and history stay. The seed key, title, text and keywords are unchanged. The two internal links to the article, both in `post:muhammad-in-the-bible`, point at the new address. A scan of all 92 starter slugs found no other verse number, numeric prefix or -2 style suffix.
+
+### Fixed
+- Security: refused XML-RPC requests and failed logins are counted with one atomic upsert on a small daily row (`abr_sec_tally()`), folded into the thirty-day counts when the report is read, instead of rewriting `abr_security_counts` on every request under attack.
+- Starter content, seed version 104: three section headings and their table-of-contents entries kept a proper noun in lower case, against the capitalisation rule in `ssot.md`, section 12. "Places: jerusalem" is now "Places: Jerusalem" (`page:places`), "Figures: adam" is "Figures: Adam" (`page:figures`) and "The Tanakh: torah" is "The Tanakh: Torah" (`page:tanakh`). Anchors, text, keywords and descriptions are unchanged. Found in a TF*IDF coverage pass over all 92 starter items, which found no other change to make without new facts.
+
 ## [2.86.1] - 2026-10-29
 
 ### Changed

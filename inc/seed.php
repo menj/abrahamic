@@ -96,7 +96,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 /**
  * Raise when inc/seed/content.json gains items (set their 'since' to the new value).
  */
-define( 'ABR_SEED_VERSION', 102 );
+define( 'ABR_SEED_VERSION', 104 );
 
 /**
  * Recommended permalink settings (docs/ssot.md, section 12).
@@ -407,6 +407,9 @@ function abr_run_seeder( $only = array() ) {
 		set_transient( 'abr_seed_retry', 1, 5 * MINUTE_IN_SECONDS );
 		return $report;
 	}
+	// Tells the Security spam gate that the posts written below are the
+	// theme's own starter content (abr_sec_is_seeded()).
+	$GLOBALS['abr_seeding'] = true;
 	$seeded = abr_seed_tombstones();
 	$wanted = function ( $key ) use ( $only, $seeded ) {
 		return $only ? in_array( $key, $only, true ) : ! isset( $seeded[ $key ] );
@@ -753,6 +756,7 @@ function abr_run_seeder( $only = array() ) {
 		}
 		flush_rewrite_rules( $flush );
 	}
+	$GLOBALS['abr_seeding'] = false;
 	return $report;
 }
 

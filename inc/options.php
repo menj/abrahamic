@@ -136,6 +136,12 @@ function abr_option_types() {
 		'ctx_sister_max'      => 'count10',
 		'ctx_extra'           => 'lines',
 		'ctx_exclude'         => 'lines',
+		// Security.
+		'sec_xmlrpc_off'      => 'bool',
+		'sec_app_passwords_off' => 'bool',
+		'sec_rest_lock'       => 'bool',
+		'sec_spam_gate'       => 'bool',
+		'sec_gone'            => 'bool',
 	);
 	// Social.
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
@@ -233,6 +239,11 @@ function abr_option_defaults() {
 		'ctx_sister_max'      => 3,
 		'ctx_extra'           => '',
 		'ctx_exclude'         => '',
+		'sec_xmlrpc_off'      => 1,
+		'sec_app_passwords_off' => 1,
+		'sec_rest_lock'       => 1,
+		'sec_spam_gate'       => 1,
+		'sec_gone'            => 1,
 	);
 	foreach ( array_keys( abr_social_networks() ) as $slug ) {
 		$defaults[ abr_social_key( $slug ) ] = '';
