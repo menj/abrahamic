@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.87.1
+Stable tag: 2.88.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -548,17 +548,15 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 
 == Changelog ==
 
-= 2.87.1 - 2026-11-01 =
+= 2.88.0 - 2026-11-01 =
 * Fixed: refused XML-RPC requests and failed logins are counted with one small row write each, not a rewrite of the counts option.
-
-= 2.87.0 - 2026-10-27 =
 * New Security tab: XML-RPC, application passwords and REST writes from outside the browser are locked; gambling spam and anything published from outside the editor is held as Pending; a scan moves spam to the trash and answers 410 Gone on its addresses; attacks and guessed accounts are reported.
+* The Deuteronomy 18 article moves to /journal/prophet-like-moses/. The old address redirects to it. Seed version 104.
+* Three section headings now capitalise the names they carry: Jerusalem on the Places page, Adam on the Figures page and Torah on the Tanakh page. Seed version 104.
 
-= 2.86.2 - 2026-10-27 =
-* The Deuteronomy 18 article moves to /journal/prophet-like-moses/. The old address redirects to it. Seed version 103.
-
-= 2.86.1 - 2026-10-27 =
-* Three section headings now capitalise the names they carry: Jerusalem on the Places page, Adam on the Figures page and Torah on the Tanakh page. Seed version 102.
+= 2.86.1 - 2026-10-29 =
+* The Islamic Dilemma page calls the two parts of the argument its two claims throughout, the term the sister sites use.
+* FARUQI.md sets out the Faruqian core of al-tawḥīd that the site rests on; CLAUDE.md points contributors to it.
 
 = 2.86.0 - 2026-10-27 =
 * The two Journal posts on the Islamic Dilemma (the full argument and the Reddit questions) are merged into the Islamic Dilemma reference page, which gains the three premises, the verse on the Qur’an as guardian in Arabic and English, the manuscripts of Mark, and a questions-and-answers section with FAQ data. The posts redirect to the page; untouched copies go to the trash and edited copies are left alone. Seed version 101.

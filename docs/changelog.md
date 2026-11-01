@@ -2,12 +2,9 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
-## [2.87.1] - 2026-11-01
+## [2.88.0] - 2026-11-01
 
-### Fixed
-- Security: refused XML-RPC requests and failed logins are counted with one atomic upsert on a small daily row (`abr_sec_tally()`), folded into the thirty-day counts when the report is read, instead of rewriting `abr_security_counts` on every request under attack.
-
-## [2.87.0] - 2026-10-27
+Merges the branch work below with 2.86.1 from main. Seed version 104 (above both sides' 102 and 103) so live sites refresh every changed starter item.
 
 ### Added
 - Security tab in Theme Options (`inc/security.php`, `inc/security-detector.php`, `assets/js/security.js`, `assets/css/security.css`), built from the access logs of the October 2026 spam attack: password guessing through xmlrpc.php from 29 September under forged "Jetpack by WordPress.com" user agents, the first correct password on 20 October, then from 22 October a casino post every 18 to 20 minutes through wp.newPost, each request from a different address. More than 500 posts were published under the owner's account.
@@ -17,19 +14,22 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 - Failed logins counted by account name over a rolling day, since attackers change address on every try; an admin notice names any real account with ten or more failures.
 - Clean-up: a scan in batches of 100 lists suspected spam with its reasons; selected posts move to the trash (each scored again first), never deleted. Trashed spam addresses answer 410 Gone (switch, on by default). Empty spam categories are deleted only on request, never a seeded one.
 - Reports: attacks seen per day, accounts being guessed, administrators with last login, sessions and application passwords, posts per day and burst publishing, starter content carrying gambling links, and a security log of the last 200 events. Buttons revoke every application password and end every session.
-
-## [2.86.2] - 2026-10-27
-
-### Changed
-- Starter content, seed version 103: `post:deuteronomy-18-18` moves from /journal/deuteronomy-18-18/ to /journal/prophet-like-moses/, under the rule of no verse numbers in addresses. The new slug is the article's focus keyword. The post is renamed in place by the structure sync, so its ID, edits and history stay. The seed key, title, text and keywords are unchanged. The two internal links to the article, both in `post:muhammad-in-the-bible`, point at the new address. A scan of all 92 starter slugs found no other verse number, numeric prefix or -2 style suffix.
-
-### Added
 - `inc/seed/legacy-paths.json`: /journal/deuteronomy-18-18/ answers with a 301 to the current address of `post:deuteronomy-18-18`. WordPress also records the old slug in `_wp_old_slug`.
 
-## [2.86.1] - 2026-10-27
+### Changed
+- Starter content, seed version 104: `post:deuteronomy-18-18` moves from /journal/deuteronomy-18-18/ to /journal/prophet-like-moses/, under the rule of no verse numbers in addresses. The new slug is the article's focus keyword. The post is renamed in place by the structure sync, so its ID, edits and history stay. The seed key, title, text and keywords are unchanged. The two internal links to the article, both in `post:muhammad-in-the-bible`, point at the new address. A scan of all 92 starter slugs found no other verse number, numeric prefix or -2 style suffix.
 
 ### Fixed
-- Starter content, seed version 102: three section headings and their table-of-contents entries kept a proper noun in lower case, against the capitalisation rule in `ssot.md`, section 12. "Places: jerusalem" is now "Places: Jerusalem" (`page:places`), "Figures: adam" is "Figures: Adam" (`page:figures`) and "The Tanakh: torah" is "The Tanakh: Torah" (`page:tanakh`). Anchors, text, keywords and descriptions are unchanged. Found in a TF*IDF coverage pass over all 92 starter items, which found no other change to make without new facts.
+- Security: refused XML-RPC requests and failed logins are counted with one atomic upsert on a small daily row (`abr_sec_tally()`), folded into the thirty-day counts when the report is read, instead of rewriting `abr_security_counts` on every request under attack.
+- Starter content, seed version 104: three section headings and their table-of-contents entries kept a proper noun in lower case, against the capitalisation rule in `ssot.md`, section 12. "Places: jerusalem" is now "Places: Jerusalem" (`page:places`), "Figures: adam" is "Figures: Adam" (`page:figures`) and "The Tanakh: torah" is "The Tanakh: Torah" (`page:tanakh`). Anchors, text, keywords and descriptions are unchanged. Found in a TF*IDF coverage pass over all 92 starter items, which found no other change to make without new facts.
+
+## [2.86.1] - 2026-10-29
+
+### Changed
+- Starter content, seed version 102: `page:islamic-dilemma` names the two parts of the argument "the two claims" (the heading "Taḥrīf and the two claims of the Islamic Dilemma", its table-of-contents entry, four sentences and note 3, "the two-part form"). The anchor `#tahrif` is unchanged. The sister sites use the same term.
+
+### Added
+- `FARUQI.md`: the Faruqian core, al-tawḥīd as al-Fārūqī set it out in *Al Tawhid: Its Implications for Thought and Life*, which every site in the network rests on. `CLAUDE.md` points contributors to it first.
 
 ## [2.86.0] - 2026-10-27
 
@@ -315,7 +315,7 @@ Fourteen Journal articles (55 in all) from the answering-islam.org keyword resea
 
 ### Added
 - From the site owner's keyword exports for "Islamic Dilemma" (US all-keywords and broad-match, 2 August 2026) and islamicdilemma.com's organic positions in the US, UK and Canada (31 July 2026). The competitor ranks first to third for "islamic dilemma" (1,600 to 1,900 US searches a month), "the islamic dilemma", "islam dilemma", "what is the islamic dilemma", "islamic dilemma verses", "the islamic dilemma explained" and "quranic dilemma", with its home page and a PDF tract. "Surah 5:46" alone draws 320 searches a month. Two pieces divide the searches so they do not compete: a reference page for the definitional searches, and a Journal article for the argument and its answer.
-  - `page:islamic-dilemma`, "What is the Islamic Dilemma?", child of Comparative studies (/reference/comparisons/islamic-dilemma/): the argument in two horns, the verses it relies on with their text (3:3-4, 5:46, 5:47, 5:68, 10:94; a heading "The verses" anchored as `the-islamic-dilemma-verses`), the Muslim reply in three points, and further reading. 4 notes.
+  - `page:islamic-dilemma`, "What is the Islamic Dilemma?", child of Comparative studies (/reference/comparisons/islamic-dilemma/): the argument in its two claims, the verses it relies on with their text (3:3-4, 5:46, 5:47, 5:68, 10:94; a heading "The verses" anchored as `the-islamic-dilemma-verses`), the Muslim reply in three points, and further reading. 4 notes.
   - `post:the-islamic-dilemma`, "The Islamic Dilemma: the argument and the answer" (Scripture, Theology; 17 notes). It sets out the argument at its strongest (islamicdilemma.com, Hold Fast Apologetics, Ad Lucem, Apologia Daily), then tests its premises: *muṣaddiq* and *muhaymin* in 5:48, with Ibn ʿAbbās (Bukhārī, Virtues of the Qur'an, ch. 1) and al-Ṭabarī via Ibn Kathīr; the one Injīl given to Jesus against the four Gospels (Luke 1:1-4); the Qur'an's own references to alteration (2:79, 3:78, 5:13); 5:47 with 7:157; the exegesis of 10:94 (Blyth's note at Quranenc, citing al-Ṭabarī, Ibn ʿAṭiyyah, Ibn Kathīr and others); and the later additions in the seventh-century Bible (Mark 16:9-20, per Logos; John 7:53-8:11, NIV note). It closes on Qur'an 5:48 as the verse that answers the dilemma. No work by the site owner is cited, per the anonymity rule.
   - FAQ: "What is the Islamic Dilemma?", linking both (26 questions in the FAQPage structured data).
   - Photographs: an open Qur'an on a stand (featured), an open Bible, a page of the Qur'an (Pexels), and a page of the 1879-1883 facsimile of Codex Alexandrinus (CC0, Commons); credited on the Copyright and DMCA page. Seed version 80.

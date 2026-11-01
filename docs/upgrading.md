@@ -4,7 +4,11 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
-## Upgrading from 2.86.2 to 2.87.0
+## Upgrading from 2.86.1 to 2.88.0
+
+Replace the theme files and load any admin page once. Seed version 104 applies all starter-content changes below (Islamic Dilemma wording, capitalised headings, the Deuteronomy 18 move).
+
+### Security tab
 
 Replace the theme files. The Security tab is on by default: XML-RPC, application passwords and REST writes from outside the browser stop at once.
 
@@ -20,17 +24,19 @@ After the October 2026 attack, the owner checklist:
 
 If a lock breaks a tool you rely on, `define( 'ABR_SECURITY_LOCK', false );` in wp-config.php turns the three locks off without changing the options.
 
----
+### Starter content
 
-## Upgrading from 2.86.1 to 2.86.2
+Replace the theme files and load any admin page once. The seed renames the Deuteronomy 18 article to /journal/prophet-like-moses/, and the old address redirects to it. The sister-site link list in `inc/data/network-links.json` still names the old address, which redirects.
 
-Replace the theme files and load any admin page once. Seed version 103 renames the Deuteronomy 18 article to /journal/prophet-like-moses/, and the old address redirects to it. The sister-site link list in `inc/data/network-links.json` still names the old address, which redirects.
+Replace the theme files and load any admin page once. The seed refreshes the Places, Figures and Tanakh pages; with `seed_mode` set to `keep`, an edited page keeps its heading and needs the capital by hand.
+
+
 
 ---
 
 ## Upgrading from 2.86.0 to 2.86.1
 
-Replace the theme files and load any admin page once. Seed version 102 refreshes the Places, Figures and Tanakh pages; with `seed_mode` set to `keep`, an edited page keeps its heading and needs the capital by hand.
+Replace the theme files and load any admin page once. Seed version 102 refreshes the Islamic Dilemma page with its new wording, keeping the previous text as a revision (under `seed_mode` `keep`, only an unedited copy is refreshed).
 
 ---
 
