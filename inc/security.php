@@ -56,11 +56,11 @@ function abr_sec_xmlrpc() {
 	);
 	remove_action( 'wp_head', 'rsd_link' );
 	if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
-		// Counted, not logged one by one: the October 2026 attack sent over
+		// One cheap row write per request (abr_sec_tally), not logged one by one: the October 2026 attack sent over
 		// 17,000 requests in twelve days from 701 addresses.
-		abr_sec_count( 'xmlrpc' );
+		abr_sec_tally( 'xmlrpc' );
 		if ( abr_sec_fake_jetpack() ) {
-			abr_sec_count( 'fake-jetpack' );
+			abr_sec_tally( 'fake-jetpack' );
 		}
 		status_header( 403 );
 		header( 'Content-Type: text/plain; charset=utf-8' );
@@ -277,6 +277,62 @@ function abr_sec_count( $key ) {
 }
 
 /**
+ * Cheap counter for events that can arrive thousands of times a day, such as
+ * refused XML-RPC requests: one atomic upsert on a small, non-autoloaded row
+ * for today (abr_security_tally_{key}_{Ymd}). abr_sec_counts() folds past
+ * days into the thirty-day counts.
+ *
+ * @param string $key Event key (lower case letters and dashes).
+ */
+function abr_sec_tally( $key ) {
+	global $wpdb;
+	$name = 'abr_security_tally_' . sanitize_key( $key ) . '_' . gmdate( 'Ymd' );
+	$wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->options} (option_name, option_value, autoload) VALUES (%s, '1', 'off') ON DUPLICATE KEY UPDATE option_value = option_value + 1", $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+}
+
+/**
+ * Counts for display: ABR_SEC_COUNTS plus the tally rows. Past-day rows are
+ * folded into ABR_SEC_COUNTS and deleted; today's row is added but kept.
+ *
+ * @return array date => array key => count, newest first.
+ */
+function abr_sec_counts() {
+	global $wpdb;
+	$counts = get_option( ABR_SEC_COUNTS, array() );
+	$counts = is_array( $counts ) ? $counts : array();
+	$rows   = $wpdb->get_results( "SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE 'abr\\_security\\_tally\\_%'" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+	$today  = gmdate( 'Ymd' );
+	$live   = array();
+	$done   = array();
+	foreach ( (array) $rows as $row ) {
+		if ( ! preg_match( '/^abr_security_tally_([a-z0-9_-]+)_(\d{8})$/', $row->option_name, $m ) ) {
+			continue;
+		}
+		$day = substr( $m[2], 0, 4 ) . '-' . substr( $m[2], 4, 2 ) . '-' . substr( $m[2], 6, 2 );
+		if ( $m[2] === $today ) {
+			$live[ $m[1] ] = (int) $row->option_value;
+			continue;
+		}
+		$counts[ $day ][ $m[1] ] = ( isset( $counts[ $day ][ $m[1] ] ) ? (int) $counts[ $day ][ $m[1] ] : 0 ) + (int) $row->option_value;
+		$done[]                  = $row->option_name;
+	}
+	krsort( $counts );
+	$counts = array_slice( $counts, 0, 30, true );
+	if ( $done ) {
+		update_option( ABR_SEC_COUNTS, $counts, false );
+		foreach ( $done as $name ) {
+			delete_option( $name );
+		}
+	}
+	$day = gmdate( 'Y-m-d' );
+	foreach ( $live as $key => $n ) {
+		$counts[ $day ][ $key ] = ( isset( $counts[ $day ][ $key ] ) ? (int) $counts[ $day ][ $key ] : 0 ) + $n;
+	}
+	krsort( $counts );
+	return $counts;
+}
+
+/**
  * Whether the request claims to come from Jetpack or WordPress.com while the
  * Jetpack plugin is not active. Real Jetpack traffic only reaches sites that
  * run Jetpack, so on this site the claim is forged.
@@ -341,7 +397,7 @@ add_filter( 'authenticate', 'abr_sec_refuse_remote_password', 100 );
  * @param string $login Account name or email tried.
  */
 function abr_sec_failed_login( $login ) {
-	abr_sec_count( 'failed-login' );
+	abr_sec_tally( 'failed-login' );
 	$login  = sanitize_user( (string) $login, true );
 	$failed = get_option( ABR_SEC_FAILED, array() );
 	$failed = is_array( $failed ) ? $failed : array();
@@ -384,7 +440,7 @@ function abr_sec_attack_notice() {
 			$hit[] = sprintf( '%s (%d, %d)', $name, (int) $row['n'], count( (array) $row['ips'] ) );
 		}
 	}
-	$counts = get_option( ABR_SEC_COUNTS, array() );
+	$counts = abr_sec_counts();
 	$today  = isset( $counts[ gmdate( 'Y-m-d' ) ]['remote-password'] ) ? (int) $counts[ gmdate( 'Y-m-d' ) ]['remote-password'] : 0;
 	if ( ! $hit && ! $today ) {
 		return;
@@ -1185,7 +1241,7 @@ function abr_sec_render_tools() {
 
 		<h2><?php esc_html_e( 'Attacks seen', 'abrahamic' ); ?></h2>
 		<?php
-		$counts = get_option( ABR_SEC_COUNTS, array() );
+		$counts = abr_sec_counts();
 		$counts = is_array( $counts ) ? $counts : array();
 		krsort( $counts );
 		$labels = array(

@@ -2,6 +2,11 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.87.1] - 2026-11-01
+
+### Fixed
+- Security: refused XML-RPC requests and failed logins are counted with one atomic upsert on a small daily row (`abr_sec_tally()`), folded into the thirty-day counts when the report is read, instead of rewriting `abr_security_counts` on every request under attack.
+
 ## [2.87.0] - 2026-10-27
 
 ### Added
