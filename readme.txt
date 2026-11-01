@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.88.0
+Stable tag: 2.88.1
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -547,6 +547,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.88.1 - 2026-11-01 =
+* Security fixes: the trash button stays off while a scan runs; upper-case Cyrillic spam is caught without mbstring; WP-CLI posts are held like XML-RPC ones; private posts are flagged, never moved to Pending; only posts with the seed marker are exempt; trashed spam at /?p=ID answers 410; the reports load only on the Security tab.
 
 = 2.88.0 - 2026-11-01 =
 * Fixed: refused XML-RPC requests and failed logins are counted with one small row write each, not a rewrite of the counts option.

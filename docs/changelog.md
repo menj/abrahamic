@@ -2,6 +2,18 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.88.1] - 2026-11-01
+
+### Fixed
+- Security scan: the "Move selected to Trash" button stays disabled while a scan runs, whatever boxes are ticked, and turns on only when the scan completes. A failed scan clears its partial list.
+- Spam detector: every pattern carries the i and u flags, so upper-case Cyrillic such as "КАЗИНО" is caught where mbstring is missing. `mb_strtolower()` is still used when present. The self-test exits 1 when `inc/seed/content.json` is missing or is not valid JSON.
+- Daily tallies: a past-day row is folded by subtracting the value read and deleting the row only at zero, so an increment that lands in between is kept. The attack report shows 30 days, today included.
+- Failed logins: rows whose last failure is older than 24 hours are ignored by the notice and the report, and a count starts again once its first failure is older than 24 hours.
+- .htaccess: the state reads "written" only when `insert_with_markers()` returned true, otherwise "unavailable".
+- Spam gate: a post is exempt only when it carries `_abr_seed` or is written by the theme's own seeding run (`abr_run_seeder()`). A matching title or slug no longer counts, so a deleted starter slug gives a new post nothing. Private posts are logged as flagged, never moved to Pending. Posts created through WP-CLI are held like XML-RPC ones, since they come from outside the editor.
+- 410 Gone: trashed spam reached as /?p=ID is recorded and answers 410.
+- Theme Options: the security reports are built only when the screen opens on the Security tab; other tabs show a button that loads them.
+
 ## [2.88.0] - 2026-11-01
 
 Merges the branch work below with 2.86.1 from main. Seed version 104 (above both sides' 102 and 103) so live sites refresh every changed starter item.

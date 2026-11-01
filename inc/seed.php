@@ -407,6 +407,9 @@ function abr_run_seeder( $only = array() ) {
 		set_transient( 'abr_seed_retry', 1, 5 * MINUTE_IN_SECONDS );
 		return $report;
 	}
+	// Tells the Security spam gate that the posts written below are the
+	// theme's own starter content (abr_sec_is_seeded()).
+	$GLOBALS['abr_seeding'] = true;
 	$seeded = abr_seed_tombstones();
 	$wanted = function ( $key ) use ( $only, $seeded ) {
 		return $only ? in_array( $key, $only, true ) : ! isset( $seeded[ $key ] );
@@ -753,6 +756,7 @@ function abr_run_seeder( $only = array() ) {
 		}
 		flush_rewrite_rules( $flush );
 	}
+	$GLOBALS['abr_seeding'] = false;
 	return $report;
 }
 

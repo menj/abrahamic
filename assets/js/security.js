@@ -67,7 +67,14 @@
 		return tbody ? Array.prototype.slice.call( tbody.querySelectorAll( 'input[type="checkbox"]' ) ) : [];
 	}
 
+	// True while a scan runs: the trash button stays off until it completes.
+	var scanning = false;
+
 	function refresh() {
+		if ( scanning ) {
+			trashBtn.disabled = true;
+			return;
+		}
 		var picked = boxes().filter( function ( b ) {
 			return b.checked;
 		} );
@@ -135,6 +142,7 @@
 			table.hidden = true;
 			scanBtn.disabled = true;
 			trashBtn.disabled = true;
+			scanning = true;
 
 			function step( offset ) {
 				post( 'abr_sec_scan', { offset: offset } )
@@ -146,6 +154,7 @@
 						}
 						if ( data.done ) {
 							status.textContent = found ? format( i18n.done, data.next, found ) : i18n.none;
+							scanning = false;
 							scanBtn.disabled = false;
 							refresh();
 							return;
@@ -154,8 +163,13 @@
 						step( data.next );
 					} )
 					.catch( function ( err ) {
+						// An unfinished scan offers nothing to trash.
 						status.textContent = err.message;
+						tbody.textContent = '';
+						table.hidden = true;
+						scanning = false;
 						scanBtn.disabled = false;
+						refresh();
 					} );
 			}
 			step( 0 );

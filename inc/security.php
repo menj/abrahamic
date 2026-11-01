@@ -134,12 +134,14 @@ function abr_sec_sync_htaccess( $force = false ) {
 	}
 	$want    = abr_sec_on( 'sec_xmlrpc_off' );
 	$current = function_exists( 'extract_from_markers' ) ? extract_from_markers( $file, 'Block xmlrpc.php' ) : array();
+	$ok      = true;
 	if ( $want && $current !== abr_sec_htaccess_lines() ) {
-		insert_with_markers( $file, 'Block xmlrpc.php', abr_sec_htaccess_lines() );
+		$ok = true === insert_with_markers( $file, 'Block xmlrpc.php', abr_sec_htaccess_lines() );
 	} elseif ( ! $want && $current ) {
 		insert_with_markers( $file, 'Block xmlrpc.php', array() );
 	}
-	update_option( 'abr_security_htaccess', $want ? 'written' : 'off', false );
+	// 'written' only when the block is really in the file.
+	update_option( 'abr_security_htaccess', $want ? ( $ok ? 'written' : 'unavailable' ) : 'off', false );
 }
 add_action( 'admin_init', 'abr_sec_sync_htaccess' );
 add_action( 'after_switch_theme', function () { abr_sec_sync_htaccess( true ); } );
@@ -314,14 +316,18 @@ function abr_sec_counts() {
 			continue;
 		}
 		$counts[ $day ][ $m[1] ] = ( isset( $counts[ $day ][ $m[1] ] ) ? (int) $counts[ $day ][ $m[1] ] : 0 ) + (int) $row->option_value;
-		$done[]                  = $row->option_name;
+		$done[ $row->option_name ] = (int) $row->option_value;
 	}
 	krsort( $counts );
 	$counts = array_slice( $counts, 0, 30, true );
 	if ( $done ) {
 		update_option( ABR_SEC_COUNTS, $counts, false );
-		foreach ( $done as $name ) {
-			delete_option( $name );
+		foreach ( $done as $name => $n ) {
+			// Take away only the value read, then drop the row if nothing is
+			// left: an increment that landed in between stays for the next fold.
+			$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->options} SET option_value = option_value - %d WHERE option_name = %s", $n, $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name = %s AND option_value + 0 <= 0", $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			wp_cache_delete( $name, 'options' );
 		}
 	}
 	$day = gmdate( 'Y-m-d' );
@@ -329,7 +335,8 @@ function abr_sec_counts() {
 		$counts[ $day ][ $key ] = ( isset( $counts[ $day ][ $key ] ) ? (int) $counts[ $day ][ $key ] : 0 ) + $n;
 	}
 	krsort( $counts );
-	return $counts;
+	// Thirty days, today included.
+	return array_slice( $counts, 0, 30, true );
 }
 
 /**
@@ -348,13 +355,18 @@ function abr_sec_fake_jetpack() {
 }
 
 /**
- * Whether this request is a remote, non-browser call: XML-RPC, or REST with
- * an application password or other header login.
+ * Whether this request is a remote, non-browser call: XML-RPC, WP-CLI, or
+ * REST with an application password or other header login.
  *
  * @return bool
  */
 function abr_sec_is_remote() {
 	if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
+		return true;
+	}
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		// Outside the editor too. The theme's own seeding run is exempted
+		// earlier, in abr_sec_is_seeded().
 		return true;
 	}
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST && is_user_logged_in() ) {
@@ -413,7 +425,11 @@ function abr_sec_failed_login( $login ) {
 	if ( ! isset( $failed[ $login ] ) && count( $failed ) >= 50 ) {
 		return;
 	}
-	$row = isset( $failed[ $login ] ) ? $failed[ $login ] : array( 'n' => 0, 'first' => $now, 'last' => $now, 'ips' => array() );
+	$row = isset( $failed[ $login ] ) ? $failed[ $login ] : array();
+	if ( ! $row || $now - (int) $row['first'] > DAY_IN_SECONDS ) {
+		// The count covers one rolling day: start again once the first failure is older.
+		$row = array( 'n' => 0, 'first' => $now, 'last' => $now, 'ips' => array() );
+	}
 	$row['n']++;
 	$row['last'] = $now;
 	$ip          = abr_sec_ip();
@@ -426,6 +442,24 @@ function abr_sec_failed_login( $login ) {
 add_action( 'wp_login_failed', 'abr_sec_failed_login' );
 
 /**
+ * Failed-login rows of the last 24 hours. Older rows are skipped on reading,
+ * not only pruned on the next failure.
+ *
+ * @return array account => row.
+ */
+function abr_sec_failed_recent() {
+	$failed = get_option( ABR_SEC_FAILED, array() );
+	$out    = array();
+	$now    = time();
+	foreach ( is_array( $failed ) ? $failed : array() as $name => $row ) {
+		if ( is_array( $row ) && $now - (int) $row['last'] <= DAY_IN_SECONDS && $now - (int) $row['first'] <= DAY_IN_SECONDS ) {
+			$out[ $name ] = $row;
+		}
+	}
+	return $out;
+}
+
+/**
  * Admin notice when an existing account is being guessed at: ten or more
  * failures in a day, or a correct password refused on the remote route.
  */
@@ -433,7 +467,7 @@ function abr_sec_attack_notice() {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
-	$failed = get_option( ABR_SEC_FAILED, array() );
+	$failed = abr_sec_failed_recent();
 	$hit    = array();
 	foreach ( (array) $failed as $name => $row ) {
 		if ( (int) $row['n'] >= 10 && ( username_exists( $name ) || email_exists( $name ) ) ) {
@@ -522,29 +556,19 @@ function abr_sec_log( $entry ) {
 }
 
 /**
- * Whether a post is starter content: it carries the seed key, or its title
- * and slug are those of an item in inc/seed/content.json.
+ * Whether a post is starter content: it carries the theme's seed marker
+ * (_abr_seed), or the request is the theme's own seeding run
+ * (abr_run_seeder()). A title or slug alone never counts, so a remote post
+ * that copies a starter title, or takes a deleted starter slug, is not exempt.
  *
- * @param int    $post_id Post ID, 0 for a new post.
- * @param string $title   Title.
- * @param string $slug    Slug.
+ * @param int $post_id Post ID, 0 for a new post.
  * @return bool
  */
-function abr_sec_is_seeded( $post_id, $title = '', $slug = '' ) {
+function abr_sec_is_seeded( $post_id ) {
 	if ( $post_id && '' !== (string) get_post_meta( $post_id, '_abr_seed', true ) ) {
 		return true;
 	}
-	static $index = null;
-	if ( null === $index ) {
-		$index = array();
-		$data  = function_exists( 'abr_seed_data' ) ? abr_seed_data() : array();
-		if ( ! empty( $data['items'] ) ) {
-			foreach ( $data['items'] as $item ) {
-				$index[ $item['title'] . '|' . $item['slug'] ] = true;
-			}
-		}
-	}
-	return isset( $index[ $title . '|' . $slug ] );
+	return ! empty( $GLOBALS['abr_seeding'] );
 }
 
 /**
@@ -569,11 +593,12 @@ function abr_sec_gate( $data, $postarr ) {
 	if ( ! abr_sec_on( 'sec_spam_gate' ) || ! in_array( $data['post_type'], abr_sec_types(), true ) ) {
 		return $data;
 	}
-	$public = in_array( $data['post_status'], array( 'publish', 'future', 'private' ), true );
+	// Private posts are never public, so they are flagged but never moved to Pending.
+	$public = in_array( $data['post_status'], array( 'publish', 'future' ), true );
 	$id     = isset( $postarr['ID'] ) ? (int) $postarr['ID'] : 0;
 	$title  = wp_unslash( $data['post_title'] );
 	$slug   = $data['post_name'];
-	if ( abr_sec_is_seeded( $id, $title, $slug ) ) {
+	if ( abr_sec_is_seeded( $id ) ) {
 		return $data;
 	}
 	$verdict = abr_spam_score( $title, $slug, wp_unslash( $data['post_content'] ) );
@@ -589,7 +614,7 @@ function abr_sec_gate( $data, $postarr ) {
 		$data['post_status'] = 'pending';
 	}
 	$GLOBALS['abr_sec_held'] = array(
-		'event'   => $public ? 'held' : 'flagged-draft',
+		'event'   => $public ? 'held' : 'flagged',
 		'title'   => $title,
 		'reasons' => $verdict['reasons'],
 	);
@@ -649,6 +674,8 @@ function abr_sec_remember_gone( $post ) {
 			$gone[ $path ] = (int) $post->ID;
 		}
 	}
+	// Query permalinks (/?p=ID) have no path; keep them under their own key.
+	$gone[ '?p=' . (int) $post->ID ] = (int) $post->ID;
 	if ( $post->post_name ) {
 		$gone[ strtolower( rawurldecode( $post->post_name ) ) ] = (int) $post->ID;
 	}
@@ -671,7 +698,9 @@ function abr_sec_send_gone() {
 	$uri  = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 	$path = abr_sec_path( $uri );
 	$last = basename( $path );
-	if ( isset( $gone[ $path ] ) || ( '' !== $last && isset( $gone[ $last ] ) && false === strpos( $path, '/' ) ) ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read only.
+	$qid  = isset( $_GET['p'] ) ? absint( $_GET['p'] ) : 0;
+	if ( ( '' === $path && $qid && isset( $gone[ '?p=' . $qid ] ) ) || isset( $gone[ $path ] ) || ( '' !== $last && isset( $gone[ $last ] ) && false === strpos( $path, '/' ) ) ) {
 		status_header( 410 );
 		nocache_headers();
 		header( 'X-Robots-Tag: noindex', true );
@@ -858,7 +887,7 @@ function abr_sec_ajax_scan() {
 	);
 	$rows = array();
 	foreach ( $query->posts as $post ) {
-		if ( abr_sec_is_seeded( $post->ID, $post->post_title, $post->post_name ) ) {
+		if ( abr_sec_is_seeded( $post->ID ) ) {
 			continue;
 		}
 		$verdict = abr_spam_score( $post->post_title, $post->post_name, $post->post_content );
@@ -903,7 +932,7 @@ function abr_sec_ajax_trash() {
 	$skipped = array();
 	foreach ( array_filter( $ids ) as $id ) {
 		$post = get_post( $id );
-		if ( ! $post || ! in_array( $post->post_type, abr_sec_types(), true ) || 'trash' === $post->post_status || ! current_user_can( 'delete_post', $id ) || abr_sec_is_seeded( $id, $post->post_title, $post->post_name ) ) {
+		if ( ! $post || ! in_array( $post->post_type, abr_sec_types(), true ) || 'trash' === $post->post_status || ! current_user_can( 'delete_post', $id ) || abr_sec_is_seeded( $id ) ) {
 			$skipped[] = $id;
 			continue;
 		}
@@ -1140,11 +1169,10 @@ function abr_sec_render_tools() {
 		return;
 	}
 	$format = get_option( 'date_format' ) . ' ' . get_option( 'time_format' );
-	$admins = abr_sec_admin_rows();
-	$total  = 0;
-	foreach ( $admins as $a ) {
-		$total += count( $a['apps'] );
-	}
+	// The reports are heavy queries; build them only when the screen opens on
+	// the Security tab, not on every Theme Options load.
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab selection only.
+	$full = isset( $_GET['tab'] ) && 'security' === sanitize_key( wp_unslash( $_GET['tab'] ) );
 	?>
 	<section class="abr-card abr-sec" id="abr-security-tools" data-extra-for="security" hidden>
 		<?php abr_sec_notice(); ?>
@@ -1181,6 +1209,19 @@ function abr_sec_render_tools() {
 				: esc_html__( 'Rank Math Instant Indexing is off.', 'abrahamic' );
 			?>
 		</p>
+
+		<?php if ( ! $full ) : ?>
+			<p><a class="button" href="<?php echo esc_url( abr_options_url( 'security' ) ); ?>"><?php esc_html_e( 'Load the security reports', 'abrahamic' ); ?></a></p>
+	</section>
+			<?php
+			return;
+		endif;
+		$admins = abr_sec_admin_rows();
+		$total  = 0;
+		foreach ( $admins as $a ) {
+			$total += count( $a['apps'] );
+		}
+		?>
 
 		<h2><?php esc_html_e( 'Spam categories', 'abrahamic' ); ?></h2>
 		<?php $cats = abr_sec_spam_categories(); ?>
@@ -1269,8 +1310,7 @@ function abr_sec_render_tools() {
 		<h3><?php esc_html_e( 'Accounts being guessed, last 24 hours', 'abrahamic' ); ?></h3>
 		<p class="abr-help"><?php esc_html_e( 'Attackers change address on every try, so failures are counted by account name. An account of yours in this list should get a new, long password, and ideally a new name that is not the site name.', 'abrahamic' ); ?></p>
 		<?php
-		$failed = get_option( ABR_SEC_FAILED, array() );
-		$failed = is_array( $failed ) ? $failed : array();
+		$failed = abr_sec_failed_recent();
 		uasort(
 			$failed,
 			function ( $x, $y ) {

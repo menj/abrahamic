@@ -10,7 +10,13 @@ define( 'ABR_SECURITY_TEST', true );
 require dirname( __DIR__ ) . '/inc/security-detector.php';
 
 $fail = 0;
-$data = json_decode( file_get_contents( dirname( __DIR__ ) . '/inc/seed/content.json' ), true );
+$file = dirname( __DIR__ ) . '/inc/seed/content.json';
+$raw  = is_readable( $file ) ? file_get_contents( $file ) : false;
+$data = false === $raw ? null : json_decode( $raw, true );
+if ( ! is_array( $data ) || ! isset( $data['items'], $data['terms'] ) || ! is_array( $data['items'] ) || ! is_array( $data['terms'] ) ) {
+	echo 'FAILED: ' . $file . ( false === $raw ? ' is missing or unreadable' : ' is not valid seed JSON (' . json_last_error_msg() . ')' ) . "\n";
+	exit( 1 );
+}
 $n    = 0;
 foreach ( $data['items'] as $item ) {
 	$fields = array( 'title' => $item['title'], 'slug' => $item['slug'], 'content' => $item['content'] . ' ' . ( isset( $item['excerpt'] ) ? $item['excerpt'] : '' ) . ' ' . ( isset( $item['description'] ) ? $item['description'] : '' ) );
@@ -92,6 +98,8 @@ $spam = array(
 	array( 'Vegas Stars', '' ),
 	array( 'Surge Casino', '' ),
 	array( '1win', '' ),
+	array( 'ОНЛАЙН КАЗИНО', '' ),
+	array( 'СТАВКИ НА СПОРТ', '' ),
 );
 foreach ( $spam as $s ) {
 	$r = abr_spam_score( $s[0], $s[1], '' );
