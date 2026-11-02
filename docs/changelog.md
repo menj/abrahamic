@@ -2,6 +2,11 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.88.2] - 2026-11-02
+
+### Changed
+- Starter content, seed version 105: prose in `inc/seed/content.json` edited to the owner's writing style (anti-ai-writing-style v2). Plain verbs replace banned wording: "serves as" and "stands as" (three times) become "is", "offers a" (twice) becomes "has" or "gives", "transformed" becomes "changed", two uses of "emphasis" become "stress" and "puts its weight", two uses of "depicts" are rewritten, and the call to action "Discover" in the `page:places` description becomes "See". Five sentences that negated one framing before stating the fact now state it directly (`page:islam`, `page:places`, `page:mandaeism`, `post:the-council-of-nicaea`, `post:the-symbols-of-the-four-traditions`). Facts, figures, citations, footnote numbers, links and titles are unchanged. Quotations, scripture, book and report titles ("Unraveling", "religious landscape"), proper names (Old and New Testament, the Night Journey, Ar-Ra'd) and literal uses of "discovered" are left as they stand. The audit found no em dashes, contractions or anaphoric runs.
+
 ## [2.88.1] - 2026-11-01
 
 ### Fixed
