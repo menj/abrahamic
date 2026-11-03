@@ -115,7 +115,7 @@ abrahamic/
 │   ├── login.php          Themed login screen, private login address (ports of Login Logo and WPS Hide Login)
 │   ├── diagrams.php       [abr_diagram]: the family tree and shared-beliefs diagrams
 │   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
-│   ├── rank-math.php      Rank Math: focus keywords where empty; licence data merged into its schema; FAQPage and speakable removed; no Person or Gravatar
+│   ├── rank-math.php      Rank Math: focus keywords where empty; licence, speakable and FAQ data merged into its schema; no Person or Gravatar
 │   ├── image-sitemap.php  Image sitemap at /image-sitemap.xml, named in robots.txt; off while an SEO plugin is active
 │   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.json), lowercase enforced, thin tag pages noindexed
 │   ├── contextual-links.php  Links in the running text to inner pages here and on the sister sites (section 8)
@@ -244,7 +244,7 @@ Rank Math, when active, always wins: any title or description set in it is used 
 
 ### Structured data
 
-Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article, and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. Every type is on Google's list of supported structured data features. FAQPage and speakable are left out (owner's instruction of 2026-11-03): Google gives FAQ markup no rich result, and speakable is for news content. The FAQ text on the page stays. No ProfilePage anywhere, and no Person for an author or the site. The one Person is the photographer named as `creator` inside a photograph's ImageObject, taken from `inc/seed/photo-credits.json`, as Google's image licence data asks.
+Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ, the question-and-answer articles, and the questions section of the Islamic Dilemma page, read from its level-three headings through `abr_faq_section_keys()`), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. The owner keeps all schema.org markup, whether Google lists a rich result for it or not, because it serves generative, answer and AI search (GEO, AEO, AIO). Decided on 2026-11-03. No ProfilePage anywhere, and no Person for an author or the site. The one Person is the photographer named as `creator` inside a photograph's ImageObject, taken from `inc/seed/photo-credits.json`, as Google's image licence data asks.
 
 ### Anonymity
 

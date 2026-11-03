@@ -549,7 +549,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 == Changelog ==
 
 = 2.89.0 - 2026-11-03 =
-* Structured data follows Google's list of supported features: FAQPage and speakable are gone, with or without Rank Math. The visible FAQ text is unchanged.
+* All schema.org markup stays, FAQPage and speakable included, as the owner decided on 2026-11-03 for GEO, AEO and AIO.
 * New image sitemap at /image-sitemap.xml, named in robots.txt. It stands down when an SEO plugin is active.
 * The thank-you page is noindex and out of the sitemap, and its description now fits in 129 characters.
 * Licence links in the DMCA page use https. Seed version 106.

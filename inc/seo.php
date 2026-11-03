@@ -540,6 +540,26 @@ function abr_content_photo_names( $post ) {
 }
 
 /**
+ * Posts whose content is written as questions and answers (H2 question, then
+ * the answer), which also carry FAQPage structured data.
+ *
+ * @return string[] Seed keys.
+ */
+function abr_faq_style_keys() {
+	return array( 'page:faq', 'page:islamic-dilemma', 'post:judaism-vs-christianity-reddit' );
+}
+
+/**
+ * FAQ-style items whose questions sit under one section as level-three
+ * headings, so the page's own level-two sections are not read as questions.
+ *
+ * @return string[] Seed keys.
+ */
+function abr_faq_section_keys() {
+	return array( 'page:islamic-dilemma' );
+}
+
+/**
  * Structured data graph for the current view.
  *
  * @return array
@@ -657,6 +677,10 @@ function abr_schema_graph() {
 				'publisher'        => array( '@id' => $org_id ),
 				'mainEntityOfPage' => array( '@id' => $page_id ),
 				'image'            => $featured ? array( '@id' => $url . '#primaryimage' ) : array( $image['url'] ),
+				'speakable'        => array(
+					'@type'       => 'SpeakableSpecification',
+					'cssSelector' => array( 'h1', '.abr-prose > p:first-of-type' ),
+				),
 				'articleSection'   => wp_list_pluck( get_the_category( $post->ID ), 'name' ),
 				'wordCount'        => str_word_count( wp_strip_all_tags( $post->post_content ) ),
 				'inLanguage'       => $language,
@@ -679,8 +703,53 @@ function abr_schema_graph() {
 		}
 	}
 
+	$faq_ids = array_filter( array_map( 'abr_seed_id', abr_faq_style_keys() ) );
+	if ( is_singular() && in_array( get_queried_object_id(), $faq_ids, true ) ) {
+		$pairs = abr_faq_qa_pairs( get_queried_object() );
+		if ( $pairs ) {
+			$graph[] = array(
+				'@type'      => 'FAQPage',
+				'@id'        => $url . '#faq',
+				'mainEntity' => $pairs,
+			);
+		}
+	}
+
 	$graph[] = $webpage;
 	return $graph;
+}
+
+/**
+ * Question/answer pairs read from the FAQ page's own headings and the
+ * paragraph that follows each one, for FAQPage structured data. Items in
+ * abr_faq_section_keys() are read from their level-three headings.
+ *
+ * @param WP_Post $post The FAQ page.
+ * @return array
+ */
+function abr_faq_qa_pairs( $post ) {
+	$level = in_array( (int) $post->ID, array_map( 'intval', array_filter( array_map( 'abr_seed_id', abr_faq_section_keys() ) ) ), true ) ? 'h3' : 'h2';
+	if ( ! preg_match_all( '#<' . $level . '[^>]*>(.*?)</' . $level . '>\\s*(?:<!--.*?-->\\s*)*<p[^>]*>(.*?)</p>#s', $post->post_content, $m, PREG_SET_ORDER ) ) {
+		return array();
+	}
+	$pairs = array();
+	foreach ( $m as $match ) {
+		$question = trim( wp_strip_all_tags( $match[1] ) );
+		// Footnote markers are dropped from the answer text.
+		$answer   = trim( wp_strip_all_tags( preg_replace( '#<sup[^>]*>.*?</sup>#s', '', $match[2] ) ) );
+		if ( '' === $question || '' === $answer || 'Notes' === $question ) {
+			continue;
+		}
+		$pairs[] = array(
+			'@type'          => 'Question',
+			'name'           => $question,
+			'acceptedAnswer' => array(
+				'@type' => 'Answer',
+				'text'  => $answer,
+			),
+		);
+	}
+	return $pairs;
 }
 
 /**
