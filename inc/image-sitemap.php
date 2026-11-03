@@ -20,36 +20,73 @@ defined( 'ABSPATH' ) || exit;
  */
 function abr_image_sitemap_entries() {
 	$entries = array();
-	$posts   = get_posts(
-		array(
-			'post_type'        => array( 'post', 'page' ),
-			'post_status'      => 'publish',
-			'posts_per_page'   => 1000,
-			'has_password'     => false,
-			'post__not_in'     => array_merge( function_exists( 'abr_seo_utility_ids' ) ? abr_seo_utility_ids() : array(), function_exists( 'abr_unlisted_ids' ) ? abr_unlisted_ids() : array() ),
-			'orderby'          => 'ID',
-			'order'            => 'ASC',
-			'suppress_filters' => false,
-		)
-	);
-	foreach ( $posts as $post ) {
-		$images   = array();
-		$thumb_id = get_post_thumbnail_id( $post );
-		if ( $thumb_id ) {
-			$images[] = (string) wp_get_attachment_url( $thumb_id );
+	$exclude = array_merge( function_exists( 'abr_seo_utility_ids' ) ? abr_seo_utility_ids() : array(), function_exists( 'abr_unlisted_ids' ) ? abr_unlisted_ids() : array() );
+	$paged   = 1;
+	do {
+		// Batches of 200, so every post is listed without one unbounded query.
+		$posts = get_posts(
+			array(
+				'post_type'        => array( 'post', 'page' ),
+				'post_status'      => 'publish',
+				'posts_per_page'   => 200,
+				'paged'            => $paged,
+				'has_password'     => false,
+				'post__not_in'     => $exclude,
+				'orderby'          => 'ID',
+				'order'            => 'ASC',
+				'no_found_rows'    => true,
+				'suppress_filters' => false,
+			)
+		);
+		foreach ( $posts as $post ) {
+			$entry = abr_image_sitemap_entry( $post );
+			if ( $entry ) {
+				$entries[] = $entry;
+			}
 		}
-		foreach ( abr_content_photo_names( $post ) as $name ) {
-			$images[] = ABR_URI . '/assets/images/photos/' . rawurlencode( $name ) . '.avif';
-		}
-		$images = array_values( array_unique( array_filter( $images ) ) );
-		if ( $images ) {
-			$entries[] = array(
-				'loc'    => get_permalink( $post ),
-				'images' => array_slice( $images, 0, 1000 ),
-			);
-		}
-	}
+		++$paged;
+	} while ( count( $posts ) === 200 );
 	return $entries;
+}
+
+/**
+ * One post's entry of the image sitemap.
+ *
+ * @param WP_Post $post Post.
+ * @return array|null With 'loc' and 'images', or null when it shows no image.
+ */
+function abr_image_sitemap_entry( $post ) {
+	$images   = array();
+	$thumb_id = get_post_thumbnail_id( $post );
+	if ( $thumb_id ) {
+		$images[] = (string) wp_get_attachment_url( $thumb_id );
+	}
+	foreach ( abr_content_photo_names( $post ) as $name ) {
+		$images[] = ABR_URI . '/assets/images/photos/' . rawurlencode( $name ) . '.avif';
+	}
+	$images = array_values( array_unique( array_filter( $images ) ) );
+	if ( $images ) {
+		return array(
+			'loc'    => get_permalink( $post ),
+			'images' => array_slice( $images, 0, 1000 ),
+		);
+	}
+	return null;
+}
+
+/**
+ * Whether the theme serves the image sitemap: whenever no SEO plugin supplies
+ * one. The theme's search setting covers head tags and structured data only.
+ *
+ * @return bool
+ */
+function abr_image_sitemap_active() {
+	/**
+	 * Filters whether the theme serves /image-sitemap.xml.
+	 *
+	 * @param bool $enabled True when no SEO plugin is active.
+	 */
+	return (bool) apply_filters( 'abr_image_sitemap_enabled', '' === abr_seo_plugin() );
 }
 
 /**
@@ -76,7 +113,7 @@ function abr_image_sitemap_xml() {
  * @param WP $wp Request.
  */
 function abr_image_sitemap_serve( $wp ) {
-	if ( 'image-sitemap.xml' !== $wp->request || ! abr_seo_active() || ! get_option( 'blog_public' ) ) {
+	if ( 'image-sitemap.xml' !== $wp->request || ! abr_image_sitemap_active() || ! get_option( 'blog_public' ) ) {
 		return;
 	}
 	status_header( 200 );
@@ -95,7 +132,7 @@ add_action( 'parse_request', 'abr_image_sitemap_serve', 0 );
  * @return string
  */
 function abr_image_sitemap_robots_txt( $output, $public ) {
-	if ( ! $public || ! abr_seo_active() || ! get_option( 'permalink_structure' ) ) {
+	if ( ! $public || ! abr_image_sitemap_active() || ! get_option( 'permalink_structure' ) ) {
 		return $output;
 	}
 	return rtrim( $output ) . "\nSitemap: " . esc_url( home_url( '/image-sitemap.xml' ) ) . "\n";

@@ -511,14 +511,32 @@ function abr_schema_licensed_image( $url, $name, $id = '' ) {
 }
 
 /**
- * Photographs placed in a post's content with [abr_photo name="..."].
+ * Photographs placed in a post's content with [abr_photo name="..."] that the
+ * shortcode shows as a photograph. Attributes are read as WordPress reads them,
+ * in any order and quoting; a name whose file is missing is left out, since
+ * the shortcode then prints the decorative panel.
  *
  * @param WP_Post $post Post.
  * @return string[] File stems.
  */
 function abr_content_photo_names( $post ) {
-	preg_match_all( '/\[abr_photo\s+name="([a-z0-9-]+)"/', (string) $post->post_content, $m );
-	return array_values( array_unique( $m[1] ) );
+	$content = (string) $post->post_content;
+	if ( false === strpos( $content, '[abr_photo' ) ) {
+		return array();
+	}
+	preg_match_all( '/' . get_shortcode_regex( array( 'abr_photo' ) ) . '/', $content, $m, PREG_SET_ORDER );
+	$names = array();
+	foreach ( $m as $tag ) {
+		if ( '[' === $tag[1] && ']' === $tag[6] ) {
+			continue; // Escaped [[abr_photo]], printed as text.
+		}
+		$atts = shortcode_parse_atts( $tag[3] );
+		$name = is_array( $atts ) && isset( $atts['name'] ) ? (string) $atts['name'] : '';
+		if ( '' !== $name && is_readable( ABR_DIR . '/assets/images/photos/' . sanitize_file_name( $name ) . '.avif' ) ) {
+			$names[] = $name;
+		}
+	}
+	return array_values( array_unique( $names ) );
 }
 
 /**
@@ -808,10 +826,15 @@ add_filter( 'wp_sitemaps_posts_query_args', 'abr_seo_sitemap_exclude_utility', 1
  * @return array
  */
 function abr_seo_robots( $robots ) {
+	// Utility pages are noindex whatever the theme's search setting says.
+	if ( abr_seo_is_utility_page() ) {
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+	}
 	if ( ! abr_seo_active() ) {
 		return $robots;
 	}
-	if ( is_404() || is_date() || is_author() || is_attachment() || abr_seo_is_utility_page() ) {
+	if ( is_404() || is_date() || is_author() || is_attachment() ) {
 		$robots['noindex'] = true;
 		$robots['follow']  = true;
 	}

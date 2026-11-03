@@ -244,7 +244,7 @@ Rank Math, when active, always wins: any title or description set in it is used 
 
 ### Structured data
 
-Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article, and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. Every type is on Google's list of supported structured data features. FAQPage and speakable are left out (owner's instruction of 2026-11-03): Google gives FAQ markup no rich result, and speakable is for news content. The FAQ text on the page stays. No Person or ProfilePage anywhere.
+Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article, and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. Every type is on Google's list of supported structured data features. FAQPage and speakable are left out (owner's instruction of 2026-11-03): Google gives FAQ markup no rich result, and speakable is for news content. The FAQ text on the page stays. No ProfilePage anywhere, and no Person for an author or the site. The one Person is the photographer named as `creator` inside a photograph's ImageObject, taken from `inc/seed/photo-credits.json`, as Google's image licence data asks.
 
 ### Anonymity
 

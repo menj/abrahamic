@@ -12,10 +12,11 @@ Applies Google's SEO Starter Guide and its list of supported structured data fea
 - With Rank Math, the theme no longer adds either one to a graph built in the Schema tab, and it strips them from that graph.
 
 ### Added
-- Image sitemap at `/image-sitemap.xml` (`inc/image-sitemap.php`): every published post and page with its featured image and the photographs placed with `[abr_photo]`. robots.txt names it. It stands down while an SEO plugin is active, since Rank Math lists images in its own sitemap.
+- Image sitemap at `/image-sitemap.xml` (`inc/image-sitemap.php`): every published post and page with its featured image and the photographs placed with `[abr_photo]`. Posts are read in batches of 200, so none is dropped. A photograph is listed only when its file is there, as the shortcode prints the decorative panel otherwise. robots.txt names it. It is served whenever no SEO plugin is active, whatever the theme's search setting, and stands down while one is, since Rank Math lists images in its own sitemap.
+- `abr_content_photo_names()` reads `[abr_photo]` attributes with `shortcode_parse_atts()`, so their order and quoting do not matter.
 
 ### Fixed
-- The thank-you page is noindex, under Rank Math too, and left out of the core sitemap (`abr_seo_utility_keys()`).
+- The thank-you page is noindex, under Rank Math too and with the theme's search setting off, and left out of the core sitemap (`abr_seo_utility_keys()`).
 - The thank-you description is 126 characters, so it is never cut.
 - The 5 Creative Commons licence links in `page:dmca` use https.
 
