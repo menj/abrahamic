@@ -1,0 +1,26 @@
+{
+	"about": "People, places, scriptures and traditions that pages of this site name. A page is linked to an entity only when its title or text names it: the title gives about, the text gives mentions. match lists the names looked for, as whole words; it is not printed. sameAs carries a Wikidata item only where the identity is certain.",
+	"entities": {
+		"judaism": { "@type": "Thing", "name": "Judaism", "description": "The religion of the Jewish people, rooted in the Torah.", "sameAs": "https://www.wikidata.org/wiki/Q9268", "match": [ "Judaism" ] },
+		"christianity": { "@type": "Thing", "name": "Christianity", "description": "The religion of those who follow Jesus as the churches teach him.", "sameAs": "https://www.wikidata.org/wiki/Q5043", "match": [ "Christianity" ] },
+		"islam": { "@type": "Thing", "name": "Islam", "description": "Submission to the one God, as revealed to the Prophet Muḥammad in the Qur'an.", "sameAs": "https://www.wikidata.org/wiki/Q432", "match": [ "Islam" ] },
+		"mandaeism": { "@type": "Thing", "name": "Mandaeism", "description": "The religion of the Mandaeans, who honour John the Baptist.", "match": [ "Mandaeism", "Mandaeans" ] },
+		"abraham": { "@type": "Person", "name": "Abraham", "alternateName": "Ibrāhīm", "description": "Prophet of God and the forefather the four traditions share.", "sameAs": "https://www.wikidata.org/wiki/Q9181", "match": [ "Abraham", "Ibrāhīm", "Ibrahim" ] },
+		"moses": { "@type": "Person", "name": "Moses", "alternateName": "Mūsā", "description": "Prophet of God to whom the Torah was given.", "sameAs": "https://www.wikidata.org/wiki/Q9077", "match": [ "Moses", "Mūsā" ] },
+		"jesus": { "@type": "Person", "name": "Jesus", "alternateName": "ʿĪsā", "description": "Son of Mary, servant and messenger of God.", "sameAs": "https://www.wikidata.org/wiki/Q302", "match": [ "Jesus", "ʿĪsā" ] },
+		"mary": { "@type": "Person", "name": "Mary", "alternateName": "Maryam", "description": "Mother of Jesus.", "sameAs": "https://www.wikidata.org/wiki/Q345", "match": [ "Maryam", "Virgin Mary", "Mary" ] },
+		"muhammad": { "@type": "Person", "name": "Muḥammad", "alternateName": "Muhammad", "description": "The last prophet and messenger of God, to whom the Qur'an was revealed.", "sameAs": "https://www.wikidata.org/wiki/Q9458", "match": [ "Muḥammad", "Muhammad" ] },
+		"paul": { "@type": "Person", "name": "Paul of Tarsus", "alternateName": "Paul the Apostle", "sameAs": "https://www.wikidata.org/wiki/Q9200", "match": [ "Paul of Tarsus", "Paul" ] },
+		"ishmael": { "@type": "Person", "name": "Ishmael", "alternateName": "Ismāʿīl", "description": "Son of Abraham and Hagar, a prophet of God.", "match": [ "Ishmael" ] },
+		"john-the-baptist": { "@type": "Person", "name": "John the Baptist", "alternateName": "Yaḥyā", "description": "Prophet of God, son of Zechariah.", "match": [ "John the Baptist" ] },
+		"quran": { "@type": "Book", "name": "The Qur'an", "genre": "Scripture", "description": "The word of God revealed to the Prophet Muḥammad.", "sameAs": "https://www.wikidata.org/wiki/Q428", "match": [ "Qur'an", "Qur’an", "Quran" ] },
+		"bible": { "@type": "Book", "name": "The Bible", "genre": "Scripture", "sameAs": "https://www.wikidata.org/wiki/Q1845", "match": [ "Bible" ] },
+		"torah": { "@type": "Book", "name": "The Torah", "genre": "Scripture", "alternateName": "al-Tawrāh", "sameAs": "https://www.wikidata.org/wiki/Q34990", "match": [ "Torah" ] },
+		"jerusalem": { "@type": "Place", "name": "Jerusalem", "alternateName": "al-Quds", "sameAs": "https://www.wikidata.org/wiki/Q1218", "match": [ "Jerusalem" ] },
+		"mecca": { "@type": "Place", "name": "Mecca", "alternateName": "Makkah", "sameAs": "https://www.wikidata.org/wiki/Q5806", "match": [ "Mecca", "Makkah" ] },
+		"medina": { "@type": "Place", "name": "Medina", "alternateName": "al-Madīnah", "sameAs": "https://www.wikidata.org/wiki/Q35484", "match": [ "Medina" ] },
+		"hebron": { "@type": "Place", "name": "Hebron", "alternateName": "al-Khalīl", "match": [ "Hebron" ] },
+		"kaaba": { "@type": "Place", "name": "The Kaaba", "description": "The House of God in Mecca, raised by Abraham and Ishmael.", "match": [ "Kaaba", "Kaʿbah" ] },
+		"council-of-nicaea": { "@type": "Event", "name": "The First Council of Nicaea", "startDate": "0325", "match": [ "Council of Nicaea" ] }
+	}
+}

@@ -260,7 +260,7 @@ function abr_rank_math_json_ld( $data, $jsonld = null ) {
 	}
 
 	if ( ! is_singular() ) {
-		return $data;
+		return function_exists( 'abr_schema_extend' ) ? abr_schema_extend( $data, false ) : $data;
 	}
 	$post = get_queried_object();
 	$url  = get_permalink( $post );
@@ -317,6 +317,8 @@ function abr_rank_math_json_ld( $data, $jsonld = null ) {
 			);
 		}
 	}
-	return $data;
+	// Scripture, citations, entities, the page frame and the rest (inc/schema.php),
+	// merged into Rank Math's graph by @id, never printed as a second block.
+	return function_exists( 'abr_schema_extend' ) ? abr_schema_extend( $data, false ) : $data;
 }
 add_filter( 'rank_math/json_ld', 'abr_rank_math_json_ld', 100, 2 );

@@ -2,6 +2,20 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.90.0] - 2026-11-03
+
+### Added
+- `inc/schema.php` adds to the one JSON-LD graph only what a page shows. The theme's own graph takes the nodes and properties itself; under Rank Math they go into its graph through `rank_math/json_ld`, fill only properties Rank Math left empty, and merge with its nodes by `@id`. No page prints a second block. Every type and property is in the current schema.org vocabulary.
+- Qur'an passages quoted in a `blockquote.abr-verse`: the Arabic as a `Quotation` in a `Chapter` (the surah) of the `Book` the Qur'an, and the English as a second `Quotation` with `translationOfWork` and, where the note names one, the `translator`.
+- `citation` from the notes: Qur'an surahs and Bible chapters as `Chapter` nodes, hadith by collection and number as `CreativeWork` in the collection's `Book`, and other sources with a date, a title in quotation marks or a link as `CreativeWork`. A hadith carries its grading as a `PropertyValue` only where the note prints one ("graded ḥasan"). Notes of comment and "Ibid." add nothing.
+- The glossary page as a `DefinedTermSet` of `DefinedTerm` nodes, one per term in its list.
+- The timeline page's dated sections, and the eras of the home page's timeline section, as an `ItemList` of `Event` nodes with ISO 8601 years.
+- Tables as `Table`, named by caption or the heading above. `[abr_diagram]` figures as `ImageObject` with the caption, the site as creator and the footer's copyright notice.
+- `inc/data/schema-entities.json`: people, places, scriptures and traditions, with Wikidata only where the identity is certain. A page is `about` those its title names and `mentions` those its text names.
+- `WPHeader`, `WPFooter` and one `SiteNavigationElement` per menu shown; a `SearchAction` on the `WebSite`; a `SearchResultsPage` on search; an `ItemList` of the posts listed on archives, tag pages and the Journal; sections of a landing page as `hasPart`.
+- Articles take `BlogPosting` beside `Article`, and articles and pages take `inLanguage`, `isAccessibleForFree`, `copyrightHolder`, `copyrightYear`, `copyrightNotice`, `accessMode`, `accessModeSufficient` and `accessibilityFeature`. Articles also take `keywords` from their tags, `abstract` from the standfirst, `timeRequired` from the reading time shown and `audience`. Bundled photographs take `encodingFormat`, size and `copyrightHolder`; the featured image takes `representativeOfPage`.
+- `tests/schema-graph-test.php` builds the graph for every seed item, the home page, a tag archive and a search page, alone and merged into a Rank Math graph, and checks that it parses, that each `@id` is unique, that each reference resolves and that each node has the properties its type needs.
+
 ## [2.89.1] - 2026-11-03
 
 ### Changed
