@@ -2,6 +2,21 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.92.1] - 2026-11-03
+
+Seed version 108. Fixes from the review of 2.92.0.
+
+### Fixed
+- Scheduled posts get their tags and Rank Math fields. The tag and Rank Math seeders found posts through an index of published posts only, then stamped themselves done, so a post the seeder scheduled would have gone live with no tags, focus keyword or search title. They now look up Scheduled posts too (`abr_seed_id( $key, true )`), and the seeder clears the index after it creates a post. Link resolution still finds published posts only.
+- `inc/seed-schedule.php` is on the maintenance guard's list in `functions.php`. During a half-finished update the site shows its maintenance page instead of a fatal error.
+- Activation, the admin upgrade and the front-end request run the seeder behind one lock, the `abr_seed_lock` option taken with `add_option()`. Two runs at once can no longer both insert the same post. The front-end transient lock is gone.
+
+### Changed
+- `why-christmas-is-in-december` links Apostle of Doom's "What Paul said of holy days" at `/journal/2026/11/paul-on-holy-days/`, which publishes on 29 November.
+
+### Added
+- `tests/seed-index-test.php` checks the two indexes, the cache reset, every seeder lookup, the lock on all three paths and the guard list.
+
 ## [2.92.0] - 2026-11-03
 
 Seed version 107.
