@@ -543,6 +543,48 @@
         "post:jews-under-muslim-rule": [
             "judaism",
             "islam"
+        ],
+        "post:noah-in-three-traditions": [
+            "quran",
+            "bible",
+            "torah",
+            "monotheism"
+        ],
+        "post:job-and-ayyub": [
+            "quran",
+            "bible",
+            "judaism",
+            "prophecy"
+        ],
+        "post:jonah-in-three-traditions": [
+            "quran",
+            "bible",
+            "jesus",
+            "prayer-and-worship"
+        ],
+        "post:solomon-in-the-quran": [
+            "quran",
+            "bible",
+            "david",
+            "jerusalem"
+        ],
+        "post:hanukkah-and-the-maccabees": [
+            "judaism",
+            "christianity",
+            "bible",
+            "jerusalem"
+        ],
+        "post:sacred-months-and-sabbath": [
+            "islam",
+            "torah",
+            "religious-law",
+            "makkah"
+        ],
+        "post:why-christmas-is-in-december": [
+            "christianity",
+            "jesus",
+            "mary",
+            "early-church"
         ]
     }
 }

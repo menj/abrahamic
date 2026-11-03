@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.91.0** |
+| Current version | **2.92.1** |
 | Release date | 2026-11-03 |
 | Status | Stable |
 
@@ -106,6 +106,7 @@ abrahamic/
 │   ├── shortcodes.php     Option-driven shortcodes
 │   ├── structure.php      Link tokens, navigation builder, breadcrumbs, hub listings, site map (section 13)
 │   ├── seed.php           Starter content seeder (section 12)
+│   ├── seed-schedule.php  Fixed publication dates for seeded posts: `post_date`, published or Scheduled (section 12); checked by the maintenance guard
 │   ├── seed/content.php   Starter pages, articles and categories as block markup (section 12)
 │   ├── seed/legacy-v1.php Version 1 fingerprints and addresses (section 12)
 │   ├── seo.php            Search output, description box, analytics (section 13)
@@ -498,11 +499,11 @@ The theme populates the site itself, following the seeder pattern used in the Mu
    - `replace` (default): title, text and excerpt take the current version whether or not the item was edited. WordPress stores the previous text as a revision.
    - `keep`: the text is refreshed only while it still matches its fingerprint, `_abr_seed_hash`, or for version 1 items the hash in `legacy-v1.php`. Links are compared root-relative.
 6. **Retirement.** A key in the tombstone list that the starter set no longer carries has its post moved to the trash, where it can be restored, provided its text still matches the seeder's fingerprint (`abr_seed_is_unedited()`); an edited copy is left as it is and counted as `kept`. Nothing is deleted permanently; option and cleanup keys are exempt. Counted as `retired` in `abr_seed_log`. To merge one item into another, remove the retired item from `content.json`, point its address at the owner in `inc/seed/legacy-paths.json` (which answers only once the address is a 404, so after the trash) and raise the seed version.
-6b. **When it runs.** On activation; on an admin screen loaded by a user with `edit_theme_options` while the stored version is behind; and, failing both, on the next ordinary page request (`abr_seed_on_request()` at `wp_loaded`, behind a five-minute transient lock). A site whose owner never opens the right admin screen still receives new starter content. Every admin screen also carries a notice while the content is behind or items are missing (`abr_seed_admin_notice()`), with a button that runs it.
+6b. **When it runs.** On activation; on an admin screen loaded by a user with `edit_theme_options` while the stored version is behind; and, failing both, on the next ordinary page request (`abr_seed_on_request()` at `wp_loaded`). All three paths run through `abr_seed_run_locked()`, which takes the `abr_seed_lock` option with `add_option()`, so two runs at once cannot both create a post; a lock older than five minutes is dropped. A site whose owner never opens the right admin screen still receives new starter content. Every admin screen also carries a notice while the content is behind or items are missing (`abr_seed_admin_notice()`), with a button that runs it.
 
 7. **Set-up steps run once:** the permalink step, keyed `option:permalinks:{hash of the three settings}`, applies the settings in section 13 when the site uses plain permalinks, uses `/%postname%/` with no published articles of its own, or still uses a structure the theme applied before (`abr_previous_permalink_structures()`). Keying by the settings means a later change to them runs once more; `option:tagline` sets the tagline when it is empty or WordPress's old default; `cleanup:defaults` moves the untouched sample post and page to the trash; `option:reading` sets Home as the front page and Articles as the posts page, only when the site shows latest posts with no front page chosen. Earlier versions recorded `option:permalinks` and `option:permalinks-2`.
 8. **Links** in seed content are root-relative in the source and rewritten to `home_url()` at insert time. Section headings carry anchors made from their text.
-9. **Marking.** Created posts carry `_abr_seed` (the key), `_abr_seed_version`, `_abr_seed_hash` and `_abr_description`. Authors are the current user, else the first administrator. Articles are back-dated by `days_ago`.
+9. **Marking.** Created posts carry `_abr_seed` (the key), `_abr_seed_version`, `_abr_seed_hash` and `_abr_description`. Authors are the current user, else the first administrator. Articles are back-dated by `days_ago`, counted from the run. A post with `post_date` (site time, `YYYY-MM-DD HH:MM:SS`, or `YYYY-MM-DD` for 09:00) takes that date instead (`abr_seed_schedule()`): a date already past publishes it with that date, and a date still to come creates it as Scheduled, for WP-Cron to publish on the day. The date is read only when the post is created, and the sync never sets a status, so a later run neither duplicates the post nor publishes it early. `php tests/seed-schedule-test.php` checks the rule and every `post_date` in the seed. The tag and Rank Math seeders find posts through `abr_seed_id( $key, true )`, which includes Scheduled posts, so a scheduled post is tagged and given its search fields when it is created; link resolution still finds published posts only (`php tests/seed-index-test.php`).
 10. **Adding or changing content:** edit the item, give new items a permanent key and `'since' => N`, raise `ABR_SEED_VERSION` to `N`, and update the inventory below. Never rename a key: `page:guides` (Religions), `page:knowledge-base` (Reference) and `page:articles` (Insights) keep their original keys. When the seed version rises, an unedited item takes a changed title or excerpt even if its text is unchanged.
 10b. **Featured images.** An item with a `'photo'` entry receives that bundled photograph as its featured image while it has none. The file is copied into the media library once and reused; `_abr_seed_photo` marks the article, so the seeder never sets an image on it again.
 10c. **Category descriptions.** A term with a `previous` description is brought up to date when its stored description still matches `previous`; any other wording is the editor's and stays.
@@ -514,7 +515,7 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 
 | Stored | Type | Purpose |
 |---|---|---|
-| `ABR_SEED_VERSION` | constant | Current seed version (106) |
+| `ABR_SEED_VERSION` | constant | Current seed version (108) |
 | `abr_seed_photos` | option | Bundled photograph name to media library attachment ID |
 | `_abr_seed_photo` | post meta | The photograph the seeder set as this article's featured image |
 | `abr_seeded_slugs` | option, not autoloaded | Tombstone list: key => timestamp |
@@ -706,6 +707,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-03 | 2.92.0 | Seeded Journal posts take a fixed `post_date` in site time: a past date publishes with that date, a future date is Scheduled and WP-Cron publishes it. The first seven, approved by the owner, run from 10 October to 20 December 2026 | `days_ago` counts back from whenever the seeder runs, so the date drifted and nothing could be scheduled. The owner approved the Journal plan, with three backdated and four scheduled posts. WP-Cron must run on the host for the scheduled posts to go live |
 | 2026-11-03 | 2.91.0 | The structured data keeps its Person entries for the historical figures the articles discuss: Abraham, Moses, Jesus, Muhammad and Paul | The owner decided on 2026-11-03 to keep them; do not remove them or raise the question again |
 | 2026-11-03 | 2.90.0 | Structured data for every element a page shows, merged into one graph by `@id` (`inc/schema.php`) | The owner keeps all schema.org markup and approved the expansion on 2026-11-03; each node must describe something visible on the page |
 | 2026-10-27 | 2.86.0 | One owner page per subject: the two Islamic Dilemma Journal posts merged into `page:islamic-dilemma`, their addresses redirected to it; retirement trashes only unedited copies | The owner's rule is no duplicate or overlapping pages within a site; the reference page is the one the sister sites link to. An editor's changed copy is theirs to keep or remove |

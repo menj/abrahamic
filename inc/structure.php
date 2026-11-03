@@ -11,16 +11,22 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Seed key => post ID for every seeder-owned post, in one query per request.
  *
+ * @param bool $scheduled Also include Scheduled (future) posts. The tag and
+ *                        Rank Math seeders pass true, so a post the seeder
+ *                        scheduled is tagged and given its fields when it is
+ *                        created; link resolution keeps published posts only.
  * @return array
  */
-function abr_seed_index() {
-	static $index = null;
-	if ( null === $index ) {
+function abr_seed_index( $scheduled = false ) {
+	// Kept in a global so the seeder can clear it after it creates posts.
+	$cache = isset( $GLOBALS['abr_seed_index_cache'] ) ? $GLOBALS['abr_seed_index_cache'] : array();
+	$which = $scheduled ? 'scheduled' : 'published';
+	if ( ! isset( $cache[ $which ] ) ) {
 		$index = array();
 		$posts = get_posts(
 			array(
 				'post_type'        => array( 'post', 'page' ),
-				'post_status'      => 'publish',
+				'post_status'      => abr_seed_index_statuses( $scheduled ),
 				'posts_per_page'   => -1,
 				'meta_key'         => '_abr_seed', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_meta_key
 				'suppress_filters' => true,
@@ -30,19 +36,32 @@ function abr_seed_index() {
 		foreach ( $posts as $post ) {
 			$index[ get_post_meta( $post->ID, '_abr_seed', true ) ] = $post->ID;
 		}
+		$cache[ $which ]                  = $index;
+		$GLOBALS['abr_seed_index_cache'] = $cache;
 	}
-	return $index;
+	return $cache[ $which ];
+}
+
+/**
+ * Post statuses the seed index reads.
+ *
+ * @param bool $scheduled Include Scheduled posts.
+ * @return string[]
+ */
+function abr_seed_index_statuses( $scheduled = false ) {
+	return $scheduled ? array( 'publish', 'future' ) : array( 'publish' );
 }
 
 /**
  * Post ID for a seed key, or 0.
  *
- * @param string $key Seed key, with or without the "page:" prefix.
+ * @param string $key       Seed key, with or without the "page:" prefix.
+ * @param bool   $scheduled Also find Scheduled posts (see abr_seed_index()).
  * @return int
  */
-function abr_seed_id( $key ) {
+function abr_seed_id( $key, $scheduled = false ) {
 	$key   = false === strpos( $key, ':' ) ? 'page:' . $key : $key;
-	$index = abr_seed_index();
+	$index = abr_seed_index( $scheduled );
 	return isset( $index[ $key ] ) ? (int) $index[ $key ] : 0;
 }
 

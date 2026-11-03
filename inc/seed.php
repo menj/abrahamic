@@ -34,6 +34,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+require_once __DIR__ . '/seed-schedule.php';
+
 /**
  * Whether an attachment exists and its file is on disk with content. An
  * attachment whose file is missing or empty shows as a broken image.
@@ -96,7 +98,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 /**
  * Raise when inc/seed/content.json gains items (set their 'since' to the new value).
  */
-define( 'ABR_SEED_VERSION', 106 );
+define( 'ABR_SEED_VERSION', 108 );
 
 /**
  * Recommended permalink settings (docs/ssot.md, section 12).
@@ -544,7 +546,14 @@ function abr_run_seeder( $only = array() ) {
 				'comment_status' => 'page' === $item['type'] ? 'closed' : get_default_comment_status( 'post' ),
 				'ping_status'    => 'closed',
 			);
-			if ( ! empty( $item['days_ago'] ) ) {
+			// A fixed post_date (site time) wins over days_ago: a past date publishes
+			// with that date, a date to come is Scheduled for WP-Cron to publish.
+			// Creation runs once per key (tombstones), and the sync below never
+			// sets a status, so a re-run neither duplicates nor republishes it.
+			$schedule = abr_seed_schedule( $item, time(), wp_timezone() );
+			if ( $schedule ) {
+				$postarr = array_merge( $postarr, $schedule );
+			} elseif ( ! empty( $item['days_ago'] ) ) {
 				$local                   = current_time( 'timestamp' ) - (int) $item['days_ago'] * DAY_IN_SECONDS; // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 				$postarr['post_date']     = gmdate( 'Y-m-d H:i:s', $local );
 				$postarr['post_date_gmt'] = get_gmt_from_date( $postarr['post_date'] );
@@ -569,6 +578,8 @@ function abr_run_seeder( $only = array() ) {
 			update_post_meta( $post_id, '_abr_seed_hash', md5( $item['content'] ) );
 			abr_seed_set_description( $post_id, $item );
 			$report['created'][] = $key;
+			// The tag and Rank Math seeders read the seed index; let them see this post.
+			unset( $GLOBALS['abr_seed_index_cache'] );
 		}
 
 		$ids[ $key ] = $post_id;
@@ -764,7 +775,34 @@ function abr_run_seeder( $only = array() ) {
  * Seed on activation.
  */
 function abr_seed_on_activation() {
-	abr_run_seeder();
+	abr_seed_run_locked();
+}
+
+/**
+ * Run the seeder behind one lock shared by activation, the admin upgrade and
+ * the front-end request, so two runs at once cannot both insert a post.
+ * add_option() fails when the option already exists, which makes taking the
+ * lock atomic; a lock older than five minutes is treated as abandoned.
+ *
+ * @return bool Whether the seeder ran.
+ */
+function abr_seed_run_locked() {
+	$held = (int) get_option( 'abr_seed_lock', 0 );
+	if ( $held && time() - $held < 5 * MINUTE_IN_SECONDS ) {
+		return false;
+	}
+	if ( $held ) {
+		delete_option( 'abr_seed_lock' );
+	}
+	if ( ! add_option( 'abr_seed_lock', time(), '', false ) ) {
+		return false;
+	}
+	try {
+		abr_run_seeder();
+	} finally {
+		delete_option( 'abr_seed_lock' );
+	}
+	return true;
 }
 add_action( 'after_switch_theme', 'abr_seed_on_activation' );
 
@@ -776,7 +814,7 @@ function abr_seed_on_upgrade() {
 		return;
 	}
 	if ( abr_seed_is_behind() && ! get_transient( 'abr_seed_retry' ) ) {
-		abr_run_seeder();
+		abr_seed_run_locked();
 	}
 }
 
@@ -818,12 +856,10 @@ function abr_seed_on_request() {
 	if ( wp_doing_ajax() || wp_doing_cron() || is_admin() || ! abr_seed_is_behind() ) {
 		return;
 	}
-	if ( get_transient( 'abr_seed_running' ) || get_transient( 'abr_seed_retry' ) ) {
+	if ( get_transient( 'abr_seed_retry' ) ) {
 		return;
 	}
-	set_transient( 'abr_seed_running', 1, 5 * MINUTE_IN_SECONDS );
-	abr_run_seeder();
-	delete_transient( 'abr_seed_running' );
+	abr_seed_run_locked();
 }
 add_action( 'wp_loaded', 'abr_seed_on_request', 20 );
 add_action( 'admin_init', 'abr_seed_on_upgrade', 20 );

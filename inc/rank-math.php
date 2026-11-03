@@ -69,7 +69,7 @@ function abr_seed_focus_keywords( $force = false ) {
 	);
 	$written = 0;
 	foreach ( $map as $key => $keyword ) {
-		$id = abr_seed_id( $key );
+		$id = abr_seed_id( $key, true );
 		if ( ! $id ) {
 			continue;
 		}
@@ -133,7 +133,7 @@ function abr_seed_rank_math_fields( $force = false ) {
 	$done   = 0;
 	foreach ( abr_seed_data()['items'] as $item ) {
 		$key = $item['key'];
-		$id  = abr_seed_id( $key );
+		$id  = abr_seed_id( $key, true );
 		if ( ! $id || empty( $map[ $key ] ) ) {
 			continue;
 		}

@@ -70,7 +70,7 @@ function abr_seed_tags( $force = false ) {
 	}
 	// Categories that take the place of withdrawn tags (appended, never removed).
 	foreach ( isset( $data['categories'] ) ? $data['categories'] : array() as $key => $cats ) {
-		$post_id = abr_seed_id( $key );
+		$post_id = abr_seed_id( $key, true );
 		if ( ! $post_id ) {
 			continue;
 		}
@@ -87,7 +87,7 @@ function abr_seed_tags( $force = false ) {
 	}
 	$tagged = 0;
 	foreach ( $data['posts'] as $key => $slugs ) {
-		$post_id = abr_seed_id( $key );
+		$post_id = abr_seed_id( $key, true );
 		if ( ! $post_id ) {
 			continue;
 		}

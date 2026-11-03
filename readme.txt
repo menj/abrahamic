@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.91.0
+Stable tag: 2.92.1
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -547,6 +547,15 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.92.1 - 2026-11-03 =
+* Scheduled starter articles get their tags and search fields when they are created, so they go live complete.
+* Two seeder runs at the same moment can no longer create the same article twice.
+* The Christmas article links Apostle of Doom's entry on Paul and holy days.
+
+= 2.92.0 - 2026-11-03 =
+* Seven new Journal articles: Noah, Job and Jonah, dated in October, and Solomon, Hanukkah, the sacred months and the date of Christmas, Scheduled for 17 November to 20 December.
+* Starter articles can carry a fixed publication date. A date to come is Scheduled and goes live on the day, as long as WP-Cron runs on the host.
 
 = 2.91.0 - 2026-11-03 =
 * An open book beside Further reading, an envelope beside the editors' email address and an arrow after the Next link: three small pixel icons from the owner, still for readers who ask for reduced motion.
