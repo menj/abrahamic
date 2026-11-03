@@ -511,14 +511,32 @@ function abr_schema_licensed_image( $url, $name, $id = '' ) {
 }
 
 /**
- * Photographs placed in a post's content with [abr_photo name="..."].
+ * Photographs placed in a post's content with [abr_photo name="..."] that the
+ * shortcode shows as a photograph. Attributes are read as WordPress reads them,
+ * in any order and quoting; a name whose file is missing is left out, since
+ * the shortcode then prints the decorative panel.
  *
  * @param WP_Post $post Post.
  * @return string[] File stems.
  */
 function abr_content_photo_names( $post ) {
-	preg_match_all( '/\[abr_photo\s+name="([a-z0-9-]+)"/', (string) $post->post_content, $m );
-	return array_values( array_unique( $m[1] ) );
+	$content = (string) $post->post_content;
+	if ( false === strpos( $content, '[abr_photo' ) ) {
+		return array();
+	}
+	preg_match_all( '/' . get_shortcode_regex( array( 'abr_photo' ) ) . '/', $content, $m, PREG_SET_ORDER );
+	$names = array();
+	foreach ( $m as $tag ) {
+		if ( '[' === $tag[1] && ']' === $tag[6] ) {
+			continue; // Escaped [[abr_photo]], printed as text.
+		}
+		$atts = shortcode_parse_atts( $tag[3] );
+		$name = is_array( $atts ) && isset( $atts['name'] ) ? (string) $atts['name'] : '';
+		if ( '' !== $name && is_readable( ABR_DIR . '/assets/images/photos/' . sanitize_file_name( $name ) . '.avif' ) ) {
+			$names[] = $name;
+		}
+	}
+	return array_values( array_unique( $names ) );
 }
 
 /**
@@ -812,12 +830,76 @@ function abr_seo_head() {
 add_action( 'wp_head', 'abr_seo_head', 2 );
 
 /**
+ * Seed keys of pages a visitor reaches only after an action, such as the
+ * thank-you page after a gift. They have no value in search results.
+ *
+ * @return string[]
+ */
+function abr_seo_utility_keys() {
+	return array( 'page:thank-you' );
+}
+
+/**
+ * IDs of the utility pages.
+ *
+ * @return int[]
+ */
+function abr_seo_utility_ids() {
+	return array_values( array_filter( array_map( 'intval', array_map( 'abr_seed_id', abr_seo_utility_keys() ) ) ) );
+}
+
+/**
+ * Whether the current view is a utility page.
+ *
+ * @return bool
+ */
+function abr_seo_is_utility_page() {
+	return is_page() && in_array( (int) get_queried_object_id(), abr_seo_utility_ids(), true );
+}
+
+/**
+ * Rank Math robots: utility pages are noindex there as well.
+ *
+ * @param array $robots Directives keyed by name.
+ * @return array
+ */
+function abr_seo_rank_math_robots( $robots ) {
+	if ( abr_seo_is_utility_page() ) {
+		$robots['index']  = 'noindex';
+		$robots['follow'] = 'follow';
+	}
+	return $robots;
+}
+add_filter( 'rank_math/frontend/robots', 'abr_seo_rank_math_robots' );
+
+/**
+ * Core XML sitemap: utility pages are left out, as they are noindex.
+ *
+ * @param array  $args      Query arguments.
+ * @param string $post_type Post type.
+ * @return array
+ */
+function abr_seo_sitemap_exclude_utility( $args, $post_type ) {
+	if ( 'page' === $post_type ) {
+		$ids                  = abr_seo_utility_ids();
+		$args['post__not_in'] = array_merge( isset( $args['post__not_in'] ) ? (array) $args['post__not_in'] : array(), $ids );
+	}
+	return $args;
+}
+add_filter( 'wp_sitemaps_posts_query_args', 'abr_seo_sitemap_exclude_utility', 10, 2 );
+
+/**
  * Robots directives: keep thin and duplicate views out of the index.
  *
  * @param array $robots Directives.
  * @return array
  */
 function abr_seo_robots( $robots ) {
+	// Utility pages are noindex whatever the theme's search setting says.
+	if ( abr_seo_is_utility_page() ) {
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+	}
 	if ( ! abr_seo_active() ) {
 		return $robots;
 	}

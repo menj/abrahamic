@@ -4,8 +4,8 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.88.2** |
-| Release date | 2026-11-02 |
+| Current version | **2.89.0** |
+| Release date | 2026-11-03 |
 | Status | Stable |
 
 ---
@@ -116,6 +116,7 @@ abrahamic/
 │   ├── diagrams.php       [abr_diagram]: the family tree and shared-beliefs diagrams
 │   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
 │   ├── rank-math.php      Rank Math: focus keywords where empty; licence, speakable and FAQ data merged into its schema; no Person or Gravatar
+│   ├── image-sitemap.php  Image sitemap at /image-sitemap.xml, named in robots.txt; off while an SEO plugin is active
 │   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.json), lowercase enforced, thin tag pages noindexed
 │   ├── contextual-links.php  Links in the running text to inner pages here and on the sister sites (section 8)
 │   ├── data/network-links.json  Shared phrase map, identical in all seven themes; edit it in every theme at once
@@ -243,7 +244,7 @@ Rank Math, when active, always wins: any title or description set in it is used 
 
 ### Structured data
 
-Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ, the question-and-answer articles, and the questions section of the Islamic Dilemma page, read from its level-three headings through `abr_faq_section_keys()`), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. No Person or ProfilePage anywhere.
+Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ, the question-and-answer articles, and the questions section of the Islamic Dilemma page, read from its level-three headings through `abr_faq_section_keys()`), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. The owner keeps all schema.org markup, whether Google lists a rich result for it or not, because it serves generative, answer and AI search (GEO, AEO, AIO). Decided on 2026-11-03. No ProfilePage anywhere, and no Person for an author or the site. The one Person is the photographer named as `creator` inside a photograph's ImageObject, taken from `inc/seed/photo-credits.json`, as Google's image licence data asks.
 
 ### Anonymity
 
@@ -509,7 +510,7 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 
 | Stored | Type | Purpose |
 |---|---|---|
-| `ABR_SEED_VERSION` | constant | Current seed version (103) |
+| `ABR_SEED_VERSION` | constant | Current seed version (106) |
 | `abr_seed_photos` | option | Bundled photograph name to media library attachment ID |
 | `_abr_seed_photo` | post meta | The photograph the seeder set as this article's featured image |
 | `abr_seeded_slugs` | option, not autoloaded | Tombstone list: key => timestamp |
