@@ -2,6 +2,14 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.89.1] - 2026-11-03
+
+### Changed
+- `inc/data/network-links.json` lists this site's article on Deuteronomy 18 at `/journal/prophet-like-moses/`, the address it took in seed version 104. The file still had `/journal/deuteronomy-18-18/`, so the sister sites linked the old address and reached the article through its 301.
+- The same file takes the new addresses on the sister sites. On 3 November 2026 the owner ruled that no address on the network carries a verse number, a count or a year: Best of Islam drops the counts from 6 article addresses, murtadd.org moves its Qur'an 4:34 rebuttal to `/rebuttals/quran-wife-beating-verse-in-context/`, and Compelling Evidence and injil.help paths follow their earlier renames. The file is the same in all seven themes again.
+
+No seeded content changed, and no address on this site moved.
+
 ## [2.89.0] - 2026-11-03
 
 Applies Google's SEO Starter Guide. Seed version 106.
