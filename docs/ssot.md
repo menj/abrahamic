@@ -706,6 +706,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-03 | 2.91.0 | The structured data keeps its Person entries for the historical figures the articles discuss: Abraham, Moses, Jesus, Muhammad and Paul | The owner decided on 2026-11-03 to keep them; do not remove them or raise the question again |
 | 2026-11-03 | 2.90.0 | Structured data for every element a page shows, merged into one graph by `@id` (`inc/schema.php`) | The owner keeps all schema.org markup and approved the expansion on 2026-11-03; each node must describe something visible on the page |
 | 2026-10-27 | 2.86.0 | One owner page per subject: the two Islamic Dilemma Journal posts merged into `page:islamic-dilemma`, their addresses redirected to it; retirement trashes only unedited copies | The owner's rule is no duplicate or overlapping pages within a site; the reference page is the one the sister sites link to. An editor's changed copy is theirs to keep or remove |
 | 2026-10-26 | 2.84.1 | Serve the Qur'an face as a WOFF2 conversion (`assets/fonts/kfgqpc-hafs-uthmanic-script.woff2`) in place of the original TTF | The owner chose on 2026-10-26 to serve a WOFF2 conversion of the KFGQPC HAFS Uthmanic Script (107 KB, from 298 KB), accepting that the KFGQPC licence forbids modifying the font. The conversion is lossless for glyphs, cmap and OpenType layout; the digital signature (DSIG) is dropped. |
