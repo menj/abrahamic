@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.88.2
+Stable tag: 2.89.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -547,6 +547,12 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.89.0 - 2026-11-03 =
+* Structured data follows Google's list of supported features: FAQPage and speakable are gone, with or without Rank Math. The visible FAQ text is unchanged.
+* New image sitemap at /image-sitemap.xml, named in robots.txt. It stands down when an SEO plugin is active.
+* The thank-you page is noindex and out of the sitemap, and its description now fits in 129 characters.
+* Licence links in the DMCA page use https. Seed version 106.
 
 = 2.88.2 - 2026-11-02 =
 * Starter text edited to the house writing style in 13 articles and pages: plain verbs replace "serves as", "stands as", "offers a", "transformed", "emphasis", "depicts" and "Discover", and five sentences that denied one thing before stating another now state the fact directly. Facts, citations and quotations are unchanged. Seed version 105.

@@ -2,6 +2,23 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.89.0] - 2026-11-03
+
+Applies Google's SEO Starter Guide and its list of supported structured data features. Seed version 106.
+
+### Removed
+- FAQPage structured data on the FAQ page, the Islamic Dilemma page and the Reddit question article. Google lists no FAQ feature. The questions and answers on the pages stay as they are. `abr_faq_style_keys()`, `abr_faq_section_keys()` and `abr_faq_qa_pairs()` are gone.
+- Speakable on every article. Google keeps it for news content read aloud.
+- With Rank Math, the theme no longer adds either one to a graph built in the Schema tab, and it strips them from that graph.
+
+### Added
+- Image sitemap at `/image-sitemap.xml` (`inc/image-sitemap.php`): every published post and page with its featured image and the photographs placed with `[abr_photo]`. robots.txt names it. It stands down while an SEO plugin is active, since Rank Math lists images in its own sitemap.
+
+### Fixed
+- The thank-you page is noindex, under Rank Math too, and left out of the core sitemap (`abr_seo_utility_keys()`).
+- The thank-you description is 126 characters, so it is never cut.
+- The 5 Creative Commons licence links in `page:dmca` use https.
+
 ## [2.88.2] - 2026-11-02
 
 ### Changed

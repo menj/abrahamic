@@ -13,11 +13,12 @@
  *   account's Gravatar, a hash of its email address. The Person node is removed
  *   and the site's Organization named as author, as everywhere else.
  * - Structured data. The theme's graph is more complete than Rank Math's
- *   default (licence data for every credited photograph, speakable, FAQPage
- *   from question-and-answer content, breadcrumbs, page types, no Person), so it
- *   is printed in Rank Math's place. Where an editor has built a schema in Rank
- *   Math's Schema tab, Rank Math's graph is kept and the theme adds its licence,
- *   speakable and FAQ data to it.
+ *   default (licence data for every credited photograph, breadcrumbs, page
+ *   types, no Person), so it is printed in Rank Math's place. Where an editor
+ *   has built a schema in Rank Math's Schema tab, Rank Math's graph is kept and
+ *   the theme adds its licence data to it. Either way the graph holds only
+ *   types Google Search supports: no FAQPage and no speakable, which Google
+ *   keeps for news content.
  * - Everything else (titles and descriptions an editor sets, robots, canonical,
  *   social tags, sitemaps) is Rank Math's.
  *
@@ -200,8 +201,8 @@ function abr_rank_math_json_ld( $data, $jsonld = null ) {
 	if ( ! is_array( $data ) ) {
 		return $data;
 	}
-	// The theme's graph is the more complete one (licence data, speakable, FAQ from
-	// the content, breadcrumbs, page types, no Person), so it takes precedence and
+	// The theme's graph is the more complete one (licence data, breadcrumbs,
+	// page types, no Person), so it takes precedence and
 	// is printed in Rank Math's place. Where an editor has built a schema in Rank
 	// Math's Schema tab for this page, Rank Math's graph is kept and the theme only
 	// adds to it, below.
@@ -288,33 +289,14 @@ function abr_rank_math_json_ld( $data, $jsonld = null ) {
 			continue;
 		}
 		$types = (array) $node['@type'];
-		if ( $images && array_intersect( $types, array( 'WebPage', 'AboutPage', 'ContactPage', 'CollectionPage', 'FAQPage' ) ) && empty( $node['image'] ) ) {
+		if ( $images && array_intersect( $types, array( 'WebPage', 'AboutPage', 'ContactPage', 'CollectionPage' ) ) && empty( $node['image'] ) ) {
 			$data[ $key ]['image'] = $images;
 		}
-		if ( is_singular( 'post' ) && array_intersect( $types, array( 'Article', 'BlogPosting', 'NewsArticle' ) ) && empty( $node['speakable'] ) ) {
-			$data[ $key ]['speakable'] = array(
-				'@type'       => 'SpeakableSpecification',
-				'cssSelector' => array( 'h1', '.abr-prose > p:first-of-type' ),
-			);
-		}
-	}
-
-	// FAQPage for pages written as questions and answers, unless Rank Math has one.
-	$has_faq = false;
-	foreach ( $data as $node ) {
-		if ( is_array( $node ) && isset( $node['@type'] ) && in_array( 'FAQPage', (array) $node['@type'], true ) ) {
-			$has_faq = true;
-		}
-	}
-	$faq_ids = array_filter( array_map( 'abr_seed_id', abr_faq_style_keys() ) );
-	if ( ! $has_faq && in_array( (int) $post->ID, array_map( 'intval', $faq_ids ), true ) ) {
-		$pairs = abr_faq_qa_pairs( $post );
-		if ( $pairs ) {
-			$data['abrFaq'] = array(
-				'@type'      => 'FAQPage',
-				'@id'        => $url . '#faq',
-				'mainEntity' => $pairs,
-			);
+		// Speakable is for news content read aloud; this site publishes none.
+		unset( $data[ $key ]['speakable'] );
+		// FAQ rich results are not among Google's supported features.
+		if ( in_array( 'FAQPage', $types, true ) && 1 === count( $types ) ) {
+			unset( $data[ $key ] );
 		}
 	}
 	return $data;
