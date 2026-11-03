@@ -606,7 +606,7 @@ function abr_schema_graph() {
 
 	$url = abr_seo_canonical();
 	if ( ! $url ) {
-		return $graph;
+		return function_exists( 'abr_schema_extend' ) ? abr_schema_extend( $graph ) : $graph;
 	}
 
 	$type = 'WebPage';
@@ -716,7 +716,7 @@ function abr_schema_graph() {
 	}
 
 	$graph[] = $webpage;
-	return $graph;
+	return function_exists( 'abr_schema_extend' ) ? abr_schema_extend( $graph ) : $graph;
 }
 
 /**

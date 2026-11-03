@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.89.1** |
+| Current version | **2.90.0** |
 | Release date | 2026-11-03 |
 | Status | Stable |
 
@@ -115,6 +115,8 @@ abrahamic/
 │   ├── login.php          Themed login screen, private login address (ports of Login Logo and WPS Hide Login)
 │   ├── diagrams.php       [abr_diagram]: the family tree and shared-beliefs diagrams
 │   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
+│   ├── schema.php         Structured data beyond the base graph: scripture, citations, glossary, timeline, entities, page frame (section 13)
+│   ├── data/schema-entities.json  People, places, scriptures and traditions pages name, for about and mentions
 │   ├── rank-math.php      Rank Math: focus keywords where empty; licence, speakable and FAQ data merged into its schema; no Person or Gravatar
 │   ├── image-sitemap.php  Image sitemap at /image-sitemap.xml, named in robots.txt; off while an SEO plugin is active
 │   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.json), lowercase enforced, thin tag pages noindexed
@@ -244,7 +246,9 @@ Rank Math, when active, always wins: any title or description set in it is used 
 
 ### Structured data
 
-Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ, the question-and-answer articles, and the questions section of the Islamic Dilemma page, read from its level-three headings through `abr_faq_section_keys()`), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. The owner keeps all schema.org markup, whether Google lists a rich result for it or not, because it serves generative, answer and AI search (GEO, AEO, AIO). Decided on 2026-11-03. No ProfilePage anywhere, and no Person for an author or the site. The one Person is the photographer named as `creator` inside a photograph's ImageObject, taken from `inc/seed/photo-credits.json`, as Google's image licence data asks.
+Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ, the question-and-answer articles, and the questions section of the Islamic Dilemma page, read from its level-three headings through `abr_faq_section_keys()`), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. The owner keeps all schema.org markup, whether Google lists a rich result for it or not, because it serves generative, answer and AI search (GEO, AEO, AIO). Decided on 2026-11-03. No ProfilePage anywhere, and no Person for an author, the owner or the site. A Person appears in two places only: the photographer named as `creator` inside a photograph's ImageObject, taken from `inc/seed/photo-credits.json`, as Google's image licence data asks, and the prophets and historical figures in `inc/data/schema-entities.json` that a page names.
+
+`inc/schema.php` adds the rest, each only where the page shows it: Qur'an quotations (Quotation, Chapter, Book) with their translation, citations from the notes (Qur'an and Bible chapters, hadith with a PropertyValue grading only where the note prints one, other sources), the glossary as a DefinedTermSet, the timeline as an ItemList of Event, Table, diagrams as ImageObject, about and mentions from the entities file, WPHeader, WPFooter, SiteNavigationElement, a SearchAction, SearchResultsPage, archive lists and article details. It builds from a context array, so `php tests/schema-graph-test.php` runs it on the seed content. One graph per page: under Rank Math the nodes join its graph through `rank_math/json_ld` and merge by `@id`.
 
 ### Anonymity
 
@@ -702,6 +706,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-03 | 2.90.0 | Structured data for every element a page shows, merged into one graph by `@id` (`inc/schema.php`) | The owner keeps all schema.org markup and approved the expansion on 2026-11-03; each node must describe something visible on the page |
 | 2026-10-27 | 2.86.0 | One owner page per subject: the two Islamic Dilemma Journal posts merged into `page:islamic-dilemma`, their addresses redirected to it; retirement trashes only unedited copies | The owner's rule is no duplicate or overlapping pages within a site; the reference page is the one the sister sites link to. An editor's changed copy is theirs to keep or remove |
 | 2026-10-26 | 2.84.1 | Serve the Qur'an face as a WOFF2 conversion (`assets/fonts/kfgqpc-hafs-uthmanic-script.woff2`) in place of the original TTF | The owner chose on 2026-10-26 to serve a WOFF2 conversion of the KFGQPC HAFS Uthmanic Script (107 KB, from 298 KB), accepting that the KFGQPC licence forbids modifying the font. The conversion is lossless for glyphs, cmap and OpenType layout; the digital signature (DSIG) is dropped. |
 | 2026-10-26 | 2.84.0 | Arabic Qur'anic verses set in KFGQPC HAFS Uthmanic Script, the TTF shipped unmodified, with Tanzil-encoded verse lines mapped to the Complex's encoding at render time | Owner's rule for all seven themes: the Madinah mushaf face for the Qur'an only. Its licence forbids modification, so no WOFF2 or subset; the mapping keeps sukun and the rounded zero correct without editing stored scripture |
