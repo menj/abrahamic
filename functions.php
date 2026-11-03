@@ -37,6 +37,7 @@ $abr_files = array(
 	ABR_DIR . '/inc/contextual-links.php',
 	ABR_DIR . '/inc/quran-text.php',
 	ABR_DIR . '/inc/data/network-links.json',
+	ABR_DIR . '/inc/data/schema-entities.json',
 	ABR_DIR . '/inc/seed/content.json',
 );
 if ( is_readable( ABR_DIR . '/inc/maintenance.php' ) ) {

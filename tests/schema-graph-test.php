@@ -194,6 +194,7 @@ $common = array(
 	'language'    => 'en-GB',
 	'site_name'   => 'Abrahamic Religions',
 	'copyright'   => '© 2026 Abrahamic Religions. All rights reserved.',
+	'copyright_template' => '© {year} Abrahamic Religions. All rights reserved.',
 	'header_nav'  => $header_nav,
 	'footer_navs' => array( array( 'name' => 'Explore', 'items' => array( array( 'name' => 'Glossary', 'url' => $home . 'glossary/' ) ) ) ),
 	'entities'    => $entities['entities'],
@@ -212,7 +213,7 @@ foreach ( $seed['items'] as $item ) {
 			'content'       => $item['content'],
 			'excerpt'       => isset( $item['excerpt'] ) ? $item['excerpt'] : '',
 			'tags'          => array( 'abraham' ),
-			'year'          => '2026',
+			'year'          => '2024',
 			'reading'       => 7,
 			'is_glossary'   => 'page:glossary' === $item['key'],
 			'is_timeline'   => 'page:timeline' === $item['key'],
@@ -226,6 +227,9 @@ foreach ( $seed['items'] as $item ) {
 		$totals[ $type ] = ( isset( $totals[ $type ] ) ? $totals[ $type ] : 0 ) + abr_test_count( $ids, $type );
 	}
 	foreach ( $graph as $node ) {
+		if ( isset( $node['copyrightYear'], $node['copyrightNotice'] ) && false === strpos( $node['copyrightNotice'], (string) $node['copyrightYear'] ) ) {
+			abr_test_fail( $item['key'], 'copyrightNotice "' . $node['copyrightNotice'] . '" does not state copyrightYear ' . $node['copyrightYear'] );
+		}
 		if ( isset( $node['additionalProperty'] ) ) {
 			$totals['PropertyValue'] = ( isset( $totals['PropertyValue'] ) ? $totals['PropertyValue'] : 0 ) + 1;
 		}

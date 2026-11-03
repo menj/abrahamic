@@ -662,6 +662,7 @@ function abr_schema_build( $ctx ) {
 			'site_name'     => '',
 			'copyright'     => '',
 			'year'          => '',
+			'copyright_template' => '',
 			'reading'       => 0,
 			'is_glossary'   => false,
 			'is_timeline'   => false,
@@ -796,11 +797,14 @@ function abr_schema_build( $ctx ) {
 				'description'          => 'Text alone',
 			),
 		);
+		// The work's year and notice agree: both carry its publication year. The
+		// footer node keeps the notice as the footer prints it, with this year.
+		$notice = abr_schema_work_notice( $ctx );
 		if ( '' !== $ctx['year'] ) {
 			$work['copyrightYear'] = (int) $ctx['year'];
 		}
-		if ( '' !== $ctx['copyright'] ) {
-			$work['copyrightNotice'] = $ctx['copyright'];
+		if ( '' !== $notice ) {
+			$work['copyrightNotice'] = $notice;
 		}
 		$features = array( 'alternativeText', 'structuralNavigation' );
 		if ( false !== strpos( $ctx['content'], 'abr-toc' ) ) {
@@ -904,6 +908,22 @@ function abr_schema_merge( $graph, $ext, $own = true, $is_post = false ) {
 }
 
 /**
+ * Copyright notice for a page's work node, with the same year as its
+ * copyrightYear: the footer's notice with the publication year in place of
+ * {year}. Without a template or a year it is the footer's notice as printed.
+ *
+ * @param array $ctx View context.
+ * @return string
+ */
+function abr_schema_work_notice( $ctx ) {
+	$template = isset( $ctx['copyright_template'] ) ? (string) $ctx['copyright_template'] : '';
+	if ( '' !== $ctx['year'] && false !== strpos( $template, '{year}' ) ) {
+		return str_replace( '{year}', (string) $ctx['year'], $template );
+	}
+	return (string) $ctx['copyright'];
+}
+
+/**
  * Merge nodes that share an @id: the first keeps its values and takes the
  * properties only the later ones have.
  *
@@ -948,28 +968,25 @@ function abr_schema_menu_links( $option ) {
 }
 
 /**
- * Links of the header's navigation block, from the header part as the site
- * stores it (or the theme's file).
+ * Links of the header's navigation, from the same source the page renders:
+ * abr_primary_nav_data() fills the header's Navigation block from the
+ * nav_header option, cut to ABR_PRIMARY_NAV_MAX top-level links with up to
+ * ABR_NAV_CHILDREN_MAX dropdown links each.
  *
  * @return array[]
  */
 function abr_schema_header_links() {
-	$html = '';
-	if ( function_exists( 'get_block_template' ) ) {
-		$part = get_block_template( get_stylesheet() . '//header', 'wp_template_part' );
-		$html = $part && ! empty( $part->content ) ? $part->content : '';
-	}
-	if ( '' === $html && is_readable( ABR_DIR . '/parts/header.html' ) ) {
-		$html = (string) file_get_contents( ABR_DIR . '/parts/header.html' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a bundled file.
-	}
+	$items = abr_parse_menu( abr_get_option( 'nav_header' ) );
+	$items = array_slice( $items, 0, defined( 'ABR_PRIMARY_NAV_MAX' ) ? ABR_PRIMARY_NAV_MAX : count( $items ) );
 	$links = array();
-	if ( preg_match_all( '#<!-- wp:navigation-link (\{.*?\}) /-->#', $html, $m ) ) {
-		foreach ( $m[1] as $json ) {
-			$attrs = json_decode( $json, true );
-			if ( ! empty( $attrs['label'] ) && ! empty( $attrs['url'] ) ) {
+	foreach ( $items as $item ) {
+		$children = array_slice( $item['children'], 0, defined( 'ABR_NAV_CHILDREN_MAX' ) ? ABR_NAV_CHILDREN_MAX : count( $item['children'] ) );
+		foreach ( array_merge( array( $item ), $children ) as $entry ) {
+			$url = abr_link( $entry['target'], '' );
+			if ( $url ) {
 				$links[] = array(
-					'name' => wp_strip_all_tags( $attrs['label'] ),
-					'url'  => 0 === strpos( $attrs['url'], '/' ) ? home_url( $attrs['url'] ) : $attrs['url'],
+					'name' => wp_strip_all_tags( $entry['label'] ),
+					'url'  => $url,
 				);
 			}
 		}
@@ -990,6 +1007,7 @@ function abr_schema_context() {
 		'language'    => get_bloginfo( 'language' ),
 		'site_name'   => get_bloginfo( 'name' ),
 		'copyright'   => str_replace( '{year}', wp_date( 'Y' ), abr_get_option( 'footer_copyright' ) ),
+		'copyright_template' => abr_get_option( 'footer_copyright' ),
 		'header_nav'  => abr_schema_header_links(),
 		'footer_navs' => array(),
 		'entities'    => array(),
@@ -1087,6 +1105,15 @@ function abr_schema_image_details( $graph ) {
 		if ( empty( $node['encodingFormat'] ) && isset( $mime[ $ext ] ) ) {
 			$graph[ $key ]['encodingFormat'] = $mime[ $ext ];
 		}
+		if ( empty( $node['width'] ) && function_exists( 'attachment_url_to_postid' ) && 0 !== strpos( $url, ABR_URI . '/' ) ) {
+			// A featured photo or other upload: WordPress keeps its size.
+			$size = abr_schema_attachment_size( $url );
+			if ( $size ) {
+				$graph[ $key ]['width']  = $size[0];
+				$graph[ $key ]['height'] = $size[1];
+				$node['width']           = $size[0];
+			}
+		}
 		if ( empty( $node['width'] ) && 0 === strpos( $url, ABR_URI . '/' ) ) {
 			$file = ABR_DIR . '/' . rawurldecode( substr( $url, strlen( ABR_URI ) + 1 ) );
 			$size = is_readable( $file ) ? @getimagesize( $file ) : false; // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- a bundled file.
@@ -1103,6 +1130,36 @@ function abr_schema_image_details( $graph ) {
 		}
 	}
 	return $graph;
+}
+
+/**
+ * Width and height of an image in the media library, for the size its URL
+ * names (the full image or one of its generated sizes).
+ *
+ * @param string $url Image URL.
+ * @return int[]|null [ width, height ].
+ */
+function abr_schema_attachment_size( $url ) {
+	$id = (int) attachment_url_to_postid( $url );
+	if ( ! $id ) {
+		return null;
+	}
+	$meta = wp_get_attachment_metadata( $id );
+	if ( is_array( $meta ) ) {
+		$file = wp_basename( (string) wp_parse_url( $url, PHP_URL_PATH ) );
+		if ( ! empty( $meta['sizes'] ) ) {
+			foreach ( $meta['sizes'] as $size ) {
+				if ( isset( $size['file'], $size['width'], $size['height'] ) && $size['file'] === $file ) {
+					return array( (int) $size['width'], (int) $size['height'] );
+				}
+			}
+		}
+		if ( ! empty( $meta['width'] ) && ! empty( $meta['height'] ) ) {
+			return array( (int) $meta['width'], (int) $meta['height'] );
+		}
+	}
+	$src = wp_get_attachment_image_src( $id, 'full' );
+	return $src && ! empty( $src[1] ) ? array( (int) $src[1], (int) $src[2] ) : null;
 }
 
 /**
