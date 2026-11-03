@@ -931,6 +931,16 @@ h1, h2, h3, h4, h5, h6, .wp-block-post-template > li { text-align: start; text-a
 .abr-further a { color: var(--abr-navy); text-decoration: underline; text-decoration-color: var(--abr-gold); text-underline-offset: 3px; }
 .abr-further a:hover { color: var(--abr-gold); }
 .abr-post-nav a { color: var(--abr-navy); }
+/* Retro pixel icons from the owner (assets/images/*.webp), drawn as decoration only: the link text carries the meaning. A still first frame replaces the animation under reduced motion. */
+.abr-further h2::before, .abr-contact-email::before, .abr-post-nav .post-navigation-link-next a::after { content: ""; display: inline-block; vertical-align: middle; background: center / contain no-repeat; image-rendering: pixelated; }
+.abr-further h2::before { width: 37px; height: 30px; margin-right: 10px; background-image: url(../images/book-open.webp); }
+.abr-contact-email::before { width: 45px; height: 52px; margin-right: 12px; background-image: url(../images/envelope.webp); }
+.abr-post-nav .post-navigation-link-next a::after { width: 35px; height: 21px; margin-left: 8px; background-image: url(../images/arrow-next.webp); }
+@media (prefers-reduced-motion: reduce) {
+	.abr-further h2::before { background-image: url(../images/book-open-static.webp); }
+	.abr-contact-email::before { background-image: url(../images/envelope-static.webp); }
+	.abr-post-nav .post-navigation-link-next a::after { background-image: url(../images/arrow-next-static.webp); }
+}
 
 .abr-site-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 8px 40px; margin-top: 16px; }
 .abr-site-map__section h2 { font-size: 1.5rem !important; margin: 20px 0 10px !important; padding-bottom: 8px; border-bottom: 1px solid var(--abr-hair); }

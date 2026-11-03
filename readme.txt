@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.90.0
+Stable tag: 2.91.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -547,6 +547,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.91.0 - 2026-11-03 =
+* An open book beside Further reading, an envelope beside the editors' email address and an arrow after the Next link: three small pixel icons from the owner, still for readers who ask for reduced motion.
 
 = 2.90.0 - 2026-11-03 =
 * Fuller structured data in the one graph: Qur'an quotations with their translation, Qur'an, Bible and hadith citations from the notes, the glossary, the timeline, tables, diagrams, people and places a page names, the header, menus and footer, and site search.

@@ -2,6 +2,11 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.91.0] - 2026-11-03
+
+### Added
+- Three pixel icons from the owner: an open book beside the Further reading heading, an envelope beside the editors' email address, and an arrow after the Next link under each article (`assets/images/`, styled in `assets/css/theme.css`). Each is animated WebP drawn at its own pixel size, for decoration only; the link text is unchanged. Readers who ask for reduced motion see a still first frame.
+
 ## [2.90.0] - 2026-11-03
 
 ### Added
