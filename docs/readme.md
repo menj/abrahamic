@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.91.0 |
+| Version | 2.92.0 |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |

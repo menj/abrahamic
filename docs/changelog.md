@@ -2,6 +2,27 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.92.0] - 2026-11-03
+
+Seed version 107.
+
+### Added
+- Seven Journal articles from the owner's approved plan. Three carry dates in October: `noah-in-three-traditions` (10 October), `job-and-ayyub` (19 October) and `jonah-in-three-traditions` (28 October). Four are Scheduled: `solomon-in-the-quran` (17 November), `hanukkah-and-the-maccabees` (4 December, the eve of Hanukkah), `sacred-months-and-sabbath` (10 December, 1 Rajab 1448 by the Umm al-Qura calendar) and `why-christmas-is-in-december` (20 December). Each has a table of contents, notes, a Further reading line, a search title, a focus keyword, tags and a credited photograph already in the theme.
+- `post_date` in `inc/seed/content.json`: a fixed date in site time for a seeded post (`inc/seed-schedule.php`). A past date publishes the post with that date. A date still to come creates it as Scheduled, and WP-Cron publishes it on the day. Posts without the field keep `days_ago`. The date is read only when the post is created, so a second run neither duplicates a post nor publishes a Scheduled one early.
+- `tests/seed-schedule-test.php` checks past, future, missing and malformed dates, the time zone, the boundary second, and every `post_date` in the seed.
+
+Sources checked for the articles:
+- `post:noah-in-three-traditions`: Genesis 6-9; Matthew 24:37-39; 2 Peter 2:5; Sanhedrin 108b and 56a; Qur'an 29:14, 71:5-7, 71:23, 11:40-46, 16:36.
+- `post:job-and-ayyub`: Job 1-2, 38-42; James 5:11; Bava Batra 15a; Qur'an 4:163, 21:83-84, 38:41-44, 67:2.
+- `post:jonah-in-three-traditions`: Jonah 1-4; Megillah 31a; Matthew 12:38-41; Luke 11:29-32; Qur'an 10:98, 21:87, 37:139-148, 68:48; al-Bukhārī 3395; al-Tirmidhī 3505.
+- `post:solomon-in-the-quran`: 1 Kings 3, 6-11; Nehemiah 13:26; 2 Chronicles 1-9; Shabbat 56b; Josephus, Antiquities 8.45; Qur'an 2:102, 21:79, 27:16, 27:44, 34:14, 38:30-35; al-Nasāʾī 693.
+- `post:hanukkah-and-the-maccabees`: 1 Maccabees 1-4, 9:27; 2 Maccabees 6, 10, 12; John 10:22-23; Shabbat 21b; Josephus, Antiquities 12.325; the Council of Trent, the Westminster Confession and the Articles of Religion; Qur'an 5:48. Hanukkah 5787 begins at sunset on 4 December 2026 (25 Kislev is 5 December, checked against Hebcal).
+- `post:sacred-months-and-sabbath`: Qur'an 2:194, 2:217, 9:36-37; al-Bukhārī 4662; Ibn Isḥāq on Nakhlah; al-Ṭabarī on 2:217; Exodus 20; Leviticus 25; 1 Maccabees 2:29-41; Toulouges (1027) and the Third Lateran Council (1179).
+- `post:why-christmas-is-in-december`: Luke 2; Matthew 2; Clement of Alexandria, Stromata 1.21; the Chronograph of 354; John Chrysostom at Antioch; Tertullian; Augustine, On the Trinity 4.5.9; Qur'an 3:37, 19:23-33.
+
+### Changed
+- The Job article is titled "Job and Ayyūb: the patience of a servant". The plan's title used "wager", which the spam detector scores as a gambling word, so the text speaks of a test in heaven instead.
+
 ## [2.91.0] - 2026-11-03
 
 ### Added

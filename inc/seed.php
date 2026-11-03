@@ -34,6 +34,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+require_once __DIR__ . '/seed-schedule.php';
+
 /**
  * Whether an attachment exists and its file is on disk with content. An
  * attachment whose file is missing or empty shows as a broken image.
@@ -96,7 +98,7 @@ function abr_seed_photo_attachment( $name, $alt ) {
 /**
  * Raise when inc/seed/content.json gains items (set their 'since' to the new value).
  */
-define( 'ABR_SEED_VERSION', 106 );
+define( 'ABR_SEED_VERSION', 107 );
 
 /**
  * Recommended permalink settings (docs/ssot.md, section 12).
@@ -544,7 +546,14 @@ function abr_run_seeder( $only = array() ) {
 				'comment_status' => 'page' === $item['type'] ? 'closed' : get_default_comment_status( 'post' ),
 				'ping_status'    => 'closed',
 			);
-			if ( ! empty( $item['days_ago'] ) ) {
+			// A fixed post_date (site time) wins over days_ago: a past date publishes
+			// with that date, a date to come is Scheduled for WP-Cron to publish.
+			// Creation runs once per key (tombstones), and the sync below never
+			// sets a status, so a re-run neither duplicates nor republishes it.
+			$schedule = abr_seed_schedule( $item, time(), wp_timezone() );
+			if ( $schedule ) {
+				$postarr = array_merge( $postarr, $schedule );
+			} elseif ( ! empty( $item['days_ago'] ) ) {
 				$local                   = current_time( 'timestamp' ) - (int) $item['days_ago'] * DAY_IN_SECONDS; // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 				$postarr['post_date']     = gmdate( 'Y-m-d H:i:s', $local );
 				$postarr['post_date_gmt'] = get_gmt_from_date( $postarr['post_date'] );
