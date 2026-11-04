@@ -261,8 +261,24 @@ foreach ( $seed['items'] as $item ) {
 					abr_test_fail( $item['key'], $id . ' ' . $prop . ' "' . $node[ $prop ] . '" is not a CE year' );
 				}
 			}
-			if ( ! isset( $node['startDate'] ) && ( empty( $node['description'] ) || false === strpos( $node['description'], 'BCE' ) ) ) {
-				abr_test_fail( $item['key'], $id . ' has no startDate and gives no BCE era in its description' );
+			// Each Event's name carries the period as the page prints it (the
+			// heading, or the era with its kicker): a CE period must have its
+			// startDate, a BCE one none, and its description opens with the range
+			// exactly as printed.
+			$range = null;
+			if ( false === strpos( $id, '#period-' ) ) {
+				continue;
+			}
+			if ( ! abr_schema_period( $node['name'], $range ) ) {
+				abr_test_fail( $item['key'], $id . ' name "' . $node['name'] . '" carries no period' );
+			} elseif ( false === strpos( $range, 'BCE' ) ) {
+				if ( ! isset( $node['startDate'] ) ) {
+					abr_test_fail( $item['key'], $id . ' is a CE period (' . $range . ') without startDate' );
+				}
+			} elseif ( isset( $node['startDate'] ) || isset( $node['endDate'] ) ) {
+				abr_test_fail( $item['key'], $id . ' is a BCE period (' . $range . ') with a startDate or endDate' );
+			} elseif ( empty( $node['description'] ) || 0 !== strpos( $node['description'], $range . '.' ) || false === strpos( $node['name'], $range ) ) {
+				abr_test_fail( $item['key'], $id . ' description does not open with the range as printed, "' . $range . '"' );
 			}
 		}
 	}
@@ -370,14 +386,18 @@ if ( false === strpos( (string) json_encode( $rm_bool ), '"isAccessibleForFree":
 
 // Rank Math prints its graph through wp_kses_post_deep(), so true reaches the
 // page as "1"; the printed script is fixed after the fact.
-$printed = '<script type="application/ld+json" class="rank-math-schema">{"@graph":[{"@type":"WebPage","isAccessibleForFree":"1","position":"1"},{"@type":"Article","isAccessibleForFree" : "true"},{"@type":"WebPageElement","isAccessibleForFree":""},{"name":"isAccessibleForFree"}]}</script>';
-$fixed   = abr_schema_fix_printed_booleans( $printed );
-$decoded = json_decode( (string) preg_replace( '#^<script[^>]*>|</script>$#', '', $fixed ), true );
-if ( ! is_array( $decoded ) || true !== $decoded['@graph'][0]['isAccessibleForFree'] || true !== $decoded['@graph'][1]['isAccessibleForFree'] || false !== $decoded['@graph'][2]['isAccessibleForFree'] ) {
+$printed = '<script type="application/ld+json" class="rank-math-schema">{"@graph":[{"@type":"WebPage","isAccessibleForFree":"1","position":"1"},{"@type":"Article", "isAccessibleForFree" : "0"},{"@type":"WebPageElement","isAccessibleForFree":""},{"name":"isAccessibleForFree"},{"@type":"Thing","description":"say \\"isAccessibleForFree\\":\\"1\\" here","alternateName":"x,\\"isAccessibleForFree\\":\\"1\\"}"},{"@type":"Thing","isAccessibleForFree":"yes"}]}</script>';
+$other   = '<script>var c = {"isAccessibleForFree":"1"};</script><p>{"isAccessibleForFree":"1"}</p>';
+$fixed   = abr_schema_fix_printed_booleans( $other . $printed );
+if ( 0 !== strpos( $fixed, $other ) ) {
+	abr_test_fail( 'Rank Math printed booleans', 'text outside the ld+json script changed: ' . $fixed );
+}
+$decoded = json_decode( (string) preg_replace( '#^<script[^>]*>|</script>$#', '', substr( $fixed, strlen( $other ) ) ), true );
+if ( ! is_array( $decoded ) || true !== $decoded['@graph'][0]['isAccessibleForFree'] || false !== $decoded['@graph'][1]['isAccessibleForFree'] || false !== $decoded['@graph'][2]['isAccessibleForFree'] ) {
 	abr_test_fail( 'Rank Math printed booleans', 'isAccessibleForFree is not a boolean in the printed script: ' . $fixed );
 }
-if ( is_array( $decoded ) && ( '1' !== $decoded['@graph'][0]['position'] || 'isAccessibleForFree' !== $decoded['@graph'][3]['name'] ) ) {
-	abr_test_fail( 'Rank Math printed booleans', 'a value other than isAccessibleForFree changed' );
+if ( is_array( $decoded ) && ( '1' !== $decoded['@graph'][0]['position'] || 'isAccessibleForFree' !== $decoded['@graph'][3]['name'] || 'say "isAccessibleForFree":"1" here' !== $decoded['@graph'][4]['description'] || 'x,"isAccessibleForFree":"1"}' !== $decoded['@graph'][4]['alternateName'] || 'yes' !== $decoded['@graph'][5]['isAccessibleForFree'] ) ) {
+	abr_test_fail( 'Rank Math printed booleans', 'a value other than the exact isAccessibleForFree tokens changed: ' . $fixed );
 }
 if ( 'abc' !== abr_schema_fix_printed_booleans( 'abc' ) ) {
 	abr_test_fail( 'Rank Math printed booleans', 'markup without the property changed' );

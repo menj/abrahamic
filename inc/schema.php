@@ -1212,20 +1212,38 @@ function abr_schema_fix_booleans( $graph ) {
 /**
  * Cast isAccessibleForFree back to a boolean in printed JSON-LD. Rank Math
  * runs its graph through wp_kses_post_deep() after every filter, just before
- * it encodes it, and kses turns true into "1" and false into "". So the cast
- * in abr_schema_fix_booleans() never reaches the page under Rank Math, and
- * the printed script has to be fixed instead. Only that one property is
- * touched, with or without pretty printing.
+ * it encodes it, and kses turns true into "1" and false into "" (a "0" stays
+ * "0"). So the cast in abr_schema_fix_booleans() never reaches the page under
+ * Rank Math, and the printed script has to be fixed instead.
+ *
+ * Only the inside of <script type="application/ld+json"> blocks is read, and
+ * only the exact key/value tokens "isAccessibleForFree":"1", "0" and "" are
+ * changed, with or without pretty printing. Any other text, an escaped
+ * mention of the property inside a string included, is left alone.
  *
  * @param string $html Printed markup holding one or more ld+json scripts.
  * @return string
  */
 function abr_schema_fix_printed_booleans( $html ) {
-	if ( false === strpos( (string) $html, 'isAccessibleForFree' ) ) {
-		return (string) $html;
+	$html = (string) $html;
+	if ( false === strpos( $html, '"isAccessibleForFree"' ) ) {
+		return $html;
 	}
-	$html = preg_replace( '/("isAccessibleForFree"\s*:\s*)"(?:1|true|yes)"/i', '$1true', (string) $html );
-	return (string) preg_replace( '/("isAccessibleForFree"\s*:\s*)"(?:0|false|no|)"/i', '$1false', $html );
+	return (string) preg_replace_callback(
+		'#(<script\b[^>]*\btype=(["\'])application/ld\+json\2[^>]*>)(.*?)(</script>)#is',
+		static function ( $m ) {
+			// A key token is preceded by { or , (and white space); a value inside a string is not.
+			$json = preg_replace_callback(
+				'/([{,]\s*"isAccessibleForFree"\s*:\s*)"(1|0|)"(?=\s*[,}])/',
+				static function ( $t ) {
+					return $t[1] . ( '1' === $t[2] ? 'true' : 'false' );
+				},
+				$m[3]
+			);
+			return $m[1] . $json . $m[4];
+		},
+		$html
+	);
 }
 
 /**
