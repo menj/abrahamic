@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"align":"wide","className":"abr-timeline__track","layout":{"type":"default"}} -->
-<div class="wp-block-group alignwide abr-timeline__track" role="list" tabindex="0" aria-label="Historical periods">
+<div class="wp-block-group alignwide abr-timeline__track">
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
 <div class="wp-block-group abr-era">
 <!-- wp:paragraph {"className":"abr-kicker"} -->

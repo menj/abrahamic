@@ -996,3 +996,31 @@ function abr_listing_page_size( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'abr_listing_page_size' );
+
+/**
+ * Timeline list semantics, added at render time. The Group block saves no
+ * role, tabindex or aria-label, so writing them into the pattern made every
+ * group fail block validation in the editor. The track becomes a labelled,
+ * keyboard-scrollable list and each period a list item.
+ *
+ * @param string $html  Rendered block.
+ * @param array  $block Parsed block.
+ * @return string
+ */
+function abr_timeline_list_roles( $html, $block ) {
+	$class = isset( $block['attrs']['className'] ) ? (string) $block['attrs']['className'] : '';
+	if ( false === strpos( $class, 'abr-timeline__track' ) || ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+		return $html;
+	}
+	$p = new WP_HTML_Tag_Processor( $html );
+	if ( $p->next_tag( array( 'class_name' => 'abr-timeline__track' ) ) ) {
+		$p->set_attribute( 'role', 'list' );
+		$p->set_attribute( 'tabindex', '0' );
+		$p->set_attribute( 'aria-label', __( 'Historical periods', 'abrahamic' ) );
+	}
+	while ( $p->next_tag( array( 'class_name' => 'abr-era' ) ) ) {
+		$p->set_attribute( 'role', 'listitem' );
+	}
+	return $p->get_updated_html();
+}
+add_filter( 'render_block_core/group', 'abr_timeline_list_roles', 10, 2 );
