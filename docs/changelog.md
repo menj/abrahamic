@@ -2,6 +2,24 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.0] - 2026-11-04
+
+### Fixed
+- `abr_maintenance_install_dropins()` wrote one source, the maintenance notice with a 503, into `maintenance.php`, `php-error.php` and `db-error.php`. A fatal PHP error or a lost database therefore told visitors the site was down for maintenance. Each drop-in is now built from its own entry in `abr_error_page_kinds()`: `php-error.php` sends 500 and "Something went wrong", `db-error.php` sends 503 with `Retry-After: 600` and "We cannot reach our database", `maintenance.php` keeps its 503 and `Retry-After: 300`.
+- The repair is automatic. `abr_error_repair_wrong_kind()` runs on the first admin page an administrator loads, finds the theme's own files holding the wrong page (the old marker "Abrahamic maintenance drop-in" in a file other than `maintenance.php`, or a new marker naming another kind), rewrites them and leaves a notice naming them (`abr_dropins_repaired`). The file is provably the theme's, the theme already refreshed these files on each update, and every hour the wrong page stays up misreports an outage. A file without one of the theme's markers is never touched.
+- A failed write no longer records the version as done, so it is tried again on the next admin page.
+
+### Added
+- `inc/error-page-html.php`: the pages as plain HTML with inline style, light and dark, the AR mark, `noindex`, and titles in the `<page> | <site>` form. `abr_maintenance_document()` now uses it.
+- `inc/error-pages.php`: `abr_error_install()` (temporary file, then rename), `abr_error_state()` (missing, installed, outdated, foreign), the markers of every earlier version in `abr_error_markers()`, and an Error pages section on Theme Options > Tools with the status table, an **Install error pages** button (`admin_post_abr_install_error_pages`, nonce and `manage_options`) and the `.htaccess` lines.
+- The drop-ins send `X-Robots-Tag: noindex` as well as the robots meta tag; so does the notice served by the missing-file guard.
+- `errors/403.html`, `500.html`, `502.html` and `503.html` for `ErrorDocument`, built by `bin/build-error-pages.php` (`--check` reports a stale page).
+- `tests/error-pages-test.php`: statuses, wording, standalone runs of each drop-in, the repair of the 2.95.0 copies, foreign files kept, and the static pages current.
+
+### Not changed
+- The 404 template already had a search form, the main sections, the latest articles, a 404 status, `noindex` and the title "Page not found | Abrahamic Religions".
+- No `wp_die_handler` filter: no sister theme styles `wp_die()` screens yet.
+
 ## [2.95.0] - 2026-11-04
 
 The owner's brief of 4 November: build four plugins into the theme where it lacks them. Three were already built in, in part. No option key, shortcode, function name or handle was renamed or removed.

@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.95.0
+Stable tag: 2.96.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -597,6 +597,11 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.0 - 2026-11-04 =
+* A fatal PHP error now shows "Something went wrong" with a 500 status, and a database outage shows "We cannot reach our database". Up to 2.95.0 both showed the maintenance notice. The theme repairs its old copies on the first admin page after the update and says so in a notice.
+* Theme Options > Tools has an Install error pages button and shows whether each page is installed, outdated or someone else's file.
+* Static 403, 500, 502 and 503 pages in the errors folder, for the web server's own error pages.
 
 = 2.95.0 - 2026-11-04 =
 * A reading progress bar fills across the top or bottom of the window on articles. Set its colour, height, position and post types on Theme Options > General.

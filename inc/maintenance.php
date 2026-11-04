@@ -17,12 +17,19 @@
  * theme, so they keep working while the theme is being replaced or after it is
  * deleted, and they are fully self-contained: no theme file, stylesheet, font or
  * WordPress function is needed to show them. The theme writes them once per
- * version, and never overwrites a drop-in that it did not write itself.
+ * version, each with its own page (inc/error-pages.php), and never
+ * overwrites a drop-in that it did not write itself.
  *
  * @package Abrahamic
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// Optional here: the guard below must still work when an update has not
+// unpacked this file yet.
+if ( is_readable( __DIR__ . '/error-page-html.php' ) ) {
+	require_once __DIR__ . '/error-page-html.php';
+}
 
 /**
  * The notice as a complete HTML document.
@@ -31,41 +38,10 @@ defined( 'ABSPATH' ) || exit;
  * @return string
  */
 function abr_maintenance_document( $site ) {
-	$site = htmlspecialchars( (string) $site, ENT_QUOTES, 'UTF-8' );
-	return '<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Back shortly | ' . $site . '</title>
-<style>
-:root{--bg:#f8f5ef;--ink:#172033;--muted:#5d6475;--gold:#b8955a;--card:#ffffff;--edge:rgba(23,32,51,.1)}
-@media (prefers-color-scheme:dark){:root{--bg:#0f131b;--ink:#ece7dd;--muted:#a9adb6;--gold:#cfa869;--card:#171d29;--edge:rgba(236,231,221,.12)}}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{display:flex;align-items:center;justify-content:center;padding:24px;background:var(--bg);color:var(--ink);font-family:"Sabon Next LT",Sabon,"Adobe Garamond Pro",Garamond,Georgia,"Times New Roman",serif;line-height:1.55}
-main{width:min(560px,100%);padding:44px 40px 40px;background:var(--card);border:1px solid var(--edge);border-top:4px solid var(--gold);border-radius:10px;text-align:center;box-shadow:0 14px 44px rgba(0,0,0,.08)}
-.mark{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:28px;font-weight:700;letter-spacing:.02em}
-.mark span{border-bottom:2px solid var(--gold);line-height:1.1}
-.name{margin:14px auto 0;font-size:.82rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
-h1{margin:26px 0 12px;font-size:clamp(1.6rem,4vw,2.1rem);font-weight:600;line-height:1.2}
-p{margin:0 auto 10px;max-width:42ch;font-size:1.08rem;color:var(--muted)}
-.again{margin-top:26px;display:inline-block;padding:11px 26px;border-radius:8px;background:var(--gold);color:#10151d;font-weight:700;text-decoration:none}
-.again:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-</style>
-</head>
-<body>
-<main role="main">
-<div class="mark" aria-hidden="true"><span>AR</span></div>
-<p class="name">' . $site . '</p>
-<h1>Back shortly</h1>
-<p>The site is temporarily offline for maintenance while it is being updated.</p>
-<p>Please try again in a few minutes. Thank you for your patience.</p>
-<a class="again" href="/">Try again</a>
-</main>
-</body>
-</html>';
+	if ( ! function_exists( 'abr_error_page_html' ) ) {
+		return '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Back shortly | ' . htmlspecialchars( (string) $site, ENT_QUOTES, 'UTF-8' ) . '</title></head><body style="font-family:Georgia,serif;text-align:center;padding:48px 16px"><h1>Back shortly</h1><p>The site is temporarily offline for maintenance while it is being updated.</p><p><a href="/">Try again</a></p></body></html>';
+	}
+	return abr_error_page_html( 'maintenance', (string) $site, '/' );
 }
 
 /**
@@ -76,6 +52,7 @@ function abr_maintenance_send() {
 		header( 'HTTP/1.1 503 Service Unavailable', true, 503 );
 		header( 'Content-Type: text/html; charset=utf-8' );
 		header( 'Retry-After: 300' );
+		header( 'X-Robots-Tag: noindex' );
 		header( 'Cache-Control: no-store, max-age=0' );
 	}
 	echo abr_maintenance_document( function_exists( 'get_bloginfo' ) ? get_bloginfo( 'name' ) : 'Abrahamic Religions' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -103,42 +80,36 @@ function abr_maintenance_guard( $files ) {
 }
 
 /**
- * Contents of one drop-in. Each is a standalone PHP file that sends the 503
- * headers and prints the notice; the marker line lets the theme recognise and
- * refresh its own drop-ins without touching anyone else's.
+ * Contents of the maintenance drop-in. Kept for callers of earlier versions;
+ * each drop-in now has its own source, abr_error_dropin_source().
  *
  * @return string
  */
 function abr_maintenance_dropin_source() {
-	$html = abr_maintenance_document( get_bloginfo( 'name' ) );
-	return "<?php\n// Abrahamic maintenance drop-in " . ABR_VERSION . ". Written by the Abrahamic theme; safe to delete.\n"
-		. "if ( ! headers_sent() ) {\n\theader( 'HTTP/1.1 503 Service Unavailable', true, 503 );\n\theader( 'Content-Type: text/html; charset=utf-8' );\n\theader( 'Retry-After: 300' );\n\theader( 'Cache-Control: no-store, max-age=0' );\n}\n?>\n"
-		. $html . "\n";
+	return abr_error_dropin_source( 'maintenance' );
 }
 
 /**
  * Write or refresh the three drop-ins in wp-content, once per theme version.
+ *
+ * Up to 2.95.0 this wrote the maintenance notice into all three files. Each
+ * file now gets its own page (inc/error-pages.php), and the theme's old
+ * copies with the wrong page are repaired first, with a notice.
  */
 function abr_maintenance_install_dropins() {
+	if ( ! function_exists( 'abr_error_install' ) || ( is_multisite() && ! is_main_site() ) ) {
+		return;
+	}
+	abr_error_repair_wrong_kind();
 	if ( get_option( 'abr_dropins_version' ) === ABR_VERSION ) {
 		return;
 	}
-	$source = abr_maintenance_dropin_source();
-	$result = array();
-	foreach ( array( 'maintenance.php', 'php-error.php', 'db-error.php' ) as $name ) {
-		$path = WP_CONTENT_DIR . '/' . $name;
-		if ( file_exists( $path ) ) {
-			$head = (string) file_get_contents( $path, false, null, 0, 200 ); // phpcs:ignore WordPress.WP.AlternativeFunctions
-			if ( false === strpos( $head, 'Abrahamic maintenance drop-in' ) ) {
-				$result[ $name ] = 'kept';
-				continue;
-			}
-		}
-		$written          = false !== @file_put_contents( $path, $source ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
-		$result[ $name ] = $written ? 'written' : 'failed';
-	}
+	$result = abr_error_install();
 	update_option( 'abr_dropins', $result, false );
-	update_option( 'abr_dropins_version', ABR_VERSION, false );
+	// A failed write is tried again on the next admin page, not recorded as done.
+	if ( ! in_array( 'failed', $result, true ) ) {
+		update_option( 'abr_dropins_version', ABR_VERSION, false );
+	}
 }
 add_action( 'admin_init', 'abr_maintenance_install_dropins' );
 add_action( 'after_switch_theme', 'abr_maintenance_install_dropins' );

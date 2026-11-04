@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.95.0** |
+| Current version | **2.96.0** |
 | Release date | 2026-11-04 |
 | Status | Stable |
 
@@ -123,7 +123,9 @@ abrahamic/
 │   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.json), lowercase enforced, thin tag pages noindexed
 │   ├── contextual-links.php  Links in the running text to inner pages here and on the sister sites (section 8)
 │   ├── data/network-links.json  Shared phrase map, identical in all seven themes; edit it in every theme at once
-│   └── maintenance.php    Back-shortly notice (503): wp-content drop-ins for updates, fatal errors, database failures; missing-file guard
+│   ├── error-page-html.php The error pages as plain HTML, one per kind (maintenance, php-error, db-error, 403, 500, 502, 503)
+│   ├── error-pages.php    The wp-content drop-ins: installer, ownership markers, repair of the 2.95.0 copies, Tools tab section
+│   └── maintenance.php    Back-shortly notice (503) and the missing-file guard; writes the drop-ins once per version
 ├── parts/                 header.html, footer.html
 ├── patterns/              Fifteen home page sections and the Social profile links pattern (section 9)
 ├── templates/             front-page.html, page-landing.html, page.html, single.html, home.html, archive.html, search.html, 404.html
