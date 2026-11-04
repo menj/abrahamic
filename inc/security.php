@@ -1172,7 +1172,7 @@ function abr_sec_render_tools() {
 	// The reports are heavy queries; build them only when the screen opens on
 	// the Security tab, not on every Theme Options load.
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab selection only.
-	$full = isset( $_GET['tab'] ) && 'security' === sanitize_key( wp_unslash( $_GET['tab'] ) );
+	$full = isset( $_GET['tab'] ) && is_string( $_GET['tab'] ) && 'security' === sanitize_key( wp_unslash( $_GET['tab'] ) );
 	?>
 	<section class="abr-card abr-sec" id="abr-security-tools" data-extra-for="security"<?php echo $full ? '' : ' hidden'; ?>>
 		<?php abr_sec_notice(); ?>

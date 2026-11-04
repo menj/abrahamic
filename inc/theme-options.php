@@ -41,7 +41,7 @@ function abr_options_tabs() {
 function abr_options_active_tab() {
 	$tabs = abr_options_tabs();
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab selection only.
-	$tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
+	$tab = isset( $_GET['tab'] ) && is_string( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
 	return isset( $tabs[ $tab ] ) ? $tab : (string) key( $tabs );
 }
 
@@ -356,7 +356,7 @@ function abr_render_options_page() {
 	}
 	$tabs    = abr_options_tabs();
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab selection only.
-	$active  = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
+	$active  = isset( $_GET['tab'] ) && is_string( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
 	$active  = isset( $tabs[ $active ] ) ? $active : '';
 	$current = abr_get_option( 'scheme' );
 	$theme   = wp_get_theme();
