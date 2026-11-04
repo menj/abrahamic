@@ -146,7 +146,7 @@ function abr_test_required( $where, $node ) {
 		'Quotation'             => array( 'text', 'inLanguage', 'isPartOf' ),
 		'Chapter'               => array( 'name', 'position', 'isPartOf' ),
 		'Book'                  => array( 'name', 'genre' ),
-		'Event'                 => array( 'name', 'startDate' ),
+		'Event'                 => array( 'name' ),
 		'DefinedTerm'           => array( 'name', 'description', 'inDefinedTermSet' ),
 		'DefinedTermSet'        => array( 'name', 'hasDefinedTerm' ),
 		'ImageObject'           => array( 'creator' ),
@@ -165,7 +165,7 @@ function abr_test_required( $where, $node ) {
 				abr_test_fail( $where, $type . ' ' . ( isset( $node['@id'] ) ? $node['@id'] . ' ' : '' ) . 'lacks ' . $prop );
 			}
 		}
-		if ( 'Event' === $type && isset( $node['startDate'] ) && ! preg_match( '/^-?\d{4}$/', $node['startDate'] ) ) {
+		if ( 'Event' === $type && isset( $node['startDate'] ) && ! preg_match( '/^\d{4}$/', $node['startDate'] ) ) {
 			abr_test_fail( $where, 'Event startDate is not an ISO 8601 year: ' . $node['startDate'] );
 		}
 		if ( 'ListItem' === $type && ! isset( $node['item'] ) && ! isset( $node['url'] ) ) {
@@ -245,6 +245,41 @@ foreach ( $seed['items'] as $item ) {
 	}
 	if ( $front && abr_test_count( $ids, 'Event' ) < 5 ) {
 		abr_test_fail( $item['key'], 'home page timeline gave too few Event nodes' );
+	}
+	foreach ( $ids as $id => $node ) {
+		// hasPart takes a CreativeWork; an ItemList is not one.
+		foreach ( isset( $node['hasPart'] ) ? (array) $node['hasPart'] : array() as $part ) {
+			$part_type = isset( $part['@id'], $ids[ $part['@id'] ]['@type'] ) ? $ids[ $part['@id'] ]['@type'] : ( isset( $part['@type'] ) ? $part['@type'] : '' );
+			if ( in_array( 'ItemList', (array) $part_type, true ) ) {
+				abr_test_fail( $item['key'], $id . ' has an ItemList as hasPart' );
+			}
+		}
+		// schema.org Date has no years before 1 CE.
+		if ( 'Event' === $node['@type'] ) {
+			foreach ( array( 'startDate', 'endDate' ) as $prop ) {
+				if ( isset( $node[ $prop ] ) && ! preg_match( '/^\d{4}$/', $node[ $prop ] ) || isset( $node[ $prop ] ) && '0000' === $node[ $prop ] ) {
+					abr_test_fail( $item['key'], $id . ' ' . $prop . ' "' . $node[ $prop ] . '" is not a CE year' );
+				}
+			}
+			if ( ! isset( $node['startDate'] ) && ( empty( $node['description'] ) || false === strpos( $node['description'], 'BCE' ) ) ) {
+				abr_test_fail( $item['key'], $id . ' has no startDate and gives no BCE era in its description' );
+			}
+		}
+	}
+	if ( $front || 'page:timeline' === $item['key'] ) {
+		$linked = false;
+		foreach ( $graph as $node ) {
+			foreach ( array( 'about', 'mainEntity' ) as $prop ) {
+				foreach ( isset( $node[ $prop ] ) ? ( isset( $node[ $prop ]['@id'] ) ? array( $node[ $prop ] ) : (array) $node[ $prop ] ) : array() as $ref ) {
+					if ( isset( $ref['@id'] ) && $ctx['url'] . '#timeline-list' === $ref['@id'] ) {
+						$linked = true;
+					}
+				}
+			}
+		}
+		if ( ! $linked ) {
+			abr_test_fail( $item['key'], 'the timeline ItemList is linked by neither about nor mainEntity' );
+		}
 	}
 	if ( 'post:hira-and-quba' === $item['key'] ) {
 		$grade = isset( $ids[ $ctx['url'] . '#hadith-jami-al-tirmidhi-324' ]['additionalProperty']['value'] ) ? $ids[ $ctx['url'] . '#hadith-jami-al-tirmidhi-324' ]['additionalProperty']['value'] : '';
@@ -331,6 +366,21 @@ if ( '1200' !== $rm_bool['richSnippet']['wordCount'] || 'en-GB' !== $rm_bool['We
 }
 if ( false === strpos( (string) json_encode( $rm_bool ), '"isAccessibleForFree":true' ) ) {
 	abr_test_fail( 'Rank Math booleans', 'JSON does not print isAccessibleForFree as true' );
+}
+
+// Rank Math prints its graph through wp_kses_post_deep(), so true reaches the
+// page as "1"; the printed script is fixed after the fact.
+$printed = '<script type="application/ld+json" class="rank-math-schema">{"@graph":[{"@type":"WebPage","isAccessibleForFree":"1","position":"1"},{"@type":"Article","isAccessibleForFree" : "true"},{"@type":"WebPageElement","isAccessibleForFree":""},{"name":"isAccessibleForFree"}]}</script>';
+$fixed   = abr_schema_fix_printed_booleans( $printed );
+$decoded = json_decode( (string) preg_replace( '#^<script[^>]*>|</script>$#', '', $fixed ), true );
+if ( ! is_array( $decoded ) || true !== $decoded['@graph'][0]['isAccessibleForFree'] || true !== $decoded['@graph'][1]['isAccessibleForFree'] || false !== $decoded['@graph'][2]['isAccessibleForFree'] ) {
+	abr_test_fail( 'Rank Math printed booleans', 'isAccessibleForFree is not a boolean in the printed script: ' . $fixed );
+}
+if ( is_array( $decoded ) && ( '1' !== $decoded['@graph'][0]['position'] || 'isAccessibleForFree' !== $decoded['@graph'][3]['name'] ) ) {
+	abr_test_fail( 'Rank Math printed booleans', 'a value other than isAccessibleForFree changed' );
+}
+if ( 'abc' !== abr_schema_fix_printed_booleans( 'abc' ) ) {
+	abr_test_fail( 'Rank Math printed booleans', 'markup without the property changed' );
 }
 
 foreach ( array( 'Quotation', 'Chapter', 'Event', 'DefinedTerm', 'Table', 'ImageObject' ) as $type ) {

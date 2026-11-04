@@ -459,14 +459,17 @@ function abr_schema_iso_year( $year, $bce ) {
  * Start and end of a period written as "c. 2000 to 1200 BCE", "516 BCE to
  * 70 CE", "1800 to the present" or with an en dash.
  *
- * @param string $text Text holding the range.
+ * @param string      $text  Text holding the range.
+ * @param string|null $range Set to the range as written, such as
+ *                           "c. 2000 to 1200 BCE".
  * @return array|null [ start, end ] with end '' for "the present".
  */
-function abr_schema_period( $text ) {
+function abr_schema_period( $text, &$range = null ) {
 	$re = '/(?:c\.\s*)?(\d{1,4})\s*(BCE|CE)?\s*(?:to|–|-)\s*(?:c\.\s*)?(?:(\d{1,4})\s*(BCE|CE)?|(?:the )?present|today)/u';
 	if ( ! preg_match( $re, $text, $m ) ) {
 		return null;
 	}
+	$range = trim( $m[0] );
 	$end_era   = isset( $m[4] ) ? $m[4] : '';
 	$start_era = isset( $m[2] ) && '' !== $m[2] ? $m[2] : $end_era;
 	$start     = abr_schema_iso_year( $m[1], 'BCE' === $start_era );
@@ -487,10 +490,10 @@ function abr_schema_timeline( $ctx, &$nodes ) {
 	if ( ! empty( $ctx['is_timeline'] ) && preg_match_all( '#<h2[^>]*id="([^"]+)"[^>]*>(.*?)</h2>(.*?)(?=<h2|$)#s', $ctx['content'], $m, PREG_SET_ORDER ) ) {
 		foreach ( $m as $section ) {
 			$name   = abr_schema_text( $section[2] );
-			$period = abr_schema_period( $name );
+			$period = abr_schema_period( $name, $range );
 			if ( $period ) {
 				$first     = preg_match( '#<p[^>]*>(.*?)</p>#s', $section[3], $p ) ? abr_schema_text( $p[1] ) : '';
-				$periods[] = array( $name, $period, $first, $ctx['url'] . '#' . $section[1] );
+				$periods[] = array( $name, $period, $first, $ctx['url'] . '#' . $section[1], $range );
 			}
 		}
 	}
@@ -499,9 +502,9 @@ function abr_schema_timeline( $ctx, &$nodes ) {
 			$when   = preg_match( '#<p class="abr-kicker">(.*?)</p>#s', $era[1], $k ) ? abr_schema_text( $k[1] ) : '';
 			$name   = preg_match( '#<h3[^>]*>(.*?)</h3>#s', $era[1], $h ) ? abr_schema_text( $h[1] ) : '';
 			$desc   = preg_match( '#<p>(.*?)</p>#s', $era[1], $d ) ? abr_schema_text( $d[1] ) : '';
-			$period = abr_schema_period( $when );
+			$period = abr_schema_period( $when, $range );
 			if ( $period && '' !== $name ) {
-				$periods[] = array( $name . ' (' . $when . ')', $period, $desc, $ctx['url'] . '#timeline' );
+				$periods[] = array( $name . ' (' . $when . ')', $period, $desc, $ctx['url'] . '#timeline', $range );
 			}
 		}
 	}
@@ -513,17 +516,27 @@ function abr_schema_timeline( $ctx, &$nodes ) {
 	foreach ( $periods as $i => $period ) {
 		$id    = $ctx['url'] . '#period-' . ( $i + 1 );
 		$event = array(
-			'@type'     => 'Event',
-			'@id'       => $id,
-			'name'      => $period[0],
-			'startDate' => $period[1][0],
-			'url'       => $period[3],
+			'@type' => 'Event',
+			'@id'   => $id,
+			'name'  => $period[0],
 		);
-		if ( '' !== $period[1][1] ) {
+		// schema.org Date has no years before 1 CE, so validators reject
+		// "-1999". A period that starts or ends BCE gives its era as text in
+		// the description and carries no startDate or endDate.
+		$bce = false !== strpos( $period[4], 'BCE' );
+		if ( ! $bce ) {
+			$event['startDate'] = $period[1][0];
+		}
+		$event['url'] = $period[3];
+		if ( ! $bce && '' !== $period[1][1] ) {
 			$event['endDate'] = $period[1][1];
 		}
-		if ( '' !== $period[2] ) {
-			$event['description'] = $period[2];
+		$desc = $period[2];
+		if ( $bce && false === strpos( $desc, $period[4] ) ) {
+			$desc = '' === $desc ? $period[4] . '.' : $period[4] . '. ' . $desc;
+		}
+		if ( '' !== $desc ) {
+			$event['description'] = $desc;
 		}
 		$nodes[ $id ] = $event;
 		$items[]      = array(
@@ -770,10 +783,14 @@ function abr_schema_build( $ctx ) {
 		if ( $glossary ) {
 			$page['mainEntity'] = $glossary;
 		}
+		// An ItemList is not a CreativeWork, so it cannot be a hasPart. The
+		// timeline page is about its list; elsewhere the list is what the
+		// work is about, beside the entities in its title.
 		if ( $timeline && $ctx['is_timeline'] ) {
 			$page['mainEntity'] = $timeline;
 		} elseif ( $timeline ) {
-			$page['hasPart'][] = $timeline;
+			$work['about']   = isset( $work['about'] ) ? $work['about'] : array();
+			$work['about'][] = $timeline;
 		}
 		if ( $ctx['is_landing'] && preg_match_all( '#<h2[^>]*id="([^"]+)"[^>]*>(.*?)</h2>#s', $ctx['content'], $m, PREG_SET_ORDER ) ) {
 			foreach ( $m as $section ) {
@@ -1190,6 +1207,25 @@ function abr_schema_fix_booleans( $graph ) {
 		}
 	}
 	return $graph;
+}
+
+/**
+ * Cast isAccessibleForFree back to a boolean in printed JSON-LD. Rank Math
+ * runs its graph through wp_kses_post_deep() after every filter, just before
+ * it encodes it, and kses turns true into "1" and false into "". So the cast
+ * in abr_schema_fix_booleans() never reaches the page under Rank Math, and
+ * the printed script has to be fixed instead. Only that one property is
+ * touched, with or without pretty printing.
+ *
+ * @param string $html Printed markup holding one or more ld+json scripts.
+ * @return string
+ */
+function abr_schema_fix_printed_booleans( $html ) {
+	if ( false === strpos( (string) $html, 'isAccessibleForFree' ) ) {
+		return (string) $html;
+	}
+	$html = preg_replace( '/("isAccessibleForFree"\s*:\s*)"(?:1|true|yes)"/i', '$1true', (string) $html );
+	return (string) preg_replace( '/("isAccessibleForFree"\s*:\s*)"(?:0|false|no|)"/i', '$1false', $html );
 }
 
 /**
