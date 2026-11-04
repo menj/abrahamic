@@ -319,6 +319,8 @@ function abr_rank_math_json_ld( $data, $jsonld = null ) {
 	}
 	// Scripture, citations, entities, the page frame and the rest (inc/schema.php),
 	// merged into Rank Math's graph by @id, never printed as a second block.
-	return function_exists( 'abr_schema_extend' ) ? abr_schema_extend( $data, false ) : $data;
+	$data = function_exists( 'abr_schema_extend' ) ? abr_schema_extend( $data, false ) : $data;
+	// Rank Math's isAccessibleForFree arrives as "1"; schema.org wants a boolean.
+	return function_exists( 'abr_schema_fix_booleans' ) ? abr_schema_fix_booleans( $data ) : $data;
 }
 add_filter( 'rank_math/json_ld', 'abr_rank_math_json_ld', 100, 2 );

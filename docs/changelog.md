@@ -2,6 +2,14 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.92.2] - 2026-11-04
+
+### Fixed
+- `isAccessibleForFree` is a real boolean again under Rank Math. Rank Math printed the string "1" on WebPage and BlogPosting, and the Schema Markup Validator flagged it as INVALID_BOOLEAN. `abr_rank_math_json_ld()` now runs the merged graph through `abr_schema_fix_booleans()` (`inc/schema.php`), which walks every node, nested ones too. "1", 1, "true" and "yes" become `true`. "0", 0, "false", "no" and an empty string become `false`. Every other value Rank Math set stays as it was.
+
+### Added
+- `tests/schema-graph-test.php` feeds a stand-in Rank Math graph carrying "1" through the fix and checks the result, the nested part and the untouched values.
+
 ## [2.92.1] - 2026-11-03
 
 Seed version 108. Fixes from the review of 2.92.0.

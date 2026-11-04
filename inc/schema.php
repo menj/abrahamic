@@ -1163,6 +1163,36 @@ function abr_schema_attachment_size( $url ) {
 }
 
 /**
+ * Cast every isAccessibleForFree in a graph, nested nodes included, to a real
+ * boolean. Rank Math prints the string "1", which validators reject as
+ * INVALID_BOOLEAN. No other value is touched.
+ *
+ * @param mixed $graph Graph, node or value.
+ * @return mixed
+ */
+function abr_schema_fix_booleans( $graph ) {
+	if ( ! is_array( $graph ) ) {
+		return $graph;
+	}
+	foreach ( $graph as $key => $value ) {
+		if ( 'isAccessibleForFree' === $key && ! is_array( $value ) ) {
+			if ( is_bool( $value ) ) {
+				continue;
+			}
+			$v = strtolower( trim( (string) $value ) );
+			if ( in_array( $v, array( '1', 'true', 'yes' ), true ) ) {
+				$graph[ $key ] = true;
+			} elseif ( in_array( $v, array( '0', 'false', 'no', '' ), true ) ) {
+				$graph[ $key ] = false;
+			}
+		} elseif ( is_array( $value ) ) {
+			$graph[ $key ] = abr_schema_fix_booleans( $value );
+		}
+	}
+	return $graph;
+}
+
+/**
  * Extend a graph for the current view.
  *
  * @param array $graph Graph nodes.

@@ -306,6 +306,33 @@ if ( 1 !== count( $deduped ) || 'A' !== $deduped[0]['name'] || 'u' !== $deduped[
 	abr_test_fail( 'dedupe', 'nodes sharing an @id were not merged' );
 }
 
+// Rank Math prints isAccessibleForFree as "1"; the merge must hand back booleans.
+$rm_bool = abr_schema_fix_booleans(
+	array(
+		'WebPage'     => array( '@type' => 'WebPage', '@id' => 'p#webpage', 'isAccessibleForFree' => '1', 'inLanguage' => 'en-GB' ),
+		'richSnippet' => array(
+			'@type'               => 'BlogPosting',
+			'@id'                 => 'p#richSnippet',
+			'isAccessibleForFree' => '1',
+			'wordCount'           => '1200',
+			'hasPart'             => array( array( '@type' => 'WebPageElement', 'isAccessibleForFree' => 'no' ) ),
+		),
+		'Other'       => array( 'a' => array( 'isAccessibleForFree' => 1 ), 'b' => array( 'isAccessibleForFree' => '' ), 'c' => array( 'isAccessibleForFree' => 'TRUE' ), 'd' => array( 'isAccessibleForFree' => 0 ), 'e' => array( 'isAccessibleForFree' => 'false' ) ),
+	)
+);
+if ( true !== $rm_bool['WebPage']['isAccessibleForFree'] || true !== $rm_bool['richSnippet']['isAccessibleForFree'] || false !== $rm_bool['richSnippet']['hasPart'][0]['isAccessibleForFree'] ) {
+	abr_test_fail( 'Rank Math booleans', 'isAccessibleForFree was not cast to a boolean on WebPage, BlogPosting or a nested part' );
+}
+if ( true !== $rm_bool['Other']['a']['isAccessibleForFree'] || false !== $rm_bool['Other']['b']['isAccessibleForFree'] || true !== $rm_bool['Other']['c']['isAccessibleForFree'] || false !== $rm_bool['Other']['d']['isAccessibleForFree'] || false !== $rm_bool['Other']['e']['isAccessibleForFree'] ) {
+	abr_test_fail( 'Rank Math booleans', 'one of 1, "", "TRUE", 0 or "false" was cast wrongly' );
+}
+if ( '1200' !== $rm_bool['richSnippet']['wordCount'] || 'en-GB' !== $rm_bool['WebPage']['inLanguage'] ) {
+	abr_test_fail( 'Rank Math booleans', 'a value other than isAccessibleForFree changed' );
+}
+if ( false === strpos( (string) json_encode( $rm_bool ), '"isAccessibleForFree":true' ) ) {
+	abr_test_fail( 'Rank Math booleans', 'JSON does not print isAccessibleForFree as true' );
+}
+
 foreach ( array( 'Quotation', 'Chapter', 'Event', 'DefinedTerm', 'Table', 'ImageObject' ) as $type ) {
 	if ( empty( $totals[ $type ] ) ) {
 		abr_test_fail( 'seed', 'no ' . $type . ' nodes across the seed content' );
