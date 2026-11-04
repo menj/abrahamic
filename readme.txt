@@ -1306,6 +1306,8 @@ Copyright 2002-2015, 2018 Monotype GmbH
 License: proprietary Monotype licence. This typeface is not covered by the GNU GPL and may be redistributed or served only as the Monotype licence permits.
 
 Photographs (assets/images/photos/)
-The creator, source page and licence of each photograph are listed in inc/seed/photo-credits.json and printed with the photograph on the site. They come from Wikimedia Commons (Creative Commons licences or the public domain), Pexels (Pexels licence) and Pixabay (Pixabay Content Licence).
+inc/seed/photo-credits.json lists the creator, source page and licence for 209 photographs, and the site prints that credit beside each one. They come from Wikimedia Commons (Creative Commons licences or the public domain), Pexels (Pexels licence) and Pixabay (Pixabay Content Licence).
+
+13 photographs have no record yet: judaism, christianity, islam, prayer, hero-kaaba, page-home, page-islam, page-judaism, page-christianity, place-jerusalem, place-mecca, place-hebron and place-al-quds. Neither do the 7 chapter banners in assets/images/banners/ (each in a desktop and a phone size). Their source and licence are unknown until the owner supplies them.
 
 Brand names and marks belong to their respective owners. Their use here identifies the linked profiles and implies no endorsement.

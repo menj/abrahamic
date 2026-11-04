@@ -18,7 +18,7 @@ Identity, naming rules, tokens, breakpoints, the settings schema and the decisio
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.87.0.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.94.0.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -26,7 +26,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.87.0.zip --activate
+wp theme install abrahamic-2.94.0.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
