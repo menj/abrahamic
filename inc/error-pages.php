@@ -208,6 +208,8 @@ function abr_error_repair_notice() {
 			)
 		);
 	}
+	// A file put right since the repair (by the button or by hand) no longer counts.
+	$done['failed'] = array_values( array_filter( (array) ( $done['failed'] ?? array() ), static fn( $n ) => abr_error_wrong_kind( WP_CONTENT_DIR . '/' . $n, abr_error_dropins()[ $n ] ?? '' ) ) );
 	if ( ! empty( $done['failed'] ) ) {
 		printf(
 			'<div class="notice notice-error"><p>%s <a href="%s">%s</a></p></div>',
@@ -292,11 +294,15 @@ function abr_render_error_pages_section() {
 		<?php endforeach; ?>
 		</tbody>
 	</table>
+	<?php if ( is_multisite() && ! is_main_site() ) : ?>
+		<p class="abr-help"><?php esc_html_e( 'wp-content is shared by the whole network, so the error pages are installed from the main site.', 'abrahamic' ); ?></p>
+	<?php else : ?>
 	<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="abr-tools-form">
 		<input type="hidden" name="action" value="abr_install_error_pages">
 		<?php wp_nonce_field( 'abr_install_error_pages' ); ?>
 		<?php submit_button( __( 'Install error pages', 'abrahamic' ), 'secondary', 'submit', false ); ?>
 	</form>
+	<?php endif; ?>
 	<p class="abr-help"><?php esc_html_e( 'For errors the web server answers before WordPress starts, static pages are in the theme\'s errors folder. Add these lines to .htaccess to use them:', 'abrahamic' ); ?></p>
 	<textarea readonly rows="5" class="large-text code" aria-label="<?php esc_attr_e( '.htaccess lines', 'abrahamic' ); ?>"><?php echo esc_textarea( abr_error_htaccess_snippet() ); ?></textarea>
 	<?php

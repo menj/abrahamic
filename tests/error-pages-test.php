@@ -12,8 +12,12 @@
 define( 'ABSPATH', __DIR__ . '/' );
 define( 'ABR_VERSION', '9.9.9' );
 define( 'ABR_URI', 'https://example.test/wp-content/themes/abrahamic' );
-$abr_tmp = sys_get_temp_dir() . '/abr-err-' . getmypid();
-@mkdir( $abr_tmp );
+// A fresh directory of our own, so the cleanup at the end removes only what this test wrote.
+$abr_tmp = sys_get_temp_dir() . '/abr-err-' . getmypid() . '-' . bin2hex( random_bytes( 6 ) );
+if ( ! mkdir( $abr_tmp, 0700 ) ) {
+	fwrite( STDERR, "cannot create $abr_tmp\n" );
+	exit( 1 );
+}
 define( 'WP_CONTENT_DIR', $abr_tmp );
 
 $GLOBALS['abr_t'] = array( 'options' => array() );

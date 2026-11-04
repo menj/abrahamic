@@ -21,7 +21,10 @@ foreach ( array( '403', '500', '502', '503' ) as $abr_code ) {
 		}
 		continue;
 	}
-	file_put_contents( $abr_path, $abr_html );
+	if ( false === file_put_contents( $abr_path, $abr_html ) ) {
+		fwrite( STDERR, "cannot write errors/$abr_code.html\n" );
+		exit( 1 );
+	}
 	echo "wrote errors/$abr_code.html\n";
 }
 exit( $abr_stale ? 1 : 0 );
