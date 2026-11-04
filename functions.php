@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ABR_VERSION', '2.93.0' );
+define( 'ABR_VERSION', '2.94.0' );
 define( 'ABR_DIR', get_stylesheet_directory() );
 define( 'ABR_URI', get_stylesheet_directory_uri() );
 
@@ -58,6 +58,13 @@ unset( $abr_files, $abr_file );
  * Theme supports and pattern category.
  */
 function abr_setup() {
+	// Translations live in the theme's languages folder, or in the WordPress
+	// languages folder when one is installed there.
+	load_child_theme_textdomain( 'abrahamic', ABR_DIR . '/languages' );
+	// Block themes get both by default; declared here so the theme does not
+	// depend on that default.
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'automatic-feed-links' );
 	add_editor_style( 'assets/css/theme.css' );
 	register_block_pattern_category(
 		'abrahamic',

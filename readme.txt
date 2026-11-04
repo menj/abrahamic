@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.93.0
+Stable tag: 2.94.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -30,20 +30,44 @@ The site is organised for readers and search engines alike: section pages for th
 
 Abrahamic is a child theme: it builds on Twenty Twenty-Five, which must stay installed.
 
-Appearance > Theme Options lets you:
+== Features ==
 
-* set the logo wording, the header search button and the header call-to-action button;
-* set the footer title, tagline, description, copyright notice and note;
-* choose one of four colour schemes, or build your own;
-* connect the newsletter form to your mailing service;
-* add profile links for 45 networks, from Facebook and YouTube to ORCID, Academia.edu and Wikidata;
-* turn the sticky header and the fade-in effect on or off;
-* export your options to a file, import them on another site, or reset them.
+* Fifteen home page sections, each one a block pattern you edit in the Site Editor.
+* Starter pages, Journal articles and topic categories, created on activation and kept up to date by later releases.
+* Breadcrumbs, a site map, a page-not-found screen and readable search addresses such as /search/abraham/.
+* Search descriptions, canonical addresses, social sharing tags, one structured data graph and an image sitemap. An active SEO plugin such as Yoast SEO or Rank Math takes these over.
+* Four colour schemes and a custom palette, with a light and dark switch for visitors.
+* Links in the running text to pages on this site and on the six sister sites, capped per page.
+* A themed login screen and an optional private login address.
+* Security switches for XML-RPC, application passwords and the REST API, a gambling-spam gate and a spam scan.
+* Profile links for 45 social and scholarly networks, from Facebook and YouTube to ORCID, Academia.edu and Wikidata.
+* Export, import and reset for every Theme Option.
+* About 40 theme shortcodes, all starting abr_, that the templates and patterns use: breadcrumbs, the site map, diagrams, photographs, citations, related articles, the donation button, the contact email and more.
+* Four block styles: Gold and Donate buttons, Typewriter note and Arabic calligraphy.
+
+== Usage ==
+
+Page text, templates and the home page sections are edited in Appearance > Editor. Everything else sits in Appearance > Theme Options, on twelve tabs. Each tab opens with a short note on how to use it.
+
+* General: the sticky header, the light and dark switch, the colours a first-time visitor sees, and the fade-in effect.
+* Header: the logo style, the two logo lines, the search, call-to-action and Donate buttons, and the Donate page button.
+* Footer: the footer title, tagline, description, copyright line and note, and the contact email.
+* Navigation: the main menu, the home page section bar, the footer links and columns, and Further reading. Write one link per line as Label | target.
+* Colours: click a scheme card, or choose Custom and set five colours with the colour pickers.
+* Newsletter: the form address and field name from your mailing service. The form stays hidden until the address is set.
+* Social: one profile address per network. A filter box finds a network by name.
+* Login: the login screen design, layout, photograph and line of text, and the private login address.
+* Search: the search output switch, the front page title and description, the logo and share image for link previews, verification codes and the Analytics ID.
+* Contextual links: switches for links to this site and to the sister sites, sliders for the cap on each, extra phrases and excluded pages.
+* Security: the remote-publishing switches and the spam gate. Administrators also get the spam scan and the clean-up tools here.
+* Tools: export, import, reset, the starter content check and restore, the search index rebuild and the system information.
+
+Switches save as on or off. Sliders show their value as you drag them. Press Save Theme Options at the foot of the card to keep changes on any tab except Tools, whose buttons act at once.
 
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose abrahamic-2.84.1.zip, and activate it. The starter pages and articles are created automatically.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose the abrahamic zip file, and activate it. The starter pages and articles are created automatically.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
@@ -138,11 +162,36 @@ Facebook, Instagram, X, Threads, Bluesky, Mastodon, LinkedIn, TikTok, Pinterest,
 
 Yes. The hero section and the place cards hold patterned placeholders. Replace each with an Image block in the Site Editor.
 
+= Does the theme track visitors? =
+
+No. Nothing leaves the site until you enter a Google Analytics ID under Theme Options > Search. The Privacy section below lists what the theme stores.
+
+= Why did my starter content choice keep going back to Replace? =
+
+Before 2.94.0 the choice on the Tools tab sat outside the form that saves the options, so every save on another tab reset it. It saves with the rest now, and the Tools tab has its own Save this choice button.
+
 = I used an earlier version called "Abrahamic Religions". What happens to my settings? =
 
 They are copied across automatically when you activate Abrahamic. Changes you made to templates in the Site Editor under the old theme are not carried over. See docs/upgrading.md for details.
 
+== Privacy ==
+
+The theme sends nothing to another server by default. Its fonts, icons, images and scripts all load from the theme folder.
+
+Google Analytics is the one remote service, and it stays off until you enter a measurement ID under Theme Options > Search. Then every visitor who is not a logged-in editor loads Google's script from googletagmanager.com, and Google receives the visit. Say so on the Privacy Policy page; the starter text already mentions analytics.
+
+The newsletter form sends the address a visitor types to the mailing service you name, and only when the visitor presses the button.
+
+The light and dark switch keeps the visitor's choice in the browser's local storage, on that device only. The theme sets no cookies of its own. WordPress sets its usual login cookies.
+
+The security tools keep two records in the database. The spam log holds the last 200 events, each with the time, the post title, the user account and the IP address of the request. The login counter holds failed logins per account name, with the IP addresses they came from, and drops a name after 24 hours without a new failure. The Clear the log button on the Security tab empties the spam log.
+
+The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
+
 == Upgrade Notice ==
+
+= 2.94.0 =
+The Theme Options screen has a new layout. Every option keeps its value.
 
 = 2.84.1 =
 The Qur'an typeface is served as a smaller WOFF2 file.
@@ -547,6 +596,15 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.94.0 - 2026-11-04 =
+* The Theme Options screen is rebuilt as cards: each setting is a row with its label and help on the left and the control on the right, stacked on screens 782 pixels wide or less.
+* The logo, the first-visit colours, the login layout and the starter content choice are clickable cards. The two link caps on the Contextual links tab are sliders that show their value.
+* Each tab opens with a note on how to use it. The header shows the theme version, and links to the Site Editor and Site Health sit at the foot.
+* The starter content choice on the Tools tab is saved again. Saving any other tab used to put it back to Replace.
+* Rebuilding the search index no longer logs a PHP warning when the result notice shows.
+* The theme declares title-tag and feed-link support itself and loads its translations.
+* The notices about missing starter content and about built-in plugins can be dismissed.
 
 = 2.93.0 - 2026-11-04 =
 * Grey and gold small text is dark enough to read: every label, date, footnote and search result now clears the 4.5 to 1 contrast line, in light and dark colours.
@@ -1246,5 +1304,8 @@ License: free to use, copy and distribute; may not be sold or modified. Served a
 Sabon Next LT, complete, bundled with the theme (assets/fonts/sabon-next-lt-*.woff2, 8 files)
 Copyright 2002-2015, 2018 Monotype GmbH
 License: proprietary Monotype licence. This typeface is not covered by the GNU GPL and may be redistributed or served only as the Monotype licence permits.
+
+Photographs (assets/images/photos/)
+The creator, source page and licence of each photograph are listed in inc/seed/photo-credits.json and printed with the photograph on the site. They come from Wikimedia Commons (Creative Commons licences or the public domain), Pexels (Pexels licence) and Pixabay (Pixabay Content Licence).
 
 Brand names and marks belong to their respective owners. Their use here identifies the linked profiles and implies no endorsement.

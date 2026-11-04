@@ -116,19 +116,20 @@ function abr_admin_bar_link( $bar ) {
 add_action( 'admin_bar_menu', 'abr_admin_bar_link', 100 );
 
 /**
- * One option field.
+ * One option field, as a row: label and help on the left, the control on the right.
+ * Rows stack below 782 pixels (assets/css/admin.css).
  *
  * @param string $key   Option key.
  * @param string $label Label.
- * @param string $type  checkbox, text, textarea, menu, url, image, color or select.
+ * @param string $type  checkbox, text, textarea, menu, url, email, number, range, image, color, select or cards.
  * @param string $help  Help text.
- * @param array  $attrs Extra input attributes; for select, 'choices' holds value => label.
+ * @param array  $attrs Extra input attributes; for select and cards, 'choices' holds value => label.
  */
 function abr_field( $key, $label, $type = 'text', $help = '', $attrs = array() ) {
-	$name   = 'abr_options[' . $key . ']';
-	$value  = abr_get_option( $key );
-	$id     = 'abr-' . str_replace( '_', '-', $key );
-	$extra  = '';
+	$name    = 'abr_options[' . $key . ']';
+	$value   = abr_get_option( $key );
+	$id      = 'abr-' . str_replace( '_', '-', $key );
+	$extra   = '';
 	$help_id = $help ? $id . '-help' : '';
 	$choices = isset( $attrs['choices'] ) ? (array) $attrs['choices'] : array();
 	unset( $attrs['choices'] );
@@ -139,39 +140,87 @@ function abr_field( $key, $label, $type = 'text', $help = '', $attrs = array() )
 		$extra .= ' aria-describedby="' . esc_attr( $help_id ) . '"';
 	}
 
-	echo '<div class="abr-field abr-field--' . esc_attr( $type ) . '">';
-	if ( 'checkbox' === $type ) {
-		// Hidden zero so an unticked box is still submitted.
-		printf(
-			'<input type="hidden" name="%2$s" value="0"><label class="abr-switch" for="%1$s"><input type="checkbox" id="%1$s" name="%2$s" value="1" %3$s%5$s><span class="abr-switch__track" aria-hidden="true"></span><span class="abr-switch__label">%4$s</span></label>',
-			esc_attr( $id ),
-			esc_attr( $name ),
-			checked( $value, 1, false ),
-			esc_html( $label ),
-			$extra // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
-		);
-	} else {
-		printf( '<label for="%s">%s</label>', esc_attr( $id ), esc_html( $label ) );
-		if ( 'textarea' === $type || 'menu' === $type ) {
-			printf( '<textarea id="%s" name="%s" rows="%d"%s%s>%s</textarea>', esc_attr( $id ), esc_attr( $name ), 'menu' === $type ? 10 : 3, 'menu' === $type ? ' class="abr-code" spellcheck="false"' : '', $extra, esc_textarea( $value ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		} elseif ( 'image' === $type ) {
-			printf( '<span class="abr-media"><input type="url" class="regular-text" id="%1$s" name="%2$s" value="%3$s"%4$s> <button type="button" class="button abr-media-button" data-target="%1$s">%5$s</button></span>', esc_attr( $id ), esc_attr( $name ), esc_attr( $value ), $extra, esc_html__( 'Choose image', 'abrahamic' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		} elseif ( 'select' === $type ) {
-			printf( '<select id="%s" name="%s"%s>', esc_attr( $id ), esc_attr( $name ), $extra ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			foreach ( $choices as $choice => $choice_label ) {
-				printf( '<option value="%s"%s>%s</option>', esc_attr( $choice ), selected( $value, $choice, false ), esc_html( $choice_label ) );
-			}
-			echo '</select>';
-		} elseif ( 'color' === $type ) {
-			printf( '<input type="text" class="abr-color" id="%s" name="%s" value="%s" data-slug="%s"%s>', esc_attr( $id ), esc_attr( $name ), esc_attr( $value ), esc_attr( str_replace( 'custom_', '', $key ) ), $extra ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		} else {
-			printf( '<input type="%s" class="regular-text" id="%s" name="%s" value="%s"%s>', esc_attr( $type ), esc_attr( $id ), esc_attr( $name ), esc_attr( $value ), $extra ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	// Selector cards are a radio group: a fieldset with a legend in place of a label.
+	if ( 'cards' === $type ) {
+		printf( '<fieldset class="abr-field abr-field--cards"><legend class="abr-field__label">%s</legend>', esc_html( $label ) );
+		if ( $help ) {
+			printf( '<p class="abr-help" id="%s">%s</p>', esc_attr( $help_id ), esc_html( $help ) );
 		}
+		echo '<div class="abr-choice-cards">';
+		foreach ( $choices as $choice => $choice_label ) {
+			printf(
+				'<label class="abr-choice-card" for="%1$s"><input type="radio" id="%1$s" name="%2$s" value="%3$s" %4$s%6$s><span class="abr-choice-card__mark" aria-hidden="true"></span><span class="abr-choice-card__name">%5$s</span></label>',
+				esc_attr( $id . '-' . $choice ),
+				esc_attr( $name ),
+				esc_attr( $choice ),
+				checked( $value, $choice, false ),
+				esc_html( $choice_label ),
+				$extra // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
+			);
+		}
+		echo '</div></fieldset>';
+		return;
 	}
+
+	echo '<div class="abr-field abr-field--' . esc_attr( $type ) . '"><div class="abr-field__label">';
+	printf( '<label for="%s">%s</label>', esc_attr( $id ), esc_html( $label ) );
 	if ( $help ) {
 		printf( '<p class="abr-help" id="%s">%s</p>', esc_attr( $help_id ), esc_html( $help ) );
 	}
-	echo '</div>';
+	echo '</div><div class="abr-field__control">';
+	if ( 'checkbox' === $type ) {
+		// Hidden zero so an unticked box is still submitted.
+		printf(
+			'<input type="hidden" name="%2$s" value="0"><span class="abr-switch"><input type="checkbox" id="%1$s" name="%2$s" value="1" role="switch" %3$s%4$s><span class="abr-switch__track" aria-hidden="true"></span></span>',
+			esc_attr( $id ),
+			esc_attr( $name ),
+			checked( $value, 1, false ),
+			$extra // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
+		);
+	} elseif ( 'textarea' === $type || 'menu' === $type ) {
+		printf( '<textarea id="%s" name="%s" rows="%d"%s%s>%s</textarea>', esc_attr( $id ), esc_attr( $name ), 'menu' === $type ? 10 : 3, 'menu' === $type ? ' class="abr-code" spellcheck="false"' : '', $extra, esc_textarea( $value ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} elseif ( 'image' === $type ) {
+		printf( '<span class="abr-media"><input type="url" class="regular-text" id="%1$s" name="%2$s" value="%3$s"%4$s> <button type="button" class="button abr-media-button" data-target="%1$s">%5$s</button></span>', esc_attr( $id ), esc_attr( $name ), esc_attr( $value ), $extra, esc_html__( 'Choose image', 'abrahamic' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} elseif ( 'select' === $type ) {
+		printf( '<select id="%s" name="%s"%s>', esc_attr( $id ), esc_attr( $name ), $extra ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		foreach ( $choices as $choice => $choice_label ) {
+			printf( '<option value="%s"%s>%s</option>', esc_attr( $choice ), selected( $value, $choice, false ), esc_html( $choice_label ) );
+		}
+		echo '</select>';
+	} elseif ( 'color' === $type ) {
+		printf( '<input type="text" class="abr-color" id="%s" name="%s" value="%s" data-slug="%s"%s>', esc_attr( $id ), esc_attr( $name ), esc_attr( $value ), esc_attr( str_replace( 'custom_', '', $key ) ), $extra ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} elseif ( 'range' === $type ) {
+		// The live value sits beside the slider; admin.js keeps it in step.
+		printf( '<span class="abr-range"><input type="range" id="%1$s" name="%2$s" value="%3$s"%4$s><output class="abr-range__value" for="%1$s" aria-hidden="true">%3$s</output></span>', esc_attr( $id ), esc_attr( $name ), esc_attr( $value ), $extra ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} else {
+		printf( '<input type="%s" class="regular-text" id="%s" name="%s" value="%s"%s>', esc_attr( $type ), esc_attr( $id ), esc_attr( $name ), esc_attr( $value ), $extra ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+	echo '</div></div>';
+}
+
+/**
+ * How to use one tab, printed at the top of its panel.
+ *
+ * @param string $tab Tab slug.
+ */
+function abr_options_usage( $tab ) {
+	$usage = array(
+		'general'    => __( 'Switch the sticky header, the light and dark switch and the fade-in effect on or off, and choose the colours a first-time visitor sees. Changes show on the site after Save.', 'abrahamic' ),
+		'header'     => __( 'Pick how the logo looks, set its two lines of text, and choose which buttons sit in the header. Button links take a full address, a path or a page token from the Navigation tab.', 'abrahamic' ),
+		'footer'     => __( 'Write the footer title, tagline and description, the copyright line and the note opposite it. The contact email shows only on the Contact page.', 'abrahamic' ),
+		'navigation' => __( 'Write each menu as plain lines, one link per line. The rules for a line and the list of page tokens come first; each menu has its own limits under its box.', 'abrahamic' ),
+		'colours'    => __( 'Click a scheme card to choose it. Custom opens five colour pickers; the other schemes fill them with their own values.', 'abrahamic' ),
+		'newsletter' => __( 'Paste the form address from your mailing service. Until it is set, visitors see no form.', 'abrahamic' ),
+		'social'     => __( 'Paste a profile address for each network you use. Type in the filter box to find a network by name. Filled networks show in the footer.', 'abrahamic' ),
+		'login'      => __( 'Style the login screen and, if you want, move it to a private address. Write the new address down before you save.', 'abrahamic' ),
+		'search'     => __( 'Turn the theme\'s search output on or off, write the front page description, and paste verification codes. Analytics stays off until you enter a measurement ID.', 'abrahamic' ),
+		'links'      => __( 'Turn automatic links on or off for this site and for the sister sites, and drag the sliders to cap how many each page gets.', 'abrahamic' ),
+		'security'   => __( 'Switch off the routes spam tools use to publish from outside the site. The spam scan and the clean-up tools below the switches show only to administrators.', 'abrahamic' ),
+		'tools'      => __( 'Export your options to a file, import them on another site or reset them. Below that, check the starter content and read the system information.', 'abrahamic' ),
+	);
+	if ( isset( $usage[ $tab ] ) ) {
+		printf( '<p class="abr-usage">%s</p>', esc_html( $usage[ $tab ] ) );
+	}
 }
 
 /**
@@ -222,6 +271,8 @@ function abr_options_notice() {
 		'restore-failed' => array( 'error', __( 'That item was not restored. A page or article with the same address may already exist.', 'abrahamic' ) ),
 	);
 	if ( 'search-indexed' === $code ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display only.
+		$count = isset( $_GET['abr-created'] ) ? absint( $_GET['abr-created'] ) : 0;
 		/* translators: %d: number of items indexed. */
 		$messages['search-indexed'] = array( 'success', sprintf( _n( 'Search index rebuilt: %d page or article.', 'Search index rebuilt: %d pages and articles.', $count, 'abrahamic' ), $count ) );
 	}
@@ -272,13 +323,16 @@ function abr_render_options_page() {
 	?>
 	<div class="wrap abr-settings" data-initial-tab="<?php echo esc_attr( $active ); ?>">
 		<header class="abr-settings__head">
-			<h1><?php esc_html_e( 'Theme Options', 'abrahamic' ); ?></h1>
-			<p>
-				<?php
-				/* translators: 1: theme name, 2: version. */
-				echo esc_html( sprintf( __( '%1$s %2$s. Page content is edited in Appearance > Editor; these options cover the header, footer, colours, login screen and search addresses, among others.', 'abrahamic' ), $theme->get( 'Name' ), ABR_VERSION ) );
-				?>
-			</p>
+			<span class="abr-settings__icon" aria-hidden="true"><?php echo abr_tab_icon( $tabs['general'][1] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup. ?></span>
+			<div class="abr-settings__title">
+				<h1><?php esc_html_e( 'Theme Options', 'abrahamic' ); ?> <span class="abr-badge"><?php echo esc_html( sprintf( /* translators: %s: version. */ __( 'Version %s', 'abrahamic' ), ABR_VERSION ) ); ?></span></h1>
+				<p>
+					<?php
+					/* translators: %s: theme name. */
+					echo esc_html( sprintf( __( '%s. Page content is edited in Appearance > Editor; these options cover the header, footer, colours, login screen and search addresses, among others.', 'abrahamic' ), $theme->get( 'Name' ) ) );
+					?>
+				</p>
+			</div>
 		</header>
 
 		<?php
@@ -288,30 +342,32 @@ function abr_render_options_page() {
 
 		<nav class="abr-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Theme Options sections', 'abrahamic' ); ?>">
 			<?php foreach ( $tabs as $slug => $tab ) : ?>
-				<button type="button" role="tab" class="abr-tab" id="abr-tab-<?php echo esc_attr( $slug ); ?>" aria-controls="abr-panel-<?php echo esc_attr( $slug ); ?>" aria-selected="false" data-tab="<?php echo esc_attr( $slug ); ?>">
+				<button type="button" role="tab" class="abr-tab" id="abr-tab-<?php echo esc_attr( $slug ); ?>" aria-controls="abr-panel-<?php echo esc_attr( $slug ); ?>" aria-selected="false" tabindex="-1" data-tab="<?php echo esc_attr( $slug ); ?>">
 					<?php echo abr_tab_icon( $tab[1] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup. ?>
 					<span><?php echo esc_html( $tab[0] ); ?></span>
 				</button>
 			<?php endforeach; ?>
 		</nav>
 
-		<form method="post" action="options.php" class="abr-card abr-options-form">
+		<form method="post" action="options.php" class="abr-card abr-options-form" id="abr-options-form">
 			<?php settings_fields( 'abr_settings' ); ?>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-general" aria-labelledby="abr-tab-general" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-general" aria-labelledby="abr-tab-general" tabindex="0" hidden>
+				<?php abr_options_usage( 'general' ); ?>
 				<h2><?php esc_html_e( 'Layout and motion', 'abrahamic' ); ?></h2>
 				<?php
 				abr_field( 'sticky_header', __( 'Keep the header fixed while scrolling', 'abrahamic' ), 'checkbox' );
 				abr_field( 'mode_toggle', __( 'Show the light and dark switch', 'abrahamic' ), 'checkbox', __( 'Visitors keep their choice on this device. The dark colours follow the scheme chosen on the Colours tab.', 'abrahamic' ) );
-				abr_field( 'mode_default', __( 'Colours on a first visit', 'abrahamic' ), 'select', '', array( 'choices' => abr_modes() ) );
+				abr_field( 'mode_default', __( 'Colours on a first visit', 'abrahamic' ), 'cards', '', array( 'choices' => abr_modes() ) );
 				abr_field( 'reveal_motion', __( 'Fade cards in as they enter the viewport', 'abrahamic' ), 'checkbox', __( 'Visitors who prefer reduced motion never see the animation.', 'abrahamic' ) );
 				?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-header" aria-labelledby="abr-tab-header" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-header" aria-labelledby="abr-tab-header" tabindex="0" hidden>
+				<?php abr_options_usage( 'header' ); ?>
 				<h2><?php esc_html_e( 'Logo', 'abrahamic' ); ?></h2>
 				<?php
-				abr_field( 'logo_style', __( 'Logo', 'abrahamic' ), 'select', __( 'The AR mark follows the colour scheme. It also serves as the browser icon until a Site Icon is set under Settings > General.', 'abrahamic' ), array( 'choices' => abr_logo_styles() ) );
+				abr_field( 'logo_style', __( 'Logo', 'abrahamic' ), 'cards', __( 'The AR mark follows the colour scheme. It also serves as the browser icon until a Site Icon is set under Settings > General.', 'abrahamic' ), array( 'choices' => abr_logo_styles() ) );
 				abr_field( 'logo_main', __( 'Main line', 'abrahamic' ), 'text', __( 'Set in capitals by the stylesheet. Also read by screen readers when the mark stands alone.', 'abrahamic' ) );
 				abr_field( 'logo_sub', __( 'Second line', 'abrahamic' ), 'text', __( 'Leave empty for a one-line logo.', 'abrahamic' ) );
 				?>
@@ -334,7 +390,8 @@ function abr_render_options_page() {
 				<p class="abr-help"><?php esc_html_e( 'Menu links are set on the Navigation tab.', 'abrahamic' ); ?></p>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-footer" aria-labelledby="abr-tab-footer" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-footer" aria-labelledby="abr-tab-footer" tabindex="0" hidden>
+				<?php abr_options_usage( 'footer' ); ?>
 				<h2><?php esc_html_e( 'Footer brand', 'abrahamic' ); ?></h2>
 				<?php
 				abr_field( 'footer_title', __( 'Title', 'abrahamic' ), 'text' );
@@ -353,7 +410,8 @@ function abr_render_options_page() {
 				<p class="abr-help"><?php esc_html_e( 'Footer link columns are set on the Navigation tab. Social icons come from the Social tab.', 'abrahamic' ); ?></p>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-navigation" aria-labelledby="abr-tab-navigation" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-navigation" aria-labelledby="abr-tab-navigation" tabindex="0" hidden>
+				<?php abr_options_usage( 'navigation' ); ?>
 				<h2><?php esc_html_e( 'How to write a menu', 'abrahamic' ); ?></h2>
 				<p class="abr-help"><?php esc_html_e( 'One link per line, as Label | target. In the main menu, start a line with a dash to place it in the dropdown of the line above.', 'abrahamic' ); ?></p>
 				<p class="abr-help"><?php esc_html_e( 'A target is a full address, a path such as /about/, or a token: @guides (Religions), @judaism, @christianity, @islam, @knowledge-base, @sacred-texts, @timeline, @figures, @places, @comparisons, @glossary, @faq, @research, @articles, @topics, @about, @editorial-policy, @contact, @privacy-policy, @terms, @site-map, @post:article-slug or @topic:topic-slug. Tokens follow a page when its address changes.', 'abrahamic' ); ?></p>
@@ -423,7 +481,8 @@ function abr_render_options_page() {
 				</div>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-colours" aria-labelledby="abr-tab-colours" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-colours" aria-labelledby="abr-tab-colours" tabindex="0" hidden>
+				<?php abr_options_usage( 'colours' ); ?>
 				<h2><?php esc_html_e( 'Colour scheme', 'abrahamic' ); ?></h2>
 				<div class="abr-schemes">
 					<?php foreach ( abr_schemes() as $slug => $scheme ) : ?>
@@ -444,8 +503,9 @@ function abr_render_options_page() {
 						</label>
 					<?php endforeach; ?>
 				</div>
-				<div class="abr-custom-colours" <?php echo 'custom' === $current ? '' : 'hidden'; ?>>
+				<div class="abr-custom-colours" id="abr-custom-colours" <?php echo 'custom' === $current ? '' : 'hidden'; ?>>
 					<h3><?php esc_html_e( 'Custom palette', 'abrahamic' ); ?></h3>
+					<div class="abr-color-grid">
 					<?php
 					abr_field( 'custom_navy', __( 'Primary (headings, dark bands)', 'abrahamic' ), 'color' );
 					abr_field( 'custom_ivory', __( 'Background', 'abrahamic' ), 'color' );
@@ -453,10 +513,12 @@ function abr_render_options_page() {
 					abr_field( 'custom_beige', __( 'Surface', 'abrahamic' ), 'color' );
 					abr_field( 'custom_charcoal', __( 'Body text', 'abrahamic' ), 'color' );
 					?>
+					</div>
 				</div>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-newsletter" aria-labelledby="abr-tab-newsletter" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-newsletter" aria-labelledby="abr-tab-newsletter" tabindex="0" hidden>
+				<?php abr_options_usage( 'newsletter' ); ?>
 				<h2><?php esc_html_e( 'Newsletter form', 'abrahamic' ); ?></h2>
 				<?php
 				abr_field( 'newsletter_url', __( 'Form action URL', 'abrahamic' ), 'url', __( 'The POST endpoint from your mailing provider. The form stays hidden until this is set.', 'abrahamic' ) );
@@ -465,7 +527,8 @@ function abr_render_options_page() {
 				?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-social" aria-labelledby="abr-tab-social" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-social" aria-labelledby="abr-tab-social" tabindex="0" hidden>
+				<?php abr_options_usage( 'social' ); ?>
 				<h2><?php esc_html_e( 'Social profiles', 'abrahamic' ); ?></h2>
 				<p class="abr-help"><?php esc_html_e( 'Profiles with a URL appear in the footer, in the order shown here. Empty fields are left out.', 'abrahamic' ); ?></p>
 				<div class="abr-social-tools">
@@ -476,7 +539,8 @@ function abr_render_options_page() {
 				<?php abr_render_social_fields(); ?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-search" aria-labelledby="abr-tab-search" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-search" aria-labelledby="abr-tab-search" tabindex="0" hidden>
+				<?php abr_options_usage( 'search' ); ?>
 				<?php if ( abr_seo_plugin() ) : ?>
 					<div class="notice notice-info inline"><p>
 						<?php
@@ -520,12 +584,13 @@ function abr_render_options_page() {
 				?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-login" aria-labelledby="abr-tab-login" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-login" aria-labelledby="abr-tab-login" tabindex="0" hidden>
+				<?php abr_options_usage( 'login' ); ?>
 				<h2><?php esc_html_e( 'Login screen', 'abrahamic' ); ?></h2>
 				<?php
 				abr_field( 'login_design', __( 'Use the theme design on the login screen', 'abrahamic' ), 'checkbox', __( 'Colours, type and the light or dark choice follow the rest of the site.', 'abrahamic' ) );
 				abr_field( 'login_logo', __( 'Login logo', 'abrahamic' ), 'image', __( 'Leave empty to use the AR mark with the logo text from the Header tab. A file named login-logo.png in wp-content is used when this is empty.', 'abrahamic' ) );
-				abr_field( 'login_layout', __( 'Layout', 'abrahamic' ), 'select', __( 'The centred card suits a private team login; the photograph layout suits a public site. The photograph layout needs a photograph below.', 'abrahamic' ), array( 'choices' => abr_login_layouts() ) );
+				abr_field( 'login_layout', __( 'Layout', 'abrahamic' ), 'cards', __( 'The centred card suits a private team login; the photograph layout suits a public site. The photograph layout needs a photograph below.', 'abrahamic' ), array( 'choices' => abr_login_layouts() ) );
 				abr_field( 'login_photo', __( 'Photograph', 'abrahamic' ), 'select', __( 'In the centred layout it sits behind the page, darkened; in the photograph layout it fills the panel beside the form, and a band above it on phones.', 'abrahamic' ), array( 'choices' => abr_login_photos() ) );
 				abr_field( 'login_message', __( 'Line of text', 'abrahamic' ), 'text', __( 'Shown under the logo in the centred layout and over the photograph in the photograph layout. Leave empty to leave it out.', 'abrahamic' ) );
 				?>
@@ -553,14 +618,15 @@ function abr_render_options_page() {
 				<p class="abr-help"><?php esc_html_e( 'If the address is ever lost, add define( \'ABR_HIDE_LOGIN\', false ); to wp-config.php, log in at wp-login.php, and remove the line again.', 'abrahamic' ); ?></p>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-links" aria-labelledby="abr-tab-links" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-links" aria-labelledby="abr-tab-links" tabindex="0" hidden>
+				<?php abr_options_usage( 'links' ); ?>
 				<h2><?php esc_html_e( 'Links in the running text', 'abrahamic' ); ?></h2>
 				<p class="abr-help"><?php esc_html_e( 'On a single article or page, the first mention of a known phrase links to the page that treats it, on this site or on one of the six sister sites. Phrases come from inc/data/network-links.json, a file shared by all seven themes. Links are never made in headings, quotations, verses, footnotes, tables of contents, Further reading, existing links or Arabic, Hebrew, Greek or Aramaic text, and at most one is added per paragraph. Stored content is not changed.', 'abrahamic' ); ?></p>
 				<?php
 				abr_field( 'ctx_own', __( 'Link to pages on this site', 'abrahamic' ), 'checkbox' );
-				abr_field( 'ctx_own_max', __( 'Links to this site on one page, at most', 'abrahamic' ), 'number', __( '0 to 15. A page already linked by hand in the text is not linked again.', 'abrahamic' ), array( 'min' => 0, 'max' => 15, 'step' => 1 ) );
+				abr_field( 'ctx_own_max', __( 'Links to this site on one page, at most', 'abrahamic' ), 'range', __( '0 to 15. A page already linked by hand in the text is not linked again.', 'abrahamic' ), array( 'min' => 0, 'max' => 15, 'step' => 1 ) );
 				abr_field( 'ctx_sister', __( 'Link to pages on the sister sites', 'abrahamic' ), 'checkbox' );
-				abr_field( 'ctx_sister_max', __( 'Links to sister sites on one page, at most', 'abrahamic' ), 'number', __( '0 to 10. They open in the same tab.', 'abrahamic' ), array( 'min' => 0, 'max' => 10, 'step' => 1 ) );
+				abr_field( 'ctx_sister_max', __( 'Links to sister sites on one page, at most', 'abrahamic' ), 'range', __( '0 to 10. They open in the same tab.', 'abrahamic' ), array( 'min' => 0, 'max' => 10, 'step' => 1 ) );
 				?>
 				<h2><?php esc_html_e( 'Phrases and exceptions', 'abrahamic' ); ?></h2>
 				<?php
@@ -569,7 +635,8 @@ function abr_render_options_page() {
 				?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-security" aria-labelledby="abr-tab-security" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-security" aria-labelledby="abr-tab-security" tabindex="0" hidden>
+				<?php abr_options_usage( 'security' ); ?>
 				<?php abr_sec_render_settings(); ?>
 			</section>
 
@@ -580,7 +647,8 @@ function abr_render_options_page() {
 
 		<?php abr_sec_render_tools(); ?>
 
-		<section class="abr-card abr-panel abr-panel--tools" role="tabpanel" id="abr-panel-tools" aria-labelledby="abr-tab-tools" hidden>
+		<section class="abr-card abr-panel abr-panel--tools" role="tabpanel" id="abr-panel-tools" aria-labelledby="abr-tab-tools" tabindex="0" hidden>
+				<?php abr_options_usage( 'tools' ); ?>
 			<h2><?php esc_html_e( 'Export', 'abrahamic' ); ?></h2>
 			<p class="abr-help"><?php esc_html_e( 'Download every Theme Option as a JSON file, for backup or to copy the setup to another site.', 'abrahamic' ); ?></p>
 			<p><a class="button" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=abr_export_options' ), 'abr_export_options' ) ); ?>"><?php esc_html_e( 'Download export file', 'abrahamic' ); ?></a></p>
@@ -634,6 +702,12 @@ function abr_render_options_page() {
 				</tbody>
 			</table>
 		</section>
+
+		<footer class="abr-settings__foot">
+			<a href="<?php echo esc_url( admin_url( 'site-editor.php' ) ); ?>"><?php esc_html_e( 'Edit pages and templates', 'abrahamic' ); ?></a>
+			<a href="<?php echo esc_url( admin_url( 'site-health.php' ) ); ?>"><?php esc_html_e( 'Site Health', 'abrahamic' ); ?></a>
+			<span><?php esc_html_e( 'Documentation: readme.txt and docs/readme.md in the theme folder.', 'abrahamic' ); ?></span>
+		</footer>
 	</div>
 	<?php
 }
@@ -667,11 +741,17 @@ function abr_render_seed_section() {
 	abr_field(
 		'seed_mode',
 		__( 'When the theme ships new starter content', 'abrahamic' ),
-		'select',
+		'cards',
 		__( 'Replacing writes the current version over starter pages, including any you have edited; the text you had is kept in the page\'s revisions. Pages you created yourself are never touched, and starter pages the theme no longer carries are moved to the trash.', 'abrahamic' ),
-		array( 'choices' => abr_seed_modes() )
+		// The Tools panel sits outside the options form, so the choice and its
+		// button name that form explicitly.
+		array(
+			'choices' => abr_seed_modes(),
+			'form'    => 'abr-options-form',
+		)
 	);
 	?>
+	<p><button type="submit" class="button" form="abr-options-form"><?php esc_html_e( 'Save this choice', 'abrahamic' ); ?></button></p>
 	<p class="abr-seed-actions">
 		<?php
 		$indexed = (int) get_option( 'abr_search_indexed' );
@@ -849,7 +929,7 @@ function abr_seed_admin_notice() {
 		return;
 	}
 	printf(
-		'<div class="notice notice-warning"><p><strong>%1$s</strong> %2$s</p><p><a class="button button-primary" href="%3$s">%4$s</a> <a href="%5$s">%6$s</a></p></div>',
+		'<div class="notice notice-warning is-dismissible"><p><strong>%1$s</strong> %2$s</p><p><a class="button button-primary" href="%3$s">%4$s</a> <a href="%5$s">%6$s</a></p></div>',
 		esc_html__( 'Abrahamic:', 'abrahamic' ),
 		$missing
 			/* translators: %d: number of items. */
