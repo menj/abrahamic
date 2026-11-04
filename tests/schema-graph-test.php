@@ -144,7 +144,7 @@ function abr_test_graph( $where, $graph ) {
 	// the publisher stays the Organization.
 	$aid    = home_url( '/#author' );
 	$people = array_filter( $ids, static function ( $n ) { return isset( $n['@type'] ) && in_array( 'Person', (array) $n['@type'], true ) && isset( $n['name'] ) && 'Mohd Elfie Nieshaem Juferi' === $n['name']; } );
-	if ( 1 !== count( $people ) || ! isset( $ids[ $aid ] ) ) {
+	if ( 1 !== count( $people ) || ! isset( $ids[ $aid ] ) || ! in_array( 'Person', (array) ( isset( $ids[ $aid ]['@type'] ) ? $ids[ $aid ]['@type'] : array() ), true ) || 'Mohd Elfie Nieshaem Juferi' !== ( isset( $ids[ $aid ]['name'] ) ? $ids[ $aid ]['name'] : '' ) ) {
 		abr_test_fail( $where, count( $people ) . ' author Person nodes' );
 	} elseif ( 'https://menj.bio' !== ( isset( $ids[ $aid ]['url'] ) ? $ids[ $aid ]['url'] : '' ) || ! in_array( 'https://menj.bio', (array) ( isset( $ids[ $aid ]['sameAs'] ) ? $ids[ $aid ]['sameAs'] : array() ), true ) ) {
 		abr_test_fail( $where, 'author Person has the wrong url or sameAs' );

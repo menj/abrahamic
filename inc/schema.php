@@ -1336,7 +1336,7 @@ function abr_schema_one_author( $graph ) {
 		}
 		return $n;
 	};
-	$types = array( 'Article', 'BlogPosting', 'NewsArticle', 'WebPage', 'AboutPage', 'CollectionPage', 'ContactPage', 'FAQPage', 'ItemPage', 'SearchResultsPage', 'QAPage' );
+	$types = array( 'Article', 'BlogPosting', 'NewsArticle', 'ScholarlyArticle', 'TechArticle', 'Report', 'WebPage', 'ProfilePage', 'AboutPage', 'CollectionPage', 'ContactPage', 'FAQPage', 'ItemPage', 'SearchResultsPage', 'QAPage' );
 	$out   = array();
 	$have  = null;
 	foreach ( $graph as $key => $node ) {
