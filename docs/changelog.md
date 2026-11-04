@@ -11,10 +11,11 @@ Two owner briefs of 4 November drove this release: the mobile-first audit and th
 - Card topic links on the front page and the archives used plain `--abr-gold` on white (2.81 to 1). They use `--abr-gold-ink`.
 - Back to top links lost their 0.8 opacity, which pulled them to 3.1. The search result path and the tag archive date drop their 45% navy mix for `--abr-muted`. Highlighted search words take `--abr-charcoal` on the gold wash.
 - In dark colours the Further reading cards on the front page printed `--abr-white` (which dark mode turns into a dark surface) on a dark panel, at 1.03 to 1. They use `--abr-on-dark`. Light mode looks the same.
-- The timeline track has `role="list"`, and its periods had no role, which axe reports as critical (1.3.1). Each `.abr-era` in `patterns/timeline.php` carries `role="listitem"`. The Event schema in `inc/schema.php` read the eras with a pattern that stopped at the class attribute, so it now allows attributes after it. `tests/schema-graph-test.php` caught this.
+- The timeline track is a list to screen readers, and its periods had no role, which axe reports as critical (1.3.1). The pattern used to carry `role`, `tabindex` and `aria-label` in its saved HTML. The Group block saves none of these, so every timeline group failed block validation in the editor (CodeAnt, #15). `abr_timeline_list_roles()` in `inc/structure.php` now adds them at render time with `WP_HTML_Tag_Processor`. It gives `.abr-timeline__track` its role, label and tabindex, and gives each `.abr-era` `role="listitem"`. `patterns/timeline.php` is plain block markup again and survives a `parse_blocks()` and `serialize_blocks()` round trip unchanged. The Event schema regex in `inc/schema.php` now allows attributes after the class.
+- Back to top links turned plain gold on hover and focus, which fails on light sections. They take `--abr-gold-ink` with an underline. Dark sections keep gold.
 
 ### Changed
-- Touch targets (WCAG 2.5.8, and 44 pixels for the mobile brief). A new block at the end of `assets/css/theme.css` sizes the header search button, Donate, the logo mark, pagination numbers, Copy citation and the footer bottom links for a finger. A `min-width: 1024px` query puts the desktop sizes back.
+- Touch targets (WCAG 2.5.8, and 44 pixels for the mobile brief). A new block at the end of `assets/css/theme.css` sizes the header search button, Donate, the logo mark, pagination numbers, Copy citation and the footer bottom links for a finger. The footer links use `min-height: 44px` with `inline-flex`; padding alone left them at 39 pixels. A `min-width: 1024px` query puts the desktop sizes back.
 
 ## [2.92.2] - 2026-11-04
 

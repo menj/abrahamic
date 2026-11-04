@@ -1255,9 +1255,10 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 	color: var(--abr-muted); opacity: 1; transition: color var(--abr-ease), opacity var(--abr-ease);
 }
 .abr-backtop a span { transition: transform var(--abr-ease); }
-.abr-backtop a:hover, .abr-backtop a:focus-visible { color: var(--abr-gold); opacity: 1; }
+.abr-backtop a:hover, .abr-backtop a:focus-visible { color: var(--abr-gold-ink); opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
 .abr-backtop a:hover span { transform: translateY(-2px); }
 .is-dark .abr-backtop a { color: color-mix(in srgb, var(--abr-on-dark, #f8f5ef) 70%, transparent); }
+.is-dark .abr-backtop a:hover, .is-dark .abr-backtop a:focus-visible { color: var(--abr-gold); }
 @media (prefers-reduced-motion: reduce) { .abr-subnav, .abr-subnav a, .abr-subnav a::after, .abr-backtop a span { transition: none; } }
 
 /* ---------- Home page chapter banners ([abr_parallax], assets/js/parallax.js) ---------- */
@@ -1362,12 +1363,12 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 .abr-header .abr-logo__mark { min-width: 44px; min-height: 44px; }
 .abr-pagination .page-numbers { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; box-sizing: border-box; }
 .abr-cite__copy { min-height: 44px; }
-.abr-footer-links a { display: inline-block; padding-block: 10px; }
+.abr-footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
 @media (min-width: 1024px) {
 	.abr-header-search__toggle { width: 2.4rem; height: 2.4rem; }
 	.abr-header .abr-header__donate .wp-block-button__link { min-height: 0; display: inline-block; }
 	.abr-header .abr-logo__mark { min-width: 0; min-height: 0; }
 	.abr-pagination .page-numbers { display: inline; min-width: 0; min-height: 0; }
 	.abr-cite__copy { min-height: 0; }
-	.abr-footer-links a { display: inline; padding-block: 0; }
+	.abr-footer-links a { display: inline; min-height: 0; }
 }
