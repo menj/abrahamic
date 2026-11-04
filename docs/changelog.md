@@ -2,6 +2,18 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.94.2] - 2026-11-04
+
+The Schema Markup Validator run of 4 November found three faults in the structured data. No option key, function name, @id or handle changed.
+
+### Fixed
+- `isAccessibleForFree` printed as the string "1" on every page, although 2.93.0 cast it in `abr_rank_math_json_ld()`. Rank Math runs the filtered graph through `wp_kses_post_deep()` just before it encodes it (`JsonLD::json_ld()`, on `rank_math/head` at priority 90), and kses turns every boolean into a string. No `rank_math/json_ld` filter can survive that. `abr_rank_math_json_ld_buffer()` (priority 89) and `abr_rank_math_json_ld_print()` (priority 91) buffer that one action, and the new `abr_schema_fix_printed_booleans()` prints `true` or `false` in its place. It reads only `<script type="application/ld+json">` blocks and changes only the exact key/value tokens `"isAccessibleForFree":"1"`, `"0"` and `""` (kses prints `false` as `""`). Other text, an escaped mention inside a string included, is left alone. The graph-level cast stays for the theme's own graph.
+- The home page listed the timeline `ItemList` under the page's `hasPart`, which takes only a CreativeWork. The list is now in the page's `about`, beside the entities in its title. The timeline page keeps it as `mainEntity`. The list and its `#timeline-list` @id are unchanged, and so are the Event nodes it links, apart from the BCE dates in the next item.
+- Timeline Events for periods before the Common Era carried years such as `-1999`, which schema.org Date does not accept. A period that starts or ends BCE now has no `startDate` or `endDate`, and its description opens with the range exactly as the page prints it: "c. 2000–1200 BCE." on the home page, where the era kickers use an en dash, and "c. 2000 to 1200 BCE." on the timeline page, whose headings use "to". `abr_schema_period()` takes an optional second argument that returns that range as written. CE periods keep their dates.
+
+### Tests
+- `tests/schema-graph-test.php` checks that no node has an `ItemList` as `hasPart`, that every Event date is a CE year, that each timeline Event of a CE period has its `startDate` and each BCE one has none, with a description that opens with the range as its name prints it, that the timeline list is linked by `about` or `mainEntity`, and that `abr_schema_fix_printed_booleans()` turns the printed "1", "0" and "" into booleans inside ld+json scripts only and leaves other values and other markup alone.
+
 ## [2.94.1] - 2026-11-04
 
 A CodeAnt finding on the sister themes: the Theme Options screen built every panel on every load, so the heavy reports ran their queries whatever tab was open. This theme had the same fault on the Tools tab. No option key, handle or function name changed.

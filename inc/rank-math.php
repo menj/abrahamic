@@ -324,3 +324,29 @@ function abr_rank_math_json_ld( $data, $jsonld = null ) {
 	return function_exists( 'abr_schema_fix_booleans' ) ? abr_schema_fix_booleans( $data ) : $data;
 }
 add_filter( 'rank_math/json_ld', 'abr_rank_math_json_ld', 100, 2 );
+
+/**
+ * Start buffering just before Rank Math prints its JSON-LD (rank_math/head,
+ * priority 90). Rank Math passes the filtered graph through
+ * wp_kses_post_deep(), which casts every boolean to a string, so the
+ * isAccessibleForFree cast above is undone on the page. The buffer lets
+ * abr_rank_math_json_ld_print() put the boolean back in the printed script.
+ */
+function abr_rank_math_json_ld_buffer() {
+	if ( abr_rank_math_active() && function_exists( 'abr_schema_fix_printed_booleans' ) ) {
+		$GLOBALS['abr_rank_math_ld_buffer'] = ob_start();
+	}
+}
+add_action( 'rank_math/head', 'abr_rank_math_json_ld_buffer', 89 );
+
+/**
+ * Print Rank Math's buffered JSON-LD with isAccessibleForFree as a boolean.
+ */
+function abr_rank_math_json_ld_print() {
+	if ( empty( $GLOBALS['abr_rank_math_ld_buffer'] ) ) {
+		return;
+	}
+	$GLOBALS['abr_rank_math_ld_buffer'] = false;
+	echo abr_schema_fix_printed_booleans( (string) ob_get_clean() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Rank Math's own escaped output; only a JSON literal changes.
+}
+add_action( 'rank_math/head', 'abr_rank_math_json_ld_print', 91 );
