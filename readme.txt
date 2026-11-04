@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.92.1
+Stable tag: 2.92.2
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -547,6 +547,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.92.2 - 2026-11-04 =
+* Structured data under Rank Math marks pages as free to read with a proper true value, so the Schema Markup Validator stops reporting INVALID_BOOLEAN.
 
 = 2.92.1 - 2026-11-03 =
 * Scheduled starter articles get their tags and search fields when they are created, so they go live complete.
