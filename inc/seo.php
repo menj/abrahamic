@@ -583,6 +583,9 @@ function abr_schema_graph() {
 	}
 	$same_as = array_values( wp_list_pluck( abr_social_profiles(), 'url' ) );
 	if ( $same_as ) {
+		if ( ! in_array( 'https://menj.bio', $same_as, true ) ) {
+			$same_as[] = 'https://menj.bio';
+		}
 		$org['sameAs'] = $same_as;
 	}
 	if ( is_email( abr_get_option( 'contact_email' ) ) ) {
@@ -656,8 +659,10 @@ function abr_schema_graph() {
 	if ( is_singular( 'post' ) ) {
 		$post   = get_queried_object();
 		$image  = abr_seo_image();
-		// The site itself is the author of every article: no person is named.
-		$author = array( '@id' => $org_id );
+		// The JSON-LD names the owner as author (decided 2026-11-04); the
+		// Person node is added by abr_schema_one_author() (inc/schema.php).
+		// Nothing else names him: bylines, feeds and embeds stay the site's.
+		$author = array( '@id' => $home . '#author' );
 		$thumb_id = get_post_thumbnail_id( $post );
 		$featured = $thumb_id ? abr_schema_licensed_image( (string) wp_get_attachment_url( $thumb_id ), pathinfo( (string) get_attached_file( $thumb_id ), PATHINFO_FILENAME ), $url . '#primaryimage' ) : null;
 		$webpage['primaryImageOfPage'] = $featured ? array( '@id' => $url . '#primaryimage' ) : abr_schema_image( $image );

@@ -7,7 +7,10 @@
  * REST API user list (with a Gravatar hash of each account's email address),
  * author archives and the ?author= address that reveals them, the author name
  * in feeds and embeds, and the users sitemap. This module closes each of
- * them, and every article names the site itself as author and publisher.
+ * them. The site itself is the publisher of every article. By the owner's
+ * decision of 2026-11-04 the JSON-LD alone names him as the schema author
+ * (abr_schema_one_author() in inc/schema.php); nothing here strips that
+ * node, and every channel this module closes stays closed.
  *
  * @package Abrahamic
  */

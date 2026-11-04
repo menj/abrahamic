@@ -1258,5 +1258,114 @@ function abr_schema_extend( $graph, $own = true ) {
 	if ( $own && 'CollectionPage' === $ext['page_type'] ) {
 		$ext['page_type'] = '';
 	}
-	return abr_schema_image_details( abr_schema_merge( $graph, $ext, $own, is_singular( 'post' ) ) );
+	return abr_schema_one_author( abr_schema_image_details( abr_schema_merge( $graph, $ext, $own, is_singular( 'post' ) ) ) );
+}
+
+/**
+ * The @id of the author Person.
+ *
+ * @return string
+ */
+function abr_schema_author_id() {
+	return home_url( '/#author' );
+}
+
+/**
+ * The author Person. The owner decided on 2026-11-04 that the JSON-LD alone
+ * names him as the author of every article: Mohd Elfie Nieshaem Juferi, at
+ * https://menj.bio. Nowhere else names him (docs/ssot.md, Anonymity).
+ *
+ * @return array
+ */
+function abr_schema_author_node() {
+	return array(
+		'@type'  => 'Person',
+		'@id'    => abr_schema_author_id(),
+		'name'   => 'Mohd Elfie Nieshaem Juferi',
+		'url'    => 'https://menj.bio',
+		'sameAs' => array( 'https://menj.bio' ),
+	);
+}
+
+/**
+ * One author across the graph, the theme's own or Rank Math's.
+ *
+ * Every author value, at any depth, points to the author Person; every
+ * Article and page node without one gets the reference; any other Person an
+ * author pointed to is dropped and references to it are repointed; and the
+ * Person is added once. The publisher stays the site's Organization. Keys
+ * are kept, so Rank Math's keyed graph stays keyed.
+ *
+ * @param array $graph Graph nodes.
+ * @return array
+ */
+function abr_schema_one_author( $graph ) {
+	if ( ! is_array( $graph ) || ! $graph ) {
+		return $graph;
+	}
+	$id   = abr_schema_author_id();
+	$list = array_values( $graph ) === $graph;
+	$old  = array();
+	$find = function ( $n ) use ( &$find, &$old, $id ) {
+		if ( ! is_array( $n ) ) {
+			return;
+		}
+		foreach ( $n as $k => $v ) {
+			if ( 'author' === $k && is_array( $v ) && ! empty( $v['@id'] ) && $id !== $v['@id'] && home_url( '/#organization' ) !== $v['@id'] && ( ! isset( $v['@type'] ) || in_array( 'Person', (array) $v['@type'], true ) ) ) {
+				$old[ (string) $v['@id'] ] = true;
+			}
+			if ( is_array( $v ) ) {
+				$find( $v );
+			}
+		}
+	};
+	$find( $graph );
+	$walk = function ( $n ) use ( &$walk, $old, $id ) {
+		if ( ! is_array( $n ) ) {
+			return $n;
+		}
+		if ( 1 === count( $n ) && isset( $n['@id'] ) && isset( $old[ (string) $n['@id'] ] ) ) {
+			return array( '@id' => $id );
+		}
+		foreach ( $n as $k => $v ) {
+			if ( 'author' === $k && is_array( $v ) ) {
+				$n[ $k ] = array( '@id' => $id );
+			} elseif ( is_array( $v ) ) {
+				$n[ $k ] = $walk( $v );
+			}
+		}
+		return $n;
+	};
+	$types = array( 'Article', 'BlogPosting', 'NewsArticle', 'WebPage', 'AboutPage', 'CollectionPage', 'ContactPage', 'FAQPage', 'ItemPage', 'SearchResultsPage', 'QAPage' );
+	$out   = array();
+	$have  = null;
+	foreach ( $graph as $key => $node ) {
+		if ( ! is_array( $node ) ) {
+			$out[ $key ] = $node;
+			continue;
+		}
+		$node_types = (array) ( isset( $node['@type'] ) ? $node['@type'] : array() );
+		if ( ! empty( $node['@id'] ) && isset( $old[ (string) $node['@id'] ] ) && in_array( 'Person', $node_types, true ) ) {
+			continue;
+		}
+		if ( isset( $node['@id'] ) && $id === $node['@id'] ) {
+			$have = $key;
+		} else {
+			$node = $walk( $node );
+			if ( array_intersect( $node_types, $types ) && empty( $node['author'] ) ) {
+				$node['author'] = array( '@id' => $id );
+			}
+		}
+		$out[ $key ] = $node;
+	}
+	if ( null === $have ) {
+		if ( $list ) {
+			$out[] = abr_schema_author_node();
+		} else {
+			$out['abrAuthor'] = abr_schema_author_node();
+		}
+	} else {
+		$out[ $have ] = array_merge( $out[ $have ], abr_schema_author_node() );
+	}
+	return $list ? array_values( $out ) : $out;
 }

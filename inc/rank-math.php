@@ -215,7 +215,10 @@ function abr_rank_math_json_ld( $data, $jsonld = null ) {
 	$home   = home_url( '/' );
 	$org_id = $home . '#organization';
 
-	// Anonymity: no Person, no Gravatar; the site's Organization is the author.
+	// Anonymity: Rank Math's Person (with its Gravatar) is removed. The author
+	// becomes the one author Person in abr_schema_extend() below
+	// (abr_schema_one_author(), decided 2026-11-04); the publisher stays the
+	// site's Organization.
 	$person_ids = array();
 	foreach ( $data as $key => $node ) {
 		if ( is_array( $node ) && isset( $node['@type'] ) && in_array( 'Person', (array) $node['@type'], true ) ) {

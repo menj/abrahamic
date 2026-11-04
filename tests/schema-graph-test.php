@@ -13,6 +13,12 @@
 
 define( 'ABSPATH', __DIR__ . '/' );
 require dirname( __DIR__ ) . '/inc/schema.php';
+if ( ! function_exists( 'home_url' ) ) {
+	/** The site address, as WordPress gives it. */
+	function home_url( $path = '/' ) {
+		return 'https://example.org' . $path;
+	}
+}
 
 $root     = dirname( __DIR__ );
 $home     = 'https://example.org/';
@@ -77,7 +83,7 @@ function abr_test_base( $ctx ) {
 		return $graph;
 	}
 	if ( 'post' === $ctx['kind'] ) {
-		$graph[] = array( '@type' => 'Article', '@id' => $ctx['url'] . '#article', 'headline' => isset( $ctx['title'] ) ? $ctx['title'] : '', 'mainEntityOfPage' => array( '@id' => $ctx['url'] . '#webpage' ), 'author' => array( '@id' => $home . '#organization' ) );
+		$graph[] = array( '@type' => 'Article', '@id' => $ctx['url'] . '#article', 'headline' => isset( $ctx['title'] ) ? $ctx['title'] : '', 'mainEntityOfPage' => array( '@id' => $ctx['url'] . '#webpage' ), 'author' => array( '@id' => $home . '#author' ) );
 	}
 	$graph[] = array( '@type' => 'archive' === $ctx['kind'] ? 'CollectionPage' : 'WebPage', '@id' => $ctx['url'] . '#webpage', 'url' => $ctx['url'], 'name' => isset( $ctx['title'] ) ? $ctx['title'] : 'Archive', 'isPartOf' => array( '@id' => $home . '#website' ) );
 	return $graph;
@@ -132,7 +138,57 @@ function abr_test_graph( $where, $graph ) {
 			abr_test_fail( $where, 'reference to a missing node ' . $ref );
 		}
 	}
+	// The author (owner's decision, 2026-11-04): one Person, #author, named
+	// Mohd Elfie Nieshaem Juferi at https://menj.bio with sameAs including
+	// it; every author points to it; every article and page node has one;
+	// the publisher stays the Organization.
+	$aid    = home_url( '/#author' );
+	$people = array_filter( $ids, static function ( $n ) { return isset( $n['@type'] ) && in_array( 'Person', (array) $n['@type'], true ) && isset( $n['name'] ) && 'Mohd Elfie Nieshaem Juferi' === $n['name']; } );
+	if ( 1 !== count( $people ) || ! isset( $ids[ $aid ] ) ) {
+		abr_test_fail( $where, count( $people ) . ' author Person nodes' );
+	} elseif ( 'https://menj.bio' !== ( isset( $ids[ $aid ]['url'] ) ? $ids[ $aid ]['url'] : '' ) || ! in_array( 'https://menj.bio', (array) ( isset( $ids[ $aid ]['sameAs'] ) ? $ids[ $aid ]['sameAs'] : array() ), true ) ) {
+		abr_test_fail( $where, 'author Person has the wrong url or sameAs' );
+	}
+	$scan = static function ( $n ) use ( &$scan, $aid, $where ) {
+		if ( ! is_array( $n ) ) {
+			return;
+		}
+		foreach ( $n as $k => $v ) {
+			if ( 'author' === $k && array( '@id' => $aid ) !== $v ) {
+				abr_test_fail( $where, 'an author does not point to #author: ' . json_encode( $v ) );
+			} elseif ( 'publisher' === $k && is_array( $v ) && isset( $v['@id'] ) && home_url( '/#organization' ) !== $v['@id'] ) {
+				abr_test_fail( $where, 'publisher is not the site' );
+			} elseif ( is_array( $v ) ) {
+				$scan( $v );
+			}
+		}
+	};
+	$scan( $graph );
+	foreach ( $graph as $node ) {
+		if ( isset( $node['@type'] ) && array_intersect( (array) $node['@type'], array( 'Article', 'BlogPosting', 'WebPage', 'CollectionPage', 'AboutPage', 'ContactPage', 'FAQPage' ) ) && empty( $node['author'] ) ) {
+			abr_test_fail( $where, ( isset( $node['@id'] ) ? $node['@id'] : '' ) . ' has no author' );
+		}
+	}
 	return $ids;
+}
+
+// Anonymity (docs/ssot.md): the owner's name appears in the JSON-LD author
+// Person and nowhere else in the theme's public output, so in no file the
+// theme ships to the front end apart from inc/schema.php, where that node is
+// built. Docs, tests and the changelog are not served.
+$abr_name_hits = array();
+$abr_files     = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $root, FilesystemIterator::SKIP_DOTS ) );
+foreach ( $abr_files as $abr_file ) {
+	$rel = substr( (string) $abr_file, strlen( $root ) + 1 );
+	if ( preg_match( '#^(\.git|docs|tests|node_modules)/#', $rel ) || ! preg_match( '/\.(php|html|json|js|css|txt|po|pot|svg|xml)$/', $rel ) || 'inc/schema.php' === $rel ) {
+		continue;
+	}
+	if ( preg_match( '/Elfie|Juferi/i', (string) file_get_contents( (string) $abr_file ) ) ) {
+		$abr_name_hits[] = $rel;
+	}
+}
+if ( $abr_name_hits ) {
+	abr_test_fail( 'anonymity', "the owner's name appears outside the schema author: " . implode( ', ', $abr_name_hits ) );
 }
 
 /**
@@ -221,7 +277,7 @@ foreach ( $seed['items'] as $item ) {
 		)
 	);
 	$ext   = abr_schema_build( $ctx );
-	$graph = abr_schema_merge( abr_test_base( $ctx ), $ext, true, 'post' === $ctx['kind'] );
+	$graph = abr_schema_one_author( abr_schema_merge( abr_test_base( $ctx ), $ext, true, 'post' === $ctx['kind'] ) );
 	$ids   = abr_test_graph( $item['key'], $graph );
 	foreach ( array( 'Quotation', 'Chapter', 'Event', 'DefinedTerm', 'Table', 'ImageObject', 'PropertyValue' ) as $type ) {
 		$totals[ $type ] = ( isset( $totals[ $type ] ) ? $totals[ $type ] : 0 ) + abr_test_count( $ids, $type );
@@ -317,9 +373,14 @@ foreach ( $seed['items'] as $item ) {
 		'publisher' => array( '@type' => 'Organization', '@id' => $home . '#organization', 'name' => 'Abrahamic Religions' ),
 		'WebSite'   => array( '@type' => 'WebSite', '@id' => $home . '#website', 'url' => $home ),
 		'WebPage'   => array( '@type' => 'WebPage', '@id' => $ctx['url'] . '#webpage', 'url' => $ctx['url'], 'inLanguage' => 'en-GB' ),
-		'richSnippet' => array( '@type' => 'BlogPosting', '@id' => $ctx['url'] . '#richSnippet', 'headline' => $item['title'] ),
+		'richSnippet' => array( '@type' => 'BlogPosting', '@id' => $ctx['url'] . '#richSnippet', 'headline' => $item['title'], 'author' => array( '@id' => $home . 'author/editor/' ) ),
+		'ProfilePage' => array( '@type' => 'Person', '@id' => $home . 'author/editor/', 'name' => 'editor' ),
 	);
-	$merged = abr_schema_merge( $rank_math, $ext, false, 'post' === $ctx['kind'] );
+	// As abr_schema_extend() does: merge, then one author Person.
+	$merged = abr_schema_one_author( abr_schema_merge( $rank_math, $ext, false, 'post' === $ctx['kind'] ) );
+	if ( isset( $merged['ProfilePage'] ) ) {
+		abr_test_fail( $item['key'], 'Rank Math user Person kept beside the author' );
+	}
 	if ( array_key_exists( 0, $merged ) ) {
 		abr_test_fail( $item['key'], 'Rank Math graph lost its keys' );
 	}
@@ -338,12 +399,12 @@ $ctx = array_merge(
 		'list' => array( array( 'name' => 'Where was Abraham from?', 'url' => $home . 'where-was-abraham-from/' ) ),
 	)
 );
-$ids = abr_test_graph( 'tag archive', abr_schema_merge( abr_test_base( $ctx ), abr_schema_build( $ctx ) ) );
+$ids = abr_test_graph( 'tag archive', abr_schema_one_author( abr_schema_merge( abr_test_base( $ctx ), abr_schema_build( $ctx ) ) ) );
 if ( ! isset( $ids[ $ctx['url'] . '#webpage' ]['mainEntity'] ) || 'CollectionPage' !== $ids[ $ctx['url'] . '#webpage' ]['@type'] ) {
 	abr_test_fail( 'tag archive', 'CollectionPage lacks its ItemList' );
 }
 $ctx = array_merge( $common, array( 'url' => '', 'kind' => 'search', 'title' => 'Search', 'search_url' => $home . 'search/abraham/' ) );
-$ids = abr_test_graph( 'search', abr_schema_merge( abr_test_base( $ctx ), abr_schema_build( $ctx ) ) );
+$ids = abr_test_graph( 'search', abr_schema_one_author( abr_schema_merge( abr_test_base( $ctx ), abr_schema_build( $ctx ) ) ) );
 if ( 1 !== abr_test_count( $ids, 'SearchResultsPage' ) || empty( $ids[ $home . '#website' ]['potentialAction'] ) ) {
 	abr_test_fail( 'search', 'no SearchResultsPage or SearchAction' );
 }
