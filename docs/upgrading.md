@@ -6,7 +6,7 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ## Upgrading from 2.94.2 to 2.95.0
 
-Replace the theme files. The reading progress bar is on for articles; switch it off or choose more post types on Theme Options > General. The first load after the update flushes the rewrite rules once. If Reading Progress Bar, Unlist Posts & Pages or Pretty Search Permalinks is still active, the theme leaves that feature to the plugin; deactivate the plugin to use the theme's version.
+Replace the theme files. The reading progress bar is on for articles; switch it off or choose more post types on Theme Options > General. With readable search addresses on (Theme Options > Search, the default) and pretty permalinks in use, the first load after the update rebuilds the rewrite rules once. With either off, nothing is rebuilt. If Reading Progress Bar, Unlist Posts & Pages or Pretty Search Permalinks is still active, the theme leaves that feature to the plugin; deactivate the plugin to use the theme's version.
 
 ---
 

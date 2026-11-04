@@ -480,12 +480,36 @@ function abr_search_base_setup() {
 	$base                    = abr_get_option( 'search_base' );
 	$wp_rewrite->search_base = $base;
 	$stamp                   = abr_search_rewrite_stamp( ABR_VERSION, $base );
-	if ( get_option( 'abr_search_base_built' ) !== $stamp ) {
+	if ( get_option( 'abr_search_base_built' ) === $stamp ) {
+		return;
+	}
+	flush_rewrite_rules( false );
+	// The marker is written only once the rules hold the search rule, so a
+	// flush that fails or never finishes is tried again on the next load.
+	if ( abr_search_rules_ready( $base ) ) {
 		update_option( 'abr_search_base_built', $stamp );
-		flush_rewrite_rules( false );
 	}
 }
 add_action( 'init', 'abr_search_base_setup', 20 );
+
+/**
+ * Whether the saved rewrite rules hold a rule for the search base.
+ *
+ * @param string $base Search base.
+ * @return bool
+ */
+function abr_search_rules_ready( $base ) {
+	$rules = get_option( 'rewrite_rules' );
+	if ( ! is_array( $rules ) ) {
+		return false;
+	}
+	foreach ( array_keys( $rules ) as $rule ) {
+		if ( 0 === strpos( (string) $rule, $base . '/' ) ) {
+			return true;
+		}
+	}
+	return false;
+}
 
 /**
  * The marker stored once the rewrite rules carry a search base.

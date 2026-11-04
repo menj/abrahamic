@@ -272,18 +272,42 @@ function abr_unlist_meta_box_render( $post ) {
 /**
  * Add a post to the unlisted list or take it out.
  *
- * Reads the stored option directly, so a save made while the
- * unlist_posts_enabled filter is off keeps the rest of the list.
+ * Each post's own flag, post meta `_abr_unlisted` ("1" or "0"), is the
+ * record; the plugin's option `unlist_posts` is rebuilt from the flags after
+ * every change. Two editors saving different posts at once each write their
+ * own row and the later rebuild reads both, so neither change is lost. IDs
+ * the plugin stored without a flag stay until the post is listed here.
  *
  * @param int  $post_id Post ID.
  * @param bool $unlist  True to unlist.
  */
 function abr_unlist_set( $post_id, $unlist ) {
 	$post_id = absint( $post_id );
-	$stored  = get_option( 'unlist_posts', array() );
-	$ids     = is_array( $stored ) ? array_filter( array_map( 'absint', $stored ) ) : array();
-	$ids     = $unlist ? array_merge( $ids, array( $post_id ) ) : array_diff( $ids, array( $post_id ) );
-	update_option( 'unlist_posts', array_values( array_unique( $ids ) ) );
+	if ( ! $post_id ) {
+		return;
+	}
+	update_post_meta( $post_id, '_abr_unlisted', $unlist ? '1' : '0' );
+	abr_unlist_rebuild();
+}
+
+/**
+ * Rebuild `unlist_posts` from the flags and the plugin's legacy IDs, with the
+ * option read fresh past the object cache.
+ *
+ * @return int[] The stored list.
+ */
+function abr_unlist_rebuild() {
+	global $wpdb;
+	wp_cache_delete( 'alloptions', 'options' );
+	wp_cache_delete( 'unlist_posts', 'options' );
+	$stored = get_option( 'unlist_posts', array() );
+	$legacy = is_array( $stored ) ? array_filter( array_map( 'absint', $stored ) ) : array();
+	$on     = array_map( 'absint', (array) $wpdb->get_col( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = %s AND meta_value = %s", '_abr_unlisted', '1' ) ) );
+	$off    = array_map( 'absint', (array) $wpdb->get_col( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = %s AND meta_value = %s", '_abr_unlisted', '0' ) ) );
+	$ids    = array_values( array_unique( array_merge( $on, array_diff( $legacy, $off ) ) ) );
+	sort( $ids );
+	update_option( 'unlist_posts', $ids );
+	return $ids;
 }
 
 /**

@@ -21,9 +21,16 @@ The owner's brief of 4 November: build four plugins into the theme where it lack
 - The query-string search redirect is a 301 (it was a 302) and keeps the page number: `/?s=moses&paged=2` goes to `/search/moses/page/2/`. The address is built by `abr_search_pretty_url()`.
 - Rewrite rules flush once when the theme version or the search base changes. `abr_search_base_built` holds `version|base` in place of the base alone, so an update flushes once.
 
+### Fixed (CodeAnt review of #19)
+- `abr_unlist_set()` read the whole `unlist_posts` option and wrote it back, so two editors saving different posts at once could lose one change. Each post's flag is now post meta `_abr_unlisted` ("1" or "0"), and `abr_unlist_rebuild()` writes the option from the flags, read fresh past the object cache. IDs the plugin stored without a flag stay until the post is listed here.
+- The flush marker was written before the flush. It is now written only when the saved rules hold the search rule (`abr_search_rules_ready()`), so a failed flush is tried again.
+- The progress bar went stale when lazy images made the page taller. A `ResizeObserver` on the body repaints it, with capture-phase load events where that is missing.
+- A `progress_types` value holding a nested array made `sanitize_key()` throw. Only strings are kept.
+- The upgrade note said the rules flush on every site. They flush only with readable search addresses and pretty permalinks on.
+
 ### Tests
-- `tests/unlist-test.php` checks list queries, singular, `post__in` and `suppress_filters` queries, admin and AJAX requests and the referer rules, adjacent links, page lists, both sitemaps, both robots filters, the enable filter and `abr_unlist_set()`.
-- `tests/search-rewrite-test.php` checks the pretty address, encoding, page numbers, empty searches, the plugin hand-over and the flush marker.
+- `tests/unlist-test.php` checks list queries, singular, `post__in` and `suppress_filters` queries, admin and AJAX requests and the referer rules, adjacent links, page lists, both sitemaps, both robots filters, the enable filter, `abr_unlist_set()`, a concurrent save to another post and the rebuild from flags.
+- `tests/search-rewrite-test.php` checks the pretty address, encoding, page numbers, empty searches, the plugin hand-over, the flush marker and a failed flush that is retried.
 
 ## [2.94.2] - 2026-11-04
 

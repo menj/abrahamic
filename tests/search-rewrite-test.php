@@ -31,6 +31,9 @@ function update_option( $key, $value ) {
 }
 function flush_rewrite_rules() {
 	++$GLOBALS['abr_t']['flushed'];
+	if ( empty( $GLOBALS['abr_t']['flush_fails'] ) ) {
+		$GLOBALS['abr_t']['options']['rewrite_rules'] = array( $GLOBALS['abr_t']['theme']['search_base'] . '/(.+)/?$' => 'index.php?s=$matches[1]' );
+	}
 }
 
 require dirname( __DIR__ ) . '/inc/search.php';
@@ -79,6 +82,16 @@ abr_search_base_setup();
 abr_test_check( 3 === $GLOBALS['abr_t']['flushed'], 'a new theme version flushes once' );
 abr_search_base_setup();
 abr_test_check( 3 === $GLOBALS['abr_t']['flushed'], 'and then not again' );
+// A flush that leaves no search rule writes no marker, so the next load tries again.
+$GLOBALS['abr_t']['flush_fails']          = true;
+$GLOBALS['abr_t']['theme']['search_base'] = 'seek';
+$GLOBALS['abr_t']['options']['rewrite_rules'] = array();
+abr_search_base_setup();
+abr_test_check( 4 === $GLOBALS['abr_t']['flushed'] && '9.9.9|find' === get_option( 'abr_search_base_built' ), 'a failed flush leaves the old marker' );
+$GLOBALS['abr_t']['flush_fails'] = false;
+abr_search_base_setup();
+abr_search_base_setup();
+abr_test_check( 5 === $GLOBALS['abr_t']['flushed'] && '9.9.9|seek' === get_option( 'abr_search_base_built' ), 'the next load flushes again, then stops' );
 
 // Stand-in for the plugin's function. Declared inside a block, so PHP defines it only when this line runs.
 if ( ! function_exists( 'wpseosearch_base' ) ) {

@@ -423,7 +423,8 @@ function abr_sanitize_options( $input ) {
 				break;
 			case 'post_types':
 				// The form always sends an empty first entry, so an all-unticked list arrives as array( '' ).
-				$out[ $key ] = is_array( $raw ) ? array_values( array_intersect( array_map( 'sanitize_key', $raw ), array_keys( abr_progress_post_types() ) ) ) : $d[ $key ];
+				// Only plain strings are kept: a nested array would make sanitize_key() throw.
+				$out[ $key ] = is_array( $raw ) ? array_values( array_unique( array_intersect( array_map( 'sanitize_key', array_filter( $raw, 'is_string' ) ), array_keys( abr_progress_post_types() ) ) ) ) : $d[ $key ];
 				break;
 		}
 	}
