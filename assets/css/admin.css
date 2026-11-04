@@ -147,6 +147,8 @@
 
 /* Theme Options: form footer, tools */
 .abr-options-form[hidden], .abr-panel[hidden] { display: none; }
+/* Without JavaScript the tab buttons do nothing, so every panel shows (the body keeps its no-js class). */
+.no-js .abr-options-form[hidden], .no-js .abr-panel[hidden], .no-js .abr-sec[hidden] { display: block; }
 .abr-options-submit { position: sticky; bottom: 0; margin: 16px -32px -24px; padding: 14px 32px; background: rgba(255,255,255,.96); border-top: 1px solid var(--abr-a-line); }
 .abr-panel--tools { padding-bottom: 32px; }
 .abr-panel--tools h2:first-child { margin-top: 24px; }

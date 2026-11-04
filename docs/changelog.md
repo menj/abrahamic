@@ -2,6 +2,18 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.94.1] - 2026-11-04
+
+A CodeAnt finding on the sister themes: the Theme Options screen built every panel on every load, so the heavy reports ran their queries whatever tab was open. This theme had the same fault on the Tools tab. No option key, handle or function name changed.
+
+### Fixed
+- The Tools panel ran `abr_seed_status()`, `abr_posts_with_legacy_links()` (every published post and page) and the system report on every Theme Options load. `abr_render_seed_section()` takes a `$full` argument, default `true`; on other tabs the panel prints the `seed_mode` field and an "Open the Tools tab" link in their place. `seed_mode` stays in the markup, so a save from any tab keeps it.
+- The security reports card was already built only on `?tab=security`; it now also shows there without JavaScript.
+- The server printed `tabindex="-1"` on every tab and `hidden` on every panel, so without JavaScript the screen showed no panel. `abr_options_active_tab()` resolves the open tab, the server marks it `aria-selected="true"` and leaves its panel visible, and `admin.js` sets the roving tabindex. Arrow keys, Home and End are unchanged.
+- Without JavaScript every panel shows, through `.no-js` rules in `admin.css`, since the tab buttons need the script.
+- `?tab[]=x` made `$_GET['tab']` an array, and `sanitize_key()` threw a TypeError on PHP 8. Every read of it checks `is_string()` first.
+- When the last tab used comes from session storage and is Tools or Security, `admin.js` reloads the screen on that `?tab=` so the full panel is built. It finds the `.abr-deferred` placeholder in the panel itself (Tools) or in the card tied to the tab by `data-extra-for` (the Security reports card, which sits outside the options form). The Security card's "Load the security reports" link carries that class.
+
 ## [2.94.0] - 2026-11-04
 
 The owner's upgrade brief of 4 November: audit the theme against the WordPress theme rules in security, stability, compatibility, performance, accessibility and maintainability order, and rebuild the Theme Options screen to the admin design system. The theme folder keeps its name. No option key, shortcode, block style, taxonomy or handle changed.

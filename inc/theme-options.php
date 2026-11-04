@@ -33,6 +33,46 @@ function abr_options_tabs() {
 }
 
 /**
+ * The tab the screen opens on: ?tab= when it names a tab, else the first one.
+ * Heavy panels build their reports only on this tab.
+ *
+ * @return string Tab slug.
+ */
+function abr_options_active_tab() {
+	$tabs = abr_options_tabs();
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab selection only.
+	$tab = isset( $_GET['tab'] ) && is_string( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
+	return isset( $tabs[ $tab ] ) ? $tab : (string) key( $tabs );
+}
+
+/**
+ * Print ` hidden` on every panel but the one the screen opens on, so the
+ * open panel shows without JavaScript.
+ *
+ * @param string $slug Tab slug.
+ */
+function abr_options_panel_hidden( $slug ) {
+	if ( abr_options_active_tab() !== $slug ) {
+		echo ' hidden';
+	}
+}
+
+/**
+ * Link that opens a heavy tab, printed in its place on other tabs.
+ *
+ * @param string $slug Tab slug.
+ */
+function abr_options_open_tab_link( $slug ) {
+	$tabs = abr_options_tabs();
+	printf(
+		'<p class="abr-deferred"><a class="button" href="%1$s">%2$s</a></p>',
+		esc_url( abr_options_url( $slug ) ),
+		/* translators: %s: tab name. */
+		esc_html( sprintf( __( 'Open the %s tab', 'abrahamic' ), $tabs[ $slug ][0] ) )
+	);
+}
+
+/**
  * Admin URL of the screen, optionally on a tab.
  *
  * @param string $tab  Tab slug.
@@ -316,10 +356,11 @@ function abr_render_options_page() {
 	}
 	$tabs    = abr_options_tabs();
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab selection only.
-	$active  = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
+	$active  = isset( $_GET['tab'] ) && is_string( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
 	$active  = isset( $tabs[ $active ] ) ? $active : '';
 	$current = abr_get_option( 'scheme' );
 	$theme   = wp_get_theme();
+	$open    = abr_options_active_tab();
 	?>
 	<div class="wrap abr-settings" data-initial-tab="<?php echo esc_attr( $active ); ?>">
 		<header class="abr-settings__head">
@@ -342,17 +383,17 @@ function abr_render_options_page() {
 
 		<nav class="abr-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Theme Options sections', 'abrahamic' ); ?>">
 			<?php foreach ( $tabs as $slug => $tab ) : ?>
-				<button type="button" role="tab" class="abr-tab" id="abr-tab-<?php echo esc_attr( $slug ); ?>" aria-controls="abr-panel-<?php echo esc_attr( $slug ); ?>" aria-selected="false" tabindex="-1" data-tab="<?php echo esc_attr( $slug ); ?>">
+				<button type="button" role="tab" class="abr-tab" id="abr-tab-<?php echo esc_attr( $slug ); ?>" aria-controls="abr-panel-<?php echo esc_attr( $slug ); ?>" aria-selected="<?php echo $open === $slug ? 'true' : 'false'; ?>" data-tab="<?php echo esc_attr( $slug ); ?>">
 					<?php echo abr_tab_icon( $tab[1] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup. ?>
 					<span><?php echo esc_html( $tab[0] ); ?></span>
 				</button>
 			<?php endforeach; ?>
 		</nav>
 
-		<form method="post" action="options.php" class="abr-card abr-options-form" id="abr-options-form">
+		<form method="post" action="options.php" class="abr-card abr-options-form" id="abr-options-form"<?php echo 'tools' === $open ? ' hidden' : ''; ?>>
 			<?php settings_fields( 'abr_settings' ); ?>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-general" aria-labelledby="abr-tab-general" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-general" aria-labelledby="abr-tab-general" tabindex="0"<?php abr_options_panel_hidden( 'general' ); ?>>
 				<?php abr_options_usage( 'general' ); ?>
 				<h2><?php esc_html_e( 'Layout and motion', 'abrahamic' ); ?></h2>
 				<?php
@@ -363,7 +404,7 @@ function abr_render_options_page() {
 				?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-header" aria-labelledby="abr-tab-header" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-header" aria-labelledby="abr-tab-header" tabindex="0"<?php abr_options_panel_hidden( 'header' ); ?>>
 				<?php abr_options_usage( 'header' ); ?>
 				<h2><?php esc_html_e( 'Logo', 'abrahamic' ); ?></h2>
 				<?php
@@ -390,7 +431,7 @@ function abr_render_options_page() {
 				<p class="abr-help"><?php esc_html_e( 'Menu links are set on the Navigation tab.', 'abrahamic' ); ?></p>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-footer" aria-labelledby="abr-tab-footer" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-footer" aria-labelledby="abr-tab-footer" tabindex="0"<?php abr_options_panel_hidden( 'footer' ); ?>>
 				<?php abr_options_usage( 'footer' ); ?>
 				<h2><?php esc_html_e( 'Footer brand', 'abrahamic' ); ?></h2>
 				<?php
@@ -410,7 +451,7 @@ function abr_render_options_page() {
 				<p class="abr-help"><?php esc_html_e( 'Footer link columns are set on the Navigation tab. Social icons come from the Social tab.', 'abrahamic' ); ?></p>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-navigation" aria-labelledby="abr-tab-navigation" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-navigation" aria-labelledby="abr-tab-navigation" tabindex="0"<?php abr_options_panel_hidden( 'navigation' ); ?>>
 				<?php abr_options_usage( 'navigation' ); ?>
 				<h2><?php esc_html_e( 'How to write a menu', 'abrahamic' ); ?></h2>
 				<p class="abr-help"><?php esc_html_e( 'One link per line, as Label | target. In the main menu, start a line with a dash to place it in the dropdown of the line above.', 'abrahamic' ); ?></p>
@@ -481,7 +522,7 @@ function abr_render_options_page() {
 				</div>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-colours" aria-labelledby="abr-tab-colours" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-colours" aria-labelledby="abr-tab-colours" tabindex="0"<?php abr_options_panel_hidden( 'colours' ); ?>>
 				<?php abr_options_usage( 'colours' ); ?>
 				<h2><?php esc_html_e( 'Colour scheme', 'abrahamic' ); ?></h2>
 				<div class="abr-schemes">
@@ -517,7 +558,7 @@ function abr_render_options_page() {
 				</div>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-newsletter" aria-labelledby="abr-tab-newsletter" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-newsletter" aria-labelledby="abr-tab-newsletter" tabindex="0"<?php abr_options_panel_hidden( 'newsletter' ); ?>>
 				<?php abr_options_usage( 'newsletter' ); ?>
 				<h2><?php esc_html_e( 'Newsletter form', 'abrahamic' ); ?></h2>
 				<?php
@@ -527,7 +568,7 @@ function abr_render_options_page() {
 				?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-social" aria-labelledby="abr-tab-social" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-social" aria-labelledby="abr-tab-social" tabindex="0"<?php abr_options_panel_hidden( 'social' ); ?>>
 				<?php abr_options_usage( 'social' ); ?>
 				<h2><?php esc_html_e( 'Social profiles', 'abrahamic' ); ?></h2>
 				<p class="abr-help"><?php esc_html_e( 'Profiles with a URL appear in the footer, in the order shown here. Empty fields are left out.', 'abrahamic' ); ?></p>
@@ -539,7 +580,7 @@ function abr_render_options_page() {
 				<?php abr_render_social_fields(); ?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-search" aria-labelledby="abr-tab-search" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-search" aria-labelledby="abr-tab-search" tabindex="0"<?php abr_options_panel_hidden( 'search' ); ?>>
 				<?php abr_options_usage( 'search' ); ?>
 				<?php if ( abr_seo_plugin() ) : ?>
 					<div class="notice notice-info inline"><p>
@@ -584,7 +625,7 @@ function abr_render_options_page() {
 				?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-login" aria-labelledby="abr-tab-login" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-login" aria-labelledby="abr-tab-login" tabindex="0"<?php abr_options_panel_hidden( 'login' ); ?>>
 				<?php abr_options_usage( 'login' ); ?>
 				<h2><?php esc_html_e( 'Login screen', 'abrahamic' ); ?></h2>
 				<?php
@@ -618,7 +659,7 @@ function abr_render_options_page() {
 				<p class="abr-help"><?php esc_html_e( 'If the address is ever lost, add define( \'ABR_HIDE_LOGIN\', false ); to wp-config.php, log in at wp-login.php, and remove the line again.', 'abrahamic' ); ?></p>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-links" aria-labelledby="abr-tab-links" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-links" aria-labelledby="abr-tab-links" tabindex="0"<?php abr_options_panel_hidden( 'links' ); ?>>
 				<?php abr_options_usage( 'links' ); ?>
 				<h2><?php esc_html_e( 'Links in the running text', 'abrahamic' ); ?></h2>
 				<p class="abr-help"><?php esc_html_e( 'On a single article or page, the first mention of a known phrase links to the page that treats it, on this site or on one of the six sister sites. Phrases come from inc/data/network-links.json, a file shared by all seven themes. Links are never made in headings, quotations, verses, footnotes, tables of contents, Further reading, existing links or Arabic, Hebrew, Greek or Aramaic text, and at most one is added per paragraph. Stored content is not changed.', 'abrahamic' ); ?></p>
@@ -635,7 +676,7 @@ function abr_render_options_page() {
 				?>
 			</section>
 
-			<section class="abr-panel" role="tabpanel" id="abr-panel-security" aria-labelledby="abr-tab-security" tabindex="0" hidden>
+			<section class="abr-panel" role="tabpanel" id="abr-panel-security" aria-labelledby="abr-tab-security" tabindex="0"<?php abr_options_panel_hidden( 'security' ); ?>>
 				<?php abr_options_usage( 'security' ); ?>
 				<?php abr_sec_render_settings(); ?>
 			</section>
@@ -647,7 +688,7 @@ function abr_render_options_page() {
 
 		<?php abr_sec_render_tools(); ?>
 
-		<section class="abr-card abr-panel abr-panel--tools" role="tabpanel" id="abr-panel-tools" aria-labelledby="abr-tab-tools" tabindex="0" hidden>
+		<section class="abr-card abr-panel abr-panel--tools" role="tabpanel" id="abr-panel-tools" aria-labelledby="abr-tab-tools" tabindex="0"<?php abr_options_panel_hidden( 'tools' ); ?>>
 				<?php abr_options_usage( 'tools' ); ?>
 			<h2><?php esc_html_e( 'Export', 'abrahamic' ); ?></h2>
 			<p class="abr-help"><?php esc_html_e( 'Download every Theme Option as a JSON file, for backup or to copy the setup to another site.', 'abrahamic' ); ?></p>
@@ -670,9 +711,18 @@ function abr_render_options_page() {
 				<?php submit_button( __( 'Reset all Theme Options', 'abrahamic' ), 'delete', 'submit', false ); ?>
 			</form>
 
-			<?php abr_render_seed_section(); ?>
+			<?php
+			// Starter content status, the legacy link scan and the system
+			// report query every starter item and article; build them only on
+			// this tab. The seed_mode field stays, so other tabs save it.
+			$tools_full = 'tools' === $open;
+			abr_render_seed_section( $tools_full );
+			?>
 
 			<h2><?php esc_html_e( 'System information', 'abrahamic' ); ?></h2>
+			<?php if ( ! $tools_full ) : ?>
+				<?php abr_options_open_tab_link( 'tools' ); ?>
+			<?php else : ?>
 			<table class="widefat striped abr-sysinfo">
 				<tbody>
 					<?php
@@ -701,6 +751,7 @@ function abr_render_options_page() {
 					?>
 				</tbody>
 			</table>
+			<?php endif; ?>
 		</section>
 
 		<footer class="abr-settings__foot">
@@ -714,8 +765,28 @@ function abr_render_options_page() {
 
 /**
  * Tools: starter content status, "add missing" and per-item Restore.
+ *
+ * @param bool $full False prints the seed_mode field and a link to the Tools
+ *                   tab in place of the status table and the link scan.
  */
-function abr_render_seed_section() {
+function abr_render_seed_section( $full = true ) {
+	if ( ! $full ) {
+		?>
+		<h2 id="abr-seed"><?php esc_html_e( 'Starter content', 'abrahamic' ); ?></h2>
+		<?php
+		abr_field(
+			'seed_mode',
+			__( 'When the theme ships new starter content', 'abrahamic' ),
+			'cards',
+			'',
+			array(
+				'choices' => abr_seed_modes(),
+				'form'    => 'abr-options-form',
+			)
+		);
+		abr_options_open_tab_link( 'tools' );
+		return;
+	}
 	$rows   = abr_seed_status();
 	$labels = array(
 		'publish' => __( 'Published', 'abrahamic' ),

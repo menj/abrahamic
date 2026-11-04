@@ -1172,9 +1172,9 @@ function abr_sec_render_tools() {
 	// The reports are heavy queries; build them only when the screen opens on
 	// the Security tab, not on every Theme Options load.
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab selection only.
-	$full = isset( $_GET['tab'] ) && 'security' === sanitize_key( wp_unslash( $_GET['tab'] ) );
+	$full = isset( $_GET['tab'] ) && is_string( $_GET['tab'] ) && 'security' === sanitize_key( wp_unslash( $_GET['tab'] ) );
 	?>
-	<section class="abr-card abr-sec" id="abr-security-tools" data-extra-for="security" hidden>
+	<section class="abr-card abr-sec" id="abr-security-tools" data-extra-for="security"<?php echo $full ? '' : ' hidden'; ?>>
 		<?php abr_sec_notice(); ?>
 
 		<h2><?php esc_html_e( 'Clean up spam', 'abrahamic' ); ?></h2>
@@ -1211,7 +1211,7 @@ function abr_sec_render_tools() {
 		</p>
 
 		<?php if ( ! $full ) : ?>
-			<p><a class="button" href="<?php echo esc_url( abr_options_url( 'security' ) ); ?>"><?php esc_html_e( 'Load the security reports', 'abrahamic' ); ?></a></p>
+			<p class="abr-deferred"><a class="button" href="<?php echo esc_url( abr_options_url( 'security' ) ); ?>"><?php esc_html_e( 'Load the security reports', 'abrahamic' ); ?></a></p>
 	</section>
 			<?php
 			return;
