@@ -2,6 +2,25 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.94.0] - 2026-11-04
+
+The owner's upgrade brief of 4 November: audit the theme against the WordPress theme rules in security, stability, compatibility, performance, accessibility and maintainability order, and rebuild the Theme Options screen to the admin design system. The theme folder keeps its name. No option key, shortcode, block style, taxonomy or handle changed.
+
+### Fixed
+- `seed_mode` was rendered on the Tools panel, which sits outside the options form, so it never saved, and every save from another tab sent no value and reset it to `replace` (`abr_sanitize_options()` falls back to the default). The radios and a new Save this choice button now name the form with `form="abr-options-form"`.
+- `abr_options_notice()` read `$count` for the `search-indexed` notice before setting it: a PHP warning on every search index rebuild. It reads `abr-created` like the other counted notices.
+
+### Changed
+- Theme Options rows: `abr_field()` prints a label and help column beside a control column (`.abr-field__label`, `.abr-field__control`), one column below 782 pixels. Switches carry `role="switch"`, and the label sits in the left column with `for`.
+- New field types in `abr_field()`: `cards` (a fieldset of radio cards, used for `logo_style`, `mode_default`, `login_layout` and `seed_mode`) and `range` (a slider with an `<output>` that `admin.js` keeps in step, used for `ctx_own_max` and `ctx_sister_max`). Stored values and sanitising are unchanged.
+- `abr_options_usage()` prints a usage note at the top of each of the twelve tabs. The header carries an icon and a version badge; the foot links the Site Editor and Site Health.
+- Tabs start with `tabindex="-1"` and panels take `tabindex="0"`. Below 782 pixels the tab bar scrolls sideways and keeps the active tab in view.
+- The custom palette's five colour pickers sit in a grid, one column on phones.
+- `assets/css/admin.css` rebuilt for the card layout: rounded inputs, textareas that resize only vertically, primary buttons in navy with white text, focus rings in `--abr-a-gold-ink`.
+- `abr_setup()` calls `load_child_theme_textdomain()` and declares `title-tag` and `automatic-feed-links`.
+- The starter content notice and the built-in plugin notice are dismissible.
+- `readme.txt` gains Features, Usage and Privacy sections and a pointer to the photograph credits.
+
 ## [2.93.0] - 2026-11-04
 
 Two owner briefs of 4 November drove this release: the mobile-first audit and the WCAG 2.2 AA policy. Both ran on the same pages in Chromium at 320 to 1280 pixels, with axe-core 4.10.2. Page width, layout shift and the menu toggle passed at every width. Contrast and touch targets failed, and the fixes follow.

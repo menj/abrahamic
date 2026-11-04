@@ -1,7 +1,7 @@
 /**
  * Abrahamic: Theme Options screen.
  * Tabs (URL ?tab= first, then the last tab used), colour pickers,
- * scheme presets, social filter and count, reset confirmation.
+ * scheme presets, live slider values, social filter and count, reset confirmation.
  */
 ( function ( $ ) {
 	'use strict';
@@ -28,6 +28,10 @@
 
 		if ( focus ) {
 			$tab.trigger( 'focus' );
+		}
+		// On narrow screens the tab bar scrolls; keep the active tab in view.
+		if ( $tab[ 0 ].scrollIntoView ) {
+			$tab[ 0 ].scrollIntoView( { block: 'nearest', inline: 'nearest' } );
 		}
 		try {
 			window.sessionStorage.setItem( storageKey, slug );
@@ -89,6 +93,11 @@
 		$.each( schemes[ slug ] || {}, function ( key, hex ) {
 			$( '.abr-color[data-slug="' + key + '"]' ).wpColorPicker( 'color', hex );
 		} );
+	} );
+
+	/* Range sliders: show the value beside the slider as it moves. */
+	$wrap.find( '.abr-range input[type="range"]' ).on( 'input change', function () {
+		$( this ).siblings( '.abr-range__value' ).text( this.value );
 	} );
 
 	/* Social tab: filter by name and mark filled fields. */

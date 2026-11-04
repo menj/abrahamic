@@ -514,7 +514,7 @@ function abr_builtin_plugin_notice() {
 		return;
 	}
 	printf(
-		'<div class="notice notice-info"><p>%s</p></div>',
+		'<div class="notice notice-info is-dismissible"><p>%s</p></div>',
 		wp_kses_post(
 			sprintf(
 				/* translators: %s: plugin names. */

@@ -4,8 +4,8 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.93.0** |
-| Release date | 2026-11-03 |
+| Current version | **2.94.0** |
+| Release date | 2026-11-04 |
 | Status | Stable |
 
 ---
@@ -362,6 +362,8 @@ Screen: Appearance > Theme Options (`themes.php?page=abrahamic-theme-options`), 
 | Search | Search output switch, front page description, logo, share image, verification codes, Analytics ID | Settings API |
 | Contextual links | Links to this site and to sister sites, a cap for each, extra phrases, excluded slugs | Settings API |
 | Tools | Export, import, reset, starter content, link updater, system information | `admin-post.php` |
+
+Layout: each `abr_field()` is a row, label and help left, control right, stacked below 782 pixels. Field types: `checkbox` (a switch), `text`, `url`, `email`, `textarea`, `menu`, `image`, `color`, `select`, `cards` (radio cards: `logo_style`, `mode_default`, `login_layout`, `seed_mode`) and `range` (a slider with its live value: `ctx_own_max`, `ctx_sister_max`). `abr_options_usage()` holds the usage note shown at the top of each tab. `seed_mode` sits on the Tools panel, outside the form, and joins it through `form="abr-options-form"`.
 
 Tab selection: `?tab=` in the address first, then `sessionStorage` key `abrOptionsTab`, then General. The script keeps the address and the form referer in step, so saving returns to the same tab. Unticked switches submit through a hidden `0` field.
 
