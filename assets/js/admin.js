@@ -78,7 +78,9 @@
 		} catch ( e ) {}
 		// A heavy panel is built only on its own ?tab= load; reopen the
 		// screen there rather than show its placeholder.
-		if ( stored && $( '#abr-panel-' + stored ).find( '.abr-deferred' ).length ) {
+		// The placeholder sits in the panel (Tools) or in the card that goes
+		// with it outside the form (Security, data-extra-for).
+		if ( stored && $( '#abr-panel-' + stored + ', [data-extra-for="' + stored + '"]' ).find( '.abr-deferred' ).length ) {
 			var reopen = new URL( window.location.href );
 			reopen.searchParams.set( 'tab', stored );
 			window.location.replace( reopen.toString() );

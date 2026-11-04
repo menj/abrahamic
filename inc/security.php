@@ -1211,7 +1211,7 @@ function abr_sec_render_tools() {
 		</p>
 
 		<?php if ( ! $full ) : ?>
-			<p><a class="button" href="<?php echo esc_url( abr_options_url( 'security' ) ); ?>"><?php esc_html_e( 'Load the security reports', 'abrahamic' ); ?></a></p>
+			<p class="abr-deferred"><a class="button" href="<?php echo esc_url( abr_options_url( 'security' ) ); ?>"><?php esc_html_e( 'Load the security reports', 'abrahamic' ); ?></a></p>
 	</section>
 			<?php
 			return;

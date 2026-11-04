@@ -10,7 +10,7 @@ A CodeAnt finding on the sister themes: the Theme Options screen built every pan
 - The Tools panel ran `abr_seed_status()`, `abr_posts_with_legacy_links()` (every published post and page) and the system report on every Theme Options load. `abr_render_seed_section()` takes a `$full` argument, default `true`; on other tabs the panel prints the `seed_mode` field and an "Open the Tools tab" link in their place. `seed_mode` stays in the markup, so a save from any tab keeps it.
 - The security reports card was already built only on `?tab=security`; it now also shows there without JavaScript.
 - The server printed `tabindex="-1"` on every tab and `hidden` on every panel, so without JavaScript the screen showed no panel. `abr_options_active_tab()` resolves the open tab, the server marks it `aria-selected="true"` and leaves its panel visible, and `admin.js` sets the roving tabindex. Arrow keys, Home and End are unchanged.
-- When the last tab used comes from session storage and is a heavy one, `admin.js` reloads the screen on that `?tab=` so the full panel is built.
+- When the last tab used comes from session storage and is Tools or Security, `admin.js` reloads the screen on that `?tab=` so the full panel is built. It finds the `.abr-deferred` placeholder in the panel itself (Tools) or in the card tied to the tab by `data-extra-for` (the Security reports card, which sits outside the options form). The Security card's "Load the security reports" link carries that class.
 
 ## [2.94.0] - 2026-11-04
 
