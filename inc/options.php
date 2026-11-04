@@ -126,6 +126,12 @@ function abr_option_types() {
 		'login_hide'          => 'bool',
 		'login_slug'          => 'slug',
 		'login_redirect_slug' => 'slug',
+		// Reading progress bar.
+		'progress_on'         => 'bool',
+		'progress_colour'     => 'hex',
+		'progress_height'     => 'progress_height',
+		'progress_position'   => 'progress_position',
+		'progress_types'      => 'post_types',
 		// Search addresses.
 		'search_pretty'       => 'bool',
 		'search_base'         => 'slug',
@@ -231,6 +237,11 @@ function abr_option_defaults() {
 		'login_hide'          => get_option( 'whl_page' ) ? 1 : 0,
 		'login_slug'          => get_option( 'whl_page' ) ? sanitize_title( get_option( 'whl_page' ) ) : 'login',
 		'login_redirect_slug' => get_option( 'whl_redirect_admin' ) ? sanitize_title( get_option( 'whl_redirect_admin' ) ) : '404',
+		'progress_on'         => 1,
+		'progress_colour'     => '',
+		'progress_height'     => 4,
+		'progress_position'   => 'top',
+		'progress_types'      => array( 'post' ),
 		'search_pretty'       => 1,
 		'search_base'         => get_option( 'wpseosearch_base' ) ? sanitize_title( get_option( 'wpseosearch_base' ) ) : 'search',
 		'ctx_own'             => 1,
@@ -325,7 +336,7 @@ function abr_sanitize_options( $input ) {
 
 	foreach ( abr_option_types() as $key => $type ) {
 		$raw = isset( $in[ $key ] ) ? $in[ $key ] : null;
-		if ( is_array( $raw ) ) {
+		if ( is_array( $raw ) && 'post_types' !== $type ) {
 			$raw = null;
 		}
 		switch ( $type ) {
@@ -403,6 +414,17 @@ function abr_sanitize_options( $input ) {
 				break;
 			case 'scheme':
 				$out[ $key ] = ( null !== $raw && array_key_exists( $raw, abr_schemes() ) ) ? $raw : $d[ $key ];
+				break;
+			case 'progress_height':
+				$out[ $key ] = null === $raw || '' === trim( (string) $raw ) ? $d[ $key ] : max( 2, min( 12, (int) $raw ) );
+				break;
+			case 'progress_position':
+				$out[ $key ] = ( null !== $raw && array_key_exists( $raw, abr_progress_positions() ) ) ? $raw : $d[ $key ];
+				break;
+			case 'post_types':
+				// The form always sends an empty first entry, so an all-unticked list arrives as array( '' ).
+				// Only plain strings are kept: a nested array would make sanitize_key() throw.
+				$out[ $key ] = is_array( $raw ) ? array_values( array_unique( array_intersect( array_map( 'sanitize_key', array_filter( $raw, 'is_string' ) ), array_keys( abr_progress_post_types() ) ) ) ) : $d[ $key ];
 				break;
 		}
 	}

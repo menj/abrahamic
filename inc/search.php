@@ -469,8 +469,8 @@ function abr_search_pretty_on() {
 }
 
 /**
- * Set the search base before rewrite rules are used, and rebuild them once
- * whenever the base changes.
+ * Set the search base before rewrite rules are used. The rules are rebuilt
+ * once when the theme version or the base changes, never on an ordinary load.
  */
 function abr_search_base_setup() {
 	if ( ! abr_search_pretty_on() ) {
@@ -479,16 +479,73 @@ function abr_search_base_setup() {
 	global $wp_rewrite;
 	$base                    = abr_get_option( 'search_base' );
 	$wp_rewrite->search_base = $base;
-	// Rebuild the rules once whenever the base differs from the one they were built with.
-	if ( get_option( 'abr_search_base_built' ) !== $base ) {
-		update_option( 'abr_search_base_built', $base );
-		flush_rewrite_rules( false );
+	$stamp                   = abr_search_rewrite_stamp( ABR_VERSION, $base );
+	if ( get_option( 'abr_search_base_built' ) === $stamp ) {
+		return;
+	}
+	flush_rewrite_rules( false );
+	// The marker is written only once the rules hold the search rule, so a
+	// flush that fails or never finishes is tried again on the next load.
+	if ( abr_search_rules_ready( $base ) ) {
+		update_option( 'abr_search_base_built', $stamp );
 	}
 }
 add_action( 'init', 'abr_search_base_setup', 20 );
 
 /**
- * Send /?s=term to /search/term/.
+ * Whether the saved rewrite rules hold a rule for the search base.
+ *
+ * @param string $base Search base.
+ * @return bool
+ */
+function abr_search_rules_ready( $base ) {
+	$rules = get_option( 'rewrite_rules' );
+	if ( ! is_array( $rules ) ) {
+		return false;
+	}
+	foreach ( array_keys( $rules ) as $rule ) {
+		if ( 0 === strpos( (string) $rule, $base . '/' ) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * The marker stored once the rewrite rules carry a search base.
+ *
+ * @param string $version Theme version.
+ * @param string $base    Search base.
+ * @return string
+ */
+function abr_search_rewrite_stamp( $version, $base ) {
+	return $version . '|' . $base;
+}
+
+/**
+ * The pretty address for a search, with its page number.
+ *
+ * @param string $home  Home URL, with or without a trailing slash.
+ * @param string $base  Search base.
+ * @param string $term  Search term, as typed.
+ * @param int    $paged Page number.
+ * @return string Empty for an empty search.
+ */
+function abr_search_pretty_url( $home, $base, $term, $paged = 1 ) {
+	$term = trim( (string) $term );
+	if ( '' === $term || '' === (string) $base ) {
+		return '';
+	}
+	$url = rtrim( $home, '/' ) . '/' . $base . '/' . rawurlencode( $term ) . '/';
+	if ( (int) $paged > 1 ) {
+		$url .= 'page/' . (int) $paged . '/';
+	}
+	return $url;
+}
+
+/**
+ * Send /?s=term to /search/term/ with a 301, keeping the page number. An
+ * empty search gets no redirect.
  */
 function abr_search_pretty_redirect() {
 	global $wp_rewrite;
@@ -496,11 +553,47 @@ function abr_search_pretty_redirect() {
 	if ( ! abr_search_pretty_on() || ! is_search() || is_admin() || ! isset( $_GET['s'] ) || ! $wp_rewrite->using_permalinks() ) {
 		return;
 	}
-	$term = get_query_var( 's' );
-	if ( '' === trim( (string) $term ) ) {
+	$url = abr_search_pretty_url( home_url( '/' ), $wp_rewrite->search_base, get_query_var( 's' ), (int) get_query_var( 'paged' ) );
+	if ( '' === $url ) {
 		return;
 	}
-	wp_safe_redirect( get_search_link( $term ) );
+	wp_safe_redirect( $url, 301 );
 	exit;
 }
 add_action( 'template_redirect', 'abr_search_pretty_redirect' );
+
+/**
+ * The search base on Settings > Permalinks, under Optional, as the plugin
+ * offers it. It writes the same Theme Options value as the Search tab.
+ */
+function abr_search_permalink_field() {
+	if ( ! abr_search_pretty_on() || ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- checked by check_admin_referer() below.
+	if ( isset( $_POST['abr_search_base'] ) ) {
+		check_admin_referer( 'update-permalink' );
+		$base = sanitize_title( wp_unslash( $_POST['abr_search_base'] ) );
+		if ( '' !== $base && ! in_array( $base, abr_reserved_slugs(), true ) && $base !== abr_get_option( 'login_slug' ) ) {
+			// Every key with its current value, so the sanitiser keeps the rest as it is.
+			$options                = abr_get_options();
+			$options['search_base'] = $base;
+			update_option( 'abr_options', $options );
+			global $wp_rewrite;
+			$wp_rewrite->search_base = $base;
+		}
+	}
+	add_settings_field( 'abr_search_base', __( 'Search base', 'abrahamic' ), 'abr_search_permalink_input', 'permalink', 'optional', array( 'label_for' => 'abr_search_base' ) );
+}
+add_action( 'load-options-permalink.php', 'abr_search_permalink_field' );
+
+/**
+ * The input for that field.
+ */
+function abr_search_permalink_input() {
+	printf(
+		'<input type="text" name="abr_search_base" id="abr_search_base" value="%s" class="regular-text code" spellcheck="false"> <p class="description">%s</p>',
+		esc_attr( $GLOBALS['wp_rewrite']->search_base ),
+		esc_html__( 'Search results open at /search/term/ with the default. The same setting is on Appearance > Theme Options > Search.', 'abrahamic' )
+	);
+}

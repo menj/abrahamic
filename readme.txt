@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.94.2
+Stable tag: 2.95.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -33,6 +33,7 @@ Abrahamic is a child theme: it builds on Twenty Twenty-Five, which must stay ins
 == Features ==
 
 * Fifteen home page sections, each one a block pattern you edit in the Site Editor.
+* A Social profile links pattern puts the footer icons anywhere on a page.
 * Starter pages, Journal articles and topic categories, created on activation and kept up to date by later releases.
 * Breadcrumbs, a site map, a page-not-found screen and readable search addresses such as /search/abraham/.
 * Search descriptions, canonical addresses, social sharing tags, one structured data graph and an image sitemap. An active SEO plugin such as Yoast SEO or Rank Math takes these over.
@@ -596,6 +597,12 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.95.0 - 2026-11-04 =
+* A reading progress bar fills across the top or bottom of the window on articles. Set its colour, height, position and post types on Theme Options > General.
+* Unlisted posts can be set from Quick Edit and Bulk Edit, and an Unlisted column shows which ones are. Rank Math sitemaps and robots tags now leave them out too.
+* The search address word can also be set on Settings > Permalinks. Old search addresses redirect permanently and keep their page number.
+* A Social profile links pattern puts the footer icons on any page.
 
 = 2.94.2 - 2026-11-04 =
 * Pages tell search engines they are free to read as a true or false value again. Rank Math turned the value into text after the theme had set it.

@@ -239,13 +239,34 @@ function abr_field( $key, $label, $type = 'text', $help = '', $attrs = array() )
 }
 
 /**
+ * The post types the progress bar shows on, as a group of switches. An empty
+ * first entry is always sent, so unticking every type saves as none.
+ */
+function abr_render_progress_types() {
+	$chosen = (array) abr_get_option( 'progress_types' );
+	echo '<fieldset class="abr-field abr-field--types"><legend class="abr-field__label">' . esc_html__( 'Show it on', 'abrahamic' ) . '</legend><div class="abr-field__control">';
+	echo '<input type="hidden" name="abr_options[progress_types][]" value="">';
+	foreach ( abr_progress_post_types() as $slug => $label ) {
+		$id = 'abr-progress-type-' . $slug;
+		printf(
+			'<p><span class="abr-switch"><input type="checkbox" id="%1$s" name="abr_options[progress_types][]" value="%2$s" role="switch" %3$s><span class="abr-switch__track" aria-hidden="true"></span></span> <label for="%1$s">%4$s</label></p>',
+			esc_attr( $id ),
+			esc_attr( $slug ),
+			checked( in_array( $slug, $chosen, true ), true, false ),
+			esc_html( $label )
+		);
+	}
+	echo '</div></fieldset>';
+}
+
+/**
  * How to use one tab, printed at the top of its panel.
  *
  * @param string $tab Tab slug.
  */
 function abr_options_usage( $tab ) {
 	$usage = array(
-		'general'    => __( 'Switch the sticky header, the light and dark switch and the fade-in effect on or off, and choose the colours a first-time visitor sees. Changes show on the site after Save.', 'abrahamic' ),
+		'general'    => __( 'Switch the sticky header, the light and dark switch and the fade-in effect on or off, and choose the colours a first-time visitor sees. Set the reading progress bar at the foot. Changes show on the site after Save.', 'abrahamic' ),
 		'header'     => __( 'Pick how the logo looks, set its two lines of text, and choose which buttons sit in the header. Button links take a full address, a path or a page token from the Navigation tab.', 'abrahamic' ),
 		'footer'     => __( 'Write the footer title, tagline and description, the copyright line and the note opposite it. The contact email shows only on the Contact page.', 'abrahamic' ),
 		'navigation' => __( 'Write each menu as plain lines, one link per line. The rules for a line and the list of page tokens come first; each menu has its own limits under its box.', 'abrahamic' ),
@@ -401,6 +422,17 @@ function abr_render_options_page() {
 				abr_field( 'mode_toggle', __( 'Show the light and dark switch', 'abrahamic' ), 'checkbox', __( 'Visitors keep their choice on this device. The dark colours follow the scheme chosen on the Colours tab.', 'abrahamic' ) );
 				abr_field( 'mode_default', __( 'Colours on a first visit', 'abrahamic' ), 'cards', '', array( 'choices' => abr_modes() ) );
 				abr_field( 'reveal_motion', __( 'Fade cards in as they enter the viewport', 'abrahamic' ), 'checkbox', __( 'Visitors who prefer reduced motion never see the animation.', 'abrahamic' ) );
+				?>
+				<h2><?php esc_html_e( 'Reading progress bar', 'abrahamic' ); ?></h2>
+				<?php if ( function_exists( 'rp_show_it' ) ) : ?>
+					<div class="notice notice-info inline"><p><?php esc_html_e( 'Reading Progress Bar is active and draws its own bar. Deactivate it to use the settings below.', 'abrahamic' ); ?></p></div>
+				<?php endif; ?>
+				<?php
+				abr_field( 'progress_on', __( 'Show a reading progress bar', 'abrahamic' ), 'checkbox', __( 'A thin bar fills across the window as the reader scrolls through an article or page.', 'abrahamic' ) );
+				abr_field( 'progress_colour', __( 'Bar colour', 'abrahamic' ), 'color', __( 'Leave empty to use the accent colour of the scheme.', 'abrahamic' ) );
+				abr_field( 'progress_height', __( 'Bar height in pixels', 'abrahamic' ), 'range', '', array( 'min' => 2, 'max' => 12, 'step' => 1 ) );
+				abr_field( 'progress_position', __( 'Bar position', 'abrahamic' ), 'cards', __( 'At the top, the bar sits below the admin bar for logged-in editors.', 'abrahamic' ), array( 'choices' => abr_progress_positions() ) );
+				abr_render_progress_types();
 				?>
 			</section>
 

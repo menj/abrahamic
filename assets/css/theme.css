@@ -601,6 +601,14 @@ h1, h2, h3, h4, h5, h6, .wp-block-post-template > li { text-align: start; text-a
 .abr-footer .abr-social a:hover,
 .abr-footer .abr-social a:focus-visible { border-color: var(--abr-gold); background: var(--abr-gold); color: var(--abr-on-dark); }
 .abr-social .abr-icon { width: 17px; height: 17px; }
+/* The same row outside the footer ([abr_social] in a page or the Social profile links pattern). */
+.abr-social a {
+	box-sizing: border-box; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+	color: var(--abr-navy); border: 1px solid color-mix(in srgb, var(--abr-navy) 20%, transparent); text-decoration: none; transition: all var(--abr-ease);
+}
+.abr-social a:hover,
+.abr-social a:focus-visible { border-color: var(--abr-gold); background: var(--abr-gold); color: var(--abr-on-dark); }
+.abr-social a:focus-visible { outline: 2px solid var(--abr-gold); outline-offset: 2px; }
 .abr-footer__bottom {
 	margin-top: 48px !important; padding-top: 24px; border-top: 1px solid color-mix(in srgb, var(--abr-white) 8%, transparent);
 	justify-content: space-between; font-size: 0.89rem; gap: 12px;
@@ -1148,7 +1156,8 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 	.abr-footer li a { display: inline-block; padding-block: 10px; }
 	.abr-compare-tabs button { min-height: 44px; }
 	.abr-timeline__controls button,
-	.abr-footer .abr-social a { width: 44px; height: 44px; }
+	.abr-footer .abr-social a,
+	.abr-social a { width: 44px; height: 44px; }
 	.abr-social .abr-icon { width: 19px; height: 19px; }
 }
 

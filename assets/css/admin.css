@@ -83,6 +83,9 @@
 .abr-field--cards { border: 0; border-bottom: 1px solid #f0eee9; }
 .abr-field--cards > legend { float: left; width: 100%; padding: 0; margin: 0 0 4px; }
 .abr-field--cards > .abr-help { grid-column: 1 / -1; margin-top: 0; clear: both; }
+.abr-field--types { border: 0; border-bottom: 1px solid #f0eee9; }
+.abr-field--types > legend { float: left; padding: 0; margin: 0; }
+.abr-field--types .abr-field__control p { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; }
 .abr-choice-cards { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
 .abr-choice-card { position: relative; display: flex; align-items: flex-start; gap: 10px; padding: 14px; border: 1px solid var(--abr-a-line); border-radius: var(--abr-a-radius); background: #fff; cursor: pointer; font-weight: 500; }
 .abr-choice-card input { position: absolute; opacity: 0; width: 1px; height: 1px; }
