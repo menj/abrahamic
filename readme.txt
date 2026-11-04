@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.92.2
+Stable tag: 2.93.0
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -547,6 +547,11 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.93.0 - 2026-11-04 =
+* Grey and gold small text is dark enough to read: every label, date, footnote and search result now clears the 4.5 to 1 contrast line, in light and dark colours.
+* On phones and tablets the search icon, Donate, the page numbers, Copy citation and the footer links are at least 44 pixels tall. From 1024 pixels up they keep their old size.
+* The timeline's periods are announced to screen readers as a list of items.
 
 = 2.92.2 - 2026-11-04 =
 * Structured data under Rank Math marks pages as free to read with a proper true value, so the Schema Markup Validator stops reporting INVALID_BOOLEAN.

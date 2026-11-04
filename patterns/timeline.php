@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:group {"align":"wide","className":"abr-timeline__track","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide abr-timeline__track" role="list" tabindex="0" aria-label="Historical periods">
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">c. 2000–1200 BCE</p>
 <!-- /wp:paragraph -->
@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">c. 1000–586 BCE</p>
 <!-- /wp:paragraph -->
@@ -53,7 +53,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">c. 516 BCE–70 CE</p>
 <!-- /wp:paragraph -->
@@ -66,7 +66,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">c. 4 BCE–30 CE</p>
 <!-- /wp:paragraph -->
@@ -79,7 +79,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">c. 100–300 CE</p>
 <!-- /wp:paragraph -->
@@ -92,7 +92,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">c. 30–600 CE</p>
 <!-- /wp:paragraph -->
@@ -105,7 +105,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">610–632 CE</p>
 <!-- /wp:paragraph -->
@@ -118,7 +118,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">c. 700–1500 CE</p>
 <!-- /wp:paragraph -->
@@ -131,7 +131,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">c. 1500–1900 CE</p>
 <!-- /wp:paragraph -->
@@ -144,7 +144,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"abr-era","layout":{"type":"default"}} -->
-<div class="wp-block-group abr-era">
+<div class="wp-block-group abr-era" role="listitem">
 <!-- wp:paragraph {"className":"abr-kicker"} -->
 <p class="abr-kicker">1900–present</p>
 <!-- /wp:paragraph -->

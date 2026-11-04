@@ -494,7 +494,7 @@ function abr_schema_timeline( $ctx, &$nodes ) {
 			}
 		}
 	}
-	if ( ! empty( $ctx['timeline_html'] ) && preg_match_all( '#<div class="[^"]*\babr-era\b[^"]*">(.*?)</div>#s', $ctx['timeline_html'], $m, PREG_SET_ORDER ) ) {
+	if ( ! empty( $ctx['timeline_html'] ) && preg_match_all( '#<div class="[^"]*\babr-era\b[^"]*"[^>]*>(.*?)</div>#s', $ctx['timeline_html'], $m, PREG_SET_ORDER ) ) {
 		foreach ( $m as $era ) {
 			$when   = preg_match( '#<p class="abr-kicker">(.*?)</p>#s', $era[1], $k ) ? abr_schema_text( $k[1] ) : '';
 			$name   = preg_match( '#<h3[^>]*>(.*?)</h3>#s', $era[1], $h ) ? abr_schema_text( $h[1] ) : '';

@@ -2,6 +2,20 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.93.0] - 2026-11-04
+
+Two owner briefs of 4 November drove this release: the mobile-first audit and the WCAG 2.2 AA policy. Both ran on the same pages in Chromium at 320 to 1280 pixels, with axe-core 4.10.2. Page width, layout shift and the menu toggle passed at every width. Contrast and touch targets failed, and the fixes follow.
+
+### Fixed
+- Contrast (WCAG 1.4.3). `--abr-muted` was navy at 62% and measured 4.49 to 1 on ivory, a hair under the line. It is 66% now. `--abr-gold-ink` mixed 68% gold into navy and measured 4.38; it mixes 60%. The fix sits in the two tokens, so every label, kicker, standfirst, breadcrumb and footnote that uses them passes.
+- Card topic links on the front page and the archives used plain `--abr-gold` on white (2.81 to 1). They use `--abr-gold-ink`.
+- Back to top links lost their 0.8 opacity, which pulled them to 3.1. The search result path and the tag archive date drop their 45% navy mix for `--abr-muted`. Highlighted search words take `--abr-charcoal` on the gold wash.
+- In dark colours the Further reading cards on the front page printed `--abr-white` (which dark mode turns into a dark surface) on a dark panel, at 1.03 to 1. They use `--abr-on-dark`. Light mode looks the same.
+- The timeline track has `role="list"`, and its periods had no role, which axe reports as critical (1.3.1). Each `.abr-era` in `patterns/timeline.php` carries `role="listitem"`. The Event schema in `inc/schema.php` read the eras with a pattern that stopped at the class attribute, so it now allows attributes after it. `tests/schema-graph-test.php` caught this.
+
+### Changed
+- Touch targets (WCAG 2.5.8, and 44 pixels for the mobile brief). A new block at the end of `assets/css/theme.css` sizes the header search button, Donate, the logo mark, pagination numbers, Copy citation and the footer bottom links for a finger. A `min-width: 1024px` query puts the desktop sizes back.
+
 ## [2.92.2] - 2026-11-04
 
 ### Fixed
