@@ -2,6 +2,17 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.1] - 2026-11-04
+
+### Changed
+- The Islamic Dilemma page (`page:islamic-dilemma` in `inc/seed/content.json`) no longer presents other sites as related. The box heading and its table-of-contents entry read "More on the Islamic Dilemma" (anchor `#more-on-the-dilemma`), in place of "The Islamic Dilemma across the network" (`#across-the-network`). "the sister pieces listed below" reads "the pieces listed below". Every link stays. `ABR_SEED_VERSION` is 109, so the text sync carries the change under the site's `seed_mode`.
+- Anonymity, narrowed by the owner's decision of 2026-11-04: the JSON-LD names him as the schema author and nothing else does. One Person node, `#author` at the site root: "Mohd Elfie Nieshaem Juferi", `url` and `sameAs` `https://menj.bio` (`abr_schema_author_node()` in `inc/schema.php`). `abr_schema_one_author()` runs inside `abr_schema_extend()`, so on the theme's graph and on Rank Math's alike: every `author` points to the Person, every Article and page node without one gets the reference, and the Person appears once. The Article's `author` in `inc/seo.php` is that reference; it was the Organization. The publisher stays the site.
+- Rank Math's own Person, with its Gravatar, is still removed (`inc/rank-math.php`); the author it named becomes the one author Person. `inc/anonymity.php` is unchanged in what it does: the REST user list, author archives and `?author=`, the author name in feeds and on the page, oEmbed and the users sitemap stay closed. Its header says where the schema author comes from.
+- ScholarlyArticle, TechArticle, Report and ProfilePage nodes get the author reference too, should Rank Math or an editor's schema add one.
+- The Organization's `sameAs`, where it has one, ends with `https://menj.bio`. Existing entries keep their order.
+- `docs/ssot.md`: the Anonymity rule reads that no person is named anywhere a visitor reads, and that the owner is declared only as the schema author, by the owner's decision of 2026-11-04. The structured-data section counts the schema author among the places a Person appears.
+- `tests/schema-graph-test.php` checks every graph, with and without Rank Math: one author Person with that name, url and sameAs, every `author` pointing to it, an author on every article and page node, the publisher as the site, and Rank Math's user Person gone. It also checks that the name appears in no shipped file but `inc/schema.php`.
+
 ## [2.96.0] - 2026-11-04
 
 ### Fixed

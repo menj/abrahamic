@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.0
+Stable tag: 2.96.1
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -597,6 +597,10 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.1 - 2026-11-04 =
+* The Islamic Dilemma page no longer calls other websites related to this one. Its links stay.
+* The JSON-LD names the owner as the schema author. Nothing a visitor reads names him.
 
 = 2.96.0 - 2026-11-04 =
 * A fatal PHP error now shows "Something went wrong" with a 500 status, and a database outage shows "We cannot reach our database". Up to 2.95.0 both showed the maintenance notice. The theme repairs its old copies on the first admin page after the update and says so in a notice.

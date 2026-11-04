@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.0** |
+| Current version | **2.96.1** |
 | Release date | 2026-11-04 |
 | Status | Stable |
 
@@ -249,13 +249,13 @@ Rank Math, when active, always wins: any title or description set in it is used 
 
 ### Structured data
 
-Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ, the question-and-answer articles, and the questions section of the Islamic Dilemma page, read from its level-three headings through `abr_faq_section_keys()`), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. The owner keeps all schema.org markup, whether Google lists a rich result for it or not, because it serves generative, answer and AI search (GEO, AEO, AIO). Decided on 2026-11-03. No ProfilePage anywhere, and no Person for an author, the owner or the site. A Person appears in two places only: the photographer named as `creator` inside a photograph's ImageObject, taken from `inc/seed/photo-credits.json`, as Google's image licence data asks, and the prophets and historical figures in `inc/data/schema-entities.json` that a page names.
+Organization, WebSite, WebPage (or CollectionPage, AboutPage, ContactPage), BreadcrumbList, Article with speakable, FAQPage (FAQ, the question-and-answer articles, and the questions section of the Islamic Dilemma page, read from its level-three headings through `abr_faq_section_keys()`), and ImageObject with licence data from `inc/seed/photo-credits.json` for every credited photograph. When photographs are added, add their credit to that file as well as to the Copyright and DMCA page. The owner keeps all schema.org markup, whether Google lists a rich result for it or not, because it serves generative, answer and AI search (GEO, AEO, AIO). Decided on 2026-11-03. No ProfilePage anywhere. A Person appears in three places only: the schema author (see Anonymity, decided 2026-11-04), the photographer named as `creator` inside a photograph's ImageObject, taken from `inc/seed/photo-credits.json`, as Google's image licence data asks, and the prophets and historical figures in `inc/data/schema-entities.json` that a page names.
 
 `inc/schema.php` adds the rest, each only where the page shows it: Qur'an quotations (Quotation, Chapter, Book) with their translation, citations from the notes (Qur'an and Bible chapters, hadith with a PropertyValue grading only where the note prints one, other sources), the glossary as a DefinedTermSet, the timeline as an ItemList of Event, Table, diagrams as ImageObject, about and mentions from the entities file, WPHeader, WPFooter, SiteNavigationElement, a SearchAction, SearchResultsPage, archive lists and article details. It builds from a context array, so `php tests/schema-graph-test.php` runs it on the seed content. One graph per page: under Rank Math the nodes join its graph through `rank_math/json_ld` and merge by `@id`.
 
 ### Anonymity
 
-No person is named as author, owner or creator anywhere a visitor, search engine or AI tool can read: pages, feeds, embeds, the REST API, sitemaps, schema, or the theme's own public files. Every article's author and publisher is the site itself. See `inc/anonymity.php`.
+No person is named as author, owner or creator anywhere a visitor reads: pages, bylines, the meta author, feeds, embeds, the REST API, sitemaps, or the theme's own public files. The owner is declared in one place only, as the schema author: the JSON-LD carries one Person, `#author` at the site root, named Mohd Elfie Nieshaem Juferi with `url` and `sameAs` https://menj.bio, and every Article and page node names it as `author` (`abr_schema_one_author()` in `inc/schema.php`). This is by the owner's decision of 2026-11-04. The publisher of every article is the site itself. `inc/anonymity.php` keeps every other channel closed; `php tests/schema-graph-test.php` checks that the name appears in no shipped file but `inc/schema.php`.
 
 ### Photographs
 
