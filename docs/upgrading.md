@@ -931,7 +931,7 @@ Replace the theme files. No settings, templates or identifiers changed.
 
 Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new folder.
 
-1. Upload `abrahamic-2.81.0.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
+1. Upload `abrahamic-2.94.0.zip` (or any 2.x package) under Appearance > Themes > Add New > Upload Theme. It installs to `wp-content/themes/abrahamic/`.
 2. Activate **Abrahamic**. Saved settings are copied from `ar_options` to `abr_options` automatically.
 3. Check Appearance > Abrahamic and confirm the colour scheme, newsletter and social values.
 4. Site Editor changes are stored against the theme slug and do not carry over. If the front page, header or footer was edited under 1.x:
