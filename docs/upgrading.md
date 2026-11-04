@@ -4,6 +4,12 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.94.2 to 2.95.0
+
+Replace the theme files. The reading progress bar is on for articles; switch it off or choose more post types on Theme Options > General. The first load after the update flushes the rewrite rules once. If Reading Progress Bar, Unlist Posts & Pages or Pretty Search Permalinks is still active, the theme leaves that feature to the plugin; deactivate the plugin to use the theme's version.
+
+---
+
 ## Upgrading from 2.86.1 to 2.88.0
 
 Replace the theme files and load any admin page once. Seed version 104 applies all starter-content changes below (Islamic Dilemma wording, capitalised headings, the Deuteronomy 18 move).

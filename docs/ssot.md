@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.94.2** |
+| Current version | **2.95.0** |
 | Release date | 2026-11-04 |
 | Status | Stable |
 
@@ -125,7 +125,7 @@ abrahamic/
 │   ├── data/network-links.json  Shared phrase map, identical in all seven themes; edit it in every theme at once
 │   └── maintenance.php    Back-shortly notice (503): wp-content drop-ins for updates, fatal errors, database failures; missing-file guard
 ├── parts/                 header.html, footer.html
-├── patterns/              Fifteen home page sections (section 9)
+├── patterns/              Fifteen home page sections and the Social profile links pattern (section 9)
 ├── templates/             front-page.html, page-landing.html, page.html, single.html, home.html, archive.html, search.html, 404.html
 └── docs/                  readme.md, changelog.md, upgrading.md, ssot.md
 ```
@@ -373,6 +373,11 @@ Stored as one array in `abr_options`. `abr_option_types()` is the schema; `abr_o
 |---|---|---|---|
 | `sticky_header` | bool | 1 | General |
 | `reveal_motion` | bool | 1 | General; ignored under reduced motion |
+| `progress_on` | bool | 1 | General; reading progress bar on single items (`inc/progress.php`); off while Reading Progress Bar is active |
+| `progress_colour` | hex | empty | General; empty follows the accent colour |
+| `progress_height` | progress_height | 4 | General; 2 to 12 pixels |
+| `progress_position` | progress_position | top | General; `top` or `bottom` |
+| `progress_types` | post_types | `post` | General; array of public post type names, never the front page |
 | `logo_style` | logo_style | `mark_text` | Header; `mark_text`, `mark` or `text` (`abr_logo_styles()`) |
 | `logo_main` | text | Abrahamic | Header; also the accessible name when the mark stands alone |
 | `logo_sub` | text | Religions | Header; empty gives a one-line logo |

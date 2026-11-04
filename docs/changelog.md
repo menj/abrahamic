@@ -2,6 +2,29 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.95.0] - 2026-11-04
+
+The owner's brief of 4 November: build four plugins into the theme where it lacks them. Three were already built in, in part. No option key, shortcode, function name or handle was renamed or removed.
+
+### Already in the theme
+- Social icons: 45 networks in `inc/social.php`, profile addresses on Theme Options > Social, the footer row and `[abr_social]`, each link named by `aria-label`, each SVG `aria-hidden`, 36 pixels (44 on touch screens), colours from the scheme variables. The licence is recorded in `readme.txt` and `ssot.md`, section 5.
+- Unlisted posts (`inc/unlist.php`, from Unlist Posts & Pages 1.2.1): the meta box, list query and adjacent-link filters, page lists, the core sitemap, `wp_robots`, the post state and the Unlisted view. Related articles already opted in with `abr_hide_unlisted`.
+- Search addresses (`inc/search.php`, from Pretty Search Permalinks 1.3): `/search/term/`, the base on the Search tab, no redirect for an empty search, plugin hand-over.
+
+### Added
+- Reading progress bar (`inc/progress.php`, `assets/css/progress.css`, `assets/js/progress.js`), from Reading Progress Bar 1.3.1. New options on the General tab: `progress_on`, `progress_colour` (empty follows the accent), `progress_height` (2 to 12 pixels), `progress_position` (top or bottom) and `progress_types` (a list of public post types, the theme's first array option; sanitiser type `post_types`). The bar is `aria-hidden`: it repeats the scroll position the browser already reports, and a `role="progressbar"` changing on every scroll step would be announced over and over. A passive scroll listener requests one animation frame per change. The transition goes under `prefers-reduced-motion`. It sits below the fixed admin bar from 601 pixels and under the scrolling one below that, with a lower z-index. Both files load only where the bar shows, and the bar stands down while the plugin is active.
+- Social profile links pattern (`abrahamic/social-links`), and `.abr-social` styles for the row outside the footer, with a visible focus outline.
+- Unlisted posts: an Unlisted column, a Quick Edit checkbox and a Bulk Edit choice (`assets/js/unlist-quick-edit.js`, loaded on post lists only); Rank Math robots through `rank_math/frontend/robots`; Rank Math sitemaps through `rank_math/sitemap/posts_to_exclude` and `rank_math/sitemap/entry`; Yoast's robots array emptied on an unlisted post; the plugin's `unlist_posts_enabled` filter; AJAX sent from wp-admin by an editor sees unlisted posts, as in the plugin. `abr_unlist_set()` writes the list.
+- Search addresses: a Search base field on Settings > Permalinks, under Optional, as the plugin has it. It writes the same `search_base` option.
+
+### Changed
+- The query-string search redirect is a 301 (it was a 302) and keeps the page number: `/?s=moses&paged=2` goes to `/search/moses/page/2/`. The address is built by `abr_search_pretty_url()`.
+- Rewrite rules flush once when the theme version or the search base changes. `abr_search_base_built` holds `version|base` in place of the base alone, so an update flushes once.
+
+### Tests
+- `tests/unlist-test.php` checks list queries, singular, `post__in` and `suppress_filters` queries, admin and AJAX requests and the referer rules, adjacent links, page lists, both sitemaps, both robots filters, the enable filter and `abr_unlist_set()`.
+- `tests/search-rewrite-test.php` checks the pretty address, encoding, page numbers, empty searches, the plugin hand-over and the flush marker.
+
 ## [2.94.2] - 2026-11-04
 
 The Schema Markup Validator run of 4 November found three faults in the structured data. No option key, function name, @id or handle changed.
