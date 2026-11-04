@@ -277,7 +277,7 @@ function abr_options_usage( $tab ) {
 		'search'     => __( 'Turn the theme\'s search output on or off, write the front page description, and paste verification codes. Analytics stays off until you enter a measurement ID.', 'abrahamic' ),
 		'links'      => __( 'Turn automatic links on or off for this site and for the sister sites, and drag the sliders to cap how many each page gets.', 'abrahamic' ),
 		'security'   => __( 'Switch off the routes spam tools use to publish from outside the site. The spam scan and the clean-up tools below the switches show only to administrators.', 'abrahamic' ),
-		'tools'      => __( 'Export your options to a file, import them on another site or reset them. Below that, check the starter content and read the system information.', 'abrahamic' ),
+		'tools'      => __( 'Export your options to a file, import them on another site or reset them. Install the error pages WordPress shows when it cannot build a page. Below that, check the starter content and read the system information.', 'abrahamic' ),
 	);
 	if ( isset( $usage[ $tab ] ) ) {
 		printf( '<p class="abr-usage">%s</p>', esc_html( $usage[ $tab ] ) );
@@ -742,6 +742,8 @@ function abr_render_options_page() {
 				<?php wp_nonce_field( 'abr_reset_options' ); ?>
 				<?php submit_button( __( 'Reset all Theme Options', 'abrahamic' ), 'delete', 'submit', false ); ?>
 			</form>
+
+			<?php abr_render_error_pages_section(); ?>
 
 			<?php
 			// Starter content status, the legacy link scan and the system

@@ -4,6 +4,12 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.95.0 to 2.96.0
+
+Replace the theme files and load any admin page once as an administrator. Up to 2.95.0 the theme wrote the maintenance notice into `wp-content/php-error.php` and `wp-content/db-error.php` as well as `maintenance.php`, so a fatal error or a database outage told visitors the site was down for maintenance. That first admin page rewrites the theme's own copies with the right page and shows a notice naming the files it repaired. If `wp-content` is not writable, the notice says so; fix the permissions and press Install error pages on Theme Options > Tools. To use the static pages for server errors, add the `ErrorDocument` lines shown on the Tools tab to `.htaccess`.
+
+---
+
 ## Upgrading from 2.94.2 to 2.95.0
 
 Replace the theme files. The reading progress bar is on for articles; switch it off or choose more post types on Theme Options > General. With readable search addresses on (Theme Options > Search, the default) and pretty permalinks in use, the first load after the update rebuilds the rewrite rules once. With either off, nothing is rebuilt. If Reading Progress Bar, Unlist Posts & Pages or Pretty Search Permalinks is still active, the theme leaves that feature to the plugin; deactivate the plugin to use the theme's version.
