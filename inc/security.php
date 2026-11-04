@@ -1174,7 +1174,7 @@ function abr_sec_render_tools() {
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab selection only.
 	$full = isset( $_GET['tab'] ) && 'security' === sanitize_key( wp_unslash( $_GET['tab'] ) );
 	?>
-	<section class="abr-card abr-sec" id="abr-security-tools" data-extra-for="security" hidden>
+	<section class="abr-card abr-sec" id="abr-security-tools" data-extra-for="security"<?php echo $full ? '' : ' hidden'; ?>>
 		<?php abr_sec_notice(); ?>
 
 		<h2><?php esc_html_e( 'Clean up spam', 'abrahamic' ); ?></h2>

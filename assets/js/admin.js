@@ -71,10 +71,20 @@
 	} );
 
 	var initial = $wrap.data( 'initial-tab' );
+	var stored = '';
 	if ( ! initial ) {
 		try {
-			initial = window.sessionStorage.getItem( storageKey );
+			stored = window.sessionStorage.getItem( storageKey ) || '';
 		} catch ( e ) {}
+		// A heavy panel is built only on its own ?tab= load; reopen the
+		// screen there rather than show its placeholder.
+		if ( stored && $( '#abr-panel-' + stored ).find( '.abr-deferred' ).length ) {
+			var reopen = new URL( window.location.href );
+			reopen.searchParams.set( 'tab', stored );
+			window.location.replace( reopen.toString() );
+			return;
+		}
+		initial = stored;
 	}
 	activate( initial || $tabs.first().data( 'tab' ) );
 
