@@ -2,6 +2,12 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.2] - 2026-11-04
+
+### Added
+- Journal: `post:muhammad-and-jesus-as-examples`, "Muhammad and Jesus as moral examples" (Religion, Scripture; 9 notes; scheduled for 29 December 2026 at 09:00). It sets out the usual comparison, then the Qur'an's portrait of both (33:21, 68:4, 3:45-51, 2:136, 33:7), under which they are not rivals. A fair comparison of conduct under rule sets Muhammad beside Moses, Joshua and David (Deuteronomy 20:10-18, Joshua 6:21, 1 Samuel 15:3, 2 Samuel 8:2), with the rule against killing women and children (Bukhārī 3015, Muslim 1744). The Christian reply from the incarnation is named, and al-Fārūqī's reading of the prophets as one line closes the piece. Photograph: `galilee`. Tags: prophet-muhammad, jesus, moses, david. Focus keyword "muhammad and jesus"; search title "Muhammad and Jesus as moral examples".
+- `ABR_SEED_VERSION` is 110; the item carries `since` 110. The constant row in `docs/ssot.md` now gives 110.
+
 ## [2.96.1] - 2026-11-04
 
 ### Changed
