@@ -15,3 +15,28 @@
 <IfModule mod_alias.c>
 	RedirectMatch 404 /\.claude(/|$)
 </IfModule>
+
+# Development files that an upload of a working copy carries. The theme
+# removes the hidden entries and tests/ from a live site on the first request
+# after an update (inc/dev-files.php); these lines cover the time before that,
+# and a site that keeps them.
+
+# Every file and folder whose name begins with a dot: .git, .github, .claude,
+# .vscode, .env, .htaccess (this file) and the like. .well-known stays open.
+RedirectMatch 403 /\.(?!well-known(/|$))[^/]+(/|$)
+<FilesMatch "^\.">
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Deny from all
+	</IfModule>
+</FilesMatch>
+
+# The tests, tools, documentation and command-line scripts, at the top of the
+# theme folder. RedirectMatch reads the whole request path, so this matches
+# /wp-content/themes/abrahamic/tests/ with or without a site subfolder in
+# front. Each of these folders also carries its own .htaccess, which refuses
+# it wherever the theme folder sits.
+RedirectMatch 403 /themes/[^/]+/(tests|tools|bin|docs)(/|$)

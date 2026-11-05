@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.7
+Stable tag: 2.96.8
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -597,6 +597,11 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.8 - 2026-11-05 =
+* Fixes from the live logs. The theme's .htaccess now refuses every hidden file and folder (.git, .claude and the like), and the tests, bin and docs folders. The first request after an update removes .git, .claude and tests from a live site.
+* A theme caught half uploaded, with a file missing or half written, shows the maintenance notice with a 503 status instead of a fatal error, and logs one line for it.
+* On Apache the theme keeps an "Abrahamic: deny direct core files" section in .htaccess, which answers 403 for the WordPress files bots ask for by address.
 
 = 2.96.7 - 2026-11-05 =
 * The front page reads as one story. The questions section now follows the comparison, so the answers come before the Journal, the topics and the reference section. The chapters are renumbered to match.

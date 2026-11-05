@@ -11,6 +11,11 @@
  * @package Abrahamic
  */
 
+// Run from the command line only: on a web server this file does nothing.
+if ( 'cli' !== PHP_SAPI ) {
+	exit;
+}
+
 define( 'ABSPATH', __DIR__ . '/' );
 require dirname( __DIR__ ) . '/inc/schema.php';
 if ( ! function_exists( 'home_url' ) ) {

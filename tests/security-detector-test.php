@@ -6,6 +6,11 @@
  * @package Abrahamic
  */
 
+// Run from the command line only: on a web server this file does nothing.
+if ( 'cli' !== PHP_SAPI ) {
+	exit;
+}
+
 define( 'ABR_SECURITY_TEST', true );
 require dirname( __DIR__ ) . '/inc/security-detector.php';
 

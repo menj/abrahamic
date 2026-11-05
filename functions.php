@@ -7,12 +7,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ABR_VERSION', '2.96.7' );
+define( 'ABR_VERSION', '2.96.8' );
 define( 'ABR_DIR', get_stylesheet_directory() );
 define( 'ABR_URI', get_stylesheet_directory_uri() );
 
-// Every file the theme loads. If one is missing (an update caught half-unpacked),
-// visitors see the maintenance notice instead of a fatal error: inc/maintenance.php.
+// Every file the theme loads. If one is missing or half written (an update caught
+// half-unpacked), visitors see the maintenance notice instead of a fatal error:
+// abr_incomplete_theme() below.
 $abr_files = array(
 	ABR_DIR . '/inc/icons.php',
 	ABR_DIR . '/inc/social.php',
@@ -40,20 +41,71 @@ $abr_files = array(
 	ABR_DIR . '/inc/quran-text.php',
 	ABR_DIR . '/inc/error-page-html.php',
 	ABR_DIR . '/inc/error-pages.php',
+	ABR_DIR . '/inc/dev-files.php',
 	ABR_DIR . '/inc/data/network-links.json',
 	ABR_DIR . '/inc/data/schema-entities.json',
 	ABR_DIR . '/inc/seed/content.json',
 );
-if ( is_readable( ABR_DIR . '/inc/maintenance.php' ) ) {
-	require_once ABR_DIR . '/inc/maintenance.php';
-	if ( ! abr_maintenance_guard( $abr_files ) ) {
+
+/**
+ * The theme caught half uploaded: a file missing, or there but half written
+ * (a ParseError). The request gets the 503 maintenance notice with
+ * Retry-After instead of a fatal error, and the error log gets one line per
+ * problem and ten minutes, not one per request. The login screen, AJAX, cron
+ * and the command line go on without the notice.
+ *
+ * @param string $what What is wrong, for the log.
+ * @param bool   $all  Send the notice to the admin screens too (a file that
+ *                     broke part-way through loading leaves the theme half set up).
+ */
+function abr_incomplete_theme( $what, $all = false ) {
+	$key = 'abr_incomplete_' . md5( $what );
+	if ( ! get_transient( $key ) ) {
+		set_transient( $key, 1, 10 * MINUTE_IN_SECONDS );
+		error_log( 'Abrahamic: the theme is incomplete or being uploaded (' . $what . '); visitors see the maintenance notice until it is whole.' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
+	}
+	if ( wp_doing_ajax() || wp_doing_cron() || 'cli' === PHP_SAPI || false !== strpos( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), 'wp-login' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		return;
+	}
+	if ( is_admin() && ! $all ) {
+		return;
+	}
+	if ( ! function_exists( 'abr_maintenance_send' ) && is_readable( ABR_DIR . '/inc/maintenance.php' ) ) {
+		try {
+			require_once ABR_DIR . '/inc/maintenance.php';
+		} catch ( Throwable $e ) {
+			unset( $e );
+		}
+	}
+	if ( function_exists( 'abr_maintenance_send' ) ) {
+		abr_maintenance_send();
+	}
+	if ( ! headers_sent() ) {
+		header( 'HTTP/1.1 503 Service Unavailable', true, 503 );
+		header( 'Content-Type: text/html; charset=utf-8' );
+		header( 'Retry-After: 300' );
+		header( 'Cache-Control: no-store, max-age=0' );
+	}
+	echo '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Back shortly</title></head><body><h1>Back shortly</h1><p>The site is being updated. Please try again in a few minutes.</p></body></html>';
+	exit;
+}
+
+foreach ( array_merge( array( ABR_DIR . '/inc/maintenance.php' ), $abr_files ) as $abr_file ) {
+	if ( ! is_readable( $abr_file ) ) {
+		abr_incomplete_theme( substr( $abr_file, strlen( ABR_DIR ) + 1 ) . ' is missing' );
 		return;
 	}
 }
-foreach ( $abr_files as $abr_file ) {
-	if ( '.php' === substr( $abr_file, -4 ) && false === strpos( $abr_file, '/inc/seed/' ) ) {
-		require_once $abr_file;
+try {
+	require_once ABR_DIR . '/inc/maintenance.php';
+	foreach ( $abr_files as $abr_file ) {
+		if ( '.php' === substr( $abr_file, -4 ) && false === strpos( $abr_file, '/inc/seed/' ) ) {
+			require_once $abr_file;
+		}
 	}
+} catch ( Throwable $abr_error ) {
+	abr_incomplete_theme( $abr_error->getMessage() . ' in ' . basename( $abr_error->getFile() ), true );
+	return;
 }
 unset( $abr_files, $abr_file );
 

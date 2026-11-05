@@ -4,6 +4,16 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.7 to 2.96.8
+
+Upload the whole theme folder, the new `.htaccess` files in it included. FTP clients often hide files whose names begin with a dot; turn on "show hidden files" (in FileZilla: Server, Force showing hidden files) before the upload. The new files are `inc/dev-files.php`, `tests/live-logs-test.php` and the `.htaccess` in `tests/` and `bin/`.
+
+On the first page load afterwards the theme removes `.git`, `.claude` and `tests` from its folder on the server. To keep them on a live site run from a git working copy, add `define( 'ABR_KEEP_DOTFILES', true );` to `wp-config.php` first.
+
+The first admin page writes the "Abrahamic: deny direct core files" section into the site's `.htaccess`. If a plugin or the host needs one of those files by address, add `define( 'ABR_ALLOW_CORE_FILES', true );` to `wp-config.php`; the next admin page within the hour takes the section out.
+
+---
+
 ## Upgrading from 2.95.0 to 2.96.0
 
 Replace the theme files and load any admin page once as an administrator. Up to 2.95.0 the theme wrote the maintenance notice into `wp-content/php-error.php` and `wp-content/db-error.php` as well as `maintenance.php`, so a fatal error or a database outage told visitors the site was down for maintenance. That first admin page rewrites the theme's own copies with the right page and shows a notice naming the files it repaired. If `wp-content` is not writable, the notice says so; fix the permissions and press Install error pages on Theme Options > Tools. To use the static pages for server errors, add the `ErrorDocument` lines shown on the Tools tab to `.htaccess`.
