@@ -103,7 +103,7 @@ ini_set( 'error_log', $log ); // phpcs:ignore WordPress.PHP.IniSet
 
 t_load( 'inc/dev-files.php', array( 'abr_keeps_dev_files', 'abr_dev_entries', 'abr_remove_tree', 'abr_remove_dev_files', 'abr_cleanup_on_version_change', 'abr_renew_cleanup_lease', 'abr_release_lock', 'abr_swap_lock' ) );
 t_load( 'inc/security.php', array( 'abr_sec_core_lines', 'abr_sec_core_prefix' ) );
-t_load( 'functions.php', array( 'abr_incomplete_theme', 'abr_incomplete_serves' ) );
+t_load( 'functions.php', array( 'abr_incomplete_theme', 'abr_incomplete_is_login', 'abr_incomplete_serves' ) );
 
 // Development files in the theme folder.
 $root = sys_get_temp_dir() . '/abr-live-' . getmypid();
@@ -215,6 +215,15 @@ $GLOBALS['t']['env'] = 'development';
 abr_cleanup_on_version_change();
 check( 'a development site runs nothing and records nothing', is_dir( "$root/tests" ) && '9.9.8' === $GLOBALS['t']['options']['abr_dev_files_version'] );
 $GLOBALS['t']['env'] = 'production';
+// A link inside the folder is removed itself; its target keeps its mode.
+$outside = sys_get_temp_dir() . '/abr-live-target-' . getmypid();
+file_put_contents( $outside, 'x' );
+chmod( $outside, 0600 );
+symlink( $outside, "$root/.link" );
+abr_remove_tree( "$root/.link" );
+clearstatcache();
+check( 'a link is removed without touching its target', ! is_link( "$root/.link" ) && file_exists( $outside ) && 0600 === ( fileperms( $outside ) & 0777 ) );
+unlink( $outside );
 abr_remove_tree( $root );
 check( 'the test folder is gone', ! file_exists( $root ) );
 
@@ -267,7 +276,17 @@ check( 'nor does AJAX', ! abr_incomplete_serves( true, 'apache2handler' ) );
 $GLOBALS['t']['ajax'] = false;
 $_SERVER['REQUEST_URI'] = '/wp-login.php?action=lostpassword';
 check( 'nor the login screen', ! abr_incomplete_serves( true, 'apache2handler' ) );
-unset( $_SERVER['REQUEST_URI'] );
+$GLOBALS['t']['options']['abr_options'] = array( 'login_hide' => 1, 'login_slug' => 'door' );
+$_SERVER['REQUEST_URI'] = '/door/';
+check( 'nor the private login address', ! abr_incomplete_serves( true, 'apache2handler' ) );
+$_SERVER['REQUEST_URI'] = '/doorway/';
+check( 'but a page that only starts like it does', abr_incomplete_serves( true, 'apache2handler' ) );
+unset( $GLOBALS['t']['options']['abr_options'] );
+$GLOBALS['t']['options']['whl_page'] = 'gate';
+$_SERVER['REQUEST_URI']              = '/?gate';
+$_GET['gate']                        = '';
+check( 'nor the WPS Hide Login address', ! abr_incomplete_serves( true, 'apache2handler' ) );
+unset( $GLOBALS['t']['options']['whl_page'], $_SERVER['REQUEST_URI'], $_GET['gate'] );
 $src = (string) file_get_contents( dirname( __DIR__ ) . '/functions.php' );
 check( 'every theme file is checked before any loads, inc/maintenance.php included', false !== strpos( $src, "array_merge( array( ABR_DIR . '/inc/maintenance.php' ), \$abr_files )" ) );
 check( 'a half-written file is caught', false !== strpos( $src, 'catch ( Throwable $abr_error )' ) );

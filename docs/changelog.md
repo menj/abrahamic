@@ -18,7 +18,7 @@ Fixes from the live logs. No section or feature removed and no public identifier
 - XML-RPC is off with the Security switch on, and on Apache the "Block xmlrpc.php" section denies it at the server. The switch and `ABR_SECURITY_LOCK` still turn it back on for Jetpack.
 
 ### Added
-- `tests/live-logs-test.php`, 87 checks of the above.
+- `tests/live-logs-test.php`, 91 checks of the above.
 
 ### Tested
 - Apache 2.4 with mod_php: every denied path answers 403; the login screen, the admin, the REST API, TinyMCE's loader, the stylesheets and the fonts answer 200; a missing `inc/` file gives the 503 notice with `Retry-After`.

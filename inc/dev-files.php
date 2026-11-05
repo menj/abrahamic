@@ -68,7 +68,8 @@ function abr_dev_entries( $dir = '' ) {
 function abr_remove_tree( $path ) {
 	if ( is_link( $path ) || is_file( $path ) ) {
 		do_action( 'abr_cleanup_tick' );
-		@chmod( $path, 0644 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
+		// chmod() follows a link: only a real file is made writable.
+		is_link( $path ) || @chmod( $path, 0644 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
 		return @unlink( $path ) ? 1 : 0; // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
 	}
 	if ( ! is_dir( $path ) ) {
@@ -87,7 +88,7 @@ function abr_remove_tree( $path ) {
 			if ( $f->isDir() && ! $f->isLink() ) {
 				$gone += @rmdir( $f->getPathname() ) ? 1 : 0; // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
 			} else {
-				@chmod( $f->getPathname(), 0644 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
+				$f->isLink() || @chmod( $f->getPathname(), 0644 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
 				$gone += @unlink( $f->getPathname() ) ? 1 : 0; // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
 			}
 		}
