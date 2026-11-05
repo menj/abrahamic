@@ -33,7 +33,10 @@ function current_user_can() { return true; }
 function is_multisite() { return ! empty( $GLOBALS['abr_t']['network'] ); }
 function is_main_site() { return empty( $GLOBALS['abr_t']['subsite'] ); }
 function get_main_site_id() { return 1; }
-function get_blog_option( $id, $k ) { return $GLOBALS['abr_t']['main_theme'] ?? 'abrahamic'; }
+function get_blog_option( $id, $k ) { return 1 === $id ? ( $GLOBALS['abr_t']['main_theme'] ?? 'abrahamic' ) : ( $GLOBALS['abr_t']['sites'][ $id ] ?? 'abrahamic' ); }
+function get_current_blog_id() { return $GLOBALS['abr_t']['current'] ?? 2; }
+function get_sites( $a ) { return ( $a['offset'] ?? 0 ) ? array() : array( 1, 2, 3 ); }
+
 function get_option( $k, $d = false ) { return $GLOBALS['abr_t']['options'][ $k ] ?? $d; }
 function update_option( $k, $v ) { $GLOBALS['abr_t']['options'][ $k ] = $v; return true; }
 function delete_option( $k ) { unset( $GLOBALS['abr_t']['options'][ $k ] ); }
@@ -115,8 +118,11 @@ $GLOBALS['abr_t']['network'] = true;
 $GLOBALS['abr_t']['subsite'] = true;
 abr_check( ! abr_error_writer(), 'a subsite leaves the writing to a main site that runs the theme' );
 $GLOBALS['abr_t']['main_theme'] = 'twentytwentyfive';
-abr_check( abr_error_writer(), 'a subsite writes when the main site runs another theme' );
-unset( $GLOBALS['abr_t']['network'], $GLOBALS['abr_t']['subsite'], $GLOBALS['abr_t']['main_theme'] );
+abr_check( abr_error_writer(), 'the first subsite that runs the theme writes when the main site runs another' );
+$GLOBALS['abr_t']['sites'] = array( 2 => 'abrahamic', 3 => 'abrahamic' );
+$GLOBALS['abr_t']['current'] = 3;
+abr_check( ! abr_error_writer(), 'a second subsite leaves the writing to the first' );
+unset( $GLOBALS['abr_t']['network'], $GLOBALS['abr_t']['subsite'], $GLOBALS['abr_t']['main_theme'], $GLOBALS['abr_t']['sites'], $GLOBALS['abr_t']['current'] );
 
 array_map( 'unlink', glob( "$abr_tmp/abrahamic-errors/*" ) );
 rmdir( "$abr_tmp/abrahamic-errors" );

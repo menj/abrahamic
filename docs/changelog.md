@@ -9,7 +9,8 @@ All notable changes to the Abrahamic theme are recorded here. The format follows
 
 ### Fixed
 - The static error pages in `errors/` link the home page at `/`, so on a site installed in a subfolder their button led out of the site. The theme now writes a copy of each into `wp-content/abrahamic-errors/` with the site's own home address, through `abr_error_static_files()` and `abr_error_file_source()`, at the same times and under the same marker rules as the drop-ins. The `.htaccess` lines on the Tools tab point at the copies, the Tools table lists them, and switching to another theme removes them with the folder. `errors/` stays as the copy for a site at the root.
-- On a network whose main site had switched to another theme, no site wrote the drop-ins again, so they kept the old version for good. `abr_error_writer()` lets a subsite that runs Abrahamic write them while the main site runs another theme.
+- On a network whose main site had switched to another theme, no site wrote the drop-ins again, so they kept the old version for good. `abr_error_writer()` lets one subsite write them while the main site runs another theme: the one with the lowest ID that runs Abrahamic (`abr_error_first_theme_site()`), so two subsites never overwrite each other's addresses. On the other sites the Tools table reads such a file as installed for the network, not outdated.
+- The version in `docs/readme.md` and its install steps still named 2.96.5.
 
 ## [2.96.5] - 2026-11-05
 
