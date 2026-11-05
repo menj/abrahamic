@@ -27,13 +27,14 @@ WordPress shows three files from `wp-content` when it cannot build a page. The t
 
 All three are self-contained (inline style, no theme file, no WordPress function, no database), send `noindex` and `no-store`, and are built by `inc/error-page-html.php`.
 
-For errors the web server answers before WordPress runs, `errors/` holds static 403, 500, 502 and 503 pages, built with `php bin/build-error-pages.php`. Add to `.htaccess`, with the theme's folder name:
+For errors the web server answers before WordPress runs, `errors/` holds static 403, 500, 502, 503 and 504 pages, built with `php bin/build-error-pages.php`. Add to `.htaccess`, with the theme's folder name:
 
 ```
 ErrorDocument 403 /wp-content/themes/abrahamic/errors/403.html
 ErrorDocument 500 /wp-content/themes/abrahamic/errors/500.html
 ErrorDocument 502 /wp-content/themes/abrahamic/errors/502.html
 ErrorDocument 503 /wp-content/themes/abrahamic/errors/503.html
+ErrorDocument 504 /wp-content/themes/abrahamic/errors/504.html
 ```
 
 ---

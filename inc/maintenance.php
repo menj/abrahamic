@@ -101,7 +101,7 @@ function abr_maintenance_install_dropins() {
 		return;
 	}
 	abr_error_repair_wrong_kind();
-	if ( get_option( 'abr_dropins_version' ) === ABR_VERSION ) {
+	if ( get_option( 'abr_dropins_version' ) === ABR_VERSION && abr_maintenance_dropins_settled() ) {
 		return;
 	}
 	$result = abr_error_install();
@@ -113,3 +113,43 @@ function abr_maintenance_install_dropins() {
 }
 add_action( 'admin_init', 'abr_maintenance_install_dropins' );
 add_action( 'after_switch_theme', 'abr_maintenance_install_dropins' );
+
+/**
+ * Whether every drop-in is in place: installed and current, or another
+ * party's file the theme must leave alone. A file deleted by hand, removed
+ * when the theme was switched off, or left by a sibling theme is not, so it
+ * is written again on the next admin page.
+ *
+ * @return bool
+ */
+function abr_maintenance_dropins_settled() {
+	foreach ( array_keys( abr_error_dropins() ) as $name ) {
+		$state = abr_error_state( $name );
+		if ( 'installed' === $state ) {
+			continue;
+		}
+		if ( 'foreign' === $state && ! abr_error_is_replaceable( WP_CONTENT_DIR . '/' . $name ) ) {
+			continue;
+		}
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Remove the theme's drop-ins when it is switched off. Only a file that
+ * carries one of the theme's markers is deleted; the version flag goes too,
+ * so switching back writes them again.
+ */
+function abr_maintenance_remove_dropins() {
+	if ( function_exists( 'abr_error_dropins' ) && ! ( is_multisite() && ! is_main_site() ) ) {
+		foreach ( array_keys( abr_error_dropins() ) as $name ) {
+			$target = WP_CONTENT_DIR . '/' . $name;
+			if ( file_exists( $target ) && abr_error_is_ours( $target ) ) {
+				@unlink( $target ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
+			}
+		}
+	}
+	delete_option( 'abr_dropins_version' );
+}
+add_action( 'switch_theme', 'abr_maintenance_remove_dropins' );

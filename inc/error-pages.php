@@ -91,6 +91,30 @@ function abr_error_is_ours( $path ) {
 }
 
 /**
+ * Whether a file is a leftover of one of the owner's sibling themes, which
+ * mark every drop-in "Written by the ... theme; safe to delete". Such a file
+ * may be replaced when this theme installs its own; a file with no such mark
+ * is never touched.
+ *
+ * @param string $path File path.
+ * @return bool
+ */
+function abr_error_is_sibling( $path ) {
+	return (bool) preg_match( '/Written by the [A-Za-z0-9 .\'-]{1,40} theme; safe to delete/', abr_error_head_of( $path ) );
+}
+
+/**
+ * Whether the theme may write over a file at install time: its own, or a
+ * sibling theme's marked leftover.
+ *
+ * @param string $path File path.
+ * @return bool
+ */
+function abr_error_is_replaceable( $path ) {
+	return abr_error_is_ours( $path ) || abr_error_is_sibling( $path );
+}
+
+/**
  * Whether a theme-written file holds the wrong page for its name: the
  * maintenance notice in php-error.php or db-error.php, as up to 2.95.0.
  *
@@ -131,8 +155,9 @@ function abr_error_state( $name, $dir = '' ) {
 }
 
 /**
- * Write the drop-ins into a directory. A missing file, or one of the theme's
- * own, is written; anyone else's is left alone.
+ * Write the drop-ins into a directory. A missing file, one of the theme's
+ * own or a sibling theme's marked leftover is written; anyone else's is left
+ * alone.
  *
  * @param string $dir Directory, wp-content by default.
  * @return array<string,string> File name => written | unchanged | kept | failed.
@@ -142,7 +167,7 @@ function abr_error_install( $dir = '' ) {
 	$result = array();
 	foreach ( abr_error_dropins() as $name => $kind ) {
 		$state = abr_error_state( $name, $dir );
-		if ( 'foreign' === $state ) {
+		if ( 'foreign' === $state && ! abr_error_is_replaceable( $dir . '/' . $name ) ) {
 			$result[ $name ] = 'kept';
 			continue;
 		}
@@ -255,7 +280,7 @@ add_action( 'admin_post_abr_install_error_pages', 'abr_handle_install_error_page
 function abr_error_htaccess_snippet() {
 	$base  = untrailingslashit( (string) wp_parse_url( ABR_URI, PHP_URL_PATH ) ) . '/errors/';
 	$lines = array( '# Abrahamic: pages for the errors the web server answers before WordPress runs' );
-	foreach ( array( 403, 500, 502, 503 ) as $code ) {
+	foreach ( array( 403, 500, 502, 503, 504 ) as $code ) {
 		$lines[] = 'ErrorDocument ' . $code . ' ' . $base . $code . '.html';
 	}
 	return implode( "\n", $lines );
@@ -304,6 +329,6 @@ function abr_render_error_pages_section() {
 	</form>
 	<?php endif; ?>
 	<p class="abr-help"><?php esc_html_e( 'For errors the web server answers before WordPress starts, static pages are in the theme\'s errors folder. Add these lines to .htaccess to use them:', 'abrahamic' ); ?></p>
-	<textarea readonly rows="5" class="large-text code" aria-label="<?php esc_attr_e( '.htaccess lines', 'abrahamic' ); ?>"><?php echo esc_textarea( abr_error_htaccess_snippet() ); ?></textarea>
+	<textarea readonly rows="6" class="large-text code" aria-label="<?php esc_attr_e( '.htaccess lines', 'abrahamic' ); ?>"><?php echo esc_textarea( abr_error_htaccess_snippet() ); ?></textarea>
 	<?php
 }

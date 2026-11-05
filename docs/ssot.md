@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.3** |
+| Current version | **2.96.4** |
 | Release date | 2026-11-05 |
 | Status | Stable |
 
@@ -124,7 +124,7 @@ abrahamic/
 │   ├── contextual-links.php  Links in the running text to inner pages here and on the sister sites (section 8)
 │   ├── data/network-links.json  Shared phrase map, identical in all seven themes; edit it in every theme at once
 │   ├── data/gone-slugs.json  Casino spam slugs under /journal/ that answer 410 Gone (section 13)
-│   ├── error-page-html.php The error pages as plain HTML, one per kind (maintenance, php-error, db-error, 403, 500, 502, 503)
+│   ├── error-page-html.php The error pages as plain HTML, one per kind (maintenance, php-error, db-error, 403, 500, 502, 503, 504)
 │   ├── error-pages.php    The wp-content drop-ins: installer, ownership markers, repair of the 2.95.0 copies, Tools tab section
 │   └── maintenance.php    Back-shortly notice (503) and the missing-file guard; writes the drop-ins once per version
 ├── parts/                 header.html, footer.html
