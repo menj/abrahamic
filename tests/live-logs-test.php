@@ -193,12 +193,13 @@ unset( $GLOBALS['t']['options']['abr_dev_files_lock'] );
 $GLOBALS['t']['options']['abr_dev_files_version'] = '9.9.8';
 mkdir( "$root/.stuck" );
 file_put_contents( "$root/.stuck/f", 'x' );
-$stuck = 0 === posix_geteuid() ? ( exec( 'chattr +i ' . escapeshellarg( "$root/.stuck/f" ) . ' 2>/dev/null', $o, $rc ) !== false && 0 === $rc ) : chmod( "$root/.stuck", 0555 );
+$as_root = function_exists( 'posix_geteuid' ) && 0 === posix_geteuid();
+$stuck   = $as_root ? ( exec( 'chattr +i ' . escapeshellarg( "$root/.stuck/f" ) . ' 2>/dev/null', $o, $rc ) !== false && 0 === $rc ) : chmod( "$root/.stuck", 0555 );
 if ( $stuck ) {
 	abr_cleanup_on_version_change();
 	$lock = (string) ( $GLOBALS['t']['options']['abr_dev_files_lock'] ?? '' );
 	check( 'an entry that cannot go leaves the version unrecorded and a fresh lease in place', '9.9.8' === $GLOBALS['t']['options']['abr_dev_files_version'] && '' !== $lock && time() - (int) $lock < 60 && file_exists( "$root/.stuck/f" ) );
-	0 === posix_geteuid() ? exec( 'chattr -i ' . escapeshellarg( "$root/.stuck/f" ) ) : chmod( "$root/.stuck", 0755 );
+	$as_root ? exec( 'chattr -i ' . escapeshellarg( "$root/.stuck/f" ) ) : chmod( "$root/.stuck", 0755 );
 	abr_cleanup_on_version_change();
 	check( 'a fresh lease means no second try at once', file_exists( "$root/.stuck/f" ) );
 	$GLOBALS['t']['options']['abr_dev_files_lock'] = ( time() - 600 ) . substr( $lock, strpos( $lock, '.' ) );
