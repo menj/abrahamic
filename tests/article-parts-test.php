@@ -99,6 +99,9 @@ $GLOBALS['abr_t']['meta']['_abr_takeaways'] = "First <b>point</b>\nSecond";
 $box = abr_article_answer_box();
 abr_test_check( false !== strpos( $box, '<h2 id="abr-answer-title"' ) && false !== strpos( $box, '<li>First &lt;b&gt;point&lt;/b&gt;</li><li>Second</li>' ), 'key points list, escaped' );
 abr_test_check( abr_article_answer_shows( $GLOBALS['abr_t']['post'] ), 'key points: the box shows' );
+$GLOBALS['abr_t']['post']->post_password = 'x';
+abr_test_check( ! abr_article_answer_shows( $GLOBALS['abr_t']['post'] ), 'behind a password: no box, so no speakable part' );
+$GLOBALS['abr_t']['post']->post_password = '';
 $box2 = abr_article_answer_box( array( 'summary' => 'A summary.' ) );
 abr_test_check( false !== strpos( $box2, 'abr-answer-title-2' ) && false !== strpos( $box2, 'A summary.' ) && false === strpos( $box2, '<li>' ), 'a second box: own id, its own summary only' );
 

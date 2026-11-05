@@ -60,7 +60,8 @@ function abr_article_points( $text ) {
  * @return bool
  */
 function abr_article_answer_shows( $post ) {
-	if ( ! $post instanceof WP_Post || ! abr_get_option( 'article_answer' ) ) {
+	// A post behind a password shows none of its text, the box included.
+	if ( ! $post instanceof WP_Post || '' !== $post->post_password || ! abr_get_option( 'article_answer' ) ) {
 		return false;
 	}
 	if ( abr_article_points( get_post_meta( $post->ID, '_abr_takeaways', true ) ) ) {
@@ -135,7 +136,15 @@ function abr_article_path_next( $post ) {
 		return null;
 	}
 	$base = array(
-		'cat'                 => (int) $cat->term_id,
+		// The topic itself: a child category is a topic of its own.
+		'tax_query'           => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_query_tax_query -- one category, a handful of posts.
+			array(
+				'taxonomy'         => 'category',
+				'field'            => 'term_id',
+				'terms'            => (int) $cat->term_id,
+				'include_children' => false,
+			),
+		),
 		'post__not_in'        => array( $post->ID ),
 		'ignore_sticky_posts' => true,
 		'no_found_rows'       => true,
