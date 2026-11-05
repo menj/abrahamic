@@ -81,7 +81,7 @@ Upload the new zip under Appearance > Themes > Add New > Upload Theme and choose
 = Updating by FTP =
 
 1. Turn on hidden files in your FTP program first. The theme carries files whose names begin with a dot, such as .htaccess, and most programs hide them. In FileZilla: Server > Force showing hidden files.
-2. Upload the new abrahamic folder next to the old one under a temporary name, for example wp-content/themes/abrahamic-new. Wait until every file has arrived.
+2. Upload the new abrahamic folder next to the old one under a temporary name, for example wp-content/themes/abrahamic-new. Send its .htaccess files first: the one at the top of the folder, then those in assets/images, bin, docs and tests. Nothing in the new folder can then be read while the rest arrives. Wait until every file has arrived.
 3. Rename the old folder to abrahamic-old and, straight after, rename abrahamic-new to abrahamic. Between the two renames the site has no abrahamic folder and its pages may fail for that moment, so do them one after the other and keep the admin closed until both are done. Nobody meets a half-copied theme this way.
 4. Load any admin page, check the site, then delete abrahamic-old.
 
