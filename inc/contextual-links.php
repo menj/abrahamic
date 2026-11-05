@@ -2,7 +2,7 @@
 /**
  * Contextual links: in the running text of a single post or page, the first
  * mention of a known phrase links to the inner page that treats it, on this
- * site or on one of the six sister sites. No lists, boxes or widgets.
+ * site or on one of the six other sites. No lists, boxes or widgets.
  *
  * The phrases come from inc/data/network-links.json, a file shared byte for
  * byte by all seven themes, plus the extra lines on Theme Options >
@@ -70,7 +70,7 @@ function abr_ctx_url_key( $url ) {
 }
 
 /**
- * Sister-site bases from the shared map, keyed by site key.
+ * Bases of the other sites, from the shared map, keyed by site key.
  *
  * @return array
  */

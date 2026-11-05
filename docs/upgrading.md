@@ -13,6 +13,10 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.12 to 2.96.13
+
+Replace the theme files. Nothing else changes. On a site in a subfolder, put a copy of `assets/images/favicon.ico` in the domain root, since browsers ask for `/favicon.ico` there.
+
 ## Upgrading from 2.96.11 to 2.96.12
 
 Replace the theme files. The new files are `inc/lead-list.php`, `assets/css/lead-list.css` and `tests/lead-list-test.php`. If you edited the Journal or archive template in the Site Editor, your copy wins and shows no lead and list; reset the template to see it, or add the Lead and list block above the query. Nothing else to do.
