@@ -2,3 +2,4 @@
 # (git archive, and GitHub's Download ZIP).
 /.claude export-ignore
 /.gitattributes export-ignore
+/tests export-ignore

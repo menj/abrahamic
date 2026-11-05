@@ -91,6 +91,67 @@ function abr_sec_htaccess_lines() {
 	);
 }
 
+/** The .htaccess marker of the block that denies WordPress's own files. */
+defined( 'ABR_SEC_CORE_MARKER' ) || define( 'ABR_SEC_CORE_MARKER', 'Abrahamic: deny direct core files' );
+
+/**
+ * Lines that deny WordPress's own files that are never meant to be asked for
+ * by address: the PHP files in wp-includes (bots ask for blocks/rss.php and
+ * the like, which then fail with a fatal error and fill the error log),
+ * wp-settings.php, wp-config-sample.php, readme.html (which names the
+ * version) and wp-admin/install.php. The editor's TinyMCE loader
+ * (wp-includes/js/tinymce/) and ms-files.php, which a network's rewrite
+ * rules hand uploads to, stay reachable. The paths are relative to the
+ * folder that holds .htaccess, with WordPress's folder in front when it is
+ * installed in its own subfolder.
+ *
+ * @param string $prefix WordPress's folder relative to the .htaccess folder, '' or "wp/".
+ * @return string[]
+ */
+function abr_sec_core_lines( $prefix = '' ) {
+	$p = str_replace( ' ', '\\ ', preg_quote( $prefix, '#' ) );
+	return array(
+		'<IfModule mod_rewrite.c>',
+		'RewriteEngine On',
+		'RewriteRule ^' . $p . 'wp-includes/(?!js/tinymce/|ms-files\\.php$).+\\.php$ - [F,L]',
+		'RewriteRule ^' . $p . '(wp-settings|wp-config-sample)\\.php$ - [F,L]',
+		'RewriteRule ^' . $p . 'readme\\.html$ - [F,L]',
+		'RewriteRule ^' . $p . 'wp-admin/install\\.php$ - [F,L]',
+		'</IfModule>',
+	);
+}
+
+/**
+ * WordPress's folder relative to the folder that holds .htaccess: '' when
+ * they are the same, "wp/" when WordPress sits in its own subfolder, null
+ * when WordPress is outside it (the block is then not written).
+ *
+ * @param string $home The folder that holds .htaccess.
+ * @param string $abs  ABSPATH.
+ * @return string|null
+ */
+function abr_sec_core_prefix( $home, $abs ) {
+	$home = wp_normalize_path( trailingslashit( $home ) );
+	$abs  = wp_normalize_path( trailingslashit( $abs ) );
+	return 0 === strpos( $abs, $home ) ? (string) substr( $abs, strlen( $home ) ) : null;
+}
+
+/**
+ * The core-file block this site should carry: empty when WordPress sits
+ * outside the .htaccess folder, or when
+ * define( 'ABR_ALLOW_CORE_FILES', true ); in wp-config.php turns it off
+ * (for a plugin or host that needs one of those files by address).
+ *
+ * @return string[]
+ */
+function abr_sec_core_wanted() {
+	if ( defined( 'ABR_ALLOW_CORE_FILES' ) && ABR_ALLOW_CORE_FILES ) {
+		return array();
+	}
+	$prefix = abr_sec_core_prefix( get_home_path(), ABSPATH );
+	return null === $prefix ? array() : abr_sec_core_lines( $prefix );
+}
+
 /**
  * Path of the site's .htaccess, or '' when the server is not Apache or the
  * file cannot be written.
@@ -140,8 +201,16 @@ function abr_sec_sync_htaccess( $force = false ) {
 	} elseif ( ! $want && $current ) {
 		insert_with_markers( $file, 'Block xmlrpc.php', array() );
 	}
-	// 'written' only when the block is really in the file.
-	update_option( 'abr_security_htaccess', $want ? ( $ok ? 'written' : 'unavailable' ) : 'off', false );
+	// The core-file block is kept while the theme runs, whatever the XML-RPC switch.
+	$core = abr_sec_core_wanted();
+	if ( ( function_exists( 'extract_from_markers' ) ? extract_from_markers( $file, ABR_SEC_CORE_MARKER ) : array() ) !== $core
+		&& true !== insert_with_markers( $file, ABR_SEC_CORE_MARKER, $core ) ) {
+		// Tried again on the next admin page, not an hour later.
+		$ok = false;
+		delete_transient( 'abr_sec_htaccess_checked' );
+	}
+	// 'written' only when the blocks are really in the file.
+	update_option( 'abr_security_htaccess', ! $ok ? 'unavailable' : ( $want ? 'written' : 'off' ), false );
 }
 add_action( 'admin_init', 'abr_sec_sync_htaccess' );
 add_action( 'after_switch_theme', function () { abr_sec_sync_htaccess( true ); } );
@@ -155,6 +224,7 @@ function abr_sec_remove_htaccess() {
 	$file = abr_sec_htaccess_file();
 	if ( '' !== $file ) {
 		insert_with_markers( $file, 'Block xmlrpc.php', array() );
+		insert_with_markers( $file, ABR_SEC_CORE_MARKER, array() );
 	}
 	delete_transient( 'abr_sec_htaccess_checked' );
 }
@@ -1111,6 +1181,9 @@ function abr_sec_render_settings() {
 		echo '<p class="abr-help">' . esc_html__( 'The web server also refuses xmlrpc.php: the theme keeps a "Block xmlrpc.php" section in .htaccess and repairs it if it goes missing.', 'abrahamic' ) . '</p>';
 	} elseif ( 'unavailable' === $state ) {
 		echo '<p class="abr-help abr-help--key">' . esc_html__( 'The theme could not write .htaccess (the server is not Apache, or the file is read-only). WordPress still refuses xmlrpc.php; ask the host to deny it at the server as well.', 'abrahamic' ) . '</p>';
+	}
+	if ( 'unavailable' !== $state && function_exists( 'get_home_path' ) && array() !== abr_sec_core_wanted() ) {
+		echo '<p class="abr-help">' . esc_html__( 'On Apache the theme also keeps an "Abrahamic: deny direct core files" section in .htaccess. It answers 403 for the PHP files in wp-includes (the editor\'s TinyMCE loader and ms-files.php excepted), wp-settings.php, wp-config-sample.php, readme.html and wp-admin/install.php, which bots ask for by address. If a plugin or the host needs one of them, add define( \'ABR_ALLOW_CORE_FILES\', true ); to wp-config.php.', 'abrahamic' ) . '</p>';
 	}
 	abr_field( 'sec_app_passwords_off', __( 'Turn off application passwords', 'abrahamic' ), 'checkbox', __( 'Stored application passwords stop working at once. Revoke them as well, below, so they cannot return if this is switched off.', 'abrahamic' ) );
 	abr_field( 'sec_rest_lock', __( 'Allow REST API changes only from a logged-in browser', 'abrahamic' ), 'checkbox', __( 'Any request that creates, changes or deletes content while logged in must come from a browser session on this site. Basic authentication and passwords sent in a header are refused. Reading through the API is unchanged.', 'abrahamic' ) );

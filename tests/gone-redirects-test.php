@@ -8,6 +8,11 @@
  * @package Abrahamic
  */
 
+// Run from the command line only: on a web server this file does nothing.
+if ( 'cli' !== PHP_SAPI ) {
+	exit;
+}
+
 define( 'ABSPATH', __DIR__ . '/' );
 define( 'ABR_DIR', dirname( __DIR__ ) );
 define( 'ABR_URI', 'https://example.test/wp-content/themes/abrahamic' );

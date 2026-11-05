@@ -2,6 +2,27 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.8] - 2026-11-05
+
+Fixes from the live logs. No section or feature removed and no public identifier renamed.
+
+### Fixed
+- The owner uploads the theme by FTP from a working copy, which puts `.git`, `.claude`, `tests`, `docs` and `bin` on the live server. The theme's `.htaccess` now answers 403 for every file and folder whose name begins with a dot (`.well-known` stays open), and for the `tests`, `tools`, `bin` and `docs` folders at the top of the theme folder. `tests/` and `bin/` now carry their own `.htaccess`, as `docs/` and `.claude/` already did, which refuses them wherever the theme folder sits. The Markdown rule already in the file still covers every `.md` file and `readme.txt`. The rules use mod_alias, inside `<IfModule>`; where it is missing, mod_rewrite refuses the same paths, so the file never breaks a server without it.
+- A new module, `inc/dev-files.php`, removes the hidden entries and `tests/` on the first request of any kind after the version changes (`abr_cleanup_on_version_change()` on `init`). `bin/` and `docs/` stay, since every release ships them. One request runs it, under a lease taken with `add_option()`, renewed once a minute while the walk runs (`abr_renew_cleanup_lease()` on `abr_cleanup_tick`), and taken over after five minutes without renewal by one compare-and-set UPDATE (`abr_swap_lock()`). The version is recorded only once the clean-up has returned with nothing left, while the lease is still held, and the lease is released after (`abr_release_lock()`). An entry that cannot be removed keeps the version unrecorded and the lease fresh, so the next try comes five minutes later, and the log says so once a day. A folder that cannot be read stops the walk without an error. A local or development site keeps everything, and so does a site with `ABR_KEEP_DOTFILES`. `.gitattributes` now leaves `tests/` out of the release zip.
+- Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line.
+- An upload that sends `functions.php` before `inc/` used to end in a fatal error whenever `inc/maintenance.php` was not there yet, and a half-written file always did. `functions.php` now checks `inc/maintenance.php` and every other file before it loads any, and loads them inside a `try`, so a `ParseError` is caught too. Visitors get the 503 notice with `Retry-After: 300`; the error log gets one line per problem every ten minutes (`abr_incomplete_theme()`). A missing file leaves the admin alone, as before; a file that breaks part-way sends the notice to the admin too, since the theme is then half set up. The login screen, AJAX, cron and the command line go on without it.
+- Bots asked for WordPress's own PHP files by address (`wp-includes/blocks/rss.php`, `wp-settings.php`, `wp-config-sample.php`), and each request ended in a fatal error in the log. On Apache the theme now keeps a block in the site's `.htaccess`, `# BEGIN Abrahamic: deny direct core files`, beside the xmlrpc.php block. It answers 403 for the PHP files in `wp-includes` (TinyMCE's loader and `ms-files.php` excepted), `wp-settings.php`, `wp-config-sample.php`, `readme.html` and `wp-admin/install.php`, follows WordPress into its own subfolder, and goes on a theme switch. `define( 'ABR_ALLOW_CORE_FILES', true );` takes it out. The Security tab says so while the block is wanted.
+
+### Already in place
+- The REST user routes are removed for anyone who cannot edit posts, and `?author=N` redirects to the Journal (`inc/anonymity.php`).
+- XML-RPC is off with the Security switch on, and on Apache the "Block xmlrpc.php" section denies it at the server. The switch and `ABR_SECURITY_LOCK` still turn it back on for Jetpack.
+
+### Added
+- `tests/live-logs-test.php`, 91 checks of the above.
+
+### Tested
+- Apache 2.4 with mod_php: every denied path answers 403; the login screen, the admin, the REST API, TinyMCE's loader, the stylesheets and the fonts answer 200; a missing `inc/` file gives the 503 notice with `Retry-After`.
+
 ## [2.96.7] - 2026-11-05
 
 No section or feature removed and no public identifier renamed.
