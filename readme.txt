@@ -223,11 +223,7 @@ The Theme Options screen remembers the last tab you opened in the browser's sess
 == Upgrade Notice ==
 
 = 2.96.13 =
-* The settings and the readme speak of the other sites in plain words. Links to them stay.
-* The readme says where the browser icon goes on a site in a subfolder: a copy of favicon.ico in the domain root.
-
-= 2.96.13 =
-Replace the theme files. Nothing else to do.
+Replace the theme files. On a site in a subfolder, also put a copy of assets/images/favicon.ico in the domain root folder; otherwise nothing to do.
 
 = 2.96.12 =
 The Journal and the archives gain a lead and list. Nothing to do.
@@ -648,6 +644,10 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 Browsers ask for /favicon.ico at the top of the domain, such as example.com/favicon.ico, even when the site lives in example.com/blog/. WordPress never sees that request, so put a copy of the theme's favicon.ico in the domain root folder. The icon tags in each page cover the pages either way.
 
 == Changelog ==
+
+= 2.96.13 - 2026-11-05 =
+* The settings and the readme speak of the other sites in plain words. Links to them stay.
+* The readme says where the browser icon goes on a site in a subfolder: a copy of favicon.ico in the domain root.
 
 = 2.96.12 - 2026-11-05 =
 * The Journal and each topic archive open with the newest article large, with its photograph credit, and the next five in a list beside it. The grid of articles carries on below. With fewer than five articles, or a newest article without a photograph, the page looks as before.
