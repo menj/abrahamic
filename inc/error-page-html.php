@@ -63,6 +63,13 @@ function abr_error_page_kinds() {
 			'title'   => 'Bad gateway',
 			'lines'   => array( 'A server between you and the site gave a wrong answer.', 'Please try again in a few minutes.' ),
 		),
+		'504'         => array(
+			'status'  => 504,
+			'retry'   => 0,
+			'eyebrow' => 'Error 504',
+			'title'   => 'The server took too long',
+			'lines'   => array( 'A server between you and the site waited too long for an answer.', 'Please try again in a few minutes.' ),
+		),
 		'503'         => array(
 			'status'  => 503,
 			'retry'   => 300,

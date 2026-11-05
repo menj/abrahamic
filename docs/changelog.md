@@ -2,6 +2,16 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.4] - 2026-11-05
+
+### Fixed
+- Switching to another theme left the three drop-ins in wp-content, with the `abr_dropins_version` flag still set. Switching back then wrote nothing, since the flag matched. `abr_maintenance_remove_dropins()` now runs on `switch_theme`: it deletes `maintenance.php`, `php-error.php` and `db-error.php` only when one carries the theme's marker, and deletes the flag.
+- `abr_maintenance_install_dropins()` skipped whenever the flag matched the version, so a drop-in deleted by hand stayed missing until the next release. It now skips only when every file is installed and current (or is someone else's file it must leave alone), via `abr_maintenance_dropins_settled()`.
+- A drop-in left by one of the sister themes, marked "Written by the ... theme; safe to delete", counted as foreign and blocked the install. `abr_error_is_replaceable()` lets the installer write over it. A file with no such mark is still never touched, and only the theme's own files are deleted on a switch.
+
+### Added
+- `errors/504.html` for a gateway timeout, in the same design as the 502 page, and an `ErrorDocument 504` line in the .htaccess snippet on the Tools tab.
+
 ## [2.96.3] - 2026-11-05
 
 ### Fixed
