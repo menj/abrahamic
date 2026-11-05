@@ -13,6 +13,14 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.10 to 2.96.11
+
+Replace the theme files, `.htaccess` files included. The new files are `inc/favicon.php` and five in `assets/images/`: `favicon.ico`, `favicon.svg`, `icon-512.png`, `icon-maskable-512.png` and `site.webmanifest`. Load one admin page so the error pages are written again with the icon. Nothing else to do.
+
+If a `favicon.ico` file sits in the site root, the web server sends it and the theme's never runs. Delete it to let the theme answer.
+
+---
+
 ## Upgrading from 2.96.9 to 2.96.10
 
 Replace the theme files. The new files are `LICENSE`, `inc/article-parts.php`, `assets/css/article.css` and `tests/article-parts-test.php`. The theme is now licensed GNU GPL version 3 or later; nothing to do for that.
@@ -1050,5 +1058,5 @@ These are plans, not promises. Each item rests on something on record: the code,
 8. Confirm the package holds the eight Sabon files in `assets/fonts/` and that Tools > System information reports "Bundled (8 files)".
 9. Render the front page at 320, 390, 768, 1024, 1280 and 1440 pixels; confirm no horizontal overflow and a single-row header; open and close the overlay menu on phone and tablet widths.
 10. Run the seeder on a fresh WordPress install, crawl the site, and confirm: every internal link returns 200; one `h1`, a unique title and a unique description of 130 characters or fewer on every page; a canonical address and breadcrumbs on every inner page; valid structured data; robots.txt and every sitemap address; a 404 status on the 404 page. Repeat on a site upgraded from the previous release and confirm the earlier addresses redirect.
-11. If `assets/images/logo-mark.svg` changed, regenerate `logo.png`, `icon-192.png`, `apple-touch-icon.png` and `favicon-32.png` from it, and refresh `screenshot.png`.
+11. If `assets/images/logo-mark.svg` changed, regenerate `logo.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `favicon-32.png` and `favicon.ico` from it, copy it to `favicon.svg`, and refresh `screenshot.png`.
 12. Package the theme with `git archive --format=zip --prefix=abrahamic/ -o abrahamic-x.y.z.zip HEAD`. `.gitattributes` leaves `.claude/` out; check with `unzip -l` that no `CLAUDE.md` or `FARUQI.md` is in it.

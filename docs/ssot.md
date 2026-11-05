@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.10** |
+| Current version | **2.96.11** |
 | Release date | 2026-11-05 |
 | Status | Stable |
 
@@ -91,7 +91,8 @@ abrahamic/
 │   ├── js/description.js  Search description counter
 │   ├── js/lightbox.js     Photograph viewer, pages with [abr_photo] only
 │   ├── images/            logo-mark.svg (AR monogram), logo.png (512 × 512), favicon-32.png, icon-192.png,
-│   │                      apple-touch-icon.png (180 × 180), share.png (1200 × 630),
+│   │                      icon-512.png, icon-maskable-512.png, favicon.ico, favicon.svg,
+│   │                      site.webmanifest, apple-touch-icon.png (180 × 180), share.png (1200 × 630),
 │   │                      symbols.png (alpha mask, 606 × 280), photos/ (site photographs, AVIF;
 │   │                      photos/large/ holds full-frame versions up to 2000 px for the viewer)
 │   ├── icons/social/      45 network marks, one SVG per slug (section 11)
@@ -222,9 +223,9 @@ The Custom scheme takes the five editable values from the settings screen.
 | Source | `assets/images/logo-mark.svg`, outlines traced from the bundled font with fontTools, so no font loads for it. Parts carry the classes `abr-mark__bg`, `abr-mark__letters` and `abr-mark__rule` |
 | Colours | Navy square, ivory letters, gold rule; inline copies take `--abr-navy`, `--abr-ivory` and `--abr-gold` from the active scheme. The file itself keeps the Classic values |
 | Sizes | Header 44px (48px when the mark stands alone, 38px up to 360px wide); footer 40px with a faint outline; 6px corners |
-| Rasters | `logo.png` 512, `icon-192.png`, `apple-touch-icon.png` 180 and `favicon-32.png`, all rendered from the SVG. Regenerate them whenever the SVG changes |
+| Rasters | `logo.png` 512, `icon-512.png`, `icon-maskable-512.png` (mark at 80% on navy), `icon-192.png`, `apple-touch-icon.png` 180, `favicon-32.png` and `favicon.ico` (16, 32, 48), all rendered from the SVG; `favicon.svg` is a copy of it. Regenerate them whenever the SVG changes |
 | Accessibility | Inline mark is `aria-hidden`; the link carries "{name}, home" |
-| Icons | Printed by `abr_default_icons()` on `wp_head` and `login_head` only while `has_site_icon()` is false |
+| Icons | Printed by `abr_default_icons()` (`inc/favicon.php`) on `wp_head`, `login_head` and `admin_head` only while `has_site_icon()` is false: SVG, 32px, 192px, touch icon, `site.webmanifest` and `theme-color` #172033. `/favicon.ico` answers with `favicon.ico` under the same condition |
 
 ### Reference works as leads, not as sources
 
@@ -782,6 +783,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-05 | 2.96.11 | Every theme ships a full favicon set drawn from its own mark, a manifest and a `/favicon.ico` answer; a Site Icon still wins | The owner asked for it on 2026-11-05: "make sure you have favicon too" |
 | 2026-11-05 | 2.96.10 | The theme is licensed GNU GPL version 3 or later, with the full text in `LICENSE`. This replaces the 2.0.1 rule of no licence file | The owner set GPLv3 or later for every theme on 2026-11-05 |
 | 2026-11-05 | 2.96.10 | Articles gain an "In short" box, a mid-article next step and a review note; a next step offers only the notes, the next article and the Contact page | The owner approved the article anatomy list with every sales prompt removed. The owner's name stays schema-only on this site |
 | 2026-11-03 | 2.92.0 | Seeded Journal posts take a fixed `post_date` in site time: a past date publishes with that date, a future date is Scheduled and WP-Cron publishes it. The first seven, approved by the owner, run from 10 October to 20 December 2026 | `days_ago` counts back from whenever the seeder runs, so the date drifted and nothing could be scheduled. The owner approved the Journal plan, with three backdated and four scheduled posts. WP-Cron must run on the host for the scheduled posts to go live |

@@ -362,22 +362,6 @@ add_shortcode(
 );
 
 /**
- * Browser icons from the AR mark, until a Site Icon is set.
- */
-function abr_default_icons() {
-	if ( has_site_icon() ) {
-		return;
-	}
-	$base = ABR_URI . '/assets/images/';
-	printf( '<link rel="icon" href="%s" type="image/svg+xml">' . "\n", esc_url( $base . 'logo-mark.svg' ) );
-	printf( '<link rel="icon" href="%s" sizes="32x32" type="image/png">' . "\n", esc_url( $base . 'favicon-32.png' ) );
-	printf( '<link rel="icon" href="%s" sizes="192x192" type="image/png">' . "\n", esc_url( $base . 'icon-192.png' ) );
-	printf( '<link rel="apple-touch-icon" href="%s">' . "\n", esc_url( $base . 'apple-touch-icon.png' ) );
-}
-add_action( 'wp_head', 'abr_default_icons', 3 );
-add_action( 'login_head', 'abr_default_icons' );
-
-/**
  * Header call-to-action button.
  */
 add_shortcode(

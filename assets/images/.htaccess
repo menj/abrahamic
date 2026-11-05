@@ -1,5 +1,8 @@
 # Abrahamic: serve the bundled AVIF photographs with their proper type.
 # Some Apache servers send .avif files with no Content-Type header.
+# The web app manifest and favicon.ico get theirs for the same reason.
 <IfModule mod_mime.c>
 	AddType image/avif .avif
+	AddType application/manifest+json .webmanifest
+	AddType image/x-icon .ico
 </IfModule>

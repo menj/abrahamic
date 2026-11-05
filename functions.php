@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ABR_VERSION', '2.96.10' );
+define( 'ABR_VERSION', '2.96.11' );
 define( 'ABR_DIR', get_stylesheet_directory() );
 define( 'ABR_URI', get_stylesheet_directory_uri() );
 
@@ -16,6 +16,7 @@ define( 'ABR_URI', get_stylesheet_directory_uri() );
 // abr_incomplete_theme() below.
 $abr_files = array(
 	ABR_DIR . '/inc/icons.php',
+	ABR_DIR . '/inc/favicon.php',
 	ABR_DIR . '/inc/social.php',
 	ABR_DIR . '/inc/options.php',
 	ABR_DIR . '/inc/theme-options.php',

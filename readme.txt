@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.10
+Stable tag: 2.96.11
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -221,6 +221,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.11 =
+The browser icon set is complete. Nothing to do.
 
 = 2.96.10 =
 Two new switches on the General tab, both on. Key points and a review date are typed per article. Nothing else to do.
@@ -631,6 +634,10 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.11 - 2026-11-05 =
+* The browser icon set is complete: favicon.ico, an SVG icon, 512px and maskable icons and a web app manifest, all drawn from the AR mark. The site answers /favicon.ico with the icon itself.
+* The icons also show on the login screen and in the admin, and the error pages carry the icon in the browser tab. A Site Icon you set still replaces them all.
 
 = 2.96.10 - 2026-11-05 =
 * Articles can open with an "In short" box of key points, typed in the new Key points and review box on the edit screen.
