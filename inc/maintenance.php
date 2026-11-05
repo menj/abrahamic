@@ -139,7 +139,8 @@ function abr_maintenance_dropins_settled() {
 /**
  * Whether another site of the network still runs this theme, as its
  * stylesheet or its template. The drop-ins in the shared wp-content then
- * stay. At most 500 sites are checked.
+ * stay. Sites are read 500 at a time, so a large network is checked in
+ * full without loading every site at once.
  *
  * @return bool
  */
@@ -147,19 +148,24 @@ function abr_maintenance_dropins_in_use_elsewhere() {
 	if ( ! is_multisite() ) {
 		return false;
 	}
-	$slug = basename( dirname( __DIR__ ) );
-	$ids  = get_sites(
-		array(
-			'fields'       => 'ids',
-			'number'       => 500,
-			'site__not_in' => array( get_current_blog_id() ),
-		)
-	);
-	foreach ( $ids as $id ) {
-		if ( in_array( $slug, array( get_blog_option( $id, 'stylesheet' ), get_blog_option( $id, 'template' ) ), true ) ) {
-			return true;
+	$slug   = basename( dirname( __DIR__ ) );
+	$offset = 0;
+	do {
+		$ids = get_sites(
+			array(
+				'fields'       => 'ids',
+				'number'       => 500,
+				'offset'       => $offset,
+				'site__not_in' => array( get_current_blog_id() ),
+			)
+		);
+		foreach ( $ids as $id ) {
+			if ( in_array( $slug, array( get_blog_option( $id, 'stylesheet' ), get_blog_option( $id, 'template' ) ), true ) ) {
+				return true;
+			}
 		}
-	}
+		$offset += 500;
+	} while ( 500 === count( $ids ) );
 	return false;
 }
 
@@ -169,7 +175,10 @@ function abr_maintenance_dropins_in_use_elsewhere() {
  * so switching back writes them again.
  */
 function abr_maintenance_remove_dropins() {
-	if ( function_exists( 'abr_error_dropins' ) && ! ( is_multisite() && ! is_main_site() ) && ! abr_maintenance_dropins_in_use_elsewhere() ) {
+	// On a network the files are shared: they stay while any other site,
+	// the main site included, still runs the theme. The last site to switch
+	// away removes them, even a subsite.
+	if ( function_exists( 'abr_error_dropins' ) && ! abr_maintenance_dropins_in_use_elsewhere() ) {
 		foreach ( array_keys( abr_error_dropins() ) as $name ) {
 			$target = WP_CONTENT_DIR . '/' . $name;
 			if ( file_exists( $target ) && abr_error_is_ours( $target ) ) {
