@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.6** |
+| Current version | **2.96.7** |
 | Release date | 2026-11-05 |
 | Status | Stable |
 
@@ -460,7 +460,23 @@ Result notices use the `abr-notice` query argument: `imported`, `reset`, `import
 
 Structure shortcodes (`inc/structure.php`): `[abr_term_label]`, `[abr_term_count]`, `[abr_tag_list]`, `[abr_secondary_nav]`, `[abr_further_reading]`, `[abr_breadcrumbs]`, `[abr_child_pages]`, `[abr_topic_index]`, `[abr_topic_chips]`, `[abr_page_heading]`, `[abr_related_articles]`, `[abr_reading_time]`, `[abr_hub_links]`, `[abr_site_map]`, `[abr_footer_menu]`. Front page patterns build their links with `abr_link()`, so they follow the pages they point to; figure and place cards link to the matching section of the Figures and Places pages.
 
-Front page order, with section anchors: `hero` (#hero), `intro` (#intro), `religions` (#religions), `heritage` (#heritage), `comparison` (#comparison), `texts` (#texts), `figures` (#figures), `places` (#places), `timeline` (#timeline), `articles` (#articles), `topics` (#topics), `resources` (#resources), `faq` (#faq), `about` (#about), `newsletter` (#newsletter).
+Front page order, with section anchors: `hero` (#hero), `intro` (#intro), `heritage` (#heritage), `figures` (#figures), `places` (#places), `texts` (#texts), `religions` (#religions), `timeline` (#timeline), `comparison` (#comparison), `faq` (#faq), `articles` (#articles), `topics` (#topics), `resources` (#resources), `about` (#about), `newsletter` (#newsletter).
+
+### The front page arc
+
+The front page reads as one story, told in thirteen numbered chapters between the hero and the newsletter. Keep this order, and give a new section a place in it with its chapter number.
+
+| Part | Chapters | What the reader gets |
+|---|---|---|
+| The claim | Hero | Four traditions that trace themselves to Abraham |
+| The question | I The question | What the Abrahamic religions are |
+| The evidence | II The root to VII Through the ages | The shared heritage, its people, the land, the scriptures, the four traditions that grew from them and their history to the present |
+| The test | VIII Meeting and parting | Where the traditions meet and where they differ |
+| The answers | IX Questions along the way | Short answers to the questions the comparison raises |
+| The next step | X The journey continues to XII For the road | The Journal, the topics and the reference section |
+| Who is speaking | XIII Behind the journey, newsletter | What the site is, and how to follow it |
+
+The arc follows `.claude/FARUQI.md`: the traditions are set out as moments of one Abrahamic heritage, each described as its adherents understand it, and the reader weighs them side by side before the answers come. Backgrounds alternate white and ivory in this order, with heritage, reference and newsletter dark; a moved section takes the background its new neighbours need.
 
 Theme shortcodes (`[abr_…]`) inside Shortcode, Custom HTML and Paragraph blocks are rendered at block render time (`abr_render_theme_shortcodes()`), because WordPress runs `do_shortcode()` on templates before nested patterns are expanded. A Paragraph that holds nothing but a shortcode loses its `<p>` to `shortcode_unautop()`, so option-driven output goes in Custom HTML blocks and supplies its own wrapper.
 

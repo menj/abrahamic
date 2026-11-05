@@ -9,12 +9,12 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<!-- wp:group {"tagName":"section","anchor":"topics","className":"abr-section abr-topics is-white","layout":{"type":"constrained"}} -->
-<section id="topics" class="wp-block-group abr-section abr-topics is-white">
+<!-- wp:group {"tagName":"section","anchor":"topics","className":"abr-section abr-topics","layout":{"type":"constrained"}} -->
+<section id="topics" class="wp-block-group abr-section abr-topics">
 <!-- wp:group {"align":"wide","className":"abr-section-head","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide abr-section-head">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">X · Paths to Explore</p>
+<p class="abr-label">XI · Paths to Explore</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">Featured topics</h2>
