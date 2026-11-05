@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.12** |
+| Current version | **2.96.13** |
 | Release date | 2026-11-05 |
 | Status | Stable |
 
@@ -783,6 +783,8 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-05 | 2.96.13 | The settings and readme say the other sites in plain words; a subfolder install keeps a copy of `favicon.ico` at the domain root | Wording and a deployment note; no behaviour changed |
+
 | 2026-11-05 | 2.96.12 | The first page of the Journal and of each archive opens with a lead and list: the newest article large with its credit, the next five beside it, the grid below. Below five articles, or with a lead that has no photograph, the grid shows alone | The owner asked for this layout "only ... where it makes sense", in the theme's own colours; an audit marked these two templates |
 | 2026-11-05 | 2.96.11 | Every theme ships a full favicon set drawn from its own mark, a manifest and a `/favicon.ico` answer; a Site Icon still wins | The owner asked for it on 2026-11-05: "make sure you have favicon too" |
 | 2026-11-05 | 2.96.10 | The theme is licensed GNU GPL version 3 or later, with the full text in `LICENSE`. This replaces the 2.0.1 rule of no licence file | The owner set GPLv3 or later for every theme on 2026-11-05 |

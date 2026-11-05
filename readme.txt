@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.12
+Stable tag: 2.96.13
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -38,7 +38,7 @@ Abrahamic is a child theme: it builds on Twenty Twenty-Five, which must stay ins
 * Breadcrumbs, a site map, a page-not-found screen and readable search addresses such as /search/abraham/.
 * Search descriptions, canonical addresses, social sharing tags, one structured data graph and an image sitemap. An active SEO plugin such as Yoast SEO or Rank Math takes these over.
 * Four colour schemes and a custom palette, with a light and dark switch for visitors.
-* Links in the running text to pages on this site and on the six sister sites, capped per page.
+* Links in the running text to pages on this site and on the six other sites, capped per page.
 * A themed login screen and an optional private login address.
 * Security switches for XML-RPC, application passwords and the REST API, a gambling-spam gate and a spam scan.
 * Profile links for 45 social and scholarly networks, from Facebook and YouTube to ORCID, Academia.edu and Wikidata.
@@ -60,7 +60,7 @@ Page text, templates and the home page sections are edited in Appearance > Edito
 * Social: one profile address per network. A filter box finds a network by name.
 * Login: the login screen design, layout, photograph and line of text, and the private login address.
 * Search: the search output switch, the front page title and description, the logo and share image for link previews, verification codes, the Analytics ID, and readable search addresses such as /search/abraham/.
-* Contextual links: switches for links to this site and to the sister sites, sliders for the cap on each, extra phrases and excluded pages.
+* Contextual links: switches for links to this site and to the other sites, sliders for the cap on each, extra phrases and excluded pages.
 * Security: five switches, all on by default: turn off XML-RPC, turn off application passwords, lock REST writes to a logged-in browser, hold spam as Pending, and answer 410 Gone for removed spam. Administrators also get the spam scan, the attack reports and the clean-up tools here.
 * Tools: export, import and reset; the error pages (install them, and copy the .htaccess lines); the starter content check, restore and update choice; the search index rebuild; and the system information.
 
@@ -222,6 +222,9 @@ The Theme Options screen remembers the last tab you opened in the browser's sess
 
 == Upgrade Notice ==
 
+= 2.96.13 =
+Replace the theme files. On a site in a subfolder, also put a copy of assets/images/favicon.ico in the domain root folder; otherwise nothing to do.
+
 = 2.96.12 =
 The Journal and the archives gain a lead and list. Nothing to do.
 
@@ -241,7 +244,7 @@ The Qur'an typeface is served as a smaller WOFF2 file.
 Qur'anic verses are set in the King Fahd Complex's Hafs Uthmanic typeface.
 
 = 2.83.0 =
-Contextual links: the first mention of a known topic in an article links to the page that treats it, here or on a sister site. Settings under Theme Options > Contextual links.
+Contextual links: the first mention of a known topic in an article links to the page that treats it, here or on another site. Settings under Theme Options > Contextual links.
 
 = 2.82.0 =
 Twenty-five additional photographs in recent Journal articles.
@@ -636,7 +639,15 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 = 2.4.0 =
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
+= My site is in a subfolder. Where does the browser icon go? =
+
+Browsers ask for /favicon.ico at the top of the domain, such as example.com/favicon.ico, even when the site lives in example.com/blog/. WordPress never sees that request, so put a copy of the theme's favicon.ico in the domain root folder. The icon tags in each page cover the pages either way.
+
 == Changelog ==
+
+= 2.96.13 - 2026-11-05 =
+* The settings and the readme speak of the other sites in plain words. Links to them stay.
+* The readme says where the browser icon goes on a site in a subfolder: a copy of favicon.ico in the domain root.
 
 = 2.96.12 - 2026-11-05 =
 * The Journal and each topic archive open with the newest article large, with its photograph credit, and the next five in a list beside it. The grid of articles carries on below. With fewer than five articles, or a newest article without a photograph, the page looks as before.
@@ -674,7 +685,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 = 2.96.4 - 2026-11-05 =
 * Switching to another theme removes the error pages the theme wrote in wp-content. Switching back writes them again.
 * A deleted error page is written again on the next admin page.
-* Error pages left by a sister theme are replaced. Any other file is left alone.
+* Error pages left by one of the other themes are replaced. Any other file is left alone.
 * A static 504 page in the errors folder, with its .htaccess line.
 
 = 2.96.3 - 2026-11-05 =
@@ -746,7 +757,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 * The theme needs inc/data/schema-entities.json. Without it the site shows its maintenance page and leaves the admin open.
 
 = 2.89.1 - 2026-11-03 =
-* Links to the sister sites, and to this site's Deuteronomy 18 article, follow their current addresses, which carry no verse numbers, counts or years.
+* Links to the other sites, and to this site's Deuteronomy 18 article, follow their current addresses, which carry no verse numbers, counts or years.
 
 = 2.89.0 - 2026-11-03 =
 * All schema.org markup stays, FAQPage and speakable included, as the owner decided on 2026-11-03 for GEO, AEO and AIO.
@@ -767,7 +778,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 * Three section headings now capitalise the names they carry: Jerusalem on the Places page, Adam on the Figures page and Torah on the Tanakh page. Seed version 104.
 
 = 2.86.1 - 2026-10-29 =
-* The Islamic Dilemma page calls the two parts of the argument its two claims throughout, the term the sister sites use.
+* The Islamic Dilemma page calls the two parts of the argument its two claims throughout, the term the other sites use.
 * FARUQI.md sets out the Faruqian core of al-tawḥīd that the site rests on; CLAUDE.md points contributors to it.
 
 = 2.86.0 - 2026-10-27 =
@@ -777,7 +788,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 * New [abr_lanah] shortcode: laʿnat Allāh after the name of Paul of Tarsus, as calligraphy in gold ink, for the owner to place by hand. No starter content uses it, so the seed version is unchanged.
 
 = 2.85.0 - 2026-10-26 =
-* The Islamic Dilemma reference page expanded (Tawrāt and Injīl, muhaymin, taḥrīf, the classical exegetes, revelation and the later texts) with a box linking the six sister pieces across the network; /islamic-dilemma/ now redirects to it. Seed version 100.
+* The Islamic Dilemma reference page expanded (Tawrāt and Injīl, muhaymin, taḥrīf, the classical exegetes, revelation and the later texts) with a box linking the six matching pieces on the other sites; /islamic-dilemma/ now redirects to it. Seed version 100.
 
 = 2.84.2 - 2026-10-26 =
 * Starter content corrections (seed version 99): a stray placeholder removed from two articles, a quotation on the Qur’an as guardian credited to Ibn Jurayj as Ibn Kathīr reports it, and two unsupported sentences removed from the Gospel of Barnabas and Haman articles.
@@ -789,7 +800,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 * Arabic Qur'anic verses are set in KFGQPC HAFS Uthmanic Script, the King Fahd Complex's Madinah mushaf face, replacing Amiri Quran. Other Arabic keeps its usual typeface.
 
 = 2.83.0 - 2026-10-26 =
-* Added contextual links in the running text of articles and pages, to inner pages on this site and on the six sister sites, with a Contextual links tab in Theme Options.
+* Added contextual links in the running text of articles and pages, to inner pages on this site and on the six other sites, with a Contextual links tab in Theme Options.
 * Starter content data now ships as JSON instead of PHP.
 
 = 2.82.0 - 2026-10-12 =

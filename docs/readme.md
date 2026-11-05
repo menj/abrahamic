@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.96.12 |
+| Version | 2.96.13 |
 | Licence | GNU GPL v3 or later; the full text is in `LICENSE` |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
@@ -48,7 +48,7 @@ On a network the main site writes the files, since every site shares `wp-content
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.96.12.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.96.13.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -56,7 +56,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.96.12.zip --activate
+wp theme install abrahamic-2.96.13.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -365,7 +365,7 @@ php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
 find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
 for f in assets/js/*.js; do node --check "$f" || exit 1; done
-git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.12.zip HEAD   # after the release is committed
+git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.13.zip HEAD   # after the release is committed
 ```
 
 Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line. The tests replace WordPress with small stubs, so they need only PHP.
@@ -410,7 +410,7 @@ Theme Options, the seeder and its tombstones, the Security settings and logs are
 
 `inc/favicon.php` prints the icon tags on `wp_head`, `login_head` and `admin_head` while no Site Icon is set: `favicon.svg`, `favicon-32.png`, `icon-192.png`, `apple-touch-icon.png`, `site.webmanifest` and `theme-color` #172033. With a Site Icon, WordPress prints its own tags and the theme prints none.
 
-`/favicon.ico` reaches WordPress when no such file sits in the site root. The theme answers it with `assets/images/favicon.ico` (16, 32 and 48px), `Cache-Control: public, max-age=86400` and an ETag; a matching `If-None-Match` gets a 304. It hooks `template_redirect` at priority 0 so HEAD requests get the same headers, and `do_faviconico` as well. With a Site Icon, WordPress redirects to it.
+`/favicon.ico` reaches WordPress when no such file sits in the site root. The theme answers it with `assets/images/favicon.ico` (16, 32 and 48px), `Cache-Control: public, max-age=86400` and an ETag; a matching `If-None-Match` gets a 304. It hooks `template_redirect` at priority 0 so HEAD requests get the same headers, and `do_faviconico` as well. With a Site Icon, WordPress redirects to it. On a site in a subfolder, such as `example.com/blog/`, browsers still ask for `example.com/favicon.ico`, which WordPress never sees: put a copy of `assets/images/favicon.ico` at the domain root there. The head tags cover the pages either way. If a Site Icon is set, put that icon there as favicon.ico instead.
 
 The manifest is a static file with relative icon paths, so it works on a subfolder install. `assets/images/.htaccess` gives `.webmanifest` the type `application/manifest+json` and `.ico` the type `image/x-icon`; on Nginx the stock `mime.types` covers both. No deny rule touches `assets/images/`.
 

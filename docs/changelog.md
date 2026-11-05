@@ -2,6 +2,15 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.13] - 2026-11-05
+
+The theme now speaks of "the other sites" in its settings and readme, and the docs name the subfolder favicon step. No feature removed and no public identifier renamed.
+
+### Changed
+- The Theme Options Contextual links tab, its tab summary and `readme.txt` say "the six other sites". The `ctx_sister` options, their defaults and the `abr-ctx-link--sister` class keep their names.
+- Code comments in `inc/contextual-links.php` and `inc/security.php` use the same wording.
+- `readme.txt` and `docs/readme.md` say that a site in a subfolder needs a copy of `favicon.ico` at the domain root, because browsers ask for it there and WordPress never sees the request.
+
 ## [2.96.12] - 2026-11-05
 
 The Journal and the archives open with a lead and list. No feature removed and no public identifier renamed.

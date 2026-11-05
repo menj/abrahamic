@@ -275,7 +275,7 @@ function abr_options_usage( $tab ) {
 		'social'     => __( 'Paste a profile address for each network you use. Type in the filter box to find a network by name. Filled networks show in the footer.', 'abrahamic' ),
 		'login'      => __( 'Style the login screen and, if you want, move it to a private address. Write the new address down before you save.', 'abrahamic' ),
 		'search'     => __( 'Turn the theme\'s search output on or off, write the front page description, and paste verification codes. Analytics stays off until you enter a measurement ID.', 'abrahamic' ),
-		'links'      => __( 'Turn automatic links on or off for this site and for the sister sites, and drag the sliders to cap how many each page gets.', 'abrahamic' ),
+		'links'      => __( 'Turn automatic links on or off for this site and for the other sites, and drag the sliders to cap how many each page gets.', 'abrahamic' ),
 		'security'   => __( 'Switch off the routes spam tools use to publish from outside the site. The spam scan and the clean-up tools below the switches show only to administrators.', 'abrahamic' ),
 		'tools'      => __( 'Export your options to a file, import them on another site or reset them. Install the error pages WordPress shows when it cannot build a page. Below that, check the starter content and read the system information.', 'abrahamic' ),
 	);
@@ -699,16 +699,16 @@ function abr_render_options_page() {
 			<section class="abr-panel" role="tabpanel" id="abr-panel-links" aria-labelledby="abr-tab-links" tabindex="0"<?php abr_options_panel_hidden( 'links' ); ?>>
 				<?php abr_options_usage( 'links' ); ?>
 				<h2><?php esc_html_e( 'Links in the running text', 'abrahamic' ); ?></h2>
-				<p class="abr-help"><?php esc_html_e( 'On a single article or page, the first mention of a known phrase links to the page that treats it, on this site or on one of the six sister sites. Phrases come from inc/data/network-links.json, a file shared by all seven themes. Links are never made in headings, quotations, verses, footnotes, tables of contents, the "In short" box, the next step, the review note, Further reading, existing links or Arabic, Hebrew, Greek or Aramaic text, and at most one is added per paragraph. Stored content is not changed.', 'abrahamic' ); ?></p>
+				<p class="abr-help"><?php esc_html_e( 'On a single article or page, the first mention of a known phrase links to the page that treats it, on this site or on one of the six other sites. Phrases come from inc/data/network-links.json, a file shared by all seven themes. Links are never made in headings, quotations, verses, footnotes, tables of contents, the "In short" box, the next step, the review note, Further reading, existing links or Arabic, Hebrew, Greek or Aramaic text, and at most one is added per paragraph. Stored content is not changed.', 'abrahamic' ); ?></p>
 				<?php
 				abr_field( 'ctx_own', __( 'Link to pages on this site', 'abrahamic' ), 'checkbox' );
 				abr_field( 'ctx_own_max', __( 'Links to this site on one page, at most', 'abrahamic' ), 'range', __( '0 to 15. A page already linked by hand in the text is not linked again.', 'abrahamic' ), array( 'min' => 0, 'max' => 15, 'step' => 1 ) );
-				abr_field( 'ctx_sister', __( 'Link to pages on the sister sites', 'abrahamic' ), 'checkbox' );
-				abr_field( 'ctx_sister_max', __( 'Links to sister sites on one page, at most', 'abrahamic' ), 'range', __( '0 to 10. They open in the same tab.', 'abrahamic' ), array( 'min' => 0, 'max' => 10, 'step' => 1 ) );
+				abr_field( 'ctx_sister', __( 'Link to pages on the other sites', 'abrahamic' ), 'checkbox' );
+				abr_field( 'ctx_sister_max', __( 'Links to other sites on one page, at most', 'abrahamic' ), 'range', __( '0 to 10. They open in the same tab.', 'abrahamic' ), array( 'min' => 0, 'max' => 10, 'step' => 1 ) );
 				?>
 				<h2><?php esc_html_e( 'Phrases and exceptions', 'abrahamic' ); ?></h2>
 				<?php
-				abr_field( 'ctx_extra', __( 'Extra phrases', 'abrahamic' ), 'menu', __( 'One per line: phrase | /path/ for a page on this site, or phrase | https://… for a page on a sister site. Other addresses are ignored. These lines are read before the shared file, so they win.', 'abrahamic' ) );
+				abr_field( 'ctx_extra', __( 'Extra phrases', 'abrahamic' ), 'menu', __( 'One per line: phrase | /path/ for a page on this site, or phrase | https://… for a page on another site. Other addresses are ignored. These lines are read before the shared file, so they win.', 'abrahamic' ) );
 				abr_field( 'ctx_exclude', __( 'Pages that never get these links', 'abrahamic' ), 'textarea', __( 'One address slug per line, for example islamic-dilemma.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
 				?>
 			</section>
