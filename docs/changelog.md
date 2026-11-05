@@ -2,6 +2,12 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.5] - 2026-11-05
+
+### Fixed
+- On a network, switching the main site to another theme deleted the shared drop-ins while a subsite still ran Abrahamic, so that subsite lost its error pages. `abr_maintenance_remove_dropins()` now skips the removal when `abr_maintenance_dropins_in_use_elsewhere()` finds another site, whose `stylesheet` or `template` option names the theme. It reads the sites from `get_sites()` 500 at a time until the list runs out. The version flag is still deleted.
+- On a network whose main site had already switched away, the last subsite to leave Abrahamic left the drop-ins behind. The removal no longer depends on the main site: whichever site is the last to run the theme removes the theme's own files.
+
 ## [2.96.4] - 2026-11-05
 
 ### Fixed
