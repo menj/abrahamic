@@ -4,8 +4,8 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.2** |
-| Release date | 2026-11-04 |
+| Current version | **2.96.3** |
+| Release date | 2026-11-05 |
 | Status | Stable |
 
 ---
@@ -123,6 +123,7 @@ abrahamic/
 │   ├── tags.php           Journal tags: fixed lowercase vocabulary (inc/seed/tags.json), lowercase enforced, thin tag pages noindexed
 │   ├── contextual-links.php  Links in the running text to inner pages here and on the sister sites (section 8)
 │   ├── data/network-links.json  Shared phrase map, identical in all seven themes; edit it in every theme at once
+│   ├── data/gone-slugs.json  Casino spam slugs under /journal/ that answer 410 Gone (section 13)
 │   ├── error-page-html.php The error pages as plain HTML, one per kind (maintenance, php-error, db-error, 403, 500, 502, 503)
 │   ├── error-pages.php    The wp-content drop-ins: installer, ownership markers, repair of the 2.95.0 copies, Tools tab section
 │   └── maintenance.php    Back-shortly notice (503) and the missing-file guard; writes the drop-ins once per version
@@ -650,7 +651,11 @@ Every level of every address resolves to a page: `/religions/`, `/reference/`, `
 
 ### Earlier addresses
 
-From 2.10.0, any request under `/articles/` or `/knowledge-base/` that would end in a 404 is sent to the same path under `/journal/` or `/reference/`, provided something answers there (`abr_renamed_prefixes()`, `abr_resolve_current_path()`). `inc/redirects.php` answers requests that would end in a 404 with a 301 (`X-Redirect-By: Abrahamic`), before WordPress guesses: the 2.3.0 address of each seeded item (from `legacy-v1.php`) goes to its current permalink, and `/category/{slug}/` (with pages) goes to the topic archive. Tools lists pages and articles whose content still links to an earlier address and offers "Update links", which rewrites only matching `href` values.
+From 2.10.0, any request under `/articles/` or `/knowledge-base/` that would end in a 404 is sent to the same path under `/journal/` or `/reference/`, provided something answers there (`abr_renamed_prefixes()`, `abr_resolve_current_path()`). `inc/redirects.php` answers requests that would end in a 404 with a 301 (`X-Redirect-By: Abrahamic`), before WordPress guesses: the 2.3.0 address of each seeded item (from `legacy-v1.php`) goes to its current permalink, and `/category/{slug}/` (with pages) goes to the topic archive. From 2.96.3, `/sitemap.xml` goes to `/sitemap_index.xml` when Rank Math is active with its sitemap module (`abr_rank_math_sitemap_active()`); without Rank Math, core handles `/sitemap.xml` and `wp-sitemap.xml` as before. The 2016 files `/wp-content/uploads/2016/09/abrahamic-religions-300x75.png` and `abrahamic-icon.png` go to `assets/images/logo.png` and `assets/images/icon-192.png` (`abr_legacy_asset_paths()`). Apache serves a file that exists without loading PHP, so only a missing file reaches this redirect. Tools lists pages and articles whose content still links to an earlier address and offers "Update links", which rewrites only matching `href` values.
+
+### Removed spam
+
+With the Security setting `sec_gone` on, the address of spam moved to the trash from the Security tab answers 410 Gone (`abr_sec_send_gone()`). From 2.96.3, so does every slug in `inc/data/gone-slugs.json` under `/journal/`, with a trailing `/feed`, `/embed`, `/amp` or `/page/N` stripped first (`abr_sec_send_gone_listed()`). The list holds 832 casino and gambling spam slugs taken from the server logs. It is an exact list with no keyword fallback, and a post that exists with the slug is always served. `php tests/gone-redirects-test.php` checks that no slug of the theme's own content is in it.
 
 ### Navigation
 
