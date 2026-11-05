@@ -16,7 +16,7 @@ The article anatomy: the pieces a single article was missing. No section or feat
 ### Fixed
 - A table in an article is now a focusable region named by its caption, so it scrolls from the keyboard on a phone (axe `scrollable-region-focusable`).
 - The back links in the notes are underlined, so they stand out from the note text by more than colour (axe `link-in-text-block`).
-- The contextual-links engine leaves the new boxes alone.
+- The contextual-links engine leaves the three new boxes alone.
 
 ### Already in place
 - Breadcrumbs, the standfirst, the published date, reading time, the "Last updated" date, the authored contents list (`.abr-toc`), the notes, the Citation box, related articles, Further reading and the previous and next links.

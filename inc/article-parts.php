@@ -251,7 +251,11 @@ function abr_article_last_reviewed() {
 			'<a href="' . esc_url( get_permalink( $contact ) ) . '">' . esc_html__( 'Tell us', 'abrahamic' ) . '</a>'
 		);
 	}
-	return '<aside class="abr-cite abr-reviewed" aria-labelledby="abr-reviewed-title"><div class="abr-cite__head"><h2 id="abr-reviewed-title">' . esc_html__( 'Review', 'abrahamic' ) . '</h2></div><p class="abr-cite__text">' . $text . '</p></aside>';
+	// Each note gets its own heading id, so two on one page stay valid.
+	static $count = 0;
+	++$count;
+	$hid = 1 === $count ? 'abr-reviewed-title' : 'abr-reviewed-title-' . $count;
+	return '<aside class="abr-cite abr-reviewed" aria-labelledby="' . $hid . '"><div class="abr-cite__head"><h2 id="' . $hid . '">' . esc_html__( 'Review', 'abrahamic' ) . '</h2></div><p class="abr-cite__text">' . $text . '</p></aside>';
 }
 add_shortcode( 'abr_last_reviewed', 'abr_article_last_reviewed' );
 
