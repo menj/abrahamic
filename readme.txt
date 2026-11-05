@@ -1363,7 +1363,7 @@ License: GPLv2 or later
 
 Interface icons (inc/icons.php)
 Copyright 2026 Abrahamic Religions
-License: GPLv2 or later
+License: GPLv3 or later
 
 Minimalist Social & Platform Icons Pack 2.8 (assets/icons/social/, 43 icons)
 License: GNU GPL

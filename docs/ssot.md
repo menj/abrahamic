@@ -161,7 +161,7 @@ The theme is licensed GPLv3 or later, declared in the `style.css` header and in 
 | Simple Icons (LinkedIn, Scribd) | CC0 1.0 | Compatible |
 | EB Garamond supplement (1.003) | SIL OFL 1.1 | Accepted for bundling in GPL themes |
 | Noto Serif Hebrew (2.003), Noto Sans Syriac (3.000), Noto Sans Imperial Aramaic (2.002) | SIL OFL 1.1 | Accepted for bundling in GPL themes |
-| Special Elite (1.001) | Apache 2.0 | Compatible with GPLv3; distributed alongside a GPLv2-or-later theme as a separate font file |
+| Special Elite (1.001) | Apache 2.0 | Compatible with GPLv3; distributed alongside a GPLv3-or-later theme as a separate font file |
 | Arslan Wessam A (1.00) | No licence terms in the file; copyright "Arslan, Dev-Point.com"; embedding flag allows editable embedding | Supplied by the site owner for this site; not placed under the GPL; confirm the author's terms before redistributing the theme |
 | Dubidam Arabic | "Free personal use" | Not bundled: a public website is outside personal use without a commercial licence |
 | KFGQPC HAFS Uthmanic Script (2.2) | King Fahd Glorious Quran Printing Complex licence: free to use, copy and distribute; no sale or modification. Licence text embedded in the font file | Not GPL; excluded from the theme licence. Served as a WOFF2 conversion of the original TTF by the owner's decision of 2026-10-26, although the licence forbids modification (see the decision record) |
@@ -808,7 +808,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 | 2026-09-17 | 2.1.0 | LinkedIn and Scribd taken from Simple Icons | The pack's versions require a visible credit on the site; the CC0 marks need none |
 | 2026-09-17 | 2.1.0 | One registry drives fields, defaults, sanitising and footer order | A network is added or removed in one place |
 | 2026-09-17 | 2.1.0 | Option keys stay flat (`social_{slug}`) | The four 2.0 keys keep working with no migration |
-| 2026-09-17 | 2.1.1 | Theme licensed GPLv2 or later; supersedes the 2.0.1 no-licence decision | Owner's instruction; WordPress convention |
+| 2026-09-17 | 2.1.1 | Theme licensed GPLv2 or later; supersedes the 2.0.1 no-licence decision (superseded on 2026-11-05: GPLv3 or later) | Owner's instruction; WordPress convention |
 | 2026-09-17 | 2.1.1 | Bundled resources listed with their licences in `readme.txt`; no separate licence file | Documentation stays within the five permitted files |
 | 2026-09-17 | 2.2.0 | Settings screen becomes Appearance > Theme Options with seven tabs and Tools | House convention for theme settings; the WordPress-standard location for theme screens |
 | 2026-09-17 | 2.2.0 | Header and footer wording comes from Theme Options through shortcodes in Custom HTML blocks | Editable without the Site Editor; Custom HTML blocks avoid the paragraph stripping that `shortcode_unautop()` applies to lone shortcodes |

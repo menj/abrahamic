@@ -10,7 +10,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
 | Author | Abrahamic Religions |
-| Licence | GNU GPL v2 or later |
+| Licence | GNU GPL v3 or later |
 
 Identity, naming rules, tokens, breakpoints, the settings schema and the decision record are maintained in [`ssot.md`](ssot.md). Release history is in [`changelog.md`](changelog.md); upgrade steps, roadmap and the release checklist are in [`upgrading.md`](upgrading.md).
 
@@ -992,7 +992,7 @@ Theme Options, the seeder and its tombstones, the Security settings and logs are
 
 | Resource | Location | Licence |
 |---|---|---|
-| Abrahamic theme code and interface icons | whole theme | GPLv2 or later |
+| Abrahamic theme code and interface icons | whole theme | GPLv3 or later |
 | Twenty Twenty-Five (parent) | separate theme | GPLv2 or later |
 | Minimalist Social & Platform Icons Pack 2.8, 43 icons | `assets/icons/social/` | GNU GPL |
 | Simple Icons: LinkedIn, Scribd | `assets/icons/social/` | CC0 1.0 |
