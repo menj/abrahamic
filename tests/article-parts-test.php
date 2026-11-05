@@ -64,7 +64,15 @@ function wp_strip_all_tags( $s ) {
 	return strip_tags( (string) $s );
 }
 function wp_html_excerpt( $s, $n ) {
-	return mb_substr( (string) $s, 0, $n );
+	return function_exists( 'mb_substr' ) ? mb_substr( (string) $s, 0, $n ) : substr( (string) $s, 0, $n );
+}
+function shortcode_parse_atts( $text ) {
+	preg_match_all( '/(\w+)\s*=\s*"([^"]*)"/', (string) $text, $m, PREG_SET_ORDER );
+	$out = array();
+	foreach ( $m as $a ) {
+		$out[ strtolower( $a[1] ) ] = $a[2];
+	}
+	return $out;
 }
 
 require dirname( __DIR__ ) . '/inc/article-parts.php';
@@ -103,12 +111,16 @@ $GLOBALS['abr_t']['post']->post_content = 'Text [abr_answer_box points="One;;Two
 abr_test_check( abr_article_answer_shows( $GLOBALS['abr_t']['post'] ), 'a box placed in the text with points shows' );
 $GLOBALS['abr_t']['post']->post_content = 'Text [[abr_answer_box points="One"]] more';
 abr_test_check( ! abr_article_answer_shows( $GLOBALS['abr_t']['post'] ), 'an escaped shortcode prints as text and is no box' );
+$GLOBALS['abr_t']['post']->post_content = 'Text [abr_answer_box points=";;"] more';
+abr_test_check( ! abr_article_answer_shows( $GLOBALS['abr_t']['post'] ), 'a box whose points split to nothing is no box' );
 
 $html = '<p>a</p><h2 id="x">One</h2><p>b</p><h2>Two</h2><p>c</p><h2 class="abr-notes-title" id="notes">Notes</h2>';
 abr_test_check( $html === abr_article_insert_mid( $html, '<aside>N</aside>' ), 'two sections and Notes: no mid next step' );
 $html = '<p>a</p><h2>One</h2><h2>Two</h2><h2>Three</h2><h2>Four</h2>';
 abr_test_check( '<p>a</p><h2>One</h2><h2>Two</h2><aside>N</aside><h2>Three</h2><h2>Four</h2>' === abr_article_insert_mid( $html, '<aside>N</aside>' ), 'mid next step before the third section' );
 abr_test_check( $html === abr_article_insert_mid( $html, '' ), 'nothing to insert: text unchanged' );
+$html = '<section class="abr-answer"><h2 id="abr-answer-title" class="abr-answer__title">In short</h2></section><h2>One</h2><h2>Two</h2>';
+abr_test_check( $html === abr_article_insert_mid( $html, '<aside>N</aside>' ), 'the In short title is no section' );
 
 abr_test_check( '2026-11-02' === abr_article_sanitize_date( ' 2026-11-02 ' ), 'review date kept' );
 abr_test_check( '' === abr_article_sanitize_date( '2026-02-30' ) && '' === abr_article_sanitize_date( 'yesterday' ), 'bad review dates dropped' );

@@ -66,7 +66,17 @@ function abr_article_answer_shows( $post ) {
 	if ( abr_article_points( get_post_meta( $post->ID, '_abr_takeaways', true ) ) ) {
 		return true;
 	}
-	return (bool) preg_match( '/(?<!\[)\[abr_answer_box\s[^\]]*\b(?:summary|points)\s*=\s*["\']\s*[^"\'\s]/', (string) $post->post_content );
+	// A box placed in the text shows only with a summary or a point left after
+	// the split; an escaped [[abr_answer_box]] prints as text.
+	if ( preg_match_all( '/(?<!\[)\[abr_answer_box(\s[^\]]*)?\]/', (string) $post->post_content, $found ) ) {
+		foreach ( $found[1] as $raw ) {
+			$atts = (array) shortcode_parse_atts( trim( (string) $raw ) );
+			if ( '' !== trim( (string) ( $atts['summary'] ?? '' ) ) || abr_article_points( $atts['points'] ?? '' ) ) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 /**
@@ -124,18 +134,21 @@ function abr_article_path_next( $post ) {
 	if ( ! $cats ) {
 		return null;
 	}
-	foreach ( array( array( 'after', 'ASC' ), array( 'before', 'DESC' ) ) as $way ) {
+	// Posts that share the article's time are ordered by ID, so none is skipped.
+	foreach ( array( array( 'after', 'ASC', 1 ), array( 'before', 'DESC', -1 ) ) as $way ) {
 		$found = get_posts(
 			array(
 				'cat'                 => (int) $cats[0]->term_id,
 				'post__not_in'        => array( $post->ID ),
-				'posts_per_page'      => 1,
-				'orderby'             => 'date',
-				'order'               => $way[1],
+				'posts_per_page'      => 20,
+				'orderby'             => array(
+					'date' => $way[1],
+					'ID'   => $way[1],
+				),
 				'date_query'          => array(
 					array(
 						$way[0]     => $post->post_date,
-						'inclusive' => false,
+						'inclusive' => true,
 					),
 				),
 				'ignore_sticky_posts' => true,
@@ -143,8 +156,12 @@ function abr_article_path_next( $post ) {
 				'abr_hide_unlisted'   => true,
 			)
 		);
-		if ( $found ) {
-			return array( $found[0], $cats[0]->name );
+		foreach ( $found as $candidate ) {
+			$order = strcmp( $candidate->post_date, $post->post_date );
+			$order = 0 !== $order ? $order : $candidate->ID - $post->ID;
+			if ( $order * $way[2] > 0 ) {
+				return array( $candidate, $cats[0]->name );
+			}
 		}
 	}
 	return null;
@@ -192,14 +209,14 @@ function abr_article_next_step( $post, $content ) {
 
 /**
  * Put a piece of HTML before the third level-two heading of the text, the
- * Notes heading not counted.
+ * Notes heading and the title of an "In short" box not counted.
  *
  * @param string $html  Text.
  * @param string $aside Piece to insert.
  * @return string
  */
 function abr_article_insert_mid( $html, $aside ) {
-	if ( '' === $aside || ! preg_match_all( '#<h2(?![^>]*abr-notes-title)[\s>]#i', $html, $found, PREG_OFFSET_CAPTURE ) || count( $found[0] ) < 3 ) {
+	if ( '' === $aside || ! preg_match_all( '#<h2(?![^>]*(?:abr-notes-title|abr-answer__title))[\s>]#i', $html, $found, PREG_OFFSET_CAPTURE ) || count( $found[0] ) < 3 ) {
 		return $html;
 	}
 	$at = (int) $found[0][2][1];
