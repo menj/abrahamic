@@ -759,7 +759,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 | Development files removed on a live site | Hidden entries except `.htaccess`, `.user.ini`, `.well-known`; and `tests/` and `tools/`. Once per version, on `init`, under a lease (`abr_cleanup_on_version_change()`). Kept on local and development sites and with `ABR_KEEP_DOTFILES` |
 | wp-config switches | `ABR_SECURITY_LOCK` (false), `ABR_ALLOW_CORE_FILES` (true), `ABR_KEEP_DOTFILES` (true), `ABR_HIDE_LOGIN` (false) |
 | Drop-ins | `wp-content/maintenance.php` (503, `Retry-After: 300`), `php-error.php` (500), `db-error.php` (503, `Retry-After: 600`); marker-checked, a foreign file is never overwritten |
-| Static error pages | `errors/` (root sites) and `wp-content/abrahamic-errors/` (per-site home address): 403, 500, 502, 503, 504 |
+| Static error pages | `errors/` (root sites) and `wp-content/abrahamic-errors/` (the writing site's home address; on a network one shared copy, written by one site): 403, 500, 502, 503, 504 |
 | REST users | Removed for anyone who cannot edit posts; `?author=N` redirects to the Journal (`inc/anonymity.php`) |
 | Release zip | `git archive`; `.claude/`, `.gitattributes` and `tests/` are `export-ignore` |
 
