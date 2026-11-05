@@ -809,7 +809,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 | 2026-09-17 | 2.1.0 | One registry drives fields, defaults, sanitising and footer order | A network is added or removed in one place |
 | 2026-09-17 | 2.1.0 | Option keys stay flat (`social_{slug}`) | The four 2.0 keys keep working with no migration |
 | 2026-09-17 | 2.1.1 | Theme licensed GPLv2 or later; supersedes the 2.0.1 no-licence decision (superseded on 2026-11-05: GPLv3 or later) | Owner's instruction; WordPress convention |
-| 2026-09-17 | 2.1.1 | Bundled resources listed with their licences in `readme.txt`; no separate licence file | Documentation stays within the five permitted files |
+| 2026-09-17 | 2.1.1 | Bundled resources listed with their licences in `readme.txt`; no separate licence file (superseded on 2026-11-05: the full GPLv3 text ships in `LICENSE`) | Documentation stays within the five permitted files |
 | 2026-09-17 | 2.2.0 | Settings screen becomes Appearance > Theme Options with seven tabs and Tools | House convention for theme settings; the WordPress-standard location for theme screens |
 | 2026-09-17 | 2.2.0 | Header and footer wording comes from Theme Options through shortcodes in Custom HTML blocks | Editable without the Site Editor; Custom HTML blocks avoid the paragraph stripping that `shortcode_unautop()` applies to lone shortcodes |
 | 2026-09-17 | 2.2.0 | Menu links and footer link columns stay in the Site Editor | Navigation and list blocks already give a full editing interface |

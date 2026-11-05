@@ -10,7 +10,6 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
 | Author | Abrahamic Religions |
-| Licence | GNU GPL v3 or later |
 
 Identity, naming rules, tokens, breakpoints, the settings schema and the decision record are maintained in [`ssot.md`](ssot.md). Release history is in [`changelog.md`](changelog.md); upgrade steps, roadmap and the release checklist are in [`upgrading.md`](upgrading.md).
 
