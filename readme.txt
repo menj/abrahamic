@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.8
+Stable tag: 2.96.9
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ Abrahamic gives abrahamic-religions.com its look: deep navy, ivory and antique g
 
 Every section can be edited in the WordPress Site Editor without touching code. The layout adapts to phones, tablets and desktop screens.
 
-The theme fills a new site for you. On activation it creates the pages the menus link to (Judaism, Mandaeism, Christianity, Islam, Sacred texts, Figures, Places, Glossary, About and more), fourteen introductory articles and the topic categories, and sets up the front page, the Journal page and readable web addresses.
+The theme fills a new site for you. On activation it creates the pages the menus link to (Judaism, Mandaeism, Christianity, Islam, Sacred texts, Figures, Places, Glossary, About and more), 70 Journal articles and the eight topic categories, and sets up the front page, the Journal page and readable web addresses.
 
 The site is organised for readers and search engines alike: section pages for the religions, the reference material and the Journal articles, breadcrumbs on every page, a site map, a helpful page-not-found screen, and built-in search descriptions, social sharing tags and structured data. If you use an SEO plugin such as Yoast SEO or Rank Math, the theme leaves those tasks to it.
 
@@ -50,34 +50,49 @@ Abrahamic is a child theme: it builds on Twenty Twenty-Five, which must stay ins
 
 Page text, templates and the home page sections are edited in Appearance > Editor. Everything else sits in Appearance > Theme Options, on twelve tabs. Each tab opens with a short note on how to use it.
 
-* General: the sticky header, the light and dark switch, the colours a first-time visitor sees, and the fade-in effect.
+* General: the sticky header, the light and dark switch, the colours a first-time visitor sees, the fade-in effect, and the reading progress bar (its colour, height and place).
 * Header: the logo style, the two logo lines, the search, call-to-action and Donate buttons, and the Donate page button.
 * Footer: the footer title, tagline, description, copyright line and note, and the contact email.
-* Navigation: the main menu, the home page section bar, the footer links and columns, and Further reading. Write one link per line as Label | target.
+* Navigation: the main menu, the home page section bar, the drifting chapter banners, the footer links and columns, and Further reading. Write one link per line as Label | target.
 * Colours: click a scheme card, or choose Custom and set five colours with the colour pickers.
 * Newsletter: the form address and field name from your mailing service. The form stays hidden until the address is set.
 * Social: one profile address per network. A filter box finds a network by name.
 * Login: the login screen design, layout, photograph and line of text, and the private login address.
-* Search: the search output switch, the front page title and description, the logo and share image for link previews, verification codes and the Analytics ID.
+* Search: the search output switch, the front page title and description, the logo and share image for link previews, verification codes, the Analytics ID, and readable search addresses such as /search/abraham/.
 * Contextual links: switches for links to this site and to the sister sites, sliders for the cap on each, extra phrases and excluded pages.
-* Security: the remote-publishing switches and the spam gate. Administrators also get the spam scan and the clean-up tools here.
-* Tools: export, import, reset, the starter content check and restore, the search index rebuild and the system information.
+* Security: five switches, all on by default: turn off XML-RPC, turn off application passwords, lock REST writes to a logged-in browser, hold spam as Pending, and answer 410 Gone for removed spam. Administrators also get the spam scan, the attack reports and the clean-up tools here.
+* Tools: export, import and reset; the error pages (install them, and copy the .htaccess lines); the starter content check, restore and update choice; the search index rebuild; and the system information.
 
 Switches save as on or off. Sliders show their value as you drag them. Press Save Theme Options at the foot of the card to keep changes on any tab except Tools, whose buttons act at once.
 
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose the abrahamic zip file, and activate it. The starter pages and articles are created automatically.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose the abrahamic zip file, and activate it. The starter pages and articles are created automatically. To install by FTP instead, turn on hidden files in your FTP program, upload the abrahamic folder to wp-content/themes/, then activate it under Appearance > Themes. Activation creates the starter content.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
+
+= Updating from the dashboard =
+
+Upload the new zip under Appearance > Themes > Add New > Upload Theme and choose "Replace active with uploaded". Your Theme Options, pages and articles stay. Load any admin page once afterwards: that writes the error pages and brings in any new starter content. The theme checks its .htaccess sections at most once an hour, on an admin page. If the first one comes inside that hour, the sections are written on the first admin page after it, or at once when you save a changed Theme Option.
+
+= Updating by FTP =
+
+1. Turn on hidden files in your FTP program first. The theme carries files whose names begin with a dot, such as .htaccess, and most programs hide them. In FileZilla: Server > Force showing hidden files.
+2. Upload the new abrahamic folder next to the old one under a temporary name, for example wp-content/themes/abrahamic-new. Wait until every file has arrived.
+3. Rename the old folder to abrahamic-old and, straight after, rename abrahamic-new to abrahamic. Between the two renames the site has no abrahamic folder and its pages may fail for that moment, so do them one after the other and keep the admin closed until both are done. Nobody meets a half-copied theme this way.
+4. Load any admin page, check the site, then delete abrahamic-old.
+
+If you upload straight over the live folder and the copy stops halfway, leaving one of the theme's files missing or broken, visitors see a short "Back shortly" page with a 503 status instead of an error, and you can still log in. Upload the missing files and the site returns. That page comes from functions.php, so it cannot help while functions.php itself is missing or half written, or in the moment between the two renames above. It checks the PHP files and the three data files the theme lists in functions.php: a missing stylesheet, font, image or other data file, or a file cut short at a point where it still reads as valid, slips past it. The temporary-folder method avoids those cases: an upload that stops there leaves the live theme untouched.
+
+Never upload a fresh copy of WordPress itself over the site without keeping wp-config.php. That file holds the database details; without it WordPress opens its installer to anyone who visits.
 
 == Frequently Asked Questions ==
 
 = Is Abrahamic a child theme? =
 
-Yes. It is a child theme of Twenty Twenty-Five. Keep Twenty Twenty-Five installed; Abrahamic supplies the front page, the header and the footer, and Twenty Twenty-Five supplies the layouts for posts, archives, search and other pages.
+Yes. It is a child theme of Twenty Twenty-Five. Keep Twenty Twenty-Five installed. Abrahamic supplies the header, the footer and the layouts for the front page, pages, articles, the Journal, archives, tags, search results and the page-not-found screen. Twenty Twenty-Five supplies the rest, such as attachment pages, and its styles sit underneath.
 
 = Where are the Theme Options? =
 
@@ -89,7 +104,7 @@ Open Appearance > Theme Options > Tools and download the export file. Import tha
 
 = Does the theme add content to my site? =
 
-Yes. On activation it creates the pages the menus link to, eight articles and the topic categories. If a page with the same address already exists, your page is kept as it is. On a new site it also moves WordPress's untouched sample post and page to the trash and switches to readable web addresses.
+Yes. On activation it creates 30 pages, 70 Journal articles and eight topic categories. A few articles carry a fixed date and wait as Scheduled until that day. If a page with the same address already exists, your page is kept as it is. On a new site it also moves WordPress's untouched sample post and page to the trash and switches to readable web addresses.
 
 = Will an update overwrite my changes to the starter pages? =
 
@@ -101,7 +116,7 @@ No. The theme remembers everything it has created, so deleted items stay deleted
 
 = Can visitors choose dark mode? =
 
-Yes. A switch in the header changes between light and dark colours, and each visitor's choice is remembered on their own device. Under Appearance > Theme Options > Header you can hide the switch, and set which colours a first-time visitor sees: light, dark, or the setting their device prefers.
+Yes. A switch in the header changes between light and dark colours, and each visitor's choice is remembered on their own device. Under Appearance > Theme Options > General you can hide the switch, and set which colours a first-time visitor sees: light, dark, or the setting their device prefers.
 
 = Can I change the login screen? =
 
@@ -174,6 +189,18 @@ Before 2.94.0 the choice on the Tools tab sat outside the form that saves the op
 = I used an earlier version called "Abrahamic Religions". What happens to my settings? =
 
 They are copied across automatically when you activate Abrahamic. Changes you made to templates in the Site Editor under the old theme are not carried over. See docs/upgrading.md for details.
+
+= What do the Security switches do? =
+
+They close the doors spam tools use to publish from outside the site. XML-RPC is turned off, and on Apache the theme also blocks xmlrpc.php in the site's .htaccess. Application passwords are off. Changes sent through the REST API by a signed-in account are accepted only from a browser session on the site; public REST routes, such as reading posts, stay open. New posts and pages that read as gambling spam wait as Pending, and so does anything published from outside the site. Removed spam answers 410 Gone, so search engines drop it. If one of these breaks a tool you need, such as Jetpack, turn that switch off. Every login sent through XML-RPC, with a password or any other credential, is refused while either the XML-RPC switch or the REST switch is on (the REST switch guards that route too), so a tool that logs in to XML-RPC needs both off. A tool that writes through the REST API with an application password needs both the REST switch and the application-password switch off; one that uses a logged-in browser session needs neither. In an emergency, add define( 'ABR_SECURITY_LOCK', false ); to wp-config.php. It lifts the locks in PHP at once; on Apache the xmlrpc.php block in .htaccess stays until the next hourly check on an admin page, so to let XML-RPC through at once, also delete the lines between # BEGIN Block xmlrpc.php and # END Block xmlrpc.php in the site's .htaccess.
+
+= What are the error pages? =
+
+WordPress shows a plain screen when it is updating, when PHP fails or when the database is down. The theme replaces those three screens with its own, in the site's design, and adds pages for the errors your web server answers itself (403, 500, 502, 503, 504). Theme Options > Tools shows whether each is installed and gives the lines to paste into .htaccess.
+
+= Why did the theme delete .git and tests from its folder? =
+
+Those are development files, and a web server can hand them to anyone who asks. On the first visit after an update the theme removes the hidden files and the tests and tools folders from the live copy. A site that needs them, such as one run from a git checkout, keeps them with define( 'ABR_KEEP_DOTFILES', true ); in wp-config.php.
 
 == Privacy ==
 
@@ -597,6 +624,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.9 - 2026-11-05 =
+* Documentation brought up to date with the code: install and FTP update steps, every settings tab, the security switches, the error pages and the files the theme removes. The roadmap in docs/upgrading.md now lists only work the evidence supports.
 
 = 2.96.8 - 2026-11-05 =
 * Fixes from the live logs. The theme's .htaccess now refuses every hidden file and folder (.git, .claude and the like), and the tests, bin and docs folders. The first request after an update removes .git, .claude and tests from a live site.

@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.96.8 |
+| Version | 2.96.9 |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
@@ -46,7 +46,7 @@ On a network the main site writes the files, since every site shares `wp-content
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.96.8.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.96.9.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -54,7 +54,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.96.8.zip --activate
+wp theme install abrahamic-2.96.9.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -62,32 +62,50 @@ The front page template renders regardless of the Reading setting. On a new site
 
 ## Architecture
 
-Abrahamic is a child theme (`Template: twentytwentyfive`). It adds no PHP templates. The child supplies the block templates for the front page, pages, articles, the Articles page, archives, search results and the 404 page, plus `page-landing.html` and the header and footer parts. Any remaining template (for example attachment pages) comes from the parent and still uses the child's header and footer. `theme.json` in the child is merged over the parent's. PHP handles Theme Options, the colour scheme, shortcodes and asset loading.
+Abrahamic is a child theme (`Template: twentytwentyfive`). It adds no PHP templates. The child supplies the block templates for the front page, pages, articles, the Journal page, archives, tag archives, search results and the 404 page, plus `page-landing.html` and the header and footer parts. Any remaining template (for example attachment pages) comes from the parent and still uses the child's header and footer. `theme.json` in the child is merged over the parent's. PHP handles Theme Options, the colour scheme, shortcodes and asset loading.
 
 ```
 functions.php
- ├─ inc/icons.php       abr_icon( $name )
- ├─ inc/social.php      abr_social_groups(), abr_social_networks(), abr_social_key(),
- │                      abr_social_icon(), abr_social_profiles()
+ ├─ inc/maintenance.php     Back-shortly notice (503); loaded first, with abr_incomplete_theme() as the upload guard
+ ├─ inc/icons.php           abr_icon( $name )
+ ├─ inc/social.php          abr_social_groups(), abr_social_networks(), abr_social_key(),
+ │                          abr_social_icon(), abr_social_profiles()
  ├─ inc/options.php         abr_schemes(), abr_option_types(), abr_option_defaults(),
  │                          abr_get_options(), abr_get_option(), abr_sanitize_options(),
  │                          abr_scheme_css(), abr_migrate_legacy_options()
- ├─ inc/theme-options.php   Theme Options screen, abr_field(), Tools handlers,
+ ├─ inc/theme-options.php   Theme Options screen (twelve tabs), abr_field(), Tools handlers,
  │                          abr_render_seed_section()
- ├─ inc/shortcodes.php      [abr_icon], [abr_newsletter], [abr_social], [abr_logo],
- │                          [abr_header_cta], [abr_footer_brand], [abr_copyright],
- │                          [abr_footer_note], [abr_year], [abr_contact_email],
- │                          [abr_topic_url]; abr_category_url()
+ ├─ inc/shortcodes.php      Option-driven shortcodes ([abr_newsletter], [abr_social], [abr_logo] ...)
  ├─ inc/structure.php       abr_resolve_link(), abr_link(), abr_parse_menu(),
  │                          abr_primary_nav_data(), abr_breadcrumb_trail(), abr_seed_index(),
  │                          structure shortcodes
+ ├─ inc/seed-schedule.php   Fixed publication dates (post_date) for seeded posts
  ├─ inc/seed.php            abr_run_seeder(), abr_seed_status(), abr_seed_permalinks(),
  │                          abr_seed_is_unedited(), seed Tools handlers
- ├─ inc/seed/content.json    starter terms, pages and articles (data, seed version 2)
- ├─ inc/seed/legacy-v1.json  version 1 fingerprints and addresses (data)
  ├─ inc/seo.php             abr_seo_description(), abr_seo_canonical(), abr_schema_graph(),
  │                          abr_seo_head(), description box, analytics
- └─ inc/redirects.php       abr_redirect_target(), abr_legacy_redirect(), link updater
+ ├─ inc/redirects.php       abr_redirect_target(), abr_legacy_redirect(), link updater
+ ├─ inc/search.php          Search index, spelling variants, relevance, /search/{term}/
+ ├─ inc/unlist.php          Unlisted posts and pages
+ ├─ inc/progress.php        Reading progress bar
+ ├─ inc/login.php           Themed login screen, private login address
+ ├─ inc/diagrams.php        [abr_diagram] SVG drawings
+ ├─ inc/anonymity.php       REST users, author archives, feeds and embeds kept free of people
+ ├─ inc/security-detector.php  Gambling spam score (plain PHP, no WordPress calls)
+ ├─ inc/security.php        Security tab: remote-publishing locks, spam gate, 410 Gone,
+ │                          the two .htaccess sections at the site root, reports and clean-up
+ ├─ inc/rank-math.php       Additions to Rank Math's output where an editor left a field empty
+ ├─ inc/schema.php          Structured data beyond the base graph
+ ├─ inc/image-sitemap.php   /image-sitemap.xml
+ ├─ inc/tags.php            Fixed tag vocabulary, thin tag pages noindexed
+ ├─ inc/contextual-links.php  Links in the running text (the_content, priority 30)
+ ├─ inc/quran-text.php      Tanzil to KFGQPC encoding for Qur'anic verses
+ ├─ inc/error-page-html.php The error pages as plain HTML (no WordPress function)
+ ├─ inc/error-pages.php     wp-content drop-ins, static copies, Tools section
+ ├─ inc/dev-files.php       Removes the development files from a live theme folder
+ ├─ inc/data/*.json         network-links, schema-entities, gone-slugs
+ └─ inc/seed/*.json         content (seed version 110), tags, focus keywords, SEO titles,
+                            photo credits, legacy-v1, legacy-paths
 ```
 
 ### Hooks
@@ -129,7 +147,31 @@ functions.php
 | `template_redirect` (priority 5) | `abr_legacy_redirect` | 301s from earlier addresses |
 | `the_content` (priority 30) | `abr_ctx_filter` | Contextual links to inner pages here and on the sister sites, after blocks, texturising and shortcodes |
 
-Filters provided: `abr_seed_enabled` (bool) stops the seeder; `abr_seo_enabled` (bool) overrides the search output decision; `abr_contextual_links_map` (array of phrase, url, sister) changes the contextual link phrases; `abr_contextual_links_enabled` (bool, post) switches them off for one entry.
+The table lists the core of the theme. The later modules hook in from their own files; `grep -n "add_action\|add_filter" functions.php inc/*.php` lists every one. The ones a host or developer most often meets:
+
+| Hook | Callback | Purpose |
+|---|---|---|
+| `init` | `abr_cleanup_on_version_change` | Removes the development files once per version (`inc/dev-files.php`) |
+| `admin_init`, `after_switch_theme`, `update_option_abr_options` | `abr_sec_sync_htaccess` | Keeps the two root `.htaccess` sections in step, at most hourly |
+| `switch_theme` | `abr_sec_remove_htaccess`, `abr_maintenance_remove_dropins` | Takes the `.htaccess` sections and the theme's own drop-ins out |
+| `rest_pre_dispatch` (priority 5) | `abr_sec_rest_guard` | REST writes need a browser session and nonce |
+| `wp_insert_post_data` (priority 99) | `abr_sec_gate` | Holds gambling spam as Pending |
+| `template_redirect` (priority 0) | `abr_sec_send_gone`, `abr_sec_send_gone_listed` | 410 Gone for removed spam |
+| `authenticate` (priority 100) | `abr_sec_refuse_remote_password` | Refuses a correct password sent through XML-RPC |
+
+Filters provided:
+
+| Filter | Arguments | Effect |
+|---|---|---|
+| `abr_seed_enabled` | bool | False stops the seeder |
+| `abr_seo_enabled` | bool | Overrides the search output decision |
+| `abr_image_sitemap_enabled` | bool | Overrides whether `/image-sitemap.xml` is served (off by default while an SEO plugin is active) |
+| `abr_contextual_links_map` | array of phrase, url, sister | Changes the contextual link phrases |
+| `abr_contextual_links_enabled` | bool, `WP_Post` | Switches contextual links off for one entry |
+| `abr_sec_rest_allow` | string[] route prefixes | Routes that may write with non-cookie authentication, for example `/jetpack/`. Empty by default |
+| `unlist_posts_enabled` | bool | False turns the unlist feature off. Named as in the plugin it was built from |
+
+Action provided: `abr_cleanup_tick`, fired for each entry the development-file clean-up walks, which renews its lease.
 
 ### Shortcodes
 
@@ -185,7 +227,7 @@ Interface icon names: `star-of-david`, `cross`, `crescent`, `scroll`, `city`, `m
 
 ### Theme Options
 
-Appearance > Theme Options has eleven tabs: General, Header, Footer, Navigation, Colours, Newsletter, Social, Login, Search, Contextual links and Tools. All but Tools share one form and save through the Settings API; the form is hidden while Tools is open, because Tools has its own forms. A tab opens from `?tab=` in the address (for example `&tab=footer`), else from the last tab used in the session. Saving returns to the same tab.
+Appearance > Theme Options has twelve tabs: General, Header, Footer, Navigation, Colours, Newsletter, Social, Login, Search, Contextual links, Security and Tools. All but Tools share one form and save through the Settings API. Tools posts to `admin-post.php`, except the starter content choice (`seed_mode`), whose Save this choice button submits the shared form. The Security tab's scan and clean-up buttons show to administrators only, and its reports load only when the screen opens on that tab. A tab opens from `?tab=` in the address (for example `&tab=footer`), else from the last tab used in the session. Saving returns to the same tab.
 
 To add an option:
 
@@ -199,11 +241,12 @@ Tools:
 - **Export** downloads a JSON file with the theme slug, version, date, site address and every option.
 - **Import** takes such a file (up to 1 MB). Options in the file replace current values; options missing from the file keep theirs; unknown keys are ignored; every value is sanitised.
 - **Reset** asks for confirmation and writes the defaults.
+- **Error pages** installs the three drop-ins and the static copies, shows each file's state, and prints the `ErrorDocument` lines for this site (see Error pages above).
 - **System information** lists the theme and parent versions, WordPress and PHP versions, the active scheme, the number of social profiles, and whether options and the legacy 1.x row are stored.
 
 ### Starter content
 
-The theme populates a new site on activation, following the Murtadd seeder pattern: 17 pages, 8 articles and 8 categories, plus one-time set-up of permalinks, sample content, the privacy policy and the reading settings. `ssot.md`, section 12, holds the rules and the full inventory.
+The theme populates a new site on activation: 30 pages, 70 Journal articles and 8 categories (seed version 110), plus one-time set-up of permalinks, sample content, the privacy policy and the reading settings. `ssot.md`, section 12, holds the rules and the full inventory.
 
 The seeder records every item it creates or adopts in `abr_seeded_slugs`. Deleted items are never recreated; Theme Options > Tools > Starter content lists every item with its status and offers Restore for deleted ones. Pages that already existed at the same address are adopted and never written to, and pages you create yourself are never touched.
 
@@ -274,6 +317,82 @@ Add section-specific rules inside the matching tier block, so all width rules st
 All front page sections are patterns in the "Abrahamic" category and can be edited under Appearance > Editor > Templates > Front Page. Section anchors (`#religions`, `#timeline` and so on) are set on each section's Group block and are used by the header menu; keep them when editing.
 
 Class names on blocks (`abr-*`) carry the design. Removing a class in the editor's Advanced panel removes its styling.
+
+## Constants
+
+Set these in `wp-config.php`, above the line that loads WordPress. Each is optional.
+
+| Constant | Effect |
+|---|---|
+| `ABR_SECURITY_LOCK` | `false` turns off the three Security locks (XML-RPC, application passwords, REST writes) without changing the saved options |
+| `ABR_ALLOW_CORE_FILES` | `true` takes the "Abrahamic: deny direct core files" section out of `.htaccess`, for a plugin or host that needs one of those files by address |
+| `ABR_KEEP_DOTFILES` | `true` keeps `.git`, `.claude`, the other hidden entries, `tests/` and `tools/` in the theme folder. Local and development sites (`wp_get_environment_type()`) keep them without it |
+| `ABR_HIDE_LOGIN` | `false` switches the private login address off, for when it is lost |
+| `ABR_SPAM_THRESHOLD`, `ABR_TITLE_MAX`, `ABR_DESCRIPTION_MAX`, `ABR_TAG_MIN_POSTS` | Defined only when not already set: spam score at which a post is held (3), title length (59), description length (129), articles a tag page needs before it is indexed (3) |
+
+Fixed in code: `ABR_VERSION`, `ABR_DIR`, `ABR_URI`, `ABR_OPTIONS_SLUG`, `ABR_SEED_VERSION` (110), `ABR_PERMALINK_STRUCTURE` (`/journal/%postname%/`), `ABR_CATEGORY_BASE` (`journal/topics`), `ABR_TAG_BASE` (`journal/tags`), `ABR_PRIMARY_NAV_MAX` (5), `ABR_NAV_CHILDREN_MAX` (10), `ABR_SECONDARY_NAV_MAX` (8), `ABR_LISTING_PER_PAGE` (12), `ABR_FURTHER_MAX` (6), `ABR_CTX_SITE`, and the security option names `ABR_SEC_*`.
+
+## .htaccess
+
+Three places carry rules.
+
+The theme folder's own `.htaccess` refuses `readme.txt` and every `.md` file, answers 404 for `.claude/`, 403 for every name that begins with a dot (`.well-known` stays open) and 403 for `tests/`, `tools/`, `bin/` and `docs/`. The rules sit inside `<IfModule>`; without mod_alias, mod_rewrite refuses the same paths. `docs/`, `tests/`, `bin/` and `.claude/` also carry their own deny file, which works wherever the theme folder sits.
+
+The site's root `.htaccess` gets two sections, written through `insert_with_markers()` on Apache only, and checked at most hourly from the admin:
+
+- `# BEGIN Block xmlrpc.php` denies `xmlrpc.php` while the "Turn off XML-RPC" switch is on. Other themes by the same owner use the same marker, so a switch between them never writes it twice.
+- `# BEGIN Abrahamic: deny direct core files` answers 403 for the PHP files in `wp-includes` (TinyMCE's loader and `ms-files.php` excepted), `wp-settings.php`, `wp-config-sample.php`, `readme.html` and `wp-admin/install.php`. It follows WordPress into its own subfolder, and is not written when WordPress sits outside the `.htaccess` folder. `ABR_ALLOW_CORE_FILES` removes it.
+
+A theme switch removes both. The Security tab reports "unavailable" when the file cannot be written.
+
+The `ErrorDocument` lines are the owner's to add by hand; the Tools tab prints them with this site's addresses.
+
+## Build, test and deploy
+
+```
+set -e                                               # stop at the first failure
+php bin/build-error-pages.php                       # rebuild errors/*.html
+for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
+find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
+for f in assets/js/*.js; do node --check "$f" || exit 1; done
+git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.9.zip HEAD   # after the release is committed
+```
+
+Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line. The tests replace WordPress with small stubs, so they need only PHP.
+
+`.gitattributes` keeps `.claude/`, `.gitattributes` and `tests/` out of the zip. `docs/` and `bin/` ship.
+
+Deploy by the dashboard (Upload Theme, then "Replace active with uploaded") or by FTP. For FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then swap the folder names one straight after the other, with the admin closed, since the site has no `abrahamic` folder between the two renames. If a copy straight over the live folder breaks part-way, `functions.php` checks every file before it loads any and answers visitors with the 503 notice (`abr_incomplete_theme()`); the login screen, AJAX, cron and WP-CLI carry on. The guard lives in `functions.php`, so it cannot cover a missing or half-written `functions.php`, or the moment between the two renames. Load one admin page after the upload: it writes the drop-ins, and runs the seeder when `ABR_SEED_VERSION` has risen. `abr_sec_sync_htaccess()` runs at most hourly (the `abr_sec_htaccess_checked` transient), so inside that hour the `.htaccess` sections wait for the first admin page after it; saving a changed Theme Option forces it. The first request of any kind removes the development files.
+
+## Nginx
+
+Nginx ignores `.htaccess`. On Nginx the theme writes neither root section and the Security tab reports the file as unavailable; the PHP side of every lock, the 410 answers, the upload guard and the clean-up still work. Put the equivalent rules in the server block, ahead of the `location ~ \.php$` block that hands PHP to FastCGI, since Nginx uses the first regular expression that matches:
+
+```
+location ~ /\.(?!well-known/) { deny all; }
+location ~ ^/wp-content/themes/abrahamic/(tests|tools|bin|docs)/ { deny all; }
+location ~ ^/wp-content/themes/abrahamic/(.+\.md|readme\.txt)$ { deny all; }
+location = /xmlrpc.php { deny all; }
+location ~ ^/wp-includes/(?!js/tinymce/|ms-files\.php$).+\.php$ { deny all; }
+location ~ ^/(wp-settings|wp-config-sample)\.php$ { deny all; }
+location = /readme.html { deny all; }
+location = /wp-admin/install.php { deny all; }
+error_page 403 /wp-content/abrahamic-errors/403.html;
+error_page 500 /wp-content/abrahamic-errors/500.html;
+error_page 502 /wp-content/abrahamic-errors/502.html;
+error_page 503 /wp-content/abrahamic-errors/503.html;
+error_page 504 /wp-content/abrahamic-errors/504.html;
+```
+
+Nginx serves `error_page` for PHP's own 500 and 503 answers only with `fastcgi_intercept_errors on;` in the FastCGI location; without it those answers reach visitors as PHP sent them. Jetpack needs XML-RPC: leave out the `xmlrpc.php` line and also switch "Turn off XML-RPC" off on the Security tab, since the theme refuses XML-RPC in PHP too. Where the client logs in to XML-RPC, with a password or any other credential, switch the REST lock off as well, since `abr_sec_refuse_remote_password()` refuses every XML-RPC login while either switch is on. These rules do not follow the Security switches or `ABR_SECURITY_LOCK`: to let XML-RPC through, take the `xmlrpc.php` line out by hand as well. Prefix the paths when WordPress lives in a subfolder.
+
+## Multisite
+
+Theme Options, the seeder and its tombstones, the Security settings and logs are per site. The rest is shared:
+
+- The drop-ins and `wp-content/abrahamic-errors/` serve every site. The main site writes them; while it runs another theme, the site with the lowest ID that runs Abrahamic does. The last site to leave the theme removes them.
+- The private login address is off on a network; the Login tab says so.
+- The root `.htaccess` is one file for the network, and it holds whatever the site that last synced it wanted. The xmlrpc.php section follows that site's own "Turn off XML-RPC" switch, so a sync from a site with the switch off takes the section out for the whole network. A theme switch on any one site removes both sections until another site's next admin check writes them back (see the roadmap in `upgrading.md`). Keep the Security switches the same on every site.
 
 ## Testing performed for 2.80.0
 
