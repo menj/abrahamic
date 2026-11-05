@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.96.10 |
+| Version | 2.96.11 |
 | Licence | GNU GPL v3 or later; the full text is in `LICENSE` |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
@@ -27,6 +27,8 @@ WordPress shows three files from `wp-content` when it cannot build a page. The t
 
 All three are self-contained (inline style, no theme file, no WordPress function, no database), send `noindex` and `no-store`, and are built by `inc/error-page-html.php`.
 
+Every page carries the 32px mark as a `data:` icon (`abr_error_page_icon()`), so the tab icon needs no path and shows on a subfolder install and while WordPress is down.
+
 For errors the web server answers before WordPress runs, `errors/` holds static 403, 500, 502, 503 and 504 pages, built with `php bin/build-error-pages.php`. They link the home page at `/`, so they suit a site at the domain root only.
 
 The theme also writes a copy of each into `wp-content/abrahamic-errors/`, with the site's own home address, at the same times and under the same rules as the drop-ins. A site installed in a subfolder, such as `example.com/blog/`, gets a home link that works. Switching to another theme removes the copies. The Tools tab shows the lines for `.htaccess` with this site's addresses. For a site at the root they read:
@@ -46,7 +48,7 @@ On a network the main site writes the files, since every site shares `wp-content
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.96.10.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.96.11.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -54,7 +56,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.96.10.zip --activate
+wp theme install abrahamic-2.96.11.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -68,6 +70,7 @@ Abrahamic is a child theme (`Template: twentytwentyfive`). It adds no PHP templa
 functions.php
  ├─ inc/maintenance.php     Back-shortly notice (503); loaded first, with abr_incomplete_theme() as the upload guard
  ├─ inc/icons.php           abr_icon( $name )
+ ├─ inc/favicon.php         Browser icons, manifest link, theme-color, /favicon.ico (abr_default_icons, abr_serve_favicon)
  ├─ inc/social.php          abr_social_groups(), abr_social_networks(), abr_social_key(),
  │                          abr_social_icon(), abr_social_profiles()
  ├─ inc/options.php         abr_schemes(), abr_option_types(), abr_option_defaults(),
@@ -361,7 +364,7 @@ php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
 find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
 for f in assets/js/*.js; do node --check "$f" || exit 1; done
-git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.10.zip HEAD   # after the release is committed
+git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.11.zip HEAD   # after the release is committed
 ```
 
 Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line. The tests replace WordPress with small stubs, so they need only PHP.
@@ -401,6 +404,20 @@ Theme Options, the seeder and its tombstones, the Security settings and logs are
 - The drop-ins and `wp-content/abrahamic-errors/` serve every site. The main site writes them; while it runs another theme, the site with the lowest ID that runs Abrahamic does. The last site to leave the theme removes them.
 - The private login address is off on a network; the Login tab says so.
 - The root `.htaccess` is one file for the network, and it holds whatever the site that last synced it wanted. The xmlrpc.php section follows that site's own "Turn off XML-RPC" switch, so a sync from a site with the switch off takes the section out for the whole network. A theme switch on any one site removes both sections until another site's next admin check writes them back (see the roadmap in `upgrading.md`). Keep the Security switches the same on every site.
+
+## Browser icons
+
+`inc/favicon.php` prints the icon tags on `wp_head`, `login_head` and `admin_head` while no Site Icon is set: `favicon.svg`, `favicon-32.png`, `icon-192.png`, `apple-touch-icon.png`, `site.webmanifest` and `theme-color` #172033. With a Site Icon, WordPress prints its own tags and the theme prints none.
+
+`/favicon.ico` reaches WordPress when no such file sits in the site root. The theme answers it with `assets/images/favicon.ico` (16, 32 and 48px), `Cache-Control: public, max-age=86400` and an ETag; a matching `If-None-Match` gets a 304. It hooks `template_redirect` at priority 0 so HEAD requests get the same headers, and `do_faviconico` as well. With a Site Icon, WordPress redirects to it.
+
+The manifest is a static file with relative icon paths, so it works on a subfolder install. `assets/images/.htaccess` gives `.webmanifest` the type `application/manifest+json` and `.ico` the type `image/x-icon`; on Nginx the stock `mime.types` covers both. No deny rule touches `assets/images/`.
+
+## Testing performed for 2.96.11
+
+- With no Site Icon: the six tags on the home page, the login screen and the dashboard. With one: only WordPress's tags.
+- `/favicon.ico`: 200 `image/x-icon`, 304 on a matching ETag, HEAD with the icon's type; with a Site Icon, a 302 to it.
+- `site.webmanifest` parses as JSON; the tab shows the AR mark in Chromium.
 
 ## Testing performed for 2.80.0
 

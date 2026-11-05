@@ -81,6 +81,18 @@ function abr_error_page_kinds() {
 }
 
 /**
+ * The 32px browser icon as a data address. An error page answers at any
+ * path, on a site in a subfolder too, and while WordPress or PHP is down, so
+ * it carries the icon inside the page and asks the server for nothing.
+ *
+ * @return string The data address, or '' when the file is missing.
+ */
+function abr_error_page_icon() {
+	$png = @file_get_contents( dirname( __DIR__ ) . '/assets/images/favicon-32.png' ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
+	return $png ? 'data:image/png;base64,' . base64_encode( $png ) : ''; // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions
+}
+
+/**
  * One page as a complete HTML document.
  *
  * @param string $kind A key of abr_error_page_kinds().
@@ -99,6 +111,7 @@ function abr_error_page_html( $kind, $site, $home = '/' ) {
 		$lines .= '<p>' . $e( $line ) . "</p>\n";
 	}
 	$again = in_array( $k['status'], array( 403 ), true ) ? 'Go to the home page' : 'Try again';
+	$icon  = abr_error_page_icon();
 	return '<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,7 +119,7 @@ function abr_error_page_html( $kind, $site, $home = '/' ) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>' . $e( $k['title'] ) . ' | ' . $e( $site ) . '</title>
-<style>
+' . ( '' !== $icon ? '<link rel="icon" href="' . $icon . '" sizes="32x32" type="image/png">' . "\n" : '' ) . '<style>
 :root{--bg:#f8f5ef;--ink:#172033;--muted:#5d6475;--gold:#b8955a;--gold-ink:#7a5a24;--card:#ffffff;--edge:rgba(23,32,51,.1)}
 @media (prefers-color-scheme:dark){:root{--bg:#0f131b;--ink:#ece7dd;--muted:#a9adb6;--gold:#cfa869;--gold-ink:#cfa869;--card:#171d29;--edge:rgba(236,231,221,.12)}}
 *{box-sizing:border-box}

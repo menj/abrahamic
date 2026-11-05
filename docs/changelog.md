@@ -2,6 +2,20 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.11] - 2026-11-05
+
+The browser icon set is complete. No feature removed.
+
+### Added
+- `assets/images/favicon.ico` (16, 32 and 48px), `favicon.svg`, `icon-512.png`, `icon-maskable-512.png` and `site.webmanifest`, all rendered from `logo-mark.svg`. The existing `favicon-32.png`, `icon-192.png` and `apple-touch-icon.png` are kept.
+- `inc/favicon.php`. It answers `/favicon.ico` with the icon (`abr_serve_favicon()`), with a day's cache and an ETag that gets a 304 while the file is unchanged. HEAD requests get the same headers. With a Site Icon set, WordPress answers with its own redirect, as before.
+- The head tags gain the manifest link and `theme-color` (#172033), and print in the admin as well as on the site and the login screen.
+- The error pages and drop-ins carry the 32px icon as a data address (`abr_error_page_icon()`), so the tab shows the mark on any path, in a subfolder install and while WordPress is down.
+- `assets/images/.htaccess` gives `.webmanifest` and `.ico` their types.
+
+### Changed
+- `abr_default_icons()` moves from `inc/shortcodes.php` to `inc/favicon.php`, with the same name and hooks, and its SVG link now names `favicon.svg`, a copy of the mark.
+
 ## [2.96.10] - 2026-11-05
 
 The article anatomy: the pieces a single article was missing. No section or feature removed and no public identifier renamed.
