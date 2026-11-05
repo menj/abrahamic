@@ -556,7 +556,7 @@ details.abr-faq { background: var(--abr-white); border-radius: 4px; box-shadow: 
 }
 .abr-faq[open] summary::after { transform: rotate(-135deg) translateY(-1px); }
 .abr-faq summary:hover { background: var(--abr-soft); }
-.abr-faq > :not(summary) { padding: 0 24px; color: var(--abr-muted); font-size: 1.05rem; margin: 0 0 20px; }
+details.abr-faq > :not(summary) { padding: 0 24px; color: var(--abr-muted); font-size: 1.05rem; margin: 0 0 20px; }
 
 /* ---------- About ---------- */
 
@@ -1130,7 +1130,7 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 	.abr-articles .wp-block-post-template.is-layout-grid { grid-template-columns: 1fr; }
 
 	.abr-faq summary { padding: 16px 18px; }
-	.abr-faq > :not(summary) { padding-inline: 18px; }
+	details.abr-faq > :not(summary) { padding-inline: 18px; }
 
 	.abr-newsletter__form { flex-direction: column; }
 	.abr-newsletter__form .abr-btn { min-height: 48px; }

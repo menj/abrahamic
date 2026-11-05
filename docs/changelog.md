@@ -14,7 +14,7 @@ No section or feature removed and no public identifier renamed.
 - `docs/ssot.md`, section 9, sets out the arc chapter by chapter and corrects the front page order, which still listed the order before 2.67.0.
 
 ### Fixed
-- The white card style for FAQ entries (`.abr-faq`) also matched the FAQ section itself, which is classed `abr-faq` too, so the section sat on white with a shadow and rounded corners whatever its place. The rule now targets `details.abr-faq` only. The entries look the same.
+- The white card style for FAQ entries (`.abr-faq`) also matched the FAQ section itself, which is classed `abr-faq` too, so the section sat on white with a shadow and rounded corners whatever its place. The card rule and the answer-padding rule (`.abr-faq > :not(summary)`, which gave the section's heading, list and button rows 24 pixels of inset and the muted answer colour) now target `details.abr-faq` only, at both widths. The FAQ heading lines up with the other section heads, and the entries look the same.
 
 ### Tested
 - Front page rendered before and after at 1280 and 375 pixels: chapters in the new order, backgrounds alternate, no horizontal overflow, no script errors, no axe violations.
