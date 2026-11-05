@@ -7,7 +7,7 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 ## Updating an existing site
 
 1. Export your settings first: Appearance > Theme Options > Tools > Export.
-2. Upload the new zip from Appearance > Themes > Add New > Upload Theme and choose "Replace active with uploaded". By FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then rename the old folder away and the new one into place.
+2. Upload the new zip from Appearance > Themes > Add New > Upload Theme and choose "Replace active with uploaded". By FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then rename the old folder away and the new one into place, one straight after the other, with the admin closed in between.
 3. Load one admin page as an administrator. It writes the error pages and the `.htaccess` sections and runs the starter content seeder.
 4. Read the note below for the version you are moving to. Most releases need nothing else.
 

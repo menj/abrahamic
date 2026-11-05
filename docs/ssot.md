@@ -18,7 +18,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 | Folder and slug | `abrahamic` |
 | Package file | `abrahamic-{version}.zip`, containing the `abrahamic/` folder |
 | Parent theme | Twenty Twenty-Five (`Template: twentytwentyfive`) |
-| Theme type | Child theme. The parent must stay installed. The child supplies `front-page` and `page-landing` templates and the `header` and `footer` parts, which the parent's templates also pick up by slug; all other templates come from the parent. Child `theme.json` merges over the parent's |
+| Theme type | Child theme. The parent must stay installed. The child supplies the `front-page`, `page-landing`, `page`, `single`, `home`, `archive`, `tag`, `search` and `404` templates and the `header` and `footer` parts, which the parent's templates also pick up by slug; any other template, such as attachment pages, comes from the parent. Child `theme.json` merges over the parent's |
 | Site | https://abrahamic-religions.com/ |
 | Author | Abrahamic Religions, https://abrahamic-religions.com |
 | Licence | GNU GPL v2 or later (`License` and `License URI` in `style.css` and `readme.txt`) |

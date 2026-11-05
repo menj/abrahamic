@@ -352,7 +352,7 @@ The `ErrorDocument` lines are the owner's to add by hand; the Tools tab prints t
 ```
 php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
-find . -name '*.php' -not -path './.git/*' -exec php -l {} \; | grep -v '^No syntax errors'
+find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
 for f in assets/js/*.js; do node --check "$f"; done
 git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.9.zip HEAD
 ```
@@ -361,7 +361,7 @@ Every script in `tests/` and `bin/` exits at once unless PHP runs it from the co
 
 `.gitattributes` keeps `.claude/`, `.gitattributes` and `tests/` out of the zip. `docs/` and `bin/` ship.
 
-Deploy by the dashboard (Upload Theme, then "Replace active with uploaded") or by FTP. For FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then swap the folder names, so no visitor meets a half-copied theme. If the copy does break part-way, `functions.php` checks every file before it loads any and answers visitors with the 503 notice (`abr_incomplete_theme()`); the login screen, AJAX, cron and WP-CLI carry on. Load one admin page after the upload: it writes the drop-ins and the `.htaccess` sections and runs the seeder. The first request of any kind removes the development files.
+Deploy by the dashboard (Upload Theme, then "Replace active with uploaded") or by FTP. For FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then swap the folder names one straight after the other, with the admin closed, since the site has no `abrahamic` folder between the two renames. If the copy does break part-way, `functions.php` checks every file before it loads any and answers visitors with the 503 notice (`abr_incomplete_theme()`); the login screen, AJAX, cron and WP-CLI carry on. Load one admin page after the upload: it writes the drop-ins and the `.htaccess` sections and runs the seeder. The first request of any kind removes the development files.
 
 ## Nginx
 

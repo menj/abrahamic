@@ -68,7 +68,7 @@ Switches save as on or off. Sliders show their value as you drag them. Press Sav
 == Installation ==
 
 1. Make sure the Twenty Twenty-Five theme is installed. It does not need to be active.
-2. Go to Appearance > Themes > Add New > Upload Theme, choose the abrahamic zip file, and activate it. The starter pages and articles are created automatically. To install by FTP instead, follow the steps under "Updating by FTP" below.
+2. Go to Appearance > Themes > Add New > Upload Theme, choose the abrahamic zip file, and activate it. The starter pages and articles are created automatically. To install by FTP instead, turn on hidden files in your FTP program, upload the abrahamic folder to wp-content/themes/, then activate it under Appearance > Themes. Activation creates the starter content.
 3. Open Appearance > Theme Options to set the header and footer wording, pick a colour scheme, and enter your newsletter and social profile details.
 4. Review and edit the starter pages and articles, and set the contact address under Appearance > Theme Options > Footer.
 5. Add your Google Search Console code under Theme Options > Search, then submit your-site/wp-sitemap.xml there.
@@ -81,7 +81,7 @@ Upload the new zip under Appearance > Themes > Add New > Upload Theme and choose
 
 1. Turn on hidden files in your FTP program first. The theme carries files whose names begin with a dot, such as .htaccess, and most programs hide them. In FileZilla: Server > Force showing hidden files.
 2. Upload the new abrahamic folder next to the old one under a temporary name, for example wp-content/themes/abrahamic-new. Wait until every file has arrived.
-3. Rename the old folder to abrahamic-old, then rename abrahamic-new to abrahamic. The switch takes a second, so visitors never meet a half-copied theme.
+3. Rename the old folder to abrahamic-old and, straight after, rename abrahamic-new to abrahamic. Between the two renames the site has no abrahamic folder, so do them one after the other and keep the admin closed until both are done. Nobody meets a half-copied theme this way.
 4. Load any admin page, check the site, then delete abrahamic-old.
 
 If an upload stops halfway, visitors see a short "Back shortly" page with a 503 status instead of an error, and you can still log in. Upload the missing files and the site returns.
