@@ -13,6 +13,12 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.11 to 2.96.12
+
+Replace the theme files. The new files are `inc/lead-list.php`, `assets/css/lead-list.css` and `tests/lead-list-test.php`. If you edited the Journal or archive template in the Site Editor, your copy wins and shows no lead and list; reset the template to see it, or add the Lead and list block above the query. Nothing else to do.
+
+---
+
 ## Upgrading from 2.96.10 to 2.96.11
 
 Replace the theme files, `.htaccess` files included. The new files are `inc/favicon.php` and five in `assets/images/`: `favicon.ico`, `favicon.svg`, `icon-512.png`, `icon-maskable-512.png` and `site.webmanifest`. Load one admin page so the error pages are written again with the icon. Nothing else to do.
@@ -1013,7 +1019,7 @@ These are plans, not promises. Each item rests on something on record: the code,
 
 ### Later
 
-- Server-rendered blocks for the option and structure shortcodes, so the Site Editor shows a preview. Waits on a block registration layer; the bestofislam theme has one in `blocks/` to learn from. Listed under technical debt below.
+- Server-rendered blocks for the option and structure shortcodes, so the Site Editor shows a preview. The `abrahamic/lead-list` block (2.96.12) has the same gap: the editor shows a placeholder for it. Waits on a block registration layer; the bestofislam theme has one in `blocks/` to learn from. Listed under technical debt below.
 - Licence terms for Arslan Wessam, or an OFL Diwani face in its place. Waits on the font's author; needed before the theme goes anywhere beyond this site.
 - 3.0.0: remove `abr_migrate_legacy_options()` and every reference to `ar_options`, and raise the PHP floor. Waits until no site still carries a 1.x settings row.
 - An accessibility audit against WCAG 2.2 AA, gold on ivory in every colour scheme included. Carried over from the earlier 2.11.x plan; no audit is on record yet.

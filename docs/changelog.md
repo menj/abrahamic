@@ -2,6 +2,17 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.12] - 2026-11-05
+
+The Journal and the archives open with a lead and list. No feature removed and no public identifier renamed.
+
+### Added
+- A lead and list on the first page of the Journal (`templates/home.html`) and of each archive (`templates/archive.html`). The newest article leads, large, with its title on a dark band at the foot of the photograph and a short gold rule above it. The photograph's credit sits below it. The next five articles stand in a list on the right, each a 16:9 thumbnail with its title beside it. On a phone the lead comes first and the list follows.
+- The articles it shows leave the grid below, so page 1 still holds one page of articles and page 2 starts where it did.
+- With fewer than five articles, or when the newest has no photograph, nothing changes: the grid shows as before. Unlisted articles never appear in it.
+- `inc/lead-list.php` with `abr_lead_list( $posts, $args )` and the `abrahamic/lead-list` block (`heading` and `leadId` attributes), `assets/css/lead-list.css`, loaded on the first page of the Journal and of the archives, and `tests/lead-list-test.php`.
+- The credit comes from `inc/seed/photo-credits.json` for the theme's own photographs and from the attachment caption for any other.
+
 ## [2.96.11] - 2026-11-05
 
 The browser icon set is complete. No feature removed.

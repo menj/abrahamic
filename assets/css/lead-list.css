@@ -1,0 +1,194 @@
+/* Lead and list: one large article and a stacked list of five, above the grid
+   on the first page of the Journal and of each archive (inc/lead-list.php). */
+
+.abr-lead-list {
+	--abr-ll-radius: 4px;
+	--abr-ll-gap: clamp(1.25rem, 3vw, 2.5rem);
+	margin-block: clamp(1.5rem, 3vw, 2.5rem) var(--abr-ll-gap);
+	font-family: var(--abr-font);
+}
+
+.abr-lead-list__heading {
+	margin: 0 0 1.25rem;
+	font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+	line-height: 1.25;
+	color: var(--abr-navy);
+}
+
+.abr-lead-list__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+	gap: var(--abr-ll-gap);
+	align-items: start;
+}
+
+/* Lead */
+.abr-lead-list__lead,
+.abr-lead-list__figure { margin: 0; }
+
+.abr-lead-list__media {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--abr-ll-radius);
+	background: var(--abr-soft);
+	display: grid;
+	isolation: isolate;
+}
+
+.abr-lead-list__media > * { grid-area: 1 / 1; min-width: 0; min-height: 0; }
+
+/* The ratio sits on the image, so a long title can make the band, and the
+   box with it, taller than the ratio instead of being cut off. */
+.abr-lead-list__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	transition: transform var(--abr-ease);
+}
+
+.abr-lead-list__lead:hover .abr-lead-list__img { transform: scale(1.03); }
+
+/* The gradient runs from 85% black at the foot to clear; the text sits on the
+   solid 85% part, so white type keeps well above 4.5:1 on any photograph. */
+.abr-lead-list__overlay {
+	align-self: end;
+	padding: 4.5rem clamp(1rem, 2.5vw, 1.75rem) clamp(1rem, 2.5vw, 1.5rem);
+	background: linear-gradient(to top, rgb(0 0 0 / 0.85) 0, rgb(0 0 0 / 0.85) calc(100% - 4.5rem), rgb(0 0 0 / 0) 100%);
+	color: #fff;
+}
+
+.abr-lead-list__rule {
+	display: block;
+	width: 3rem;
+	height: 3px;
+	margin-bottom: 0.85rem;
+	background: var(--abr-gold);
+	border-radius: 2px;
+}
+
+.abr-lead-list__title {
+	margin: 0;
+	font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+	line-height: 1.2;
+	font-weight: 700;
+	color: #fff;
+}
+
+.abr-lead-list__title .abr-lead-list__link { color: #fff; }
+
+.abr-lead-list__credit {
+	margin-top: 0.5rem;
+	font-size: 0.8rem;
+	line-height: 1.4;
+	color: var(--abr-muted);
+}
+
+.abr-lead-list__credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.abr-lead-list__credit a:hover,
+.abr-lead-list__credit a:focus-visible { color: var(--abr-gold-ink); }
+
+/* List */
+.abr-lead-list__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.abr-lead-list__item {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(6.5rem, 40%) minmax(0, 1fr);
+	gap: 1rem;
+	align-items: center;
+	padding-block: 0.9rem;
+	border-top: 1px solid var(--abr-hair);
+}
+
+.abr-lead-list__item:first-child { padding-top: 0; border-top: 0; }
+.abr-lead-list__item:last-child { padding-bottom: 0; }
+
+.abr-lead-list__thumb {
+	display: block;
+	overflow: hidden;
+	aspect-ratio: 16 / 9;
+	border-radius: var(--abr-ll-radius);
+	background: var(--abr-soft);
+}
+
+.abr-lead-list__thumb-img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform var(--abr-ease);
+}
+
+.abr-lead-list__item:hover .abr-lead-list__thumb-img { transform: scale(1.04); }
+
+.abr-lead-list__item-title {
+	margin: 0;
+	font-size: 1.05rem;
+	line-height: 1.3;
+	font-weight: 700;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.abr-lead-list__item-title .abr-lead-list__link { color: var(--abr-navy); }
+.abr-lead-list__item:hover .abr-lead-list__link { color: var(--abr-gold-ink); }
+
+/* The whole card is the link: the link's ::after covers the card, and the
+   focus ring is drawn on it. */
+.abr-lead-list__link {
+	text-decoration: none;
+	outline: none;
+}
+
+.abr-lead-list__link::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	border-radius: var(--abr-ll-radius);
+}
+
+.abr-lead-list__link:focus-visible::after {
+	outline: 3px solid var(--abr-gold);
+	outline-offset: 3px;
+}
+
+/* The lead's link covers the photograph only, so the credit links below it stay usable. */
+.abr-lead-list__lead .abr-lead-list__link::after { inset: 0; }
+
+/* The photograph clips anything outside it, so the lead's ring is drawn
+   inside its edge, with a dark band under it to show on any photograph. */
+.abr-lead-list__lead .abr-lead-list__link:focus-visible::after {
+	outline-offset: -6px;
+	box-shadow: inset 0 0 0 3px rgb(0 0 0 / 0.85);
+}
+
+@media (max-width: 781px) {
+	.abr-lead-list__grid { grid-template-columns: minmax(0, 1fr); }
+	.abr-lead-list__img { aspect-ratio: 16 / 9; }
+	.abr-lead-list__overlay { padding-top: 3.5rem; background: linear-gradient(to top, rgb(0 0 0 / 0.85) 0, rgb(0 0 0 / 0.85) calc(100% - 3.5rem), rgb(0 0 0 / 0) 100%); }
+	.abr-lead-list__title { font-size: 1.3rem; }
+	.abr-lead-list__item { grid-template-columns: minmax(6.5rem, 38%) minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.abr-lead-list__img,
+	.abr-lead-list__thumb-img { transition: none; }
+	.abr-lead-list__lead:hover .abr-lead-list__img,
+	.abr-lead-list__item:hover .abr-lead-list__thumb-img { transform: none; }
+}
+
+@media (forced-colors: active) {
+	.abr-lead-list__overlay { background: Canvas; color: CanvasText; }
+	.abr-lead-list__title .abr-lead-list__link { color: LinkText; }
+	.abr-lead-list__link:focus-visible::after { outline-color: Highlight; }
+}

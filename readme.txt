@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.11
+Stable tag: 2.96.12
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -221,6 +221,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.12 =
+The Journal and the archives gain a lead and list. Nothing to do.
 
 = 2.96.11 =
 The browser icon set is complete. Nothing to do.
@@ -634,6 +637,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.12 - 2026-11-05 =
+* The Journal and each topic archive open with the newest article large, with its photograph credit, and the next five in a list beside it. The grid of articles carries on below. With fewer than five articles, or a newest article without a photograph, the page looks as before.
 
 = 2.96.11 - 2026-11-05 =
 * The browser icon set is complete: favicon.ico, an SVG icon, 512px and maskable icons and a web app manifest, all drawn from the AR mark. The site answers /favicon.ico with the icon itself.
