@@ -2,6 +2,17 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.3] - 2026-11-05
+
+### Fixed
+- 410 Gone for casino spam removed before 2.88.0. The server logs showed 3,659 requests answering 404 for spam slugs under `/journal/`, and none answering 410: `abr_sec_send_gone()` knows only posts trashed from the Security tab after 2.88.0, and its last-segment match refuses any path with a slash in it. `inc/data/gone-slugs.json` lists 832 slugs, each a `/journal/<slug>/` request that answered 404, or 200 before 27 October 2026, and that reads as gambling or casino spam. Each was checked against `inc/seed/content.json`, its terms and `inc/seed/legacy-paths.json`; none is the theme's own. There is no keyword fallback.
+- `abr_sec_send_gone_listed()` (`template_redirect`, priority 0) strips a trailing `/feed` (with an optional feed type), `/embed`, `/amp` or `/page/N`, then answers 410 with `nocache_headers()` and `X-Robots-Tag: noindex` when the slug is listed and no post answers: on a 404, or when the main query found nothing and no post has the slug. The spam feeds used to answer 200 with an empty feed; the query is now marked as a 404, so the 404 template renders under the 410. It follows the `sec_gone` setting.
+- `/sitemap.xml` answered 404 to 121 crawler requests while `/sitemap_index.xml` answered 200. It now redirects there with a 301 when Rank Math is active with its sitemap module (`abr_rank_math_sitemap_active()` in `inc/redirects.php`), and only on a 404, so a file or plugin that serves `/sitemap.xml` wins. Without Rank Math, core's own handling is untouched.
+- The 2016 logo and icon, `/wp-content/uploads/2016/09/abrahamic-religions-300x75.png` and `abrahamic-icon.png`, redirect with a 301 to `assets/images/logo.png` and `assets/images/icon-192.png` (`abr_legacy_asset_paths()`). Neither file is on disk, so the request reaches WordPress as a 404. The logs show the same 722-byte WordPress 404 for these as for the spam addresses.
+
+### Added
+- `tests/gone-redirects-test.php`: the list loads, has no duplicates and holds no slug of the theme's own content; the path parsing and its suffixes; 410 on a 404 and on an empty feed; a post that exists is left alone; the setting is followed; the sitemap and logo redirects.
+
 ## [2.96.2] - 2026-11-04
 
 ### Added

@@ -708,6 +708,88 @@ function abr_sec_send_gone() {
 }
 add_action( 'template_redirect', 'abr_sec_send_gone', 0 );
 
+/**
+ * Slugs of casino and gambling spam that sat under /journal/ before 2.88.0 and
+ * was removed by hand, so abr_sec_remember_gone() never saw it. The list,
+ * inc/data/gone-slugs.json, was taken from the server logs: each slug answered
+ * 404, or 200 before 27 October 2026, and none is a slug of the theme's own
+ * content. It is an exact list; no keyword pattern is used, so a real post can
+ * never be caught by one.
+ *
+ * @return array slug => true
+ */
+function abr_sec_gone_slugs() {
+	static $slugs = null;
+	if ( null === $slugs ) {
+		$file  = ABR_DIR . '/inc/data/gone-slugs.json';
+		$list  = is_readable( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a bundled file.
+		$slugs = array();
+		foreach ( is_array( $list ) ? $list : array() as $slug ) {
+			if ( is_string( $slug ) && '' !== $slug ) {
+				$slugs[ strtolower( $slug ) ] = true;
+			}
+		}
+	}
+	return $slugs;
+}
+
+/**
+ * The listed spam slug a path under /journal/ names, or an empty string. A
+ * trailing /feed (with an optional feed type), /embed, /amp or /page/N is
+ * stripped first, so the spam's feeds and embeds answer as the post would.
+ *
+ * @param string $path Path as abr_sec_path() returns it: decoded, lower case,
+ *                     no slashes at either end.
+ * @return string
+ */
+function abr_sec_gone_journal_slug( $path ) {
+	$path = preg_replace( '#/(?:feed(?:/[a-z0-9_-]+)?|embed|amp|page/\d+)$#', '', (string) $path );
+	if ( ! preg_match( '#^journal/([^/]+)$#', $path, $m ) ) {
+		return '';
+	}
+	$slugs = abr_sec_gone_slugs();
+	return isset( $slugs[ $m[1] ] ) ? $m[1] : '';
+}
+
+/**
+ * Answer 410 Gone on a listed spam address under /journal/, its feed, embed,
+ * AMP or paged address included, when no post answers there. WordPress serves
+ * a missing post's feed as an empty 200 feed and not as a 404, so the main
+ * query is checked as well as is_404(), and a published post with the slug
+ * always wins. The query is then marked as a 404, so the 404 template renders
+ * with the 410 status, as abr_sec_send_gone() does.
+ */
+function abr_sec_send_gone_listed() {
+	if ( ! abr_sec_on( 'sec_gone' ) || is_admin() ) {
+		return;
+	}
+	$uri  = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+	$path = abr_sec_path( $uri );
+	// A site in a subdirectory: drop the home path, so journal/<slug> is matched.
+	$home = abr_sec_path( home_url( '/' ) );
+	if ( '' !== $home && 0 === strpos( $path, $home . '/' ) ) {
+		$path = substr( $path, strlen( $home ) + 1 );
+	}
+	$slug = abr_sec_gone_journal_slug( $path );
+	if ( '' === $slug ) {
+		return;
+	}
+	global $wp_query;
+	if ( ! is_404() ) {
+		$found = ( $wp_query instanceof WP_Query ) ? (int) $wp_query->post_count : 0;
+		if ( $found > 0 || get_page_by_path( $slug, OBJECT, 'post' ) ) {
+			return;
+		}
+	}
+	if ( $wp_query instanceof WP_Query ) {
+		$wp_query->set_404();
+	}
+	status_header( 410 );
+	nocache_headers();
+	header( 'X-Robots-Tag: noindex', true );
+}
+add_action( 'template_redirect', 'abr_sec_send_gone_listed', 0 );
+
 /* -------------------------------------------------------------------------
  * 4. Login record for the report
  * ---------------------------------------------------------------------- */

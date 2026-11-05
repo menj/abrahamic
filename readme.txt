@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.2
+Stable tag: 2.96.3
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -597,6 +597,11 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.3 - 2026-11-05 =
+* Casino spam once posted under /journal/ now answers 410 Gone, its feeds included. The 832 addresses come from the server logs and are listed in inc/data/gone-slugs.json.
+* /sitemap.xml redirects to /sitemap_index.xml when Rank Math serves the sitemaps.
+* The 2016 logo and icon addresses redirect to the theme's logo and icon.
 
 = 2.96.2 - 2026-11-04 =
 * A new Journal article, Muhammad and Jesus as moral examples, scheduled for 29 December 2026.

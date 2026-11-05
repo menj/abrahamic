@@ -91,12 +91,54 @@ function abr_resolve_current_path( $path ) {
 }
 
 /**
+ * Files of the 2016 site that have no copy on disk, mapped to the theme asset
+ * that replaces each. Apache serves a file that exists without loading PHP, so
+ * only a missing file reaches WordPress, as a 404, and is redirected here.
+ *
+ * @return array request path (with trailing slash, as abr_request_path() gives it) => path under the theme
+ */
+function abr_legacy_asset_paths() {
+	return array(
+		'/wp-content/uploads/2016/09/abrahamic-religions-300x75.png/' => 'assets/images/logo.png',
+		'/wp-content/uploads/2016/09/abrahamic-icon.png/'             => 'assets/images/icon-192.png',
+	);
+}
+
+/**
+ * Whether Rank Math is active with its sitemap module on, so that
+ * /sitemap_index.xml answers. When it is off, core's wp-sitemap.xml and its
+ * own /sitemap.xml handling are left alone.
+ *
+ * @return bool
+ */
+function abr_rank_math_sitemap_active() {
+	if ( ! function_exists( 'abr_rank_math_active' ) || ! abr_rank_math_active() ) {
+		return false;
+	}
+	if ( class_exists( '\\RankMath\\Helper' ) && method_exists( '\\RankMath\\Helper', 'is_module_active' ) ) {
+		return (bool) \RankMath\Helper::is_module_active( 'sitemap' );
+	}
+	return class_exists( '\\RankMath\\Sitemap\\Sitemap' );
+}
+
+/**
  * Destination for an earlier address, or an empty string.
  *
  * @param string $path Request path.
  * @return string
  */
 function abr_redirect_target( $path ) {
+	// The 2016 logo and icon, still requested from old pages and crawlers.
+	$assets = abr_legacy_asset_paths();
+	if ( isset( $assets[ $path ] ) ) {
+		return ABR_URI . '/' . $assets[ $path ];
+	}
+
+	// /sitemap.xml to Rank Math's index, when Rank Math serves the sitemaps.
+	if ( '/sitemap.xml/' === $path && abr_rank_math_sitemap_active() ) {
+		return home_url( '/sitemap_index.xml' );
+	}
+
 	// Category archives under the former /category/ base.
 	if ( preg_match( '#^/category/([^/]+)/(?:page/(\d+)/)?$#', $path, $m ) ) {
 		$term = get_term_by( 'slug', sanitize_title( $m[1] ), 'category' );
