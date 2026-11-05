@@ -64,10 +64,7 @@ function abr_incomplete_theme( $what, $all = false ) {
 		set_transient( $key, 1, 10 * MINUTE_IN_SECONDS );
 		error_log( 'Abrahamic: the theme is incomplete or being uploaded (' . $what . '); visitors see the maintenance notice until it is whole.' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
 	}
-	if ( wp_doing_ajax() || wp_doing_cron() || 'cli' === PHP_SAPI || false !== strpos( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), 'wp-login' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
-		return;
-	}
-	if ( is_admin() && ! $all ) {
+	if ( ! abr_incomplete_serves( $all ) ) {
 		return;
 	}
 	if ( ! function_exists( 'abr_maintenance_send' ) && is_readable( ABR_DIR . '/inc/maintenance.php' ) ) {
@@ -88,6 +85,22 @@ function abr_incomplete_theme( $what, $all = false ) {
 	}
 	echo '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Back shortly</title></head><body><h1>Back shortly</h1><p>The site is being updated. Please try again in a few minutes.</p></body></html>';
 	exit;
+}
+
+/**
+ * Whether abr_incomplete_theme() sends the notice to this request. The login
+ * screen, AJAX, cron and the command line never get it; the admin gets it
+ * only when $all is set.
+ *
+ * @param bool   $all  Send the notice to the admin screens too.
+ * @param string $sapi The PHP interface, PHP_SAPI by default.
+ * @return bool
+ */
+function abr_incomplete_serves( $all = false, $sapi = PHP_SAPI ) {
+	if ( wp_doing_ajax() || wp_doing_cron() || 'cli' === $sapi || false !== strpos( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), 'wp-login' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		return false;
+	}
+	return $all || ! is_admin();
 }
 
 foreach ( array_merge( array( ABR_DIR . '/inc/maintenance.php' ), $abr_files ) as $abr_file ) {

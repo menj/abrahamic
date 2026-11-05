@@ -23,7 +23,9 @@
 
 # Every file and folder whose name begins with a dot: .git, .github, .claude,
 # .vscode, .env, .htaccess (this file) and the like. .well-known stays open.
-RedirectMatch 403 /\.(?!well-known(/|$))[^/]+(/|$)
+<IfModule mod_alias.c>
+	RedirectMatch 403 /\.(?!well-known(/|$))[^/]+(/|$)
+</IfModule>
 <FilesMatch "^\.">
 	<IfModule mod_authz_core.c>
 		Require all denied
@@ -38,5 +40,18 @@ RedirectMatch 403 /\.(?!well-known(/|$))[^/]+(/|$)
 # theme folder. RedirectMatch reads the whole request path, so this matches
 # /wp-content/themes/abrahamic/tests/ with or without a site subfolder in
 # front. Each of these folders also carries its own .htaccess, which refuses
-# it wherever the theme folder sits.
-RedirectMatch 403 /themes/[^/]+/(tests|tools|bin|docs)(/|$)
+# it wherever the theme folder sits. Without mod_alias those deny files and
+# the FilesMatch rules still refuse them.
+<IfModule mod_alias.c>
+	RedirectMatch 403 /themes/[^/]+/(tests|tools|bin|docs)(/|$)
+</IfModule>
+
+# Where mod_alias is missing, mod_rewrite refuses the same paths. Only then:
+# a rewrite engine in this folder replaces the site's own rules for it.
+<IfModule !mod_alias.c>
+	<IfModule mod_rewrite.c>
+		RewriteEngine On
+		RewriteRule (^|/)\.(?!well-known(/|$)) - [F]
+		RewriteRule ^(tests|tools|bin|docs)(/|$) - [F]
+	</IfModule>
+</IfModule>

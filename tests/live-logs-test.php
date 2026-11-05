@@ -18,6 +18,7 @@ if ( 'cli' !== PHP_SAPI ) {
 
 define( 'ABSPATH', '/srv/site/' );
 define( 'MINUTE_IN_SECONDS', 60 );
+define( 'DAY_IN_SECONDS', 86400 );
 define( 'ABR_VERSION', '9.9.9' );
 
 /**
@@ -102,7 +103,7 @@ ini_set( 'error_log', $log ); // phpcs:ignore WordPress.PHP.IniSet
 
 t_load( 'inc/dev-files.php', array( 'abr_keeps_dev_files', 'abr_dev_entries', 'abr_remove_tree', 'abr_remove_dev_files', 'abr_cleanup_on_version_change', 'abr_renew_cleanup_lease', 'abr_release_lock', 'abr_swap_lock' ) );
 t_load( 'inc/security.php', array( 'abr_sec_core_lines', 'abr_sec_core_prefix' ) );
-t_load( 'functions.php', array( 'abr_incomplete_theme' ) );
+t_load( 'functions.php', array( 'abr_incomplete_theme', 'abr_incomplete_serves' ) );
 
 // Development files in the theme folder.
 $root = sys_get_temp_dir() . '/abr-live-' . getmypid();
@@ -185,7 +186,30 @@ $GLOBALS['t']['after_check'] = static function () {
 abr_cleanup_on_version_change();
 unset( $GLOBALS['t']['after_check'] );
 check( 'a request that paused past the check runs nothing once it holds the lease, and frees it', is_dir( "$root/tests" ) && ! isset( $GLOBALS['t']['options']['abr_dev_files_lock'] ) );
+// An entry that cannot be removed: the version stays unrecorded and the
+// lease is kept, fresh, so the next try waits five minutes. Needs chattr (or
+// a user other than root, for whom a read-only folder is enough).
+unset( $GLOBALS['t']['options']['abr_dev_files_lock'] );
 $GLOBALS['t']['options']['abr_dev_files_version'] = '9.9.8';
+mkdir( "$root/.stuck" );
+file_put_contents( "$root/.stuck/f", 'x' );
+$stuck = 0 === posix_geteuid() ? ( exec( 'chattr +i ' . escapeshellarg( "$root/.stuck/f" ) . ' 2>/dev/null', $o, $rc ) !== false && 0 === $rc ) : chmod( "$root/.stuck", 0555 );
+if ( $stuck ) {
+	abr_cleanup_on_version_change();
+	$lock = (string) ( $GLOBALS['t']['options']['abr_dev_files_lock'] ?? '' );
+	check( 'an entry that cannot go leaves the version unrecorded and a fresh lease in place', '9.9.8' === $GLOBALS['t']['options']['abr_dev_files_version'] && '' !== $lock && time() - (int) $lock < 60 && file_exists( "$root/.stuck/f" ) );
+	0 === posix_geteuid() ? exec( 'chattr -i ' . escapeshellarg( "$root/.stuck/f" ) ) : chmod( "$root/.stuck", 0755 );
+	abr_cleanup_on_version_change();
+	check( 'a fresh lease means no second try at once', file_exists( "$root/.stuck/f" ) );
+	$GLOBALS['t']['options']['abr_dev_files_lock'] = ( time() - 600 ) . substr( $lock, strpos( $lock, '.' ) );
+	abr_cleanup_on_version_change();
+	check( 'once the lease is stale, the next request finishes and records the version', ! file_exists( "$root/.stuck" ) && '9.9.9' === $GLOBALS['t']['options']['abr_dev_files_version'] );
+} else {
+	echo "skipped: no way to make a file that cannot be removed here\n";
+	abr_remove_tree( "$root/.stuck" );
+}
+$GLOBALS['t']['options']['abr_dev_files_version'] = '9.9.8';
+is_dir( "$root/tests" ) || mkdir( "$root/tests" );
 $GLOBALS['t']['env'] = 'development';
 abr_cleanup_on_version_change();
 check( 'a development site runs nothing and records nothing', is_dir( "$root/tests" ) && '9.9.8' === $GLOBALS['t']['options']['abr_dev_files_version'] );
@@ -228,7 +252,17 @@ abr_incomplete_theme( 'inc/search.php is missing' );
 $lines = file_exists( $log ) ? count( preg_grep( '/incomplete or being uploaded/', file( $log ) ) ) : 0;
 @unlink( $log ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
 check( 'a missing file is logged once, each problem on its own line', 2 === $lines );
-check( 'the admin calls returned without the notice, so an upload can finish', true );
+check( 'a missing file leaves the admin alone, so an upload can finish', ! abr_incomplete_serves( false, 'apache2handler' ) );
+check( 'a file that broke part-way sends the admin the notice', abr_incomplete_serves( true, 'apache2handler' ) );
+$GLOBALS['t']['admin'] = false;
+check( 'a visitor gets the notice', abr_incomplete_serves( false, 'apache2handler' ) && abr_incomplete_serves( true, 'fpm-fcgi' ) );
+check( 'the command line never does', ! abr_incomplete_serves( true, 'cli' ) );
+$GLOBALS['t']['ajax'] = true;
+check( 'nor does AJAX', ! abr_incomplete_serves( true, 'apache2handler' ) );
+$GLOBALS['t']['ajax'] = false;
+$_SERVER['REQUEST_URI'] = '/wp-login.php?action=lostpassword';
+check( 'nor the login screen', ! abr_incomplete_serves( true, 'apache2handler' ) );
+unset( $_SERVER['REQUEST_URI'] );
 $src = (string) file_get_contents( dirname( __DIR__ ) . '/functions.php' );
 check( 'every theme file is checked before any loads, inc/maintenance.php included', false !== strpos( $src, "array_merge( array( ABR_DIR . '/inc/maintenance.php' ), \$abr_files )" ) );
 check( 'a half-written file is caught', false !== strpos( $src, 'catch ( Throwable $abr_error )' ) );

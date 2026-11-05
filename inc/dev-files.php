@@ -80,15 +80,21 @@ function abr_remove_tree( $path ) {
 		return 0;
 	}
 	$gone = 0;
-	foreach ( $it as $f ) {
-		// A long walk keeps the clean-up's lease fresh (abr_renew_cleanup_lease()).
-		do_action( 'abr_cleanup_tick' );
-		if ( $f->isDir() && ! $f->isLink() ) {
-			$gone += @rmdir( $f->getPathname() ) ? 1 : 0; // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
-		} else {
-			@chmod( $f->getPathname(), 0644 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
-			$gone += @unlink( $f->getPathname() ) ? 1 : 0; // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
+	try {
+		foreach ( $it as $f ) {
+			// A long walk keeps the clean-up's lease fresh (abr_renew_cleanup_lease()).
+			do_action( 'abr_cleanup_tick' );
+			if ( $f->isDir() && ! $f->isLink() ) {
+				$gone += @rmdir( $f->getPathname() ) ? 1 : 0; // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
+			} else {
+				@chmod( $f->getPathname(), 0644 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
+				$gone += @unlink( $f->getPathname() ) ? 1 : 0; // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
+			}
 		}
+	} catch ( UnexpectedValueException $e ) {
+		// A folder inside that cannot be read: what is left stays, and the
+		// clean-up tries again later (abr_cleanup_on_version_change()).
+		unset( $e );
 	}
 	$gone += @rmdir( $path ) ? 1 : 0; // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
 	return $gone;
@@ -119,8 +125,9 @@ function abr_remove_dev_files() {
  * it only while it still holds it (abr_release_lock()). A lease left
  * unrenewed for five minutes belongs to a request that died, and is taken
  * over with one compare-and-set UPDATE that only one request can win
- * (abr_swap_lock()). The version is recorded after the clean-up returns, so
- * a request that dies part-way is retried.
+ * (abr_swap_lock()). The version is recorded after the clean-up returns, and
+ * only when nothing is left, so a request that dies part-way, or an entry
+ * that could not be removed, is retried.
  */
 function abr_cleanup_on_version_change() {
 	if ( get_option( 'abr_dev_files_version' ) === ABR_VERSION ) {
@@ -159,6 +166,19 @@ function abr_cleanup_on_version_change() {
 	$held  = (string) $GLOBALS['abr_cleanup_lease'];
 	$final = time() . '.' . substr( $held, strpos( $held, '.' ) + 1 ) . '-done';
 	unset( $GLOBALS['abr_cleanup_lease'] );
+	$left = count( abr_dev_entries() );
+	if ( $left ) {
+		// Something could not be removed (permissions, a folder that cannot
+		// be read). The version stays unrecorded and the lease is renewed
+		// and kept, so the next try comes once it is five minutes stale,
+		// never on every request. One log line a day says so.
+		abr_swap_lock( 'abr_dev_files_lock', $held, time() . '.' . substr( $held, strpos( $held, '.' ) + 1 ) );
+		if ( ! get_transient( 'abr_dev_files_failed' ) ) {
+			set_transient( 'abr_dev_files_failed', 1, DAY_IN_SECONDS );
+			error_log( 'Abrahamic: removed ' . $gone . ' development files from the theme folder; ' . $left . ' could not be removed and are tried again every five minutes. Delete them by FTP.' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
+		}
+		return;
+	}
 	if ( ! abr_swap_lock( 'abr_dev_files_lock', $held, $final ) ) {
 		return;
 	}

@@ -1179,7 +1179,7 @@ function abr_sec_render_settings() {
 	} elseif ( 'unavailable' === $state ) {
 		echo '<p class="abr-help abr-help--key">' . esc_html__( 'The theme could not write .htaccess (the server is not Apache, or the file is read-only). WordPress still refuses xmlrpc.php; ask the host to deny it at the server as well.', 'abrahamic' ) . '</p>';
 	}
-	if ( 'unavailable' !== $state ) {
+	if ( 'unavailable' !== $state && function_exists( 'get_home_path' ) && array() !== abr_sec_core_wanted() ) {
 		echo '<p class="abr-help">' . esc_html__( 'On Apache the theme also keeps an "Abrahamic: deny direct core files" section in .htaccess. It answers 403 for the PHP files in wp-includes (the editor\'s TinyMCE loader and ms-files.php excepted), wp-settings.php, wp-config-sample.php, readme.html and wp-admin/install.php, which bots ask for by address. If a plugin or the host needs one of them, add define( \'ABR_ALLOW_CORE_FILES\', true ); to wp-config.php.', 'abrahamic' ) . '</p>';
 	}
 	abr_field( 'sec_app_passwords_off', __( 'Turn off application passwords', 'abrahamic' ), 'checkbox', __( 'Stored application passwords stop working at once. Revoke them as well, below, so they cannot return if this is switched off.', 'abrahamic' ) );
