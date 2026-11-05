@@ -260,7 +260,7 @@ function abr_lead_list_grid_before( $pre, $parsed, $parent = null ) {
 	if ( null !== $pre || ! $shown || 'core/post-template' !== ( $parsed['blockName'] ?? '' ) || ! $parent instanceof WP_Block || empty( $parent->parsed_block['attrs']['query']['inherit'] ) || ! $wp_query instanceof WP_Query ) {
 		return $pre;
 	}
-	$GLOBALS['abr_lead_list_saved'] = array( $wp_query->posts, $wp_query->post_count );
+	$GLOBALS['abr_lead_list_saved'] = array( $wp_query->posts, $wp_query->post_count, $wp_query->post, $GLOBALS['post'] ?? null );
 	$rest                           = array_values(
 		array_filter(
 			$wp_query->posts,
@@ -277,7 +277,8 @@ function abr_lead_list_grid_before( $pre, $parsed, $parent = null ) {
 add_filter( 'pre_render_block', 'abr_lead_list_grid_before', 10, 3 );
 
 /**
- * Restore the main query after the grid's post template.
+ * Restore the main query, its current post and the global post after the
+ * grid's post template.
  *
  * @param string $content Block HTML.
  * @param array  $block   Parsed block.
@@ -286,9 +287,13 @@ add_filter( 'pre_render_block', 'abr_lead_list_grid_before', 10, 3 );
 function abr_lead_list_grid_after( $content, $block ) {
 	global $wp_query;
 	if ( 'core/post-template' === ( $block['blockName'] ?? '' ) && isset( $GLOBALS['abr_lead_list_saved'] ) && $wp_query instanceof WP_Query ) {
-		list( $wp_query->posts, $wp_query->post_count ) = $GLOBALS['abr_lead_list_saved'];
+		list( $wp_query->posts, $wp_query->post_count, $wp_query->post, $GLOBALS['post'] ) = $GLOBALS['abr_lead_list_saved'];
 		unset( $GLOBALS['abr_lead_list_saved'] );
 		$wp_query->rewind_posts();
+		// The loop moved the global post on; put it back, with the template tags' data.
+		if ( $GLOBALS['post'] instanceof WP_Post ) {
+			setup_postdata( $GLOBALS['post'] );
+		}
 	}
 	return $content;
 }
