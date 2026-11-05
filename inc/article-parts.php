@@ -66,7 +66,7 @@ function abr_article_answer_shows( $post ) {
 	if ( abr_article_points( get_post_meta( $post->ID, '_abr_takeaways', true ) ) ) {
 		return true;
 	}
-	return (bool) preg_match( '/\[abr_answer_box\s[^\]]*\b(?:summary|points)\s*=\s*["\']\s*[^"\'\s]/', (string) $post->post_content );
+	return (bool) preg_match( '/(?<!\[)\[abr_answer_box\s[^\]]*\b(?:summary|points)\s*=\s*["\']\s*[^"\'\s]/', (string) $post->post_content );
 }
 
 /**
@@ -216,8 +216,10 @@ add_filter(
 		if ( abr_get_option( 'article_mid_next' ) ) {
 			$content = abr_article_insert_mid( $content, abr_article_next_step( $post, $content ) );
 		}
-		// The box goes first, unless the author placed one in the text.
-		if ( false === strpos( (string) $post->post_content, '[abr_answer_box' ) ) {
+		// The box goes first, unless one placed in the text has rendered. The
+		// shortcodes ran at priority 11, so an escaped [[abr_answer_box]] has
+		// printed as text and does not count.
+		if ( false === strpos( (string) $content, 'class="abr-answer"' ) ) {
 			$content = abr_article_answer_box() . $content;
 		}
 		return $content;

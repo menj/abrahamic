@@ -101,6 +101,8 @@ $GLOBALS['abr_t']['opts']['article_answer'] = 1;
 $GLOBALS['abr_t']['meta']                 = array();
 $GLOBALS['abr_t']['post']->post_content = 'Text [abr_answer_box points="One;;Two"] more';
 abr_test_check( abr_article_answer_shows( $GLOBALS['abr_t']['post'] ), 'a box placed in the text with points shows' );
+$GLOBALS['abr_t']['post']->post_content = 'Text [[abr_answer_box points="One"]] more';
+abr_test_check( ! abr_article_answer_shows( $GLOBALS['abr_t']['post'] ), 'an escaped shortcode prints as text and is no box' );
 
 $html = '<p>a</p><h2 id="x">One</h2><p>b</p><h2>Two</h2><p>c</p><h2 class="abr-notes-title" id="notes">Notes</h2>';
 abr_test_check( $html === abr_article_insert_mid( $html, '<aside>N</aside>' ), 'two sections and Notes: no mid next step' );
