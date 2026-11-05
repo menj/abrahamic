@@ -1012,4 +1012,4 @@ Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new 
 9. Render the front page at 320, 390, 768, 1024, 1280 and 1440 pixels; confirm no horizontal overflow and a single-row header; open and close the overlay menu on phone and tablet widths.
 10. Run the seeder on a fresh WordPress install, crawl the site, and confirm: every internal link returns 200; one `h1`, a unique title and a unique description of 130 characters or fewer on every page; a canonical address and breadcrumbs on every inner page; valid structured data; robots.txt and every sitemap address; a 404 status on the 404 page. Repeat on a site upgraded from the previous release and confirm the earlier addresses redirect.
 11. If `assets/images/logo-mark.svg` changed, regenerate `logo.png`, `icon-192.png`, `apple-touch-icon.png` and `favicon-32.png` from it, and refresh `screenshot.png`.
-12. Package the `abrahamic/` folder as `abrahamic-x.y.z.zip`.
+12. Package the theme with `git archive --format=zip --prefix=abrahamic/ -o abrahamic-x.y.z.zip HEAD`. `.gitattributes` leaves `.claude/` out; check with `unzip -l` that no `CLAUDE.md` or `FARUQI.md` is in it.

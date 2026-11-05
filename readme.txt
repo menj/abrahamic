@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.5
+Stable tag: 2.96.6
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -597,6 +597,11 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.6 - 2026-11-05 =
+* CLAUDE.md and FARUQI.md move into the .claude folder, which the release zip leaves out and the web server never serves.
+* On a site installed in a subfolder, the static error pages linked the home page at the domain root. The theme now writes a copy of each into wp-content/abrahamic-errors/ with the site's own home address, and the .htaccess lines on the Tools tab point there.
+* On a network whose main site runs another theme, a subsite that runs Abrahamic now keeps the error pages up to date.
 
 = 2.96.5 - 2026-11-05 =
 * On a network, a theme switch on the main site leaves the error pages in place while another site still runs Abrahamic.

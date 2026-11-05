@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.96.5 |
+| Version | 2.96.6 |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
@@ -27,22 +27,26 @@ WordPress shows three files from `wp-content` when it cannot build a page. The t
 
 All three are self-contained (inline style, no theme file, no WordPress function, no database), send `noindex` and `no-store`, and are built by `inc/error-page-html.php`.
 
-For errors the web server answers before WordPress runs, `errors/` holds static 403, 500, 502, 503 and 504 pages, built with `php bin/build-error-pages.php`. Add to `.htaccess`, with the theme's folder name:
+For errors the web server answers before WordPress runs, `errors/` holds static 403, 500, 502, 503 and 504 pages, built with `php bin/build-error-pages.php`. They link the home page at `/`, so they suit a site at the domain root only.
+
+The theme also writes a copy of each into `wp-content/abrahamic-errors/`, with the site's own home address, at the same times and under the same rules as the drop-ins. A site installed in a subfolder, such as `example.com/blog/`, gets a home link that works. Switching to another theme removes the copies. The Tools tab shows the lines for `.htaccess` with this site's addresses. For a site at the root they read:
 
 ```
-ErrorDocument 403 /wp-content/themes/abrahamic/errors/403.html
-ErrorDocument 500 /wp-content/themes/abrahamic/errors/500.html
-ErrorDocument 502 /wp-content/themes/abrahamic/errors/502.html
-ErrorDocument 503 /wp-content/themes/abrahamic/errors/503.html
-ErrorDocument 504 /wp-content/themes/abrahamic/errors/504.html
+ErrorDocument 403 /wp-content/abrahamic-errors/403.html
+ErrorDocument 500 /wp-content/abrahamic-errors/500.html
+ErrorDocument 502 /wp-content/abrahamic-errors/502.html
+ErrorDocument 503 /wp-content/abrahamic-errors/503.html
+ErrorDocument 504 /wp-content/abrahamic-errors/504.html
 ```
+
+On a network the main site writes the files, since every site shares `wp-content`. When the main site runs another theme, the site with the lowest ID that runs Abrahamic writes them, and only that one. The last site to leave the theme removes them.
 
 ---
 
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.96.5.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.96.6.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -50,7 +54,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.96.5.zip --activate
+wp theme install abrahamic-2.96.6.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 

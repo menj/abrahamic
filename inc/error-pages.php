@@ -51,6 +51,43 @@ function abr_error_dropins() {
 	);
 }
 
+/** The folder in wp-content that holds this site's copies of the static pages. */
+const ABR_STATIC_ERRORS = 'abrahamic-errors';
+
+/**
+ * The copies of the static pages, relative to wp-content => page kind.
+ *
+ * @return array<string,string>
+ */
+function abr_error_static_files() {
+	$files = array();
+	foreach ( array( '403', '500', '502', '503', '504' ) as $code ) {
+		$files[ ABR_STATIC_ERRORS . '/' . $code . '.html' ] = $code;
+	}
+	return $files;
+}
+
+/**
+ * Every file the theme writes, relative to wp-content => page kind: the
+ * three drop-ins, then the copies of the static pages.
+ *
+ * @return array<string,string>
+ */
+function abr_error_files() {
+	return abr_error_dropins() + abr_error_static_files();
+}
+
+/**
+ * The site name and the path of the home page, as the pages show them.
+ *
+ * @return array{0:string,1:string}
+ */
+function abr_error_site() {
+	$site = wp_specialchars_decode( (string) get_bloginfo( 'name' ), ENT_QUOTES );
+	$home = (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH );
+	return array( '' !== $site ? $site : 'Abrahamic Religions', '' !== $home ? $home : '/' );
+}
+
 /**
  * The source of one drop-in.
  *
@@ -58,10 +95,78 @@ function abr_error_dropins() {
  * @return string
  */
 function abr_error_dropin_source( $kind ) {
-	$site = wp_specialchars_decode( (string) get_bloginfo( 'name' ), ENT_QUOTES );
-	$home = (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH );
+	list( $site, $home ) = abr_error_site();
 	return abr_error_dropin_head( $kind, ABR_ERR_MARKER, ABR_VERSION, 'Abrahamic' )
-		. abr_error_page_html( $kind, '' !== $site ? $site : 'Abrahamic Religions', '' !== $home ? $home : '/' ) . "\n";
+		. abr_error_page_html( $kind, $site, $home ) . "\n";
+}
+
+/**
+ * The text the theme writes for one file: a drop-in, or a static page with
+ * the marker in an HTML comment and this site's home address.
+ *
+ * @param string $name A key of abr_error_files().
+ * @return string
+ */
+function abr_error_file_source( $name ) {
+	$static = abr_error_static_files();
+	if ( ! isset( $static[ $name ] ) ) {
+		return abr_error_dropin_source( abr_error_dropins()[ $name ] );
+	}
+	list( $site, $home ) = abr_error_site();
+	return '<!-- ' . ABR_ERR_MARKER . ' (' . $static[ $name ] . ') ' . ABR_VERSION . ". Written by the Abrahamic theme; safe to delete. -->\n"
+		. abr_error_page_html( $static[ $name ], $site, $home ) . "\n";
+}
+
+/**
+ * Whether this site writes the shared files in wp-content: any site off a
+ * network, the main site of a network, or, while the main site runs another
+ * theme, the one subsite with the lowest ID that runs this one. Without the last case a network whose
+ * main site had switched away kept the drop-ins of the old version for
+ * good, with no site left to refresh them.
+ *
+ * @return bool
+ */
+function abr_error_writer() {
+	if ( ! is_multisite() || is_main_site() ) {
+		return true;
+	}
+	$slug = basename( dirname( __DIR__ ) );
+	$main = get_main_site_id();
+	if ( in_array( $slug, array( get_blog_option( $main, 'stylesheet' ), get_blog_option( $main, 'template' ) ), true ) ) {
+		return false;
+	}
+	// One writer only: the site with the lowest ID that runs the theme, so
+	// the shared files never flip between subsites' addresses.
+	return get_current_blog_id() === abr_error_first_theme_site();
+}
+
+/**
+ * The site with the lowest ID that runs this theme, as its stylesheet or
+ * its template; 0 when none does. Sites are read 500 at a time.
+ *
+ * @return int
+ */
+function abr_error_first_theme_site() {
+	$slug   = basename( dirname( __DIR__ ) );
+	$offset = 0;
+	do {
+		$ids = get_sites(
+			array(
+				'fields'  => 'ids',
+				'number'  => 500,
+				'offset'  => $offset,
+				'orderby' => 'id',
+				'order'   => 'ASC',
+			)
+		);
+		foreach ( $ids as $id ) {
+			if ( in_array( $slug, array( get_blog_option( $id, 'stylesheet' ), get_blog_option( $id, 'template' ) ), true ) ) {
+				return (int) $id;
+			}
+		}
+		$offset += 500;
+	} while ( 500 === count( $ids ) );
+	return 0;
 }
 
 /**
@@ -144,18 +249,18 @@ function abr_error_wrong_kind( $path, $kind ) {
 function abr_error_state( $name, $dir = '' ) {
 	$dir  = '' !== $dir ? $dir : WP_CONTENT_DIR;
 	$path = rtrim( $dir, '/' ) . '/' . $name;
-	$kind = abr_error_dropins()[ $name ];
 	if ( ! file_exists( $path ) ) {
 		return 'missing';
 	}
 	if ( ! abr_error_is_ours( $path ) ) {
 		return 'foreign';
 	}
-	return (string) file_get_contents( $path ) === abr_error_dropin_source( $kind ) ? 'installed' : 'outdated'; // phpcs:ignore WordPress.WP.AlternativeFunctions
+	return (string) file_get_contents( $path ) === abr_error_file_source( $name ) ? 'installed' : 'outdated'; // phpcs:ignore WordPress.WP.AlternativeFunctions
 }
 
 /**
- * Write the drop-ins into a directory. A missing file, one of the theme's
+ * Write the drop-ins and the copies of the static pages into a directory.
+ * A missing file, one of the theme's
  * own or a sibling theme's marked leftover is written; anyone else's is left
  * alone.
  *
@@ -165,7 +270,7 @@ function abr_error_state( $name, $dir = '' ) {
 function abr_error_install( $dir = '' ) {
 	$dir    = rtrim( '' !== $dir ? $dir : WP_CONTENT_DIR, '/' );
 	$result = array();
-	foreach ( abr_error_dropins() as $name => $kind ) {
+	foreach ( array_keys( abr_error_files() ) as $name ) {
 		$state = abr_error_state( $name, $dir );
 		if ( 'foreign' === $state && ! abr_error_is_replaceable( $dir . '/' . $name ) ) {
 			$result[ $name ] = 'kept';
@@ -176,9 +281,12 @@ function abr_error_install( $dir = '' ) {
 			continue;
 		}
 		$target = $dir . '/' . $name;
+		if ( ! is_dir( dirname( $target ) ) ) {
+			@mkdir( dirname( $target ), 0755, true ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
+		}
 		// A temporary name, then a rename, so WordPress never reads half a file.
 		$tmp = $target . '.' . uniqid( 'abr-', true ) . '.tmp';
-		if ( false !== @file_put_contents( $tmp, abr_error_dropin_source( $kind ) ) && @rename( $tmp, $target ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
+		if ( false !== @file_put_contents( $tmp, abr_error_file_source( $name ) ) && @rename( $tmp, $target ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
 			$result[ $name ] = 'written';
 		} else {
 			$result[ $name ] = 'failed';
@@ -196,7 +304,7 @@ function abr_error_install( $dir = '' ) {
  * leaves a notice that says which. Runs once per version (abr_dropins_version).
  */
 function abr_error_repair_wrong_kind() {
-	if ( ! current_user_can( 'manage_options' ) || ( is_multisite() && ! is_main_site() ) ) {
+	if ( ! current_user_can( 'manage_options' ) || ! abr_error_writer() ) {
 		return;
 	}
 	$wrong = array();
@@ -262,7 +370,7 @@ function abr_handle_install_error_pages() {
 		wp_die( esc_html__( 'You are not allowed to do that.', 'abrahamic' ), 403 );
 	}
 	check_admin_referer( 'abr_install_error_pages' );
-	$result = ( is_multisite() && ! is_main_site() ) ? array() : abr_error_install();
+	$result = abr_error_writer() ? abr_error_install() : array();
 	update_option( 'abr_dropins', $result, false );
 	if ( ! in_array( 'failed', $result, true ) ) {
 		delete_option( 'abr_dropins_repaired' );
@@ -273,12 +381,13 @@ function abr_handle_install_error_pages() {
 add_action( 'admin_post_abr_install_error_pages', 'abr_handle_install_error_pages' );
 
 /**
- * The lines for .htaccess that point the web server at the static pages.
+ * The lines for .htaccess that point the web server at this site's copies
+ * of the static pages in wp-content, which carry its own home address.
  *
  * @return string
  */
 function abr_error_htaccess_snippet() {
-	$base  = untrailingslashit( (string) wp_parse_url( ABR_URI, PHP_URL_PATH ) ) . '/errors/';
+	$base  = untrailingslashit( (string) wp_parse_url( content_url( '/' ), PHP_URL_PATH ) ) . '/' . ABR_STATIC_ERRORS . '/';
 	$lines = array( '# Abrahamic: pages for the errors the web server answers before WordPress runs' );
 	foreach ( array( 403, 500, 502, 503, 504 ) as $code ) {
 		$lines[] = 'ErrorDocument ' . $code . ' ' . $base . $code . '.html';
@@ -295,12 +404,17 @@ function abr_render_error_pages_section() {
 		'installed' => __( 'Installed, current', 'abrahamic' ),
 		'outdated'  => __( 'Installed by the theme, outdated', 'abrahamic' ),
 		'foreign'   => __( 'Another file is there; left alone', 'abrahamic' ),
+		'network'   => __( 'Installed by the theme for the network', 'abrahamic' ),
 	);
 	$when   = array(
 		'maintenance.php' => __( 'WordPress is updating (503, Retry-After)', 'abrahamic' ),
 		'php-error.php'   => __( 'a fatal PHP error stops a page (500)', 'abrahamic' ),
 		'db-error.php'    => __( 'the database cannot be reached (503, Retry-After)', 'abrahamic' ),
 	);
+	foreach ( abr_error_static_files() as $abr_name => $abr_code ) {
+		/* translators: %s: HTTP status code. */
+		$when[ $abr_name ] = sprintf( __( 'the web server answers %s, through the .htaccess lines below', 'abrahamic' ), $abr_code );
+	}
 	?>
 	<h2 id="abr-error-pages"><?php esc_html_e( 'Error pages', 'abrahamic' ); ?></h2>
 	<?php
@@ -315,12 +429,20 @@ function abr_render_error_pages_section() {
 		<thead><tr><th scope="col"><?php esc_html_e( 'File', 'abrahamic' ); ?></th><th scope="col"><?php esc_html_e( 'Shown when', 'abrahamic' ); ?></th><th scope="col"><?php esc_html_e( 'Status', 'abrahamic' ); ?></th></tr></thead>
 		<tbody>
 		<?php foreach ( $when as $abr_name => $abr_when ) : ?>
-			<tr><td><code>wp-content/<?php echo esc_html( $abr_name ); ?></code></td><td><?php echo esc_html( $abr_when ); ?></td><td><?php echo esc_html( $labels[ abr_error_state( $abr_name ) ] ); ?></td></tr>
+			<tr><td><code>wp-content/<?php echo esc_html( $abr_name ); ?></code></td><td><?php echo esc_html( $abr_when ); ?></td><td><?php
+			$abr_state = abr_error_state( $abr_name );
+			// Another site writes the shared files with its own addresses, so
+			// here the theme's own copy reads as the network's, not outdated.
+			if ( 'outdated' === $abr_state && ! abr_error_writer() ) {
+				$abr_state = 'network';
+			}
+			echo esc_html( $labels[ $abr_state ] );
+			?></td></tr>
 		<?php endforeach; ?>
 		</tbody>
 	</table>
-	<?php if ( is_multisite() && ! is_main_site() ) : ?>
-		<p class="abr-help"><?php esc_html_e( 'wp-content is shared by the whole network, so the error pages are installed from the main site.', 'abrahamic' ); ?></p>
+	<?php if ( ! abr_error_writer() ) : ?>
+		<p class="abr-help"><?php esc_html_e( 'wp-content is shared by the whole network, so one site writes the error pages for all: the main site, or the first site that runs Abrahamic when the main site runs another theme. The status above reflects that site\'s addresses.', 'abrahamic' ); ?></p>
 	<?php else : ?>
 	<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="abr-tools-form">
 		<input type="hidden" name="action" value="abr_install_error_pages">
@@ -328,7 +450,7 @@ function abr_render_error_pages_section() {
 		<?php submit_button( __( 'Install error pages', 'abrahamic' ), 'secondary', 'submit', false ); ?>
 	</form>
 	<?php endif; ?>
-	<p class="abr-help"><?php esc_html_e( 'For errors the web server answers before WordPress starts, static pages are in the theme\'s errors folder. Add these lines to .htaccess to use them:', 'abrahamic' ); ?></p>
+	<p class="abr-help"><?php esc_html_e( 'For errors the web server answers before WordPress starts, the button also writes static pages into wp-content/abrahamic-errors, with this site\'s home address. Add these lines to .htaccess to use them:', 'abrahamic' ); ?></p>
 	<textarea readonly rows="6" class="large-text code" aria-label="<?php esc_attr_e( '.htaccess lines', 'abrahamic' ); ?>"><?php echo esc_textarea( abr_error_htaccess_snippet() ); ?></textarea>
 	<?php
 }
