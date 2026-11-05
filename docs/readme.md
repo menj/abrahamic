@@ -147,7 +147,7 @@ functions.php
 | `template_redirect` (priority 5) | `abr_legacy_redirect` | 301s from earlier addresses |
 | `the_content` (priority 30) | `abr_ctx_filter` | Contextual links to inner pages here and on the sister sites, after blocks, texturising and shortcodes |
 
-The table lists the core of the theme. The later modules hook in from their own files; `grep -n "add_action\|add_filter" inc/*.php` lists every one. The ones a host or developer most often meets:
+The table lists the core of the theme. The later modules hook in from their own files; `grep -n "add_action\|add_filter" functions.php inc/*.php` lists every one. The ones a host or developer most often meets:
 
 | Hook | Callback | Purpose |
 |---|---|---|
@@ -350,10 +350,11 @@ The `ErrorDocument` lines are the owner's to add by hand; the Tools tab prints t
 ## Build, test and deploy
 
 ```
+set -e                                               # stop at the first failure
 php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
 find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
-for f in assets/js/*.js; do node --check "$f"; done
+for f in assets/js/*.js; do node --check "$f" || exit 1; done
 git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.9.zip HEAD
 ```
 
@@ -383,7 +384,7 @@ error_page 503 /wp-content/abrahamic-errors/503.html;
 error_page 504 /wp-content/abrahamic-errors/504.html;
 ```
 
-Nginx serves `error_page` for PHP's own 500 and 503 answers only with `fastcgi_intercept_errors on;` in the FastCGI location; without it those answers reach visitors as PHP sent them. Jetpack needs XML-RPC: leave out the `xmlrpc.php` line and also switch "Turn off XML-RPC" off on the Security tab, since the theme refuses XML-RPC in PHP too. Prefix the paths when WordPress lives in a subfolder, and when `wp-config.php` sits in the folder above WordPress, add a rule for it there as well, for example `location = /wp-config.php { deny all; }` above a WordPress in `/wp/`.
+Nginx serves `error_page` for PHP's own 500 and 503 answers only with `fastcgi_intercept_errors on;` in the FastCGI location; without it those answers reach visitors as PHP sent them. Jetpack needs XML-RPC: leave out the `xmlrpc.php` line and also switch "Turn off XML-RPC" off on the Security tab, since the theme refuses XML-RPC in PHP too. These rules do not follow the Security switches or `ABR_SECURITY_LOCK`: to let XML-RPC through, take the `xmlrpc.php` line out by hand as well. Prefix the paths when WordPress lives in a subfolder.
 
 ## Multisite
 

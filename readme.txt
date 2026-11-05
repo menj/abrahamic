@@ -192,7 +192,7 @@ They are copied across automatically when you activate Abrahamic. Changes you ma
 
 = What do the Security switches do? =
 
-They close the doors spam tools use to publish from outside the site. XML-RPC is turned off, and on Apache the theme also blocks xmlrpc.php in the site's .htaccess. Application passwords are off. Changes sent through the REST API by a signed-in account are accepted only from a browser session on the site; public REST routes, such as reading posts, stay open. New posts that read as gambling spam wait as Pending. Removed spam answers 410 Gone, so search engines drop it. If one of these breaks a tool you need, such as Jetpack, turn that switch off. In an emergency, add define( 'ABR_SECURITY_LOCK', false ); to wp-config.php.
+They close the doors spam tools use to publish from outside the site. XML-RPC is turned off, and on Apache the theme also blocks xmlrpc.php in the site's .htaccess. Application passwords are off. Changes sent through the REST API by a signed-in account are accepted only from a browser session on the site; public REST routes, such as reading posts, stay open. New posts that read as gambling spam wait as Pending. Removed spam answers 410 Gone, so search engines drop it. If one of these breaks a tool you need, such as Jetpack, turn that switch off. A tool that logs in to XML-RPC with a password needs both the XML-RPC switch and the REST switch off, since either one refuses password logins there. In an emergency, add define( 'ABR_SECURITY_LOCK', false ); to wp-config.php.
 
 = What are the error pages? =
 
