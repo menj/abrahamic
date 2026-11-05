@@ -97,7 +97,7 @@ function abr_maintenance_dropin_source() {
  * copies with the wrong page are repaired first, with a notice.
  */
 function abr_maintenance_install_dropins() {
-	if ( ! function_exists( 'abr_error_install' ) || ( is_multisite() && ! is_main_site() ) ) {
+	if ( ! function_exists( 'abr_error_install' ) || ! abr_error_writer() ) {
 		return;
 	}
 	abr_error_repair_wrong_kind();
@@ -123,7 +123,7 @@ add_action( 'after_switch_theme', 'abr_maintenance_install_dropins' );
  * @return bool
  */
 function abr_maintenance_dropins_settled() {
-	foreach ( array_keys( abr_error_dropins() ) as $name ) {
+	foreach ( array_keys( abr_error_files() ) as $name ) {
 		$state = abr_error_state( $name );
 		if ( 'installed' === $state ) {
 			continue;
@@ -170,7 +170,8 @@ function abr_maintenance_dropins_in_use_elsewhere() {
 }
 
 /**
- * Remove the theme's drop-ins when it is switched off. Only a file that
+ * Remove the theme's drop-ins and its copies of the static pages when it
+ * is switched off. Only a file that
  * carries one of the theme's markers is deleted; the version flag goes too,
  * so switching back writes them again.
  */
@@ -178,13 +179,15 @@ function abr_maintenance_remove_dropins() {
 	// On a network the files are shared: they stay while any other site,
 	// the main site included, still runs the theme. The last site to switch
 	// away removes them, even a subsite.
-	if ( function_exists( 'abr_error_dropins' ) && ! abr_maintenance_dropins_in_use_elsewhere() ) {
-		foreach ( array_keys( abr_error_dropins() ) as $name ) {
+	if ( function_exists( 'abr_error_files' ) && ! abr_maintenance_dropins_in_use_elsewhere() ) {
+		foreach ( array_keys( abr_error_files() ) as $name ) {
 			$target = WP_CONTENT_DIR . '/' . $name;
 			if ( file_exists( $target ) && abr_error_is_ours( $target ) ) {
 				@unlink( $target ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
 			}
 		}
+		// The folder of static copies goes too, but only when it is empty.
+		@rmdir( WP_CONTENT_DIR . '/' . ABR_STATIC_ERRORS ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
 	}
 	delete_option( 'abr_dropins_version' );
 }

@@ -2,6 +2,15 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.6] - 2026-11-05
+
+### Changed
+- `CLAUDE.md` and `FARUQI.md` move from the theme folder to `.claude/`, where Claude Code reads them. A new `.gitattributes` keeps `.claude/` out of `git archive` and GitHub's Download ZIP. The theme's `.htaccess` answers 404 for it, and `.claude/.htaccess` denies it, in case a working copy is uploaded.
+
+### Fixed
+- The static error pages in `errors/` link the home page at `/`, so on a site installed in a subfolder their button led out of the site. The theme now writes a copy of each into `wp-content/abrahamic-errors/` with the site's own home address, through `abr_error_static_files()` and `abr_error_file_source()`, at the same times and under the same marker rules as the drop-ins. The `.htaccess` lines on the Tools tab point at the copies, the Tools table lists them, and switching to another theme removes them with the folder. `errors/` stays as the copy for a site at the root.
+- On a network whose main site had switched to another theme, no site wrote the drop-ins again, so they kept the old version for good. `abr_error_writer()` lets a subsite that runs Abrahamic write them while the main site runs another theme.
+
 ## [2.96.5] - 2026-11-05
 
 ### Fixed

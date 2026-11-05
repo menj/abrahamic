@@ -9,3 +9,9 @@
 		Deny from all
 	</IfModule>
 </FilesMatch>
+
+# The .claude folder holds notes for contributors. It never ships, and is
+# never served if a working copy is uploaded.
+<IfModule mod_alias.c>
+	RedirectMatch 404 /\.claude(/|$)
+</IfModule>

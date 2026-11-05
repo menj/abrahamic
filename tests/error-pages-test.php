@@ -26,10 +26,14 @@ function __( $s ) { return $s; }
 function get_bloginfo() { return 'Abrahamic Religions'; }
 function wp_specialchars_decode( $s ) { return $s; }
 function wp_parse_url( $u, $c = -1 ) { return parse_url( $u, $c ); }
-function home_url( $p = '' ) { return 'https://example.test' . $p; }
+function home_url( $p = '' ) { return 'https://example.test' . ( $GLOBALS['abr_t']['sub'] ?? '' ) . $p; }
+function content_url( $p = '' ) { return 'https://example.test' . ( $GLOBALS['abr_t']['sub'] ?? '' ) . '/wp-content' . $p; }
 function untrailingslashit( $s ) { return rtrim( $s, '/' ); }
 function current_user_can() { return true; }
-function is_multisite() { return false; }
+function is_multisite() { return ! empty( $GLOBALS['abr_t']['network'] ); }
+function is_main_site() { return empty( $GLOBALS['abr_t']['subsite'] ); }
+function get_main_site_id() { return 1; }
+function get_blog_option( $id, $k ) { return $GLOBALS['abr_t']['main_theme'] ?? 'abrahamic'; }
 function get_option( $k, $d = false ) { return $GLOBALS['abr_t']['options'][ $k ] ?? $d; }
 function update_option( $k, $v ) { $GLOBALS['abr_t']['options'][ $k ] = $v; return true; }
 function delete_option( $k ) { unset( $GLOBALS['abr_t']['options'][ $k ] ); }
@@ -92,8 +96,30 @@ abr_check( 'missing' === abr_error_state( 'php-error.php' ) && 'written' === abr
 // The static pages are current.
 exec( escapeshellarg( PHP_BINARY ) . ' ' . escapeshellarg( dirname( __DIR__ ) . '/bin/build-error-pages.php' ) . ' --check 2>&1', $abr_o, $abr_code );
 abr_check( 0 === $abr_code, 'errors/*.html match the builder' );
-abr_check( false !== strpos( abr_error_htaccess_snippet(), 'ErrorDocument 503 /wp-content/themes/abrahamic/errors/503.html' ), '.htaccess lines point at errors/' );
+abr_check( false !== strpos( abr_error_htaccess_snippet(), 'ErrorDocument 503 /wp-content/abrahamic-errors/503.html' ), '.htaccess lines point at the copies in wp-content' );
 
+// The copies of the static pages carry the marker and the site's own home.
+abr_check( 'unchanged' === $abr_res['abrahamic-errors/403.html'] && 'installed' === abr_error_state( 'abrahamic-errors/504.html' ), 'installer writes the static copies' );
+$abr_copy = file_get_contents( "$abr_tmp/abrahamic-errors/403.html" );
+abr_check( 0 === strpos( $abr_copy, '<!-- ' . ABR_ERR_MARKER . ' (403)' ) && false !== strpos( $abr_copy, 'href="/"' ), 'a root install links the home page at /' );
+$GLOBALS['abr_t']['sub'] = '/blog';
+abr_check( 'outdated' === abr_error_state( 'abrahamic-errors/403.html' ), 'a move to a subfolder makes the copy outdated' );
+abr_error_install();
+$abr_copy = file_get_contents( "$abr_tmp/abrahamic-errors/403.html" );
+abr_check( false !== strpos( $abr_copy, 'href="/blog/"' ) && false === strpos( $abr_copy, 'href="/"' ), 'a subfolder install links the home page in the subfolder' );
+abr_check( false !== strpos( abr_error_htaccess_snippet(), 'ErrorDocument 403 /blog/wp-content/abrahamic-errors/403.html' ), '.htaccess lines follow the subfolder' );
+abr_check( false !== strpos( file_get_contents( dirname( __DIR__ ) . '/errors/403.html' ), 'href="/"' ), 'errors/ keeps the copy for a root install' );
+
+// Who writes on a network.
+$GLOBALS['abr_t']['network'] = true;
+$GLOBALS['abr_t']['subsite'] = true;
+abr_check( ! abr_error_writer(), 'a subsite leaves the writing to a main site that runs the theme' );
+$GLOBALS['abr_t']['main_theme'] = 'twentytwentyfive';
+abr_check( abr_error_writer(), 'a subsite writes when the main site runs another theme' );
+unset( $GLOBALS['abr_t']['network'], $GLOBALS['abr_t']['subsite'], $GLOBALS['abr_t']['main_theme'] );
+
+array_map( 'unlink', glob( "$abr_tmp/abrahamic-errors/*" ) );
+rmdir( "$abr_tmp/abrahamic-errors" );
 array_map( 'unlink', glob( "$abr_tmp/*" ) );
 rmdir( $abr_tmp );
 echo $abr_fail ? "$abr_fail failed\n" : "all passed\n";

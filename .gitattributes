@@ -1,0 +1,4 @@
+# Files the running theme never reads stay out of a release archive
+# (git archive, and GitHub's Download ZIP).
+/.claude export-ignore
+/.gitattributes export-ignore
