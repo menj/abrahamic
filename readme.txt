@@ -75,7 +75,7 @@ Switches save as on or off. Sliders show their value as you drag them. Press Sav
 
 = Updating from the dashboard =
 
-Upload the new zip under Appearance > Themes > Add New > Upload Theme and choose "Replace active with uploaded". Your Theme Options, pages and articles stay. Load any admin page once afterwards: that writes the error pages and the .htaccess sections, and brings in any new starter content.
+Upload the new zip under Appearance > Themes > Add New > Upload Theme and choose "Replace active with uploaded". Your Theme Options, pages and articles stay. Load any admin page once afterwards: that writes the error pages and brings in any new starter content. The theme checks its .htaccess sections at most once an hour, so they may follow up to an hour later.
 
 = Updating by FTP =
 
@@ -84,7 +84,7 @@ Upload the new zip under Appearance > Themes > Add New > Upload Theme and choose
 3. Rename the old folder to abrahamic-old and, straight after, rename abrahamic-new to abrahamic. Between the two renames the site has no abrahamic folder, so do them one after the other and keep the admin closed until both are done. Nobody meets a half-copied theme this way.
 4. Load any admin page, check the site, then delete abrahamic-old.
 
-If an upload stops halfway, visitors see a short "Back shortly" page with a 503 status instead of an error, and you can still log in. Upload the missing files and the site returns.
+If you upload straight over the live folder and the copy stops halfway, visitors see a short "Back shortly" page with a 503 status instead of an error, and you can still log in. Upload the missing files and the site returns. That page comes from functions.php, so it cannot help while functions.php itself is missing or half written, or in the moment between the two renames above. The temporary-folder method avoids those cases: an upload that stops there leaves the live theme untouched.
 
 Never upload a fresh copy of WordPress itself over the site without keeping wp-config.php. That file holds the database details; without it WordPress opens its installer to anyone who visits.
 
