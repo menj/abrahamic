@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.11** |
+| Current version | **2.96.12** |
 | Release date | 2026-11-05 |
 | Status | Stable |
 
@@ -473,9 +473,9 @@ Result notices use the `abr-notice` query argument: `imported`, `reset`, `import
 | `templates/page-landing.html` | Full-width page without a title |
 | `templates/page.html` | Breadcrumbs, `h1` title, content |
 | `templates/single.html` | Breadcrumbs, topics, `h1` title, excerpt, date and reading time, featured image, content, topics, related articles, further reading, previous and next links |
-| `templates/home.html` | Insights page: breadcrumbs, `[abr_page_heading]`, topic chips, article grid, pagination |
+| `templates/home.html` | Insights page: breadcrumbs, `[abr_page_heading]`, topic chips, the lead and list (`abrahamic/lead-list`, page 1 only), article grid, pagination |
 | `templates/tag.html` | Tag archive: breadcrumbs, the label Tag, the tag name, its description, how many articles carry it, a compact list of 20 (topics, title, excerpt, date), pagination, every tag in use as chips, then the section links |
-| `templates/archive.html` | Breadcrumbs, archive title, term description, topic chips, article grid, pagination |
+| `templates/archive.html` | Breadcrumbs, archive title, term description, topic chips, the lead and list (page 1 only), article grid, pagination |
 | `templates/search.html` | Breadcrumbs, search title, search form, results, section links |
 | `templates/404.html` | Breadcrumbs, heading, explanation, search form, section links, three latest articles |
 | `parts/header.html` | `[abr_logo]`, Navigation block (`abr-primary-nav`, links from Theme Options), Search block, `[abr_header_cta]`, `[abr_header_donate]` |
@@ -783,6 +783,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-05 | 2.96.12 | The first page of the Journal and of each archive opens with a lead and list: the newest article large with its credit, the next five beside it, the grid below. Below five articles, or with a lead that has no photograph, the grid shows alone | The owner asked for this layout "only ... where it makes sense", in the theme's own colours; an audit marked these two templates |
 | 2026-11-05 | 2.96.11 | Every theme ships a full favicon set drawn from its own mark, a manifest and a `/favicon.ico` answer; a Site Icon still wins | The owner asked for it on 2026-11-05: "make sure you have favicon too" |
 | 2026-11-05 | 2.96.10 | The theme is licensed GNU GPL version 3 or later, with the full text in `LICENSE`. This replaces the 2.0.1 rule of no licence file | The owner set GPLv3 or later for every theme on 2026-11-05 |
 | 2026-11-05 | 2.96.10 | Articles gain an "In short" box, a mid-article next step and a review note; a next step offers only the notes, the next article and the Contact page | The owner approved the article anatomy list with every sales prompt removed. The owner's name stays schema-only on this site |

@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.96.11 |
+| Version | 2.96.12 |
 | Licence | GNU GPL v3 or later; the full text is in `LICENSE` |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
@@ -48,7 +48,7 @@ On a network the main site writes the files, since every site shares `wp-content
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.96.11.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.96.12.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -56,7 +56,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.96.11.zip --activate
+wp theme install abrahamic-2.96.12.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -92,6 +92,7 @@ functions.php
  ├─ inc/unlist.php          Unlisted posts and pages
  ├─ inc/progress.php        Reading progress bar
  ├─ inc/article-parts.php   In short box, mid-article next step, review note, table regions
+ ├─ inc/lead-list.php       Lead and list above the Journal and archive grids (abr_lead_list, abrahamic/lead-list)
  ├─ inc/login.php           Themed login screen, private login address
  ├─ inc/diagrams.php        [abr_diagram] SVG drawings
  ├─ inc/anonymity.php       REST users, author archives, feeds and embeds kept free of people
@@ -364,7 +365,7 @@ php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
 find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
 for f in assets/js/*.js; do node --check "$f" || exit 1; done
-git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.11.zip HEAD   # after the release is committed
+git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.12.zip HEAD   # after the release is committed
 ```
 
 Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line. The tests replace WordPress with small stubs, so they need only PHP.
@@ -412,6 +413,26 @@ Theme Options, the seeder and its tombstones, the Security settings and logs are
 `/favicon.ico` reaches WordPress when no such file sits in the site root. The theme answers it with `assets/images/favicon.ico` (16, 32 and 48px), `Cache-Control: public, max-age=86400` and an ETag; a matching `If-None-Match` gets a 304. It hooks `template_redirect` at priority 0 so HEAD requests get the same headers, and `do_faviconico` as well. With a Site Icon, WordPress redirects to it.
 
 The manifest is a static file with relative icon paths, so it works on a subfolder install. `assets/images/.htaccess` gives `.webmanifest` the type `application/manifest+json` and `.ico` the type `image/x-icon`; on Nginx the stock `mime.types` covers both. No deny rule touches `assets/images/`.
+
+## Lead and list
+
+`templates/home.html` and `templates/archive.html` carry `<!-- wp:abrahamic/lead-list /-->` above the query. The block draws only on page 1 of the Journal and of an archive. It takes the first six posts of the main query, so it follows the same order, the same unlisted rule (`abr_unlist_pre_get_posts()`) and the same posts per page.
+
+`abr_lead_list( array $posts, array $args )` returns `array( 'html' => ..., 'ids' => ... )`. `$args` takes `heading`, `heading_id`, `lead_id` and `max` (at most five). A `lead_id` leads and leaves the list; an unlisted or unpublished one is ignored. The block's `leadId` attribute passes it. The heading reads "Latest articles", or "Latest in" and the topic or tag name on an archive; the `heading` attribute replaces it.
+
+It draws nothing when fewer than five posts are left, or when the lead has no featured image, and the grid shows alone. When it draws, `pre_render_block` hands the grid's post template the main query without the six posts it showed, and `render_block` puts them back, so pagination and everything after the grid see the whole query.
+
+Markup: a `<section aria-labelledby>` with an `h2`, the lead as `<article><figure>` with the title link on the photograph and the credit in a `<figcaption>` outside it, and the list as a `<ul>` whose thumbnails carry `alt=""`. The credit is the photograph's entry in `inc/seed/photo-credits.json` when the featured image is the seeded one (`_abr_seed_photo`), otherwise the attachment caption.
+
+`assets/css/lead-list.css` loads only where the block draws. Columns run `minmax(0,3fr) minmax(0,2fr)` and stack under 782px. The title sits on `rgb(0 0 0 / .85)`, which fades to clear above it, so white type stays above 4.5:1 on any photograph. Each card is one link; its `::after` covers the card and takes the focus ring. List titles clamp at three lines. Hover zoom stops under `prefers-reduced-motion`.
+
+## Testing performed for 2.96.12
+
+- 68 posts, 65 of them with photographs: the Journal and a topic archive at 1280 and 375 pixels, light and dark. axe reports nothing.
+- Page 1 shows 12 posts (six in the lead and list, six in the grid) and page 2 starts at the 13th.
+- Three posts in a category, and a newest post with no featured image: the grid shows alone, as before.
+- An unlisted post stays out of the list; a `lead_id` leads and leaves the list; an unlisted `lead_id` is ignored.
+- `php tests/lead-list-test.php` and every other test pass.
 
 ## Testing performed for 2.96.11
 
