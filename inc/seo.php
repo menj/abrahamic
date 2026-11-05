@@ -684,7 +684,7 @@ function abr_schema_graph() {
 				'image'            => $featured ? array( '@id' => $url . '#primaryimage' ) : array( $image['url'] ),
 				'speakable'        => array(
 					'@type'       => 'SpeakableSpecification',
-					'cssSelector' => array( 'h1', '.abr-prose > p:first-of-type' ),
+					'cssSelector' => abr_article_answer_shows( $post ) ? array( 'h1', '.abr-answer', '.abr-prose > p:first-of-type' ) : array( 'h1', '.abr-prose > p:first-of-type' ),
 				),
 				'articleSection'   => wp_list_pluck( get_the_category( $post->ID ), 'name' ),
 				'wordCount'        => str_word_count( wp_strip_all_tags( $post->post_content ) ),

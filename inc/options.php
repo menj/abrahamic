@@ -132,6 +132,9 @@ function abr_option_types() {
 		'progress_height'     => 'progress_height',
 		'progress_position'   => 'progress_position',
 		'progress_types'      => 'post_types',
+		// Article anatomy.
+		'article_answer'      => 'bool',
+		'article_mid_next'    => 'bool',
 		// Search addresses.
 		'search_pretty'       => 'bool',
 		'search_base'         => 'slug',
@@ -242,6 +245,8 @@ function abr_option_defaults() {
 		'progress_height'     => 4,
 		'progress_position'   => 'top',
 		'progress_types'      => array( 'post' ),
+		'article_answer'      => 1,
+		'article_mid_next'    => 1,
 		'search_pretty'       => 1,
 		'search_base'         => get_option( 'wpseosearch_base' ) ? sanitize_title( get_option( 'wpseosearch_base' ) ) : 'search',
 		'ctx_own'             => 1,

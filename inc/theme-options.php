@@ -266,7 +266,7 @@ function abr_render_progress_types() {
  */
 function abr_options_usage( $tab ) {
 	$usage = array(
-		'general'    => __( 'Switch the sticky header, the light and dark switch and the fade-in effect on or off, and choose the colours a first-time visitor sees. Set the reading progress bar at the foot. Changes show on the site after Save.', 'abrahamic' ),
+		'general'    => __( 'Switch the sticky header, the light and dark switch and the fade-in effect on or off, and choose the colours a first-time visitor sees. Set the reading progress bar and the article boxes at the foot. Changes show on the site after Save.', 'abrahamic' ),
 		'header'     => __( 'Pick how the logo looks, set its two lines of text, and choose which buttons sit in the header. Button links take a full address, a path or a page token from the Navigation tab.', 'abrahamic' ),
 		'footer'     => __( 'Write the footer title, tagline and description, the copyright line and the note opposite it. The contact email shows only on the Contact page.', 'abrahamic' ),
 		'navigation' => __( 'Write each menu as plain lines, one link per line. The rules for a line and the list of page tokens come first; each menu has its own limits under its box.', 'abrahamic' ),
@@ -433,6 +433,11 @@ function abr_render_options_page() {
 				abr_field( 'progress_height', __( 'Bar height in pixels', 'abrahamic' ), 'range', '', array( 'min' => 2, 'max' => 12, 'step' => 1 ) );
 				abr_field( 'progress_position', __( 'Bar position', 'abrahamic' ), 'cards', __( 'At the top, the bar sits below the admin bar for logged-in editors.', 'abrahamic' ), array( 'choices' => abr_progress_positions() ) );
 				abr_render_progress_types();
+				?>
+				<h2><?php esc_html_e( 'Articles', 'abrahamic' ); ?></h2>
+				<?php
+				abr_field( 'article_answer', __( 'Show the "In short" box', 'abrahamic' ), 'checkbox', __( 'The key points typed in an article\'s Key points and review box show at the top of its text.', 'abrahamic' ) );
+				abr_field( 'article_mid_next', __( 'Show a next step in the middle of long articles', 'abrahamic' ), 'checkbox', __( 'Before the third section: a pointer to the notes, the next article in the same topic and the Contact page.', 'abrahamic' ) );
 				?>
 			</section>
 
@@ -694,7 +699,7 @@ function abr_render_options_page() {
 			<section class="abr-panel" role="tabpanel" id="abr-panel-links" aria-labelledby="abr-tab-links" tabindex="0"<?php abr_options_panel_hidden( 'links' ); ?>>
 				<?php abr_options_usage( 'links' ); ?>
 				<h2><?php esc_html_e( 'Links in the running text', 'abrahamic' ); ?></h2>
-				<p class="abr-help"><?php esc_html_e( 'On a single article or page, the first mention of a known phrase links to the page that treats it, on this site or on one of the six sister sites. Phrases come from inc/data/network-links.json, a file shared by all seven themes. Links are never made in headings, quotations, verses, footnotes, tables of contents, Further reading, existing links or Arabic, Hebrew, Greek or Aramaic text, and at most one is added per paragraph. Stored content is not changed.', 'abrahamic' ); ?></p>
+				<p class="abr-help"><?php esc_html_e( 'On a single article or page, the first mention of a known phrase links to the page that treats it, on this site or on one of the six sister sites. Phrases come from inc/data/network-links.json, a file shared by all seven themes. Links are never made in headings, quotations, verses, footnotes, tables of contents, the "In short" box, the next step, the review note, Further reading, existing links or Arabic, Hebrew, Greek or Aramaic text, and at most one is added per paragraph. Stored content is not changed.', 'abrahamic' ); ?></p>
 				<?php
 				abr_field( 'ctx_own', __( 'Link to pages on this site', 'abrahamic' ), 'checkbox' );
 				abr_field( 'ctx_own_max', __( 'Links to this site on one page, at most', 'abrahamic' ), 'range', __( '0 to 15. A page already linked by hand in the text is not linked again.', 'abrahamic' ), array( 'min' => 0, 'max' => 15, 'step' => 1 ) );
