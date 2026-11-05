@@ -9,14 +9,14 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<!-- wp:group {"tagName":"section","anchor":"articles","className":"abr-section abr-articles","layout":{"type":"constrained"}} -->
-<section id="articles" class="wp-block-group abr-section abr-articles">
+<!-- wp:group {"tagName":"section","anchor":"articles","className":"abr-section abr-articles is-white","layout":{"type":"constrained"}} -->
+<section id="articles" class="wp-block-group abr-section abr-articles is-white">
 <!-- wp:group {"align":"wide","className":"abr-articles-head","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"bottom"}} -->
 <div class="wp-block-group alignwide abr-articles-head">
 <!-- wp:group {"layout":{"type":"default"}} -->
 <div class="wp-block-group">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">IX · The Journey Continues</p>
+<p class="abr-label">X · The Journey Continues</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">From the archive</h2>

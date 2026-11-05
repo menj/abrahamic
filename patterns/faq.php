@@ -14,11 +14,14 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:group {"align":"wide","className":"abr-section-head","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide abr-section-head">
 <!-- wp:paragraph {"className":"abr-label"} -->
-<p class="abr-label">XII · Questions Along the Way</p>
+<p class="abr-label">IX · Questions Along the Way</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"className":"abr-title"} -->
 <h2 class="wp-block-heading abr-title">Frequently asked questions</h2>
 <!-- /wp:heading -->
+<!-- wp:paragraph {"className":"abr-sub"} -->
+<p class="abr-sub">Side by side, the four traditions raise questions. These are the ones readers ask most, each with a short answer.</p>
+<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"align":"wide","className":"abr-faq-list","layout":{"type":"default"}} -->

@@ -2,6 +2,23 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.7] - 2026-11-05
+
+No section or feature removed and no public identifier renamed.
+
+### Changed
+- The front page tells one story, at the site owner's request. The FAQ pattern moves from after the reference section to straight after the comparison, so the reader meets the answers once the traditions are set side by side, and only then goes on to the Journal, the topics and the reference section. The order is now: hero; I The question; II The root; III The people; IV The land; V The word; VI Four paths; VII Through the ages; VIII Meeting and parting; IX Questions along the way; X The journey continues; XI Paths to explore; XII For the road; XIII Behind the journey; newsletter.
+- The chapter labels of the FAQ, Journal, topics and reference sections carry their new numbers (IX to XII).
+- The FAQ section has an introduction that links it to the comparison above it: "Side by side, the four traditions raise questions. These are the ones readers ask most, each with a short answer."
+- Backgrounds follow the new order: the Journal section is white and the topics section ivory, so no two neighbours share a colour.
+- `docs/ssot.md`, section 9, sets out the arc chapter by chapter and corrects the front page order, which still listed the order before 2.67.0.
+
+### Fixed
+- The white card style for FAQ entries (`.abr-faq`) also matched the FAQ section itself, which is classed `abr-faq` too, so the section sat on white with a shadow and rounded corners whatever its place. The rule now targets `details.abr-faq` only. The entries look the same.
+
+### Tested
+- Front page rendered before and after at 1280 and 375 pixels: chapters in the new order, backgrounds alternate, no horizontal overflow, no script errors, no axe violations.
+
 ## [2.96.6] - 2026-11-05
 
 ### Changed

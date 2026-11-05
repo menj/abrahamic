@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.6
+Stable tag: 2.96.7
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -597,6 +597,9 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.7 - 2026-11-05 =
+* The front page reads as one story. The questions section now follows the comparison, so the answers come before the Journal, the topics and the reference section. The chapters are renumbered to match.
 
 = 2.96.6 - 2026-11-05 =
 * CLAUDE.md and FARUQI.md move into the .claude folder, which the release zip leaves out and the web server never serves.
