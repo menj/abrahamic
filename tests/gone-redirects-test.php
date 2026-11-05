@@ -33,7 +33,7 @@ function is_admin() { return false; }
 function status_header( $c ) { $GLOBALS['abr_t']['status'] = $c; }
 function nocache_headers() {}
 function get_page_by_path( $slug ) { return isset( $GLOBALS['abr_t']['pages'][ $slug ] ) ? (object) array( 'ID' => 1 ) : null; }
-function home_url( $p = '' ) { return 'https://example.test' . $p; }
+function home_url( $p = '' ) { return 'https://example.test' . ( $GLOBALS['abr_t']['home'] ?? '' ) . $p; }
 function abr_rank_math_active() { return $GLOBALS['abr_t']['rm']; }
 function abr_seed_legacy_v1() { return array(); }
 function abr_legacy_paths() { return array(); }
@@ -112,6 +112,9 @@ function run_gone( $uri, $is_404, $count = 0, $page = false ) {
 	return $GLOBALS['abr_t']['status'];
 }
 check( 410 === run_gone( "/journal/$spam/", true ), '404 on listed slug becomes 410' );
+$GLOBALS['abr_t']['home'] = '/blog';
+check( 410 === run_gone( "/blog/journal/$spam/feed/", false ), 'site in a subdirectory' );
+$GLOBALS['abr_t']['home'] = '';
 check( 410 === run_gone( "/journal/$spam/feed/", false ), 'empty feed of listed slug becomes 410' );
 check( $wp_query->is_404, 'feed query marked 404 so the 404 template renders' );
 check( 410 === run_gone( "/journal/$spam/feed/?x=1", false ), 'query string ignored' );

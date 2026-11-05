@@ -764,7 +764,13 @@ function abr_sec_send_gone_listed() {
 		return;
 	}
 	$uri  = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-	$slug = abr_sec_gone_journal_slug( abr_sec_path( $uri ) );
+	$path = abr_sec_path( $uri );
+	// A site in a subdirectory: drop the home path, so journal/<slug> is matched.
+	$home = abr_sec_path( home_url( '/' ) );
+	if ( '' !== $home && 0 === strpos( $path, $home . '/' ) ) {
+		$path = substr( $path, strlen( $home ) + 1 );
+	}
+	$slug = abr_sec_gone_journal_slug( $path );
 	if ( '' === $slug ) {
 		return;
 	}
