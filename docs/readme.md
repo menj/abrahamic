@@ -355,7 +355,7 @@ php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
 find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
 for f in assets/js/*.js; do node --check "$f" || exit 1; done
-git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.9.zip HEAD
+git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.9.zip HEAD   # after the release is committed
 ```
 
 Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line. The tests replace WordPress with small stubs, so they need only PHP.
@@ -392,7 +392,7 @@ Theme Options, the seeder and its tombstones, the Security settings and logs are
 
 - The drop-ins and `wp-content/abrahamic-errors/` serve every site. The main site writes them; while it runs another theme, the site with the lowest ID that runs Abrahamic does. The last site to leave the theme removes them.
 - The private login address is off on a network; the Login tab says so.
-- The root `.htaccess` is one file for the network. Every site that runs the theme keeps the two sections in it, and a theme switch on any one site removes them until another site's next admin check writes them back (see the roadmap in `upgrading.md`).
+- The root `.htaccess` is one file for the network, and it holds whatever the site that last synced it wanted. The xmlrpc.php section follows that site's own "Turn off XML-RPC" switch, so a sync from a site with the switch off takes the section out for the whole network. A theme switch on any one site removes both sections until another site's next admin check writes them back (see the roadmap in `upgrading.md`). Keep the Security switches the same on every site.
 
 ## Testing performed for 2.80.0
 
