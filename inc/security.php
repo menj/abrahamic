@@ -203,11 +203,14 @@ function abr_sec_sync_htaccess( $force = false ) {
 	}
 	// The core-file block is kept while the theme runs, whatever the XML-RPC switch.
 	$core = abr_sec_core_wanted();
-	if ( ( function_exists( 'extract_from_markers' ) ? extract_from_markers( $file, ABR_SEC_CORE_MARKER ) : array() ) !== $core ) {
-		insert_with_markers( $file, ABR_SEC_CORE_MARKER, $core );
+	if ( ( function_exists( 'extract_from_markers' ) ? extract_from_markers( $file, ABR_SEC_CORE_MARKER ) : array() ) !== $core
+		&& true !== insert_with_markers( $file, ABR_SEC_CORE_MARKER, $core ) ) {
+		// Tried again on the next admin page, not an hour later.
+		$ok = false;
+		delete_transient( 'abr_sec_htaccess_checked' );
 	}
-	// 'written' only when the block is really in the file.
-	update_option( 'abr_security_htaccess', $want ? ( $ok ? 'written' : 'unavailable' ) : 'off', false );
+	// 'written' only when the blocks are really in the file.
+	update_option( 'abr_security_htaccess', ! $ok ? 'unavailable' : ( $want ? 'written' : 'off' ), false );
 }
 add_action( 'admin_init', 'abr_sec_sync_htaccess' );
 add_action( 'after_switch_theme', function () { abr_sec_sync_htaccess( true ); } );

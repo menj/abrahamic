@@ -244,6 +244,10 @@ foreach ( array( 'wp-includes/js/tinymce/wp-tinymce.php', 'wp-includes/ms-files.
 	check( "$p stays open", ! $denied( $p ) );
 }
 
+$sec = (string) file_get_contents( dirname( __DIR__ ) . '/inc/security.php' );
+check( 'a core block that does not go in marks the file unavailable and is retried', false !== strpos( $sec, "&& true !== insert_with_markers( \$file, ABR_SEC_CORE_MARKER, \$core ) ) {" ) && false !== strpos( $sec, "! \$ok ? 'unavailable'" ) );
+check( 'a theme switch takes the core block out', false !== strpos( $sec, 'insert_with_markers( $file, ABR_SEC_CORE_MARKER, array() );' ) );
+
 // The incomplete-upload guard: one log line per problem, and the admin,
 // AJAX and the command line are never sent the notice.
 $GLOBALS['t']['admin'] = true;
