@@ -2,6 +2,19 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.9] - 2026-11-05
+
+Documentation only. No code, setting or address changed.
+
+### Changed
+- `readme.txt`: install and update steps by the dashboard and by FTP (show hidden files, upload to a temporary folder and rename it into place, never upload WordPress without `wp-config.php`); every settings tab described, the Security and Tools tabs in full; three new questions on the Security switches, the error pages and the development files the theme removes.
+- `docs/readme.md`: a complete file map, the hooks and filters the later modules add, and new sections on constants, the `.htaccess` rules, build, test and deploy commands, Nginx and multisite.
+- `docs/ssot.md`: the directory tree and the Theme Options table brought up to date, and a new section 13b on the server, security and packaging facts, with contributor rules.
+- `docs/upgrading.md`: general update steps, and a roadmap of Next, Later and Ideas in place of the plans for 2.9.x to 2.11.x, most of which had shipped.
+
+### Fixed
+- Stale facts in the documentation: the tab count (twelve, with Security), the starter content (30 pages, 70 articles and 8 categories at seed version 110, where the files said 17 and 8, or 14), the tab that holds the light and dark switch (General), the templates the theme supplies (tag archives and the rest, where `readme.txt` said the parent supplied them), the seed data files (`.json`, where `ssot.md` said `.php`), and the size of the redirect map (48 entries).
+
 ## [2.96.8] - 2026-11-05
 
 Fixes from the live logs. No section or feature removed and no public identifier renamed.

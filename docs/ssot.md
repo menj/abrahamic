@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.8** |
+| Current version | **2.96.9** |
 | Release date | 2026-11-05 |
 | Status | Stable |
 
@@ -107,12 +107,18 @@ abrahamic/
 │   ├── structure.php      Link tokens, navigation builder, breadcrumbs, hub listings, site map (section 13)
 │   ├── seed.php           Starter content seeder (section 12)
 │   ├── seed-schedule.php  Fixed publication dates for seeded posts: `post_date`, published or Scheduled (section 12); checked by the maintenance guard
-│   ├── seed/content.php   Starter pages, articles and categories as block markup (section 12)
-│   ├── seed/legacy-v1.php Version 1 fingerprints and addresses (section 12)
+│   ├── seed/content.json  Starter pages, articles and categories as block markup (section 12)
+│   ├── seed/legacy-v1.json Version 1 fingerprints and addresses (section 12)
+│   ├── seed/legacy-paths.json  Retired addresses and the seed key that now owns each
+│   ├── seed/tags.json, focus-keywords.json, focus-keywords-previous.json, seo-titles.json, photo-credits.json
 │   ├── seo.php            Search output, description box, analytics (section 13)
 │   ├── redirects.php      301s from earlier addresses, link updater (section 13)
 │   ├── search.php         Search index, relevance, readable search addresses
 │   ├── unlist.php         Unlisted posts and pages (port of Unlist Posts & Pages)
+│   ├── progress.php       Reading progress bar (port of Reading Progress Bar)
+│   ├── quran-text.php     Maps Tanzil-encoded verse text to the KFGQPC face's encoding at render time
+│   ├── security.php       Security tab: remote-publishing locks, spam gate, 410 Gone, root .htaccess sections, reports (section 13b)
+│   ├── security-detector.php  Gambling spam score, plain PHP (tests/security-detector-test.php)
 │   ├── login.php          Themed login screen, private login address (ports of Login Logo and WPS Hide Login)
 │   ├── diagrams.php       [abr_diagram]: the family tree and shared-beliefs diagrams
 │   ├── anonymity.php      Keeps every person out of public output: REST users, author archives, feeds, embeds, sitemap
@@ -130,8 +136,13 @@ abrahamic/
 │   └── maintenance.php    Back-shortly notice (503); writes the drop-ins once per version. functions.php checks every file before it loads any (abr_incomplete_theme())
 ├── parts/                 header.html, footer.html
 ├── patterns/              Fifteen home page sections and the Social profile links pattern (section 9)
-├── templates/             front-page.html, page-landing.html, page.html, single.html, home.html, archive.html, search.html, 404.html
-├── docs/                  readme.md, changelog.md, upgrading.md, ssot.md
+├── templates/             front-page.html, page-landing.html, page.html, single.html, home.html, archive.html, tag.html, search.html, 404.html
+├── errors/                Static 403, 500, 502, 503 and 504 pages for a site at the domain root
+├── bin/                   build-error-pages.php (command line only; own .htaccess)
+├── tests/                 Command-line self-tests; never shipped (.gitattributes), removed from a live site (inc/dev-files.php)
+├── docs/                  readme.md, changelog.md, upgrading.md, ssot.md (own .htaccess)
+├── .htaccess              Refuses the docs, hidden entries and the development folders (section 13b)
+├── .gitattributes         export-ignore for .claude, .gitattributes and tests
 └── .claude/               CLAUDE.md and FARUQI.md for contributors; never shipped (.gitattributes) or served (.htaccess)
 ```
 
@@ -357,16 +368,18 @@ Screen: Appearance > Theme Options (`themes.php?page=abrahamic-theme-options`), 
 
 | Tab | Holds | Saves through |
 |---|---|---|
-| General | Sticky header, fade-in | Settings API (`abr_settings`) |
-| Header | Logo lines, search button, call-to-action button | Settings API |
+| General | Sticky header, light and dark switch, first-visit colours, fade-in, reading progress bar | Settings API (`abr_settings`) |
+| Header | Logo style and lines, search button, call-to-action button, Donate buttons and links | Settings API |
 | Footer | Brand title, tagline, description, copyright notice, note, contact email | Settings API |
-| Navigation | Header menu, three footer columns (section 13) | Settings API |
+| Navigation | Header menu, section bar, chapter banner drift, footer columns, Further reading (section 13) | Settings API |
 | Colours | Scheme, custom palette | Settings API |
 | Newsletter | Form address, field name, intro | Settings API |
 | Social | 45 profile URLs | Settings API |
-| Search | Search output switch, front page description, logo, share image, verification codes, Analytics ID | Settings API |
+| Login | Login screen design, logo, layout, photograph, line of text, private login address | Settings API |
+| Search | Search output switch, front page title and description, logo, share image, verification codes, Analytics ID, readable search addresses | Settings API |
 | Contextual links | Links to this site and to sister sites, a cap for each, extra phrases, excluded slugs | Settings API |
-| Tools | Export, import, reset, starter content, link updater, system information | `admin-post.php` |
+| Security | `sec_xmlrpc_off`, `sec_app_passwords_off`, `sec_rest_lock`, `sec_spam_gate`, `sec_gone` (all on by default); scan, reports and clean-up for administrators | Settings API; buttons through `admin-post.php` and AJAX |
+| Tools | Export, import, reset, error pages, starter content and `seed_mode`, link updater, search index, system information | `admin-post.php`; `seed_mode` through the shared form |
 
 Layout: each `abr_field()` is a row, label and help left, control right, stacked below 782 pixels. Field types: `checkbox` (a switch), `text`, `url`, `email`, `textarea`, `menu`, `image`, `color`, `select`, `cards` (radio cards: `logo_style`, `mode_default`, `login_layout`, `seed_mode`) and `range` (a slider with its live value: `ctx_own_max`, `ctx_sister_max`). `abr_options_usage()` holds the usage note shown at the top of each tab. `seed_mode` sits on the Tools panel, outside the form, and joins it through `form="abr-options-form"`.
 
@@ -525,7 +538,7 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 4. **Structure sync.** When the seed version rises, each seeder-owned item (`_abr_seed` present) whose `_abr_seed_version` is older takes the current slug and parent page. Adopted pages are never moved.
 5. **Text sync,** governed by the `seed_mode` option (`abr_seed_modes()`):
    - `replace` (default): title, text and excerpt take the current version whether or not the item was edited. WordPress stores the previous text as a revision.
-   - `keep`: the text is refreshed only while it still matches its fingerprint, `_abr_seed_hash`, or for version 1 items the hash in `legacy-v1.php`. Links are compared root-relative.
+   - `keep`: the text is refreshed only while it still matches its fingerprint, `_abr_seed_hash`, or for version 1 items the hash in `legacy-v1.json`. Links are compared root-relative.
 6. **Retirement.** A key in the tombstone list that the starter set no longer carries has its post moved to the trash, where it can be restored, provided its text still matches the seeder's fingerprint (`abr_seed_is_unedited()`); an edited copy is left as it is and counted as `kept`. Nothing is deleted permanently; option and cleanup keys are exempt. Counted as `retired` in `abr_seed_log`. To merge one item into another, remove the retired item from `content.json`, point its address at the owner in `inc/seed/legacy-paths.json` (which answers only once the address is a 404, so after the trash) and raise the seed version.
 6b. **When it runs.** On activation; on an admin screen loaded by a user with `edit_theme_options` while the stored version is behind; and, failing both, on the next ordinary page request (`abr_seed_on_request()` at `wp_loaded`). All three paths run through `abr_seed_run_locked()`, which takes the `abr_seed_lock` option with `add_option()`, so two runs at once cannot both create a post; a lock older than five minutes is dropped. A site whose owner never opens the right admin screen still receives new starter content. Every admin screen also carries a notice while the content is behind or items are missing (`abr_seed_admin_notice()`), with a button that runs it.
 
@@ -734,6 +747,28 @@ Header links are rounded boxes set by custom properties on `.abr-header`: `--abr
 ### Conformance: structured data features
 
 Used: Article, Breadcrumb, Organization. Not applicable to this site's content: Carousel, Course list, Dataset, Discussion forum, Education Q&A, Employer aggregate rating, Event, Image metadata, Job posting, Local business, Math solver, Movie, Product, Profile page, Q&A, Recipe, Review snippet, Software app, Speakable, Subscription and paywalled content, Vacation rental, Video. The FAQ page uses headings only, because FAQ markup is not in the list.
+
+## 13b. Server, security and packaging
+
+| Fact | Value |
+|---|---|
+| Upload guard | `functions.php` checks `inc/maintenance.php` and every file in `$abr_files` before loading any, inside `try`. Missing or half-written file: 503, `Retry-After: 300`, one log line per problem per ten minutes (`abr_incomplete_theme()`). Login screen, AJAX, cron and CLI exempt |
+| Root `.htaccess` markers | `Block xmlrpc.php` (shared with the owner's other themes; follows `sec_xmlrpc_off`) and `Abrahamic: deny direct core files` (`ABR_SEC_CORE_MARKER`; always while the theme runs). Apache only, synced at most hourly, removed on `switch_theme` |
+| Theme `.htaccess` | Denies `readme.txt` and `*.md`; 404 for `.claude/`; 403 for dot-names except `.well-known`, and for `tests`, `tools`, `bin`, `docs`. mod_rewrite fallback when mod_alias is absent |
+| Deny files | `.claude/.htaccess`, `docs/.htaccess`, `tests/.htaccess`, `bin/.htaccess` |
+| Development files removed on a live site | Hidden entries except `.htaccess`, `.user.ini`, `.well-known`; and `tests/`. Once per version, on `init`, under a lease (`abr_cleanup_on_version_change()`). Kept on local and development sites and with `ABR_KEEP_DOTFILES` |
+| wp-config switches | `ABR_SECURITY_LOCK` (false), `ABR_ALLOW_CORE_FILES` (true), `ABR_KEEP_DOTFILES` (true), `ABR_HIDE_LOGIN` (false) |
+| Drop-ins | `wp-content/maintenance.php` (503, `Retry-After: 300`), `php-error.php` (500), `db-error.php` (503, `Retry-After: 600`); marker-checked, a foreign file is never overwritten |
+| Static error pages | `errors/` (root sites) and `wp-content/abrahamic-errors/` (per-site home address): 403, 500, 502, 503, 504 |
+| REST users | Removed for anyone who cannot edit posts; `?author=N` redirects to the Journal (`inc/anonymity.php`) |
+| Release zip | `git archive`; `.claude/`, `.gitattributes` and `tests/` are `export-ignore` |
+
+### Contributor rules
+
+- Read `.claude/FARUQI.md` first; it governs every page and design choice.
+- Every title is `<page title> | <site name>` and stays under 60 characters (`ABR_TITLE_MAX`, 59). Search descriptions stay under 130 (`ABR_DESCRIPTION_MAX`, 129).
+- All English prose follows the anti-AI writing style: no contractions, no em dashes, no banned words, no negative parallelisms, short paragraphs.
+- Documentation lives in `readme.txt` and the four files in `docs/`; the release checklist is in `upgrading.md`.
 
 ## 14. Decision record
 

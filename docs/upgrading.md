@@ -4,6 +4,21 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Updating an existing site
+
+1. Export your settings first: Appearance > Theme Options > Tools > Export.
+2. Upload the new zip from Appearance > Themes > Add New > Upload Theme and choose "Replace active with uploaded". By FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then rename the old folder away and the new one into place.
+3. Load one admin page as an administrator. It writes the error pages and the `.htaccess` sections and runs the starter content seeder.
+4. Read the note below for the version you are moving to. Most releases need nothing else.
+
+---
+
+## Upgrading from 2.96.8 to 2.96.9
+
+Documentation only. Replace the theme files; nothing else to do.
+
+---
+
 ## Upgrading from 2.96.7 to 2.96.8
 
 Upload the whole theme folder, the new `.htaccess` files in it included. FTP clients often hide files whose names begin with a dot; turn on "show hidden files" (in FileZilla: Server, Force showing hidden files) before the upload. The new files are `inc/dev-files.php`, `tests/live-logs-test.php` and the `.htaccess` in `tests/` and `bin/`.
@@ -972,24 +987,28 @@ Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new 
 
 ## Roadmap
 
-### Planned: 2.9.x (minor)
-- Image slots: replace the hero and place-card placeholders with Image blocks that fall back to the lattice pattern when empty, with an image sitemap once images exist.
-- Server-rendered blocks for the structure and option shortcodes, so the Site Editor shows a preview.
-- Translation template: generate `languages/abrahamic.pot` for the settings screen and shortcode strings.
-- Social profile ordering: let editors reorder the footer row from the Social tab.
+These are plans, not promises. Each item rests on something on record: the code, the server logs, a documented limit, or a feature another of the owner's themes already has. Items leave this list when they ship and go into `changelog.md`. GitHub had no open issues or pull requests when this list was last checked (2026-11-05).
 
-### Planned: 2.10.x (minor)
-- Knowledge base content types: register Glossary, Figures and Places post types with archive templates, and feed the home page cards from them.
-- Footnote styles and a print stylesheet for articles.
-- Author profile pages with ProfilePage structured data, once the site names its writers.
+### Next
 
-### Planned: 2.11.x (minor)
-- Accessibility audit against WCAG 2.2 AA, including contrast of gold text on ivory in every colour scheme.
-- Right-to-left review for longer Arabic passages and block quotations.
+- Keep the root `.htaccess` sections on a network when one site leaves the theme. `abr_sec_remove_htaccess()` runs on any site's `switch_theme`, so the shared file loses both sections until another site's hourly check puts them back.
+- Security headers on front-end responses (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, with HSTS as an opt-in). The bestofislam theme sends them from `inc/security-headers.php`; this theme sends none.
+- A translation template, `languages/abrahamic.pot`, for the settings screen and shortcode strings. The strings are already wrapped; the injil.help and compelling-evidence themes ship a `languages/` folder and this one does not.
 
-### Planned: 3.0.0 (major)
-- Remove `abr_migrate_legacy_options()` and any remaining reference to `ar_options`.
-- Raise the PHP floor to 8.1.
+### Later
+
+- Server-rendered blocks for the option and structure shortcodes, so the Site Editor shows a preview. Waits on a block registration layer; the bestofislam theme has one in `blocks/` to learn from. Listed under technical debt below.
+- Licence terms for Arslan Wessam, or an OFL Diwani face in its place. Waits on the font's author; needed before the theme goes anywhere beyond this site.
+- 3.0.0: remove `abr_migrate_legacy_options()` and every reference to `ar_options`, and raise the PHP floor. Waits until no site still carries a 1.x settings row.
+- An accessibility audit against WCAG 2.2 AA, gold on ivory in every colour scheme included. Carried over from the earlier 2.11.x plan; no audit is on record yet.
+
+### Ideas
+
+- Glossary terms linked in the running text. The bestofislam and compelling-evidence themes do this; here the Glossary is a page of its own.
+- Share links under articles, as the injil.help theme has (`inc/share.php`).
+- Answer the bare `/wp-json/oembed/1.0/embed` probes earlier. The October and November 2026 logs show 381 of them answering 404 with a full WordPress load each.
+- Editors reorder the footer's social icons from the Social tab. Today the order is fixed by the registry in `inc/social.php`.
+- Glossary, Figures and Places as their own post types with archives, feeding the front page cards. Weigh against the rule of one owner page per subject.
 
 ---
 
@@ -1003,8 +1022,8 @@ Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new 
 | Arslan Wessam carries no licence terms | `assets/fonts/arslan-wessam.woff2` | Medium | Confirm terms with the author, or replace it with an OFL Diwani or Thuluth face, before distributing the theme beyond this site |
 | Edited starter items never receive revised text | `inc/seed.php` | Low | By design; a side-by-side comparison in Tools would let editors merge revisions by hand |
 | Scheme colours are printed as an inline style block | `functions.php` | Low | House rule prefers no inline CSS; consider writing the scheme to a generated stylesheet in uploads |
-| Option-driven and structure shortcodes show as text in the Site Editor | `parts/`, `templates/` | Low | Planned for 2.9.x as server-rendered blocks |
-| Legacy redirects look up earlier addresses on each 404 | `inc/redirects.php` | Low | 33 entries; cache the map if the list grows |
+| Option-driven and structure shortcodes show as text in the Site Editor | `parts/`, `templates/` | Low | On the roadmap under Later |
+| Legacy redirects look up earlier addresses on each 404 | `inc/redirects.php`, `inc/seed/legacy-paths.json` | Low | 48 entries in `legacy-paths.json`; cache the map if the list grows |
 | Legacy option row | database | Low | Removed by hand (see step 7 above); code removal scheduled for 3.0.0 |
 
 ---
@@ -1016,7 +1035,7 @@ Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new 
 3. Update `ssot.md`: current version, release date, and any changed identifiers, tokens, breakpoints, settings or decisions.
 4. Update this file: move delivered roadmap items out, add new debt, and add upgrade steps if anything breaks compatibility.
 5. Update `readme.md` where structure, requirements or behaviour changed.
-6. Lint every PHP file (`php -l`) and every script (`node --check`).
+6. Lint every PHP file (`php -l`) and every script (`node --check`), and run every test: `for t in tests/*.php; do php "$t" || exit 1; done`.
 7. If starter content changed, add the new items with a new `since` value, raise `ABR_SEED_VERSION`, and update the inventory in `ssot.md`, section 12. Never rename an existing seed key.
 8. Confirm the package holds the eight Sabon files in `assets/fonts/` and that Tools > System information reports "Bundled (8 files)".
 9. Render the front page at 320, 390, 768, 1024, 1280 and 1440 pixels; confirm no horizontal overflow and a single-row header; open and close the overlay menu on phone and tablet widths.
