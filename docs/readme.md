@@ -424,7 +424,7 @@ It draws nothing when fewer than five posts are left, or when the lead has no fe
 
 Markup: a `<section aria-labelledby>` with an `h2`, the lead as `<article><figure>` with the title link on the photograph and the credit in a `<figcaption>` outside it, and the list as a `<ul>` whose thumbnails carry `alt=""`. The credit is the photograph's entry in `inc/seed/photo-credits.json` when the featured image is the seeded one (`_abr_seed_photo`), otherwise the attachment caption.
 
-`assets/css/lead-list.css` loads only where the block draws. Columns run `minmax(0,3fr) minmax(0,2fr)` and stack under 782px. The title sits on `rgb(0 0 0 / .85)`, which fades to clear above it, so white type stays above 4.5:1 on any photograph. Each card is one link; its `::after` covers the card and takes the focus ring. List titles clamp at three lines. Hover zoom stops under `prefers-reduced-motion`.
+`assets/css/lead-list.css` loads on the first page of the Journal and of the archives that use `archive.html` (`abr_lead_list_assets()`, `wp_enqueue_scripts` at 20). It is not enqueued from the block: an enqueue made while the template renders prints `theme.css` above the core block styles, which then win over it. Columns run `minmax(0,3fr) minmax(0,2fr)` and stack under 782px. The title sits on `rgb(0 0 0 / .85)`, which fades to clear above it, so white type stays above 4.5:1 on any photograph. Each card is one link; its `::after` covers the card and takes the focus ring. List titles clamp at three lines. Hover zoom stops under `prefers-reduced-motion`.
 
 ## Testing performed for 2.96.12
 

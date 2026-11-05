@@ -213,7 +213,6 @@ function abr_lead_list_block_render( $attributes ) {
 		return '';
 	}
 	abr_lead_list_shown( $out['ids'] );
-	wp_enqueue_style( 'abr-lead-list', ABR_URI . '/assets/css/lead-list.css', array( 'abr-theme' ), ABR_VERSION );
 	return $out['html'];
 }
 
@@ -298,3 +297,17 @@ function abr_lead_list_grid_after( $content, $block ) {
 	return $content;
 }
 add_filter( 'render_block', 'abr_lead_list_grid_after', 10, 2 );
+
+/**
+ * The stylesheet, on the first page of the Journal and of the archives that use archive.html (tags have tag.html). It is
+ * enqueued with the theme's own styles rather than while the block or list
+ * renders: an enqueue made during rendering prints the theme stylesheet it
+ * depends on above the core block styles, and they then win over it.
+ */
+function abr_lead_list_assets() {
+	if ( is_paged() || ! ( is_home() || ( is_archive() && ! is_tag() ) ) ) {
+		return;
+	}
+	wp_enqueue_style( 'abr-lead-list', ABR_URI . '/assets/css/lead-list.css', array( 'abr-theme' ), ABR_VERSION );
+}
+add_action( 'wp_enqueue_scripts', 'abr_lead_list_assets', 20 );
