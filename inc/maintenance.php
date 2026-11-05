@@ -137,12 +137,39 @@ function abr_maintenance_dropins_settled() {
 }
 
 /**
+ * Whether another site of the network still runs this theme, as its
+ * stylesheet or its template. The drop-ins in the shared wp-content then
+ * stay. At most 500 sites are checked.
+ *
+ * @return bool
+ */
+function abr_maintenance_dropins_in_use_elsewhere() {
+	if ( ! is_multisite() ) {
+		return false;
+	}
+	$slug = basename( dirname( __DIR__ ) );
+	$ids  = get_sites(
+		array(
+			'fields'       => 'ids',
+			'number'       => 500,
+			'site__not_in' => array( get_current_blog_id() ),
+		)
+	);
+	foreach ( $ids as $id ) {
+		if ( in_array( $slug, array( get_blog_option( $id, 'stylesheet' ), get_blog_option( $id, 'template' ) ), true ) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
  * Remove the theme's drop-ins when it is switched off. Only a file that
  * carries one of the theme's markers is deleted; the version flag goes too,
  * so switching back writes them again.
  */
 function abr_maintenance_remove_dropins() {
-	if ( function_exists( 'abr_error_dropins' ) && ! ( is_multisite() && ! is_main_site() ) ) {
+	if ( function_exists( 'abr_error_dropins' ) && ! ( is_multisite() && ! is_main_site() ) && ! abr_maintenance_dropins_in_use_elsewhere() ) {
 		foreach ( array_keys( abr_error_dropins() ) as $name ) {
 			$target = WP_CONTENT_DIR . '/' . $name;
 			if ( file_exists( $target ) && abr_error_is_ours( $target ) ) {
