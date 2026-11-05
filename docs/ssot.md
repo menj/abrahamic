@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.9** |
+| Current version | **2.96.10** |
 | Release date | 2026-11-05 |
 | Status | Stable |
 
@@ -116,6 +116,7 @@ abrahamic/
 │   ├── search.php         Search index, relevance, readable search addresses
 │   ├── unlist.php         Unlisted posts and pages (port of Unlist Posts & Pages)
 │   ├── progress.php       Reading progress bar (port of Reading Progress Bar)
+│   ├── article-parts.php  In short box, mid-article next step, review note, table regions
 │   ├── quran-text.php     Maps Tanzil-encoded verse text to the KFGQPC face's encoding at render time
 │   ├── security.php       Security tab: remote-publishing locks, spam gate, 410 Gone, root .htaccess sections, reports (section 13b)
 │   ├── security-detector.php  Gambling spam score, plain PHP (tests/security-detector-test.php)
@@ -340,6 +341,11 @@ Topics are categories: they carry descriptions, appear as chips on listings and 
 | Pull quotes | Blockquotes set in italic at 1.28em with a gold left rule |
 | Citation | `[abr_citation]` prints a bordered "Cite this page" box with title, site, year and address, and a Copy button handled in `theme.js` |
 | References | Two columns from 900px, with items kept whole |
+| In short | `[abr_answer_box]` (`inc/article-parts.php`) opens the text with the key points from `_abr_takeaways`; on by `article_answer`. When it shows, the Article's `speakable` adds `.abr-answer` |
+| Next step | Before the third `h2` of an article (the Notes heading not counted), an aside styled like `.abr-cite`: the notes, the next article in the same topic, the Contact page. Only those three: no price, no sales wording. On by `article_mid_next` |
+| Review note | `[abr_last_reviewed]` before the Citation box, from `_abr_reviewed` (`Y-m-d`); nothing without a date |
+| Byline | None. The owner's name appears in the JSON-LD alone |
+| Tables | A table in an article is a focusable region named by its caption, and scrolls on its own on a phone |
 
 ## 7. Breakpoints
 
@@ -368,7 +374,7 @@ Screen: Appearance > Theme Options (`themes.php?page=abrahamic-theme-options`), 
 
 | Tab | Holds | Saves through |
 |---|---|---|
-| General | Sticky header, light and dark switch, first-visit colours, fade-in, reading progress bar | Settings API (`abr_settings`) |
+| General | Sticky header, light and dark switch, first-visit colours, fade-in, reading progress bar, article boxes | Settings API (`abr_settings`) |
 | Header | Logo style and lines, search button, call-to-action button, Donate buttons and links | Settings API |
 | Footer | Brand title, tagline, description, copyright notice, note, contact email | Settings API |
 | Navigation | Header menu, section bar, chapter banner drift, footer columns, Further reading (section 13) | Settings API |
@@ -391,6 +397,8 @@ Stored as one array in `abr_options`. `abr_option_types()` is the schema; `abr_o
 |---|---|---|---|
 | `sticky_header` | bool | 1 | General |
 | `reveal_motion` | bool | 1 | General; ignored under reduced motion |
+| `article_answer` | bool | 1 | General; the "In short" box on articles with key points (`inc/article-parts.php`) |
+| `article_mid_next` | bool | 1 | General; the next step before the third section of an article |
 | `progress_on` | bool | 1 | General; reading progress bar on single items (`inc/progress.php`); off while Reading Progress Bar is active |
 | `progress_colour` | hex | empty | General; empty follows the accent colour |
 | `progress_height` | progress_height | 4 | General; 2 to 12 pixels |
@@ -774,6 +782,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-05 | 2.96.10 | Articles gain an "In short" box, a mid-article next step and a review note; a next step offers only the notes, the next article and the Contact page | The owner approved the article anatomy list with every sales prompt removed. The owner's name stays schema-only on this site |
 | 2026-11-03 | 2.92.0 | Seeded Journal posts take a fixed `post_date` in site time: a past date publishes with that date, a future date is Scheduled and WP-Cron publishes it. The first seven, approved by the owner, run from 10 October to 20 December 2026 | `days_ago` counts back from whenever the seeder runs, so the date drifted and nothing could be scheduled. The owner approved the Journal plan, with three backdated and four scheduled posts. WP-Cron must run on the host for the scheduled posts to go live |
 | 2026-11-03 | 2.91.0 | The structured data keeps its Person entries for the historical figures the articles discuss: Abraham, Moses, Jesus, Muhammad and Paul | The owner decided on 2026-11-03 to keep them; do not remove them or raise the question again |
 | 2026-11-03 | 2.90.0 | Structured data for every element a page shows, merged into one graph by `@id` (`inc/schema.php`) | The owner keeps all schema.org markup and approved the expansion on 2026-11-03; each node must describe something visible on the page |

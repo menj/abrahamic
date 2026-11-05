@@ -2,6 +2,27 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.10] - 2026-11-05
+
+The article anatomy: the pieces a single article was missing. No section or feature removed and no public identifier renamed.
+
+### Added
+- An "In short" box at the top of an article's text (`[abr_answer_box]`, `.abr-answer`). It lists the key points typed in the new Key points and review box on the post edit screen (`_abr_takeaways`, one a line). `[abr_answer_box summary="" points=""]` places one in the text with its own words; `points` takes `;;` between items. When the box shows, the Article's `speakable` names `.abr-answer` as well.
+- A next step in the middle of long articles, before the third section (the Notes heading not counted). It is an aside styled like the Citation box and offers three things only: the notes at the end, the next article in the same topic (newer first, the one before at the end of the path, unlisted posts left out) and the Contact page. There is no sales wording of any kind.
+- A review note (`[abr_last_reviewed]`), beside the Citation box and styled like it. It shows the date set in the Key points and review box (`_abr_reviewed`, `Y-m-d`) and a link to the Contact page for corrections. Without a date it prints nothing.
+- Two switches on the General tab, both on: `article_answer` and `article_mid_next`.
+- `assets/css/article.css`, loaded on single articles only, and `tests/article-parts-test.php`.
+
+### Fixed
+- A table in an article is now a focusable region named by its caption, so it scrolls from the keyboard on a phone (axe `scrollable-region-focusable`).
+- The back links in the notes are underlined, so they stand out from the note text by more than colour (axe `link-in-text-block`).
+- The contextual-links engine leaves the new boxes alone.
+
+### Already in place
+- Breadcrumbs, the standfirst, the published date, reading time, the "Last updated" date, the authored contents list (`.abr-toc`), the notes, the Citation box, related articles, Further reading and the previous and next links.
+- The Article's `citation`, built from the `abr-notes` list (`abr_schema_citations()` in `inc/schema.php`): Qur'an and Bible chapters, hadith and other named sources.
+- The owner's name stays in the JSON-LD alone. No byline was added.
+
 ## [2.96.9] - 2026-11-05
 
 Documentation only. No code, setting or address changed.

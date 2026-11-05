@@ -1,0 +1,52 @@
+/* Article anatomy (inc/article-parts.php): the "In short" box, the
+   mid-article next step, the review note and scrolling tables. Built on the
+   Citation box (.abr-cite) and the theme's own tokens. */
+
+/* "In short" */
+.abr-answer {
+	border: 1px solid var(--abr-hair);
+	border-left: 3px solid var(--abr-gold);
+	border-radius: 6px;
+	padding: 18px 22px;
+	margin-block: 0 28px !important;
+	background: var(--abr-white);
+}
+.abr-single .abr-prose h2.abr-answer__title::before { content: none; }
+.abr-prose .abr-answer__title {
+	font-size: 0.78rem !important;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--abr-muted);
+	margin: 0 0 10px !important;
+}
+.abr-answer__summary { margin: 0 0 8px !important; }
+.abr-answer__points { margin: 0 !important; padding-left: 1.2em; }
+.abr-answer__points li { margin-top: 0.3em; }
+
+/* Next step, in the middle of the text */
+.abr-next { margin-block: 32px !important; }
+.abr-next__kicker {
+	font-size: 0.78rem;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--abr-muted);
+	margin: 0 0 8px !important;
+}
+.abr-next__list { margin: 0 !important; padding: 0; list-style: none; }
+.abr-next__list li { margin: 0.35em 0 0; padding-left: 1.1em; position: relative; }
+.abr-next__list li::before { content: "\203A"; position: absolute; left: 0; color: var(--abr-gold-ink); }
+
+/* Review note, beside the Citation box */
+.abr-reviewed .abr-cite__text a { color: var(--abr-navy); text-decoration: underline; text-decoration-color: var(--abr-gold); text-underline-offset: 3px; }
+
+/* The back links in the notes are links in running text: underline them. */
+.abr-prose .abr-notes .abr-fn-back { text-decoration: underline !important; text-decoration-color: var(--abr-gold) !important; text-underline-offset: 3px; }
+
+/* Tables scroll inside their own region on a phone, and say so on focus. */
+.abr-prose figure.wp-block-table[role="region"] { overflow-x: auto; }
+.abr-prose figure.wp-block-table[role="region"]:focus-visible { outline: 2px solid var(--abr-gold); outline-offset: 3px; }
+.abr-prose figure.wp-block-table figcaption { font-size: 0.9rem; color: var(--abr-muted); margin-top: 8px; text-align: left; }
+
+@media (max-width: 600px) {
+	.abr-answer { padding: 14px 16px; }
+}

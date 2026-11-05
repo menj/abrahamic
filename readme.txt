@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.9
+Stable tag: 2.96.10
 Template: twentytwentyfive
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,12 +45,13 @@ Abrahamic is a child theme: it builds on Twenty Twenty-Five, which must stay ins
 * Export, import and reset for every Theme Option.
 * About 40 theme shortcodes, all starting abr_, that the templates and patterns use: breadcrumbs, the site map, diagrams, photographs, citations, related articles, the donation button, the contact email and more.
 * Four block styles: Gold and Donate buttons, Typewriter note and Arabic calligraphy.
+* On each article: an "In short" box of key points near the top, a next step in the middle of long articles, and a review note with the date the article was last checked.
 
 == Usage ==
 
 Page text, templates and the home page sections are edited in Appearance > Editor. Everything else sits in Appearance > Theme Options, on twelve tabs. Each tab opens with a short note on how to use it.
 
-* General: the sticky header, the light and dark switch, the colours a first-time visitor sees, the fade-in effect, and the reading progress bar (its colour, height and place).
+* General: the sticky header, the light and dark switch, the colours a first-time visitor sees, the fade-in effect, the reading progress bar (its colour, height and place), and two article switches: the "In short" box and the next step in the middle of long articles.
 * Header: the logo style, the two logo lines, the search, call-to-action and Donate buttons, and the Donate page button.
 * Footer: the footer title, tagline, description, copyright line and note, and the contact email.
 * Navigation: the main menu, the home page section bar, the drifting chapter banners, the footer links and columns, and Further reading. Write one link per line as Label | target.
@@ -202,6 +203,9 @@ WordPress shows a plain screen when it is updating, when PHP fails or when the d
 
 Those are development files, and a web server can hand them to anyone who asks. On the first visit after an update the theme removes the hidden files and the tests and tools folders from the live copy. A site that needs them, such as one run from a git checkout, keeps them with define( 'ABR_KEEP_DOTFILES', true ); in wp-config.php.
 
+= How do I add key points or a review date to an article? =
+Open the article and scroll to the Key points and review box below the text. Type one key point a line; they show in the "In short" box at the top. Pick the day you last checked the article against its sources; the review note shows beside the Citation box. Leave a field empty to show nothing.
+
 == Privacy ==
 
 The theme sends nothing to another server by default. Its fonts, icons, images and scripts all load from the theme folder.
@@ -217,6 +221,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.10 =
+Two new switches on the General tab, both on. Key points and a review date are typed per article. Nothing else to do.
 
 = 2.94.0 =
 The Theme Options screen has a new layout. Every option keeps its value.
@@ -624,6 +631,12 @@ The main menu now holds five links with dropdowns, and a secondary bar carries q
 Page and article addresses move into sections. Earlier addresses redirect automatically, and your edits are kept. If you customised the header menu in the Site Editor, copy it into Theme Options > Navigation.
 
 == Changelog ==
+
+= 2.96.10 - 2026-11-05 =
+* Articles can open with an "In short" box of key points, typed in the new Key points and review box on the edit screen.
+* Long articles carry a next step before their third section: the notes, the next article in the same topic and the Contact page.
+* An article can carry a review note with the date it was last checked against its sources, beside the Citation box.
+* Tables in articles scroll on their own on a phone and can be scrolled from the keyboard. The back links in the notes are underlined.
 
 = 2.96.9 - 2026-11-05 =
 * Documentation brought up to date with the code: install and FTP update steps, every settings tab, the security switches, the error pages and the files the theme removes. The roadmap in docs/upgrading.md now lists only work the evidence supports.

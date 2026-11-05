@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.96.9 |
+| Version | 2.96.10 |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
@@ -46,7 +46,7 @@ On a network the main site writes the files, since every site shares `wp-content
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.96.9.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.96.10.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -54,7 +54,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.96.9.zip --activate
+wp theme install abrahamic-2.96.10.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -88,6 +88,7 @@ functions.php
  ├─ inc/search.php          Search index, spelling variants, relevance, /search/{term}/
  ├─ inc/unlist.php          Unlisted posts and pages
  ├─ inc/progress.php        Reading progress bar
+ ├─ inc/article-parts.php   In short box, mid-article next step, review note, table regions
  ├─ inc/login.php           Themed login screen, private login address
  ├─ inc/diagrams.php        [abr_diagram] SVG drawings
  ├─ inc/anonymity.php       REST users, author archives, feeds and embeds kept free of people
@@ -145,6 +146,9 @@ functions.php
 | `admin_enqueue_scripts` | `abr_seo_editor_assets` | Description counter on the editor screens |
 | `wp_enqueue_scripts`, `script_loader_tag` | `abr_seo_analytics`, `abr_seo_analytics_tag` | Google Analytics 4 |
 | `template_redirect` (priority 5) | `abr_legacy_redirect` | 301s from earlier addresses |
+| `the_content` (priority 12) | closure in `inc/article-parts.php` | The "In short" box at the top of an article and the next step before its third section |
+| `render_block_core/table` | closure in `inc/article-parts.php` | A table in an article becomes a focusable region named by its caption |
+| `add_meta_boxes_post`, `save_post_post` | `abr_article_meta_box` | The Key points and review box (`_abr_takeaways`, `_abr_reviewed`) |
 | `the_content` (priority 30) | `abr_ctx_filter` | Contextual links to inner pages here and on the sister sites, after blocks, texturising and shortcodes |
 
 The table lists the core of the theme. The later modules hook in from their own files; `grep -n "add_action\|add_filter" functions.php inc/*.php` lists every one. The ones a host or developer most often meets:
@@ -190,6 +194,8 @@ Action provided: `abr_cleanup_tick`, fired for each entry the development-file c
 | `[abr_mode_toggle]` | The light and dark switch for the header |
 | `[abr_search_results]` | Search results with section, marked passage and pagination |
 | `[abr_citation]` | A "Cite this page" box with a Copy button |
+| `[abr_answer_box summary="" points=""]` | "In short": the article's key points, or its own summary and points (`;;` between points). The theme puts one at the top of the text unless the text has its own |
+| `[abr_last_reviewed]` | The review note, from the Key points and review box; nothing without a date |
 | `[abr_term_label]` | The word Topic or Tag above an archive title |
 | `[abr_term_count]` | How many articles carry the current term |
 | `[abr_tag_list]` | Every tag in use, as chips, with the current one marked |
@@ -355,7 +361,7 @@ php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
 find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
 for f in assets/js/*.js; do node --check "$f" || exit 1; done
-git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.9.zip HEAD   # after the release is committed
+git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.10.zip HEAD   # after the release is committed
 ```
 
 Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line. The tests replace WordPress with small stubs, so they need only PHP.

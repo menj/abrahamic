@@ -13,6 +13,14 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.9 to 2.96.10
+
+Replace the theme files. The new files are `inc/article-parts.php`, `assets/css/article.css` and `tests/article-parts-test.php`.
+
+Two switches join the General tab, both on: the "In short" box and the next step in the middle of long articles. Nothing shows in the box until an article has key points; type them in the Key points and review box on its edit screen, with the review date if you want the review note.
+
+---
+
 ## Upgrading from 2.96.8 to 2.96.9
 
 Documentation only. Replace the theme files; nothing else to do.
@@ -1004,6 +1012,8 @@ These are plans, not promises. Each item rests on something on record: the code,
 
 ### Ideas
 
+- An automatic contents list built from the headings, for articles written without the authored `.abr-toc` block. The islamicdilemma and compelling-evidence themes build theirs server-side.
+- Notes from the WordPress Footnotes block in the Article's `citation`. `abr_schema_notes()` reads only the `abr-notes` list the starter articles use.
 - Glossary terms linked in the running text. The bestofislam and compelling-evidence themes do this; here the Glossary is a page of its own.
 - Share links under articles, as the injil.help theme has (`inc/share.php`).
 - Answer the bare `/wp-json/oembed/1.0/embed` probes earlier. The October and November 2026 logs show 381 of them answering 404 with a full WordPress load each.
