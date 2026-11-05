@@ -124,47 +124,91 @@ add_shortcode( 'abr_answer_box', 'abr_article_answer_box' );
 
 /**
  * The next article in the reading path: the next newer one in the article's
- * first category, or, at the end of the path, the one before it.
+ * topic (abr_article_topic()), or, at the end of the path, the one before it.
  *
  * @param WP_Post $post Post.
  * @return array{0:WP_Post,1:string}|null The post and the category name.
  */
 function abr_article_path_next( $post ) {
+	$cat = abr_article_topic( $post );
+	if ( ! $cat ) {
+		return null;
+	}
+	$base = array(
+		'cat'                 => (int) $cat->term_id,
+		'post__not_in'        => array( $post->ID ),
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+		'abr_hide_unlisted'   => true,
+	);
+	foreach ( array( array( 'after', 'ASC', 1 ), array( 'before', 'DESC', -1 ) ) as $way ) {
+		// Posts at the article's own time come first, ordered by ID.
+		$same = get_posts(
+			$base + array(
+				'posts_per_page' => -1,
+				'orderby'        => 'ID',
+				'order'          => $way[1],
+				'date_query'     => array(
+					array(
+						'after'     => $post->post_date,
+						'before'    => $post->post_date,
+						'inclusive' => true,
+					),
+				),
+			)
+		);
+		foreach ( $same as $candidate ) {
+			if ( ( $candidate->ID - $post->ID ) * $way[2] > 0 ) {
+				return array( $candidate, $cat->name );
+			}
+		}
+		$next = get_posts(
+			$base + array(
+				'posts_per_page' => 1,
+				'orderby'        => array(
+					'date' => $way[1],
+					'ID'   => $way[1],
+				),
+				'date_query'     => array(
+					array(
+						$way[0]     => $post->post_date,
+						'inclusive' => false,
+					),
+				),
+			)
+		);
+		if ( $next ) {
+			return array( $next[0], $cat->name );
+		}
+	}
+	return null;
+}
+
+/**
+ * The article's topic: the primary category Rank Math records, else its
+ * first category other than the default one, else the default one.
+ *
+ * @param WP_Post $post Post.
+ * @return WP_Term|null
+ */
+function abr_article_topic( $post ) {
 	$cats = get_the_category( $post->ID );
 	if ( ! $cats ) {
 		return null;
 	}
-	// Posts that share the article's time are ordered by ID, so none is skipped.
-	foreach ( array( array( 'after', 'ASC', 1 ), array( 'before', 'DESC', -1 ) ) as $way ) {
-		$found = get_posts(
-			array(
-				'cat'                 => (int) $cats[0]->term_id,
-				'post__not_in'        => array( $post->ID ),
-				'posts_per_page'      => 20,
-				'orderby'             => array(
-					'date' => $way[1],
-					'ID'   => $way[1],
-				),
-				'date_query'          => array(
-					array(
-						$way[0]     => $post->post_date,
-						'inclusive' => true,
-					),
-				),
-				'ignore_sticky_posts' => true,
-				'no_found_rows'       => true,
-				'abr_hide_unlisted'   => true,
-			)
-		);
-		foreach ( $found as $candidate ) {
-			$order = strcmp( $candidate->post_date, $post->post_date );
-			$order = 0 !== $order ? $order : $candidate->ID - $post->ID;
-			if ( $order * $way[2] > 0 ) {
-				return array( $candidate, $cats[0]->name );
-			}
+	$primary = (int) get_post_meta( $post->ID, 'rank_math_primary_category', true );
+	$default = (int) get_option( 'default_category' );
+	foreach ( $cats as $cat ) {
+		if ( $primary && (int) $cat->term_id === $primary ) {
+			return $cat;
 		}
 	}
-	return null;
+	foreach ( $cats as $cat ) {
+		if ( (int) $cat->term_id !== $default ) {
+			return $cat;
+		}
+	}
+	return $cats[0];
 }
 
 /**
