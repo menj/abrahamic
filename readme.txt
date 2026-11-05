@@ -81,10 +81,10 @@ Upload the new zip under Appearance > Themes > Add New > Upload Theme and choose
 
 1. Turn on hidden files in your FTP program first. The theme carries files whose names begin with a dot, such as .htaccess, and most programs hide them. In FileZilla: Server > Force showing hidden files.
 2. Upload the new abrahamic folder next to the old one under a temporary name, for example wp-content/themes/abrahamic-new. Wait until every file has arrived.
-3. Rename the old folder to abrahamic-old and, straight after, rename abrahamic-new to abrahamic. Between the two renames the site has no abrahamic folder, so do them one after the other and keep the admin closed until both are done. Nobody meets a half-copied theme this way.
+3. Rename the old folder to abrahamic-old and, straight after, rename abrahamic-new to abrahamic. Between the two renames the site has no abrahamic folder and its pages may fail for that moment, so do them one after the other and keep the admin closed until both are done. Nobody meets a half-copied theme this way.
 4. Load any admin page, check the site, then delete abrahamic-old.
 
-If you upload straight over the live folder and the copy stops halfway, visitors see a short "Back shortly" page with a 503 status instead of an error, and you can still log in. Upload the missing files and the site returns. That page comes from functions.php, so it cannot help while functions.php itself is missing or half written, or in the moment between the two renames above. The temporary-folder method avoids those cases: an upload that stops there leaves the live theme untouched.
+If you upload straight over the live folder and the copy stops halfway, leaving a file missing or broken, visitors see a short "Back shortly" page with a 503 status instead of an error, and you can still log in. Upload the missing files and the site returns. That page comes from functions.php, so it cannot help while functions.php itself is missing or half written, or in the moment between the two renames above. A file cut short at a point where it still reads as valid code also slips past it. The temporary-folder method avoids those cases: an upload that stops there leaves the live theme untouched.
 
 Never upload a fresh copy of WordPress itself over the site without keeping wp-config.php. That file holds the database details; without it WordPress opens its installer to anyone who visits.
 
@@ -192,7 +192,7 @@ They are copied across automatically when you activate Abrahamic. Changes you ma
 
 = What do the Security switches do? =
 
-They close the doors spam tools use to publish from outside the site. XML-RPC is turned off, and on Apache the theme also blocks xmlrpc.php in the site's .htaccess. Application passwords are off. The REST API accepts changes only from someone logged in through a browser. New posts that read as gambling spam wait as Pending. Removed spam answers 410 Gone, so search engines drop it. If one of these breaks a tool you need, such as Jetpack, turn that switch off. In an emergency, add define( 'ABR_SECURITY_LOCK', false ); to wp-config.php.
+They close the doors spam tools use to publish from outside the site. XML-RPC is turned off, and on Apache the theme also blocks xmlrpc.php in the site's .htaccess. Application passwords are off. Changes sent through the REST API by a signed-in account are accepted only from a browser session on the site; public REST routes, such as reading posts, stay open. New posts that read as gambling spam wait as Pending. Removed spam answers 410 Gone, so search engines drop it. If one of these breaks a tool you need, such as Jetpack, turn that switch off. In an emergency, add define( 'ABR_SECURITY_LOCK', false ); to wp-config.php.
 
 = What are the error pages? =
 
