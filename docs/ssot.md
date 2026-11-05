@@ -21,7 +21,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 | Theme type | Child theme. The parent must stay installed. The child supplies the `front-page`, `page-landing`, `page`, `single`, `home`, `archive`, `tag`, `search` and `404` templates and the `header` and `footer` parts, which the parent's templates also pick up by slug; any other template, such as attachment pages, comes from the parent. Child `theme.json` merges over the parent's |
 | Site | https://abrahamic-religions.com/ |
 | Author | Abrahamic Religions, https://abrahamic-religions.com |
-| Licence | GNU GPL v2 or later (`License` and `License URI` in `style.css` and `readme.txt`) |
+| Licence | GNU GPL v3 or later (`License` and `License URI` in `style.css` and `readme.txt`; the full text in `LICENSE`) |
 | Minimum WordPress | 6.7 |
 | Tested up to | 7.1 |
 | Minimum PHP | 7.4 |
@@ -149,11 +149,11 @@ abrahamic/
 
 Documentation is limited to `readme.txt` and the four files in `docs/`. Any other notes are merged into one of these.
 
-The theme is licensed GPLv2 or later, declared in the `style.css` header and in `readme.txt`, whose Copyright section lists every bundled resource with its licence. No separate licence file ships; the EB Garamond, Noto and Special Elite subsets keep their copyright and full licence text (OFL and Apache 2.0) inside their own name tables (name IDs 0, 13 and 14).
+The theme is licensed GPLv3 or later, declared in the `style.css` header and in `readme.txt`, whose Copyright section lists every bundled resource with its licence. The full GPLv3 text ships unmodified in `LICENSE` at the theme root. Code adapted from GPLv2-or-later plugins and the GPL parent theme may be relicensed under version 3, so nothing changes for them; the EB Garamond, Noto and Special Elite subsets keep their copyright and full licence text (OFL and Apache 2.0) inside their own name tables (name IDs 0, 13 and 14).
 
 | Resource | Licence | GPL position |
 |---|---|---|
-| Theme code, templates, patterns, interface icons, share image, symbols watermark | GPLv2 or later | Theme licence; the symbols artwork was supplied by the site owner as GPL |
+| Theme code, templates, patterns, interface icons, share image, symbols watermark | GPLv3 or later | Theme licence; the symbols artwork was supplied by the site owner as GPL |
 | Photographs in `assets/images/photos/` | Supplied by the site owner from the site's own media library (2016 to 2023 backup) | Confirm the rights for each before distributing the theme beyond this site |
 | Photographs from Wikimedia Commons: place-sinai, mandaeism, isaiah-scroll, tanakh, christian-bible, ur-ziggurat, jordan-river, jerusalem-panorama, cordoba, megiddo, birmingham-quran, ten-commandments and dumat-al-jandal | Public domain or Creative Commons, per file (section 6, Photographs) | Attribution kept on the Copyright and DMCA page; ShareAlike files stay under their licence |
 | AR mark and its rasters | Outlines taken from Sabon Next LT | Not placed under the GPL; logo use rests on the Monotype licence held for Sabon |
@@ -782,6 +782,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-05 | 2.96.10 | The theme is licensed GNU GPL version 3 or later, with the full text in `LICENSE`. This replaces the 2.0.1 rule of no licence file | The owner set GPLv3 or later for every theme on 2026-11-05 |
 | 2026-11-05 | 2.96.10 | Articles gain an "In short" box, a mid-article next step and a review note; a next step offers only the notes, the next article and the Contact page | The owner approved the article anatomy list with every sales prompt removed. The owner's name stays schema-only on this site |
 | 2026-11-03 | 2.92.0 | Seeded Journal posts take a fixed `post_date` in site time: a past date publishes with that date, a future date is Scheduled and WP-Cron publishes it. The first seven, approved by the owner, run from 10 October to 20 December 2026 | `days_ago` counts back from whenever the seeder runs, so the date drifted and nothing could be scheduled. The owner approved the Journal plan, with three backdated and four scheduled posts. WP-Cron must run on the host for the scheduled posts to go live |
 | 2026-11-03 | 2.91.0 | The structured data keeps its Person entries for the historical figures the articles discuss: Abraham, Moses, Jesus, Muhammad and Paul | The owner decided on 2026-11-03 to keep them; do not remove them or raise the question again |
@@ -802,7 +803,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 | 2026-09-17 | 2.0.0 | Menu collapses below 1280px | Nine links do not fit one row below that width |
 | 2026-09-17 | 2.0.0 | Comparison tabs apply below 1024px only | Three columns remain readable on landscape tablets and desktops |
 | 2026-09-17 | 2.0.0 | Legacy `ar_options` row is copied, not deleted | Allows rollback to 1.x during the transition |
-| 2026-09-17 | 2.0.1 | No licence header, licence file or licensing notes in the theme | House rule; EB Garamond attribution travels inside the font files |
+| 2026-09-17 | 2.0.1 | No licence header, licence file or licensing notes in the theme (superseded on 2026-11-05: GPLv3 or later, with `LICENSE`) | House rule; EB Garamond attribution travels inside the font files |
 | 2026-09-17 | 2.1.0 | Social marks come from the Minimalist Social & Platform Icons Pack; hand-drawn brand icons retired | Consistent, accurate marks across 45 networks |
 | 2026-09-17 | 2.1.0 | LinkedIn and Scribd taken from Simple Icons | The pack's versions require a visible credit on the site; the CC0 marks need none |
 | 2026-09-17 | 2.1.0 | One registry drives fields, defaults, sanitising and footer order | A network is added or removed in one place |

@@ -5,8 +5,8 @@ Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 2.96.10
 Template: twentytwentyfive
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 The house theme for abrahamic-religions.com, an independent educational resource on Judaism, Mandaeism, Christianity and Islam.
 
@@ -636,6 +636,7 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 * Articles can open with an "In short" box of key points, typed in the new Key points and review box on the edit screen.
 * Long articles carry a next step before their third section: the notes, the next article in the same topic and the Contact page.
 * An article can carry a review note with the date it was last checked against its sources, beside the Citation box.
+* The theme is now licensed under the GNU GPL, version 3 or later. The full text is in the LICENSE file.
 * Tables in articles scroll on their own on a phone and can be scrolled from the keyboard. The back links in the notes are underlined.
 
 = 2.96.9 - 2026-11-05 =

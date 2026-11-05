@@ -13,6 +13,9 @@ The article anatomy: the pieces a single article was missing. No section or feat
 - Two switches on the General tab, both on: `article_answer` and `article_mid_next`.
 - `assets/css/article.css`, loaded on single articles only, and `tests/article-parts-test.php`.
 
+### Changed
+- The theme is now licensed GNU GPL version 3 or later (`style.css`, `readme.txt`). The full licence text ships in a new `LICENSE` file at the theme root. Bundled fonts, images and code keep their own licences, listed in `readme.txt`.
+
 ### Fixed
 - A table in an article is now a focusable region named by its caption, so it scrolls from the keyboard on a phone (axe `scrollable-region-focusable`).
 - The back links in the notes are underlined, so they stand out from the note text by more than colour (axe `link-in-text-block`).

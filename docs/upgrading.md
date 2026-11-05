@@ -15,7 +15,7 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ## Upgrading from 2.96.9 to 2.96.10
 
-Replace the theme files. The new files are `inc/article-parts.php`, `assets/css/article.css` and `tests/article-parts-test.php`.
+Replace the theme files. The new files are `LICENSE`, `inc/article-parts.php`, `assets/css/article.css` and `tests/article-parts-test.php`. The theme is now licensed GNU GPL version 3 or later; nothing to do for that.
 
 Two switches join the General tab, both on: the "In short" box and the next step in the middle of long articles. Nothing shows in the box until an article has key points; type them in the Key points and review box on its edit screen, with the review date if you want the review note.
 
