@@ -10,7 +10,6 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
 | Tested up to | WordPress 7.1, PHP 8.3 |
 | Author | Abrahamic Religions |
-| Licence | GNU GPL v2 or later |
 
 Identity, naming rules, tokens, breakpoints, the settings schema and the decision record are maintained in [`ssot.md`](ssot.md). Release history is in [`changelog.md`](changelog.md); upgrade steps, roadmap and the release checklist are in [`upgrading.md`](upgrading.md).
 
@@ -369,7 +368,7 @@ Every script in `tests/` and `bin/` exits at once unless PHP runs it from the co
 
 `.gitattributes` keeps `.claude/`, `.gitattributes` and `tests/` out of the zip. `docs/` and `bin/` ship.
 
-Deploy by the dashboard (Upload Theme, then "Replace active with uploaded") or by FTP. For FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then swap the folder names one straight after the other, with the admin closed, since the site has no `abrahamic` folder between the two renames. If a copy straight over the live folder breaks part-way, `functions.php` checks every file before it loads any and answers visitors with the 503 notice (`abr_incomplete_theme()`); the login screen, AJAX, cron and WP-CLI carry on. The guard lives in `functions.php`, so it cannot cover a missing or half-written `functions.php`, or the moment between the two renames. Load one admin page after the upload: it writes the drop-ins, and runs the seeder when `ABR_SEED_VERSION` has risen. `abr_sec_sync_htaccess()` runs at most hourly (the `abr_sec_htaccess_checked` transient), so inside that hour the `.htaccess` sections wait for the first admin page after it; saving a changed Theme Option forces it. The first request of any kind removes the development files.
+Deploy by the dashboard (Upload Theme, then "Replace active with uploaded") or by FTP. For FTP, show hidden files and upload to a temporary folder in `wp-content/themes/`, such as `abrahamic-new`, sending its `.htaccess` files (root, `assets/images/`, `bin/`, `docs/`, `tests/`) first, so on Apache their rules apply to each file as it arrives (public assets stay readable, as on the live site; Nginx relies on the server block rules below). Then swap the folder names one straight after the other, with the admin closed, since the site has no `abrahamic` folder between the two renames. If a copy straight over the live folder breaks part-way, `functions.php` checks every file before it loads any and answers visitors with the 503 notice (`abr_incomplete_theme()`); the login screen, AJAX, cron and WP-CLI carry on. The guard lives in `functions.php`, so it cannot cover a missing or half-written `functions.php`, or the moment between the two renames. Load one admin page after the upload: it writes the drop-ins, and runs the seeder when `ABR_SEED_VERSION` has risen. `abr_sec_sync_htaccess()` runs at most hourly (the `abr_sec_htaccess_checked` transient), so inside that hour the `.htaccess` sections wait for the first admin page after it; saving a changed Theme Option forces it. The first request of any kind removes the development files.
 
 ## Nginx
 
@@ -377,8 +376,8 @@ Nginx ignores `.htaccess`. On Nginx the theme writes neither root section and th
 
 ```
 location ~ /\.(?!well-known/) { deny all; }
-location ~ ^/wp-content/themes/abrahamic/(tests|tools|bin|docs)/ { deny all; }
-location ~ ^/wp-content/themes/abrahamic/(.+\.md|readme\.txt)$ { deny all; }
+location ~ ^/wp-content/themes/abrahamic[^/]*/(tests|tools|bin|docs)/ { deny all; }
+location ~ ^/wp-content/themes/abrahamic[^/]*/(.+\.md|readme\.txt)$ { deny all; }
 location = /xmlrpc.php { deny all; }
 location ~ ^/wp-includes/(?!js/tinymce/|ms-files\.php$).+\.php$ { deny all; }
 location ~ ^/(wp-settings|wp-config-sample)\.php$ { deny all; }
@@ -390,6 +389,8 @@ error_page 502 /wp-content/abrahamic-errors/502.html;
 error_page 503 /wp-content/abrahamic-errors/503.html;
 error_page 504 /wp-content/abrahamic-errors/504.html;
 ```
+
+The `abrahamic[^/]*` in the theme rules also covers the `abrahamic-new` and `abrahamic-old` folders of an FTP update, which Nginx would otherwise serve while both sit on the server.
 
 Nginx serves `error_page` for PHP's own 500 and 503 answers only with `fastcgi_intercept_errors on;` in the FastCGI location; without it those answers reach visitors as PHP sent them. Jetpack needs XML-RPC: leave out the `xmlrpc.php` line and also switch "Turn off XML-RPC" off on the Security tab, since the theme refuses XML-RPC in PHP too. Where the client logs in to XML-RPC, with a password or any other credential, switch the REST lock off as well, since `abr_sec_refuse_remote_password()` refuses every XML-RPC login while either switch is on. These rules do not follow the Security switches or `ABR_SECURITY_LOCK`: to let XML-RPC through, take the `xmlrpc.php` line out by hand as well. Prefix the paths when WordPress lives in a subfolder.
 
@@ -992,7 +993,7 @@ Theme Options, the seeder and its tombstones, the Security settings and logs are
 
 | Resource | Location | Licence |
 |---|---|---|
-| Abrahamic theme code and interface icons | whole theme | GPLv2 or later |
+| Abrahamic theme code and interface icons | whole theme | GPLv3 or later |
 | Twenty Twenty-Five (parent) | separate theme | GPLv2 or later |
 | Minimalist Social & Platform Icons Pack 2.8, 43 icons | `assets/icons/social/` | GNU GPL |
 | Simple Icons: LinkedIn, Scribd | `assets/icons/social/` | CC0 1.0 |

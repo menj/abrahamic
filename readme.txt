@@ -81,7 +81,7 @@ Upload the new zip under Appearance > Themes > Add New > Upload Theme and choose
 = Updating by FTP =
 
 1. Turn on hidden files in your FTP program first. The theme carries files whose names begin with a dot, such as .htaccess, and most programs hide them. In FileZilla: Server > Force showing hidden files.
-2. Upload the new abrahamic folder next to the old one under a temporary name, for example wp-content/themes/abrahamic-new. Wait until every file has arrived.
+2. Upload the new abrahamic folder next to the old one under a temporary name, for example wp-content/themes/abrahamic-new. Send its .htaccess files first: the one at the top of the folder, then those in assets/images, bin, docs and tests. On Apache their rules then apply to each file as it arrives, so the files they refuse on the live site are refused in the new folder too. Styles, scripts, fonts and images stay public, as they are on the live site. Nginx reads no .htaccess; there the server block rules do this work. Wait until every file has arrived.
 3. Rename the old folder to abrahamic-old and, straight after, rename abrahamic-new to abrahamic. Between the two renames the site has no abrahamic folder and its pages may fail for that moment, so do them one after the other and keep the admin closed until both are done. Nobody meets a half-copied theme this way.
 4. Load any admin page, check the site, then delete abrahamic-old.
 
@@ -1330,7 +1330,7 @@ Abrahamic is distributed under the terms of the GNU General Public License.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
+the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -1363,7 +1363,7 @@ License: GPLv2 or later
 
 Interface icons (inc/icons.php)
 Copyright 2026 Abrahamic Religions
-License: GPLv2 or later
+License: GPLv3 or later
 
 Minimalist Social & Platform Icons Pack 2.8 (assets/icons/social/, 43 icons)
 License: GNU GPL
