@@ -756,7 +756,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 | Root `.htaccess` markers | `Block xmlrpc.php` (shared with the owner's other themes; follows `sec_xmlrpc_off`) and `Abrahamic: deny direct core files` (`ABR_SEC_CORE_MARKER`; always while the theme runs). Apache only, synced at most hourly, removed on `switch_theme` |
 | Theme `.htaccess` | Denies `readme.txt` and `*.md`; 404 for `.claude/`; 403 for dot-names except `.well-known`, and for `tests`, `tools`, `bin`, `docs`. mod_rewrite fallback when mod_alias is absent |
 | Deny files | `.claude/.htaccess`, `docs/.htaccess`, `tests/.htaccess`, `bin/.htaccess` |
-| Development files removed on a live site | Hidden entries except `.htaccess`, `.user.ini`, `.well-known`; and `tests/`. Once per version, on `init`, under a lease (`abr_cleanup_on_version_change()`). Kept on local and development sites and with `ABR_KEEP_DOTFILES` |
+| Development files removed on a live site | Hidden entries except `.htaccess`, `.user.ini`, `.well-known`; and `tests/` and `tools/`. Once per version, on `init`, under a lease (`abr_cleanup_on_version_change()`). Kept on local and development sites and with `ABR_KEEP_DOTFILES` |
 | wp-config switches | `ABR_SECURITY_LOCK` (false), `ABR_ALLOW_CORE_FILES` (true), `ABR_KEEP_DOTFILES` (true), `ABR_HIDE_LOGIN` (false) |
 | Drop-ins | `wp-content/maintenance.php` (503, `Retry-After: 300`), `php-error.php` (500), `db-error.php` (503, `Retry-After: 600`); marker-checked, a foreign file is never overwritten |
 | Static error pages | `errors/` (root sites) and `wp-content/abrahamic-errors/` (per-site home address): 403, 500, 502, 503, 504 |

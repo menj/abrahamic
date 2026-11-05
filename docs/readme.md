@@ -326,7 +326,7 @@ Set these in `wp-config.php`, above the line that loads WordPress. Each is optio
 |---|---|
 | `ABR_SECURITY_LOCK` | `false` turns off the three Security locks (XML-RPC, application passwords, REST writes) without changing the saved options |
 | `ABR_ALLOW_CORE_FILES` | `true` takes the "Abrahamic: deny direct core files" section out of `.htaccess`, for a plugin or host that needs one of those files by address |
-| `ABR_KEEP_DOTFILES` | `true` keeps `.git`, `.claude`, the other hidden entries and `tests/` in the theme folder. Local and development sites (`wp_get_environment_type()`) keep them without it |
+| `ABR_KEEP_DOTFILES` | `true` keeps `.git`, `.claude`, the other hidden entries, `tests/` and `tools/` in the theme folder. Local and development sites (`wp_get_environment_type()`) keep them without it |
 | `ABR_HIDE_LOGIN` | `false` switches the private login address off, for when it is lost |
 | `ABR_SPAM_THRESHOLD`, `ABR_TITLE_MAX`, `ABR_DESCRIPTION_MAX`, `ABR_TAG_MIN_POSTS` | Defined only when not already set: spam score at which a post is held (3), title length (59), description length (129), articles a tag page needs before it is indexed (3) |
 
@@ -362,7 +362,7 @@ Every script in `tests/` and `bin/` exits at once unless PHP runs it from the co
 
 `.gitattributes` keeps `.claude/`, `.gitattributes` and `tests/` out of the zip. `docs/` and `bin/` ship.
 
-Deploy by the dashboard (Upload Theme, then "Replace active with uploaded") or by FTP. For FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then swap the folder names one straight after the other, with the admin closed, since the site has no `abrahamic` folder between the two renames. If a copy straight over the live folder breaks part-way, `functions.php` checks every file before it loads any and answers visitors with the 503 notice (`abr_incomplete_theme()`); the login screen, AJAX, cron and WP-CLI carry on. The guard lives in `functions.php`, so it cannot cover a missing or half-written `functions.php`, or the moment between the two renames. Load one admin page after the upload: it writes the drop-ins and runs the seeder. `abr_sec_sync_htaccess()` runs at most hourly (the `abr_sec_htaccess_checked` transient), so the `.htaccess` sections may follow within the hour; saving a changed Theme Option forces it. The first request of any kind removes the development files.
+Deploy by the dashboard (Upload Theme, then "Replace active with uploaded") or by FTP. For FTP, show hidden files, upload to a temporary folder such as `abrahamic-new`, then swap the folder names one straight after the other, with the admin closed, since the site has no `abrahamic` folder between the two renames. If a copy straight over the live folder breaks part-way, `functions.php` checks every file before it loads any and answers visitors with the 503 notice (`abr_incomplete_theme()`); the login screen, AJAX, cron and WP-CLI carry on. The guard lives in `functions.php`, so it cannot cover a missing or half-written `functions.php`, or the moment between the two renames. Load one admin page after the upload: it writes the drop-ins, and runs the seeder when `ABR_SEED_VERSION` has risen. `abr_sec_sync_htaccess()` runs at most hourly (the `abr_sec_htaccess_checked` transient), so the `.htaccess` sections may follow within the hour; saving a changed Theme Option forces it. The first request of any kind removes the development files.
 
 ## Nginx
 
@@ -384,7 +384,7 @@ error_page 503 /wp-content/abrahamic-errors/503.html;
 error_page 504 /wp-content/abrahamic-errors/504.html;
 ```
 
-Nginx serves `error_page` for PHP's own 500 and 503 answers only with `fastcgi_intercept_errors on;` in the FastCGI location; without it those answers reach visitors as PHP sent them. Jetpack needs XML-RPC: leave out the `xmlrpc.php` line and also switch "Turn off XML-RPC" off on the Security tab, since the theme refuses XML-RPC in PHP too. These rules do not follow the Security switches or `ABR_SECURITY_LOCK`: to let XML-RPC through, take the `xmlrpc.php` line out by hand as well. Prefix the paths when WordPress lives in a subfolder.
+Nginx serves `error_page` for PHP's own 500 and 503 answers only with `fastcgi_intercept_errors on;` in the FastCGI location; without it those answers reach visitors as PHP sent them. Jetpack needs XML-RPC: leave out the `xmlrpc.php` line and also switch "Turn off XML-RPC" off on the Security tab, since the theme refuses XML-RPC in PHP too. Where the client logs in to XML-RPC with a password, switch the REST lock off as well, since `abr_sec_refuse_remote_password()` refuses those logins while either switch is on. These rules do not follow the Security switches or `ABR_SECURITY_LOCK`: to let XML-RPC through, take the `xmlrpc.php` line out by hand as well. Prefix the paths when WordPress lives in a subfolder.
 
 ## Multisite
 
