@@ -383,7 +383,11 @@ function abr_sync_write( $post, $item ) {
 		if ( ! $done || is_wp_error( $done ) ) {
 			return false;
 		}
-		abr_seed_set_description( $post->ID, $item );
+		if ( ! empty( $item['description'] ) ) {
+			abr_seed_set_description( $post->ID, $item );
+		} else {
+			delete_post_meta( $post->ID, '_abr_description' ); // The bundle dropped the description: take that too.
+		}
 		update_post_meta( $post->ID, '_abr_seed_hash', md5( $item['content'] ) );
 		abr_sync_record( $post->ID, $item );
 		return true;
@@ -489,9 +493,11 @@ function abr_sync_handle_item() {
 		if ( 'take' === $choice && $item ) {
 			abr_sync_write( $post, $item );
 			abr_sync_log( $key, 'took the bundled text' );
-		} elseif ( 'take' === $choice ) {
+		} elseif ( 'take' === $choice && '' === abr_sync_removal_block() ) {
 			wp_trash_post( $post->ID ); // Dropped or superseded: the bundled choice is the Trash, never a deletion.
 			abr_sync_log( $key, 'moved to the Trash by choice' );
+		} elseif ( 'take' === $choice ) {
+			abr_sync_log( $key, 'the Trash was refused while a removal guard holds' );
 		} else {
 			$superseded = false;
 			foreach ( abr_supersedes() as $map ) {
@@ -640,8 +646,12 @@ function abr_render_content_sync_card() {
 			}
 			echo '</td><td>' . esc_html( $labels[ $row['action'] ] ?? $row['action'] ) . '</td><td>';
 			if ( ! abr_sync_disabled() && in_array( $row['action'], array( 'newer', 'removed', 'superseded', 'kept' ), true ) ) {
-				$take = isset( $bundle[ $row['key'] ] ) ? __( 'Take the bundled text', 'abrahamic' ) : __( 'Move to the Trash', 'abrahamic' );
-				foreach ( array( 'take' => $take, 'keep' => __( 'Keep mine', 'abrahamic' ) ) as $choice => $text ) {
+				$take    = isset( $bundle[ $row['key'] ] ) ? __( 'Take the bundled text', 'abrahamic' ) : __( 'Move to the Trash', 'abrahamic' );
+				$choices = array( 'take' => $take, 'keep' => __( 'Keep mine', 'abrahamic' ) );
+				if ( ! isset( $bundle[ $row['key'] ] ) && '' !== $blocked ) {
+					unset( $choices['take'] ); // A removal waits while a guard holds.
+				}
+				foreach ( $choices as $choice => $text ) {
 					printf(
 						'<form method="post" action="%1$s" style="display:inline"><input type="hidden" name="action" value="abr_sync_item"><input type="hidden" name="item" value="%2$s"><input type="hidden" name="choice" value="%3$s">%4$s<button type="submit" class="button button-small">%5$s</button></form> ',
 						esc_url( admin_url( 'admin-post.php' ) ),

@@ -83,7 +83,7 @@ function abr_lead_list( array $posts, array $args = array() ) {
 		array_filter(
 			array_map( 'get_post', $posts ),
 			static function ( $p ) {
-				return $p instanceof WP_Post && 'publish' === $p->post_status && ! ( function_exists( 'abr_is_unlisted' ) && abr_is_unlisted( $p->ID ) );
+				return $p instanceof WP_Post && 'publish' === $p->post_status && ! ( function_exists( 'abr_is_unlisted' ) && abr_is_unlisted( $p->ID ) ) && ! ( function_exists( 'abr_superseded_ids' ) && in_array( (int) $p->ID, abr_superseded_ids(), true ) );
 			}
 		)
 	);
@@ -100,7 +100,7 @@ function abr_lead_list( array $posts, array $args = array() ) {
 		}
 		if ( ! $lead ) {
 			$chosen = get_post( $lead_id );
-			if ( $chosen instanceof WP_Post && 'publish' === $chosen->post_status && ! ( function_exists( 'abr_is_unlisted' ) && abr_is_unlisted( $chosen->ID ) ) ) {
+			if ( $chosen instanceof WP_Post && 'publish' === $chosen->post_status && ! ( function_exists( 'abr_is_unlisted' ) && abr_is_unlisted( $chosen->ID ) ) && ! ( function_exists( 'abr_superseded_ids' ) && in_array( (int) $chosen->ID, abr_superseded_ids(), true ) ) ) {
 				$lead = $chosen;
 			}
 		}
