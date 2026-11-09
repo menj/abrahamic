@@ -1390,3 +1390,22 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 	.abr-cite__copy { min-height: 0; }
 	.abr-footer-links a { display: inline; min-height: 0; }
 }
+
+/* ---------- Mobile-first audit (2.96.15) ----------
+   Every rule here is scoped and additive. The first block lets long titles and
+   URLs wrap at every width; the touch block sizes small links for a finger and
+   leaves desktop sizes as they were. */
+.abr-breadcrumbs li { min-width: 0; overflow-wrap: anywhere; }
+.wp-site-blocks { overflow-wrap: break-word; }
+.abr-notes .abr-fn-back { text-decoration: underline !important; text-underline-offset: 3px; }
+@media (pointer: coarse), (max-width: 767px) {
+	.abr-backtop a { display: inline-flex; align-items: center; min-height: 44px; }
+	.abr-kicker-terms a, .abr-single-topics a, .abr-single-tags a { display: inline-block; padding-block: 0.6em; }
+	.abr-post-nav a { display: inline-block; padding-block: 10px; }
+}
+/* A phone held sideways has little height: the header and the stuck sub-navigation
+   would fill a third of it, so they scroll away. */
+@media (max-height: 480px) and (orientation: landscape) {
+	.wp-site-blocks > header.wp-block-template-part:has(.abr-header) { position: static; }
+	.abr-subnav { position: static; }
+}

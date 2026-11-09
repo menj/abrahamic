@@ -339,7 +339,7 @@ add_shortcode( 'abr_last_reviewed', 'abr_article_last_reviewed' );
 add_filter(
 	'render_block_core/table',
 	static function ( $html ) {
-		if ( is_admin() || is_feed() || false !== strpos( (string) $html, 'role="region"' ) ) {
+		if ( is_admin() || is_feed() || preg_match( '#^\s*<figure\b[^>]*\brole="region"#i', (string) $html ) ) {
 			return $html;
 		}
 		$label = preg_match( '#<figcaption[^>]*>(.*?)</figcaption>#is', (string) $html, $m ) ? trim( wp_strip_all_tags( $m[1] ) ) : '';
