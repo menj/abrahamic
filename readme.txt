@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.16
+Stable tag: 2.96.17
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -221,6 +221,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.17 =
+Replace the theme files. Nothing to do.
 
 = 2.96.16 =
 Replace the theme files. Nothing to do.
@@ -653,6 +656,9 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 Browsers ask for /favicon.ico at the top of the domain, such as example.com/favicon.ico, even when the site lives in example.com/blog/. WordPress never sees that request, so put a copy of the theme's favicon.ico in the domain root folder. The icon tags in each page cover the pages either way.
 
 == Changelog ==
+
+= 2.96.17 - 2026-11-09 =
+* Phones: long titles and links wrap instead of widening the page, small links are easier to tap, the menu button tells screen readers whether the menu is open, and the header scrolls away on a phone held sideways.
 
 = 2.96.16 - 2026-11-09 =
 * Theme Options: the sticky Save bar no longer covers a field you tab to.

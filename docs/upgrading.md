@@ -13,6 +13,10 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.16 to 2.96.17
+
+Replace the theme files. Nothing else to do.
+
 ## Upgrading from 2.96.15 to 2.96.16
 
 Replace the theme files. Nothing else to do.
@@ -1034,12 +1038,54 @@ Version 2.0.0 renames the theme, so WordPress treats it as a new theme in a new 
 
 ---
 
+## Mobile-first audit, 2.96.17
+
+Measured with Playwright at 320, 360, 375, 390, 414, 480, 768, 1024 and 1280 pixels on 16 page types (home, article, long-title article, category, Journal, search with and without results, 404, login, timeline, comparisons, figures, Qur'an, FAQ, contact, donate). Axe 4 with WCAG 2.0 to 2.1 AA and best-practice tags.
+
+| Finding | Severity | Risk of the fix | Status |
+|---|---|---|---|
+| Long article title, excerpt and links widened the page (34 px at 320; 380 to 643 px at 768 to 1280) | High | Low | Fixed |
+| "Back to top", article-head category, topic and tag links, next-post link under 24 px high | Medium | Low | Fixed |
+| Footnote back-arrow relies on colour alone (axe `link-in-text-block`) | Medium | Low | Fixed |
+| Menu button has no `aria-expanded` | Medium | Medium (JS) | Fixed |
+| Header and sub-navigation fill a third of a landscape phone | Low | Medium | Fixed |
+| Search field lacks `enterkeyhint` | Low | Low | Fixed |
+| Card heading links, some footer links and menu items are 24 to 43 px high | Low | Medium | Open |
+| Kickers and labels at 12.5 to 12.8 px, card paragraphs at 15.5 px, footer text at 14.2 px | Low | Medium | Open |
+| Several `max-width` blocks in `theme.css` (about lines 203, 331, 760, 891, 1037, 1043) could be mobile-first `min-width` blocks | Low | High | Open |
+| Login screen: password field and reveal button overlap; axe landmark and region notes | Low | None (core) | Not ours |
+
+Overflowing pages, before and after, out of 16:
+
+| Width | 320 | 360 | 375 | 390 | 414 | 480 | 768 | 1024 | 1280 |
+|---|---|---|---|---|---|---|---|---|---|
+| Before | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 |
+| After | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+Targets under 24 px (all pages): 28 before, 16 after at phone widths (the remainder are the hidden skip link and inline links). Layout shift stayed at 0.0008 or less. No new axe violation appeared.
+
+### For manual review
+
+- The landscape rule in `theme.css` (`max-height: 480px` and landscape) sets the header and `.abr-subnav` to `position: static`. Check it on a real phone in landscape and on a short desktop window.
+- The `aria-expanded` observer at the end of `assets/js/theme.js` watches the `is-menu-open` class of the core navigation overlay. A WordPress release that renames that class stops the sync without any other effect.
+- Colour contrast on the footer tagline and text reads low in some axe runs, taken while the scroll-reveal fade is in progress. Re-test once at rest.
+- Raising the 12.5 to 15.5 px labels and card text to 16 px changes the look of the cards. The owner decides.
+
+### Remaining risks
+
+- Targets between 24 and 44 px pass WCAG 2.2 AA but fall short of the 44 px comfort size.
+- The converted `min-width` queries are a larger change and carry desktop risk, so each needs its own before and after at 1024 and 1280.
+
+---
+
 ## Roadmap
 
 These are plans, not promises. Each item rests on something on record: the code, the server logs, a documented limit, or a feature another of the owner's themes already has. Items leave this list when they ship and go into `changelog.md`. GitHub had no open issues or pull requests when this list was last checked (2026-11-05).
 
 ### Next
 
+- Convert the remaining desktop-first `max-width` blocks in `theme.css` to `min-width`, one block at a time, with 1024 and 1280 screenshots before and after. Found in the 2.96.17 audit.
+- Lift card heading links, footer links and menu items to 44 px on touch screens. Found in the 2.96.17 audit.
 - Keep the root `.htaccess` sections on a network when one site leaves the theme. `abr_sec_remove_htaccess()` runs on any site's `switch_theme`, so the shared file loses both sections until another site's hourly check puts them back.
 - Security headers on front-end responses (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, with HSTS as an opt-in). The bestofislam theme sends them from `inc/security-headers.php`; this theme sends none.
 - A translation template, `languages/abrahamic.pot`, for the settings screen and shortcode strings. The strings are already wrapped; the injil.help and compelling-evidence themes ship a `languages/` folder and this one does not.

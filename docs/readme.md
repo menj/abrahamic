@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.96.16 |
+| Version | 2.96.17 |
 | Licence | GNU GPL v3 or later; the full text is in `LICENSE` |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
@@ -48,7 +48,7 @@ On a network the main site writes the files, since every site shares `wp-content
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.96.16.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.96.17.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -56,7 +56,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.96.16.zip --activate
+wp theme install abrahamic-2.96.17.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -365,7 +365,7 @@ php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
 find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
 for f in assets/js/*.js; do node --check "$f" || exit 1; done
-git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.16.zip HEAD   # after the release is committed
+git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.17.zip HEAD   # after the release is committed
 ```
 
 Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line. The tests replace WordPress with small stubs, so they need only PHP.
@@ -427,6 +427,12 @@ Markup: a `<section aria-labelledby>` with an `h2`, the lead as `<article><figur
 The block adds category tabs, hover, focus and pressed states (one `--abr-ll-on` variable drives them), a date and reading-time line, and a fade-up from `assets/js/lead-list.js`. The Colours tab sets `ll_tabs`, `ll_motion` and `ll_accent`; the filters are `abr_lead_list_show_tabs`, `abr_lead_list_motion` and `abr_lead_list_accent`.
 
 `assets/css/lead-list.css` loads on the first page of the Journal and of the archives that use `archive.html` (`abr_lead_list_assets()`, `wp_enqueue_scripts` at 20). It is not enqueued from the block: an enqueue made while the template renders prints `theme.css` above the core block styles, which then win over it. Columns run `minmax(0,3fr) minmax(0,2fr)` and stack under 782px. The title sits on `rgb(0 0 0 / .85)`, which fades to clear above it, so white type stays above 4.5:1 on any photograph. Each card is one link; its `::after` covers the card and takes the focus ring. List titles clamp at three lines. Hover zoom stops under `prefers-reduced-motion`.
+
+## Testing performed for 2.96.17
+
+- Playwright at 320, 360, 375, 390, 414, 480, 768, 1024 and 1280 pixels on 16 page types: no horizontal overflow at any width, no new axe violation, and the 1024 and 1280 layouts unchanged.
+- Menu button: keyboard open, `aria-expanded` true and false, focus trap, Escape to close, focus back on the button. The header search toggle behaves the same way.
+- `php tests/*.php` and `php -l` pass.
 
 ## Testing performed for 2.96.12
 
