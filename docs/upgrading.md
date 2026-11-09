@@ -13,6 +13,14 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.18 to 2.96.19
+
+Replace the theme files. The seed version rises from 110 to 111, so the next admin page load runs the seeder. In the default `replace` mode it writes the new text of the Bible, Donate and Thank-you pages over the stored text and keeps the old text in a WordPress revision. An owner edit to those three pages is therefore replaced; restore it from the revision. With `keep` mode, only pages that still match their fingerprint refresh. The seeder creates the new article as Scheduled for 5 January 2027.
+
+Open items for the owner:
+- The Islam and Mandaeism sections rest on sources other than Davidson (al-Azami, Sahih al-Bukhari 4986 and 4987, Drower, Buckley) and need a human check.
+- Davidson's page numbers are the printed pages of Project Gutenberg eBook 30132.
+
 ## Upgrading from 2.96.17 to 2.96.18
 
 Replace the theme files. If Theme Options shows a notice about a saved donation link, the old link is not used and has not been changed; the Donate page now opens the site's PayPal link.

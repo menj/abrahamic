@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.18
+Stable tag: 2.96.19
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -223,6 +223,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.19 =
+Replace the theme files. Nothing else to do. The next admin page load refreshes the Bible, Donate and Thank-you pages and schedules one new article.
 
 = 2.96.18 =
 Replace the theme files. The Donate page now offers four US dollar amounts and a Donate with PayPal button. A donation link saved earlier that is not the site's PayPal link is no longer used, and is left untouched in your settings.
@@ -661,6 +664,11 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 Browsers ask for /favicon.ico at the top of the domain, such as example.com/favicon.ico, even when the site lives in example.com/blog/. WordPress never sees that request, so put a copy of the theme's favicon.ico in the domain root folder. The icon tags in each page cover the pages either way.
 
 == Changelog ==
+
+= 2.96.19 - 2026-11-09 =
+* The Bible page no longer says the Orthodox churches never defined their canon. It now names the Jerusalem synod of 1672, and a new paragraph gives the history of the New Testament lists.
+* A new article, scheduled for 5 January 2027, on how Judaism, Christianity, Islam and Mandaeism decide what counts as scripture.
+* The Donate and Thank-you pages no longer link to paypal.com in general. Donations go only to the site's PayPal link.
 
 = 2.96.18 - 2026-11-09 =
 * Donations: the Donate page offers $5, $10, $25 and $50 and a Donate with PayPal button. All open the site's PayPal page, in US dollars only. The theme loads no PayPal script.

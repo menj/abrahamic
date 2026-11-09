@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.18** |
+| Current version | **2.96.19** |
 | Release date | 2026-11-09 |
 | Status | Stable |
 
@@ -783,6 +783,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-09 | 2.96.19 | The Bible page names the Jerusalem synod of 1672 and the New Testament lists; the generic PayPal link leaves the Donate and Thank-you pages; one four-faith article on scripture is scheduled for 2027-01-05 | Davidson (1877) shows the Greek church confirmed its longer list in 1672, and donations go only to the site's own PayPal link. |
 | 2026-11-09 | 2.96.18 | Donations go only to the site's PayPal.me link, in US dollars only; no other provider, currency, per-post or campaign link | Owner instruction, relayed 2026-11-09; the link is fixed in code and shown read-only |
 | 2026-11-09 | 2.96.17 | Mobile-first audit: long text wraps from `.wp-site-blocks`, small links get 44 px targets on touch screens, the sticky header releases on short landscape screens | A measured pass at nine widths found one overflow (long titles and links) and several sub-24 px targets; the fixes are additive and desktop sizes are unchanged |
 | 2026-11-09 | 2.96.16 | Admin settings screen audited against the admin UI spec; only the sticky Save bar scroll padding changed | The screen already passed every other criterion, so nothing else was rebuilt. |
