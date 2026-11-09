@@ -17,6 +17,7 @@ define( 'ABSPATH', __DIR__ . '/' );
 
 class WP_Post {
 	public $ID;
+	public $post_content = 'one two three four five six seven eight nine ten';
 	public $post_status = 'publish';
 	public $post_title  = '';
 	public function __construct( $id, $img = true ) {
@@ -26,13 +27,18 @@ class WP_Post {
 	}
 	public $img;
 }
-class WP_Term {}
+class WP_Term {
+	public $slug;
+	public $name;
+	public $term_id;
+}
 class WP_Query {}
 class WP_Block {}
 
 $GLOBALS['abr_t'] = array(
 	'posts'    => array(),
 	'unlisted' => array(),
+	'filters'  => array(),
 );
 function abr_t_posts( array $spec ) {
 	$GLOBALS['abr_t']['posts'] = array();
@@ -43,6 +49,43 @@ function abr_t_posts( array $spec ) {
 }
 function add_action() {}
 function add_filter() {}
+function apply_filters( $tag, $value ) {
+	return $GLOBALS['abr_t']['filters'][ $tag ] ?? $value;
+}
+function abr_get_option( $k ) {
+	return $GLOBALS['abr_t']['opts'][ $k ] ?? ( 'll_accent' === $k ? '' : 1 );
+}
+function strip_shortcodes( $s ) {
+	return $s;
+}
+function wp_strip_all_tags( $s ) {
+	return strip_tags( (string) $s );
+}
+function _n( $a ) {
+	return $a;
+}
+function get_the_date( $f, $p ) {
+	return 'c' === $f ? '2026-11-05T00:00:00+00:00' : '5 Nov 2026';
+}
+function get_the_category( $id ) {
+	$cats = array(
+		1 => array( 'history' ),
+		2 => array( 'uncategorized', 'scripture' ),
+		3 => array( 'uncategorized' ),
+	);
+	$out  = array();
+	foreach ( $cats[ $id ] ?? array( 'theology' ) as $slug ) {
+		$c          = new WP_Term();
+		$c->slug    = $slug;
+		$c->name    = ucfirst( $slug );
+		$c->term_id = crc32( $slug ) % 1000;
+		$out[]      = $c;
+	}
+	return $out;
+}
+function get_category_link( $id ) {
+	return '/category/' . $id . '/';
+}
 function __( $s ) {
 	return $s;
 }
@@ -149,5 +192,51 @@ abr_test_check( '' === $r['html'], 'a lead without a photograph: nothing is draw
 
 $r = abr_lead_list( abr_t_posts( array( 1 => true, 2 => false, 3 => true, 4 => true, 5 => true, 6 => true ) ) );
 abr_test_check( 1 === substr_count( $r['html'], 'abr-lead-list__thumb--empty' ), 'a list article without a photograph keeps an empty 16:9 panel' );
+
+// Category tabs, meta line, current row, settings.
+$r = abr_lead_list( abr_t_posts( array( 1 => true, 2 => true, 3 => true, 4 => true, 5 => true, 6 => true ) ) );
+abr_test_check( 6 === substr_count( $r['html'], 'class="abr-lead-list__meta"' ) && false !== strpos( $r['html'], '1 min read' ), 'the lead and each item carry a date and reading-time line' );
+abr_test_check( 1 === preg_match( '#<a class="abr-lead-list__tab abr-lead-list__tab--c\d" href="/category/\d+/">History</a>#', $r['html'] ) && false === strpos( $r['html'], '>Uncategorized<' ), 'the lead tab is a link that names the category; the default category is skipped' );
+abr_test_check( 5 === substr_count( $r['html'], '<a class="abr-lead-list__tab' ), 'a piece with only the default category has no tab' );
+abr_test_check( 1 === substr_count( $r['html'], 'abr-lead-list__item is-current' ), 'only the first list item is the current row' );
+abr_test_check( 5 === substr_count( $r['html'], 'class="abr-lead-list__arrow" aria-hidden="true"' ), 'arrows are hidden from assistive technology' );
+abr_test_check( false === strpos( $r['html'], 'abr-lead-list--calm' ) && false === strpos( $r['html'], 'style="--abr-ll-accent' ), 'by default motion is on and the theme accent is used' );
+$GLOBALS['abr_t']['filters'] = array(
+	'abr_lead_list_show_tabs' => false,
+	'abr_lead_list_motion'    => false,
+	'abr_lead_list_accent'    => '#2f6fb0',
+);
+$r = abr_lead_list( abr_t_posts( array( 1 => true, 2 => true, 3 => true, 4 => true, 5 => true, 6 => true ) ) );
+abr_test_check( false === strpos( $r['html'], '<a class="abr-lead-list__tab' ) && false !== strpos( $r['html'], 'abr-lead-list--calm' ) && false !== strpos( $r['html'], '--abr-ll-accent:#2f6fb0' ), 'the switches remove the tabs and motion, and the accent override is applied' );
+$GLOBALS['abr_t']['filters'] = array( 'abr_lead_list_accent' => 'red; background:url(x)' );
+$r = abr_lead_list( abr_t_posts( array( 1 => true, 2 => true, 3 => true, 4 => true, 5 => true, 6 => true ) ) );
+abr_test_check( false === strpos( $r['html'], 'style="--abr-ll-accent' ), 'an accent that is not a hex colour is dropped' );
+$GLOBALS['abr_t']['filters'] = array();
+
+// Contrast of the tab pairs in both modes, and of the default hovered title on its tint.
+$abr_modes = array(
+	'light' => array( 'navy' => '#172033', 'ivory' => '#f8f5ef', 'white' => '#ffffff', 'gold' => '#b89555', 'beige' => '#e9e2d5' ),
+	'dark'  => array( 'navy' => '#ece7dd', 'ivory' => '#0f131b', 'white' => '#171d29', 'gold' => '#cfa869', 'beige' => '#2b3341' ),
+);
+foreach ( $abr_modes as $mode => $t ) {
+	$ink   = 'light' === $mode ? abr_lead_list_mix( $t['gold'], $t['navy'], 60 ) : $t['gold'];
+	$pairs = array(
+		'c0' => array( $t['navy'], $t['ivory'] ),
+		'c1' => array( $ink, $t['white'] ),
+		'c2' => array( $t['gold'], '#172033' ),
+		'c3' => array( $t['beige'], $t['navy'] ),
+		'c4' => array( abr_lead_list_mix( $t['navy'], $t['ivory'], 66 ), $t['ivory'] ),
+	);
+	foreach ( $pairs as $name => $pair ) {
+		$ratio = abr_lead_list_ratio( $pair[0], $pair[1] );
+		abr_test_check( $ratio >= 4.5, sprintf( 'tab %s in the %s mode reads at %.1f:1 (needs 4.5)', $name, $mode, $ratio ) );
+	}
+	$tint  = abr_lead_list_mix( $t['gold'], $t['ivory'], 12 );
+	$ratio = abr_lead_list_ratio( $ink, $tint );
+	abr_test_check( $ratio >= 4.5, sprintf( 'the hovered title in the %s mode reads at %.1f:1 on its tint', $mode, $ratio ) );
+	$muted = abr_lead_list_mix( $t['navy'], $t['ivory'], 66 );
+	abr_test_check( abr_lead_list_ratio( $muted, $tint ) >= 4.5, sprintf( 'the meta line in the %s mode reads at %.1f:1 on the tint', $mode, abr_lead_list_ratio( $muted, $tint ) ) );
+}
+abr_test_check( abr_lead_list_accent_ok( '#2f6fb0' ) && ! abr_lead_list_accent_ok( '#ffffff' ) && ! abr_lead_list_accent_ok( '#f5f5a0' ), 'an accent override that cannot carry text is refused' );
 
 exit( $abr_fail ? 1 : 0 );

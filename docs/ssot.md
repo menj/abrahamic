@@ -4,8 +4,8 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.13** |
-| Release date | 2026-11-05 |
+| Current version | **2.96.14** |
+| Release date | 2026-11-09 |
 | Status | Stable |
 
 ---
@@ -783,6 +783,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-09 | 2.96.14 | The lead and list carries category tabs, hover, focus and pressed states, a staggered entrance and a Lead and list card on the Colours tab (`ll_tabs`, `ll_motion`, `ll_accent`) | The block looked flat; the owner asked for states and tabs. Every state is a CSS variable, and reduced motion keeps only colour changes |
 | 2026-11-05 | 2.96.13 | The settings and readme say the other sites in plain words; a subfolder install keeps a copy of `favicon.ico` at the domain root | Wording and a deployment note; no behaviour changed |
 
 | 2026-11-05 | 2.96.12 | The first page of the Journal and of each archive opens with a lead and list: the newest article large with its credit, the next five beside it, the grid below. Below five articles, or with a lead that has no photograph, the grid shows alone | The owner asked for this layout "only ... where it makes sense", in the theme's own colours; an audit marked these two templates |

@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.13
+Stable tag: 2.96.14
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -55,7 +55,7 @@ Page text, templates and the home page sections are edited in Appearance > Edito
 * Header: the logo style, the two logo lines, the search, call-to-action and Donate buttons, and the Donate page button.
 * Footer: the footer title, tagline, description, copyright line and note, and the contact email.
 * Navigation: the main menu, the home page section bar, the drifting chapter banners, the footer links and columns, and Further reading. Write one link per line as Label | target.
-* Colours: click a scheme card, or choose Custom and set five colours with the colour pickers.
+* Colours: click a scheme card, or choose Custom and set five colours with the colour pickers. The Lead and list card switches the category tabs and the arrows and motion, and sets an accent colour.
 * Newsletter: the form address and field name from your mailing service. The form stays hidden until the address is set.
 * Social: one profile address per network. A filter box finds a network by name.
 * Login: the login screen design, layout, photograph and line of text, and the private login address.
@@ -221,6 +221,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.14 =
+Replace the theme files. Nothing to do; the Colours tab gains a Lead and list card, with everything on.
 
 = 2.96.13 =
 Replace the theme files. On a site in a subfolder, also put a copy of assets/images/favicon.ico in the domain root folder; otherwise nothing to do.
@@ -644,6 +647,12 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 Browsers ask for /favicon.ico at the top of the domain, such as example.com/favicon.ico, even when the site lives in example.com/blog/. WordPress never sees that request, so put a copy of the theme's favicon.ico in the domain root folder. The icon tags in each page cover the pages either way.
 
 == Changelog ==
+
+= 2.96.14 - 2026-11-09 =
+* The lead and list reacts. A row under the pointer or the keyboard focus gets a soft tint that grows past it, a gold bar on its left edge, a zoom on its thumbnail, an underlined title in gold ink and an arrow. The first row carries the bar at rest.
+* Each article shows its category as a coloured tab that links to the category, with its date and reading time under the title. The large article shows a Read arrow on hover and focus.
+* The block fades up in turn as it scrolls into view. Visitors who ask for reduced motion see colour changes only.
+* The Colours tab has a Lead and list card: category tabs, arrows and motion, and an accent colour.
 
 = 2.96.13 - 2026-11-05 =
 * The settings and the readme speak of the other sites in plain words. Links to them stay.

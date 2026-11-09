@@ -593,6 +593,12 @@ function abr_render_options_page() {
 					?>
 					</div>
 				</div>
+				<h3><?php esc_html_e( 'Lead and list', 'abrahamic' ); ?></h3>
+				<?php
+				abr_field( 'll_tabs', __( 'Category tabs', 'abrahamic' ), 'checkbox', __( 'Show a category tab above each title in the lead and list on the Journal and the archives. The tab names the category and links to it.', 'abrahamic' ) );
+				abr_field( 'll_motion', __( 'Arrows and motion', 'abrahamic' ), 'checkbox', __( 'Show the arrows, the zoom and the fade-up. Switched off, the colour changes on hover and focus stay. Visitors who ask their device for reduced motion never see movement.', 'abrahamic' ) );
+				abr_field( 'll_accent', __( 'Accent colour', 'abrahamic' ), 'color', __( 'The row highlight, the accent bar, the arrows and the hovered title. Leave empty to use the gold of the scheme. The colour must reach 4.5:1 as text in both appearances.', 'abrahamic' ) );
+				?>
 			</section>
 
 			<section class="abr-panel" role="tabpanel" id="abr-panel-newsletter" aria-labelledby="abr-tab-newsletter" tabindex="0"<?php abr_options_panel_hidden( 'newsletter' ); ?>>

@@ -1,9 +1,25 @@
 /* Lead and list: one large article and a stacked list of five, above the grid
-   on the first page of the Journal and of each archive (inc/lead-list.php). */
+   on the first page of the Journal and of each archive (inc/lead-list.php).
+   Colours come from the theme tokens, which the dark mode redefines.
+
+   State is one number. A hovered, focused or pressed row or lead sets
+   --abr-ll-on to 1, and the highlight, the accent bar, the zoom, the title
+   colour and underline, the arrow and the rule all read it, so the states
+   cannot drift apart. Hover is under (hover: hover); focus and pressed
+   are not, so a keyboard and a touch screen get them too. */
 
 .abr-lead-list {
 	--abr-ll-radius: 4px;
 	--abr-ll-gap: clamp(1.25rem, 3vw, 2.5rem);
+	--abr-ll-accent: var(--abr-gold);
+	/* Text in the accent: the scheme's gold ink, which holds 4.5:1 on the hover tint in both appearances. */
+	--abr-ll-accent-text: var(--abr-gold-ink);
+	--abr-ll-tint: color-mix(in srgb, var(--abr-ll-accent) 12%, var(--abr-ivory));
+	--abr-ll-tint-press: color-mix(in srgb, var(--abr-ll-accent) 20%, var(--abr-ivory));
+	--abr-ll-rule: color-mix(in srgb, var(--abr-navy) 14%, transparent);
+	--abr-ll-muted: var(--abr-muted);
+	--abr-ll-grow: 0.65rem;
+	--abr-ll-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 	margin-block: clamp(1.5rem, 3vw, 2.5rem) var(--abr-ll-gap);
 	font-family: var(--abr-font);
 }
@@ -23,7 +39,7 @@
 }
 
 /* Lead */
-.abr-lead-list__lead,
+.abr-lead-list__lead { margin: 0; --abr-ll-on: 0; }
 .abr-lead-list__figure { margin: 0; }
 
 .abr-lead-list__media {
@@ -45,14 +61,24 @@
 	height: 100%;
 	aspect-ratio: 3 / 2;
 	object-fit: cover;
-	transition: transform var(--abr-ease);
+	transform: scale(calc(1 + 0.05 * var(--abr-ll-on)));
+	transition: transform 0.6s var(--abr-ll-ease);
 }
 
-.abr-lead-list__lead:hover .abr-lead-list__img { transform: scale(1.03); }
+/* A second, darker veil that fades in on hover, so the gradient deepens. */
+.abr-lead-list__media::before {
+	content: "";
+	background: linear-gradient(to top, rgb(0 0 0 / 0.5) 0, rgb(0 0 0 / 0.15) 60%, rgb(0 0 0 / 0) 100%);
+	opacity: var(--abr-ll-on);
+	transition: opacity 0.35s ease;
+	pointer-events: none;
+}
 
 /* The gradient runs from 85% black at the foot to clear; the text sits on the
    solid 85% part, so white type keeps well above 4.5:1 on any photograph. */
 .abr-lead-list__overlay {
+	position: relative;
+	z-index: 1;
 	align-self: end;
 	padding: 4.5rem clamp(1rem, 2.5vw, 1.75rem) clamp(1rem, 2.5vw, 1.5rem);
 	background: linear-gradient(to top, rgb(0 0 0 / 0.85) 0, rgb(0 0 0 / 0.85) calc(100% - 4.5rem), rgb(0 0 0 / 0) 100%);
@@ -61,15 +87,18 @@
 
 .abr-lead-list__rule {
 	display: block;
-	width: 3rem;
+	width: calc(3rem + 3rem * var(--abr-ll-on));
 	height: 3px;
 	margin-bottom: 0.85rem;
 	background: var(--abr-gold);
 	border-radius: 2px;
+	transition: width 0.4s var(--abr-ll-ease);
 }
 
 .abr-lead-list__title {
 	margin: 0;
+	text-align: start;
+	text-wrap: balance;
 	font-size: clamp(1.35rem, 2.6vw, 2.1rem);
 	line-height: 1.2;
 	font-weight: 700;
@@ -77,6 +106,27 @@
 }
 
 .abr-lead-list__title .abr-lead-list__link { color: #fff; }
+
+.abr-lead-list__lead .abr-lead-list__meta { color: #e6edf5; padding-inline-end: 5rem; }
+
+/* "Read" and its arrow, at the foot of the band, on hover and focus. */
+.abr-lead-list__read {
+	position: absolute;
+	inset-inline-end: clamp(1rem, 2.5vw, 1.75rem);
+	inset-block-end: clamp(1rem, 2.5vw, 1.5rem);
+	display: inline-flex;
+	gap: 0.35rem;
+	align-items: center;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: #fff;
+	opacity: var(--abr-ll-on);
+	transform: translateX(calc((1 - var(--abr-ll-on)) * -0.6rem));
+	transition: opacity 0.3s ease, transform 0.4s var(--abr-ll-ease);
+	pointer-events: none;
+}
+
+.abr-lead-list__read .abr-lead-list__arrow { position: static; opacity: 1; transform: none; color: var(--abr-gold); font-size: 1.15rem; line-height: 1; }
 
 .abr-lead-list__credit {
 	margin-top: 0.5rem;
@@ -87,7 +137,61 @@
 
 .abr-lead-list__credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .abr-lead-list__credit a:hover,
-.abr-lead-list__credit a:focus-visible { color: var(--abr-gold-ink); }
+.abr-lead-list__credit a:focus-visible { color: var(--abr-gold); }
+
+/* Category tabs. Five colour pairs, each a theme token with the token that
+   reads on it; a category slug picks one and keeps it. Both appearances are
+   checked at 4.5:1 in tests/lead-list-test.php. */
+.abr-lead-list__tab {
+	--abr-ll-tab-bg: var(--abr-navy);
+	--abr-ll-tab-fg: var(--abr-ivory);
+	position: relative;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	min-height: 1.5rem;
+	margin-bottom: 0.4rem;
+	padding: 0.1rem 0.7rem;
+	border: 1px solid var(--abr-ll-tab-bd, transparent);
+	border-radius: 999px;
+	background: var(--abr-ll-tab-bg);
+	color: var(--abr-ll-tab-fg);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	line-height: 1.3;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: box-shadow 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.abr-lead-list__tab--c0 { --abr-ll-tab-bg: var(--abr-navy); --abr-ll-tab-fg: var(--abr-ivory); }
+.abr-lead-list__tab--c1 { --abr-ll-tab-bg: var(--abr-gold-ink); --abr-ll-tab-fg: var(--abr-white); }
+.abr-lead-list__tab--c2 { --abr-ll-tab-bg: var(--abr-gold); --abr-ll-tab-fg: #172033; }
+.abr-lead-list__tab--c3 { --abr-ll-tab-bg: var(--abr-beige); --abr-ll-tab-fg: var(--abr-navy); --abr-ll-tab-bd: var(--abr-navy); }
+.abr-lead-list__tab--c4 { --abr-ll-tab-bg: color-mix(in srgb, var(--abr-navy) 66%, var(--abr-ivory)); --abr-ll-tab-fg: var(--abr-ivory); }
+
+.abr-lead-list__tab:focus-visible {
+	outline: 2px solid var(--abr-navy);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 4px var(--abr-ivory);
+	text-decoration: underline;
+}
+
+.abr-lead-list__tab:active { text-decoration: underline; }
+
+/* On the photograph the focus ring needs a light edge as well. */
+.abr-lead-list__overlay .abr-lead-list__tab:focus-visible { outline-color: #fff; box-shadow: 0 0 0 4px #000; }
+
+.abr-lead-list__meta {
+	margin: 0.4rem 0 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.15rem 0.5rem;
+	font-size: 0.8rem;
+	line-height: 1.4;
+	color: var(--abr-ll-muted);
+}
 
 /* List */
 .abr-lead-list__list {
@@ -97,17 +201,53 @@
 }
 
 .abr-lead-list__item {
+	--abr-ll-on: 0;
+	--abr-ll-cur: 0;
 	position: relative;
+	isolation: isolate;
 	display: grid;
 	grid-template-columns: minmax(6.5rem, 40%) minmax(0, 1fr);
 	gap: 1rem;
 	align-items: center;
-	padding-block: 0.9rem;
-	border-top: 1px solid var(--abr-hair);
+	margin-inline: calc(-1 * var(--abr-ll-grow));
+	padding: 0.9rem var(--abr-ll-grow);
+	border-top: 1px solid color-mix(in srgb, var(--abr-ll-accent) calc(max(var(--abr-ll-on), var(--abr-ll-above, 0)) * 100%), var(--abr-ll-rule));
+	transition: border-color 0.25s ease;
 }
 
-.abr-lead-list__item:first-child { padding-top: 0; border-top: 0; }
+.abr-lead-list__item:first-child { padding-top: 0; border-top-color: transparent; }
 .abr-lead-list__item:last-child { padding-bottom: 0; }
+
+/* The highlight: a soft tint that grows past the row, with rounded corners. */
+.abr-lead-list__item::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	inset: -0.35rem 0;
+	border-radius: calc(var(--abr-ll-radius) + 4px);
+	background: var(--abr-ll-tint);
+	opacity: max(var(--abr-ll-on), calc(var(--abr-ll-cur) * 0.55));
+	transform: scale(calc(0.97 + 0.03 * max(var(--abr-ll-on), var(--abr-ll-cur))));
+	transition: opacity 0.25s ease, transform 0.35s var(--abr-ll-ease), background-color 0.15s ease;
+}
+
+/* The accent bar on the left edge, sliding in. */
+.abr-lead-list__item::after {
+	content: "";
+	position: absolute;
+	inset-block: -0.15rem;
+	inset-inline-start: 0.2rem;
+	width: 4px;
+	border-radius: 4px;
+	background: var(--abr-ll-accent);
+	opacity: max(var(--abr-ll-on), var(--abr-ll-cur));
+	transform: scaleY(max(var(--abr-ll-on), var(--abr-ll-cur)));
+	transition: transform 0.35s var(--abr-ll-ease), opacity 0.2s ease;
+}
+
+/* The first row carries the bar at rest, so the list is never lifeless. */
+.abr-lead-list__item.is-current { --abr-ll-cur: 1; }
+.abr-lead-list__item.is-current:first-child::before { inset-block-start: -0.35rem; }
 
 .abr-lead-list__thumb {
 	display: block;
@@ -122,15 +262,18 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform var(--abr-ease);
+	transform: scale(calc(1 + 0.06 * var(--abr-ll-on)));
+	transition: transform 0.45s var(--abr-ll-ease);
 }
 
-.abr-lead-list__item:hover .abr-lead-list__thumb-img { transform: scale(1.04); }
+.abr-lead-list__text { min-width: 0; padding-inline-end: 1.75rem; }
 
 .abr-lead-list__item-title {
 	margin: 0;
+	text-align: start;
+	hyphens: manual;
 	font-size: 1.05rem;
-	line-height: 1.3;
+	line-height: 1.35;
 	font-weight: 700;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
@@ -139,8 +282,29 @@
 	overflow: hidden;
 }
 
-.abr-lead-list__item-title .abr-lead-list__link { color: var(--abr-navy); }
-.abr-lead-list__item:hover .abr-lead-list__link { color: var(--abr-gold-ink); }
+.abr-lead-list__item-title .abr-lead-list__link {
+	color: color-mix(in srgb, var(--abr-ll-accent-text) calc(var(--abr-ll-on) * 100%), var(--abr-navy));
+	background: linear-gradient(currentColor, currentColor) 0 100% / calc(var(--abr-ll-on) * 100%) 2px no-repeat;
+	padding-bottom: 2px;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+	transition: color 0.2s ease, background-size 0.35s var(--abr-ll-ease);
+}
+
+/* The arrow at the end of the row. */
+.abr-lead-list__item > .abr-lead-list__arrow {
+	position: absolute;
+	inset-inline-end: calc(var(--abr-ll-grow) + 0.1rem);
+	inset-block-start: 50%;
+	margin-top: -0.7rem;
+	font-size: 1.25rem;
+	line-height: 1.4;
+	color: var(--abr-ll-accent-text);
+	opacity: var(--abr-ll-on);
+	transform: translateX(calc((1 - var(--abr-ll-on)) * -0.75rem));
+	transition: opacity 0.25s ease, transform 0.4s var(--abr-ll-ease);
+	pointer-events: none;
+}
 
 /* The whole card is the link: the link's ::after covers the card, and the
    focus ring is drawn on it. */
@@ -157,9 +321,15 @@
 	border-radius: var(--abr-ll-radius);
 }
 
-.abr-lead-list__link:focus-visible::after {
-	outline: 3px solid var(--abr-gold);
-	outline-offset: 3px;
+.abr-lead-list__item .abr-lead-list__link::after {
+	inset: -0.35rem 0;
+	border-radius: calc(var(--abr-ll-radius) + 4px);
+}
+
+/* Focus: a 2px ring in the contrast colour on the grown row. */
+.abr-lead-list__item .abr-lead-list__link:focus-visible::after {
+	outline: 2px solid var(--abr-navy);
+	outline-offset: 0;
 }
 
 /* The lead's link covers the photograph only, so the credit links below it stay usable. */
@@ -168,8 +338,54 @@
 /* The photograph clips anything outside it, so the lead's ring is drawn
    inside its edge, with a dark band under it to show on any photograph. */
 .abr-lead-list__lead .abr-lead-list__link:focus-visible::after {
+	outline: 3px solid var(--abr-gold);
 	outline-offset: -6px;
 	box-shadow: inset 0 0 0 3px rgb(0 0 0 / 0.85);
+}
+
+/* Row and lead states: focus and pressed everywhere, hover only where a
+   pointer can hover. */
+.abr-lead-list__item:has(:focus-visible),
+.abr-lead-list__lead:has(.abr-lead-list__link:focus-visible) { --abr-ll-on: 1; }
+
+.abr-lead-list__item:has(:focus-visible) + .abr-lead-list__item { --abr-ll-above: 1; }
+
+.abr-lead-list__item:active,
+.abr-lead-list__lead:active { --abr-ll-on: 1; }
+
+.abr-lead-list__item:active::before { background: var(--abr-ll-tint-press); }
+.abr-lead-list__item:active + .abr-lead-list__item { --abr-ll-above: 1; }
+
+/* While another row is the one in use, the current row gives its bar up. */
+.abr-lead-list__list:has(:focus-visible) .abr-lead-list__item.is-current:not(:has(:focus-visible)) { --abr-ll-cur: 0; }
+
+@media (hover: hover) {
+	.abr-lead-list__item:hover,
+	.abr-lead-list__lead:hover { --abr-ll-on: 1; }
+	.abr-lead-list__item:hover + .abr-lead-list__item { --abr-ll-above: 1; }
+	.abr-lead-list__list:has(.abr-lead-list__item:hover) .abr-lead-list__item.is-current:not(:hover) { --abr-ll-cur: 0; }
+	.abr-lead-list__tab:hover { text-decoration: underline; box-shadow: 0 0 0 2px color-mix(in srgb, var(--abr-ll-tab-bg) 40%, transparent); }
+}
+
+/* A touch screen has no hover, so the arrows stay at rest, faint. */
+@media (hover: none) {
+	.abr-lead-list__item > .abr-lead-list__arrow { opacity: max(0.7, var(--abr-ll-on)); transform: translateX(calc((1 - var(--abr-ll-on)) * -0.25rem)); }
+	.abr-lead-list__read { opacity: 1; transform: none; }
+}
+
+/* Entrance: the block fades up in turn when it scrolls into view
+   (assets/js/lead-list.js adds the classes; without it nothing is hidden). */
+.abr-lead-list.is-armed .abr-lead-list__lead,
+.abr-lead-list.is-armed .abr-lead-list__item {
+	opacity: 0;
+	transform: translateY(14px);
+}
+
+.abr-lead-list.is-armed.is-in .abr-lead-list__lead,
+.abr-lead-list.is-armed.is-in .abr-lead-list__item {
+	opacity: 1;
+	transform: none;
+	transition: opacity 0.55s ease calc((var(--abr-ll-i, -1) + 1) * 70ms), transform 0.55s var(--abr-ll-ease) calc((var(--abr-ll-i, -1) + 1) * 70ms), border-color 0.25s ease;
 }
 
 @media (max-width: 781px) {
@@ -180,15 +396,43 @@
 	.abr-lead-list__item { grid-template-columns: minmax(6.5rem, 38%) minmax(0, 1fr); }
 }
 
+/* Reduced motion: no movement and no zoom; the colour changes stay. Switching
+   "Arrows and motion" off in the theme options does the same and hides the arrows. */
 @media (prefers-reduced-motion: reduce) {
+	/* If the preference turns on after the block was hidden for its entrance, show it at rest. */
+	.abr-lead-list.is-armed .abr-lead-list__lead,
+	.abr-lead-list.is-armed .abr-lead-list__item { opacity: 1; transform: none; transition: none; }
 	.abr-lead-list__img,
-	.abr-lead-list__thumb-img { transition: none; }
-	.abr-lead-list__lead:hover .abr-lead-list__img,
-	.abr-lead-list__item:hover .abr-lead-list__thumb-img { transform: none; }
+	.abr-lead-list__thumb-img,
+	.abr-lead-list__rule,
+	.abr-lead-list__read,
+	.abr-lead-list__item > .abr-lead-list__arrow,
+	.abr-lead-list__item::before,
+	.abr-lead-list__item::after { transition-property: opacity, color, background-color, border-color; }
+	.abr-lead-list__img,
+	.abr-lead-list__thumb-img,
+	.abr-lead-list__read,
+	.abr-lead-list__item > .abr-lead-list__arrow,
+	.abr-lead-list__item::before,
+	.abr-lead-list__item::after { transform: none; }
+	.abr-lead-list__rule { width: 3rem; }
+	.abr-lead-list__item-title .abr-lead-list__link { transition-property: color; }
 }
+
+.abr-lead-list--calm .abr-lead-list__img,
+.abr-lead-list--calm .abr-lead-list__thumb-img,
+.abr-lead-list--calm .abr-lead-list__read,
+.abr-lead-list--calm .abr-lead-list__item::before,
+.abr-lead-list--calm .abr-lead-list__item::after { transform: none; transition-property: opacity, color, background-color, border-color; }
+.abr-lead-list--calm .abr-lead-list__rule { width: 3rem; }
+.abr-lead-list--calm .abr-lead-list__item > .abr-lead-list__arrow,
+.abr-lead-list--calm .abr-lead-list__read { display: none; }
+.abr-lead-list--calm .abr-lead-list__item-title .abr-lead-list__link { transition-property: color; }
 
 @media (forced-colors: active) {
 	.abr-lead-list__overlay { background: Canvas; color: CanvasText; }
 	.abr-lead-list__title .abr-lead-list__link { color: LinkText; }
 	.abr-lead-list__link:focus-visible::after { outline-color: Highlight; }
+	.abr-lead-list__item::after { background: Highlight; }
+	.abr-lead-list__tab { border: 1px solid ButtonText; }
 }
