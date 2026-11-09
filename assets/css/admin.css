@@ -183,3 +183,6 @@
 .abr-media { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .abr-panel .notice.inline { margin: 16px 0 0; }
 @media (max-width: 960px) { .abr-columns { grid-template-columns: 1fr; } }
+
+/* The sticky Save bar must not hide a focused field (WCAG 2.4.11). This file loads on the theme options screen only, so the plain html selector stays scoped. */
+html { scroll-padding-bottom: 96px; }
