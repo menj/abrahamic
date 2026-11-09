@@ -177,9 +177,23 @@ document.addEventListener( 'click', function ( event ) {
 		var original = button.textContent;
 		button.textContent = button.getAttribute( 'data-copied' );
 		button.classList.add( 'is-done' );
+		// A polite status region announces the result to a screen reader (WCAG 4.1.3).
+		var status = document.getElementById( 'abr-copy-status' );
+		if ( ! status ) {
+			status = document.createElement( 'span' );
+			status.id = 'abr-copy-status';
+			status.className = 'screen-reader-text';
+			status.setAttribute( 'role', 'status' );
+			document.body.appendChild( status );
+		}
+		status.textContent = '';
+		window.setTimeout( function () {
+			status.textContent = button.getAttribute( 'data-copied' );
+		}, 50 );
 		window.setTimeout( function () {
 			button.textContent = original;
 			button.classList.remove( 'is-done' );
+			status.textContent = '';
 		}, 2000 );
 	} );
 } );

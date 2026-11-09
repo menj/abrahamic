@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.14
+Stable tag: 2.96.15
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -221,6 +221,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.15 =
+Replace the theme files. Nothing to do; focus rings, form edges and scrolling tables meet WCAG 2.2 AA.
 
 = 2.96.14 =
 Replace the theme files. Nothing to do; the Colours tab gains a Lead and list card, with everything on.
@@ -647,6 +650,13 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 Browsers ask for /favicon.ico at the top of the domain, such as example.com/favicon.ico, even when the site lives in example.com/blog/. WordPress never sees that request, so put a copy of the theme's favicon.ico in the domain root folder. The icon tags in each page cover the pages either way.
 
 == Changelog ==
+
+= 2.96.15 - 2026-11-09 =
+* Accessibility pass to WCAG 2.2 AA. The focus ring now reads at 3:1 or better on light and dark surfaces, and search and newsletter fields have a visible edge.
+* Every table that scrolls on a phone, on pages as well as articles, can be reached and scrolled with the keyboard.
+* The submenu arrow in the header is a 24 by 24 target.
+* Copying a citation tells a screen reader that it worked.
+* New check: tests/axe-check.js runs axe-core on the main templates.
 
 = 2.96.14 - 2026-11-09 =
 * The lead and list reacts. A row under the pointer or the keyboard focus gets a soft tint that grows past it, a gold bar on its left edge, a zoom on its thumbnail, an underlined title in gold ink and an arrow. The first row carries the bar at rest.

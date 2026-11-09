@@ -13,6 +13,21 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.14 to 2.96.15
+
+Replace the theme files. Nothing else to do.
+
+Accessibility issue register for this release (WCAG 2.2 AA, measured with axe-core, a keyboard walk, target-size and text-spacing probes):
+
+| Id | Severity | Criterion | Where | Status |
+|---|---|---|---|---|
+| A11Y-1 | Major | 2.1.1 | Scrolling tables on pages | Fixed |
+| A11Y-2 | Major | 1.4.11, 2.4.7 | Focus ring, gold on ivory 2.58:1 | Fixed |
+| A11Y-3 | Major | 1.4.11 | Search and newsletter field edges | Fixed |
+| A11Y-4 | Major | 2.5.8 | Header submenu toggle 10 by 10 | Fixed |
+| A11Y-5 | Minor | 4.1.3 | Copy citation status | Fixed |
+| A11Y-6 | Manual | Various | Screen reader smoke test | Open: needs a human with NVDA or VoiceOver |
+
 ## Upgrading from 2.96.13 to 2.96.14
 
 Replace the theme files. The new file is `assets/js/lead-list.js`. The Colours tab gains a Lead and list card with category tabs and arrows and motion on, and no accent override. Nothing else to do.
