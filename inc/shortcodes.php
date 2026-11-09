@@ -312,10 +312,14 @@ add_shortcode(
 		if ( ! abr_get_option( 'header_donate' ) || '' === $label || '' === $url ) {
 			return '';
 		}
-		$href  = abr_link( $url, '/' );
+		// The header button opens the Donate page or the site's PayPal.me link, in US dollars. Anything else falls back to the Donate page.
+		if ( '@donate' !== trim( $url ) && abr_donation_url_is_valid( $url ) ) {
+			$href = esc_url_raw( trim( $url ) );
+		} else {
+			$href = abr_link( '@donate', '/' );
+		}
 		$title = abr_is_external( $href )
-			/* translators: %s: site host, such as www.paypal.com. */
-			? ' title="' . esc_attr( sprintf( __( 'Opens %s', 'abrahamic' ), wp_parse_url( $href, PHP_URL_HOST ) ) ) . '"'
+			? ' title="' . esc_attr__( 'Opens PayPal, in US dollars', 'abrahamic' ) . '" rel="noopener noreferrer"'
 			: '';
 		return sprintf(
 			'<div class="wp-block-buttons abr-header__donate"><div class="wp-block-button is-small is-style-abr-donate"><a class="wp-block-button__link wp-element-button" href="%1$s"%3$s>%2$s</a></div></div>',
@@ -333,31 +337,25 @@ add_shortcode(
 add_shortcode(
 	'abr_donation',
 	function () {
-		$url = abr_get_option( 'donation_url' );
-		if ( ! $url ) {
-			// Fall back to the header button when it points to a payment page elsewhere.
-			$header = abr_link( abr_get_option( 'header_donate_url' ), '' );
-			$url    = abr_is_external( $header ) ? $header : '';
-		}
-		if ( $url ) {
-			$label = abr_get_option( 'donation_button' );
-			return sprintf(
-				'<div class="wp-block-buttons abr-donation"><div class="wp-block-button is-style-abr-donate"><a class="wp-block-button__link wp-element-button" href="%1$s">%2$s</a></div></div>',
-				esc_url( $url ),
-				esc_html( '' !== $label ? $label : __( 'Donate now', 'abrahamic' ) )
+		$label  = abr_get_option( 'donation_button' );
+		$base   = abr_donation_url();
+		$out    = '<p class="abr-donation__note">' . esc_html__( 'Give only if you wish, and only as much as suits you. Every amount is in US dollars. The buttons open PayPal, which handles the payment.', 'abrahamic' ) . '</p>';
+		$out   .= '<ul class="abr-donation__amounts" aria-label="' . esc_attr__( 'Suggested amounts in US dollars', 'abrahamic' ) . '">';
+		foreach ( abr_donation_amounts() as $amount ) {
+			$out .= sprintf(
+				'<li><a class="abr-donation__amount" href="%1$s" rel="noopener noreferrer" aria-label="%3$s">%2$s</a></li>',
+				esc_url( abr_donation_amount_url( $amount ) ),
+				esc_html( '$' . $amount ),
+				/* translators: %d: whole US dollars. */
+				esc_attr( sprintf( __( 'Give %d US dollars with PayPal', 'abrahamic' ), $amount ) )
 			);
 		}
-		$contact = abr_link( '@contact', '/about/contact/' );
-		$out     = sprintf(
-			'<p class="abr-donation">%1$s <a href="%2$s">%3$s</a>.</p>',
-			esc_html__( 'To arrange a contribution, please write to us through the', 'abrahamic' ),
-			esc_url( $contact ),
-			esc_html__( 'Contact page', 'abrahamic' )
+		$out .= '</ul>';
+		return $out . sprintf(
+			'<div class="wp-block-buttons abr-donation"><div class="wp-block-button is-style-abr-donate"><a class="wp-block-button__link wp-element-button" href="%1$s" rel="noopener noreferrer">%2$s</a></div></div>',
+			esc_url( $base ),
+			esc_html( '' !== $label ? $label : __( 'Donate with PayPal', 'abrahamic' ) )
 		);
-		if ( current_user_can( 'edit_theme_options' ) ) {
-			$out .= '<p class="abr-newsletter__notice">' . esc_html__( 'Add a donation link under Appearance > Theme Options > Header to show a Donate now button here.', 'abrahamic' ) . '</p>';
-		}
-		return $out;
 	}
 );
 

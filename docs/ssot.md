@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.17** |
+| Current version | **2.96.18** |
 | Release date | 2026-11-09 |
 | Status | Stable |
 
@@ -414,10 +414,10 @@ Stored as one array in `abr_options`. `abr_option_types()` is the schema; `abr_o
 | `header_cta_url` | link | `@guides` | Header; full, root-relative or anchor address, or a token (section 13) |
 | `header_donate` | bool | 1 | Header; red Donate button after the call-to-action, visible at every width |
 | `header_donate_label` | text | Donate | Header |
-| `header_donate_url` | link | `the owner's payment page` | Header; `@donate` opens the Donate page instead. A stored `@donate` from 2.12.0 is moved to the PayPal address once (`abr_migrate_donate_link()`, flag `abr_donate_link_migrated`); a later deliberate `@donate` is kept. External targets carry a title naming the host |
+| `header_donate_url` | link | `@donate` | Header; `@donate` opens the Donate page. The only other accepted value is the PayPal.me link, with or without a USD amount; anything else prints the Donate page link and shows a notice |
 | `donate_colour` | hex | `#b3261e` | Header; printed as `--abr-donate` with the scheme variables |
-| `donation_url` | url | `the owner's payment page` | Header; the Donate now button on the Donate page (`[abr_donation]`). When empty, the page uses the header link if it points to another site, otherwise it points to the Contact page |
-| `donation_button` | text | Donate now | Header |
+| `donation_url` | donation | `https://www.paypal.com/paypalme/menj` | Header; read-only in Theme Options. The Donate page prints it only when it is the PayPal.me link above, with or without `/<dollars>USD`; any other saved value is ignored and kept. Never rewritten by a save |
+| `donation_button` | text | Donate with PayPal | Header |
 | `footer_title` | text | Abrahamic Religions | Footer |
 | `footer_tagline` | text | Exploring faith, history, culture, and shared heritage. | Footer |
 | `footer_text` | textarea | Description sentence | Footer |
@@ -783,6 +783,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-09 | 2.96.18 | Donations go only to the site's PayPal.me link, in US dollars only; no other provider, currency, per-post or campaign link | Owner instruction, relayed 2026-11-09; the link is fixed in code and shown read-only |
 | 2026-11-09 | 2.96.17 | Mobile-first audit: long text wraps from `.wp-site-blocks`, small links get 44 px targets on touch screens, the sticky header releases on short landscape screens | A measured pass at nine widths found one overflow (long titles and links) and several sub-24 px targets; the fixes are additive and desktop sizes are unchanged |
 | 2026-11-09 | 2.96.16 | Admin settings screen audited against the admin UI spec; only the sticky Save bar scroll padding changed | The screen already passed every other criterion, so nothing else was rebuilt. |
 | 2026-11-09 | 2.96.15 | WCAG 2.2 AA pass: `--abr-focus` and `--abr-control-line` tokens, focusable scrolling tables on pages, 24 by 24 submenu toggle, copy status region, `tests/axe-check.js` | The owner's spec made 2.2 AA blocking; each change fixes a measured failure at the shared token or component. |

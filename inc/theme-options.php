@@ -460,9 +460,17 @@ function abr_render_options_page() {
 				<?php
 				abr_field( 'header_donate', __( 'Show the Donate button', 'abrahamic' ), 'checkbox', __( 'Sits beside the call-to-action button and stays visible on phones.', 'abrahamic' ) );
 				abr_field( 'header_donate_label', __( 'Donate button label', 'abrahamic' ), 'text' );
-				abr_field( 'header_donate_url', __( 'Donate button link', 'abrahamic' ), 'text', __( 'Where the header button goes: @donate opens the Donate page, or paste a payment link. A personal payment page (PayPal.me and the like) shows the account holder\'s name to every donor; use an account opened in the site\'s name to keep the owner anonymous.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
+				abr_field( 'header_donate_url', __( 'Donate button link', 'abrahamic' ), 'text', __( 'Where the header button goes: @donate opens the Donate page. The only other link the button accepts is the site\'s PayPal link, shown below. Anything else is not used.', 'abrahamic' ), array( 'spellcheck' => 'false' ) );
 				abr_field( 'donate_colour', __( 'Donate button colour', 'abrahamic' ), 'color', __( 'Keep enough contrast with white text; the default red is #b3261e.', 'abrahamic' ) );
-				abr_field( 'donation_url', __( 'Donation link', 'abrahamic' ), 'url', __( 'The payment page shown as a Donate now button on the Donate page. Defaults to the PayPal page. If empty, the page uses the header button link when it points to a payment site, otherwise it points visitors to the Contact page.', 'abrahamic' ) );
+				if ( function_exists( 'abr_donation_rejected_options' ) && abr_donation_rejected_options() ) {
+					echo '<div class="notice notice-warning inline"><p>' . esc_html__( 'A saved donation link points somewhere other than the site\'s PayPal link, so the theme does not use it. Donations go only to the PayPal link below, and the saved value has not been changed.', 'abrahamic' ) . '</p></div>';
+				}
+				printf(
+					'<div class="abr-field abr-field--url"><div class="abr-field__label"><label for="abr-donation-url">%1$s</label><p class="abr-help" id="abr-donation-url-help">%2$s</p></div><div class="abr-field__control"><input type="text" id="abr-donation-url" class="regular-text" value="%3$s" readonly aria-readonly="true" aria-describedby="abr-donation-url-help" spellcheck="false"></div></div>',
+					esc_html__( 'Donation link', 'abrahamic' ),
+					esc_html__( 'Fixed. The Donate page and its button open the site\'s PayPal link. The button opens PayPal, which handles the payment and the donor\'s data; the theme loads no PayPal scripts and sets no tracking. All amounts are in US dollars, and no other currency can be set.', 'abrahamic' ),
+					esc_attr( ABR_DONATION_BASE )
+				);
 				abr_field( 'donation_button', __( 'Donate page button label', 'abrahamic' ), 'text' );
 				?>
 				<p class="abr-help"><?php esc_html_e( 'Menu links are set on the Navigation tab.', 'abrahamic' ); ?></p>

@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.17
+Stable tag: 2.96.18
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -133,7 +133,7 @@ Open Appearance > Theme Options > Header and choose the AR mark with the name, t
 
 = How do I set up donations? =
 
-Both Donate buttons open the owner's payment page. To change them, open Appearance > Theme Options > Header: Donate button link sets the header button (use @donate to open the Donate page first), and Donation link sets the Donate now button on the Donate page. You can also change the button label, colour and link there, or hide the header button.
+The header Donate button opens the Donate page (or the site's PayPal link), and the Donate page offers $5, $10, $25 and $50 plus a Donate with PayPal button. All amounts are in US dollars and go only to the site's PayPal link, which Appearance > Theme Options > Header shows as fixed text. A saved link to any other page is ignored and left as it is.
 
 = Should I use tags or topics? =
 
@@ -208,6 +208,8 @@ Open the article and scroll to the Key points and review box below the text. Typ
 
 == Privacy ==
 
+The Donate buttons are plain links that open PayPal. PayPal handles the payment and the donor's data, and the theme loads no PayPal script and sets no tracking. Every amount is in US dollars.
+
 The theme sends nothing to another server by default. Its fonts, icons, images and scripts all load from the theme folder.
 
 Google Analytics is the one remote service, and it stays off until you enter a measurement ID under Theme Options > Search. Then every visitor who is not a logged-in editor loads Google's script from googletagmanager.com, and Google receives the visit. Say so on the Privacy Policy page; the starter text already mentions analytics.
@@ -221,6 +223,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.18 =
+Replace the theme files. The Donate page now offers four US dollar amounts and a Donate with PayPal button. A donation link saved earlier that is not the site's PayPal link is no longer used, and is left untouched in your settings.
 
 = 2.96.17 =
 Replace the theme files. Nothing to do.
@@ -656,6 +661,10 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 Browsers ask for /favicon.ico at the top of the domain, such as example.com/favicon.ico, even when the site lives in example.com/blog/. WordPress never sees that request, so put a copy of the theme's favicon.ico in the domain root folder. The icon tags in each page cover the pages either way.
 
 == Changelog ==
+
+= 2.96.18 - 2026-11-09 =
+* Donations: the Donate page offers $5, $10, $25 and $50 and a Donate with PayPal button. All open the site's PayPal page, in US dollars only. The theme loads no PayPal script.
+* Theme Options shows the donation link as fixed text. A saved link to any other page is ignored, with a notice, and is not deleted.
 
 = 2.96.17 - 2026-11-09 =
 * Phones: long titles and links wrap instead of widening the page, small links are easier to tap, the menu button tells screen readers whether the menu is open, and the header scrolls away on a phone held sideways.

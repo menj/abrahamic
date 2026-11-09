@@ -4,7 +4,7 @@ WordPress child theme of Twenty Twenty-Five for [abrahamic-religions.com](https:
 
 | | |
 |---|---|
-| Version | 2.96.17 |
+| Version | 2.96.18 |
 | Licence | GNU GPL v3 or later; the full text is in `LICENSE` |
 | Type | Child theme of Twenty Twenty-Five |
 | Requires | WordPress 6.7, PHP 7.4, Twenty Twenty-Five installed |
@@ -48,7 +48,7 @@ On a network the main site writes the files, since every site shares `wp-content
 ## Installation
 
 1. Install Twenty Twenty-Five.
-2. Upload `abrahamic-2.96.17.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
+2. Upload `abrahamic-2.96.18.zip` and activate **Abrahamic**. The starter content seeder populates the site on activation.
 3. Configure Appearance > Theme Options, including the Search tab.
 4. Submit `/wp-sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
@@ -56,7 +56,7 @@ WP-CLI:
 
 ```
 wp theme install twentytwentyfive
-wp theme install abrahamic-2.96.17.zip --activate
+wp theme install abrahamic-2.96.18.zip --activate
 wp eval 'echo count( get_option( "abr_seeded_slugs" ) );'   # runs the deferred activation hook, then reports
 ```
 
@@ -208,7 +208,7 @@ Action provided: `abr_cleanup_tick`, fired for each entry the development-file c
 | `[abr_topic_url slug="history"]` | Address of a category archive |
 | `[abr_secondary_nav]` | The secondary (site) menu, as the footer's bottom row |
 | `[abr_header_donate]` | Red Donate button for the header |
-| `[abr_donation]` | Donate page button to the donation link, or a pointer to the Contact page while none is set |
+| `[abr_donation]` | Donate page: a calm note, four US dollar amount links ($5, $10, $25, $50) and a Donate with PayPal button, all to `ABR_DONATION_BASE` |
 | `[abr_further_reading]` | Further reading list from the Navigation tab; nothing when empty |
 | `[abr_breadcrumbs]` | Breadcrumb trail for the current view |
 | `[abr_child_pages]` | Cards for the child pages of the current page |
@@ -365,7 +365,7 @@ php bin/build-error-pages.php                       # rebuild errors/*.html
 for t in tests/*.php; do php "$t" || exit 1; done   # every test, each exits non-zero on a failure
 find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l > /dev/null   # non-zero on any syntax error
 for f in assets/js/*.js; do node --check "$f" || exit 1; done
-git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.17.zip HEAD   # after the release is committed
+git archive --format=zip --prefix=abrahamic/ -o abrahamic-2.96.18.zip HEAD   # after the release is committed
 ```
 
 Every script in `tests/` and `bin/` exits at once unless PHP runs it from the command line. The tests replace WordPress with small stubs, so they need only PHP.
@@ -427,6 +427,14 @@ Markup: a `<section aria-labelledby>` with an `h2`, the lead as `<article><figur
 The block adds category tabs, hover, focus and pressed states (one `--abr-ll-on` variable drives them), a date and reading-time line, and a fade-up from `assets/js/lead-list.js`. The Colours tab sets `ll_tabs`, `ll_motion` and `ll_accent`; the filters are `abr_lead_list_show_tabs`, `abr_lead_list_motion` and `abr_lead_list_accent`.
 
 `assets/css/lead-list.css` loads on the first page of the Journal and of the archives that use `archive.html` (`abr_lead_list_assets()`, `wp_enqueue_scripts` at 20). It is not enqueued from the block: an enqueue made while the template renders prints `theme.css` above the core block styles, which then win over it. Columns run `minmax(0,3fr) minmax(0,2fr)` and stack under 782px. The title sits on `rgb(0 0 0 / .85)`, which fades to clear above it, so white type stays above 4.5:1 on any photograph. Each card is one link; its `::after` covers the card and takes the focus ring. List titles clamp at three lines. Hover zoom stops under `prefers-reduced-motion`.
+
+## Donations (2.96.18)
+
+`inc/options.php` defines `ABR_DONATION_BASE` (the site's PayPal.me link) and the helpers `abr_donation_amounts()` (5, 10, 25, 50), `abr_donation_amount_url()` (base plus `/25USD`), `abr_donation_url_is_valid()` (the base, or the base plus `/<whole dollars>USD`, and nothing else), `abr_donation_url()` and `abr_donation_rejected_options()`. There is no currency setting and no other currency.
+
+`donation_url` has the option type `donation`: Theme Options shows it as read-only text, a posted value is ignored, and a stored value is kept as it is. `header_donate_url` accepts `@donate` or a valid link; anything else prints the Donate page link and raises a notice on the Header tab. Output links carry `rel="noopener noreferrer"`. No PayPal script or tracking loads. `php tests/donation-test.php` covers the rules.
+
+Testing performed for 2.96.18: the header button, the Donate page and the Header tab at 375 and 1280 pixels, no overflow, axe clean; the four amount links end in 5USD, 10USD, 25USD and 50USD.
 
 ## Testing performed for 2.96.17
 

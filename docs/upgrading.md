@@ -13,6 +13,10 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.17 to 2.96.18
+
+Replace the theme files. If Theme Options shows a notice about a saved donation link, the old link is not used and has not been changed; the Donate page now opens the site's PayPal link.
+
 ## Upgrading from 2.96.16 to 2.96.17
 
 Replace the theme files. Nothing else to do.
