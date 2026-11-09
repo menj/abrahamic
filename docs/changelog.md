@@ -2,6 +2,15 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.16] - 2026-11-09
+
+Admin settings UI audited against the owner's design system. Presentation only.
+
+### Fixed
+- Scroll padding under the sticky Save bar, so a focused field is never hidden by it (2.4.11).
+
+The screen already met the other criteria: cards, no form tables, 12 keyboard-operable tabs, toggle switches, live range values, labelled controls, no horizontal scroll at 782 or 375 pixels.
+
 ## [2.96.15] - 2026-11-09
 
 WCAG 2.2 AA pass. No feature removed, no identifier renamed.

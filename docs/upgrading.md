@@ -13,6 +13,10 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.15 to 2.96.16
+
+Replace the theme files. Nothing else to do.
+
 ## Upgrading from 2.96.14 to 2.96.15
 
 Replace the theme files. Nothing else to do.
