@@ -317,6 +317,9 @@ add_shortcode(
 			$href = esc_url_raw( trim( $url ) );
 		} else {
 			$href = abr_link( '@donate', '/' );
+			if ( '' === $href ) {
+				$href = home_url( '/' );
+			}
 		}
 		$title = abr_is_external( $href )
 			? ' title="' . esc_attr__( 'Opens PayPal, in US dollars', 'abrahamic' ) . '" rel="noopener noreferrer"'
