@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.16** |
+| Current version | **2.96.17** |
 | Release date | 2026-11-09 |
 | Status | Stable |
 
@@ -783,6 +783,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-09 | 2.96.17 | Mobile-first audit: long text wraps from `.wp-site-blocks`, small links get 44 px targets on touch screens, the sticky header releases on short landscape screens | A measured pass at nine widths found one overflow (long titles and links) and several sub-24 px targets; the fixes are additive and desktop sizes are unchanged |
 | 2026-11-09 | 2.96.16 | Admin settings screen audited against the admin UI spec; only the sticky Save bar scroll padding changed | The screen already passed every other criterion, so nothing else was rebuilt. |
 | 2026-11-09 | 2.96.15 | WCAG 2.2 AA pass: `--abr-focus` and `--abr-control-line` tokens, focusable scrolling tables on pages, 24 by 24 submenu toggle, copy status region, `tests/axe-check.js` | The owner's spec made 2.2 AA blocking; each change fixes a measured failure at the shared token or component. |
 | 2026-11-09 | 2.96.14 | The lead and list carries category tabs, hover, focus and pressed states, a staggered entrance and a Lead and list card on the Colours tab (`ll_tabs`, `ll_motion`, `ll_accent`) | The block looked flat; the owner asked for states and tabs. Every state is a CSS variable, and reduced motion keeps only colour changes |

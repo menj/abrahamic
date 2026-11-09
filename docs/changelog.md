@@ -2,6 +2,18 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.17] - 2026-11-09
+
+Mobile-first audit, measured at 320, 360, 375, 390, 414, 480, 768, 1024 and 1280 pixels. The fixes themselves shipped in 2.96.15 (#38); this release records them and the checks. No feature removed, no identifier renamed.
+
+### Fixed
+- Long titles, breadcrumbs, excerpts and long links no longer widen the page. Before, a long article title or a long link in a list pushed the page 34 pixels past a 320 pixel screen and 380 to 640 pixels past tablet and desktop widths. After, nothing overflows at any of the nine widths.
+- "Back to top", the category, topic and tag links in the article head and the next-post link have 44 pixel touch targets on touch screens and below 768 pixels. Desktop sizes are unchanged.
+- Footnote back-arrows are underlined, so they no longer rely on colour alone (1.4.1).
+- The menu button reports `aria-expanded` as the menu opens and closes. `assets/js/theme.js` mirrors the core overlay state.
+- On a phone held sideways (height 480 pixels or less) the header and the sub-navigation scroll away instead of filling a third of the screen.
+- The header search field asks the phone keyboard for a Search key and switches off auto-capitalisation.
+
 ## [2.96.16] - 2026-11-09
 
 Admin settings UI audited against the owner's design system. Presentation only.
