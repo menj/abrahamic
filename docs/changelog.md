@@ -2,6 +2,17 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.19] - 2026-11-09
+
+Canon corrections and one article. Seed version 110 to 111. No feature removed, no identifier renamed.
+
+### Fixed
+- `inc/seed/content.json`, page `bible`, "How the canons took shape": "The Orthodox churches never defined their canon as tightly" conflicted with the Jerusalem synod of 1672 (Davidson, pp. 123 to 124). The sentence now names the synod. A paragraph on the New Testament lists is added (Athanasius in 367, Hippo and Carthage).
+- The generic "See also: PayPal" link to paypal.com is removed from the Donate and Thank-you pages.
+
+### Added
+- Article `how-four-faiths-decide-scripture`, scheduled for 2027-01-05 09:00 (site time), with its SEO title, focus keywords and tags. It reuses the bundled `isaiah-scroll` photograph.
+
 ## [2.96.18] - 2026-11-09
 
 ### Added
