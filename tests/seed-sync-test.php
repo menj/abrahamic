@@ -52,6 +52,7 @@ abr_check( 'trash' === abr_sync_decide_removed( $fa, $fa, '' ), 'dropped and unt
 abr_check( 'removed' === abr_sync_decide_removed( 'mine', $fa, '' ), 'dropped and edited: listed' );
 abr_check( 'removed' === abr_sync_decide_removed( $fa, '', '' ), 'dropped with no record: listed, never trashed' );
 abr_check( 'kept' === abr_sync_decide_removed( 'mine', $fa, 'removed' ), 'dropped, edited, owner chose to keep: quiet' );
+abr_check( 'kept' === abr_sync_decide_removed( 'mine', $fa, 'superseded' ), 'a keep recorded for a replaced item also quiets the dropped row' );
 
 abr_check( '' === abr_sync_guard( false, true, 100, 100 ), 'the guard allows an ordinary sync' );
 abr_check( '' !== abr_sync_guard( true, true, 100, 100 ), 'the kill switch stops removals' );

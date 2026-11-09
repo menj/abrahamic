@@ -14,6 +14,7 @@ Starter content follows the bundle, safely. No feature removed, no option key re
 ### Added
 - `inc/seed-sync.php`: fingerprints (`_abr_sync_fp`, `_abr_sync_bfp`), the review card on Theme Options, Tools (dry run, diff, Take the bundled text, Keep mine, Run the review now, a log of the last 100 changes), the supersedes map with a 301 at any address, hiding through the unlist module and the Trash, and the `ABR_DISABLE_CONTENT_SYNC` switch.
 - `inc/seed/supersedes.json` (empty), `inc/seed/checksums.json` and `bin/seed-checksums.php`.
+- A button on the card accepts the current item count as the new baseline after an intentional large retirement.
 - `tests/seed-sync-test.php`.
 
 ## [2.96.19] - 2026-11-09

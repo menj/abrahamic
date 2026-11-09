@@ -115,7 +115,7 @@ function abr_sync_decide_removed( $stored_fp, $recorded_fp, $ack ) {
 	if ( '' !== $recorded_fp && $recorded_fp === $stored_fp ) {
 		return 'trash';
 	}
-	return 'removed' === $ack ? 'kept' : 'removed';
+	return in_array( $ack, array( 'removed', 'superseded' ), true ) ? 'kept' : 'removed';
 }
 
 /**
@@ -339,7 +339,7 @@ function abr_sync_plan() {
 				continue;
 			}
 			$ack    = (string) get_post_meta( $old_post->ID, '_abr_sync_ack', true );
-			$rows[] = array( 'key' => (string) get_post_meta( $old_post->ID, '_abr_seed', true ), 'slug' => $old, 'title' => $old_post->post_title, 'post_id' => (int) $old_post->ID, 'action' => isset( $pairs[ $old_post->ID ] ) ? 'supersede' : ( 'superseded' === $ack ? 'kept' : 'superseded' ) );
+			$rows[] = array( 'key' => (string) get_post_meta( $old_post->ID, '_abr_seed', true ), 'slug' => $old, 'title' => $old_post->post_title, 'post_id' => (int) $old_post->ID, 'action' => isset( $pairs[ $old_post->ID ] ) ? 'supersede' : ( in_array( $ack, array( 'superseded', 'removed' ), true ) ? 'kept' : 'superseded' ) );
 		}
 	}
 	return $rows;
@@ -523,6 +523,27 @@ function abr_sync_handle_now() {
 }
 add_action( 'admin_post_abr_sync_now', 'abr_sync_handle_now' );
 
+/**
+ * Accept the current bundle size as the new baseline for the 10 percent guard, after the owner has reviewed an
+ * intentional large retirement.
+ */
+function abr_sync_handle_accept_count() {
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		wp_die( esc_html__( 'You do not have permission to do that.', 'abrahamic' ), 403 );
+	}
+	check_admin_referer( 'abr_sync_accept_count' );
+	if ( abr_sync_disabled() ) {
+		wp_safe_redirect( abr_sync_screen_url() );
+		exit;
+	}
+	update_option( 'abr_sync_count', count( abr_seed_data()['items'] ), false );
+	abr_sync_log( 'bundle', 'accepted the current item count as the baseline' );
+	abr_sync_apply();
+	wp_safe_redirect( abr_sync_screen_url() );
+	exit;
+}
+add_action( 'admin_post_abr_sync_accept_count', 'abr_sync_handle_accept_count' );
+
 /** One grouped notice for everything that waits for the owner. */
 function abr_sync_notice() {
 	if ( ! current_user_can( 'edit_theme_options' ) || abr_sync_disabled() || 'keep' === abr_get_option( 'seed_mode' ) ) {
@@ -583,7 +604,17 @@ function abr_render_content_sync_card() {
 	}
 	$blocked = abr_sync_removal_block();
 	if ( '' !== $blocked && ! abr_sync_disabled() ) {
-		echo '<div class="notice notice-warning inline"><p>' . esc_html( sprintf( /* translators: %s: reason. */ __( 'Removals are stopped: %s.', 'abrahamic' ), $blocked ) ) . '</p></div>';
+		echo '<div class="notice notice-warning inline"><p>' . esc_html( sprintf( /* translators: %s: reason. */ __( 'Removals are stopped: %s.', 'abrahamic' ), $blocked ) ) . '</p>';
+		if ( false !== strpos( $blocked, '10 percent' ) ) {
+			printf(
+				'<form method="post" action="%s"><input type="hidden" name="action" value="abr_sync_accept_count">%s<p><button type="submit" class="button button-small">%s</button> %s</p></form>',
+				esc_url( admin_url( 'admin-post.php' ) ),
+				wp_nonce_field( 'abr_sync_accept_count', '_wpnonce', true, false ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core's nonce field.
+				esc_html__( 'Accept the current item count', 'abrahamic' ),
+				esc_html__( 'Use this only when you meant the bundle to shrink.', 'abrahamic' )
+			);
+		}
+		echo '</div>';
 	}
 	$rows = array_filter( abr_sync_plan(), static function ( $r ) {
 		return 'current' !== $r['action'];
@@ -705,8 +736,8 @@ add_action( 'template_redirect', 'abr_superseded_redirect', 1 );
  * the sitemaps, and noindex on their own page. An editor at work sees everything.
  */
 function abr_superseded_fallback() {
-	if ( apply_filters( 'unlist_posts_enabled', true ) ) {
-		return;
+	if ( ! class_exists( 'Unlist_Posts' ) && apply_filters( 'unlist_posts_enabled', true ) ) {
+		return; // The theme's unlist module is in charge and already carries the superseded IDs.
 	}
 	add_action(
 		'pre_get_posts',
@@ -735,6 +766,30 @@ function abr_superseded_fallback() {
 		static function ( $robots ) {
 			return is_singular() && in_array( (int) get_queried_object_id(), abr_superseded_ids(), true ) ? wp_robots_no_robots( $robots ) : $robots;
 		}
+	);
+	add_filter(
+		'rank_math/frontend/robots',
+		static function ( $robots ) {
+			if ( is_singular() && in_array( (int) get_queried_object_id(), abr_superseded_ids(), true ) ) {
+				$robots['index'] = 'noindex';
+			}
+			return $robots;
+		}
+	);
+	add_filter(
+		'rank_math/sitemap/posts_to_exclude',
+		static function ( $ids ) {
+			$ids = is_array( $ids ) ? $ids : preg_split( '/[\\s,]+/', (string) $ids, -1, PREG_SPLIT_NO_EMPTY );
+			return array_values( array_unique( array_merge( array_filter( array_map( 'absint', $ids ) ), abr_superseded_ids() ) ) );
+		}
+	);
+	add_filter(
+		'rank_math/sitemap/entry',
+		static function ( $url, $type, $object ) {
+			return 'post' === $type && $object instanceof WP_Post && in_array( (int) $object->ID, abr_superseded_ids(), true ) ? false : $url;
+		},
+		10,
+		3
 	);
 }
 add_action( 'init', 'abr_superseded_fallback', 20 );
