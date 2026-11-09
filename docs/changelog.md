@@ -2,6 +2,16 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.18] - 2026-11-09
+
+### Added
+- Donate page: four US dollar amounts ($5, $10, $25, $50) that open the site's PayPal page with the amount filled in (`/25USD`), a Donate with PayPal button to the base link, and a short note that every amount is in US dollars and PayPal handles the payment. The links are plain, with `rel="noopener noreferrer"`. No PayPal script and no tracking load.
+- `tests/donation-test.php`.
+
+### Changed
+- Donations go only to the site's PayPal link, in US dollars. `donation_url` is read-only in Theme Options and defaults to that link. A saved donation or header link to any other page is not printed, with a notice, and the saved value is not changed.
+- The Donate page button label defaults to Donate with PayPal.
+
 ## [2.96.17] - 2026-11-09
 
 Mobile-first audit, measured at 320, 360, 375, 390, 414, 480, 768, 1024 and 1280 pixels. The fixes themselves shipped in 2.96.15 (#38); this release records them and the checks. No feature removed, no identifier renamed.

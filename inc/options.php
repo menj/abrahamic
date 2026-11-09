@@ -72,7 +72,7 @@ function abr_option_types() {
 		'header_donate_label' => 'text',
 		'header_donate_url'   => 'link',
 		'donate_colour'       => 'hex',
-		'donation_url'        => 'url',
+		'donation_url'        => 'donation',
 		'donation_button'     => 'text',
 		// Footer.
 		'footer_title'     => 'text',
@@ -193,8 +193,8 @@ function abr_option_defaults() {
 		'header_donate_label' => __( 'Donate', 'abrahamic' ),
 		'header_donate_url'   => '@donate',
 		'donate_colour'       => '#b3261e',
-		'donation_url'        => '',
-		'donation_button'     => __( 'Donate now', 'abrahamic' ),
+		'donation_url'        => 'https://www.paypal.com/paypalme/menj',
+		'donation_button'     => __( 'Donate with PayPal', 'abrahamic' ),
 		'footer_title'     => __( 'Abrahamic Religions', 'abrahamic' ),
 		'footer_tagline'   => __( 'Exploring faith, history, culture, and shared heritage.', 'abrahamic' ),
 		'footer_text'      => __( 'An independent educational resource on the shared heritage and distinct traditions of the world’s major Abrahamic faiths.', 'abrahamic' ),
@@ -365,6 +365,11 @@ function abr_sanitize_options( $input ) {
 				break;
 			case 'url':
 				$out[ $key ] = null === $raw ? $d[ $key ] : esc_url_raw( trim( $raw ) );
+				break;
+			case 'donation':
+				// Display-only in Theme Options: whatever is stored stays as it is, and a posted value is ignored.
+				$stored      = (array) get_option( 'abr_options', array() );
+				$out[ $key ] = isset( $stored[ $key ] ) ? $stored[ $key ] : $d[ $key ];
 				break;
 			case 'link':
 				$out[ $key ] = null === $raw ? $d[ $key ] : abr_sanitize_link( $raw );
@@ -810,3 +815,70 @@ function abr_options_capability() {
 	return 'edit_theme_options';
 }
 add_filter( 'option_page_capability_abr_settings', 'abr_options_capability' );
+
+
+/**
+ * Donations: one destination and one currency.
+ *
+ * Gifts go to the site's PayPal.me page and nowhere else, in US dollars only.
+ * An amount link adds "/25USD" to that page. There is no setting for either.
+ */
+define( 'ABR_DONATION_BASE', 'https://www.paypal.com/paypalme/menj' );
+
+/**
+ * The fixed US dollar amounts offered on the Donate page.
+ *
+ * @return int[]
+ */
+function abr_donation_amounts() {
+	return array( 5, 10, 25, 50 );
+}
+
+/**
+ * The PayPal.me link for one amount, always in USD.
+ *
+ * @param int $amount Whole dollars.
+ * @return string
+ */
+function abr_donation_amount_url( $amount ) {
+	return ABR_DONATION_BASE . '/' . absint( $amount ) . 'USD';
+}
+
+/**
+ * Whether a link is the site's PayPal.me page, with or without a USD amount.
+ *
+ * @param string $url Candidate link.
+ * @return bool
+ */
+function abr_donation_url_is_valid( $url ) {
+	return (bool) preg_match( '#^' . preg_quote( ABR_DONATION_BASE, '#' ) . '(?:/[1-9][0-9]{0,5}USD)?/?$#', trim( (string) $url ) );
+}
+
+/**
+ * The donation link to print: the saved one when it is the site's PayPal.me
+ * link, otherwise the fixed one. The saved value itself is never changed.
+ *
+ * @return string
+ */
+function abr_donation_url() {
+	$saved = (string) abr_get_option( 'donation_url' );
+	return abr_donation_url_is_valid( $saved ) ? esc_url_raw( trim( $saved ) ) : ABR_DONATION_BASE;
+}
+
+/**
+ * Saved donation links that the theme refuses to print.
+ *
+ * @return string[] Option keys.
+ */
+function abr_donation_rejected_options() {
+	$bad    = array();
+	$stored = (array) get_option( 'abr_options', array() );
+	if ( ! empty( $stored['donation_url'] ) && ! abr_donation_url_is_valid( $stored['donation_url'] ) ) {
+		$bad[] = 'donation_url';
+	}
+	$header = isset( $stored['header_donate_url'] ) ? trim( (string) $stored['header_donate_url'] ) : '';
+	if ( '' !== $header && '@donate' !== $header && ! abr_donation_url_is_valid( $header ) ) {
+		$bad[] = 'header_donate_url';
+	}
+	return $bad;
+}

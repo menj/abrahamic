@@ -1409,3 +1409,14 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 	.wp-site-blocks > header.wp-block-template-part:has(.abr-header) { position: static; }
 	.abr-subnav { position: static; }
 }
+
+/* ---------- Donate page amounts (2.96.18) ---------- */
+.abr-donation__note { max-width: 40rem; }
+.abr-donation__amounts, .abr-prose ul.abr-donation__amounts { list-style: none; margin: 1em 0; padding: 0 !important; display: flex; flex-wrap: wrap; gap: 10px; }
+.abr-donation__amounts li { margin: 0; }
+.abr-donation__amount {
+	display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+	min-width: 64px; min-height: 44px; padding: 0 18px; border: 1px solid var(--abr-control-line, currentColor);
+	border-radius: 6px; color: var(--abr-navy); font-weight: 700; text-decoration: none;
+}
+.abr-donation__amount:hover, .abr-donation__amount:focus-visible { border-color: var(--abr-donate, #b3261e); color: var(--abr-donate, #b3261e); }
