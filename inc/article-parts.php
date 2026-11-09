@@ -332,13 +332,14 @@ function abr_article_last_reviewed() {
 add_shortcode( 'abr_last_reviewed', 'abr_article_last_reviewed' );
 
 /*
- * A table in an article scrolls on its own on a phone: a focusable region
- * named by its caption, so a keyboard can scroll it too.
+ * A table scrolls on its own on a phone: a focusable region named by its
+ * caption, so a keyboard can scroll it too. It applies to every front-end
+ * table (articles and pages), never to the editor or feeds (WCAG 2.1.1).
  */
 add_filter(
 	'render_block_core/table',
 	static function ( $html ) {
-		if ( ! abr_article_post() || false !== strpos( (string) $html, 'role="region"' ) ) {
+		if ( is_admin() || is_feed() || preg_match( '#^\s*<figure\b[^>]*\brole="region"#i', (string) $html ) ) {
 			return $html;
 		}
 		$label = preg_match( '#<figcaption[^>]*>(.*?)</figcaption>#is', (string) $html, $m ) ? trim( wp_strip_all_tags( $m[1] ) ) : '';

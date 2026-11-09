@@ -44,8 +44,6 @@
 .abr-prose .abr-notes .abr-fn-back { text-decoration: underline !important; text-decoration-color: var(--abr-gold) !important; text-underline-offset: 3px; }
 
 /* Tables scroll inside their own region on a phone, and say so on focus. */
-.abr-prose figure.wp-block-table[role="region"] { overflow-x: auto; }
-.abr-prose figure.wp-block-table[role="region"]:focus-visible { outline: 2px solid var(--abr-gold); outline-offset: 3px; }
 .abr-prose figure.wp-block-table figcaption { font-size: 0.9rem; color: var(--abr-muted); margin-top: 8px; text-align: left; }
 
 @media (max-width: 600px) {

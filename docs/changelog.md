@@ -2,6 +2,20 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.15] - 2026-11-09
+
+WCAG 2.2 AA pass. No feature removed, no identifier renamed.
+
+### Fixed
+- Focus ring: a new `--abr-focus` token (gold ink on light surfaces, gold on dark ones) replaces plain gold, which measured 2.58:1 on ivory. Success criteria 1.4.11, 2.4.7.
+- Form edges: a new `--abr-control-line` token gives the search and newsletter fields a 3:1 edge (1.4.11).
+- Tables that scroll are focusable named regions on pages as well as articles (2.1.1). The rule moved from `article.css` to `theme.css`.
+- The header submenu toggle is 24 by 24 CSS pixels (2.5.8).
+- Copying a citation announces the result in a polite status region (4.1.3).
+
+### Added
+- `tests/axe-check.js`, an axe-core run on the main templates at 375 and 1280 pixels.
+
 ## [2.96.14] - 2026-11-09
 
 The lead and list reacts to the pointer, the keyboard and a tap. No feature removed.

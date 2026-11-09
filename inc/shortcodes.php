@@ -224,7 +224,7 @@ add_shortcode(
 			. '<span class="screen-reader-text">%3$s</span></button>'
 			. '<form role="search" method="get" class="abr-header-search__form" action="%4$s">'
 			. '<label class="screen-reader-text" for="abr-header-search-field">%5$s</label>'
-			. '<input type="search" id="abr-header-search-field" class="abr-header-search__field" name="s" placeholder="%6$s" autocomplete="off" tabindex="-1">'
+			. '<input type="search" id="abr-header-search-field" class="abr-header-search__field" name="s" placeholder="%6$s" autocomplete="off" enterkeyhint="search" autocapitalize="off" spellcheck="false" tabindex="-1">'
 			. '</form></div>',
 			abr_icon( 'search' ),
 			abr_icon( 'close' ),

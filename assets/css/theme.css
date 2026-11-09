@@ -18,6 +18,9 @@
 	--abr-hair: color-mix(in srgb, var(--abr-navy) 7%, transparent);
 	--abr-gold-soft: color-mix(in srgb, var(--abr-gold) 15%, transparent);
 	--abr-gold-ink: color-mix(in srgb, var(--abr-gold) 60%, var(--abr-navy));
+	/* Focus ring and form-control edge: 3:1 or better against the surface they sit on (WCAG 1.4.11). */
+	--abr-focus: var(--abr-gold-ink);
+	--abr-control-line: color-mix(in srgb, var(--abr-navy) 55%, var(--abr-white));
 	--abr-shadow: 0 2px 20px color-mix(in srgb, var(--abr-navy) 5%, transparent);
 	--abr-shadow-lift: 0 12px 40px color-mix(in srgb, var(--abr-navy) 8%, transparent);
 	--abr-ease: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -70,7 +73,7 @@
 
 /* Photograph viewer (assets/js/lightbox.js). Colours follow the active scheme. */
 .abr-photo__zoom { display: block; width: 100%; height: 100%; margin: 0; padding: 0; border: 0; border-radius: inherit; background: none; font: inherit; color: inherit; cursor: zoom-in; }
-.abr-photo__zoom:focus-visible { outline: 2px solid var(--abr-gold); outline-offset: 3px; }
+.abr-photo__zoom:focus-visible { outline: 2px solid var(--abr-focus); outline-offset: 3px; }
 :root.abr-lightbox-open { overflow: hidden; }
 .abr-lightbox {
 	box-sizing: border-box; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0;
@@ -161,7 +164,11 @@ h1, h2, h3, h4, h5, h6, .wp-block-post-template > li { text-align: start; text-a
 	margin-block: 24px !important;
 }
 .abr-contact-email a { word-break: break-all; }
-:where(a, button, input, summary):focus-visible { outline: 2px solid var(--abr-gold); outline-offset: 3px; }
+/* A table that can scroll is a named, focusable region, so a keyboard can scroll it (WCAG 2.1.1). */
+figure.wp-block-table[role="region"] { overflow-x: auto; }
+figure.wp-block-table[role="region"]:focus-visible { outline: 2px solid var(--abr-focus); outline-offset: 3px; }
+.is-dark, .abr-footer, .abr-newsletter { --abr-focus: var(--abr-gold); --abr-control-line: color-mix(in srgb, var(--abr-on-dark) 55%, transparent); }
+:where(a, button, input, summary):focus-visible { outline: 2px solid var(--abr-focus); outline-offset: 3px; }
 
 .abr-icon { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
 /* The darfash is a tall drawing (Dragovit, CC BY-SA 3.0): it keeps its proportions and stands taller than the square icons. */
@@ -283,7 +290,7 @@ h1, h2, h3, h4, h5, h6, .wp-block-post-template > li { text-align: start; text-a
 .abr-header .wp-block-navigation-submenu:hover > .wp-block-navigation-item__content {
 	background-color: var(--abr-nav-hover-bg); color: var(--abr-navy);
 }
-.abr-header .wp-block-navigation-item__content:focus-visible { outline: 2px solid var(--abr-gold); outline-offset: 2px; }
+.abr-header .wp-block-navigation-item__content:focus-visible { outline: 2px solid var(--abr-focus); outline-offset: 2px; }
 .abr-header .wp-block-navigation-item__content.is-current,
 .abr-header .wp-block-navigation-item__content[aria-current],
 .abr-header .current-menu-item > .wp-block-navigation-item__content {
@@ -322,9 +329,9 @@ h1, h2, h3, h4, h5, h6, .wp-block-post-template > li { text-align: start; text-a
 .abr-header-search.is-open .abr-header-search__form { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
 .abr-header-search__field {
 	width: 100%; box-sizing: border-box; font-size: max(1rem, 16px); padding: 10px 12px;
-	border: 1px solid var(--abr-beige); border-radius: 6px; background: var(--abr-white); color: var(--abr-charcoal);
+	border: 1px solid var(--abr-control-line); border-radius: 6px; background: var(--abr-white); color: var(--abr-charcoal);
 }
-.abr-header-search__field:focus-visible { outline: 2px solid var(--abr-gold); outline-offset: 1px; }
+.abr-header-search__field:focus-visible { outline: 2px solid var(--abr-focus); outline-offset: 1px; }
 @media (prefers-reduced-motion: reduce) { .abr-header-search__form { transition: none; } }
 
 /* The call-to-action returns only where the bar has room for it. */
@@ -573,11 +580,11 @@ details.abr-faq > :not(summary) { padding: 0 24px; color: var(--abr-muted); font
 .abr-newsletter__form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
 .abr-newsletter__form input {
 	flex: 1; min-width: 0; min-height: 48px; padding: 12px 18px; border-radius: 2px; font: inherit; font-size: 1.05rem;
-	border: 1px solid color-mix(in srgb, var(--abr-white) 15%, transparent);
+	border: 1px solid var(--abr-control-line);
 	background: color-mix(in srgb, var(--abr-white) 6%, transparent); color: var(--abr-white);
 }
 .abr-newsletter__form input::placeholder { color: color-mix(in srgb, var(--abr-on-dark) 45%, transparent); }
-.abr-newsletter__form input:focus { outline: none; border-color: var(--abr-gold); }
+.abr-newsletter__form input:focus { border-color: var(--abr-gold); }
 .abr-btn { font: 700 0.9rem/1 var(--abr-font); padding: 14px 30px; border: 0; border-radius: 4px; cursor: pointer; letter-spacing: 0.02em; transition: all var(--abr-ease); }
 
 /* ---------- Footer ---------- */
@@ -656,7 +663,7 @@ details.abr-faq > :not(summary) { padding: 0 24px; color: var(--abr-muted); font
 .abr-mode__knob .abr-icon--moon { opacity: 0; transform: rotate(-45deg) scale(0.6); }
 .abr-mode:hover .abr-mode__rail { border-color: var(--abr-gold); }
 .abr-mode:focus-visible { outline: none; }
-.abr-mode:focus-visible .abr-mode__rail { outline: 2px solid var(--abr-gold); outline-offset: 3px; }
+.abr-mode:focus-visible .abr-mode__rail { outline: 2px solid var(--abr-focus); outline-offset: 3px; }
 :root[data-abr-mode="dark"] .abr-mode__rail { background: color-mix(in srgb, var(--abr-navy) 10%, transparent); }
 :root[data-abr-mode="dark"] .abr-mode__knob { transform: translate(calc(var(--abr-mode-w) - var(--abr-mode-h)), -50%); background: var(--abr-gold); color: #10151d; }
 :root[data-abr-mode="dark"] .abr-mode__knob .abr-icon--sun { opacity: 0; transform: rotate(45deg) scale(0.6); }
@@ -965,7 +972,7 @@ details.abr-faq > :not(summary) { padding: 0 24px; color: var(--abr-muted); font
 .abr-hub-links a:hover { border-color: var(--abr-gold); }
 .abr-search-form { margin-top: 8px !important; }
 .abr-search-form .wp-block-search__inside-wrapper { max-width: 560px; }
-.abr-search-form .wp-block-search__input { font-size: max(1rem, 16px); padding: 10px 14px; border: 1px solid var(--abr-beige); border-radius: 4px; }
+.abr-search-form .wp-block-search__input { font-size: max(1rem, 16px); padding: 10px 14px; border: 1px solid var(--abr-control-line); border-radius: 4px; }
 .abr-search-form .wp-block-search__button { border-radius: 4px; }
 
 .abr-figure h3 a, .abr-place h3 a { color: inherit; text-decoration: none; }
@@ -1007,6 +1014,8 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 /* ---------- Dropdowns ---------- */
 .abr-header .wp-block-navigation-submenu > .wp-block-navigation-item__content { padding-right: 4px; }
 .abr-header .wp-block-navigation__submenu-icon { color: var(--abr-muted); margin-left: 2px; }
+/* The submenu toggle is a 24 by 24 target (WCAG 2.5.8); the arrow keeps its size. */
+.abr-header .wp-block-navigation__submenu-icon { box-sizing: border-box; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; padding: 0; }
 .abr-header .wp-block-navigation-item__content.is-current-parent,
 .abr-header .current-menu-ancestor > .wp-block-navigation-item__content { background-color: var(--abr-nav-hover-bg); color: var(--abr-navy); box-shadow: inset 0 -2px 0 var(--abr-gold); }
 @media (min-width: 1024px) {
@@ -1021,7 +1030,7 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 .abr-header .wp-block-navigation__responsive-container-open,
 .abr-header .wp-block-navigation__responsive-container-close { width: 44px; height: 44px; align-items: center; justify-content: center; color: var(--abr-navy); }
 .abr-header .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open { background-color: var(--abr-ivory); color: var(--abr-navy); }
-.abr-header .is-menu-open :is(a, button):focus-visible { outline: 2px solid var(--abr-gold); outline-offset: -2px; }
+.abr-header .is-menu-open :is(a, button):focus-visible { outline: 2px solid var(--abr-focus); outline-offset: -2px; }
 .abr-header .is-menu-open .wp-block-navigation__responsive-container-content { padding-top: 24px; }
 .abr-header .is-menu-open .wp-block-navigation__container { gap: 0 !important; width: 100%; }
 .abr-header .is-menu-open .wp-block-navigation__container { row-gap: 4px !important; }
@@ -1250,7 +1259,7 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 }
 .abr-subnav a:hover, .abr-subnav a:focus-visible, .abr-subnav a[aria-current] { color: var(--abr-navy); }
 .abr-subnav a:hover::after, .abr-subnav a:focus-visible::after, .abr-subnav a[aria-current]::after { transform: scaleX(1); }
-.abr-subnav a:focus-visible { outline: 2px solid var(--abr-gold); outline-offset: -4px; border-radius: 4px; }
+.abr-subnav a:focus-visible { outline: 2px solid var(--abr-focus); outline-offset: -4px; border-radius: 4px; }
 @media (max-width: 1023px) {
 	.abr-subnav__list { justify-content: flex-start; padding: 0 12px; }
 	.abr-subnav a { padding: 0 11px; font-size: 0.8rem; }
@@ -1380,4 +1389,23 @@ html { scroll-padding-top: calc(var(--abr-header-h) + 16px); }
 	.abr-pagination .page-numbers { display: inline; min-width: 0; min-height: 0; }
 	.abr-cite__copy { min-height: 0; }
 	.abr-footer-links a { display: inline; min-height: 0; }
+}
+
+/* ---------- Mobile-first audit (2.96.15) ----------
+   Every rule here is scoped and additive. The first block lets long titles and
+   URLs wrap at every width; the touch block sizes small links for a finger and
+   leaves desktop sizes as they were. */
+.abr-breadcrumbs li { min-width: 0; overflow-wrap: anywhere; }
+.wp-site-blocks { overflow-wrap: break-word; }
+.abr-notes .abr-fn-back { text-decoration: underline !important; text-underline-offset: 3px; }
+@media (pointer: coarse), (max-width: 767px) {
+	.abr-backtop a { display: inline-flex; align-items: center; min-height: 44px; }
+	.abr-kicker-terms a, .abr-single-topics a, .abr-single-tags a { display: inline-block; padding-block: 0.6em; }
+	.abr-post-nav a { display: inline-block; padding-block: 10px; }
+}
+/* A phone held sideways has little height: the header and the stuck sub-navigation
+   would fill a third of it, so they scroll away. */
+@media (max-height: 480px) and (orientation: landscape) {
+	.wp-site-blocks > header.wp-block-template-part:has(.abr-header) { position: static; }
+	.abr-subnav { position: static; }
 }

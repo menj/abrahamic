@@ -177,9 +177,23 @@ document.addEventListener( 'click', function ( event ) {
 		var original = button.textContent;
 		button.textContent = button.getAttribute( 'data-copied' );
 		button.classList.add( 'is-done' );
+		// A polite status region announces the result to a screen reader (WCAG 4.1.3).
+		var status = document.getElementById( 'abr-copy-status' );
+		if ( ! status ) {
+			status = document.createElement( 'span' );
+			status.id = 'abr-copy-status';
+			status.className = 'screen-reader-text';
+			status.setAttribute( 'role', 'status' );
+			document.body.appendChild( status );
+		}
+		status.textContent = '';
+		window.setTimeout( function () {
+			status.textContent = button.getAttribute( 'data-copied' );
+		}, 50 );
 		window.setTimeout( function () {
 			button.textContent = original;
 			button.classList.remove( 'is-done' );
+			status.textContent = '';
 		}, 2000 );
 	} );
 } );
@@ -243,5 +257,29 @@ document.addEventListener( 'click', function ( event ) {
 		if ( toggle ) {
 			toggle.focus();
 		}
+	} );
+}() );
+
+/**
+ * Mobile menu button: the core navigation block marks its open button with
+ * aria-haspopup but never reports whether the menu is open. Mirror the
+ * overlay state into aria-expanded so a screen reader announces it.
+ */
+( function () {
+	'use strict';
+	if ( ! window.MutationObserver ) {
+		return;
+	}
+	document.querySelectorAll( '.abr-header .wp-block-navigation' ).forEach( function ( nav ) {
+		var button = nav.querySelector( '.wp-block-navigation__responsive-container-open' );
+		var panel = nav.querySelector( '.wp-block-navigation__responsive-container' );
+		if ( ! button || ! panel ) {
+			return;
+		}
+		function sync() {
+			button.setAttribute( 'aria-expanded', panel.classList.contains( 'is-menu-open' ) ? 'true' : 'false' );
+		}
+		sync();
+		new MutationObserver( sync ).observe( panel, { attributes: true, attributeFilter: [ 'class' ] } );
 	} );
 }() );

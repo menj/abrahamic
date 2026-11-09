@@ -36,6 +36,12 @@ function add_filter( $hook, $cb ) {
 function abr_get_option( $key ) {
 	return $GLOBALS['abr_t']['opts'][ $key ] ?? null;
 }
+function is_admin() {
+	return false;
+}
+function is_feed() {
+	return false;
+}
 function is_singular() {
 	return true;
 }
