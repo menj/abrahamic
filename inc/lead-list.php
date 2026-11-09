@@ -132,7 +132,7 @@ function abr_lead_list( array $posts, array $args = array() ) {
 
 	$set     = abr_lead_list_settings();
 	$classes = 'abr-lead-list alignwide' . ( $set['motion'] ? '' : ' abr-lead-list--calm' );
-	$style   = '' !== $set['accent'] ? ' style="--abr-ll-accent:' . esc_attr( $set['accent'] ) . ';--abr-ll-accent-text:' . esc_attr( $set['accent'] ) . '"' : '';
+	$style   = '' !== $set['accent'] ? ' style="--abr-ll-accent:' . esc_attr( $set['accent'] ) . ';--abr-ll-accent-text:color-mix(in srgb,' . esc_attr( $set['accent'] ) . ' 70%,var(--abr-navy))"' : '';
 
 	$html  = '<section class="' . esc_attr( $classes ) . '" aria-labelledby="' . esc_attr( $heading_id ) . '"' . $style . '>';
 	$html .= '<h2 class="abr-lead-list__heading" id="' . esc_attr( $heading_id ) . '">' . esc_html( $args['heading'] ) . '</h2>';
@@ -193,7 +193,7 @@ function abr_lead_list_settings() {
 	$accent = (string) apply_filters( 'abr_lead_list_accent', $accent );
 
 	return array(
-		'accent' => preg_match( '/^#[0-9a-f]{6}$/i', $accent ) ? strtolower( $accent ) : '',
+		'accent' => preg_match( '/^#[0-9a-f]{6}$/i', $accent ) && abr_lead_list_accent_ok( $accent ) ? strtolower( $accent ) : '',
 		'tabs'   => (bool) apply_filters( 'abr_lead_list_show_tabs', ! empty( $tabs ) ),
 		'motion' => (bool) apply_filters( 'abr_lead_list_motion', ! empty( $motion ) ),
 	);
@@ -247,16 +247,19 @@ function abr_lead_list_ratio( $a, $b ) {
 }
 
 /**
- * Whether an accent override can carry the hovered title as text at 4.5:1 on
- * the hover tint (9% of the accent over the page colour) in the light and the
- * dark appearance. The page colours are the theme's ivory in each.
+ * Whether an accent override can carry the hovered title at 4.5:1 on the hover
+ * tint (12% of the accent over the page colour) in the light and the dark mode.
+ * The stylesheet mixes the accent 70% with the navy for text, so this does the
+ * same sums with the theme's navy and ivory in each mode.
  *
  * @param string $hex Colour, #rrggbb.
  * @return bool
  */
 function abr_lead_list_accent_ok( $hex ) {
-	foreach ( array( '#f8f5ef', '#0f131b' ) as $page ) {
-		if ( abr_lead_list_ratio( $hex, abr_lead_list_mix( $hex, $page, 9 ) ) < 4.5 ) {
+	foreach ( array( array( '#f8f5ef', '#172033' ), array( '#0f131b', '#ece7dd' ) ) as $mode ) {
+		$text = abr_lead_list_mix( $hex, $mode[1], 70 );
+		$tint = abr_lead_list_mix( $hex, $mode[0], 12 );
+		if ( abr_lead_list_ratio( $text, $tint ) < 4.5 ) {
 			return false;
 		}
 	}

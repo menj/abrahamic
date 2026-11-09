@@ -204,10 +204,10 @@ abr_test_check( false === strpos( $r['html'], 'abr-lead-list--calm' ) && false =
 $GLOBALS['abr_t']['filters'] = array(
 	'abr_lead_list_show_tabs' => false,
 	'abr_lead_list_motion'    => false,
-	'abr_lead_list_accent'    => '#7a5c22',
+	'abr_lead_list_accent'    => '#2f6fb0',
 );
 $r = abr_lead_list( abr_t_posts( array( 1 => true, 2 => true, 3 => true, 4 => true, 5 => true, 6 => true ) ) );
-abr_test_check( false === strpos( $r['html'], '<a class="abr-lead-list__tab' ) && false !== strpos( $r['html'], 'abr-lead-list--calm' ) && false !== strpos( $r['html'], '--abr-ll-accent:#7a5c22' ), 'the switches remove the tabs and motion, and the accent override is applied' );
+abr_test_check( false === strpos( $r['html'], '<a class="abr-lead-list__tab' ) && false !== strpos( $r['html'], 'abr-lead-list--calm' ) && false !== strpos( $r['html'], '--abr-ll-accent:#2f6fb0' ), 'the switches remove the tabs and motion, and the accent override is applied' );
 $GLOBALS['abr_t']['filters'] = array( 'abr_lead_list_accent' => 'red; background:url(x)' );
 $r = abr_lead_list( abr_t_posts( array( 1 => true, 2 => true, 3 => true, 4 => true, 5 => true, 6 => true ) ) );
 abr_test_check( false === strpos( $r['html'], 'style="--abr-ll-accent' ), 'an accent that is not a hex colour is dropped' );
@@ -237,6 +237,6 @@ foreach ( $abr_modes as $mode => $t ) {
 	$muted = abr_lead_list_mix( $t['navy'], $t['ivory'], 66 );
 	abr_test_check( abr_lead_list_ratio( $muted, $tint ) >= 4.5, sprintf( 'the meta line in the %s mode reads at %.1f:1 on the tint', $mode, abr_lead_list_ratio( $muted, $tint ) ) );
 }
-abr_test_check( ! abr_lead_list_accent_ok( '#ffffff' ) && ! abr_lead_list_accent_ok( '#f5f5a0' ), 'an accent override that cannot carry text is refused' );
+abr_test_check( abr_lead_list_accent_ok( '#2f6fb0' ) && ! abr_lead_list_accent_ok( '#ffffff' ) && ! abr_lead_list_accent_ok( '#f5f5a0' ), 'an accent override that cannot carry text is refused' );
 
 exit( $abr_fail ? 1 : 0 );

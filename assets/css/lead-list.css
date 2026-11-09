@@ -399,6 +399,9 @@
 /* Reduced motion: no movement and no zoom; the colour changes stay. Switching
    "Arrows and motion" off in the theme options does the same and hides the arrows. */
 @media (prefers-reduced-motion: reduce) {
+	/* If the preference turns on after the block was hidden for its entrance, show it at rest. */
+	.abr-lead-list.is-armed .abr-lead-list__lead,
+	.abr-lead-list.is-armed .abr-lead-list__item { opacity: 1; transform: none; transition: none; }
 	.abr-lead-list__img,
 	.abr-lead-list__thumb-img,
 	.abr-lead-list__rule,
