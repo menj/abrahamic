@@ -866,7 +866,7 @@ function abr_render_seed_section( $full = true ) {
 		'seed_mode',
 		__( 'When the theme ships new starter content', 'abrahamic' ),
 		'cards',
-		__( 'Replacing writes the current version over starter pages, including any you have edited; the text you had is kept in the page\'s revisions. Pages you created yourself are never touched, and starter pages the theme no longer carries are moved to the trash.', 'abrahamic' ),
+		__( 'In both choices a starter page you edited is never overwritten. The first lists it under Tools with the differences, and you take the new text or keep yours. Pages you created yourself are never touched, and starter pages the theme no longer carries are moved to the trash only if you have not edited them.', 'abrahamic' ),
 		// The Tools panel sits outside the options form, so the choice and its
 		// button name that form explicitly.
 		array(
@@ -913,6 +913,7 @@ function abr_render_seed_section( $full = true ) {
 		<?php wp_nonce_field( 'abr_seed_run' ); ?>
 		<?php submit_button( __( 'Add missing starter content', 'abrahamic' ), 'secondary', 'submit', false ); ?>
 	</form>
+	<?php abr_render_content_sync_card(); ?>
 	<?php
 	$legacy = abr_posts_with_legacy_links();
 	if ( $legacy ) :

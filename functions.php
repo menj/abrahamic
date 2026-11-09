@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ABR_VERSION', '2.96.19' );
+define( 'ABR_VERSION', '2.96.20' );
 define( 'ABR_DIR', get_stylesheet_directory() );
 define( 'ABR_URI', get_stylesheet_directory_uri() );
 
@@ -23,6 +23,7 @@ $abr_files = array(
 	ABR_DIR . '/inc/shortcodes.php',
 	ABR_DIR . '/inc/structure.php',
 	ABR_DIR . '/inc/seed-schedule.php',
+	ABR_DIR . '/inc/seed-sync.php',
 	ABR_DIR . '/inc/seed.php',
 	ABR_DIR . '/inc/seo.php',
 	ABR_DIR . '/inc/redirects.php',

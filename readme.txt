@@ -3,7 +3,7 @@ Contributors: abrahamic
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.96.19
+Stable tag: 2.96.20
 Template: twentytwentyfive
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -223,6 +223,9 @@ The security tools keep two records in the database. The spam log holds the last
 The Theme Options screen remembers the last tab you opened in the browser's session storage. It is gone when the tab closes.
 
 == Upgrade Notice ==
+
+= 2.96.20 =
+Replace the theme files. Open Theme Options, Tools: starter items you edited are listed there with a diff.
 
 = 2.96.19 =
 Replace the theme files. Nothing else to do. The next admin page load refreshes the Bible, Donate and Thank-you pages and schedules one new article.
@@ -664,6 +667,12 @@ Page and article addresses move into sections. Earlier addresses redirect automa
 Browsers ask for /favicon.ico at the top of the domain, such as example.com/favicon.ico, even when the site lives in example.com/blog/. WordPress never sees that request, so put a copy of the theme's favicon.ico in the domain root folder. The icon tags in each page cover the pages either way.
 
 == Changelog ==
+
+= 2.96.20 - 2026-11-09 =
+* Starter content follows the bundle, safely. A starter page or article you edited is never overwritten, whichever choice you made. Tools lists it with the differences, and you take the new text or keep yours.
+* A starter item the theme drops goes to the Trash only if you have not edited it. Nothing is deleted.
+* A replacement map retires an old starter item behind a 301, hides it from lists and search, and moves it to the Trash. It ships empty.
+* Tools has a dry-run card, a log of the last 100 changes and a run button. ABR_DISABLE_CONTENT_SYNC switches it all off.
 
 = 2.96.19 - 2026-11-09 =
 * The Bible page no longer says the Orthodox churches never defined their canon. It now names the Jerusalem synod of 1672, and a new paragraph gives the history of the New Testament lists.

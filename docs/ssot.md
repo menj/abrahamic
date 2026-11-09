@@ -4,7 +4,7 @@ This file is authoritative for identity, naming, structure, design tokens, break
 
 | Field | Value |
 |---|---|
-| Current version | **2.96.19** |
+| Current version | **2.96.20** |
 | Release date | 2026-11-09 |
 | Status | Stable |
 
@@ -437,7 +437,7 @@ Stored as one array in `abr_options`. `abr_option_types()` is the schema; `abr_o
 | `newsletter_name` | key | `email` | Newsletter |
 | `newsletter_text` | textarea | Intro sentence | Newsletter |
 | `social_{slug}` for each of the 45 networks in section 11; each hyphen in the slug becomes an underscore | url | empty | Social; empty entries are omitted from the footer |
-| `seed_mode` | seed_mode | `replace` | Tools; `replace` or `keep` (`abr_seed_modes()`) |
+| `seed_mode` | seed_mode | `replace` | Tools; `replace` or `keep` (`abr_seed_modes()`). Neither overwrites an edited item (section 12, step 5) |
 | `seo_enabled` | bool | 1 | Search |
 | `seo_home_description` | textarea | empty | Search |
 | `org_logo`, `share_image` | url | empty | Search; chosen from the media library |
@@ -545,9 +545,16 @@ The theme populates the site itself, following the seeder pattern used in the Mu
 2. **Tombstones.** Every key the seeder creates or adopts is written to `abr_seeded_slugs` with a timestamp. A recorded key is never processed again, so content an editor deletes or trashes is never recreated. Only Restore in Tools removes one key and recreates that item.
 3. **Adoption.** If a page or post with the same slug exists when an item is first created, the seeder adopts it untouched, records the key and never writes to it again. WordPress's own default privacy policy draft is filled and published only while it is unedited (modified date equals creation date).
 4. **Structure sync.** When the seed version rises, each seeder-owned item (`_abr_seed` present) whose `_abr_seed_version` is older takes the current slug and parent page. Adopted pages are never moved.
-5. **Text sync,** governed by the `seed_mode` option (`abr_seed_modes()`):
-   - `replace` (default): title, text and excerpt take the current version whether or not the item was edited. WordPress stores the previous text as a revision.
-   - `keep`: the text is refreshed only while it still matches its fingerprint, `_abr_seed_hash`, or for version 1 items the hash in `legacy-v1.json`. Links are compared root-relative.
+5. **Text sync (since 2.96.20).** `inc/seed-sync.php` decides what the seeder may write. The seeder records `_abr_sync_fp` (the fingerprint of the stored title, excerpt, body and description) and `_abr_sync_bfp` (the fingerprint of the bundled entry) whenever it writes an item. An item is edited when its stored text differs from `_abr_sync_fp`, or when no record exists; an item with only the older `_abr_seed_hash` is judged by its body. In both `seed_mode` values an edited item is never overwritten: Tools lists it with a diff, and the owner takes the bundled text or keeps their own (`_abr_sync_ack`). `seed_mode` keeps its key and its two values: `replace` (default) also shows the notice, `keep` stays quiet.
+
+   | Event | Untouched item | Edited item, or no record |
+   |---|---|---|
+   | The bundle text changes | Takes the new text when the seed version rises, or at once through "Run the review now"; logged | Stays; listed with a diff |
+   | The bundle drops it | Moved to the Trash | Stays; listed |
+   | Renamed (the key stays, the slug changes) | Slug and parent follow the bundle, as before; WordPress keeps the old address working | The same |
+   | `supersedes` names it as old, and the new one is published | 301 at any address, hidden from lists, search, feeds and sitemaps, noindex, then the Trash | Stays; listed |
+
+   `inc/seed/supersedes.json` is `{ "page": { old slug: new slug }, "post": { ... } }` and ships empty; the `abr_supersedes` filter can add pairs. Removals, the redirect and the hiding stop when `inc/seed/checksums.json` no longer matches the starter content file (run `php bin/seed-checksums.php` after editing `content.json` or `supersedes.json`), when the bundle lists more than 10 percent fewer items than at the last good sync, or when `ABR_DISABLE_CONTENT_SYNC` is true; the constant also stops text updates. The card on Tools has a dry run, the owner's choices and a log of the last 100 changes (`abr_sync_log`). When the 10 percent guard holds, a button accepts the current item count as the new baseline. With the Unlist Posts plugin active, or its switch off, the theme hides superseded items itself, including through Rank Math's sitemap and robots filters.
 6. **Retirement.** A key in the tombstone list that the starter set no longer carries has its post moved to the trash, where it can be restored, provided its text still matches the seeder's fingerprint (`abr_seed_is_unedited()`); an edited copy is left as it is and counted as `kept`. Nothing is deleted permanently; option and cleanup keys are exempt. Counted as `retired` in `abr_seed_log`. To merge one item into another, remove the retired item from `content.json`, point its address at the owner in `inc/seed/legacy-paths.json` (which answers only once the address is a 404, so after the trash) and raise the seed version.
 6b. **When it runs.** On activation; on an admin screen loaded by a user with `edit_theme_options` while the stored version is behind; and, failing both, on the next ordinary page request (`abr_seed_on_request()` at `wp_loaded`). All three paths run through `abr_seed_run_locked()`, which takes the `abr_seed_lock` option with `add_option()`, so two runs at once cannot both create a post; a lock older than five minutes is dropped. A site whose owner never opens the right admin screen still receives new starter content. Every admin screen also carries a notice while the content is behind or items are missing (`abr_seed_admin_notice()`), with a button that runs it.
 
@@ -783,6 +790,7 @@ Used: Article, Breadcrumb, Organization. Not applicable to this site's content: 
 
 | Date | Version | Decision | Reason |
 |---|---|---|---|
+| 2026-11-09 | 2.96.20 | Starter content follows the bundle safely: fingerprints, an edited item is never overwritten and is listed with a diff, dropped items go to the Trash only if untouched, a supersedes map retires an old item behind a 301 | The owner asked that new material supersede old material and that edits never be lost silently. |
 | 2026-11-09 | 2.96.19 | The Bible page names the Jerusalem synod of 1672 and the New Testament lists; the generic PayPal link leaves the Donate and Thank-you pages; one four-faith article on scripture is scheduled for 2027-01-05 | Davidson (1877) shows the Greek church confirmed its longer list in 1672, and donations go only to the site's own PayPal link. |
 | 2026-11-09 | 2.96.18 | Donations go only to the site's PayPal.me link, in US dollars only; no other provider, currency, per-post or campaign link | Owner instruction, relayed 2026-11-09; the link is fixed in code and shown read-only |
 | 2026-11-09 | 2.96.17 | Mobile-first audit: long text wraps from `.wp-site-blocks`, small links get 44 px targets on touch screens, the sticky header releases on short landscape screens | A measured pass at nine widths found one overflow (long titles and links) and several sub-24 px targets; the fixes are additive and desktop sizes are unchanged |

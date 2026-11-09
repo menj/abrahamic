@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
  */
 function abr_image_sitemap_entries() {
 	$entries = array();
-	$exclude = array_merge( function_exists( 'abr_seo_utility_ids' ) ? abr_seo_utility_ids() : array(), function_exists( 'abr_unlisted_ids' ) ? abr_unlisted_ids() : array() );
+	$exclude = array_merge( function_exists( 'abr_seo_utility_ids' ) ? abr_seo_utility_ids() : array(), function_exists( 'abr_unlisted_ids' ) ? abr_unlisted_ids() : array(), function_exists( 'abr_superseded_ids' ) ? abr_superseded_ids() : array() );
 	$paged   = 1;
 	do {
 		// Batches of 200, so every post is listed without one unbounded query.

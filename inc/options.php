@@ -464,8 +464,8 @@ function abr_sanitize_options( $input ) {
  */
 function abr_seed_modes() {
 	return array(
-		'replace' => __( 'Replace starter pages with the current version', 'abrahamic' ),
-		'keep'    => __( 'Keep my edits to starter pages', 'abrahamic' ),
+		'replace' => __( 'Update starter pages I have not edited, and list the ones I have for review', 'abrahamic' ),
+		'keep'    => __( 'Update starter pages I have not edited, and say nothing about the rest', 'abrahamic' ),
 	);
 }
 

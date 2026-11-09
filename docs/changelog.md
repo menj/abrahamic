@@ -2,6 +2,22 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.20] - 2026-11-09
+
+Starter content follows the bundle, safely. No feature removed, no option key renamed.
+
+### Changed
+- The seeder never overwrites an item the owner edited, in either `seed_mode`. Before, `replace` (the default) wrote the bundled text over edits. An item counts as edited when its stored text differs from its recorded fingerprint, or when no record exists.
+- An item the bundle dropped goes to the Trash only when it is untouched, and only when no guard holds removals.
+- `seed_mode` keeps its key and values. Its two labels and its help text now say what they do.
+
+### Added
+- `inc/seed-sync.php`: fingerprints (`_abr_sync_fp`, `_abr_sync_bfp`), the review card on Theme Options, Tools (dry run, diff, Take the bundled text, Keep mine, Run the review now, a log of the last 100 changes), the supersedes map with a 301 at any address, hiding through the unlist module and the Trash, and the `ABR_DISABLE_CONTENT_SYNC` switch.
+- `inc/seed/supersedes.json` (empty), `inc/seed/checksums.json` and `bin/seed-checksums.php`.
+- The Move to the Trash choice waits while a removal guard holds. Lead lists and the image sitemap leave out superseded items. Taking the bundled text also removes a description the bundle dropped.
+- A button on the card accepts the current item count as the new baseline after an intentional large retirement.
+- `tests/seed-sync-test.php`.
+
 ## [2.96.19] - 2026-11-09
 
 Canon corrections and one article. Seed version 110 to 111. No feature removed, no identifier renamed.
