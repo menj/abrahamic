@@ -113,6 +113,9 @@ function abr_option_types() {
 		'custom_gold'      => 'hex',
 		'custom_beige'     => 'hex',
 		'custom_charcoal'  => 'hex',
+		'll_tabs'          => 'bool',
+		'll_motion'        => 'bool',
+		'll_accent'        => 'hex',
 		// Newsletter.
 		'newsletter_url'   => 'url',
 		'newsletter_name'  => 'key',
@@ -242,6 +245,9 @@ function abr_option_defaults() {
 		'login_redirect_slug' => get_option( 'whl_redirect_admin' ) ? sanitize_title( get_option( 'whl_redirect_admin' ) ) : '404',
 		'progress_on'         => 1,
 		'progress_colour'     => '',
+		'll_tabs'             => 1,
+		'll_motion'           => 1,
+		'll_accent'           => '',
 		'progress_height'     => 4,
 		'progress_position'   => 'top',
 		'progress_types'      => array( 'post' ),
@@ -432,6 +438,11 @@ function abr_sanitize_options( $input ) {
 				$out[ $key ] = is_array( $raw ) ? array_values( array_unique( array_intersect( array_map( 'sanitize_key', array_filter( $raw, 'is_string' ) ), array_keys( abr_progress_post_types() ) ) ) ) : $d[ $key ];
 				break;
 		}
+	}
+	// A lead and list accent that cannot carry text at 4.5:1 in both appearances is dropped.
+	if ( '' !== $out['ll_accent'] && function_exists( 'abr_lead_list_accent_ok' ) && ! abr_lead_list_accent_ok( $out['ll_accent'] ) ) {
+		$out['ll_accent'] = '';
+		add_settings_error( 'abr_options', 'abr_ll_accent', __( 'The lead and list accent colour was not saved: as text it does not reach 4.5:1 in both the light and the dark appearance. Choose a mid-tone colour, or leave the field empty for the theme accent.', 'abrahamic' ) );
 	}
 	// The login address, its fallback and the search address must differ.
 	if ( $out['login_slug'] === $out['login_redirect_slug'] || $out['login_slug'] === $out['search_base'] ) {

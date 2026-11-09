@@ -13,6 +13,10 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.13 to 2.96.14
+
+Replace the theme files. The new file is `assets/js/lead-list.js`. The Colours tab gains a Lead and list card with category tabs and arrows and motion on, and no accent override. Nothing else to do.
+
 ## Upgrading from 2.96.12 to 2.96.13
 
 Replace the theme files. Nothing else changes. On a site in a subfolder, put a copy of `assets/images/favicon.ico` in the domain root, since browsers ask for `/favicon.ico` there.

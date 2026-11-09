@@ -2,6 +2,19 @@
 
 All notable changes to the Abrahamic theme are recorded here. The format follows Keep a Changelog, and the project uses Semantic Versioning. Version locations are listed in `ssot.md`, section 3.
 
+## [2.96.14] - 2026-11-09
+
+The lead and list reacts to the pointer, the keyboard and a tap. No feature removed.
+
+### Added
+- Row states: a soft tint of the accent that grows past the row, a gold bar sliding in on the left edge, a 6% zoom on the thumbnail, the title in gold ink with an animated underline, an arrow sliding in at the end of the row, and the row's rule in the accent. Focus and pressed states match, with a 2px outline on focus.
+- Lead states: the image zooms 5%, a darker veil fades in, the gold rule above the headline doubles in length and a Read arrow appears, on hover and focus.
+- A category tab above each title, in one of five colour pairs from the palette, as a link to the category archive. A category takes its colour from its slug. Every pair reads at 4.5:1 or better in light and dark mode.
+- A line under each title with the date and the reading time at 220 words a minute.
+- The first list item carries the bar at rest and gives it up while another row is in use.
+- A staggered fade-up when the block scrolls into view, in `assets/js/lead-list.js`. Reduced motion turns off all movement and zoom and keeps the colour changes. Hover styles sit under `(hover: hover)`; on touch screens the arrows stay faint at rest and tapping uses `:active`.
+- A Lead and list card on the Colours tab: category tabs, arrows and motion (both on) and an accent colour override, `ll_tabs`, `ll_motion` and `ll_accent` in `abr_options`. An accent that cannot carry text at 4.5:1 in both modes is refused with a notice. The filters `abr_lead_list_show_tabs`, `abr_lead_list_motion` and `abr_lead_list_accent` set the same three.
+
 ## [2.96.13] - 2026-11-05
 
 The theme now speaks of "the other sites" in its settings and readme, and the docs name the subfolder favicon step. No feature removed and no public identifier renamed.

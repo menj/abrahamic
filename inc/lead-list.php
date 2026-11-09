@@ -130,13 +130,20 @@ function abr_lead_list( array $posts, array $args = array() ) {
 	}
 	$credit = abr_lead_list_credit( $lead->ID );
 
-	$html  = '<section class="abr-lead-list alignwide" aria-labelledby="' . esc_attr( $heading_id ) . '">';
+	$set     = abr_lead_list_settings();
+	$classes = 'abr-lead-list alignwide' . ( $set['motion'] ? '' : ' abr-lead-list--calm' );
+	$style   = '' !== $set['accent'] ? ' style="--abr-ll-accent:' . esc_attr( $set['accent'] ) . ';--abr-ll-accent-text:' . esc_attr( $set['accent'] ) . '"' : '';
+
+	$html  = '<section class="' . esc_attr( $classes ) . '" aria-labelledby="' . esc_attr( $heading_id ) . '"' . $style . '>';
 	$html .= '<h2 class="abr-lead-list__heading" id="' . esc_attr( $heading_id ) . '">' . esc_html( $args['heading'] ) . '</h2>';
 	$html .= '<div class="abr-lead-list__grid">';
 	$html .= '<article class="abr-lead-list__lead"><figure class="abr-lead-list__figure">';
 	$html .= '<div class="abr-lead-list__media">' . $lead_img;
 	$html .= '<div class="abr-lead-list__overlay"><span class="abr-lead-list__rule" aria-hidden="true"></span>';
+	$html .= $set['tabs'] ? abr_lead_list_tab( $lead ) : '';
 	$html .= '<h3 class="abr-lead-list__title"><a class="abr-lead-list__link" href="' . esc_url( get_permalink( $lead ) ) . '">' . esc_html( get_the_title( $lead ) ) . '</a></h3>';
+	$html .= abr_lead_list_meta( $lead );
+	$html .= '<span class="abr-lead-list__read" aria-hidden="true">' . esc_html__( 'Read', 'abrahamic' ) . ' <span class="abr-lead-list__arrow">&rarr;</span></span>';
 	$html .= '</div></div>';
 	if ( '' !== $credit ) {
 		$html .= '<figcaption class="abr-lead-list__credit">' . $credit . '</figcaption>';
@@ -144,7 +151,7 @@ function abr_lead_list( array $posts, array $args = array() ) {
 	$html .= '</figure></article>';
 
 	$html .= '<ul class="abr-lead-list__list">';
-	foreach ( $list as $item ) {
+	foreach ( $list as $n => $item ) {
 		$thumb = has_post_thumbnail( $item ) ? get_the_post_thumbnail(
 			$item,
 			'medium',
@@ -155,9 +162,14 @@ function abr_lead_list( array $posts, array $args = array() ) {
 				'sizes'   => '(max-width: 781px) 40vw, 12rem',
 			)
 		) : '';
-		$html .= '<li class="abr-lead-list__item">';
+		$html .= '<li class="abr-lead-list__item' . ( 0 === $n ? ' is-current' : '' ) . '" style="--abr-ll-i:' . (int) $n . '">';
 		$html .= '<span class="abr-lead-list__thumb' . ( '' === $thumb ? ' abr-lead-list__thumb--empty abr-panel-art' : '' ) . '" aria-hidden="true">' . $thumb . '</span>';
+		$html .= '<div class="abr-lead-list__text">';
+		$html .= $set['tabs'] ? abr_lead_list_tab( $item ) : '';
 		$html .= '<h3 class="abr-lead-list__item-title"><a class="abr-lead-list__link" href="' . esc_url( get_permalink( $item ) ) . '">' . esc_html( get_the_title( $item ) ) . '</a></h3>';
+		$html .= abr_lead_list_meta( $item );
+		$html .= '</div>';
+		$html .= '<span class="abr-lead-list__arrow" aria-hidden="true">&rarr;</span>';
 		$html .= '</li>';
 	}
 	$html .= '</ul></div></section>';
@@ -166,6 +178,134 @@ function abr_lead_list( array $posts, array $args = array() ) {
 		'html' => $html,
 		'ids'  => array_merge( array( $lead->ID ), wp_list_pluck( $list, 'ID' ) ),
 	);
+}
+
+/**
+ * The lead and list settings: the accent colour override, the category tabs
+ * and the arrows and motion, saved on the Colours tab. Each has a filter.
+ *
+ * @return array { accent: string, tabs: bool, motion: bool }
+ */
+function abr_lead_list_settings() {
+	$accent = function_exists( 'abr_get_option' ) ? (string) abr_get_option( 'll_accent' ) : '';
+	$tabs   = function_exists( 'abr_get_option' ) ? abr_get_option( 'll_tabs' ) : 1;
+	$motion = function_exists( 'abr_get_option' ) ? abr_get_option( 'll_motion' ) : 1;
+	$accent = (string) apply_filters( 'abr_lead_list_accent', $accent );
+
+	return array(
+		'accent' => preg_match( '/^#[0-9a-f]{6}$/i', $accent ) ? strtolower( $accent ) : '',
+		'tabs'   => (bool) apply_filters( 'abr_lead_list_show_tabs', ! empty( $tabs ) ),
+		'motion' => (bool) apply_filters( 'abr_lead_list_motion', ! empty( $motion ) ),
+	);
+}
+
+/**
+ * Relative luminance of a hex colour.
+ *
+ * @param string $hex Colour, #rrggbb.
+ * @return float
+ */
+function abr_lead_list_luminance( $hex ) {
+	$hex = ltrim( $hex, '#' );
+	$out = 0.0;
+	foreach ( array( array( 0.2126, 0 ), array( 0.7152, 2 ), array( 0.0722, 4 ) ) as list( $weight, $at ) ) {
+		$c    = hexdec( substr( $hex, $at, 2 ) ) / 255;
+		$out += $weight * ( $c <= 0.03928 ? $c / 12.92 : pow( ( $c + 0.055 ) / 1.055, 2.4 ) );
+	}
+	return $out;
+}
+
+/**
+ * Mix two hex colours, the first at $share percent.
+ *
+ * @param string $a     First colour.
+ * @param string $b     Second colour.
+ * @param int    $share Percent of the first.
+ * @return string
+ */
+function abr_lead_list_mix( $a, $b, $share ) {
+	$a   = ltrim( $a, '#' );
+	$b   = ltrim( $b, '#' );
+	$out = '#';
+	foreach ( array( 0, 2, 4 ) as $at ) {
+		$out .= str_pad( dechex( (int) round( hexdec( substr( $a, $at, 2 ) ) * $share / 100 + hexdec( substr( $b, $at, 2 ) ) * ( 100 - $share ) / 100 ) ), 2, '0', STR_PAD_LEFT );
+	}
+	return $out;
+}
+
+/**
+ * The contrast ratio of two hex colours.
+ *
+ * @param string $a First colour.
+ * @param string $b Second colour.
+ * @return float
+ */
+function abr_lead_list_ratio( $a, $b ) {
+	$la = abr_lead_list_luminance( $a );
+	$lb = abr_lead_list_luminance( $b );
+	return ( max( $la, $lb ) + 0.05 ) / ( min( $la, $lb ) + 0.05 );
+}
+
+/**
+ * Whether an accent override can carry the hovered title as text at 4.5:1 on
+ * the hover tint (9% of the accent over the page colour) in the light and the
+ * dark appearance. The page colours are the theme's ivory in each.
+ *
+ * @param string $hex Colour, #rrggbb.
+ * @return bool
+ */
+function abr_lead_list_accent_ok( $hex ) {
+	foreach ( array( '#f8f5ef', '#0f131b' ) as $page ) {
+		if ( abr_lead_list_ratio( $hex, abr_lead_list_mix( $hex, $page, 9 ) ) < 4.5 ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+/** How many colours the category tabs rotate through (see lead-list.css). */
+const ABR_LEAD_LIST_TAB_COLOURS = 5;
+
+/**
+ * The category tab of a piece: a pill that names its first category and
+ * links to that category's archive. The colour is the slug's hash, so a
+ * category keeps one colour everywhere.
+ *
+ * @param WP_Post $post Article.
+ * @return string Markup, or '' when the article has no category.
+ */
+function abr_lead_list_tab( $post ) {
+	$cats = get_the_category( $post->ID );
+	$cats = is_array( $cats ) ? $cats : array();
+	$cat  = null;
+	foreach ( $cats as $c ) {
+		if ( 'uncategorized' !== $c->slug ) {
+			$cat = $c;
+			break;
+		}
+	}
+	if ( ! $cat ) {
+		return '';
+	}
+	$colour = abs( crc32( (string) $cat->slug ) ) % ABR_LEAD_LIST_TAB_COLOURS;
+
+	return '<a class="abr-lead-list__tab abr-lead-list__tab--c' . (int) $colour . '" href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . esc_html( $cat->name ) . '</a>';
+}
+
+/**
+ * The line under a title: the date and the reading time at 220 words a minute.
+ *
+ * @param WP_Post $post Article.
+ * @return string
+ */
+function abr_lead_list_meta( $post ) {
+	$words   = str_word_count( wp_strip_all_tags( strip_shortcodes( (string) $post->post_content ) ) );
+	$minutes = max( 1, (int) round( $words / 220 ) );
+
+	return '<p class="abr-lead-list__meta"><time datetime="' . esc_attr( get_the_date( 'c', $post ) ) . '">' . esc_html( get_the_date( 'j M Y', $post ) ) . '</time>'
+		. '<span class="abr-lead-list__sep" aria-hidden="true">&middot;</span>'
+		/* translators: %d: minutes. */
+		. '<span>' . esc_html( sprintf( _n( '%d min read', '%d min read', $minutes, 'abrahamic' ), $minutes ) ) . '</span></p>';
 }
 
 /**
@@ -309,5 +449,6 @@ function abr_lead_list_assets() {
 		return;
 	}
 	wp_enqueue_style( 'abr-lead-list', ABR_URI . '/assets/css/lead-list.css', array( 'abr-theme' ), ABR_VERSION );
+	wp_enqueue_script( 'abr-lead-list', ABR_URI . '/assets/js/lead-list.js', array(), ABR_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 }
 add_action( 'wp_enqueue_scripts', 'abr_lead_list_assets', 20 );
