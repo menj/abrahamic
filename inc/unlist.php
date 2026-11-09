@@ -30,7 +30,12 @@ function abr_unlisted_ids() {
 		return array();
 	}
 	$ids = get_option( 'unlist_posts', array() );
-	return is_array( $ids ) ? array_values( array_unique( array_filter( array_map( 'absint', $ids ) ) ) ) : array();
+	$ids = is_array( $ids ) ? $ids : array();
+	// Items the starter content replaced are hidden the same way while their 301 stands (seed-sync.php).
+	if ( function_exists( 'abr_superseded_ids' ) ) {
+		$ids = array_merge( $ids, abr_superseded_ids() );
+	}
+	return array_values( array_unique( array_filter( array_map( 'absint', $ids ) ) ) );
 }
 
 /**

@@ -528,6 +528,7 @@ function abr_run_seeder( $only = array() ) {
 			update_post_meta( $existing->ID, '_abr_seed_hash', md5( $item['content'] ) );
 			update_post_meta( $existing->ID, '_abr_seed_version', ABR_SEED_VERSION );
 			abr_seed_set_description( $existing->ID, $item );
+			abr_sync_record( $existing->ID, $item );
 			$report['created'][] = $key;
 			$post_id             = $existing->ID;
 		} elseif ( $existing ) {
@@ -577,6 +578,7 @@ function abr_run_seeder( $only = array() ) {
 			update_post_meta( $post_id, '_abr_seed_version', ABR_SEED_VERSION );
 			update_post_meta( $post_id, '_abr_seed_hash', md5( $item['content'] ) );
 			abr_seed_set_description( $post_id, $item );
+			abr_sync_record( $post_id, $item );
 			$report['created'][] = $key;
 			// The tag and Rank Math seeders read the seed index; let them see this post.
 			unset( $GLOBALS['abr_seed_index_cache'] );
@@ -590,6 +592,7 @@ function abr_run_seeder( $only = array() ) {
 	}
 
 	// Parent pages, and structure sync for seeder-owned items from older seed versions.
+	$sync_record = array();
 	foreach ( $data['items'] as $item ) {
 		$key = $item['key'];
 		if ( empty( $ids[ $key ] ) ) {
@@ -611,22 +614,28 @@ function abr_run_seeder( $only = array() ) {
 			if ( $post->post_name !== $item['slug'] ) {
 				$update['post_name'] = $item['slug'];
 			}
-			$edited  = ! abr_seed_is_unedited( $post, $key );
-			$replace = 'replace' === abr_get_option( 'seed_mode' );
-			if ( $replace || ! $edited ) {
-				if ( abr_seed_content_hash( $post->post_content ) !== md5( $item['content'] ) || $post->post_title !== $item['title'] || $post->post_excerpt !== $item['excerpt'] ) {
+			// The text follows the bundle only while the owner has not edited it. An edited item is never
+			// overwritten, in either seed mode: it is listed under Tools with a diff, and the owner takes the
+			// bundled text or keeps their own (inc/seed-sync.php).
+			if ( ! abr_sync_disabled() ) {
+				$sync = abr_sync_state( $post, $key );
+				$act  = abr_sync_decide( abr_sync_bundle_fp( $item ), $sync['stored'], $sync['recorded'], $sync['bfp'], $sync['ack'] );
+				if ( 'update' === $act ) {
 					$update['post_content'] = abr_seed_prepare_content( $item['content'] );
 					$update['post_title']   = $item['title'];
 					$update['post_excerpt'] = $item['excerpt'];
-					$report[ $edited ? 'replaced' : 'refreshed' ][] = $key;
+					$report['refreshed'][]  = $key;
+					abr_sync_log( $key, 'updated to the bundled text' );
 				}
-				update_post_meta( $post->ID, '_abr_seed_hash', md5( $item['content'] ) );
-			}
-			// The description follows the same replace-or-unedited rule as the body, so a
-			// wording correction reaches existing sites; an owner's own description is
-			// kept once the page no longer matches its seeded content.
-			if ( '' === (string) get_post_meta( $post->ID, '_abr_description', true ) || $replace || ! $edited ) {
-				abr_seed_set_description( $post->ID, $item );
+				// Record the text only when it is the theme's own: just written, or equal to the bundle. An
+				// edited item whose bundle did not change keeps its old record, so it stays edited.
+				if ( 'update' === $act || $sync['stored'] === abr_sync_bundle_fp( $item ) ) {
+					if ( 'update' === $act || '' === (string) get_post_meta( $post->ID, '_abr_description', true ) ) {
+						abr_seed_set_description( $post->ID, $item );
+					}
+					update_post_meta( $post->ID, '_abr_seed_hash', md5( $item['content'] ) );
+					$sync_record[ $post->ID ] = $item;
+				}
 			}
 			update_post_meta( $post->ID, '_abr_seed_version', ABR_SEED_VERSION );
 		}
@@ -636,6 +645,9 @@ function abr_run_seeder( $only = array() ) {
 			if ( ! $fresh ) {
 				$report['moved'][] = $key;
 			}
+		}
+		if ( isset( $sync_record[ $post->ID ] ) ) {
+			abr_sync_record( $post->ID, $sync_record[ $post->ID ] ); // After the write, so the record is the stored text.
 		}
 	}
 
@@ -711,11 +723,13 @@ function abr_run_seeder( $only = array() ) {
 			if ( ! $post || 'trash' === $post->post_status ) {
 				continue;
 			}
-			if ( ! abr_seed_is_unedited( $post, $key ) ) {
-				$report['kept'][] = $key;
+			$sync = abr_sync_state( $post, $key );
+			if ( 'trash' !== abr_sync_decide_removed( $sync['stored'], $sync['recorded'], $sync['ack'] ) || '' !== abr_sync_removal_block() ) {
+				$report['kept'][] = $key; // Edited, or a guard holds removals: it stays and is listed.
 				continue;
 			}
 			wp_trash_post( $post->ID );
+			abr_sync_log( $key, 'moved to the Trash, dropped from the bundle' );
 			$report['retired'][] = $key;
 		}
 	}
@@ -734,6 +748,12 @@ function abr_run_seeder( $only = array() ) {
 	}
 
 	update_option( 'abr_seeded_slugs', $seeded, false );
+	if ( ! $only ) {
+		abr_sync_refresh_pending();
+		if ( '' === abr_sync_removal_block() ) {
+			update_option( 'abr_sync_count', count( $data['items'] ), false );
+		}
+	}
 	if ( empty( $report['photo_errors'] ) ) {
 		update_option( 'abr_seed_version', ABR_SEED_VERSION, false );
 		delete_transient( 'abr_seed_retry' );

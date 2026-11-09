@@ -13,6 +13,16 @@ This file covers upgrade steps between releases, the planned roadmap, technical 
 
 ---
 
+## Upgrading from 2.96.19 to 2.96.20
+
+Replace the theme files. Nothing else to do.
+
+What changed for you: a starter page or article you edited is no longer overwritten when the theme ships new text, whichever Starter content choice you made. Open Theme Options, Tools to see the items that have a newer bundled text, with a diff. Choose "Take the bundled text" or "Keep mine" for each. "Run the review now" applies the bundled text to the items you have not edited without waiting for a seed version.
+
+To retire an item behind a replacement, add a pair to `inc/seed/supersedes.json`, for example `{ "post": { "old-slug": "new-slug" } }`, and run `php bin/seed-checksums.php`. The map ships empty.
+
+After editing `inc/seed/content.json` or `supersedes.json`, run `php bin/seed-checksums.php`. Without it the guard holds removals and the redirect, and Tools says why.
+
 ## Upgrading from 2.96.18 to 2.96.19
 
 Replace the theme files. The seed version rises from 110 to 111, so the next admin page load runs the seeder. In the default `replace` mode it writes the new text of the Bible, Donate and Thank-you pages over the stored text and keeps the old text in a WordPress revision. An owner edit to those three pages is therefore replaced; restore it from the revision. With `keep` mode, only pages that still match their fingerprint refresh. The seeder creates the new article as Scheduled for 5 January 2027.
